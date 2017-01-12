@@ -9,10 +9,25 @@ final class GreetingController extends Controller
 {
     public function greetAction($name)
     {
-        if (null === $name) {
-            return new Response('<html><body><div id="greeting">Hello!</div></body></html>');
-        }
+        return new Response(sprintf('<html><body><div id="greeting">%s</div></body></html>', $this->getGreeting($name)));
+    }
 
-        return new Response(sprintf('<html><body><div id="greeting">Hello, %s!</div></body></html>', $name));
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
+    private function getGreeting($name)
+    {
+        switch ($name) {
+            case null:
+                return 'Hello!';
+
+            case 'Lionel Richie':
+                return 'Hello, is it me you\'re looking for?';
+
+            default:
+                return sprintf('Hello, %s!', $name);
+        }
     }
 }

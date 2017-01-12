@@ -11,3 +11,7 @@ Feature: Greeting a customer
     Scenario: Greeting a customer with a known name
         When a customer named "Krzysztof" visits welcome page
         Then they should be greeted with "Hello, Krzysztof!"
+
+    Scenario: Greeting Lionel Richie
+        When a customer named "Lionel Richie" visits welcome page
+        Then they should be greeted with "Hello, is it me you're looking for?"
