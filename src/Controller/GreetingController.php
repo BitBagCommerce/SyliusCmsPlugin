@@ -7,13 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class GreetingController extends Controller
 {
+    /**
+     * @param string|null $name
+     *
+     * @return Response
+     */
     public function greetAction($name)
     {
         return new Response(sprintf('<html><body><div id="greeting">%s</div></body></html>', $this->getGreeting($name)));
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return string
      */
