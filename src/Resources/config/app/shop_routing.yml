@@ -1,4 +1,5 @@
 acme_example_welcome:
-    path: /welcome
+    path: /welcome/{name}
     defaults:
         _controller: AcmeExampleBundle:Greeting:greet
+        name: ~

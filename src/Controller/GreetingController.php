@@ -7,8 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class GreetingController extends Controller
 {
-    public function greetAction()
+    public function greetAction($name)
     {
-        return new Response('<html><body><div id="greeting">Hello!</div></body></html>');
+        if (null === $name) {
+            return new Response('<html><body><div id="greeting">Hello!</div></body></html>');
+        }
+
+        return new Response(sprintf('<html><body><div id="greeting">Hello, %s!</div></body></html>', $name));
     }
 }

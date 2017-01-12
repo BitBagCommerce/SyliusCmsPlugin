@@ -30,6 +30,14 @@ final class WelcomeContext implements Context
     }
 
     /**
+     * @When a customer named :name visits welcome page
+     */
+    public function namedCustomerVisitsWelcomePage($name)
+    {
+        $this->welcomePage->open(['name' => $name]);
+    }
+
+    /**
      * @Then they should be greeted with :greeting
      */
     public function theyShouldBeGreetedWithGreeting($greeting)
