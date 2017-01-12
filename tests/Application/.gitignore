@@ -1,5 +1,2 @@
 /var/
 !/var/.gitkeep
-
-/web/
-!/web/.gitkeep
