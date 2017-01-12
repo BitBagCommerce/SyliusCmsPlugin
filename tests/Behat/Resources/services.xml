@@ -3,5 +3,12 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Put your Behat services here -->
+
+        <service id="acme_example.context.ui.shop.welcome" class="Tests\Acme\ExampleBundle\Behat\Context\Ui\Shop\WelcomeContext">
+            <argument type="service" id="acme_example.page.shop.welcome" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="acme_example.page.shop.welcome" class="Tests\Acme\ExampleBundle\Behat\Page\Shop\WelcomePage" parent="sylius.behat.symfony_page" public="false" />
     </services>
 </container>
