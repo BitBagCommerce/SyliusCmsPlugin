@@ -15,7 +15,6 @@
         "behat/mink-extension": "^2.2",
         "friends-of-behat/context-service-extension": "^0.3",
         "friends-of-behat/cross-container-extension": "^0.2",
-        "friends-of-behat/performance-extension": "^1.0",
         "friends-of-behat/service-container-extension": "^0.3",
         "friends-of-behat/symfony-extension": "^0.2.1",
         "friends-of-behat/variadic-extension": "^0.1"
