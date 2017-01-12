@@ -16,6 +16,9 @@ before_install:
 install:
     - composer update --prefer-dist
 
+before_script:
+    - tests/Application/bin/console doctrine:schema:create --env=test
+
 script:
     - composer validate
 
