@@ -20,9 +20,9 @@
         "friends-of-behat/variadic-extension": "^0.1"
     },
     "autoload": {
-        "psr-4": { "Acme\\ExampleBundle\\": "src/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "Acme\\ExampleBundle\\Tests\\": "tests/" }
+        "psr-4": {
+            "Acme\\ExampleBundle\\": "src/",
+            "Acme\\ExampleBundle\\Tests\\": "tests/"
+        }
     }
 }
