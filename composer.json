@@ -22,7 +22,7 @@
     "autoload": {
         "psr-4": {
             "Acme\\ExampleBundle\\": "src/",
-            "Acme\\ExampleBundle\\Tests\\": "tests/"
+            "Tests\\Acme\\ExampleBundle\\": "tests/"
         }
     }
 }
