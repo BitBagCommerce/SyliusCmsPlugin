@@ -24,7 +24,7 @@ final class GreetingController extends Controller
      */
     public function dynamicallyGreetAction($name)
     {
-        return new Response(sprintf('<html><head><script>setTimeout(function () { document.getElementById("greeting").innerHTML = "%s"; }, 1000);</script></head><body><div id="greeting">Loading...</div></body></html>', $this->getGreeting($name)));
+        return $this->render('@AcmeExample/dynamic_greeting.html.twig', ['greeting' => $this->getGreeting($name)]);
     }
 
     /**
