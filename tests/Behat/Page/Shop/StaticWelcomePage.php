@@ -4,7 +4,7 @@ namespace Tests\Acme\ExampleBundle\Behat\Page\Shop;
 
 use Sylius\Behat\Page\SymfonyPage;
 
-class WelcomePage extends SymfonyPage implements WelcomePageInterface
+class StaticWelcomePage extends SymfonyPage implements WelcomePageInterface
 {
     /**
      * {@inheritdoc}
@@ -19,7 +19,7 @@ class WelcomePage extends SymfonyPage implements WelcomePageInterface
      */
     public function getRouteName()
     {
-        return 'acme_example_welcome';
+        return 'acme_example_static_welcome';
     }
 
     /**

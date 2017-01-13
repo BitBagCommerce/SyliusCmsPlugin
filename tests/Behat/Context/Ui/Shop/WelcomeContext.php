@@ -11,37 +11,68 @@ final class WelcomeContext implements Context
     /**
      * @var WelcomePageInterface
      */
-    private $welcomePage;
+    private $staticWelcomePage;
 
     /**
-     * @param WelcomePageInterface $welcomePage
+     * @var WelcomePageInterface
      */
-    public function __construct(WelcomePageInterface $welcomePage)
+    private $dynamicWelcomePage;
+
+    /**
+     * @param WelcomePageInterface $staticWelcomePage
+     * @param WelcomePageInterface $dynamicWelcomePage
+     */
+    public function __construct(WelcomePageInterface $staticWelcomePage, WelcomePageInterface $dynamicWelcomePage)
     {
-        $this->welcomePage = $welcomePage;
+        $this->staticWelcomePage = $staticWelcomePage;
+        $this->dynamicWelcomePage = $dynamicWelcomePage;
     }
 
     /**
-     * @When a customer with an unknown name visits welcome page
+     * @When a customer with an unknown name visits static welcome page
      */
-    public function customerWithUnknownNameVisitsWelcomePage()
+    public function customerWithUnknownNameVisitsStaticWelcomePage()
     {
-        $this->welcomePage->open();
+        $this->staticWelcomePage->open();
     }
 
     /**
-     * @When a customer named :name visits welcome page
+     * @When a customer named :name visits static welcome page
      */
-    public function namedCustomerVisitsWelcomePage($name)
+    public function namedCustomerVisitsStaticWelcomePage($name)
     {
-        $this->welcomePage->open(['name' => $name]);
+        $this->staticWelcomePage->open(['name' => $name]);
     }
 
     /**
-     * @Then they should be greeted with :greeting
+     * @Then they should be statically greeted with :greeting
      */
-    public function theyShouldBeGreetedWithGreeting($greeting)
+    public function theyShouldBeStaticallyGreetedWithGreeting($greeting)
     {
-        Assert::same($this->welcomePage->getGreeting(), $greeting);
+        Assert::same($this->staticWelcomePage->getGreeting(), $greeting);
+    }
+
+    /**
+     * @When a customer with an unknown name visits dynamic welcome page
+     */
+    public function customerWithUnknownNameVisitsDynamicWelcomePage()
+    {
+        $this->dynamicWelcomePage->open();
+    }
+
+    /**
+     * @When a customer named :name visits dynamic welcome page
+     */
+    public function namedCustomerVisitsDynamicWelcomePage($name)
+    {
+        $this->dynamicWelcomePage->open(['name' => $name]);
+    }
+
+    /**
+     * @Then they should be dynamically greeted with :greeting
+     */
+    public function theyShouldBeDynamicallyGreetedWithGreeting($greeting)
+    {
+        Assert::same($this->dynamicWelcomePage->getGreeting(), $greeting);
     }
 }
