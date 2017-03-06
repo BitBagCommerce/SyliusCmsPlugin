@@ -2,4 +2,15 @@
 
 ## Usage
 
-1. Run `composer create-project sylius/bundle-skeleton ProjectName`.
+1. Run `composer create-project sylius/bundle-skeleton -s dev ProjectName`.
+
+## Testing
+
+In order to run Behat suites, execute following commands:
+
+```bash
+$ composer install
+$ tests/Application/bin/console doctrine:database:create --env test
+$ tests/Application/bin/console doctrine:schema:create --env test
+$ vendor/bin/behat
+```
