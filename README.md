@@ -4,13 +4,31 @@
 
 1. Run `composer create-project sylius/plugin-skeleton -s dev ProjectName`.
 
-## Testing
+## Testing & Development
 
-In order to run Behat suites, execute following commands:
+In order to run tests, execute following commands:
 
 ```bash
 $ composer install
-$ tests/Application/bin/console doctrine:database:create --env test
-$ tests/Application/bin/console doctrine:schema:create --env test
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
+$ bin/console doctrine:database:create --env test
+$ bin/console doctrine:schema:create --env test
 $ vendor/bin/behat
+$ vendor/bin/phpunit
+$ vendor/bin/phpspec
+```
+
+In order to open test app in your browser, do the following:
+
+```bash
+$ composer install
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
+$ bin/console doctrine:database:create --env test
+$ bin/console doctrine:schema:create --env test
+$ bin/console server:start --env test
+$ open http://127.0.0.1:8000/
 ```
