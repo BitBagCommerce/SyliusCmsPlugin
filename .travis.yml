@@ -35,4 +35,5 @@ before_script:
 script:
     - composer validate --strict
 
-    - vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun
+    - vendor/bin/behat --strict -vvv --no-interaction --tags ~@javascript
+
