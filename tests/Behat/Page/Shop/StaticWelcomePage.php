@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Acme\ExampleBundle\Behat\Page\Shop;
+namespace Tests\Acme\ExamplePlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\SymfonyPage;
 

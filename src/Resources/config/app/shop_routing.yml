@@ -1,11 +1,11 @@
 acme_example_static_welcome:
     path: /static-welcome/{name}
     defaults:
-        _controller: AcmeExampleBundle:Greeting:staticallyGreet
+        _controller: AcmeExamplePlugin:Greeting:staticallyGreet
         name: ~
 
 acme_example_dynamic_welcome:
     path: /dynamic-welcome/{name}
     defaults:
-        _controller: AcmeExampleBundle:Greeting:dynamicallyGreet
+        _controller: AcmeExamplePlugin:Greeting:dynamicallyGreet
         name: ~
