@@ -11,7 +11,7 @@ imports:
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
 
 framework:
-    translator: { fallbacks: ["%locale%"] }
+    translator: { fallbacks: ["%locale%", "en"] }
     secret: "%secret"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -23,11 +23,34 @@ framework:
     default_locale: "%locale%"
     trusted_proxies: ~
     session:
-        handler_id: ~
+        storage_id: session.storage.mock_file
     test: ~
+
+swiftmailer:
+    disable_delivery: true
+    logging: true
+    spool:
+        type: file
+        path: "%kernel.cache_dir%/spool"
 
 doctrine:
     dbal:
         driver: "pdo_sqlite"
         path: "%kernel.cache_dir%/db.sql"
         charset: UTF8
+
+fos_rest:
+    exception: ~
+    view:
+        formats:
+            json: true
+            xml:  true
+        empty_content: 204
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
+            - { path: '^/', stop: true }
+
+sylius_theme:
+    sources:
+        test: ~
