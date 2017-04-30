@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ExampleBundle\DependencyInjection;
+namespace Acme\ExamplePlugin\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
