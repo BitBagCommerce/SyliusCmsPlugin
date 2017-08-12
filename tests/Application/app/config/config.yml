@@ -1,0 +1,56 @@
+parameters:
+    locale: en_US
+    secret: "Heron is the best animal in the world!"
+
+imports:
+    - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
+
+    - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
+
+framework:
+    translator: { fallbacks: ["%locale%", "en"] }
+    secret: "%secret"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form: true
+    csrf_protection: true
+    validation: { enable_annotations: true }
+    templating: { engines: ["twig"] }
+    default_locale: "%locale%"
+    trusted_proxies: ~
+    session:
+        storage_id: session.storage.mock_file
+    test: ~
+
+swiftmailer:
+    disable_delivery: true
+    logging: true
+    spool:
+        type: file
+        path: "%kernel.cache_dir%/spool"
+
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        path: "%kernel.cache_dir%/db.sql"
+        charset: UTF8
+
+fos_rest:
+    exception: ~
+    view:
+        formats:
+            json: true
+            xml:  true
+        empty_content: 204
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
+            - { path: '^/', stop: true }
+
+sylius_theme:
+    sources:
+        test: ~

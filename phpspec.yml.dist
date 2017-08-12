@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Acme\ExamplePlugin
+        psr4_prefix: Acme\ExamplePlugin

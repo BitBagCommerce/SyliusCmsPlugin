@@ -1,0 +1,39 @@
+language: php
+
+php:
+    - 7.1
+    - 7.0
+    - 5.6
+
+cache:
+    directories:
+        - ~/.composer/cache/files
+    #yarn: true
+
+before_install:
+    - phpenv config-rm xdebug.ini || true
+    - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+install:
+    - composer update --prefer-dist
+    #- (cd tests/Application && yarn install)
+
+before_script:
+    - (cd tests/Application && bin/console doctrine:schema:create --env=test)
+    - (cd tests/Application && bin/console assets:install web --env=test)
+    #- (cd tests/Application && yarn run gulp)
+
+    - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
+    - export DISPLAY=:99
+
+    - curl http://chromedriver.storage.googleapis.com/2.12/chromedriver_linux64.zip > chromedriver.zip && unzip chromedriver.zip
+
+    - cp etc/travis/behat.yml ./behat.yml
+    - vendor/bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver > /dev/null 2>&1 &
+    - (cd tests/Application && bin/console server:run 127.0.0.1:8080 --env=test --quiet > /dev/null 2>&1 &)
+
+script:
+    - composer validate --strict
+
+    - vendor/bin/behat --strict -vvv --no-interaction --tags ~@javascript
+

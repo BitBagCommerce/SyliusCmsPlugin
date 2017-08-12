@@ -1,0 +1,7 @@
+/node_modules/
+
+/var/
+!/var/.gitkeep
+
+!/web/app_test.php
+/web/
