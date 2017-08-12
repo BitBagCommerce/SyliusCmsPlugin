@@ -1,7 +1,7 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "bitbag/cms-plugin",
     "type": "sylius-plugin",
-    "description": "Acme example plugin for Sylius.",
+    "description": "CMS plugin for Sylius based applications.",
     "license": "MIT",
     "require": {
         "php": "^5.6|^7.0",
@@ -27,8 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\ExamplePlugin\\": "src/",
-            "Tests\\Acme\\ExamplePlugin\\": "tests/"
+            "BitBag\\CmsPlugin\\": "src/",
+            "Tests\\BitBag\\CmsPlugin\\": "tests/"
         }
     }
 }

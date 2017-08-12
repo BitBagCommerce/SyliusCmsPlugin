@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Acme\ExamplePlugin\Behat\Page\Shop;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\PageInterface;
 
