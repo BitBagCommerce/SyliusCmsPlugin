@@ -3,3 +3,5 @@
 
 /etc/build/*
 !/etc/build/.gitkeep
+
+/.idea

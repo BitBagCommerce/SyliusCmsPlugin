@@ -3,7 +3,7 @@
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-final class AppKernel extends Kernel
+class AppKernel extends Kernel
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ final class AppKernel extends Kernel
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
 
-            new \BitBag\CmsPlugin\AcmeExamplePlugin(),
+            new \BitBag\CmsPlugin\BitBagCmsPlugin(),
         ]);
     }
 

@@ -1,0 +1,16 @@
+BitBag\CmsPlugin\Entity\Block:
+    type: entity
+    table: bitbag_cms_block
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: 64
+        type:
+            type: string
+            length: 64

@@ -1,0 +1,4 @@
+BitBag\CmsPlugin\Entity\BlockImage:
+    properties:
+        file:
+            - Image: { mimeTypes: ['image/png', 'image/jpeg'], mimeTypesMessage: 'bitbag.cms_plugin.block.image.mime_types', groups: ['bitbag'] }

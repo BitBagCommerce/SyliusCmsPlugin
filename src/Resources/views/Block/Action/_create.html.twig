@@ -1,0 +1,19 @@
+<div class="ui labeled icon top right floating dropdown button primary link">
+    <i class="plus icon"></i>
+    <span class="text">{{ 'sylius.ui.create'|trans }}</span>
+    <div class="menu">
+        <div class="header">
+            <i class="cube icon"></i>
+            {{ 'sylius.ui.type'|trans }}
+        </div>
+        <div class="divider"></div>
+        <a href="{{ path('bitbag_admin_block_create', { 'type': 'text' }) }}" id="text" class="item">
+            {{ 'bitbag.ui.cms_plugin.text_block' }}
+        </a>
+        <a href="{{ path('bitbag_admin_block_create', { 'type': 'image' }) }}" id="text" class="item">
+            {{ 'bitbag.ui.cms_plugin.image_block' }}
+        </a>
+    </div>
+</div>
+
+{{ bitbag_render_block('123') }}

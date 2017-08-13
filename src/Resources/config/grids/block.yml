@@ -1,0 +1,33 @@
+sylius_grid:
+    grids:
+        bitbag_admin_cms_plugin_block:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag.model.block.class%"
+                    repository:
+                        method: createListQueryBuilder
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: code
+                type:
+                    type: string
+                    label: sylius.ui.type
+                    sortable: type
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, type]
+            actions:
+                main:
+                    export:
+                        type: create_block
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

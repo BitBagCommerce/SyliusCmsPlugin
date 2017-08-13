@@ -1,0 +1,4 @@
+BitBag\CmsPlugin\Entity\BlockTranslation:
+    properties:
+        image:
+            - Valid: ~

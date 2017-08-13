@@ -1,0 +1,7 @@
+imports:
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/block.yml" }
+
+sylius_grid:
+    templates:
+        action:
+            create_block: "@BitBagCmsPlugin/Block/Action/_create.html.twig"

@@ -1,0 +1,6 @@
+services:
+    bitbag.cms_plugin.menu.content_management:
+        class: BitBag\CmsPlugin\Menu\ContentManagementMenuBuilder
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }
+
