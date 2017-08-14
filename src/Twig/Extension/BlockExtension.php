@@ -44,7 +44,7 @@ final class BlockExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
-            new \Twig_SimpleFunction('bitbag_block', $this, 'block'),
+            new \Twig_SimpleFunction('bitbag_block', [$this, 'block']),
         ];
     }
 
