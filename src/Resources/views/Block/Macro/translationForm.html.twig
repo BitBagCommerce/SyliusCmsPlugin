@@ -1,0 +1,26 @@
+{% macro translationForm(translations, resource) %}
+    {% import '@BitBagCmsPlugin/Block/Macro/imageWidget.html.twig' as image %}
+    {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
+
+    <div class="ui styled fluid accordion">
+        {% for locale, translationForm in translations %}
+            <div data-locale="{{ locale }}">
+                <div class="title{% if 0 == loop.index0 %} active{% endif %}">
+                    <i class="dropdown icon"></i>
+                    {{ flags.fromLocaleCode(locale) }} {{ locale|sylius_locale_name }}
+                </div>
+                <div class="ui content{% if 0 == loop.index0 %} active{% endif %}">
+                    {% for field in translationForm %}
+
+                        {% if resource.type == 'image' %}
+                            {{ image.imageWidget(field) }}
+                        {% else %}
+                            {{ form_row(field) }}
+                        {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

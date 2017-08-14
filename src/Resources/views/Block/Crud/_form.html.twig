@@ -1,0 +1,16 @@
+{% from '@BitBagCmsPlugin/Block/Macro/translationForm.html.twig' import translationForm %}
+<div class="">
+    <div class="ui two column stackable grid">
+        <div class="column">
+            <div class="ui segment">
+                {{ form_errors(form) }}
+                <div>
+                    {{ form_row(form.code) }}
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            {{ translationForm(form.translations, resource) }}
+        </div>
+    </div>
+</div>
