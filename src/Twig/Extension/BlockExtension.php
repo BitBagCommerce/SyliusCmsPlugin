@@ -77,7 +77,6 @@ final class BlockExtension extends \Twig_Extension
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
 
             return $twigEnvironment->render(self::BLOCK_IMAGE_TEMPLATE, ['block' => $block]);
-
         }
 
         throw new TemplateTypeNotFound($block->getType());
