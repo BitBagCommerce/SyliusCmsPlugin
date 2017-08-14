@@ -32,19 +32,37 @@ final class BlockExtension extends \Twig_Extension
     /**
      * @param BlockRepositoryInterface $blockRepository
      */
-    public function __construct(
-        BlockRepositoryInterface $blockRepository
-    )
+    public function __construct(BlockRepositoryInterface $blockRepository)
     {
         $this->blockRepository = $blockRepository;
     }
 
+    /**
+     * @return \Twig_SimpleFunction[]
+     */
     public function getFunctions()
     {
         return [
             new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
             new \Twig_SimpleFunction('bitbag_block', $this, 'block'),
         ];
+    }
+
+    /**
+     * @param string $code
+     *
+     * @return BlockInterface|null
+     * @throws TemplateTypeNotFound
+     */
+    public function block($code)
+    {
+        $block = $this->blockRepository->findOneByCode($code);
+
+        if (null === $block) {
+            throw new TemplateTypeNotFound($block->getType());
+        }
+
+        return $block;
     }
 
     /**
@@ -74,16 +92,5 @@ final class BlockExtension extends \Twig_Extension
         }
 
         throw new TemplateTypeNotFound($block->getType());
-    }
-
-    public function block($code)
-    {
-        $block = $this->blockRepository->findOneByCode($code);
-
-        if (null === $block) {
-            throw new TemplateTypeNotFound($block->getType());
-        }
-
-        return $block;
     }
 }
