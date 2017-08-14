@@ -1,24 +1,24 @@
 services:
     bitbag.cms_plugin.form.type.block:
         class: BitBag\CmsPlugin\Form\Type\BlockType
+        arguments: ['%bitbag.model.block.class%', ['bitbag']]
         tags:
             - { name: form.type }
-        arguments: ['%bitbag.model.block.class%', ['bitbag']]
 
     bitbag.cms_plugin.form.type.translation.text:
         class: BitBag\CmsPlugin\Form\Type\Translation\TextTranslationType
+        arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
         tags:
             - { name: form.type }
-        arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
 
     bitbag.cms_plugin.form.type.translation.image:
         class: BitBag\CmsPlugin\Form\Type\Translation\ImageTranslationType
+        arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
         tags:
             - { name: form.type }
-        arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
 
     bitbag.cms_plugin.form.type.block_image:
         class: BitBag\CmsPlugin\Form\Type\ImageBlockType
+        arguments: ['BitBag\CmsPlugin\Entity\ImageBlock', ['bitbag']]
         tags:
             - { name: form.type }
-        arguments: ['BitBag\CmsPlugin\Entity\ImageBlock', ['bitbag']]

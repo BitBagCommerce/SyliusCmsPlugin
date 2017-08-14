@@ -10,6 +10,7 @@
 
 namespace BitBag\CmsPlugin\Repository;
 
+use BitBag\CmsPlugin\Entity\BlockInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
@@ -22,4 +23,11 @@ interface BlockRepositoryInterface extends RepositoryInterface
      * @return QueryBuilder
      */
     public function createListQueryBuilder();
+
+    /**
+     * @param $code
+     *
+     * @return BlockInterface|null
+     */
+    public function findOneByCode($code);
 }
