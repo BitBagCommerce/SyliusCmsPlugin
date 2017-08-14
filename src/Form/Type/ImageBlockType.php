@@ -15,7 +15,7 @@ use Sylius\Bundle\CoreBundle\Form\Type\ImageType;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class BlockImageType extends ImageType
+final class ImageBlockType extends ImageType
 {
     /**
      * {@inheritdoc}

@@ -22,9 +22,8 @@ use Symfony\Component\Templating\Helper\Helper;
  */
 final class BlockHelper extends Helper implements BlockHelperInterface
 {
-    const BLOCK_TEXT_TEMPLATE = 'BitBagCmsPlugin:Block:block_text.html.twig';
-
-    const BLOCK_IMAGE_TEMPLATE = 'BitBagCmsPlugin:Block:block_image.html.twig';
+    const BLOCK_TEXT_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
+    const BLOCK_IMAGE_TEMPLATE = 'BitBagCmsPlugin:Block:imageBlock.html.twig';
 
     /**
      * @var ContainerInterface
@@ -62,18 +61,17 @@ final class BlockHelper extends Helper implements BlockHelperInterface
 
         switch ($block->getType()) {
             case BlockInterface::TEXT_BLOCK_TYPE:
+
                 return $twigEngine->render(self::BLOCK_TEXT_TEMPLATE, [
                     'data' => $block,
                 ]);
-                break;
             case BlockInterface::IMAGE_BLOCK_TYPE:
+
                 return $twigEngine->render(self::BLOCK_IMAGE_TEMPLATE, [
                     'data' => $block,
                 ]);
-                break;
             default:
                 throw new TemplateTypeNotFound($block->getType());
-                break;
         }
     }
 

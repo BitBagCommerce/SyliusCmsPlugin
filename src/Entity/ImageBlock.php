@@ -16,6 +16,6 @@ use Sylius\Component\Core\Model\ImageInterface;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class BlockImage extends Image implements ImageInterface
+class ImageBlock extends Image implements ImageInterface
 {
 }

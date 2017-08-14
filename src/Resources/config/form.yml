@@ -18,7 +18,7 @@ services:
         arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
 
     bitbag.cms_plugin.form.type.block_image:
-        class: BitBag\CmsPlugin\Form\Type\BlockImageType
+        class: BitBag\CmsPlugin\Form\Type\ImageBlockType
         tags:
             - { name: form.type }
-        arguments: ['BitBag\CmsPlugin\Entity\BlockImage', ['bitbag']]
+        arguments: ['BitBag\CmsPlugin\Entity\ImageBlock', ['bitbag']]

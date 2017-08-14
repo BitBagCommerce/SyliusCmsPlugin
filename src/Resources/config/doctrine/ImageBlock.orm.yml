@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\BlockImage:
+BitBag\CmsPlugin\Entity\ImageBlock:
     type: entity
     table: bitbag_cms_block_image
     oneToOne:

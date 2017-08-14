@@ -13,7 +13,7 @@ namespace BitBag\CmsPlugin\Exception;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class BlockNotFoundException extends \Exception
+final class BlockNotFoundException extends \Exception
 {
     public function __construct($code)
     {

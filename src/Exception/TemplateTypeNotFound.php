@@ -13,7 +13,7 @@ namespace BitBag\CmsPlugin\Exception;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class TemplateTypeNotFound extends \Exception
+final class TemplateTypeNotFound extends \Exception
 {
     public function __construct($type)
     {

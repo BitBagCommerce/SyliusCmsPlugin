@@ -19,7 +19,7 @@ use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class BlockImageUploadListener
+final class ImageBlockUploaderListener
 {
     /**
      * @var ImageUploaderInterface
@@ -52,7 +52,7 @@ final class BlockImageUploadListener
         /** @var BlockTranslationInterface $translation */
         foreach ($block->getTranslations() as $translation) {
             if ($translation->getImage() !== null) {
-                $this->uploadBlockImage($translation->getImage());
+                $this->uploadImageBlock($translation->getImage());
             }
         }
     }
@@ -60,7 +60,7 @@ final class BlockImageUploadListener
     /**
      * @param ImageInterface $image
      */
-    private function uploadBlockImage(ImageInterface $image)
+    private function uploadImageBlock(ImageInterface $image)
     {
         if ($image->hasFile()) {
             $this->uploader->upload($image);

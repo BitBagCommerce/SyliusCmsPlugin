@@ -13,7 +13,7 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
             nullable: true
     oneToOne:
         image:
-            targetEntity: BitBag\CmsPlugin\Entity\BlockImage
+            targetEntity: BitBag\CmsPlugin\Entity\ImageBlock
             inversedBy: owner
             cascade: [ALL]
             joinColumn:

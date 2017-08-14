@@ -11,12 +11,11 @@
 namespace BitBag\CmsPlugin\Factory;
 
 use BitBag\CmsPlugin\Entity\Block;
-use BitBag\CmsPlugin\Entity\BlockInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class BlockFactory implements BlockFactoryInterface
+final class BlockFactory implements BlockFactoryInterface
 {
     /**
      * {@inheritdoc}
