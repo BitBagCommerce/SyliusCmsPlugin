@@ -3,5 +3,4 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/event_listener.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/form.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/helper.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/twig_extension.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/twig.yml" }

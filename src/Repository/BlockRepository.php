@@ -24,4 +24,17 @@ final class BlockRepository extends EntityRepository implements BlockRepositoryI
     {
         return $this->createQueryBuilder('o');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneByCode($code)
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.code = :code')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

@@ -2,6 +2,9 @@ services:
     bitbag.cms_plugin.twig_extension.block:
         class: BitBag\CmsPlugin\Twig\Extension\BlockExtension
         public: false
+        arguments:
+            - '@bitbag.repository.block'
+            - '@service_container'
+
         tags:
             - { name: twig.extension }
-        arguments: ['@bitbag.cms_plugin.templating_helper.block']

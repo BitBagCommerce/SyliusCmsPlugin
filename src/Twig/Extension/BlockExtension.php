@@ -10,24 +10,31 @@
 
 namespace BitBag\CmsPlugin\Twig\Extension;
 
-use Symfony\Component\Templating\Helper\Helper;
+use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Exception\BlockNotFoundException;
+use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
+use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class BlockExtension extends \Twig_Extension
 {
-    /**
-     * @var Helper
-     */
-    private $helper;
+    const BLOCK_TEXT_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
+    const BLOCK_IMAGE_TEMPLATE = 'BitBagCmsPlugin:Block:imageBlock.html.twig';
 
     /**
-     * @param Helper $helper
+     * @var BlockRepositoryInterface
      */
-    public function __construct(Helper $helper)
+    private $blockRepository;
+
+    /**
+     * @param BlockRepositoryInterface $blockRepository
+     */
+    public function __construct(BlockRepositoryInterface $blockRepository)
     {
-        $this->helper = $helper;
+        $this->blockRepository = $blockRepository;
     }
 
     /**
@@ -35,8 +42,55 @@ final class BlockExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('bitbag_render_block', [$this->helper, 'renderBlock']),
-        );
+        return [
+            new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_SimpleFunction('bitbag_block', [$this, 'block']),
+        ];
+    }
+
+    /**
+     * @param string $code
+     *
+     * @return BlockInterface|null
+     * @throws BlockNotFoundException
+     */
+    public function block($code)
+    {
+        $block = $this->blockRepository->findOneByCode($code);
+
+        if (null === $block) {
+            throw new BlockNotFoundException($code);
+        }
+
+        return $block;
+    }
+
+    /**
+     * @param \Twig_Environment $twigEnvironment
+     * @param string $code
+     *
+     * @return string
+     * @throws BlockNotFoundException
+     * @throws TemplateTypeNotFound
+     */
+    public function renderBlock(\Twig_Environment $twigEnvironment, $code)
+    {
+        $block = $this->blockRepository->findOneByCode($code);
+
+        if (null === $block) {
+            throw new BlockNotFoundException($code);
+        }
+
+        if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
+
+            return $twigEnvironment->render(self::BLOCK_TEXT_TEMPLATE, ['block' => $block]);
+        }
+
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
+
+            return $twigEnvironment->render(self::BLOCK_IMAGE_TEMPLATE, ['block' => $block]);
+        }
+
+        throw new TemplateTypeNotFound($block->getType());
     }
 }

@@ -19,7 +19,7 @@ use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class ImageBlockUploaderListener
+final class ImageBlockUploadListener
 {
     /**
      * @var ImageUploaderInterface
@@ -46,7 +46,7 @@ final class ImageBlockUploaderListener
             return;
         }
 
-        if ($block->getType() !== BlockInterface::IMAGE_BLOCK_TYPE) {
+        if (!$block->getType() === BlockInterface::IMAGE_BLOCK_TYPE) {
 
             return;
         }

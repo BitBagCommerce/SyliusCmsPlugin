@@ -1,8 +1,0 @@
-services:
-    bitbag.cms_plugin.templating_helper.block:
-        class: BitBag\CmsPlugin\Templating\Helper\BlockHelper
-        tags:
-            - { name: templating.helper, alias: bitbag_cms_plugin_block }
-        arguments:
-            - '@service_container'
-            - '@bitbag.repository.block'
