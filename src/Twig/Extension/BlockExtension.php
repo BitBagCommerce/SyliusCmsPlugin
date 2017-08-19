@@ -52,14 +52,14 @@ final class BlockExtension extends \Twig_Extension
      * @param string $code
      *
      * @return BlockInterface|null
-     * @throws TemplateTypeNotFound
+     * @throws BlockNotFoundException
      */
     public function block($code)
     {
         $block = $this->blockRepository->findOneByCode($code);
 
         if (null === $block) {
-            throw new TemplateTypeNotFound($block->getType());
+            throw new BlockNotFoundException($code);
         }
 
         return $block;
