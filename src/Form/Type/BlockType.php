@@ -38,14 +38,14 @@ final class BlockType extends AbstractResourceType
             ])
         ;
 
-        if ($block->getType() === BlockInterface::TEXT_BLOCK_TYPE) {
+        if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag.form.contents',
                 'entry_type' => TextTranslationType::class,
             ]);
         }
 
-        if ($block->getType() === BlockInterface::IMAGE_BLOCK_TYPE) {
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag.form.images',
                 'entry_type' => ImageTranslationType::class,

@@ -1,4 +1,2 @@
 suites:
-    main:
-        namespace: BitBag\CmsPlugin
-        psr4_prefix: BitBag\CmsPlugin
+    Cms: { namespace: BitBag\CmsPlugin, psr4_prefix: BitBag\CmsPlugin, spec_path: src, src_path: src }

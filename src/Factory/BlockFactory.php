@@ -23,9 +23,7 @@ final class BlockFactory implements BlockFactoryInterface
     public function createWithType($type)
     {
         $block = new Block();
-
-        $block
-            ->setType($type);
+        $block->setType($type);
 
         return $block;
     }

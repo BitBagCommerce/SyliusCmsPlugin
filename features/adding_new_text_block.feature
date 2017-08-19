@@ -6,6 +6,7 @@ Feature: Adding image block
 
     Background:
         Given I am logged in as an administrator
+        And the store operates on a single channel in "United States"
 
     @ui
     Scenario: Seeing menu items

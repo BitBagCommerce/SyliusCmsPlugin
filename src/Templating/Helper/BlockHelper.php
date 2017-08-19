@@ -53,26 +53,28 @@ final class BlockHelper extends Helper implements BlockHelperInterface
         /** @var BlockInterface $block */
         $block = $this->blockRepository->findOneBy(['code' => $code]);
 
-        if ($block === null) {
+        if (null === $block) {
             throw new BlockNotFoundException($code);
         }
 
         $twigEngine = $this->container->get('templating');
+        $blockType = $block->getType();
 
-        switch ($block->getType()) {
-            case BlockInterface::TEXT_BLOCK_TYPE:
+        if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
 
-                return $twigEngine->render(self::BLOCK_TEXT_TEMPLATE, [
-                    'data' => $block,
-                ]);
-            case BlockInterface::IMAGE_BLOCK_TYPE:
-
-                return $twigEngine->render(self::BLOCK_IMAGE_TEMPLATE, [
-                    'data' => $block,
-                ]);
-            default:
-                throw new TemplateTypeNotFound($block->getType());
+            return $twigEngine->render(self::BLOCK_TEXT_TEMPLATE, [
+                'data' => $block,
+            ]);
         }
+
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $blockType) {
+
+            return $twigEngine->render(self::BLOCK_IMAGE_TEMPLATE, [
+                'data' => $block,
+            ]);
+        }
+
+        throw new TemplateTypeNotFound($block->getType());
     }
 
     /**

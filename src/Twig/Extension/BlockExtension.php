@@ -15,7 +15,7 @@ use Symfony\Component\Templating\Helper\Helper;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class BlockExtension extends \Twig_Extension
+final class BlockExtension extends \Twig_Extension
 {
     /**
      * @var Helper
@@ -30,6 +30,9 @@ class BlockExtension extends \Twig_Extension
         $this->helper = $helper;
     }
 
+    /**
+     * @return \Twig_SimpleFunction[]
+     */
     public function getFunctions()
     {
         return array(

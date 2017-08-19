@@ -1,5 +1,3 @@
-# Put your Behat suites definitions here
-
 default:
     suites:
         greeting_customer:
