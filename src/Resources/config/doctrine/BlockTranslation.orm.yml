@@ -14,7 +14,7 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
     oneToOne:
         image:
             targetEntity: BitBag\CmsPlugin\Entity\ImageBlock
-            inversedBy: owner
+            mappedBy: owner
             cascade: [ALL]
             joinColumn:
                 name: image_id

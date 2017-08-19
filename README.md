@@ -1,34 +1,64 @@
-# Sylius Plugin Skeleton [![License](https://img.shields.io/packagist/l/sylius/plugin-skeleton.svg)](https://packagist.org/packages/sylius/plugin-skeleton) [![Version](https://img.shields.io/packagist/v/sylius/plugin-skeleton.svg)](https://packagist.org/packages/sylius/plugin-skeleton) [![Build status on Linux](https://img.shields.io/travis/Sylius/PluginSkeleton/master.svg)](http://travis-ci.org/Sylius/PluginSkeleton) [![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/Sylius/eSkeleton.svg)](https://scrutinizer-ci.com/g/Sylius/PluginSkeleton/)
+![BitBag](https://bitbag.pl/static/bitbag-logo.png)
+## Overview
+
+Because the original Lakion CMS plugin does not work as expected, it uses deprecated bundles and in general is not finished and EZ Platform is often too much for basic CMS usage, we decided to start the development of CMS plugin from scratch. So far it supports dynamic images and text blocks but things like pages, product images, etc. still need to be developed. Contributors are warmly welcomed!
+
+## Installation
+```bash
+$ composer require bitbag/cms-plugin
+```
+    
+Add plugin dependencies to your AppKernel.php file:
+```php
+public function registerBundles()
+{
+    return array_merge(parent::registerBundles(), [
+        ...
+        
+        new BitBag\CmsPlugin\CmsPlugin(),
+    ]);
+}
+```
+
+Import required config in your `app/config/config.yml` file:
+
+```yaml
+# app/config/config.yml
+
+imports:
+    ...
+    
+    - { resource: "@BitBagCmsPlugin/Resources/config/config.yml" }
+```
+
+Import routing in your `app/config/routing.yml` file:
+
+```yaml
+
+# app/config/routing.yml
+...
+
+bitbag_cms_plugin:
+    resource: '@BitBagCmsPlugin/Resources/config/routing.yml'
+```
 
 ## Usage
 
-1. Run `composer create-project sylius/plugin-skeleton -s dev ProjectName`.
+In the admin panel you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_render_block([block_code])` helper extension.
 
-## Testing & Development
-
-In order to run tests, execute following commands:
-
+## Testing
 ```bash
-$ composer install
-$ cd tests/Application
+$ wget http://getcomposer.org/composer.phar
+$ php composer.phar install
 $ yarn install
 $ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ vendor/bin/behat
-$ vendor/bin/phpunit
-$ vendor/bin/phpspec
+$ php bin/console sylius:install --env test
+$ php bin/console server:start --env test
+$ open http://localhost:8000
+$ bin/behat features/*
+$ bin/phpspec run
 ```
 
-In order to open test app in your browser, do the following:
+## Contribution
 
-```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ bin/console server:start --env test
-$ open http://127.0.0.1:8000/
-```
+Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
