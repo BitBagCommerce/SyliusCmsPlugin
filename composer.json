@@ -1,7 +1,7 @@
 {
     "name": "bitbag/cms-plugin",
     "type": "sylius-plugin",
-    "description": "CMS plugin for Sylius based applications.",
+    "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
     "require": {
         "php": "^5.6|^7.0",

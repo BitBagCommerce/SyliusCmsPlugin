@@ -35,6 +35,6 @@ final class TemplateTypeNotFoundSpec extends ObjectBehavior
 
     function it_has_custom_message()
     {
-        $this->getMessage()->shouldReturn('Template for "bitbag" block type was not found.');
+        $this->getMessage()->shouldReturn('Template type "bitbag" was not found.');
     }
 }

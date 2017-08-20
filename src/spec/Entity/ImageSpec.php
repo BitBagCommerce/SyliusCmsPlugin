@@ -10,16 +10,16 @@
 
 namespace spec\BitBag\CmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\ImageBlock;
+use BitBag\CmsPlugin\Entity\Image;
 use PhpSpec\ObjectBehavior;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ImageBlockSpec extends ObjectBehavior
+final class ImageSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(ImageBlock::class);
+        $this->shouldHaveType(Image::class);
     }
 }

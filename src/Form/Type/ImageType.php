@@ -8,14 +8,20 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace BitBag\CmsPlugin\Entity;
+namespace BitBag\CmsPlugin\Form\Type;
 
-use Sylius\Component\Core\Model\Image;
-use Sylius\Component\Core\Model\ImageInterface;
+use Sylius\Bundle\CoreBundle\Form\Type\ImageType;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-class ImageBlock extends Image implements ImageInterface
+final class ImageType extends ImageType
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'bitbag_cms_plugin_block_image';
+    }
 }

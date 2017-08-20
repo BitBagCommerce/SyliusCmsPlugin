@@ -15,7 +15,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class BlockRepository extends EntityRepository implements BlockRepositoryInterface
+class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
     /**
      * {@inheritdoc}

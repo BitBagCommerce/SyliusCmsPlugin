@@ -10,7 +10,7 @@
 
 namespace BitBag\CmsPlugin\Form\Type\Translation;
 
-use BitBag\CmsPlugin\Form\Type\ImageBlockType;
+use BitBag\CmsPlugin\Form\Type\ImageType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -25,7 +25,7 @@ final class ImageTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', ImageBlockType::class, [
+            ->add('image', ImageType::class, [
                 'label' => false,
             ])
         ;

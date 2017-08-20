@@ -10,14 +10,13 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
+interface PageTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
      * @return string
@@ -28,14 +27,4 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
      * @param string $content
      */
     public function setContent($content);
-
-    /**
-     * @return ImageInterface
-     */
-    public function getImage();
-
-    /**
-     * @param ImageInterface $image
-     */
-    public function setImage(ImageInterface $image);
 }

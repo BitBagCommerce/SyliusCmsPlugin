@@ -10,13 +10,12 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
 /**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-class BlockTranslation extends AbstractTranslation implements BlockTranslationInterface
+class PageTranslation extends AbstractTranslation implements PageTranslationInterface
 {
     /**
      * @var int
@@ -29,10 +28,13 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $content;
 
     /**
-     * @var ImageInterface
+     * {@inheritdoc}
      */
-    protected $image;
-
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     /**
      * {@inheritdoc}
      */
@@ -47,31 +49,5 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     public function setContent($content)
     {
         $this->content = $content;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setImage(ImageInterface $image)
-    {
-        $image->setOwner($this);
-
-        $this->image = $image;
     }
 }

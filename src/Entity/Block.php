@@ -12,14 +12,15 @@ namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
+use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class Block implements BlockInterface
+class Block implements BlockInterface
 {
     use TranslatableTrait {
-        __construct as private initializeTranslationsCollection;
+        __construct as protected initializeTranslationsCollection;
     }
 
     public function __construct()
@@ -30,17 +31,17 @@ final class Block implements BlockInterface
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
      */
-    private $code;
+    protected $code;
 
     /**
      * {@inheritdoc}
@@ -79,7 +80,47 @@ final class Block implements BlockInterface
      */
     public function getId()
     {
-        return  $this->id;
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContent()
+    {
+        return $this->getBlockTranslation()->getContent();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setContent($content)
+    {
+        $this->getBlockTranslation()->setContent($content);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getImage()
+    {
+        return $this->getBlockTranslation()->getImage();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setImage(ImageInterface $image)
+    {
+        $this->getBlockTranslation()->setContent($image);
+    }
+
+    /**
+     * @return BlockTranslationInterface|TranslationInterface
+     */
+    protected function getBlockTranslation()
+    {
+        return $this->getTranslation();
     }
 
     /**
@@ -88,37 +129,5 @@ final class Block implements BlockInterface
     protected function createTranslation()
     {
         return new BlockTranslation();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getContent()
-    {
-        return $this->getTranslation()->getContent();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setContent($content)
-    {
-        $this->getTranslation()->setContent($content);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getImage()
-    {
-        return $this->getTranslation()->getImage();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setImage(ImageInterface $image)
-    {
-        $this->getTranslation()->setContent($image);
     }
 }

@@ -3,6 +3,6 @@ services:
         class: BitBag\CmsPlugin\Factory\BlockFactory
         decorates: 'bitbag.factory.block'
         public: false
-        decoration_priority: 256
+        decoration_priority: 1
         arguments:
             - '@bitbag.custom_factory.block.inner'

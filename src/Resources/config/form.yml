@@ -17,8 +17,8 @@ services:
         tags:
             - { name: form.type }
 
-    bitbag.cms_plugin.form.type.block_image:
-        class: BitBag\CmsPlugin\Form\Type\ImageBlockType
-        arguments: ['BitBag\CmsPlugin\Entity\ImageBlock', ['bitbag']]
+    bitbag.cms_plugin.form.type.image:
+        class: BitBag\CmsPlugin\Form\Type\ImageType
+        arguments: ['BitBag\CmsPlugin\Entity\Image', ['bitbag']]
         tags:
             - { name: form.type }

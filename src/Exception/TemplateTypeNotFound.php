@@ -20,6 +20,6 @@ final class TemplateTypeNotFound extends \Exception
      */
     public function __construct($type)
     {
-        parent::__construct(sprintf('Template for "%s" block type was not found.', $type));
+        parent::__construct(sprintf('Template type "%s" was not found.', $type));
     }
 }
