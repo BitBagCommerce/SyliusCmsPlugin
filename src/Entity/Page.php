@@ -12,12 +12,16 @@ namespace BitBag\CmsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Resource\Model\TranslatableTrait;
+use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 class Page implements PageInterface
 {
+    use TranslatableTrait;
+
     /**
      * @var int
      */
@@ -122,7 +126,7 @@ class Page implements PageInterface
      */
     public function getContent()
     {
-        return $this->content;
+        return $this->getPageTranslation()->getContent();
     }
 
     /**
@@ -130,7 +134,7 @@ class Page implements PageInterface
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->getPageTranslation()->setContent($content);
     }
 
     /**
@@ -165,5 +169,21 @@ class Page implements PageInterface
         if (true === $this->hasProduct($product)) {
             $this->products->removeElement($product);
         }
+    }
+
+    /**
+     * @return PageTranslationInterface|TranslationInterface
+     */
+    protected function getPageTranslation()
+    {
+        return $this->getTranslation();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createTranslation()
+    {
+        return new PageTranslation();
     }
 }

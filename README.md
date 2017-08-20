@@ -6,6 +6,7 @@ Because the original Lakion CMS plugin does not work as expected, it uses deprec
 ## Installation
 ```bash
 $ composer require bitbag/cms-plugin
+$ bin/console doctrine:schema:update --force
 ```
     
 Add plugin dependencies to your AppKernel.php file:
