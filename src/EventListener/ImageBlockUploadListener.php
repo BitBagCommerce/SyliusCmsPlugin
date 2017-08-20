@@ -13,7 +13,6 @@ namespace BitBag\CmsPlugin\EventListener;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 
 /**
@@ -46,26 +45,18 @@ final class ImageBlockUploadListener
             return;
         }
 
-        if (!$block->getType() === BlockInterface::IMAGE_BLOCK_TYPE) {
+        if (BlockInterface::IMAGE_BLOCK_TYPE !== $block->getType()) {
 
             return;
         }
 
         /** @var BlockTranslationInterface $translation */
         foreach ($block->getTranslations() as $translation) {
-            if ($translation->getImage() !== null) {
-                $this->uploadImageBlock($translation->getImage());
-            }
-        }
-    }
+            $image = $translation->getImage();
 
-    /**
-     * @param ImageInterface $image
-     */
-    private function uploadImageBlock(ImageInterface $image)
-    {
-        if ($image->hasFile()) {
-            $this->uploader->upload($image);
+            if (null !== $image && true === $image->hasFile()) {
+                $this->uploader->upload($image);
+            }
         }
     }
 }

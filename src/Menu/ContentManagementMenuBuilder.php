@@ -18,18 +18,18 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 final class ContentManagementMenuBuilder
 {
     /**
-     * @param MenuBuilderEvent $event
+     * @param MenuBuilderEvent $menuBuilderEvent
      */
-    public function buildMenu(MenuBuilderEvent $event)
+    public function buildMenu(MenuBuilderEvent $menuBuilderEvent)
     {
-        $menu = $event->getMenu();
+        $menu = $menuBuilderEvent->getMenu();
 
-        $newSubmenu = $menu
+        $cmsRootMenuItem = $menu
             ->addChild('bitbag-content-management')
             ->setLabel('bitbag.ui.cms_plugin.content_management')
         ;
 
-        $newSubmenu
+        $cmsRootMenuItem
             ->addChild('bitbag-content-management-blocks', [
                 'route' => 'bitbag_admin_block_index'
             ])

@@ -15,6 +15,9 @@ namespace BitBag\CmsPlugin\Exception;
  */
 final class BlockNotFoundException extends \Exception
 {
+    /**
+     * @param string $code
+     */
     public function __construct($code)
     {
         parent::__construct(sprintf('Block for "%s" code was not found.', $code));

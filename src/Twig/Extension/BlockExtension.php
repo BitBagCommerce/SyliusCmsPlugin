@@ -51,14 +51,14 @@ final class BlockExtension extends \Twig_Extension
     /**
      * @param string $code
      *
-     * @return BlockInterface|null
+     * @return BlockInterface
      * @throws BlockNotFoundException
      */
     public function block($code)
     {
         $block = $this->blockRepository->findOneByCode($code);
 
-        if (null === $block) {
+        if (false === $block instanceof BlockInterface) {
             throw new BlockNotFoundException($code);
         }
 
@@ -77,7 +77,7 @@ final class BlockExtension extends \Twig_Extension
     {
         $block = $this->blockRepository->findOneByCode($code);
 
-        if (null === $block) {
+        if (false === $block instanceof BlockInterface) {
             throw new BlockNotFoundException($code);
         }
 

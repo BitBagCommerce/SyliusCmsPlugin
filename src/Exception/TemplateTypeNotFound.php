@@ -15,6 +15,9 @@ namespace BitBag\CmsPlugin\Exception;
  */
 final class TemplateTypeNotFound extends \Exception
 {
+    /**
+     * @param string $type
+     */
     public function __construct($type)
     {
         parent::__construct(sprintf('Template for "%s" block type was not found.', $type));

@@ -10,7 +10,7 @@
 
 namespace BitBag\CmsPlugin\Factory;
 
-use BitBag\CmsPlugin\Entity\Block;
+use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -18,11 +18,24 @@ use BitBag\CmsPlugin\Entity\Block;
 final class BlockFactory implements BlockFactoryInterface
 {
     /**
+     * @var FactoryInterface
+     */
+    private $resourceFactory;
+
+    /**
+     * @param FactoryInterface $resourceFactory
+     */
+    public function __construct(FactoryInterface $resourceFactory)
+    {
+        $this->resourceFactory = $resourceFactory;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function createWithType($type)
     {
-        $block = new Block();
+        $block = $this->resourceFactory->createNew();
         $block->setType($type);
 
         return $block;
@@ -33,6 +46,6 @@ final class BlockFactory implements BlockFactoryInterface
      */
     public function createNew()
     {
-        return new Block();
+        return $this->resourceFactory->createNew();
     }
 }

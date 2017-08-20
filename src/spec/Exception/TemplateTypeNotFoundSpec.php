@@ -10,13 +10,13 @@
 
 namespace spec\BitBag\CmsPlugin\Exception;
 
-use BitBag\CmsPlugin\Exception\BlockNotFoundException;
+use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use PhpSpec\ObjectBehavior;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BlockNotFoundExceptionSpec extends ObjectBehavior
+final class TemplateTypeNotFoundSpec extends ObjectBehavior
 {
     function let()
     {
@@ -25,7 +25,7 @@ final class BlockNotFoundExceptionSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(BlockNotFoundException::class);
+        $this->shouldHaveType(TemplateTypeNotFound::class);
     }
 
     function it_is_an_exception()
@@ -35,6 +35,6 @@ final class BlockNotFoundExceptionSpec extends ObjectBehavior
 
     function it_has_custom_message()
     {
-        $this->getMessage()->shouldReturn('Block for "bitbag" code was not found.');
+        $this->getMessage()->shouldReturn('Template for "bitbag" block type was not found.');
     }
 }
