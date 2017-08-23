@@ -1,0 +1,15 @@
+bitbag:
+    ui:
+        blocks: Blocs
+        cms_plugin:
+            content_management: Gestion de contenu
+            blocks: Blocs
+            header: Blocs
+            subheader: Gérez vos blocs
+            text_block: Bloc de texte
+            image_block: Bloc d'image
+    form:
+        code: Code
+        contents: Contenu
+        content: Contenu
+        images: Images
