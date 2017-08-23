@@ -10,31 +10,41 @@
 
 namespace spec\BitBag\CmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\BlockTranslation;
 use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class BlockTranslationSpec extends ObjectBehavior
 {
-    const CONTENT = 'Lorem Ipsum';
+    const CONTENT = "Plata o plomo";
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(BlockTranslation::class);
-        $this->shouldHaveType(BlockTranslationInterface::class);
         $this->shouldHaveType(ResourceInterface::class);
+    }
+
+    function it_is_a_resource()
+    {
+        $this->shouldHaveType(ResourceInterface::class);
+    }
+
+    function it_implements_block_translation_interface()
+    {
+        $this->shouldHaveType(BlockTranslationInterface::class);
+        $this->shouldHaveType(TranslationInterface::class);
     }
 
     function it_allows_access_via_properties(ImageInterface $image)
     {
         $this->setContent(self::CONTENT);
-        $this->getContent()->shouldReturn('Lorem Ipsum');
+        $this->getContent()->shouldReturn("Plata o plomo");
+
         $this->setImage($image);
-        $this->getImage()->shouldReturnAnInstanceOf('Double\ImageInterface\P1');
+        $this->getImage()->shouldReturn($image);
     }
 }

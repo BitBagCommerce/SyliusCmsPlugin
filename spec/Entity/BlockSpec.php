@@ -20,22 +20,30 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  */
 final class BlockSpec extends ObjectBehavior
 {
-    const TYPE = 'Top Field';
-    const CODE = 'xs';
+    const TYPE = 'image';
+    const CODE = 'new_focus_rs';
 
     function it_is_initializable()
     {
         $this->shouldHaveType(Block::class);
-        $this->shouldHaveType(BlockInterface::class);
+    }
+
+    function it_is_a_resource()
+    {
         $this->shouldHaveType(ResourceInterface::class);
+    }
+
+    function it_implements_block_interface()
+    {
+        $this->shouldHaveType(BlockInterface::class);
     }
 
     function it_allows_access_via_properties()
     {
         $this->setType(self::TYPE);
-        $this->getType()->shouldReturn('Top Field');
+        $this->getType()->shouldReturn('image');
 
         $this->setType(self::CODE);
-        $this->getType()->shouldReturn('xs');
+        $this->getType()->shouldReturn('new_focus_rs');
     }
 }

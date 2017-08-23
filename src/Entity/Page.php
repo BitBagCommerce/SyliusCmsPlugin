@@ -12,16 +12,14 @@ namespace BitBag\CmsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Resource\Model\TranslatableTrait;
+use Sylius\Component\Resource\Model\AbstractTranslation;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-class Page implements PageInterface
+class Page extends AbstractTranslation implements PageInterface
 {
-    use TranslatableTrait;
-
     /**
      * @var int
      */
