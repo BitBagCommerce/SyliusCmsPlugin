@@ -5,6 +5,8 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%bitbag.model.page.class%"
+                    repository:
+                        method: createListQueryBuilder
             fields:
                 code:
                     type: string
