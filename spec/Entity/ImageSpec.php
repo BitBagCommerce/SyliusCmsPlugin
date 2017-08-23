@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -10,6 +11,7 @@
 namespace spec\BitBag\CmsPlugin\Entity;
 
 use BitBag\CmsPlugin\Entity\Image;
+use Sylius\Component\Core\Model\Image as SyliusImage;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -20,5 +22,10 @@ final class ImageSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(Image::class);
+    }
+
+    function it_extends_sylius_image()
+    {
+        $this->shouldHaveType(SyliusImage::class);
     }
 }

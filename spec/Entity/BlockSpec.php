@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -15,9 +16,8 @@ use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
-- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
-- */
-
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
 final class BlockSpec extends ObjectBehavior
 {
     const TYPE = 'Top Field';
