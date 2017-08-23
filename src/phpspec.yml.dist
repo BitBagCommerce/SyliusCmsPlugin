@@ -1,4 +1,0 @@
-suites:
-    main:
-        namespace: BitBag\CmsPlugin
-        psr4_prefix: BitBag\CmsPlugin
