@@ -2,7 +2,12 @@ default:
     suites:
         greeting_customer:
             contexts_services:
-                - acme_example.context.ui.shop.welcome
+                - sylius.behat.context.hook.doctrine_orm
 
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - bitbag.behat.context.setup.block
+
+                - bitbag.behat.context.ui.block
             filters:
-                tags: "@greeting_customer"
+                tags: '@managing_blocks'

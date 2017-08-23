@@ -34,6 +34,7 @@ final class ContentManagementMenuBuilder
                 'route' => 'bitbag_admin_block_index'
             ])
             ->setLabel('bitbag.ui.cms_plugin.blocks')
+            ->setLabelAttribute('icon', 'block layout')
         ;
     }
 }

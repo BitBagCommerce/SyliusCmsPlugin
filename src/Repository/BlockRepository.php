@@ -14,6 +14,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
@@ -33,6 +34,22 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
             ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneByTypeAndContent($type, $content)
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->where('o.type = :type')
+            ->andWhere('translation.content = :content')
+            ->setParameter('type', $type)
+            ->setParameter('content', $content)
             ->getQuery()
             ->getOneOrNullResult()
         ;

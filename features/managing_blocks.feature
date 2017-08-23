@@ -5,6 +5,7 @@ Feature: Managing cms blocks
     I want to be able to display, create, edit and remove existing blocks.
 
     Background:
+        Given the store operates on a single channel in "United States"
         Given I am logged in as an administrator
 
     @ui

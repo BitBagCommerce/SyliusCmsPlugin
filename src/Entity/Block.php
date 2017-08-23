@@ -36,28 +36,12 @@ class Block implements BlockInterface
     /**
      * @var string
      */
-    protected $type;
+    protected $code;
 
     /**
      * @var string
      */
-    protected $code;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
+    protected $type;
 
     /**
      * {@inheritdoc}
@@ -73,6 +57,22 @@ class Block implements BlockInterface
     public function setCode($code)
     {
         $this->code = $code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**

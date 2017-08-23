@@ -14,7 +14,7 @@ bitbag_admin_cms_plugin_block:
                 templates:
                     form: BitBagCmsPlugin:Block:Crud/_form.html.twig
             index:
-                icon: cloud
+                icon: block layout
             route:
                 parameters:
                     code: $type

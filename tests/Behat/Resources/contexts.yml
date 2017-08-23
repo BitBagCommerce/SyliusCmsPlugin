@@ -1,0 +1,14 @@
+services:
+    bitbag.behat.context.setup.block:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\BlockContext
+        arguments:
+            - '@__symfony__.bitbag.factory.block'
+            - '@__symfony__.bitbag.manager.block'
+            - '@sylius.behat.shared_storage'
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.ui.block:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\BlockContext
+        tags:
+            - { name: fob.context_service }

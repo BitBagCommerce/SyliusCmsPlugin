@@ -38,7 +38,8 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
             ->addChild('bitbag-content-management-blocks', ['route' => 'bitbag_admin_block_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.blocks')->shouldBeCalled();
+        $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.blocks')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'block layout')->shouldBeCalled();
 
         $this->buildMenu($menuBuilderEvent);
     }

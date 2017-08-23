@@ -11,10 +11,37 @@
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\Clickable;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
+    use Clickable;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function containsBlocksWithType($number, $type)
+    {
+    }
+
+    /**
+     * @param string $code
+     */
+    public function removeBlock($code)
+    {
+        // TODO: Implement removeBlock() method.
+    }
+
+    /**
+     * @param array ...$blockTypes
+     *
+     * @throws
+     */
+    public function shouldContainBlockTypes(...$blockTypes)
+    {
+        // TODO: Implement shouldContainBlockTypes() method.
+    }
 }

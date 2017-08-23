@@ -7,7 +7,8 @@ default:
         FriendsOfBehat\ContextServiceExtension:
             imports:
                 - vendor/sylius/sylius/src/Sylius/Behat/Resources/config/services.xml
-                - tests/Behat/Resources/services.xml
+                - tests/Behat/Resources/pages.yml
+                - tests/Behat/Resources/contexts.yml
 
         FriendsOfBehat\SymfonyExtension:
             kernel:

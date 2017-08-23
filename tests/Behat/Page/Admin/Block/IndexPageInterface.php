@@ -17,5 +17,23 @@ use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
  */
 interface IndexPageInterface extends BaseIndexPageInterface
 {
+    /**
+     * @param int $number
+     * @param string $type
+     *
+     * @return bool
+     */
+    public function containsBlocksWithType($number, $type);
 
+    /**
+     * @param string $code
+     */
+    public function removeBlock($code);
+
+    /**
+     * @param array ...$blockTypes
+     *
+     * @throws
+     */
+    public function shouldContainBlockTypes(...$blockTypes);
 }

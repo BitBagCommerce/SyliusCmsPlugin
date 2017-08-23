@@ -8,20 +8,22 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
+namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
-use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\Block;
+use Sylius\Behat\Behaviour\DocumentAccessor;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class CreatePage extends BaseCreatePage implements CreatePageInterface
+trait Clickable
 {
-    use Block;
+    use DocumentAccessor;
 
-    public function add()
+    /**
+     * @param string $buttonName
+     */
+    public function clickButton($buttonName)
     {
-        // TODO: Implement add() method.
+        $this->getDocument()->pressButton($buttonName);
     }
 }
