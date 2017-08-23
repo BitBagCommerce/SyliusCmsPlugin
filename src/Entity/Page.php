@@ -13,13 +13,22 @@ namespace BitBag\CmsPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\AbstractTranslation;
+use Sylius\Component\Resource\Model\ToggleableTrait;
+use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 class Page extends AbstractTranslation implements PageInterface
 {
+    use TranslatableTrait {
+        __construct as protected initializeTranslationsCollection;
+    }
+
+    use ToggleableTrait;
+
     /**
      * @var int
      */
@@ -28,22 +37,7 @@ class Page extends AbstractTranslation implements PageInterface
     /**
      * @var string
      */
-    protected $slug;
-
-    /**
-     * @var string
-     */
-    protected $metaKeywords;
-
-    /**
-     * @var string
-     */
-    protected $metaDescription;
-
-    /**
-     * @var string
-     */
-    protected $content;
+    protected $code;
 
     /**
      * @var ArrayCollection|ProductInterface[]
@@ -52,6 +46,7 @@ class Page extends AbstractTranslation implements PageInterface
 
     public function __construct()
     {
+        $this->initializeTranslationsCollection();
         $this->products = new ArrayCollection();
     }
 
@@ -64,7 +59,7 @@ class Page extends AbstractTranslation implements PageInterface
     }
 
     /**
-     * @param mixed $id
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -76,15 +71,15 @@ class Page extends AbstractTranslation implements PageInterface
      */
     public function getSlug()
     {
-        return $this->slug;
+        return $this->getPageTranslation()->getSlug();
     }
 
     /**
-     * @param mixed $slug
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->getPageTranslation()->setSlug($slug);
     }
 
     /**
@@ -92,15 +87,15 @@ class Page extends AbstractTranslation implements PageInterface
      */
     public function getMetaKeywords()
     {
-        return $this->metaKeywords;
+        return $this->getPageTranslation()->getMetaKeywords();
     }
 
     /**
-     * @param mixed $metaKeywords
+     * {@inheritdoc}
      */
     public function setMetaKeywords($metaKeywords)
     {
-        $this->metaKeywords = $metaKeywords;
+        $this->getPageTranslation()->setMetaKeywords($metaKeywords);
     }
 
     /**
@@ -108,7 +103,7 @@ class Page extends AbstractTranslation implements PageInterface
      */
     public function getMetaDescription()
     {
-        return $this->metaDescription;
+        return $this->getPageTranslation()->getMetaDescription();
     }
 
     /**
@@ -116,7 +111,7 @@ class Page extends AbstractTranslation implements PageInterface
      */
     public function setMetaDescription($metaDescription)
     {
-        $this->metaDescription = $metaDescription;
+        $this->getPageTranslation()->setMetaDescription($metaDescription);
     }
 
     /**
@@ -183,5 +178,37 @@ class Page extends AbstractTranslation implements PageInterface
     protected function createTranslation()
     {
         return new PageTranslation();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->getPageTranslation()->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name)
+    {
+        $this->getPageTranslation()->setName($name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
     }
 }

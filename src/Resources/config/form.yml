@@ -22,3 +22,15 @@ services:
         arguments: ['BitBag\CmsPlugin\Entity\Image', ['bitbag']]
         tags:
             - { name: form.type }
+
+    bitbag.cms_plugin.form.type.translation.page:
+        class: BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType
+        arguments: ['%bitbag.model.page_translation.class%', ['bitbag']]
+        tags:
+            - { name: form.type }
+
+    bitbag.cms_plugin.form.type.page:
+        class: BitBag\CmsPlugin\Form\Type\PageType
+        arguments: ['%bitbag.model.page.class%', ['bitbag']]
+        tags:
+            - { name: form.type }

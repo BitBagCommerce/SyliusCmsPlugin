@@ -1,3 +1,7 @@
-bitbag_admin_cms_plugin:
+bitbag_admin_cms_plugin_block:
     resource: "@BitBagCmsPlugin/Resources/config/routing/block.yml"
+    prefix: /admin
+
+bitbag_admin_cms_plugin_page:
+    resource: "@BitBagCmsPlugin/Resources/config/routing/page.yml"
     prefix: /admin

@@ -1,4 +1,4 @@
-bitbag_admin_cms_plugin_block:
+bitbag_admin_cms_plugin_block_resource:
     resource: |
         alias: bitbag.block
         section: admin

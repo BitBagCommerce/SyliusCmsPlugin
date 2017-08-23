@@ -15,6 +15,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 interface PageTranslationInterface extends ResourceInterface, TranslationInterface
 {
@@ -27,4 +28,44 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
      * @param string $content
      */
     public function setContent($content);
+
+    /**
+     * @return string
+     */
+    public function getSlug();
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug);
+
+    /**
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * @param string $name
+     */
+    public function setName($name);
+
+    /**
+     * @return string
+     */
+    public function getMetaKeywords();
+
+    /**
+     * @param string $metaKeywords
+     */
+    public function setMetaKeywords($metaKeywords);
+
+    /**
+     * @return string
+     */
+    public function getMetaDescription();
+
+    /**
+     * @param string $metaDescription
+     */
+    public function setMetaDescription($metaDescription);
 }
