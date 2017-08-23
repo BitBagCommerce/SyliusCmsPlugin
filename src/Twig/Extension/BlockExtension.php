@@ -51,15 +51,14 @@ final class BlockExtension extends \Twig_Extension
     /**
      * @param string $code
      *
-     * @return BlockInterface
-     * @throws BlockNotFoundException
+     * @return BlockInterface|string
      */
     public function block($code)
     {
         $block = $this->blockRepository->findOneByCode($code);
 
         if (false === $block instanceof BlockInterface) {
-            throw new BlockNotFoundException($code);
+            return null;
         }
 
         return $block;
@@ -69,8 +68,7 @@ final class BlockExtension extends \Twig_Extension
      * @param \Twig_Environment $twigEnvironment
      * @param string $code
      *
-     * @return string
-     * @throws BlockNotFoundException
+     * @return string|null
      * @throws TemplateTypeNotFound
      */
     public function renderBlock(\Twig_Environment $twigEnvironment, $code)
@@ -78,7 +76,7 @@ final class BlockExtension extends \Twig_Extension
         $block = $this->blockRepository->findOneByCode($code);
 
         if (false === $block instanceof BlockInterface) {
-            throw new BlockNotFoundException($code);
+            return null;
         }
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {

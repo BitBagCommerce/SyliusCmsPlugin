@@ -46,13 +46,6 @@ final class BlockExtensionSpec extends ObjectBehavior
         }
     }
 
-    function it_throws_exception_if_block_was_not_found_for_block_function(BlockRepositoryInterface $blockRepository)
-    {
-        $blockRepository->findOneByCode('bitbag')->willReturn(null);
-
-        $this->shouldThrow(BlockNotFoundException::class)->during('block', ['bitbag']);
-    }
-
     function it_returns_block_for_block_function(
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block
@@ -61,18 +54,6 @@ final class BlockExtensionSpec extends ObjectBehavior
         $blockRepository->findOneByCode('bitbag')->willReturn($block);
 
         $this->block('bitbag')->shouldBeEqualTo($block);
-    }
-
-    function it_throws_exception_if_block_was_not_found_for_render_block_function(
-        \Twig_Environment $twigEnvironment,
-        BlockRepositoryInterface $blockRepository
-    )
-    {
-        $blockRepository->findOneByCode('bitbag')->willReturn(null);
-
-        $this->shouldThrow(BlockNotFoundException::class)
-            ->during('renderBlock', [$twigEnvironment, 'bitbag'])
-        ;
     }
 
     function it_renders_text_template_for_text_type(
