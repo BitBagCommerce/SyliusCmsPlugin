@@ -7,13 +7,12 @@ use BitBag\CmsPlugin\Entity\PageInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class PageSpec extends ObjectBehavior
+final class PageSpec extends ObjectBehavior
 {
     const SLUG = 'Slug';
     const METAKEYWORDS = 'php, js, jquery';
     const METADESCRIPTION = 'This is what You get.';
     const CONTENT = 'Some of the content.';
-
 
     function it_is_initializable()
     {
@@ -32,8 +31,5 @@ class PageSpec extends ObjectBehavior
 
         $this->setMetaDescription(self::METADESCRIPTION);
         $this->getMetaDescription()->shouldReturn('This is what You get.');
-
-        //$this->getPageTranslation()->setLocale('en')->setContent(self::CONTENT);
-        //$this->getContent()->shouldReturn('Some of the content.');
     }
 }
