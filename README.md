@@ -16,7 +16,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
-        new BitBag\CmsPlugin\CmsPlugin(),
+        new BitBag\CmsPlugin\BitBagCmsPlugin(),
     ]);
 }
 ```
