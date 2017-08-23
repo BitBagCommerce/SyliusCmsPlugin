@@ -11,7 +11,6 @@
 namespace BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Exception\BlockNotFoundException;
 use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 
