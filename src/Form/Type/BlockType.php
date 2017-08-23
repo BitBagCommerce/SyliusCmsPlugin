@@ -32,7 +32,7 @@ final class BlockType extends AbstractResourceType
         $block = $builder->getData();
 
         $builder
-            ->add('code', TextType::class,[
+            ->add('code', TextType::class, [
                 'label' => 'bitbag.form.code',
                 'disabled' => $block->getCode() !== null,
             ])

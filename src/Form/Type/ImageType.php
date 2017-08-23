@@ -10,12 +10,12 @@
 
 namespace BitBag\CmsPlugin\Form\Type;
 
-use Sylius\Bundle\CoreBundle\Form\Type\ImageType;
+use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class ImageType extends ImageType
+final class ImageType extends BaseImageType
 {
     /**
      * {@inheritdoc}

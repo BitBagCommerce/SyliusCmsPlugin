@@ -1,0 +1,18 @@
+bitbag_admin_cms_plugin_page_resource:
+    resource: |
+        alias: bitbag.page
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: bitbag_admin_cms_plugin_page
+        except: ['show']
+        permission: true
+        vars:
+            all:
+                header: bitbag.ui.cms_plugin.page.header
+                subheader: bitbag.ui.cms_plugin.page.subheader
+                templates:
+                    form: BitBagCmsPlugin:Page:Crud/_form.html.twig
+            index:
+                icon: cloud
+    type: sylius.resource
