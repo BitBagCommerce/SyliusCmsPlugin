@@ -14,3 +14,5 @@ BitBag\CmsPlugin\Entity\Block:
         type:
             type: string
             length: 64
+        enabled:
+            type: boolean

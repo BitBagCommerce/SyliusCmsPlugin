@@ -14,5 +14,5 @@ bitbag_admin_cms_plugin_page_resource:
                 templates:
                     form: BitBagCmsPlugin:Page:Crud/_form.html.twig
             index:
-                icon: cloud
+                icon: sticky note
     type: sylius.resource

@@ -33,6 +33,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
+            ->andWhere('o.enabled = true')
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult()
@@ -47,6 +48,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->where('o.code = :code')
+            ->andWhere('o.enabled = true')
             ->andWhere('translation.content = :content')
             ->setParameter('code', $code)
             ->setParameter('content', $content)
@@ -63,6 +65,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->where('o.type = :type')
+            ->andWhere('o.enabled = true')
             ->andWhere('translation.content = :content')
             ->setParameter('type', $type)
             ->setParameter('content', $content)
