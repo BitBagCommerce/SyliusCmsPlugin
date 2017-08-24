@@ -13,3 +13,4 @@ bitbag:
         contents: Contents
         content: Content
         images: Images
+        enabled: Enabled
