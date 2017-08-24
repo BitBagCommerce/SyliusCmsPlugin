@@ -13,12 +13,14 @@ namespace BitBag\CmsPlugin\Entity;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
+use Sylius\Component\Resource\Model\ToggleableTrait;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 class Block implements BlockInterface
 {
+    use ToggleableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
