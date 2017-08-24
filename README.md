@@ -1,4 +1,7 @@
 ![BitBag](https://bitbag.pl/static/bitbag-logo.png)
+
+# BitBag CmsPlugin [![Build Status](https://travis-ci.org/bitbag-commerce/CmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
+
 ## Overview
 
 Because the original Lakion CMS plugin does not work as expected, it uses deprecated bundles and in general is not finished and EZ Platform is often too much for basic CMS usage, we decided to start the development of CMS plugin from scratch. So far it supports dynamic images and text blocks but things like pages, product images, etc. still need to be developed. Contributors are warmly welcomed!
