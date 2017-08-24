@@ -22,11 +22,10 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class Page implements PageInterface
 {
+    use ToggleableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
-
-    use ToggleableTrait;
 
     /**
      * @var int

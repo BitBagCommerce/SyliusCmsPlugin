@@ -13,6 +13,7 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
@@ -65,6 +66,11 @@ final class BlockContext implements Context
     private $blockRepository;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
@@ -72,6 +78,7 @@ final class BlockContext implements Context
      * @param NotificationCheckerInterface $notificationChecker
      * @param SharedStorageInterface $sharedStorage
      * @param BlockRepositoryInterface $blockRepository
+     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         IndexPageInterface $indexPage,
@@ -80,7 +87,8 @@ final class BlockContext implements Context
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
         SharedStorageInterface $sharedStorage,
-        BlockRepositoryInterface $blockRepository
+        BlockRepositoryInterface $blockRepository,
+        EntityManagerInterface $entityManager
     )
     {
         $this->createPage = $createPage;
@@ -90,6 +98,7 @@ final class BlockContext implements Context
         $this->notificationChecker = $notificationChecker;
         $this->sharedStorage = $sharedStorage;
         $this->blockRepository = $blockRepository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -220,6 +229,16 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Then block with :code code and :content content should be in the store
+     */
+    public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
+    {
+        $block = $this->blockRepository->findOneByCodeAndContent($code, $content);
+
+        Assert::isInstanceOf($block, BlockInterface::class);
+    }
+
+    /**
      * @Then block with :type type and :content content should be in the store
      */
     public function blockWithTypeAndContentShouldBeInTheStore($type, $content)
@@ -235,6 +254,8 @@ final class BlockContext implements Context
     public function imageBlockWithTypeAndImageShouldBeInTheStore($code, $image)
     {
         $block = $this->blockRepository->findOneByCode($code);
+        $blockImage = $block->getImage();
+        $this->entityManager->refresh($blockImage);
 
         Assert::eq(BlockInterface::IMAGE_BLOCK_TYPE, $block->getType());
         Assert::eq(

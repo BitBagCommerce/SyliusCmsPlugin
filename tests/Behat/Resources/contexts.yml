@@ -19,5 +19,6 @@ services:
             - '@sylius.behat.notification_checker'
             - '@sylius.behat.shared_storage'
             - '@__symfony__.bitbag.repository.block'
+            - '@__symfony__.doctrine.orm.entity_manager'
         tags:
             - { name: fob.context_service }
