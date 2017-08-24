@@ -20,8 +20,11 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use Block;
 
+    /**
+     * {@inheritdoc}
+     */
     public function add()
     {
-        // TODO: Implement add() method.
+        $this->getDocument()->pressButton('Create');
     }
 }

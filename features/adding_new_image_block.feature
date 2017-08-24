@@ -5,7 +5,8 @@ Feature: Adding image block
     I want to be able to add new image blocks
 
     Background:
-        Given I am logged in as an administrator
+        Given the store operates on a single channel in "United States"
+        And I am logged in as an administrator
 
     @ui
     Scenario: Seeing menu items
@@ -14,4 +15,4 @@ Feature: Adding image block
         And I upload the "aston_martin_db_11.jpg" image
         And I add it
         Then I should be notified that new image block was created
-        And block with "image" type and "/cms/block/image/aston_martin_db_11.jpg" content should be in the store
+        And image block with "aston_martin_db_11" code and "aston_martin_db_11.jpg" image should be in the store

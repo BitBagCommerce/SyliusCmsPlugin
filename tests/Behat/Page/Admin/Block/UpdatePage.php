@@ -19,4 +19,12 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\Block;
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use Block;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function update()
+    {
+        $this->getDocument()->pressButton('Save changes');
+    }
 }

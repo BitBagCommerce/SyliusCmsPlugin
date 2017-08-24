@@ -61,7 +61,6 @@
 
 (function($) {
     $(document).ready(function () {
-
         $(document).pageSlugGenerator();
     });
 })(jQuery);

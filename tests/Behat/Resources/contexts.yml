@@ -2,13 +2,23 @@ services:
     bitbag.behat.context.setup.block:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\BlockContext
         arguments:
-            - '@__symfony__.bitbag.factory.block'
-            - '@__symfony__.bitbag.manager.block'
             - '@sylius.behat.shared_storage'
+            - '@__symfony__.bitbag.factory.block'
+            - '@__symfony__.bitbag.repository.block'
+            - '@__symfony__.sylius.image_uploader'
         tags:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.block:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\BlockContext
+        arguments:
+            - '@bitbag.behat.page.admin.block.index'
+            - '@bitbag.behat.page.admin.block.create'
+            - '@bitbag.behat.page.admin.block.update'
+            - '@sylius.behat.current_page_resolver'
+            - '@sylius.behat.notification_checker'
+            - '@sylius.behat.shared_storage'
+            - '@__symfony__.bitbag.repository.block'
+            - '@__symfony__.doctrine.orm.entity_manager'
         tags:
             - { name: fob.context_service }
