@@ -44,4 +44,9 @@ trait Block
     {
         $this->getDocument()->fillField('Content', $content);
     }
+
+    public function disable()
+    {
+        $this->getDocument()->uncheckField("Enabled");
+    }
 }

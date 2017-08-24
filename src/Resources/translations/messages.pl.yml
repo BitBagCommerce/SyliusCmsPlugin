@@ -9,6 +9,8 @@ bitbag:
             text_block: Blok tekstowy
             image_block: Blok obrazkowy
             pages: Strony
+            products: Produkty
+            enabled: Włączone
     form:
         code: Kod
         contents: Treści

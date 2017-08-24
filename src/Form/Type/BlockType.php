@@ -38,7 +38,7 @@ final class BlockType extends AbstractResourceType
                 'disabled' => $block->getCode() !== null,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.cms_plugin.enabled',
+                'label' => 'bitbag.form.enabled',
             ])
         ;
 

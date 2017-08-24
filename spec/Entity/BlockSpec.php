@@ -45,5 +45,17 @@ final class BlockSpec extends ObjectBehavior
 
         $this->setType(self::CODE);
         $this->getType()->shouldReturn('new_focus_rs');
+
+        $this->setEnabled(true);
+        $this->isEnabled()->shouldReturn(true);
+    }
+
+    function it_toggles()
+    {
+        $this->enable();
+        $this->isEnabled()->shouldReturn(true);
+
+        $this->disable();
+        $this->isEnabled()->shouldReturn(false);
     }
 }

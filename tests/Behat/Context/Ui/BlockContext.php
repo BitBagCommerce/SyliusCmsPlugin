@@ -10,6 +10,7 @@
 
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui;
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
@@ -152,6 +153,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I disable it
+     */
+    public function iDisableIt()
+    {
+        $this->resolveCurrentPage()->disable();
+    }
+
+    /**
      * @When I fill the content with :content
      */
     public function iFillTheContentWith($content)
@@ -276,6 +285,14 @@ final class BlockContext implements Context
         foreach ($blockTypes as $blockType) {
             Assert::oneOf($blockType, $blockTypesOnPage);
         }
+    }
+
+    /**
+     * @Then block with :code should not appear in the store
+     */
+    public function blockWithShouldNotAppearInTheStore($code)
+    {
+        Assert::null($this->blockRepository->findOneByCode($code));
     }
 
     /**
