@@ -24,9 +24,7 @@ Feature: Managing cms blocks
         Then I should be notified that this block was removed
         And no dynamic content blocks should appear in the store
 
-    @ui @javascript
+    @ui
     Scenario: Being able to chose which block to create
         When I go to the cms blocks page
-        And I click "Create new block" button
-        Then I should be able to select between "image" and "text" block types
-
+        Then I should be able to select between "Text block" and "Image block" block types under Create button
