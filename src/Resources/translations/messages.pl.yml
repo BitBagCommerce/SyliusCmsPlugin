@@ -8,6 +8,7 @@ bitbag:
             subheader: Zarządzaj swoimi blokami
             text_block: Blok tekstowy
             image_block: Blok obrazkowy
+            pages: Strony
     form:
         code: Kod
         contents: Treści

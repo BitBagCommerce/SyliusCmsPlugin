@@ -8,6 +8,7 @@ bitbag:
             subheader: Manage your blocks
             text_block: Text block
             image_block: Image block
+            pages: Pages
     form:
         code: Code
         contents: Contents
