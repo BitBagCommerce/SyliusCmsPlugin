@@ -10,38 +10,46 @@
 
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
+use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\Clickable;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
-    use Clickable;
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlocksWithTypeCount($type)
+    {
+        $tableAccessor = $this->getTableAccessor();
+        $table = $this->getElement('table');
+
+        return count($tableAccessor->getRowsWithFields($table, ['type' => $type]));
+    }
 
     /**
      * {@inheritdoc}
      */
-    public function containsBlocksWithType($number, $type)
-    {
-    }
-
-    /**
-     * @param string $code
-     */
     public function removeBlock($code)
     {
-        // TODO: Implement removeBlock() method.
+        $this->deleteResourceOnPage(['code' => $code]);
     }
 
     /**
-     * @param array ...$blockTypes
-     *
-     * @throws
+     * {@inheritdoc}
      */
-    public function shouldContainBlockTypes(...$blockTypes)
+    public function getBlockTypes()
     {
-        // TODO: Implement shouldContainBlockTypes() method.
+        $blockTypes = $this->getDocument()->findAll('css', '#create-block-dropdown a');
+        $result = [];
+
+        /** @var NodeElement $blockType */
+        foreach ($blockTypes as $blockType) {
+            $result[] = $blockType->getText();
+        }
+
+        return $result;
     }
 }

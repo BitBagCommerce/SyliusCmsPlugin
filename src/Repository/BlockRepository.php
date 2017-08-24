@@ -42,6 +42,22 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
+    public function findOneByCodeAndContent($code, $content)
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->where('o.code = :code')
+            ->andWhere('translation.content = :content')
+            ->setParameter('code', $code)
+            ->setParameter('content', $content)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findOneByTypeAndContent($type, $content)
     {
         return $this->createQueryBuilder('o')

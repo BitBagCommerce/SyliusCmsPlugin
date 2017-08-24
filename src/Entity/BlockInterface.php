@@ -20,7 +20,6 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 interface BlockInterface extends ResourceInterface, TranslatableInterface
 {
     const  TEXT_BLOCK_TYPE = 'text';
-
     const  IMAGE_BLOCK_TYPE = 'image';
 
     /**
@@ -62,5 +61,4 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
      * @param ImageInterface $image
      */
     public function setImage(ImageInterface $image);
-
 }

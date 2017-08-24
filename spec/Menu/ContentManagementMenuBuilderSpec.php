@@ -32,14 +32,21 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
     )
     {
         $menuBuilderEvent->getMenu()->willReturn($menu);
-        $menu->addChild('bitbag-content-management')->willReturn($cmsRootMenuItem);
-        $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.content_management')->willReturn($cmsRootMenuItem);
+        $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem
-            ->addChild('bitbag-content-management-blocks', ['route' => 'bitbag_admin_block_index'])
+            ->addChild('blocks', ['route' => 'bitbag_admin_block_index'])
             ->willReturn($cmsRootMenuItem)
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.blocks')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'block layout')->shouldBeCalled();
+
+        $cmsRootMenuItem
+            ->addChild('pages', ['route' => 'bitbag_admin_page_index'])
+            ->willReturn($cmsRootMenuItem)
+        ;
+        $cmsRootMenuItem->setLabel('bitbag.ui.cms_plugin.pages')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'sticky note')->shouldBeCalled();
 
         $this->buildMenu($menuBuilderEvent);
     }

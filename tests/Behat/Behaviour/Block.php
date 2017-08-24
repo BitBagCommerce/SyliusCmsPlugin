@@ -33,7 +33,7 @@ trait Block
     public function uploadImage($image)
     {
         $this->getDocument()
-            ->attachFileToField('Image', __DIR__ . '/../Resources/images/' . $image)
+            ->attachFileToField('Choose file', __DIR__ . '/../Resources/images/' . $image)
         ;
     }
 

@@ -112,7 +112,7 @@ class Block implements BlockInterface
      */
     public function setImage(ImageInterface $image)
     {
-        $this->getBlockTranslation()->setContent($image);
+        $this->getBlockTranslation()->setImage($image);
     }
 
     /**

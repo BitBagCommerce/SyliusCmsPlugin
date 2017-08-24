@@ -12,9 +12,14 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Entity\Image;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
+use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Core\Model\ImageInterface;
+use Sylius\Component\Core\Uploader\ImageUploaderInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Webmozart\Assert\Assert;
 
 /**
@@ -22,15 +27,10 @@ use Webmozart\Assert\Assert;
  */
 final class BlockContext implements Context
 {
-    /**
-     * @var BlockFactoryInterface
-     */
-    private $blockFactory;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    const ALLOWED_TYPES = [
+        BlockInterface::TEXT_BLOCK_TYPE,
+        BlockInterface::IMAGE_BLOCK_TYPE,
+    ];
 
     /**
      * @var SharedStorageInterface
@@ -38,25 +38,38 @@ final class BlockContext implements Context
     private $sharedStorage;
 
     /**
-     * @param BlockFactoryInterface $blockFactory
-     * @param EntityManagerInterface $entityManager
+     * @var BlockFactoryInterface
+     */
+    private $blockFactory;
+
+    /**
+     * @var BlockRepositoryInterface
+     */
+    private $blockRepository;
+
+    /**
+     * @var ImageUploaderInterface
+     */
+    private $imageUploader;
+
+    /**
      * @param SharedStorageInterface $sharedStorage
+     * @param BlockFactoryInterface $blockFactory
+     * @param BlockRepositoryInterface $blockRepository
+     * @param ImageUploaderInterface $imageUploader
      */
     public function __construct(
+        SharedStorageInterface $sharedStorage,
         BlockFactoryInterface $blockFactory,
-        EntityManagerInterface $entityManager,
-        SharedStorageInterface $sharedStorage
+        BlockRepositoryInterface $blockRepository,
+        ImageUploaderInterface $imageUploader
     )
     {
         $this->blockFactory = $blockFactory;
-        $this->entityManager = $entityManager;
+        $this->blockRepository = $blockRepository;
         $this->sharedStorage = $sharedStorage;
+        $this->imageUploader = $imageUploader;
     }
-
-    const ALLOWED_TYPES = [
-        BlockInterface::TEXT_BLOCK_TYPE,
-        BlockInterface::IMAGE_BLOCK_TYPE,
-    ];
 
     /**
      * @Given there are :number dynamic content blocks with :type type
@@ -81,30 +94,57 @@ final class BlockContext implements Context
      */
     public function thereIsATextCmsBlockWithCodeAndContent($code, $content)
     {
-        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, $code, $content);
+        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code, $content);
+    }
+
+    /**
+     * @Given there is a cms block with :code code and :name image
+     */
+    public function thereIsCmsBlockWithCodeAndImage($code, $name)
+    {
+        $image = new Image();
+        $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
+        $image->setFile($uploadedImage);
+
+        $this->imageUploader->upload($image);
+        $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $image, $code);
     }
 
     /**
      * @param string $type
+     * @param ImageInterface|null $image
      * @param null|string $code
      * @param null|string $content
      */
-    private function createBlock($type, $code = null, $content = null)
+    private function createBlock($type, ImageInterface $image = null, $code = null, $content = null)
     {
         Assert::oneOf($type, self::ALLOWED_TYPES);
 
-        $code = null === $code ? time() : $code;
+        $code = null !== $code ? $code : time();
         $block = $this->blockFactory->createWithType($type);
         $block->setCode($code);
 
-        if (null !== $content) {
-            Assert::string($content);
+        if (null !== $image) {
+            $this->setUpCurrentLocale($block);
+            $block->setImage($image);
+        }
 
+        if (null !== $content) {
+            $this->setUpCurrentLocale($block);
             $block->setContent($content);
         }
 
-        $this->entityManager->persist($block);
-        $this->entityManager->flush();
+        $this->blockRepository->add($block);
         $this->sharedStorage->set('block', $block);
+    }
+
+    /**
+     * @param BlockInterface $block
+     */
+    private function setUpCurrentLocale(BlockInterface $block)
+    {
+        /** @var ChannelInterface $channel */
+        $channel = $this->sharedStorage->get('channel');
+        $block->setCurrentLocale($channel->getLocales()->first()->getCode());
     }
 }

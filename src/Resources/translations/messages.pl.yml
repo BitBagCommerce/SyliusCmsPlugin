@@ -2,7 +2,7 @@ bitbag:
     ui:
         blocks: Bloki
         cms_plugin:
-            content_management: Zarządzanie treścią
+            cms: Zarządzanie treścią
             blocks: Bloki
             header: Bloki
             subheader: Zarządzaj swoimi blokami

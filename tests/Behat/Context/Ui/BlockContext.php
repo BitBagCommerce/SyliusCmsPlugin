@@ -13,13 +13,13 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\Block;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\Clickable;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
@@ -31,7 +31,7 @@ use Webmozart\Assert\Assert;
 final class BlockContext implements Context
 {
     /**
-     * @var IndexPageInterface|Clickable
+     * @var IndexPageInterface
      */
     private $indexPage;
 
@@ -51,34 +51,6 @@ final class BlockContext implements Context
     private $sharedStorage;
 
     /**
-     * @param IndexPageInterface $indexPage
-     * @param CreatePageInterface $createPage
-     * @param UpdatePageInterface $updatePage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param BlockRepositoryInterface $blockRepository
-     * @param SharedStorageInterface $sharedStorage
-     */
-    public function __construct(
-        IndexPageInterface $indexPage,
-        CreatePageInterface $createPage,
-        UpdatePageInterface $updatePage,
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        BlockRepositoryInterface $blockRepository,
-        SharedStorageInterface $sharedStorage
-    )
-    {
-        $this->createPage = $createPage;
-        $this->updatePage = $updatePage;
-        $this->indexPage = $indexPage;
-        $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
-        $this->blockRepository = $blockRepository;
-        $this->sharedStorage = $sharedStorage;
-    }
-
-    /**
      * @var CurrentPageResolverInterface
      */
     private $currentPageResolver;
@@ -92,6 +64,42 @@ final class BlockContext implements Context
      * @var BlockRepositoryInterface
      */
     private $blockRepository;
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
+     * @param IndexPageInterface $indexPage
+     * @param CreatePageInterface $createPage
+     * @param UpdatePageInterface $updatePage
+     * @param CurrentPageResolverInterface $currentPageResolver
+     * @param NotificationCheckerInterface $notificationChecker
+     * @param SharedStorageInterface $sharedStorage
+     * @param BlockRepositoryInterface $blockRepository
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(
+        IndexPageInterface $indexPage,
+        CreatePageInterface $createPage,
+        UpdatePageInterface $updatePage,
+        CurrentPageResolverInterface $currentPageResolver,
+        NotificationCheckerInterface $notificationChecker,
+        SharedStorageInterface $sharedStorage,
+        BlockRepositoryInterface $blockRepository,
+        EntityManagerInterface $entityManager
+    )
+    {
+        $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
+        $this->indexPage = $indexPage;
+        $this->currentPageResolver = $currentPageResolver;
+        $this->notificationChecker = $notificationChecker;
+        $this->sharedStorage = $sharedStorage;
+        $this->blockRepository = $blockRepository;
+        $this->entityManager = $entityManager;
+    }
 
     /**
      * @When I go to the cms blocks page
@@ -122,7 +130,9 @@ final class BlockContext implements Context
      */
     public function iGoToTheUpdateBlockPage($code)
     {
-        $this->updatePage->open(['code' => $code]);
+        $id = $this->blockRepository->findOneByCode($code)->getId();
+
+        $this->updatePage->open(['id' => $id]);
     }
 
     /**
@@ -150,14 +160,6 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I click :name button
-     */
-    public function iClickButton($name)
-    {
-        $this->indexPage->clickButton($name);
-    }
-
-    /**
      * @When I remove this image block
      */
     public function iRemoveThisImageBlock()
@@ -167,22 +169,6 @@ final class BlockContext implements Context
         $code = $block->getCode();
 
         $this->indexPage->removeBlock($code);
-    }
-
-    /**
-     * @Then no dynamic content blocks should appear in the store
-     */
-    public function noDynamicContentBlocksShouldAppearInTheStore()
-    {
-
-    }
-
-    /**
-     * @Then I should be able to select between :firstType and :secondType block types
-     */
-    public function iShouldBeAbleToSelectBetweenAndBlockTypes($firstType, $secondType)
-    {
-        $this->indexPage->containsBlocksWithType($firstType, $secondType);
     }
 
     /**
@@ -202,19 +188,19 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Then no dynamic content blocks should appear in the store
+     */
+    public function noDynamicContentBlocksShouldAppearInTheStore()
+    {
+        Assert::eq(0, count($this->blockRepository->findAll()));
+    }
+
+    /**
      * @Then I should see :number dynamic content blocks with :type type
      */
     public function iShouldSeeDynamicContentBlocksWithType($number, $type)
     {
-        $this->indexPage->containsBlocksWithType($number, $type);
-    }
-
-    /**
-     * @Then I should be notified that this block was removed
-     */
-    public function iShouldBeNotifiedThatThisBlockWasRemoved()
-    {
-        $this->notificationChecker->checkNotification("Block has been removed.", NotificationType::success());
+        Assert::eq($number, $this->indexPage->getBlocksWithTypeCount($type));
     }
 
     /**
@@ -223,7 +209,7 @@ final class BlockContext implements Context
      */
     public function iShouldBeNotifiedThatNewImageBlockWasCreated()
     {
-        $this->notificationChecker->checkNotification("Block has been created.", NotificationType::success());
+        $this->notificationChecker->checkNotification("Block has been successfully created.", NotificationType::success());
     }
 
     /**
@@ -231,7 +217,25 @@ final class BlockContext implements Context
      */
     public function iShouldBeNotifiedThatTheBlockWasSuccessfullyUpdated()
     {
-        $this->notificationChecker->checkNotification("Block has been updated.", NotificationType::success());
+        $this->notificationChecker->checkNotification("Block has been successfully updated.", NotificationType::success());
+    }
+
+    /**
+     * @Then I should be notified that this block was removed
+     */
+    public function iShouldBeNotifiedThatThisBlockWasRemoved()
+    {
+        $this->notificationChecker->checkNotification("Block has been successfully deleted.", NotificationType::success());
+    }
+
+    /**
+     * @Then block with :code code and :content content should be in the store
+     */
+    public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
+    {
+        $block = $this->blockRepository->findOneByCodeAndContent($code, $content);
+
+        Assert::isInstanceOf($block, BlockInterface::class);
     }
 
     /**
@@ -242,6 +246,36 @@ final class BlockContext implements Context
         $block = $this->blockRepository->findOneByTypeAndContent($type, $content);
 
         Assert::isInstanceOf($block, BlockInterface::class);
+    }
+
+    /**
+     * @Then image block with :code code and :image image should be in the store
+     */
+    public function imageBlockWithTypeAndImageShouldBeInTheStore($code, $image)
+    {
+        $block = $this->blockRepository->findOneByCode($code);
+        $blockImage = $block->getImage();
+        $this->entityManager->refresh($blockImage);
+
+        Assert::eq(BlockInterface::IMAGE_BLOCK_TYPE, $block->getType());
+        Assert::eq(
+            file_get_contents(__DIR__ . '/../../../Application/web/media/image/' . $block->getImage()->getPath()),
+            file_get_contents(__DIR__ . '/../../Resources/images/' . $image)
+        );
+    }
+
+    /**
+     * @Then I should be able to select between :firstBlockType and :secondBlockType block types under Create button
+     */
+    public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(...$blockTypes)
+    {
+        $blockTypesOnPage = $this->indexPage->getBlockTypes();
+
+        Assert::eq(count($blockTypesOnPage), count($blockTypes));
+
+        foreach ($blockTypes as $blockType) {
+            Assert::oneOf($blockType, $blockTypesOnPage);
+        }
     }
 
     /**
