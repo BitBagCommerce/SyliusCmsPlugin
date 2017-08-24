@@ -7,3 +7,24 @@ bitbag:
                 unique: Un bloc avec un code donné existe.
                 not_blank: Entrez le code de bloc.
                 min_length: Le code doit être au moins {{ limit }} long.
+        page:
+            code:
+                unique: Le site existe déjà.
+                not_blank: La page ne peut pas être vide.
+                min_lenght: Durée minimale du code.
+                max_lenght: Longueur du code Maksimum.
+            slug:
+                min_lenght: Longueur minimale de la slug.
+                max_lenght: Longueur maximale de la slug.
+            meta_keywords:
+                min_lenght: Mots-clés minimum de mots-clés.
+                max lenght: Mots-clés Meta maximum.
+            meta_description:
+                min_lenght: Longueur minimale de la méta-description.
+                max_lenght: Longueur maximale de la méta-description.
+            content:
+                min_lenght: Longeur minimale de la contenu.
+            name:
+                not_blank: Le nom de la page ne peut pas être vide.
+                min_lenght: Longeur minimale de la prénom.
+                max_lenght: Longeur maximale de la prénom.
