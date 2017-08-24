@@ -1,0 +1,9 @@
+bitbag:
+    cms_plugin:
+        block:
+            image:
+                mime_types: Dozwolone typy plików: PNG, JPEG.
+            code:
+                unique: Blok z podanym kodem istnieje.
+                not_blank: Wprowadź kod blocku.
+                min_length: Kod musi posiadać minimum {{ limit }} znaków.
