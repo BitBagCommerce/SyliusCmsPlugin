@@ -8,9 +8,9 @@ bitbag:
             subheader: Gérez vos blocs
             text_block: Bloc de texte
             image_block: Bloc d'image
-			pages: Pages
-			products: Des produits
-			enabled: Activée
+            pages: Pages
+            products: Des produits
+            enabled: Activée
     form:
         code: Code
         contents: Contenu
