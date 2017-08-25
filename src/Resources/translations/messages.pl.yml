@@ -1,18 +1,29 @@
 bitbag:
     ui:
         blocks: Bloki
-        cms_plugin:
+        pages: Strony
+    cms:
+        ui:
+            content_management: Zarządzanie treścią
             cms: Zarządzanie treścią
+            enabled: Włączone
             blocks: Bloki
-            header: Bloki
-            subheader: Zarządzaj swoimi blokami
+            pages: Strony
+            blocks_header: Bloki
+            blocks_subheader: Zarządzaj blokami
             text_block: Blok tekstowy
             image_block: Blok obrazkowy
-            pages: Strony
+            pages_header: Strona
+            pages_subheader: Zarządzaj swoimi stronami
             products: Produkty
-            enabled: Włączone
-    form:
-        code: Kod
-        contents: Treści
-        content: Treść
-        images: Obrazki
+            name: Naazwa
+            slug: Slug
+            meta_keywords: Słowa kluczowe
+            meta_description: Opis
+            content: Treść
+        form:
+            code: Kod
+            contents: Treści
+            content: Treść
+            images: Obrazki
+            enabled: Włączona

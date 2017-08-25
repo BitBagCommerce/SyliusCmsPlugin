@@ -32,18 +32,18 @@ final class PageType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.form.code',
+                'label' => 'bitbag.cms.form.code',
                 'disabled' => $page->getCode() !== null,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.cms_plugin.enabled',
+                'label' => 'bitbag.cms.ui.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.cms_plugin.products',
+                'label' => 'bitbag.cms.ui.products',
                 'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.form.images',
+                'label' => 'bitbag.cms.form.images',
                 'entry_type' => PageTranslationType::class,
             ])
         ;

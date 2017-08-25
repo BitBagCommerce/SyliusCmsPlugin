@@ -9,8 +9,8 @@ bitbag_admin_cms_plugin_page_resource:
         permission: true
         vars:
             all:
-                header: bitbag.ui.cms_plugin.page.header
-                subheader: bitbag.ui.cms_plugin.page.subheader
+                header: bitbag.cms.ui.pages_header
+                subheader: bitbag.cms.ui.pages_subheader
                 templates:
                     form: BitBagCmsPlugin:Page:Crud/_form.html.twig
             index:

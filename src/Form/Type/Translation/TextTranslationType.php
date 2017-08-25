@@ -26,7 +26,7 @@ final class TextTranslationType extends AbstractResourceType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.form.content',
+                'label' => 'bitbag.cms.form.content',
             ])
         ;
     }

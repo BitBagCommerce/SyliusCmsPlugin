@@ -34,24 +34,24 @@ final class BlockType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.form.code',
+                'label' => 'bitbag.cms.form.code',
                 'disabled' => $block->getCode() !== null,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.form.enabled',
+                'label' => 'bitbag.cms.form.enabled',
             ])
         ;
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.form.contents',
+                'label' => 'bitbag.cms.form.contents',
                 'entry_type' => TextTranslationType::class,
             ]);
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.form.images',
+                'label' => 'bitbag.cms.form.images',
                 'entry_type' => ImageTranslationType::class,
             ]);
         }
