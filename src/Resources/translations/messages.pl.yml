@@ -3,24 +3,23 @@ bitbag:
         blocks: Bloki
         pages: Strony
     cms:
-        ui:
-            content_management: Zarządzanie treścią
-            cms: Zarządzanie treścią
-            enabled: Włączone
-            blocks: Bloki
-            pages: Strony
-            blocks_header: Bloki
-            blocks_subheader: Zarządzaj blokami
-            text_block: Blok tekstowy
-            image_block: Blok obrazkowy
-            pages_header: Strona
-            pages_subheader: Zarządzaj swoimi stronami
-            products: Produkty
-            name: Naazwa
-            slug: Slug
-            meta_keywords: Słowa kluczowe
-            meta_description: Opis
-            content: Treść
+        content_management: Zarządzanie treścią
+        cms: Zarządzanie treścią
+        enabled: Włączone
+        blocks: Bloki
+        pages: Strony
+        blocks_header: Bloki
+        blocks_subheader: Zarządzaj blokami
+        text_block: Blok tekstowy
+        image_block: Blok obrazkowy
+        pages_header: Strona
+        pages_subheader: Zarządzaj swoimi stronami
+        products: Produkty
+        name: Naazwa
+        slug: Slug
+        meta_keywords: Słowa kluczowe
+        meta_description: Opis
+        content: Treść
         form:
             code: Kod
             contents: Treści

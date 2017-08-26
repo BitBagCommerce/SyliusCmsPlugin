@@ -36,10 +36,10 @@ final class PageType extends AbstractResourceType
                 'disabled' => $page->getCode() !== null,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.cms.ui.enabled',
+                'label' => 'bitbag.cms.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.cms.ui.products',
+                'label' => 'bitbag.cms.products',
                 'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
