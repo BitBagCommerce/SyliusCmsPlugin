@@ -31,6 +31,7 @@ final class BlockContext implements Context
         BlockInterface::TEXT_BLOCK_TYPE,
         BlockInterface::IMAGE_BLOCK_TYPE,
     ];
+    const IMAGE_MOCK = 'aston_martin_db_11.jpg';
 
     /**
      * @var SharedStorageInterface
@@ -77,6 +78,15 @@ final class BlockContext implements Context
     public function thereAreDynamicContentBlocksWithType($number, $type)
     {
         for ($i = 0; $i < $number; $i++) {
+
+            if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
+                $image = $this->uploadImage(self::IMAGE_MOCK);
+
+                $this->createBlock($type, $image);
+
+                continue;
+            }
+
             $this->createBlock($type);
         }
     }
@@ -86,6 +96,14 @@ final class BlockContext implements Context
      */
     public function thereIsADynamicContentBlockWithType($type)
     {
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
+            $image = $this->uploadImage(self::IMAGE_MOCK);
+
+            $this->createBlock($type, $image);
+
+            return;
+        }
+
         $this->createBlock($type);
     }
 
@@ -102,12 +120,25 @@ final class BlockContext implements Context
      */
     public function thereIsCmsBlockWithCodeAndImage($code, $name)
     {
+        $image = $this->uploadImage($name);
+
+        $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $image, $code);
+    }
+
+    /**
+     * @param $name
+     *
+     * @return ImageInterface
+     */
+    private function uploadImage($name)
+    {
         $image = new Image();
         $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
         $image->setFile($uploadedImage);
 
         $this->imageUploader->upload($image);
-        $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $image, $code);
+
+        return $image;
     }
 
     /**

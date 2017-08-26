@@ -10,7 +10,6 @@
 
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
