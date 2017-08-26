@@ -3,40 +3,40 @@ BitBag\CmsPlugin\Entity\PageTranslation:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [slug]
             groups: ['bitbag']
-            message: 'bitbag.cms_plugin.page.slug.unique'
+            message: 'bitbag.cms.page.slug.unique'
     properties:
         slug:
-            - NotBlank: { message: 'bitbag.cms_plugin.page.slug.not_blank', groups: ['bitbag'] }
+            - NotBlank: { message: 'bitbag.cms.page.slug.not_blank', groups: ['bitbag'] }
             - Length:
                 min: 2
                 max: 250
-                minMessage: 'bitbag.cms_plugin.page.slug.min_length'
-                maxMessage: 'bitbag.cms_plugin.block.slug.max_length'
+                minMessage: 'bitbag.cms.page.slug.min_length'
+                maxMessage: 'bitbag.cms.block.slug.max_length'
                 groups: ['bitbag']
         metaKeywords:
             - Length:
                 min: 2
                 max: 1000
-                minMessage: 'bitbag.cms_plugin.page.meta_keywords.min_length'
-                maxMessage: 'bitbag.cms_plugin.page.meta_keywords.max_length'
+                minMessage: 'bitbag.cms.page.meta_keywords.min_length'
+                maxMessage: 'bitbag.cms.page.meta_keywords.max_length'
                 groups: ['bitbag']
         metaDescription:
             - Length:
                 min: 2
                 max: 2000
-                minMessage: 'bitbag.cms_plugin.page.meta_description.min_length'
-                maxMessage: 'bitbag.cms_plugin.page.meta_description.max_length'
+                minMessage: 'bitbag.cms.page.meta_description.min_length'
+                maxMessage: 'bitbag.cms.page.meta_description.max_length'
                 groups: ['bitbag']
         content:
             - Length:
                 min: 2
-                minMessage: 'bitbag.cms_plugin.page.content.min_length'
+                minMessage: 'bitbag.cms.page.content.min_length'
                 groups: ['bitbag']
         name:
-            - NotBlank: { message: 'bitbag.cms_plugin.page.name.not_blank', groups: ['bitbag'] }
+            - NotBlank: { message: 'bitbag.cms.page.name.not_blank', groups: ['bitbag'] }
             - Length:
                 min: 2
                 max: 250
-                minMessage: 'bitbag.cms_plugin.page.name.min_length'
-                maxMessage: 'bitbag.cms_plugin.page.name.max_length'
+                minMessage: 'bitbag.cms.page.name.min_length'
+                maxMessage: 'bitbag.cms.page.name.max_length'
                 groups: ['bitbag']

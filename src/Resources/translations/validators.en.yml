@@ -14,6 +14,7 @@ bitbag:
                 min_lenght: Minimum code lenght.
                 max_lenght: Maksimum code lenght.
             slug:
+                not_blank:  The sluhg can not be empty.
                 min_lenght: Minimum slug lenght.
                 max_lenght: Maximum slug lenght.
             meta_keywords:

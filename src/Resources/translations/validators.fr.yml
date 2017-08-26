@@ -1,5 +1,5 @@
 bitbag:
-    cms_plugin:
+    cms:
         block:
             image:
                 mime_types: Seuls les fichiers PNG et JPEG sont autorisés.
@@ -14,6 +14,7 @@ bitbag:
                 min_lenght: Durée minimale du code.
                 max_lenght: Longueur du code Maksimum.
             slug:
+                not_blank:  Slug ne peut pas être vide
                 min_lenght: Longueur minimale de la slug.
                 max_lenght: Longueur maximale de la slug.
             meta_keywords:

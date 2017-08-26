@@ -9,11 +9,12 @@ bitbag:
                 min_length: Kod musi posiadać minimum {{ limit }} znaków.
         page:
             code:
-                unique: Strona już istnieje.
-                not_blank: Strona nie może być pusta.
+                unique:     Strona już istnieje.
+                not_blank:  Strona nie może być pusta.
                 min_lenght: Minimalna długość kodu.
                 max_lenght: Maksymalna długość kodu.
             slug:
+                not_blank:  Pole slug nie może być puste. 
                 min_lenght: Minimalna długość sluga.
                 max_lenght: Maksymalna długość sluga.
             meta_keywords:

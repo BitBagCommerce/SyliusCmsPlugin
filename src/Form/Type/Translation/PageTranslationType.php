@@ -27,21 +27,21 @@ final class PageTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.cms_plugin.name',
+                'label' => 'bitbag.cms.name',
             ])
             ->add('slug', TextType::class, [
-                'label' => 'bitbag.cms_plugin.slug',
+                'label' => 'bitbag.cms.slug',
             ])
             ->add('metaKeywords', TextareaType::class, [
-                'label' => 'bitbag.cms_plugin.meta_keywords',
+                'label' => 'bitbag.cms.meta_keywords',
                 'required' => false,
             ])
             ->add('metaDescription', TextareaType::class, [
-                'label' => 'bitbag.cms_plugin.meta_description',
+                'label' => 'bitbag.cms.meta_description',
                 'required' => false,
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.cms_plugin.content',
+                'label' => 'bitbag.cms.content',
             ])
         ;
     }
