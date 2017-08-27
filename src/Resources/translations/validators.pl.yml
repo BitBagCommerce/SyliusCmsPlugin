@@ -2,32 +2,32 @@ bitbag:
     cms:
         block:
             image:
-                mime_types: "Dozwolone typy plików: PNG, JPEG."
+                mime_types: Dozwolone są tylko pliki PNG i JPEG.
             code:
-                unique: Blok z podanym kodem istnieje.
-                not_blank: Wprowadź kod blocku.
-                min_length: Kod musi posiadać minimum {{ limit }} znaków.
+                unique: Blok o podanym kodzie już istnieje.
+                not_blank: Kod nie może być pusty.
+                min_length: Kod musi skadac sie co najmniej {{ limit }} znaków.
                 max_length: Kod nie może posiadać więcej niż {{ limit }} znaków.
         page:
             code:
-                unique:     Strona o podanym kodzie już istnieje.
-                not_blank:  Kod nie może być pusty.
-                min_lenght: Minimalna długość kodu.
-                max_lenght: Maksymalna długość kodu.
+                unique: Strona o podanym kodzie już istnieje.
+                not_blank: Kod nie może być pusty.
+                min_lenght: Kod musi składać się z co najmniej {{ limit }} znaków.
+                max_lenght: Kod nie może być dłuższy niż {{ limit ]} znaków.
+            name:
+                not_blank: Nazwa nie może być pusta.
+                min_lenght: Nazwa musi skadać się co najmniej z {{ limit }} znaków.
+                max_lenght: Nazwa nie może być dłuższa niż {{ limit }} znaków.
             slug:
-                not_blank:  Slug nie może być pusty.
+                not_blank: Slug nie może być pusty.
                 min_lenght: Slug musi posiadać minimum {{ limit }} znaków.
                 max_lenght: Slug nie może posiadać więcej niż {{ limit }} znaków.
             meta_keywords:
                 min_lenght: Słowa kluczowe muszą posiadać minimum {{ limit }} znaków.
-                max lenght: Słowa kluczowe nie mogą posiadać więcej niż {{ limit }} znaków.
+                max lenght: Słowa kluczowe nie mogą być dłuższe niż {{ limit }} znaków.
             meta_description:
-                min_lenght: Opis sekcji meta musi posiadać minimum {{ limit }} znaków.
+                min_lenght: Opis sekcji meta musi skadac sie co najmniej {{ limit }} znaków.
                 max_lenght: Opis sekcji meta nie może posiadać więcej niż {{ limit }} znaków.
             content:
-                min_lenght: Zawartość musi posiadać minimum {{ limit }} znaków.
-                max_length: Zawartość nie może posiadać więcej niż {{ limit }} znaków.
-            name:
-                not_blank: Nazwa nie może być pusta.
-                min_lenght: Nazwa musi posiadać minimum {{ limit }} znaków.
-                max_lenght: Nazwa nie może posiadać więcej niż {{ limit }} znaków.
+                min_lenght: Zawartość musi skadać się co najmniej z {{ limit }} znaków.
+                max_length: Zawartość nie może być dłuższa niż {{ limit }} znaków.
