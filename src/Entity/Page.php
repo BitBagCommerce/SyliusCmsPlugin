@@ -10,8 +10,6 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -23,6 +21,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Page implements PageInterface
 {
     use ToggleableTrait;
+    use ProductAssociationTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -37,15 +36,10 @@ class Page implements PageInterface
      */
     protected $code;
 
-    /**
-     * @var ArrayCollection|ProductInterface[]
-     */
-    protected $products;
-
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->products = new ArrayCollection();
+        $this->initializeProductsCollection();
     }
 
     /**
@@ -126,40 +120,6 @@ class Page implements PageInterface
     public function setContent($content)
     {
         $this->getPageTranslation()->setContent($content);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasProduct(ProductInterface $product)
-    {
-        return $this->products->contains($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addProduct(ProductInterface $product)
-    {
-        $this->products->add($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeProduct(ProductInterface $product)
-    {
-        if (true === $this->hasProduct($product)) {
-            $this->products->removeElement($product);
-        }
     }
 
     /**

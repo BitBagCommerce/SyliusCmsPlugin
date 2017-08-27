@@ -9,5 +9,4 @@ tests/Application/var/
 
 !tests/Application/web/app_test.php
 tests/Application/web/media/*
-
-/tests/Application/node_modules/*
+tests/Application/web/bundles

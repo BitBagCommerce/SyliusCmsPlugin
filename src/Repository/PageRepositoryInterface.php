@@ -26,6 +26,13 @@ interface PageRepositoryInterface extends RepositoryInterface
     public function createListQueryBuilder();
 
     /**
+     * @param string $code
+     *
+     * @return PageInterface|null
+     */
+    public function findOneByCode($code);
+
+    /**
      * @param ChannelInterface $channel
      * @param string $locale
      * @param string $slug

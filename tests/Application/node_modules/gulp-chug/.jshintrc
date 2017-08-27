@@ -1,0 +1,9 @@
+{
+    "expr":         true,
+    "lastsemic":    true,
+    "node":         true,
+    "globals": {
+        "describe": true,
+        "it":       true
+    }
+}

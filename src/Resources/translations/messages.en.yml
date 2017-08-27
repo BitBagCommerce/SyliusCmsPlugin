@@ -17,8 +17,8 @@ bitbag:
         products: Products
         name: Name
         slug: Slug
-        meta_keywords: Meta Keywords
-        meta_description: Meta Description
+        meta_keywords: Meta keywords
+        meta_description: Meta description
         content: Content
         form:
             code: Code

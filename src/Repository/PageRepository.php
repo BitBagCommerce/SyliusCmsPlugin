@@ -29,6 +29,20 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function findOneByCode($code)
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.code = :code')
+            ->andWhere('o.enabled = true')
+            ->setParameter('code', $code)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findOneByChannelAndSlug(ChannelInterface $channel, $locale, $slug)
     {
         $page = $this->createQueryBuilder('o')

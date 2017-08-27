@@ -77,6 +77,8 @@ final class BlockContext implements Context
      */
     public function thereAreDynamicContentBlocksWithType($number, $type)
     {
+        $number = (int)$number;
+
         for ($i = 0; $i < $number; $i++) {
 
             if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {

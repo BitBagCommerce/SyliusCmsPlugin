@@ -2,11 +2,13 @@ BitBag\CmsPlugin\Entity\Page:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]
-            groups: ['bitbag']
             message: 'bitbag.cms.page.code.unique'
+            groups: ['bitbag']
     properties:
         code:
-            - NotBlank: { message: 'bitbag.cms.page.code.not_blank', groups: ['bitbag'] }
+            - NotBlank:
+                message: 'bitbag.cms.page.code.not_blank'
+                groups: ['bitbag']
             - Length:
                 min: 2
                 max: 250

@@ -71,28 +71,6 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
      * @param string $content
      */
     public function setContent($content);
-    
-    /**
-     * @return ArrayCollection|ProductInterface[]
-     */
-    public function getProducts();
-
-    /**
-     * @param ProductInterface $product
-     *
-     * @return bool
-     */
-    public function hasProduct(ProductInterface $product);
-
-    /**
-     * @param ProductInterface $product
-     */
-    public function addProduct(ProductInterface $product);
-
-    /**
-     * @param ProductInterface $product
-     */
-    public function removeProduct(ProductInterface $product);
 
     /**
      * @return string

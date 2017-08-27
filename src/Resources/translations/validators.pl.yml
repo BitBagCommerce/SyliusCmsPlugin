@@ -1,31 +1,33 @@
 bitbag:
-    cms_plugin:
+    cms:
         block:
             image:
-                mime_types: Dozwolone typy plików: PNG, JPEG.
+                mime_types: "Dozwolone typy plików: PNG, JPEG."
             code:
                 unique: Blok z podanym kodem istnieje.
                 not_blank: Wprowadź kod blocku.
                 min_length: Kod musi posiadać minimum {{ limit }} znaków.
+                max_length: Kod nie może posiadać więcej niż {{ limit }} znaków.
         page:
             code:
-                unique:     Strona już istnieje.
-                not_blank:  Strona nie może być pusta.
+                unique:     Strona o podanym kodzie już istnieje.
+                not_blank:  Kod nie może być pusty.
                 min_lenght: Minimalna długość kodu.
                 max_lenght: Maksymalna długość kodu.
             slug:
-                not_blank:  Pole slug nie może być puste. 
-                min_lenght: Minimalna długość sluga.
-                max_lenght: Maksymalna długość sluga.
+                not_blank:  Slug nie może być pusty.
+                min_lenght: Slug musi posiadać minimum {{ limit }} znaków.
+                max_lenght: Slug nie może posiadać więcej niż {{ limit }} znaków.
             meta_keywords:
-                min_lenght: Minimalna długość pola słowa kluczowe.
-                max lenght: Maksymalna długość pola słowa kluczowe.
+                min_lenght: Słowa kluczowe muszą posiadać minimum {{ limit }} znaków.
+                max lenght: Słowa kluczowe nie mogą posiadać więcej niż {{ limit }} znaków.
             meta_description:
-                min_lenght: Minimalna długość opisu.
-                max_lenght: Maksymalna długość opisu.
+                min_lenght: Opis sekcji meta musi posiadać minimum {{ limit }} znaków.
+                max_lenght: Opis sekcji meta nie może posiadać więcej niż {{ limit }} znaków.
             content:
-                min_lenght: Minimalna długośc treści.
+                min_lenght: Zawartość musi posiadać minimum {{ limit }} znaków.
+                max_length: Zawartość nie może posiadać więcej niż {{ limit }} znaków.
             name:
-                not_blank: Pole nazwy nie może być puste.
-                min_lenght: Minimalna długość nazwy.
-                max_lenght: Maksymalna długość nazwy.
+                not_blank: Nazwa nie może być pusta.
+                min_lenght: Nazwa musi posiadać minimum {{ limit }} znaków.
+                max_lenght: Nazwa nie może posiadać więcej niż {{ limit }} znaków.

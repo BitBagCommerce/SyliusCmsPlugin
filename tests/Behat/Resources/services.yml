@@ -1,0 +1,3 @@
+services:
+    bitbag.behat.random_string_generator:
+        class: Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGenerator

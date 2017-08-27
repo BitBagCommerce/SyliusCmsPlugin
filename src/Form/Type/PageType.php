@@ -33,7 +33,7 @@ final class PageType extends AbstractResourceType
         $builder
             ->add('code', TextType::class, [
                 'label' => 'bitbag.cms.form.code',
-                'disabled' => $page->getCode() !== null,
+                'disabled' => null !== $page->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag.cms.enabled',

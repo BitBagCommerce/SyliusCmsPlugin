@@ -23,5 +23,5 @@ BitBag\CmsPlugin\Entity\PageTranslation:
             nullable: true
             length: 2000
         content:
-            type: text #TODO
+            type: text
             nullable: true
