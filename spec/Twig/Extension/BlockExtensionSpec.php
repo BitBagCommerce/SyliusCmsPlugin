@@ -14,15 +14,19 @@ use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\CmsPlugin\Twig\Extension\BlockExtension;
 use PhpSpec\ObjectBehavior;
+use Psr\Log\LoggerInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class BlockExtensionSpec extends ObjectBehavior
 {
-    function let(BlockRepositoryInterface $blockRepository)
+    function let(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger
+    )
     {
-        $this->beConstructedWith($blockRepository);
+        $this->beConstructedWith($blockRepository, $logger);
     }
 
     function it_is_initializable()
@@ -52,7 +56,19 @@ final class BlockExtensionSpec extends ObjectBehavior
     {
         $blockRepository->findOneByCode('bitbag')->willReturn($block);
 
-        $this->block('bitbag')->shouldBeEqualTo($block);
+        $this->block('bitbag')->shouldReturn($block);
+    }
+
+    function it_adds_warning_for_not_found_block(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger,
+        \Twig_Environment $twigEnvironment
+    )
+    {
+        $blockRepository->findOneByCode('bitbag')->willReturn(null);
+        $logger->warning('Block with "bitbag" code was not found in the database.')->shouldBeCalled();
+
+        $this->renderBlock($twigEnvironment, 'bitbag')->shouldReturn(null);
     }
 
     function it_renders_text_template_for_text_type(

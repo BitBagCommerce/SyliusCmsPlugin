@@ -20,9 +20,6 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  */
 final class BlockSpec extends ObjectBehavior
 {
-    const TYPE = 'image';
-    const CODE = 'new_focus_rs';
-
     function it_is_initializable()
     {
         $this->shouldHaveType(Block::class);
@@ -40,10 +37,10 @@ final class BlockSpec extends ObjectBehavior
 
     function it_allows_access_via_properties()
     {
-        $this->setType(self::TYPE);
+        $this->setType('image');
         $this->getType()->shouldReturn('image');
 
-        $this->setType(self::CODE);
+        $this->setType('new_focus_rs');
         $this->getType()->shouldReturn('new_focus_rs');
 
         $this->setEnabled(true);

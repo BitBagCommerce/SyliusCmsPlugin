@@ -13,6 +13,7 @@ namespace BitBag\CmsPlugin\Twig\Extension;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -29,11 +30,21 @@ final class BlockExtension extends \Twig_Extension
     private $blockRepository;
 
     /**
-     * @param BlockRepositoryInterface $blockRepository
+     * @var LoggerInterface
      */
-    public function __construct(BlockRepositoryInterface $blockRepository)
+    private $logger;
+
+    /**
+     * @param BlockRepositoryInterface $blockRepository
+     * @param LoggerInterface $logger
+     */
+    public function __construct(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger
+    )
     {
         $this->blockRepository = $blockRepository;
+        $this->logger = $logger;
     }
 
     /**
@@ -57,6 +68,7 @@ final class BlockExtension extends \Twig_Extension
         $block = $this->blockRepository->findOneByCode($code);
 
         if (false === $block instanceof BlockInterface) {
+
             return null;
         }
 
@@ -75,6 +87,12 @@ final class BlockExtension extends \Twig_Extension
         $block = $this->blockRepository->findOneByCode($code);
 
         if (false === $block instanceof BlockInterface) {
+
+            $this->logger->warning(sprintf(
+                'Block with "%s" code was not found in the database.',
+                $code
+            ));
+
             return null;
         }
 
