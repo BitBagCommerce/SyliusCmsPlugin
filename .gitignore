@@ -1,5 +1,7 @@
 /vendor/
+
 /node_modules/
+tests/Application/node_modules/
 
 /etc/build/*
 !/etc/build/.gitkeep
