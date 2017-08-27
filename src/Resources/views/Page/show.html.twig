@@ -2,17 +2,17 @@
 
 {% block metatags %}
     {% if resource.metaKeywords is not empty %}
-        <meta name="keywords" content="{{ resource.metaKeywords }}" />
+        <meta name="keywords" content="{{ resource.metaKeywords }}"/>
     {% endif %}
     {% if resource.metaDescription is not empty %}
-        <meta name="description" content="{{ resource.metaDescription }}" />
+        <meta name="description" content="{{ resource.metaDescription }}"/>
     {% endif %}
 {% endblock %}
 
 {% block content %}
     <div class="ui breadcrumb">
         <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
-        <div class="divider"> / </div>
+        <div class="divider"> /</div>
         <div class="active section">{{ resource.name }}</div>
     </div>
 
@@ -21,4 +21,8 @@
 
         <div>{{ resource.content }}</div>
     </div>
+
+    {% if null != resource.products %}
+        {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': resource.products} %}
+    {% endif %}
 {% endblock %}
