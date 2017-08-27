@@ -1,8 +1,8 @@
-bitbag_admin_cms_plugin_block:
+bitbag_cms_admin_block:
     resource: '@BitBagCmsPlugin/Resources/config/routing/block.yml'
     prefix: /admin
 
-bitbag_admin_cms_plugin_page:
+bitbag_cms_admin_page:
     resource: '@BitBagCmsPlugin/Resources/config/routing/page.yml'
     prefix: /admin
 
@@ -12,7 +12,7 @@ bitbag_ajax_generate_page_slug:
     defaults:
         _controller: BitBagCmsPlugin:PageSlug:generate
 
-bitbag_cms_plugin_show_action:
+bitbag_cms_shop_page_show:
     path: /page/{slug}
     methods: [GET]
     defaults:

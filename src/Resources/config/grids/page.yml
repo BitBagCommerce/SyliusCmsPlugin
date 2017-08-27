@@ -1,6 +1,6 @@
 sylius_grid:
     grids:
-        bitbag_admin_cms_plugin_page:
+        bitbag_cms_admin_page:
             driver:
                 name: doctrine/orm
                 options:

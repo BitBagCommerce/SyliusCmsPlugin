@@ -19,7 +19,7 @@
     <div class="ui segment">
         <h1 class="ui dividing header">{{ resource.name }}</h1>
 
-        <div>{{ resource.content }}</div>
+        <div>{{ resource.content|raw }}</div>
     </div>
 
     {% if null != resource.products %}
