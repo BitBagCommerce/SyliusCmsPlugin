@@ -15,4 +15,4 @@ Feature: Updating image block
         And I upload the "porsche_911_singer_2.jpg" image
         And I update it
         Then I should be notified that the block was successfully updated
-        And image block with "porsche_911_singer" code and "porsche_911_singer_2.jpg" image should be in the store
+        And image block with "porsche_911_singer" code and "porsche_911_singer_2.jpg" image should exist in the store

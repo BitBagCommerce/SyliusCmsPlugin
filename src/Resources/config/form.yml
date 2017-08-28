@@ -5,14 +5,20 @@ services:
         tags:
             - { name: form.type }
 
-    bitbag.cms_plugin.form.type.translation.text:
-        class: BitBag\CmsPlugin\Form\Type\Translation\TextTranslationType
+    bitbag.cms_plugin.form.type.translation.text_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType
         arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
         tags:
             - { name: form.type }
 
-    bitbag.cms_plugin.form.type.translation.image:
-        class: BitBag\CmsPlugin\Form\Type\Translation\ImageTranslationType
+    bitbag.cms_plugin.form.type.translation.html_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
+        arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
+        tags:
+            - { name: form.type }
+
+    bitbag.cms_plugin.form.type.translation.image_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType
         arguments: ['%bitbag.model.block_translation.class%', ['bitbag']]
         tags:
             - { name: form.type }

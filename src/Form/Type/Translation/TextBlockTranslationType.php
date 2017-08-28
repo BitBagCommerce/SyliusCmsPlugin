@@ -11,13 +11,13 @@
 namespace BitBag\CmsPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class TextTranslationType extends AbstractResourceType
+final class TextBlockTranslationType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ final class TextTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', TextareaType::class, [
+            ->add('content', TextType::class, [
                 'label' => 'bitbag.cms.form.content',
             ])
         ;

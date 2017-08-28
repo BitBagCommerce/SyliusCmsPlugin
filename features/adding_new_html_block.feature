@@ -10,9 +10,9 @@ Feature: Adding image block
 
     @ui
     Scenario: Seeing menu items
-        When I go to the create "text" block page
-        And I fill the code with "store_main_title"
-        And I fill the content with "Welcome to the Candy Shop"
+        When I go to the create "html" block page
+        And I fill the code with "store_description"
+        And I fill the content with "<p>We have the best candies in the internet!</p>"
         And I add it
         Then I should be notified that new text block was created
-        And block with "text" type and "Welcome to the Candy Shop" content should exist in the store
+        And block with "html" type and "<p>We have the best candies in the internet!</p>" content should exist in the store

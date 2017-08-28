@@ -12,6 +12,7 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
@@ -110,19 +111,30 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @When I go to the create image block page
+     * @When I go to the create :blockType block page
      */
-    public function iGoToTheCreateImageBlockPage()
+    public function iGoToTheCreateImageBlockPage($blockType)
     {
-        $this->createPage->open(['type' => BlockInterface::IMAGE_BLOCK_TYPE]);
-    }
 
-    /**
-     * @When I go to the create text block page
-     */
-    public function iGoToTheCreateTextBlockPage()
-    {
-        $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
+        if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
+
+            return;
+        }
+
+        if (BlockInterface::HTML_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::HTML_BLOCK_TYPE]);
+
+            return;
+        }
+
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::IMAGE_BLOCK_TYPE]);
+
+            return;
+        }
+
+        throw new TemplateTypeNotFound($blockType);
     }
 
     /**
@@ -237,7 +249,7 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then block with :code code and :content content should be in the store
+     * @Then block with :code code and :content content should exist in the store
      */
     public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
     {
@@ -247,7 +259,7 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then block with :type type and :content content should be in the store
+     * @Then block with :type type and :content content should exist in the store
      */
     public function blockWithTypeAndContentShouldBeInTheStore($type, $content)
     {
@@ -257,7 +269,7 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then image block with :code code and :image image should be in the store
+     * @Then image block with :code code and :image image should exist in the store
      */
     public function imageBlockWithTypeAndImageShouldBeInTheStore($code, $image)
     {

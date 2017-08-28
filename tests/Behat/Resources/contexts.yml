@@ -3,6 +3,7 @@ services:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\BlockContext
         arguments:
             - '@sylius.behat.shared_storage'
+            - '@bitbag.behat.random_string_generator'
             - '@__symfony__.bitbag.factory.block'
             - '@__symfony__.bitbag.repository.block'
             - '@__symfony__.sylius.image_uploader'

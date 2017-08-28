@@ -8,6 +8,11 @@ bitbag:
                 not_blank: Kod nie może być pusty.
                 min_length: Kod musi skadac sie co najmniej {{ limit }} znaków.
                 max_length: Kod nie może posiadać więcej niż {{ limit }} znaków.
+            name:
+                min_lenght: Nazwa musi skadać się co najmniej z {{ limit }} znaków.
+                max_lenght: Nazwa nie może być dłuższa niż {{ limit }} znaków.
+            content:
+                min_lenght: Zawartość musi skadać się co najmniej z {{ limit }} znaków.
         page:
             code:
                 unique: Strona o podanym kodzie już istnieje.
@@ -29,5 +34,5 @@ bitbag:
                 min_lenght: Opis sekcji meta musi skadac sie co najmniej {{ limit }} znaków.
                 max_lenght: Opis sekcji meta nie może posiadać więcej niż {{ limit }} znaków.
             content:
+                not_blank: Zawartość nie może być pusta.
                 min_lenght: Zawartość musi skadać się co najmniej z {{ limit }} znaków.
-                max_length: Zawartość nie może być dłuższa niż {{ limit }} znaków.

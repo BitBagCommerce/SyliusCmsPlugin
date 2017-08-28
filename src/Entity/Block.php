@@ -86,6 +86,22 @@ class Block implements BlockInterface
     }
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->getBlockTranslation()->getName();
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->getBlockTranslation()->setName($name);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getContent()

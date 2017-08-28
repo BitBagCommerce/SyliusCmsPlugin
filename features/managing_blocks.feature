@@ -10,11 +10,11 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Seeing dynamic blocks in admin panel
-        Given there are "2" dynamic content blocks with "image" type
-        And there are "3" dynamic content blocks with "text" type
+        Given there are 2 dynamic content blocks with "image" type
+        And there are 3 dynamic content blocks with "text" type
         When I go to the cms blocks page
-        Then I should see "2" dynamic content blocks with "image" type
-        And I should see "3" dynamic content blocks with "text" type
+        Then I should see 2 dynamic content blocks with "image" type
+        And I should see 3 dynamic content blocks with "text" type
 
     @ui
     Scenario: Removing single block

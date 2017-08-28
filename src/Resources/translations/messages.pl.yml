@@ -11,6 +11,7 @@ bitbag:
         blocks_header: Bloki
         blocks_subheader: Zarządzaj blokami
         text_block: Blok tekstowy
+        html_block: Blok HTML
         image_block: Blok obrazkowy
         pages_header: Strona
         pages_subheader: Zarządzaj swoimi stronami

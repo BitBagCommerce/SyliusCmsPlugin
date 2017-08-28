@@ -84,6 +84,19 @@ final class BlockExtensionSpec extends ObjectBehavior
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
 
+    function it_renders_html_template_for_html_type(
+        BlockRepositoryInterface $blockRepository,
+        BlockInterface $block,
+        \Twig_Environment $twigEnvironment
+    )
+    {
+        $blockRepository->findOneByCode('bitbag')->willReturn($block);
+        $block->getType()->willReturn('html');
+        $twigEnvironment->render('BitBagCmsPlugin:Block:htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
+
+        $this->renderBlock($twigEnvironment, 'bitbag');
+    }
+
     function it_renders_image_template_for_image_type(
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block,

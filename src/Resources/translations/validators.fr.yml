@@ -8,6 +8,11 @@ bitbag:
                 not_blank: Le code ne peut pas être vide.
                 min_length: Code doit être au moins {{limit}} caractères long.
                 max_length: Le code ne peut pas dépasser les caractères {{limit}}.
+            name:
+                min_lenght: Longeur minimale de la prénom.
+                max_lenght: Longeur maximale de la prénom.
+            content:
+                min_lenght: Le contenu doit être au moins {{limit}} caractères long.
         page:
             code:
                 unique: Il existe une page existante avec ce code.

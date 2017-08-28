@@ -21,8 +21,9 @@ use Psr\Log\LoggerInterface;
  */
 final class BlockExtension extends \Twig_Extension
 {
-    const BLOCK_TEXT_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
-    const BLOCK_IMAGE_TEMPLATE = 'BitBagCmsPlugin:Block:imageBlock.html.twig';
+    const TEXT_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
+    const HTML_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:htmlBlock.html.twig';
+    const IMAGE_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:imageBlock.html.twig';
 
     /**
      * @var BlockRepositoryInterface
@@ -98,12 +99,17 @@ final class BlockExtension extends \Twig_Extension
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
 
-            return $twigEnvironment->render(self::BLOCK_TEXT_TEMPLATE, ['block' => $block]);
+            return $twigEnvironment->render(self::TEXT_BLOCK_TEMPLATE, ['block' => $block]);
+        }
+
+        if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
+
+            return $twigEnvironment->render(self::HTML_BLOCK_TEMPLATE, ['block' => $block]);
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
 
-            return $twigEnvironment->render(self::BLOCK_IMAGE_TEMPLATE, ['block' => $block]);
+            return $twigEnvironment->render(self::IMAGE_BLOCK_TEMPLATE, ['block' => $block]);
         }
 
         throw new TemplateTypeNotFound($block->getType());

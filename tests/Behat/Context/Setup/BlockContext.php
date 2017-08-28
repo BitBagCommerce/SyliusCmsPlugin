@@ -20,6 +20,7 @@ use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 /**
@@ -29,6 +30,7 @@ final class BlockContext implements Context
 {
     const ALLOWED_TYPES = [
         BlockInterface::TEXT_BLOCK_TYPE,
+        BlockInterface::HTML_BLOCK_TYPE,
         BlockInterface::IMAGE_BLOCK_TYPE,
     ];
     const IMAGE_MOCK = 'aston_martin_db_11.jpg';
@@ -37,6 +39,11 @@ final class BlockContext implements Context
      * @var SharedStorageInterface
      */
     private $sharedStorage;
+
+    /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
 
     /**
      * @var BlockFactoryInterface
@@ -55,12 +62,14 @@ final class BlockContext implements Context
 
     /**
      * @param SharedStorageInterface $sharedStorage
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param BlockFactoryInterface $blockFactory
      * @param BlockRepositoryInterface $blockRepository
      * @param ImageUploaderInterface $imageUploader
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
+        RandomStringGeneratorInterface $randomStringGenerator,
         BlockFactoryInterface $blockFactory,
         BlockRepositoryInterface $blockRepository,
         ImageUploaderInterface $imageUploader
@@ -70,6 +79,7 @@ final class BlockContext implements Context
         $this->blockRepository = $blockRepository;
         $this->sharedStorage = $sharedStorage;
         $this->imageUploader = $imageUploader;
+        $this->randomStringGenerator = $randomStringGenerator;
     }
 
     /**
@@ -118,6 +128,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Given there is a cms html block with :code code and :content content
+     */
+    public function thereIsAHtmlCmsBlockWithCodeAndContent($code, $content)
+    {
+        $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, null, $code, $content);
+    }
+
+    /**
      * @Given there is a cms block with :code code and :name image
      */
     public function thereIsCmsBlockWithCodeAndImage($code, $name)
@@ -156,15 +174,16 @@ final class BlockContext implements Context
         $code = null !== $code ? $code : time();
         $block = $this->blockFactory->createWithType($type);
         $block->setCode($code);
+        $this->setUpCurrentLocale($block);
 
         if (null !== $image) {
-            $this->setUpCurrentLocale($block);
             $block->setImage($image);
         }
 
         if (null !== $content) {
-            $this->setUpCurrentLocale($block);
             $block->setContent($content);
+        } else {
+            $block->setContent($this->randomStringGenerator->generate(5));
         }
 
         $this->blockRepository->add($block);

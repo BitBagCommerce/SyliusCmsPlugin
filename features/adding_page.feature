@@ -9,7 +9,7 @@ Feature: Adding new page
         And I am logged in as an administrator
 
     @ui @javascript
-    Scenario: Adding new page for US translations
+    Scenario: Adding new page for en_US translation
         When I go to the create new page page
         And I fill the code with "top_5_outfits_for_this_summer"
         And I fill the name with "Top 5 outfits for this summer"

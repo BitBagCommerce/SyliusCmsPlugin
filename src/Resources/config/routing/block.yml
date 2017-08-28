@@ -44,4 +44,4 @@ bitbag_admin_block_create:
                     parameters:
                         type: $type
     requirements:
-        type: text|image
+        type: text|html|image

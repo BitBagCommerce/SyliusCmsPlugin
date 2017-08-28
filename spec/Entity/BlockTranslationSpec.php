@@ -39,6 +39,9 @@ final class BlockTranslationSpec extends ObjectBehavior
 
     function it_allows_access_via_properties(ImageInterface $image)
     {
+        $this->setName('Escobar favorite quote');
+        $this->getName()->shouldReturn('Escobar favorite quote');
+
         $this->setContent('Plata o plomo');
         $this->getContent()->shouldReturn('Plata o plomo');
 

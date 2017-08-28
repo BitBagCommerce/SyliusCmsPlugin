@@ -15,4 +15,4 @@ Feature: Updating image block
         And I fill the content with "987654321"
         And I update it
         Then I should be notified that the block was successfully updated
-        And block with "store_phone_number" code and "987654321" content should be in the store
+        And block with "store_phone_number" code and "987654321" content should exist in the store

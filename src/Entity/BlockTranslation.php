@@ -26,12 +26,33 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * @var string
      */
+    protected $name = null;
+
+    /**
+     * @var string
+     */
     protected $content;
 
     /**
      * @var ImageInterface
      */
     protected $image;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
     /**
      * {@inheritdoc}
