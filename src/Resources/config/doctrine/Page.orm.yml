@@ -15,7 +15,7 @@ BitBag\CmsPlugin\Entity\Page:
             type: boolean
     manyToMany:
         products:
-            targetEntity: Sylius\Component\Core\Model\Product
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
             joinTable:
                 name: bitbag_cms_page_products
                 joinColumns:
