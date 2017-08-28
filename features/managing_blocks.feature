@@ -27,4 +27,4 @@ Feature: Managing cms blocks
     @ui
     Scenario: Being able to chose which block to create
         When I go to the cms blocks page
-        Then I should be able to select between "Text block" and "Image block" block types under Create button
+        Then I should be able to select between "Text block", "HTML block" and "Image block" block types under Create button
