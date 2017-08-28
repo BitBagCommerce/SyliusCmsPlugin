@@ -13,7 +13,9 @@ bitbag_ajax_generate_page_slug:
         _controller: BitBagCmsPlugin:PageSlug:generate
 
 bitbag_cms_shop_page_show:
-    path: /page/{slug}
+    path: /{_locale}/page/{slug}
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$    
     methods: [GET]
     defaults:
         _controller: bitbag.controller.page:showAction
