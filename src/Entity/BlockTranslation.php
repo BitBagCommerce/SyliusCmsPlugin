@@ -39,6 +39,11 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $image;
 
     /**
+     * @var string
+     */
+    protected $link;
+
+    /**
      * {@inheritdoc}
      */
     public function getName()
@@ -94,5 +99,21 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
         $image->setOwner($this);
 
         $this->image = $image;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
     }
 }

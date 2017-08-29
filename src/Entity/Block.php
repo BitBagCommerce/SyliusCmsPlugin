@@ -134,6 +134,22 @@ class Block implements BlockInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getLink()
+    {
+        return $this->getBlockTranslation()->getLink();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($link)
+    {
+        $this->getBlockTranslation()->setLink($link);
+    }
+
+    /**
      * @return BlockTranslationInterface|TranslationInterface
      */
     protected function getBlockTranslation()

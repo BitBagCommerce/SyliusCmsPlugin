@@ -25,6 +25,10 @@ final class TextBlockTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name', TextType::class, [
+                'label' => 'bitbag.cms.form.name',
+                'required' => false,
+            ])
             ->add('content', TextType::class, [
                 'label' => 'bitbag.cms.form.content',
             ])

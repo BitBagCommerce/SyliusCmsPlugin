@@ -61,6 +61,22 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getSlug()
     {
         return $this->getPageTranslation()->getSlug();
@@ -123,22 +139,6 @@ class Page implements PageInterface
     }
 
     /**
-     * @return PageTranslationInterface|TranslationInterface
-     */
-    protected function getPageTranslation()
-    {
-        return $this->getTranslation();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function createTranslation()
-    {
-        return new PageTranslation();
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getName()
@@ -155,18 +155,18 @@ class Page implements PageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return PageTranslationInterface|TranslationInterface
      */
-    public function getCode()
+    protected function getPageTranslation()
     {
-        return $this->code;
+        return $this->getTranslation();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCode($code)
+    protected function createTranslation()
     {
-        $this->code = $code;
+        return new PageTranslation();
     }
 }

@@ -23,7 +23,9 @@ bitbag:
         content: Contenu
         form:
             code: Code
+            enabled: Activée
+            name: Prénom
             contents: Contenu
             content: Content
             images: Images
-            enabled: Activée
+            link: Link

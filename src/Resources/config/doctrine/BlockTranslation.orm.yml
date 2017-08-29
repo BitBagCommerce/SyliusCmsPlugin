@@ -14,6 +14,9 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
         content:
             type: text
             nullable: true
+        link:
+            type: text
+            nullable: true
     oneToOne:
         image:
             targetEntity: BitBag\CmsPlugin\Entity\Image

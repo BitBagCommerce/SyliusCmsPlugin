@@ -72,4 +72,14 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
      * @param ImageInterface $image
      */
     public function setImage(ImageInterface $image);
+
+    /**
+     * @return string
+     */
+    public function getLink();
+
+    /**
+     * @param string $link
+     */
+    public function setLink($link);
 }

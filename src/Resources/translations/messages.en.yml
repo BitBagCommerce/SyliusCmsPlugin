@@ -23,7 +23,9 @@ bitbag:
         content: Content
         form:
             code: Code
+            enabled: Enabled
+            name: Name
             contents: Contents
             content: Content
             images: Images
-            enabled: Enabled
+            link: Link
