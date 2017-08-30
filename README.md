@@ -79,6 +79,8 @@ For more information about how to do it, read http://docs.sylius.org/en/latest/c
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 
  Now you can do whatever you want with it :)
+ 
+ There's also a twig method which allows rendering the link template for the page by its code named `bitbag_render_page_link_by_code` which obviously takes the code as a parameter.
 
 ## Testing
 ```bash

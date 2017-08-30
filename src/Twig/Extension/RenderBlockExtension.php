@@ -19,7 +19,7 @@ use Psr\Log\LoggerInterface;
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BlockExtension extends \Twig_Extension
+final class RenderBlockExtension extends \Twig_Extension
 {
     const TEXT_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
     const HTML_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:htmlBlock.html.twig';
@@ -55,25 +55,7 @@ final class BlockExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html'],]),
-            new \Twig_SimpleFunction('bitbag_block', [$this, 'block']),
         ];
-    }
-
-    /**
-     * @param string $code
-     *
-     * @return BlockInterface|string
-     */
-    public function block($code)
-    {
-        $block = $this->blockRepository->findOneByCode($code);
-
-        if (false === $block instanceof BlockInterface) {
-
-            return null;
-        }
-
-        return $block;
     }
 
     /**

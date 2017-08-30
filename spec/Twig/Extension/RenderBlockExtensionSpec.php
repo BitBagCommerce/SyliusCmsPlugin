@@ -12,14 +12,14 @@ namespace spec\BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\CmsPlugin\Twig\Extension\BlockExtension;
+use BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BlockExtensionSpec extends ObjectBehavior
+final class RenderBlockExtensionSpec extends ObjectBehavior
 {
     function let(
         BlockRepositoryInterface $blockRepository,
@@ -31,7 +31,7 @@ final class BlockExtensionSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(BlockExtension::class);
+        $this->shouldHaveType(RenderBlockExtension::class);
     }
 
     function it_extends_twig_extension()
@@ -42,21 +42,11 @@ final class BlockExtensionSpec extends ObjectBehavior
     function it_returns_functions()
     {
         $functions = $this->getFunctions();
-        $functions->shouldHaveCount(2);
+        $functions->shouldHaveCount(1);
 
         foreach ($functions as $function) {
             $function->shouldHaveType(\Twig_SimpleFunction::class);
         }
-    }
-
-    function it_returns_block_for_block_function(
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block
-    )
-    {
-        $blockRepository->findOneByCode('bitbag')->willReturn($block);
-
-        $this->block('bitbag')->shouldReturn($block);
     }
 
     function it_adds_warning_for_not_found_block(
