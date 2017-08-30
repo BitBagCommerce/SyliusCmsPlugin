@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class PageLinkByCodeExtension extends \Twig_Extension
+final class RenderPageLinkByCodeExtension extends \Twig_Extension
 {
     const PAGE_LINK_TEMPLATE = 'BitBagCmsPlugin:Page:_link.html.twig';
 

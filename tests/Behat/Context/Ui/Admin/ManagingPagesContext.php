@@ -158,6 +158,14 @@ final class ManagingPagesContext implements Context
     }
 
     /**
+     * @When I fill the link with :link
+     */
+    public function iFillTheLinkWith($link)
+    {
+        $this->resolveCurrentPage()->fillLink($link);
+    }
+
+    /**
      * @When I fill the slug with :slug
      */
     public function iFillTheSlugWith($slug)

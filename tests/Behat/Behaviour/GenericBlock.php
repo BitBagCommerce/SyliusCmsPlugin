@@ -30,6 +30,22 @@ trait GenericBlock
     }
 
     /**
+     * @param string $name
+     */
+    public function fillName($name)
+    {
+        $this->getDocument()->fillField('Name', $name);
+    }
+
+    /**
+     * @param string $link
+     */
+    public function fillLink($link)
+    {
+        $this->getDocument()->fillField('Link', $link);
+    }
+
+    /**
      * @param string $content
      */
     public function fillContent($content)

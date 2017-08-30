@@ -12,7 +12,10 @@ Feature: Adding image block
     Scenario: Seeing menu items
         When I go to the create "image" block page
         And I fill the code with "aston_martin_db_11"
+        And I fill the name with "Aston Marting DB 11 image"
+        And I fill the link with "/page/aston-martin-db-11-review"
         And I upload the "aston_martin_db_11.jpg" image
         And I add it
         Then I should be notified that new image block was created
         And image block with "aston_martin_db_11" code and "aston_martin_db_11.jpg" image should exist in the store
+        And this block should also have "Aston Marting DB 11 image" name and "/page/aston-martin-db-11-review" link

@@ -156,6 +156,22 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
+     * @When I fill the name with :name
+     */
+    public function iFillTheNameWith($name)
+    {
+        $this->resolveCurrentPage()->fillName($name);
+    }
+
+    /**
+     * @When I fill the link with :link
+     */
+    public function iFillTheLinkWith($link)
+    {
+        $this->resolveCurrentPage()->fillLink($link);
+    }
+
+    /**
      * @When I upload the :image image
      */
     public function iUploadTheImage($image)
@@ -264,8 +280,22 @@ final class ManagingBlocksContext implements Context
     public function blockWithTypeAndContentShouldBeInTheStore($type, $content)
     {
         $block = $this->blockRepository->findOneByTypeAndContent($type, $content);
+        $this->sharedStorage->set('block', $block);
 
         Assert::isInstanceOf($block, BlockInterface::class);
+    }
+
+    /**
+     * @Then this block should also have :name name and :link link
+     * @Then this block should also have :name name
+     */
+    public function thisBlockShouldAlsoHaveNameAndLink($name, $link = null)
+    {
+        /** @var BlockInterface $block */
+        $block = $this->sharedStorage->get('block');
+
+        Assert::eq($name, $block->getName());
+        Assert::eq($link, $block->getLink());
     }
 
     /**
@@ -276,6 +306,7 @@ final class ManagingBlocksContext implements Context
         $block = $this->blockRepository->findOneByCode($code);
         $blockImage = $block->getImage();
         $this->entityManager->refresh($blockImage);
+        $this->sharedStorage->set('block', $block);
 
         Assert::eq(BlockInterface::IMAGE_BLOCK_TYPE, $block->getType());
         Assert::eq(
