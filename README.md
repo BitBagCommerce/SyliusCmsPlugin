@@ -75,20 +75,18 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 ### Pages
 
 For rendering pages you can use `bitbag_cms_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
-For more information about how to do it, read http://docs.sylius.org/en/latest/customization/template.html. If you are lazy guy, take a look at 
+For more information about how to do it, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html). If you are lazy guy, take a look at 
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 
- Now you can do whatever you want with it :)
+ Now you can do whatever you want with it :slightly_smiling_face:
  
  There's also a twig method which allows rendering the link template for the page by its code named `bitbag_render_page_link_by_code` which obviously takes the code as a parameter.
 
 ### WYSIWYG Editor (CKEditor or any other which supports Symfony)
 
 For now you can install CKEditor, create proper form extension and replace `Textarea[Text]Type::class` with `CKEditorType::class`.
-For more - take a look at CKEditor installation manual http://symfony.com/doc/master/bundles/IvoryCKEditorBundle/installation.html,
-FormExtension - https://www.google.pl/search?q=form+extension+symfony&oq=form+extension+symfony&aqs=chrome..69i57j69i60j69i65j69i61j69i60l2.2627j0j7&sourceid=chrome&ie=UTF-8
-and run bin/console debug:container | grep bitbag.cms_plugin.form command to see which form services you need to extend.
-Can be done within an hour and it works for us in another project 🙂
+For more - take a look at [Symfony CKEditor installation manual](http://symfony.com/doc/master/bundles/IvoryCKEditorBundle/installation.html) and [Symfony form extension "how to" guide](https://symfony.com/doc/current/form/create_form_type_extension.html).
+To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag.cms_plugin.form command`.
 
 ## Testing
 ```bash
