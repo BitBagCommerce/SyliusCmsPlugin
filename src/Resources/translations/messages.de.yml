@@ -1,0 +1,31 @@
+bitbag:
+    ui:
+        blocks: Blöcke
+        pages: Seiten
+    cms:
+        content_management: Content Management
+        cms: Content Management
+        enabled: Aktiviert
+        blocks: Blöcke
+        pages: Seiten
+        blocks_header: Blöcke
+        blocks_subheader: Blöcke verwalten
+        text_block: Text Block
+        html_block: HTML Block
+        image_block: Bild Block
+        pages_header: Seite
+        pages_subheader: Seiten verwalten
+        products: Produkte
+        name: Name
+        slug: Slug
+        meta_keywords: Meta Stichwörter
+        meta_description: Meta Beschreibung
+        content: Inhalt
+        form:
+            code: Code
+            enabled: Aktiviert
+            name: Name
+            contents: Inhalte
+            content: Inhalt
+            images: Bilder
+            link: Link
