@@ -36,7 +36,7 @@ Import required config in your `app/config/config.yml` file:
 imports:
     ...
     
-    - { resource: "@BitBagCmsPlugin/Resources/config/config.yml" }
+    - { resource: '@BitBagCmsPlugin/Resources/config/config.yml' }
 ```
 
 Import routing in your `app/config/routing.yml` file:
