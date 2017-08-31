@@ -86,7 +86,7 @@ For more information about how to do it, read [Sylius template customization gui
 
 For now you can install CKEditor, create proper form extension and replace `Textarea[Text]Type::class` with `CKEditorType::class`.
 For more - take a look at [Symfony CKEditor installation manual](http://symfony.com/doc/master/bundles/IvoryCKEditorBundle/installation.html) and [Symfony form extension "how to" guide](https://symfony.com/doc/current/form/create_form_type_extension.html).
-To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag.cms_plugin.form command`.
+To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag.cms_plugin.form` command.
 
 ## Testing
 ```bash
