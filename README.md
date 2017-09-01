@@ -78,7 +78,9 @@ For rendering pages you can use `bitbag_cms_shop_page_show` route which takes th
 For more information about how to do it, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html). If you are lazy guy, take a look at 
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 
- Now you can do whatever you want with it :slightly_smiling_face:
+ Now you can do whatever you want with it :slightly_smiling_face:.
+ 
+Of course, if you have already enabled Sylius' theme feature, place your template override in your theme directory.
  
  There's also a twig method which allows rendering the link template for the page by its code named `bitbag_render_page_link_by_code` which obviously takes the code as a parameter.
 
