@@ -1,5 +1,7 @@
 <div>
-    <h2>{{ block.name }}</h2>
+    {% if null != block.name %}
+        <h2>{{ block.name }}</h2>
+    {% endif %}
     <p>
         {{ block.content|raw }}
     </p>
