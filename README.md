@@ -66,7 +66,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
     {{ 'sylius.ui.latest_products'|trans }}
 </h2>
 
-{{ bitbag_render_block(`homepage_text_block`) }}
+{{ bitbag_render_block('homepage_text_block') }}
 
 {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
 {% endblock %}
