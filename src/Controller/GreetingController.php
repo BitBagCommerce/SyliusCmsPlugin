@@ -12,7 +12,7 @@ final class GreetingController extends Controller
      *
      * @return Response
      */
-    public function staticallyGreetAction($name)
+    public function staticallyGreetAction(?string $name): Response
     {
         return new Response(sprintf('<html><body><div id="greeting">%s</div></body></html>', $this->getGreeting($name)));
     }
@@ -22,7 +22,7 @@ final class GreetingController extends Controller
      *
      * @return Response
      */
-    public function dynamicallyGreetAction($name)
+    public function dynamicallyGreetAction(?string $name): Response
     {
         return $this->render('@AcmeExample/dynamic_greeting.html.twig', ['greeting' => $this->getGreeting($name)]);
     }
@@ -32,7 +32,7 @@ final class GreetingController extends Controller
      *
      * @return string
      */
-    private function getGreeting($name)
+    private function getGreeting(?string $name): string
     {
         switch ($name) {
             case null:

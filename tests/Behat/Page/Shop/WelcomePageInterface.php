@@ -9,5 +9,5 @@ interface WelcomePageInterface extends PageInterface
     /**
      * @return string
      */
-    public function getGreeting();
+    public function getGreeting(): string;
 }

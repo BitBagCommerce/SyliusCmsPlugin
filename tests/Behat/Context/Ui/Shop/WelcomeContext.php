@@ -31,7 +31,7 @@ final class WelcomeContext implements Context
     /**
      * @When a customer with an unknown name visits static welcome page
      */
-    public function customerWithUnknownNameVisitsStaticWelcomePage()
+    public function customerWithUnknownNameVisitsStaticWelcomePage(): void
     {
         $this->staticWelcomePage->open();
     }
@@ -39,7 +39,7 @@ final class WelcomeContext implements Context
     /**
      * @When a customer named :name visits static welcome page
      */
-    public function namedCustomerVisitsStaticWelcomePage($name)
+    public function namedCustomerVisitsStaticWelcomePage(string $name): void
     {
         $this->staticWelcomePage->open(['name' => $name]);
     }
@@ -47,7 +47,7 @@ final class WelcomeContext implements Context
     /**
      * @Then they should be statically greeted with :greeting
      */
-    public function theyShouldBeStaticallyGreetedWithGreeting($greeting)
+    public function theyShouldBeStaticallyGreetedWithGreeting(string $greeting): void
     {
         Assert::same($this->staticWelcomePage->getGreeting(), $greeting);
     }
@@ -55,7 +55,7 @@ final class WelcomeContext implements Context
     /**
      * @When a customer with an unknown name visits dynamic welcome page
      */
-    public function customerWithUnknownNameVisitsDynamicWelcomePage()
+    public function customerWithUnknownNameVisitsDynamicWelcomePage(): void
     {
         $this->dynamicWelcomePage->open();
     }
@@ -63,7 +63,7 @@ final class WelcomeContext implements Context
     /**
      * @When a customer named :name visits dynamic welcome page
      */
-    public function namedCustomerVisitsDynamicWelcomePage($name)
+    public function namedCustomerVisitsDynamicWelcomePage(string $name): void
     {
         $this->dynamicWelcomePage->open(['name' => $name]);
     }
@@ -71,7 +71,7 @@ final class WelcomeContext implements Context
     /**
      * @Then they should be dynamically greeted with :greeting
      */
-    public function theyShouldBeDynamicallyGreetedWithGreeting($greeting)
+    public function theyShouldBeDynamicallyGreetedWithGreeting(string $greeting): void
     {
         Assert::same($this->dynamicWelcomePage->getGreeting(), $greeting);
     }
