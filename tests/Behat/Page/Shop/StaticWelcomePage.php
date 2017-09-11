@@ -9,7 +9,7 @@ class StaticWelcomePage extends SymfonyPage implements WelcomePageInterface
     /**
      * {@inheritdoc}
      */
-    public function getGreeting()
+    public function getGreeting(): string
     {
         return $this->getElement('greeting')->getText();
     }
@@ -17,7 +17,7 @@ class StaticWelcomePage extends SymfonyPage implements WelcomePageInterface
     /**
      * {@inheritdoc}
      */
-    public function getRouteName()
+    public function getRouteName(): string
     {
         return 'acme_example_static_welcome';
     }
@@ -25,7 +25,7 @@ class StaticWelcomePage extends SymfonyPage implements WelcomePageInterface
     /**
      * {@inheritdoc}
      */
-    protected function getDefinedElements()
+    protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'greeting' => '#greeting',
