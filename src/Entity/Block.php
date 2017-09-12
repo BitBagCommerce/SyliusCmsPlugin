@@ -83,7 +83,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
