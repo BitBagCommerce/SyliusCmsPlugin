@@ -1,6 +1,6 @@
 <div>
-    <h2>{{ block.name }}</h2>
-    <p>
-        {{ block.content|raw }}
-    </p>
+    {% if null != block.name %}
+        <h2>{{ block.name }}</h2>
+    {% endif %}
+    {{ block.content|raw }}
 </div>
