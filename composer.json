@@ -4,13 +4,11 @@
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
     "require": {
-        "php": "^5.6|^7.0",
-
-        "sylius/sylius": "^1.0.0@beta"
+        "php": "^7.1",
+        "sylius/sylius": "^1.0.0-rc.1"
     },
     "require-dev": {
         "phpspec/phpspec": "^3.2",
-        "phpunit/phpunit": "^5.6",
         "behat/behat": "^3.3",
         "behat/mink": "^1.7",
         "behat/mink-browserkit-driver": "^1.3",

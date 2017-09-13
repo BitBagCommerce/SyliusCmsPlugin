@@ -11,10 +11,20 @@
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use GenericBlock;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillCode($code)
+    {
+        $this->getDocument()->fillField('Code', $code);
+    }
 }

@@ -10,14 +10,15 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\ToggleableInterface;
+use Sylius\Component\Resource\Model\TranslatableInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-interface PageInterface extends ResourceInterface
+interface PageInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
 {
     /**
      * @return string
@@ -28,6 +29,16 @@ interface PageInterface extends ResourceInterface
      * @param string $slug
      */
     public function setSlug($slug);
+
+    /**
+     * @return string
+     */
+    public function getCode();
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code);
 
     /**
      * @return string
@@ -48,7 +59,7 @@ interface PageInterface extends ResourceInterface
      * @param string $metaDescription
      */
     public function setMetaDescription($metaDescription);
-    
+
     /**
      * @return string
      */
@@ -58,26 +69,14 @@ interface PageInterface extends ResourceInterface
      * @param string $content
      */
     public function setContent($content);
-    
-    /**
-     * @return ArrayCollection|ProductInterface[]
-     */
-    public function getProducts();
 
     /**
-     * @param ProductInterface $product
-     *
-     * @return bool
+     * @return string
      */
-    public function hasProduct(ProductInterface $product);
+    public function getName();
 
     /**
-     * @param ProductInterface $product
+     * @param string $name
      */
-    public function addProduct(ProductInterface $product);
-
-    /**
-     * @param ProductInterface $product
-     */
-    public function removeProduct(ProductInterface $product);
+    public function setName($name);
 }

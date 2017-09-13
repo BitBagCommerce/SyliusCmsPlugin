@@ -10,6 +10,7 @@
 
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
+use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
 
 /**
@@ -17,4 +18,38 @@ use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
  */
 final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlocksWithTypeCount($type)
+    {
+        $tableAccessor = $this->getTableAccessor();
+        $table = $this->getElement('table');
+
+        return count($tableAccessor->getRowsWithFields($table, ['type' => $type]));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeBlock($code)
+    {
+        $this->deleteResourceOnPage(['code' => $code]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockTypes()
+    {
+        $blockTypes = $this->getDocument()->findAll('css', '#create-block-dropdown a');
+        $result = [];
+
+        /** @var NodeElement $blockType */
+        foreach ($blockTypes as $blockType) {
+            $result[] = $blockType->getText();
+        }
+
+        return $result;
+    }
 }

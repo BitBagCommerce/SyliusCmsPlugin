@@ -8,8 +8,14 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
             generator:
                 strategy: AUTO
     fields:
-        content:
+        name:
             type: string
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        link:
+            type: text
             nullable: true
     oneToOne:
         image:

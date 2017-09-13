@@ -1,0 +1,27 @@
+BitBag\CmsPlugin\Entity\PageTranslation:
+    type: entity
+    table: bitbag_cms_page_translation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        slug:
+            type: string
+            nullable: true
+        name:
+            type: string
+            nullable: true
+        metaKeywords:
+            type: string
+            nullable: true
+            length: 1000
+        metaDescription:
+            type: string
+            nullable: true
+            length: 2000
+        content:
+            type: text
+            nullable: true

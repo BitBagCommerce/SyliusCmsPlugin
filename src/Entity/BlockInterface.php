@@ -19,9 +19,9 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
  */
 interface BlockInterface extends ResourceInterface, TranslatableInterface
 {
-    const  TEXT_BLOCK_TYPE = 'text';
-
-    const  IMAGE_BLOCK_TYPE = 'image';
+    const TEXT_BLOCK_TYPE = 'text';
+    const IMAGE_BLOCK_TYPE = 'image';
+    const HTML_BLOCK_TYPE = 'html';
 
     /**
      * @return string
@@ -46,6 +46,16 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
     /**
      * @return string
      */
+    public function getName();
+
+    /**
+     * @param string $name
+     */
+    public function setName($name);
+
+    /**
+     * @return string
+     */
     public function getContent();
 
     /**
@@ -63,4 +73,13 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
      */
     public function setImage(ImageInterface $image);
 
+    /**
+     * @return string
+     */
+    public function getLink();
+
+    /**
+     * @param string $link
+     */
+    public function setLink($link);
 }

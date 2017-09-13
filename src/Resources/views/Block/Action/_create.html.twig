@@ -1,4 +1,4 @@
-<div class="ui labeled icon top right floating dropdown button primary link">
+<div id="create-block-dropdown" class="ui labeled icon top right floating dropdown button primary link">
     <i class="plus icon"></i>
     <span class="text">{{ 'sylius.ui.create'|trans }}</span>
     <div class="menu">
@@ -7,11 +7,14 @@
             {{ 'sylius.ui.type'|trans }}
         </div>
         <div class="divider"></div>
-        <a href="{{ path('bitbag_admin_block_create', { 'type': 'text' }) }}" id="text" class="item">
-            {{ 'bitbag.ui.cms_plugin.text_block'|trans }}
+        <a href="{{ path('bitbag_admin_block_create', { 'type': 'text' }) }}" class="item">
+            {{ 'bitbag.cms.text_block'|trans }}
         </a>
-        <a href="{{ path('bitbag_admin_block_create', { 'type': 'image' }) }}" id="text" class="item">
-            {{ 'bitbag.ui.cms_plugin.image_block'|trans }}
+        <a href="{{ path('bitbag_admin_block_create', { 'type': 'html' }) }}" class="item">
+            {{ 'bitbag.cms.html_block'|trans }}
+        </a>
+        <a href="{{ path('bitbag_admin_block_create', { 'type': 'image' }) }}" class="item">
+            {{ 'bitbag.cms.image_block'|trans }}
         </a>
     </div>
 </div>

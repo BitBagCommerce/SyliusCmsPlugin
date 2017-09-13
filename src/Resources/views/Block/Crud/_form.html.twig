@@ -4,11 +4,13 @@
     <div class="column">
         <div class="ui segment">
             {{ form_errors(form) }}
-            <div>
-                {{ form_row(form.code) }}
-            </div>
+            {{ form_row(form.code) }}
+            {{ form_row(form.enabled) }}
         </div>
     </div>
+</div>
+
+<div class="ui one column stackable grid">
     <div class="column">
         {{ translationForm(form.translations, resource) }}
     </div>

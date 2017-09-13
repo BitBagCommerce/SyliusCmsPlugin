@@ -1,0 +1,11 @@
+sylius_resource:
+    resources:
+        bitbag.page:
+            driver: doctrine/orm
+            classes:
+                model: BitBag\CmsPlugin\Entity\Page
+                form: BitBag\CmsPlugin\Form\Type\PageType
+                repository: BitBag\CmsPlugin\Repository\PageRepository
+            translation:
+                classes:
+                    model: BitBag\CmsPlugin\Entity\PageTranslation

@@ -1,3 +1,29 @@
-bitbag_admin_cms_plugin:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/block.yml"
+bitbag_cms_admin_block:
+    resource: '@BitBagCmsPlugin/Resources/config/routing/block.yml'
     prefix: /admin
+
+bitbag_cms_admin_page:
+    resource: '@BitBagCmsPlugin/Resources/config/routing/page.yml'
+    prefix: /admin
+
+bitbag_ajax_generate_page_slug:
+    path: /admin/page/generate-slug
+    methods: [GET]
+    defaults:
+        _controller: BitBagCmsPlugin:PageSlug:generate
+
+bitbag_cms_shop_page_show:
+    path: /{_locale}/page/{slug}
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$    
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.page:showAction
+        _sylius:
+            template: BitBagCmsPlugin:Page:show.html.twig
+            repository:
+                method: findOneByChannelAndSlug
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - $slug

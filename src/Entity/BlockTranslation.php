@@ -26,12 +26,38 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * @var string
      */
+    protected $name = null;
+
+    /**
+     * @var string
+     */
     protected $content;
 
     /**
      * @var ImageInterface
      */
     protected $image;
+
+    /**
+     * @var string
+     */
+    protected $link;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
     /**
      * {@inheritdoc}
@@ -73,5 +99,21 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
         $image->setOwner($this);
 
         $this->image = $image;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
     }
 }

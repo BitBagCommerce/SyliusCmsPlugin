@@ -11,15 +11,18 @@
 namespace BitBag\CmsPlugin\Form\Type;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Form\Type\Translation\ImageTranslationType;
-use BitBag\CmsPlugin\Form\Type\Translation\TextTranslationType;
+use BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
+use BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
+use BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class BlockType extends AbstractResourceType
 {
@@ -32,24 +35,49 @@ final class BlockType extends AbstractResourceType
         $block = $builder->getData();
 
         $builder
-            ->add('code', TextType::class,[
-                'label' => 'bitbag.form.code',
-                'disabled' => $block->getCode() !== null,
+            ->add('code', TextType::class, [
+                'label' => 'bitbag.cms.form.code',
+                'disabled' => null !== $block->getCode(),
+            ])
+            ->add('enabled', CheckboxType::class, [
+                'label' => 'bitbag.cms.form.enabled',
             ])
         ;
 
+        $this->resolveBlockType($block, $builder);
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     * @param BlockInterface $block
+     */
+    private function resolveBlockType(BlockInterface $block, FormBuilderInterface $builder)
+    {
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.form.contents',
-                'entry_type' => TextTranslationType::class,
+                'label' => 'bitbag.cms.form.contents',
+                'entry_type' => TextBlockTranslationType::class,
             ]);
+
+            return;
+        }
+
+        if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
+            $builder->add('translations', ResourceTranslationsType::class, [
+                'label' => 'bitbag.cms.form.contents',
+                'entry_type' => HtmlBlockTranslationType::class,
+            ]);
+
+            return;
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.form.images',
-                'entry_type' => ImageTranslationType::class,
+                'label' => 'bitbag.cms.form.images',
+                'entry_type' => ImageBlockTranslationType::class,
             ]);
+
+            return;
         }
     }
 

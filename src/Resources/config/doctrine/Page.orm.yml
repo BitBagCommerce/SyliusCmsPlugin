@@ -1,0 +1,26 @@
+BitBag\CmsPlugin\Entity\Page:
+    type: entity
+    table: bitbag_cms_page
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: 250
+        enabled:
+            type: boolean
+    manyToMany:
+        products:
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
+            joinTable:
+                name: bitbag_cms_page_products
+                joinColumns:
+                    page_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id

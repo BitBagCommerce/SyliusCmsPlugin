@@ -25,9 +25,25 @@ interface BlockRepositoryInterface extends RepositoryInterface
     public function createListQueryBuilder();
 
     /**
-     * @param $code
+     * @param string $code
      *
      * @return BlockInterface|null
      */
     public function findOneByCode($code);
+
+    /**
+     * @param string $code
+     * @param string $content
+     *
+     * @return BlockInterface|null
+     */
+    public function findOneByCodeAndContent($code, $content);
+
+    /**
+     * @param string $type
+     * @param string $content
+     *
+     * @return BlockInterface|null
+     */
+    public function findOneByTypeAndContent($type, $content);
 }

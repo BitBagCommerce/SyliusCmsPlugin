@@ -1,5 +1,6 @@
 imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/grids/block.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/page.yml" }
 
 sylius_grid:
     templates:

@@ -2,3 +2,15 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
     properties:
         image:
             - Valid: ~
+        name:
+            - Length:
+                min: 2
+                max: 250
+                minMessage: bitbag.cms.block.name.min_length
+                maxMessage: bitbag.cms.block.name.max_length
+                groups: [bitbag]
+        content:
+            - Length:
+                min: 2
+                minMessage: bitbag.cms.block.content.min_length
+                groups: [bitbag]

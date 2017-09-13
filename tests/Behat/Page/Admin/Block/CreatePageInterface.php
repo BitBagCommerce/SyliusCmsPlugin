@@ -17,4 +17,8 @@ use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
  */
 interface CreatePageInterface extends BaseCreatePageInterface
 {
+    /**
+     * @param string $code
+     */
+    public function fillCode($code);
 }

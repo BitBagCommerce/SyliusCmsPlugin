@@ -1,2 +1,3 @@
 imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/sylius_resource/block.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/sylius_resource/page.yml" }

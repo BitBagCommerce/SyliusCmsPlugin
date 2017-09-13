@@ -10,17 +10,21 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 class Page implements PageInterface
 {
-    use TranslatableTrait;
+    use ToggleableTrait;
+    use ProductAssociationTrait;
+    use TranslatableTrait {
+        __construct as protected initializeTranslationsCollection;
+    }
 
     /**
      * @var int
@@ -30,31 +34,12 @@ class Page implements PageInterface
     /**
      * @var string
      */
-    protected $slug;
-
-    /**
-     * @var string
-     */
-    protected $metaKeywords;
-
-    /**
-     * @var string
-     */
-    protected $metaDescription;
-
-    /**
-     * @var string
-     */
-    protected $content;
-
-    /**
-     * @var ArrayCollection|ProductInterface[]
-     */
-    protected $products;
+    protected $code;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->initializeTranslationsCollection();
+        $this->initializeProductsCollection();
     }
 
     /**
@@ -66,7 +51,7 @@ class Page implements PageInterface
     }
 
     /**
-     * @param mixed $id
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -76,17 +61,33 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getSlug()
+    public function getCode()
     {
-        return $this->slug;
+        return $this->code;
     }
 
     /**
-     * @param mixed $slug
+     * {@inheritdoc}
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlug()
+    {
+        return $this->getPageTranslation()->getSlug();
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->getPageTranslation()->setSlug($slug);
     }
 
     /**
@@ -94,15 +95,15 @@ class Page implements PageInterface
      */
     public function getMetaKeywords()
     {
-        return $this->metaKeywords;
+        return $this->getPageTranslation()->getMetaKeywords();
     }
 
     /**
-     * @param mixed $metaKeywords
+     * {@inheritdoc}
      */
     public function setMetaKeywords($metaKeywords)
     {
-        $this->metaKeywords = $metaKeywords;
+        $this->getPageTranslation()->setMetaKeywords($metaKeywords);
     }
 
     /**
@@ -110,7 +111,7 @@ class Page implements PageInterface
      */
     public function getMetaDescription()
     {
-        return $this->metaDescription;
+        return $this->getPageTranslation()->getMetaDescription();
     }
 
     /**
@@ -118,7 +119,7 @@ class Page implements PageInterface
      */
     public function setMetaDescription($metaDescription)
     {
-        $this->metaDescription = $metaDescription;
+        $this->getPageTranslation()->setMetaDescription($metaDescription);
     }
 
     /**
@@ -140,35 +141,17 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getProducts()
+    public function getName()
     {
-        return $this->products;
+        return $this->getPageTranslation()->getName();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasProduct(ProductInterface $product)
+    public function setName($name)
     {
-        return $this->products->contains($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addProduct(ProductInterface $product)
-    {
-        $this->products->add($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeProduct(ProductInterface $product)
-    {
-        if (true === $this->hasProduct($product)) {
-            $this->products->removeElement($product);
-        }
+        $this->getPageTranslation()->setName($name);
     }
 
     /**

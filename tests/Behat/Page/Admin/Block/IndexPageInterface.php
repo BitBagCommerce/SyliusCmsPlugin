@@ -17,5 +17,17 @@ use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
  */
 interface IndexPageInterface extends BaseIndexPageInterface
 {
+    /**
+     * @param string $type
+     *
+     * @return int
+     */
+    public function getBlocksWithTypeCount($type);
 
+    /**
+     * @param string $code
+     */
+    public function removeBlock($code);
+
+    public function getBlockTypes();
 }

@@ -1,0 +1,20 @@
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationFormWithSlug %}
+
+<div class="ui two column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            {{ form_errors(form) }}
+            <div>
+                {{ form_row(form.code) }}
+                {{ form_row(form.enabled) }}
+                {{ form_row(form.products) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui one column stackable grid">
+    <div class="column">
+        {{ translationFormWithSlug(form.translations, '@BitBagCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
+    </div>
+</div>

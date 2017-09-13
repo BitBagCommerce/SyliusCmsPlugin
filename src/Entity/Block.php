@@ -11,6 +11,7 @@
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
+use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
@@ -19,6 +20,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class Block implements BlockInterface
 {
+    use ToggleableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -36,28 +38,12 @@ class Block implements BlockInterface
     /**
      * @var string
      */
-    protected $type;
+    protected $code;
 
     /**
      * @var string
      */
-    protected $code;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
+    protected $type;
 
     /**
      * {@inheritdoc}
@@ -78,9 +64,41 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->getBlockTranslation()->getName();
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->getBlockTranslation()->setName($name);
     }
 
     /**
@@ -112,7 +130,23 @@ class Block implements BlockInterface
      */
     public function setImage(ImageInterface $image)
     {
-        $this->getBlockTranslation()->setContent($image);
+        $this->getBlockTranslation()->setImage($image);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink()
+    {
+        return $this->getBlockTranslation()->getLink();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($link)
+    {
+        $this->getBlockTranslation()->setLink($link);
     }
 
     /**

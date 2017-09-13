@@ -11,11 +11,12 @@
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
-
+    use GenericBlock;
 }
