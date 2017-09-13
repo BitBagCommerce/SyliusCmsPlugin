@@ -1,0 +1,7 @@
+{% set type = data.type %}
+
+{% if 'text' == type or 'html' == type %}
+    {{ data.content|length > 25 ? data.content|slice(0, 25) ~ '...' : data.content  }}
+{% elseif 'image' == type %}
+    <img src="{{ data.image.path|imagine_filter(filter|default('sylius_admin_product_thumbnail')) }}" class="ui bordered image"/>
+{% endif %}

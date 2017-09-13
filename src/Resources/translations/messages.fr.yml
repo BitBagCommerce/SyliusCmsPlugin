@@ -11,6 +11,7 @@ bitbag:
         blocks_header: Blocs
         blocks_subheader: Gère vos blocs
         text_block: Bloc de texte
+        html_block: Bloc de html
         image_block: Bloc d'image
         pages_header: Page
         pages_subheader: Gérez vos pages
@@ -22,7 +23,9 @@ bitbag:
         content: Contenu
         form:
             code: Code
+            enabled: Activée
+            name: Prénom
             contents: Contenu
             content: Content
             images: Images
-            enabled: Activée
+            link: Link

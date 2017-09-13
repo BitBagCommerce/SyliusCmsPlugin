@@ -8,13 +8,13 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 
-use Sylius\Behat\Page\Shop\HomePage as BaseHomePage;
+use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class HomePage extends BaseHomePage implements HomePageInterface
+interface UpdatePageInterface extends BaseUpdatePageInterface
 {
 }

@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
@@ -17,6 +19,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 class Block implements BlockInterface
 {
@@ -48,7 +51,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -56,7 +59,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setCode($code)
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -64,7 +67,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -72,7 +75,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
@@ -80,15 +83,31 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
+     * @return string
+     */
+    public function getName(): ?string
+    {
+        return $this->getBlockTranslation()->getName();
+    }
+
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->getBlockTranslation()->setName($name);
+    }
+
+    /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->getBlockTranslation()->getContent();
     }
@@ -96,7 +115,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setContent($content)
+    public function setContent(?string $content): void
     {
         $this->getBlockTranslation()->setContent($content);
     }
@@ -104,7 +123,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getImage()
+    public function getImage(): ?ImageInterface
     {
         return $this->getBlockTranslation()->getImage();
     }
@@ -112,15 +131,31 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setImage(ImageInterface $image)
+    public function setImage(?ImageInterface $image): void
     {
         $this->getBlockTranslation()->setImage($image);
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getLink(): ?string
+    {
+        return $this->getBlockTranslation()->getLink();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink(?string $link): void
+    {
+        $this->getBlockTranslation()->setLink($link);
+    }
+
+    /**
      * @return BlockTranslationInterface|TranslationInterface
      */
-    protected function getBlockTranslation()
+    protected function getBlockTranslation(): ?TranslationInterface
     {
         return $this->getTranslation();
     }
@@ -128,7 +163,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): BlockTranslation
     {
         return new BlockTranslation();
     }

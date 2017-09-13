@@ -1,11 +1,11 @@
-bitbag_admin_cms_plugin_block_resource:
+bitbag_cms_admin_block_resource:
     resource: |
         alias: bitbag.block
         section: admin
         templates: SyliusAdminBundle:Crud
         except: ['show']
         redirect: update
-        grid: bitbag_admin_cms_plugin_block
+        grid: bitbag_cms_admin_block
         permission: true
         vars:
             all:
@@ -44,4 +44,4 @@ bitbag_admin_block_create:
                     parameters:
                         type: $type
     requirements:
-        type: text|image
+        type: text|html|image

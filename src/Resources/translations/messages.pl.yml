@@ -11,18 +11,21 @@ bitbag:
         blocks_header: Bloki
         blocks_subheader: Zarządzaj blokami
         text_block: Blok tekstowy
-        image_block: Blok obrazkowy
-        pages_header: Strona
+        html_block: Blok HTML
+        image_block: Blok zdjęciowy
+        pages_header: Strony
         pages_subheader: Zarządzaj swoimi stronami
         products: Produkty
-        name: Naazwa
+        name: Nazwa
         slug: Slug
         meta_keywords: Słowa kluczowe
-        meta_description: Opis
+        meta_description: Opis sekcji meta
         content: Treść
         form:
             code: Kod
+            enabled: Włączone
+            name: Nazwa
             contents: Treści
             content: Treść
-            images: Obrazki
-            enabled: Włączona
+            images: Zdjęcia
+            link: Link

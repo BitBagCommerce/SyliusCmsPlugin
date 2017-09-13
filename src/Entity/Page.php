@@ -10,8 +10,6 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -23,6 +21,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Page implements PageInterface
 {
     use ToggleableTrait;
+    use ProductAssociationTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -37,15 +36,10 @@ class Page implements PageInterface
      */
     protected $code;
 
-    /**
-     * @var ArrayCollection|ProductInterface[]
-     */
-    protected $products;
-
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->products = new ArrayCollection();
+        $this->initializeProductsCollection();
     }
 
     /**
@@ -62,6 +56,22 @@ class Page implements PageInterface
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
     }
 
     /**
@@ -131,35 +141,17 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getProducts()
+    public function getName()
     {
-        return $this->products;
+        return $this->getPageTranslation()->getName();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasProduct(ProductInterface $product)
+    public function setName($name)
     {
-        return $this->products->contains($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addProduct(ProductInterface $product)
-    {
-        $this->products->add($product);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeProduct(ProductInterface $product)
-    {
-        if (true === $this->hasProduct($product)) {
-            $this->products->removeElement($product);
-        }
+        $this->getPageTranslation()->setName($name);
     }
 
     /**
@@ -176,37 +168,5 @@ class Page implements PageInterface
     protected function createTranslation()
     {
         return new PageTranslation();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->getPageTranslation()->getName();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->getPageTranslation()->setName($name);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
     }
 }

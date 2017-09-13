@@ -15,17 +15,9 @@ use Sylius\Behat\Behaviour\DocumentAccessor;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-trait Block
+trait GenericBlock
 {
     use DocumentAccessor;
-
-    /**
-     * @param string $code
-     */
-    public function fillCode($code)
-    {
-        $this->getDocument()->fillField('Code', $code);
-    }
 
     /**
      * @param string $image
@@ -38,6 +30,22 @@ trait Block
     }
 
     /**
+     * @param string $name
+     */
+    public function fillName($name)
+    {
+        $this->getDocument()->fillField('Name', $name);
+    }
+
+    /**
+     * @param string $link
+     */
+    public function fillLink($link)
+    {
+        $this->getDocument()->fillField('Link', $link);
+    }
+
+    /**
      * @param string $content
      */
     public function fillContent($content)
@@ -47,6 +55,6 @@ trait Block
 
     public function disable()
     {
-        $this->getDocument()->uncheckField("Enabled");
+        $this->getDocument()->uncheckField('Enabled');
     }
 }

@@ -14,4 +14,4 @@ Feature: Adding image block
         When I go to the update "bitbag_quote" block page
         And I disable it
         And I update it
-        Then block with "bitbag_quoute" should not appear in the store
+        Then block with "bitbag_quote" should not appear in the store

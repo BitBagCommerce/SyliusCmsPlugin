@@ -13,6 +13,7 @@ namespace spec\BitBag\CmsPlugin\EventListener;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\CmsPlugin\EventListener\ImageBlockUploadListener;
+use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -65,7 +66,7 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
     {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn('image');
-        $block->getTranslations()->willReturn([$blockTranslation]);
+        $block->getTranslations()->willReturn(new ArrayCollection([$blockTranslation->getWrappedObject()]));
         $blockTranslation->getImage()->willReturn($image);
         $image->hasFile()->willReturn(true);
 

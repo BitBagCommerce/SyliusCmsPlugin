@@ -22,6 +22,16 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
     /**
      * @return string
      */
+    public function getName();
+
+    /**
+     * @param string $name
+     */
+    public function setName($name);
+
+    /**
+     * @return string
+     */
     public function getContent();
 
     /**
@@ -38,4 +48,14 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
      * @param ImageInterface $image
      */
     public function setImage(ImageInterface $image);
+
+    /**
+     * @return string
+     */
+    public function getLink();
+
+    /**
+     * @param string $link
+     */
+    public function setLink($link);
 }

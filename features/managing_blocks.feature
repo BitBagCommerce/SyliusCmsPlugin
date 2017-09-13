@@ -2,19 +2,19 @@
 Feature: Managing cms blocks
     In order to present some dynamic data in the store
     As an Administrator
-    I want to be able to display, create, edit and remove existing blocks.
+    I want to be able to display and remove existing blocks.
 
     Background:
         Given the store operates on a single channel in "United States"
         Given I am logged in as an administrator
 
     @ui
-    Scenario: Seeing dynamic blocks
-        Given there are "2" dynamic content blocks with "image" type
-        And there are "3" dynamic content blocks with "text" type
+    Scenario: Seeing dynamic blocks in admin panel
+        Given there are 2 dynamic content blocks with "image" type
+        And there are 3 dynamic content blocks with "text" type
         When I go to the cms blocks page
-        Then I should see "2" dynamic content blocks with "image" type
-        And I should see "3" dynamic content blocks with "text" type
+        Then I should see 2 dynamic content blocks with "image" type
+        And I should see 3 dynamic content blocks with "text" type
 
     @ui
     Scenario: Removing single block
@@ -27,4 +27,4 @@ Feature: Managing cms blocks
     @ui
     Scenario: Being able to chose which block to create
         When I go to the cms blocks page
-        Then I should be able to select between "Text block" and "Image block" block types under Create button
+        Then I should be able to select between "Text block", "HTML block" and "Image block" block types under Create button

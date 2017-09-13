@@ -1,10 +1,20 @@
 services:
-    bitbag.cms_plugin.twig_extension.block:
-        class: BitBag\CmsPlugin\Twig\Extension\BlockExtension
+    bitbag.cms_plugin.twig.extension.block:
+        class: BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension
         public: false
         arguments:
             - '@bitbag.repository.block'
-            - '@service_container'
+            - '@logger'
+
+        tags:
+            - { name: twig.extension }
+
+    bitbag.cms_plugin.twig.extension.page_link_by_code:
+        class: BitBag\CmsPlugin\Twig\Extension\RenderPageLinkByCodeExtension
+        public: false
+        arguments:
+            - '@bitbag.repository.page'
+            - '@logger'
 
         tags:
             - { name: twig.extension }

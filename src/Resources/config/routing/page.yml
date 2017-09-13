@@ -1,10 +1,10 @@
-bitbag_admin_cms_plugin_page_resource:
+bitbag_cms_admin_page_resource:
     resource: |
         alias: bitbag.page
         section: admin
         templates: BitBagCmsPlugin:Page
         redirect: update
-        grid: bitbag_admin_cms_plugin_page
+        grid: bitbag_cms_admin_page
         except: ['show']
         permission: true
         vars:

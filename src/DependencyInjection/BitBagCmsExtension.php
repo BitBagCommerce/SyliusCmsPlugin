@@ -10,22 +10,18 @@
 
 namespace BitBag\CmsPlugin\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class Configuration implements ConfigurationInterface
+final class BitBagCmsExtension extends Extension
 {
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function load(array $configs, ContainerBuilder $container)
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('bitbag_cms');
-
-        return $treeBuilder;
     }
 }

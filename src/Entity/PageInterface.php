@@ -10,8 +10,6 @@
 
 namespace BitBag\CmsPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
@@ -61,7 +59,7 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
      * @param string $metaDescription
      */
     public function setMetaDescription($metaDescription);
-    
+
     /**
      * @return string
      */
@@ -71,28 +69,6 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
      * @param string $content
      */
     public function setContent($content);
-    
-    /**
-     * @return ArrayCollection|ProductInterface[]
-     */
-    public function getProducts();
-
-    /**
-     * @param ProductInterface $product
-     *
-     * @return bool
-     */
-    public function hasProduct(ProductInterface $product);
-
-    /**
-     * @param ProductInterface $product
-     */
-    public function addProduct(ProductInterface $product);
-
-    /**
-     * @param ProductInterface $product
-     */
-    public function removeProduct(ProductInterface $product);
 
     /**
      * @return string

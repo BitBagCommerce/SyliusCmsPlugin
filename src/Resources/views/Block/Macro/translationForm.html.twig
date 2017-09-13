@@ -12,7 +12,7 @@
                 <div class="ui content{% if 0 == loop.index0 %} active{% endif %}">
                     {% for field in translationForm %}
 
-                        {% if resource.type == 'image' %}
+                        {% if 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}
                         {% else %}
                             {{ form_row(field) }}

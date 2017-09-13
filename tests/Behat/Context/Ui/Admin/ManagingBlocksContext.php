@@ -8,11 +8,11 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui;
+namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
@@ -20,7 +20,7 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\Block;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
@@ -29,7 +29,7 @@ use Webmozart\Assert\Assert;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BlockContext implements Context
+final class ManagingBlocksContext implements Context
 {
     /**
      * @var IndexPageInterface
@@ -47,11 +47,6 @@ final class BlockContext implements Context
     private $updatePage;
 
     /**
-     * @var SharedStorageInterface
-     */
-    private $sharedStorage;
-
-    /**
      * @var CurrentPageResolverInterface
      */
     private $currentPageResolver;
@@ -60,6 +55,11 @@ final class BlockContext implements Context
      * @var NotificationCheckerInterface
      */
     private $notificationChecker;
+
+    /**
+     * @var SharedStorageInterface
+     */
+    private $sharedStorage;
 
     /**
      * @var BlockRepositoryInterface
@@ -111,19 +111,30 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I go to the create image block page
+     * @When I go to the create :blockType block page
      */
-    public function iGoToTheCreateImageBlockPage()
+    public function iGoToTheCreateImageBlockPage($blockType)
     {
-        $this->createPage->open(['type' => BlockInterface::IMAGE_BLOCK_TYPE]);
-    }
 
-    /**
-     * @When I go to the create text block page
-     */
-    public function iGoToTheCreateTextBlockPage()
-    {
-        $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
+        if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
+
+            return;
+        }
+
+        if (BlockInterface::HTML_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::HTML_BLOCK_TYPE]);
+
+            return;
+        }
+
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $blockType) {
+            $this->createPage->open(['type' => BlockInterface::IMAGE_BLOCK_TYPE]);
+
+            return;
+        }
+
+        throw new TemplateTypeNotFound($blockType);
     }
 
     /**
@@ -142,6 +153,22 @@ final class BlockContext implements Context
     public function iFillTheCodeWith($code)
     {
         $this->resolveCurrentPage()->fillCode($code);
+    }
+
+    /**
+     * @When I fill the name with :name
+     */
+    public function iFillTheNameWith($name)
+    {
+        $this->resolveCurrentPage()->fillName($name);
+    }
+
+    /**
+     * @When I fill the link with :link
+     */
+    public function iFillTheLinkWith($link)
+    {
+        $this->resolveCurrentPage()->fillLink($link);
     }
 
     /**
@@ -185,7 +212,7 @@ final class BlockContext implements Context
      */
     public function iAddIt()
     {
-        $this->createPage->add();
+        $this->createPage->create();
     }
 
     /**
@@ -193,7 +220,7 @@ final class BlockContext implements Context
      */
     public function iUpdateIt()
     {
-        $this->updatePage->update();
+        $this->updatePage->saveChanges();
     }
 
     /**
@@ -238,7 +265,7 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then block with :code code and :content content should be in the store
+     * @Then block with :code code and :content content should exist in the store
      */
     public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
     {
@@ -248,33 +275,48 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then block with :type type and :content content should be in the store
+     * @Then block with :type type and :content content should exist in the store
      */
     public function blockWithTypeAndContentShouldBeInTheStore($type, $content)
     {
         $block = $this->blockRepository->findOneByTypeAndContent($type, $content);
+        $this->sharedStorage->set('block', $block);
 
         Assert::isInstanceOf($block, BlockInterface::class);
     }
 
     /**
-     * @Then image block with :code code and :image image should be in the store
+     * @Then this block should also have :name name and :link link
+     * @Then this block should also have :name name
+     */
+    public function thisBlockShouldAlsoHaveNameAndLink($name, $link = null)
+    {
+        /** @var BlockInterface $block */
+        $block = $this->sharedStorage->get('block');
+
+        Assert::eq($name, $block->getName());
+        Assert::eq($link, $block->getLink());
+    }
+
+    /**
+     * @Then image block with :code code and :image image should exist in the store
      */
     public function imageBlockWithTypeAndImageShouldBeInTheStore($code, $image)
     {
         $block = $this->blockRepository->findOneByCode($code);
         $blockImage = $block->getImage();
         $this->entityManager->refresh($blockImage);
+        $this->sharedStorage->set('block', $block);
 
         Assert::eq(BlockInterface::IMAGE_BLOCK_TYPE, $block->getType());
         Assert::eq(
-            file_get_contents(__DIR__ . '/../../../Application/web/media/image/' . $block->getImage()->getPath()),
-            file_get_contents(__DIR__ . '/../../Resources/images/' . $image)
+            file_get_contents(__DIR__ . '/../../../../Application/web/media/image/' . $block->getImage()->getPath()),
+            file_get_contents(__DIR__ . '/../../../Resources/images/' . $image)
         );
     }
 
     /**
-     * @Then I should be able to select between :firstBlockType and :secondBlockType block types under Create button
+     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
      */
     public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(...$blockTypes)
     {
@@ -296,7 +338,7 @@ final class BlockContext implements Context
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|Block|SymfonyPageInterface
+     * @return CreatePageInterface|UpdatePageInterface|GenericBlock|SymfonyPageInterface
      */
     private function resolveCurrentPage()
     {

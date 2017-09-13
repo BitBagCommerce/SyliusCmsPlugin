@@ -8,14 +8,14 @@
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 
-use Sylius\Behat\Page\Shop\HomePageInterface as BaseHomePageInterface;
+use Behat\Mink\Element\NodeElement;
+use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface HomePageInterface extends BaseHomePageInterface
+final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
-
 }

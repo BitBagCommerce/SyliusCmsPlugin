@@ -21,8 +21,6 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 final class BlockTranslationSpec extends ObjectBehavior
 {
-    const CONTENT = "Plata o plomo";
-
     function it_is_initializable()
     {
         $this->shouldHaveType(ResourceInterface::class);
@@ -41,8 +39,11 @@ final class BlockTranslationSpec extends ObjectBehavior
 
     function it_allows_access_via_properties(ImageInterface $image)
     {
-        $this->setContent(self::CONTENT);
-        $this->getContent()->shouldReturn("Plata o plomo");
+        $this->setName('Escobar favorite quote');
+        $this->getName()->shouldReturn('Escobar favorite quote');
+
+        $this->setContent('Plata o plomo');
+        $this->getContent()->shouldReturn('Plata o plomo');
 
         $this->setImage($image);
         $this->getImage()->shouldReturn($image);

@@ -10,14 +10,15 @@
 
 namespace BitBag\CmsPlugin\Form\Type\Translation;
 
-use BitBag\CmsPlugin\Form\Type\ImageType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ImageTranslationType extends AbstractResourceType
+final class HtmlBlockTranslationType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -25,8 +26,12 @@ final class ImageTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', ImageType::class, [
-                'label' => false,
+            ->add('name', TextType::class, [
+                'label' => 'bitbag.cms.form.name',
+                'required' => false,
+            ])
+            ->add('content', TextareaType::class, [
+                'label' => 'bitbag.cms.form.content',
             ])
         ;
     }
@@ -36,6 +41,6 @@ final class ImageTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix()
     {
-        return 'bitbag_cms_plugin_image_translation';
+        return 'bitbag_cms_plugin_text_translation';
     }
 }

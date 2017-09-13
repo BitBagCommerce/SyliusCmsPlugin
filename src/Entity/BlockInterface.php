@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
@@ -16,49 +18,71 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 interface BlockInterface extends ResourceInterface, TranslatableInterface
 {
-    const  TEXT_BLOCK_TYPE = 'text';
-    const  IMAGE_BLOCK_TYPE = 'image';
+    const TEXT_BLOCK_TYPE = 'text';
+    const IMAGE_BLOCK_TYPE = 'image';
+    const HTML_BLOCK_TYPE = 'html';
 
     /**
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * @param string $type
      */
-    public function setType($type);
+    public function setType(string $type): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCode();
+    public function getCode(): ?string;
 
     /**
-     * @param string $code
+     * @param string|null $code
      */
-    public function setCode($code);
+    public function setCode(?string $code): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContent();
+    public function getName(): ?string;
 
     /**
-     * @param string $content
+     * @param string|null $name
      */
-    public function setContent($content);
+    public function setName(?string $name): void;
+
+    /**
+     * @return string:null
+     */
+    public function getContent(): ?string;
+
+    /**
+     * @param string $content|string
+     */
+    public function setContent(?string $content): void;
 
     /**
      * @return ImageInterface
      */
-    public function getImage();
+    public function getImage(): ?ImageInterface;
 
     /**
      * @param ImageInterface $image
      */
-    public function setImage(ImageInterface $image);
+    public function setImage(?ImageInterface $image): void;
+
+    /**
+     * @return string|null
+     */
+    public function getLink(): ?string;
+
+    /**
+     * @param string|null $link
+     */
+    public function setLink(?string $link): void;
 }
