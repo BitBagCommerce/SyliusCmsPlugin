@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\Image as BaseImage;

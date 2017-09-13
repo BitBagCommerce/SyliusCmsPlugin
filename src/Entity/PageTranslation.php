@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\AbstractTranslation;
@@ -56,15 +58,15 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -72,7 +74,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function setContent($content)
+    public function setContent(?string $content): void
     {
         $this->content = $content;
     }
@@ -80,7 +82,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
@@ -88,7 +90,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function setSlug($slug)
+    public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
     }
@@ -96,7 +98,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -104,7 +106,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -112,7 +114,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function getMetaKeywords()
+    public function getMetaKeywords(): ?string
     {
         return $this->metaKeywords;
     }
@@ -120,7 +122,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function setMetaKeywords($metaKeywords)
+    public function setMetaKeywords(?string $metaKeywords): void
     {
         $this->metaKeywords = $metaKeywords;
     }
@@ -128,7 +130,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function getMetaDescription()
+    public function getMetaDescription(): ?string
     {
         return $this->metaDescription;
     }
@@ -136,7 +138,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /**
      * {@inheritdoc}
      */
-    public function setMetaDescription($metaDescription)
+    public function setMetaDescription(?string $metaDescription): void
     {
         $this->metaDescription = $metaDescription;
     }

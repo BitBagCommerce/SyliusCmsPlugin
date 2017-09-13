@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Menu;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
@@ -20,7 +22,7 @@ final class ContentManagementMenuBuilder
     /**
      * @param MenuBuilderEvent $menuBuilderEvent
      */
-    public function buildMenu(MenuBuilderEvent $menuBuilderEvent)
+    public function buildMenu(MenuBuilderEvent $menuBuilderEvent): void
     {
         $menu = $menuBuilderEvent->getMenu();
 
