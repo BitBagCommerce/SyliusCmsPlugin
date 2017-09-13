@@ -8,8 +8,11 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Factory;
 
+use BitBag\CmsPlugin\Entity\BlockInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
@@ -33,7 +36,7 @@ final class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createWithType($type)
+    public function createWithType(?string $type)
     {
         $block = $this->resourceFactory->createNew();
         $block->setType($type);

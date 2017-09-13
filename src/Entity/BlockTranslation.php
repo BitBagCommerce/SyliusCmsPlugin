@@ -78,7 +78,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getId(): ?int
     {

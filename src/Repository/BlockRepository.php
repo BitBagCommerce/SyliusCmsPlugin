@@ -8,8 +8,12 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Repository;
 
+use BitBag\CmsPlugin\Entity\BlockInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 /**
@@ -21,7 +25,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -29,7 +33,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode($code)
+    public function findOneByCode(string $code): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -43,7 +47,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findOneByCodeAndContent($code, $content)
+    public function findOneByCodeAndContent(string $code, string $content): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -60,7 +64,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findOneByTypeAndContent($type, $content)
+    public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')

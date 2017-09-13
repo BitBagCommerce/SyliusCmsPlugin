@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;

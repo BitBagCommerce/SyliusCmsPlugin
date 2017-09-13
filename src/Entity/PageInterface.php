@@ -63,7 +63,7 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
     public function setMetaDescription(?string $metaDescription): void;
 
     /**
-     * @return string:null
+     * @return string|null
      */
     public function getContent(): ?string;
 

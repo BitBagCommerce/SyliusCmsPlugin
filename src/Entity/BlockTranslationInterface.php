@@ -32,7 +32,7 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
     public function setName(?string $name): void;
 
     /**
-     * @return string:null
+     * @return string|null
      */
     public function getContent(): ?string;
 
@@ -42,7 +42,7 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
     public function setContent(?string $content): void;
 
     /**
-     * @return ImageInterface
+     * @return ImageInterface|null
      */
     public function getImage(): ?ImageInterface;
 

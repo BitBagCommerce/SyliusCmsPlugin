@@ -57,7 +57,7 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
     public function setName(?string $name): void;
 
     /**
-     * @return string:null
+     * @return string|null
      */
     public function getContent(): ?string;
 

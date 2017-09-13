@@ -22,7 +22,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface PageTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
-     * @return string:null
+     * @return string|null
      */
     public function getContent(): ?string;
 

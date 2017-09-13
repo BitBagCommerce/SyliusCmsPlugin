@@ -157,9 +157,10 @@ class Page implements PageInterface
     }
 
     /**
-     * @return PageTranslationInterface|TranslationInterface
+     * @return PageTranslationInterface|TranslationInterface|null
      */
-    protected function getPageTranslation(): ?PageTranslation
+    protected function getPageTranslation(): PageTranslationInterface
+
     {
         return $this->getTranslation();
     }
@@ -167,7 +168,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation(): ?PageTranslation
+    protected function createTranslation(): ?PageTranslationInterface
     {
         return new PageTranslation();
     }
