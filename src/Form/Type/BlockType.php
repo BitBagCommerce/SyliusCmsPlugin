@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Form\Type;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -84,7 +86,7 @@ final class BlockType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'bitbag_cms_plugin_block';
     }

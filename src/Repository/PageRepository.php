@@ -8,8 +8,12 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Repository;
 
+use BitBag\CmsPlugin\Entity\PageInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\ChannelInterface;
 
@@ -21,7 +25,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -29,7 +33,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode($code)
+    public function findOneByCode(string $code): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -43,7 +47,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, $locale, $slug)
+    public function findOneByChannelAndSlug(ChannelInterface $channel, string $locale, string $slug): ?PageInterface
     {
         $page = $this->createQueryBuilder('o')
             ->addSelect('translation')

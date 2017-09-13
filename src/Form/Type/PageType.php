@@ -52,7 +52,7 @@ final class PageType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'bitbag_cms_plugin_page';
     }

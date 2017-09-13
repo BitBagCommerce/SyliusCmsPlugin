@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
@@ -20,42 +22,42 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName($name);
+    public function setName(?string $name): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContent();
+    public function getContent(): ?string;
 
     /**
-     * @param string $content
+     * @param string $content|string
      */
-    public function setContent($content);
+    public function setContent(?string $content): void;
 
     /**
-     * @return ImageInterface
+     * @return ImageInterface|null
      */
-    public function getImage();
+    public function getImage(): ?ImageInterface;
 
     /**
      * @param ImageInterface $image
      */
-    public function setImage(ImageInterface $image);
+    public function setImage(?ImageInterface $image): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLink();
+    public function getLink(): ?string;
 
     /**
-     * @param string $link
+     * @param string|null $link
      */
-    public function setLink($link);
+    public function setLink(?string $link): void;
 }

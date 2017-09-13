@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
@@ -49,7 +51,7 @@ final class PageTranslationType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'bitbag_cms_plugin_page_translation';
     }
