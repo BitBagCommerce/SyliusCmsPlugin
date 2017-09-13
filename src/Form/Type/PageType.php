@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Form\Type;
 
 use BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType;
@@ -26,7 +28,7 @@ final class PageType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $page = $builder->getData();
 

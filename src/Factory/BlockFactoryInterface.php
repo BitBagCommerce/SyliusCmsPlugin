@@ -25,5 +25,5 @@ interface BlockFactoryInterface extends FactoryInterface
      *
      * @return BlockInterface
      */
-    public function createWithType(?string $type);
+    public function createWithType(?string $type): BlockInterface;
 }

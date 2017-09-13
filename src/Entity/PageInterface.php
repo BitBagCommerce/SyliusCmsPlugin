@@ -68,7 +68,7 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
     public function getContent(): ?string;
 
     /**
-     * @param string $content|string
+     * @param string $content |string
      */
     public function setContent(?string $content): void;
 

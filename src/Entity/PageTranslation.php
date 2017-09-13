@@ -62,7 +62,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     {
         return $this->id;
     }
-    
+
     /**
      * {@inheritdoc}
      */

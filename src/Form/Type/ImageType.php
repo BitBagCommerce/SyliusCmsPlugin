@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
