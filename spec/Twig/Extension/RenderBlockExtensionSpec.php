@@ -69,7 +69,10 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     {
         $blockRepository->findOneByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('text');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:textBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Block:textBlock.html.twig', [
+            'block' => $block,
+            'attributes' => [],
+        ])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -82,7 +85,10 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     {
         $blockRepository->findOneByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('html');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Block:htmlBlock.html.twig', [
+            'block' => $block,
+            'attributes' => [],
+        ])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -95,8 +101,31 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     {
         $blockRepository->findOneByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('image');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:imageBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Block:imageBlock.html.twig', [
+            'block' => $block,
+            'attributes' => [],
+        ])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
+    }
+
+    function it_renders_block_with_attributes(
+        BlockRepositoryInterface $blockRepository,
+        BlockInterface $block,
+        \Twig_Environment $twigEnvironment
+    )
+    {
+        $blockRepository->findOneByCode('bitbag')->willReturn($block);
+        $block->getType()->willReturn('image');
+        $twigEnvironment->render('BitBagCmsPlugin:Block:imageBlock.html.twig', [
+            'block' => $block,
+            'attributes' => [
+                'title' => 'Pink Floyd - Money',
+            ],
+        ])->shouldBeCalled();
+
+        $this->renderBlock($twigEnvironment, 'bitbag', [
+            'title' => 'Pink Floyd - Money',
+        ]);
     }
 }
