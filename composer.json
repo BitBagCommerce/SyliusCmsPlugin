@@ -6,7 +6,7 @@
     "require": {
         "php": "^7.1",
 
-        "sylius/sylius": "^1.0"
+        "sylius/sylius": "^1.1@dev"
     },
     "require-dev": {
         "phpspec/phpspec": "^3.2",
@@ -29,6 +29,11 @@
         "psr-4": {
             "Acme\\ExamplePlugin\\": "src/",
             "Tests\\Acme\\ExamplePlugin\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1-dev"
         }
     }
 }
