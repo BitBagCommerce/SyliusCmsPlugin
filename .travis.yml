@@ -14,6 +14,7 @@ cache:
 
 env:
     global:
+        - SYLIUS_BUILD_DIR=etc/build
         - TRAVIS_NODE_VERSION="7.5"
 
 before_install:
@@ -52,3 +53,5 @@ script:
 
     - vendor/bin/behat --strict -vvv --no-interaction
 
+after_failure:
+    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
