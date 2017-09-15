@@ -14,7 +14,7 @@ final class GreetingController extends Controller
      */
     public function staticallyGreetAction(?string $name): Response
     {
-        return new Response(sprintf('<html><body><div id="greeting">%s</div></body></html>', $this->getGreeting($name)));
+        return $this->render('@AcmeExamplePlugin/static_greeting.html.twig', ['greeting' => $this->getGreeting($name)]);
     }
 
     /**
@@ -24,7 +24,7 @@ final class GreetingController extends Controller
      */
     public function dynamicallyGreetAction(?string $name): Response
     {
-        return $this->render('@AcmeExample/dynamic_greeting.html.twig', ['greeting' => $this->getGreeting($name)]);
+        return $this->render('@AcmeExamplePlugin/dynamic_greeting.html.twig', ['greeting' => $this->getGreeting($name)]);
     }
 
     /**
