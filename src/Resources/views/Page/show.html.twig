@@ -22,7 +22,7 @@
         <div>{{ resource.content|raw }}</div>
     </div>
 
-    {% if null != resource.products %}
+    {% if resource.products is not empty %}
         {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': resource.products} %}
     {% endif %}
 {% endblock %}
