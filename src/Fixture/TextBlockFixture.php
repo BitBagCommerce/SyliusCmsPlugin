@@ -71,16 +71,16 @@ final class TextBlockFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-            ->scalarNode('code')->isRequired()->cannotBeEmpty()->end()
-            ->arrayNode('translations')
-            ->prototype('array')
-            ->children()
-            ->scalarNode('locale')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('name')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('content')->isRequired()->cannotBeEmpty()->end()
-            ->end()
-            ->end()
-            ->end()
+                ->scalarNode('code')->isRequired()->cannotBeEmpty()->end()
+                ->arrayNode('translations')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('locale')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('name')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('content')->isRequired()->cannotBeEmpty()->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ;
     }
