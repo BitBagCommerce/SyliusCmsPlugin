@@ -5,3 +5,4 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/factory.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/twig.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/fixture.yml" }

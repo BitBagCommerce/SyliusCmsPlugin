@@ -1,0 +1,22 @@
+services:
+    bitbag.cms_plugin.fixture.html_block:
+        class: BitBag\CmsPlugin\Fixture\HtmlBlockFixture
+        arguments:
+            - '@bitbag.manager.block'
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag.cms_plugin.fixture.text_block:
+        class: BitBag\CmsPlugin\Fixture\TextBlockFixture
+        arguments:
+            - '@bitbag.manager.block'
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag.cms_plugin.fixture.image_block:
+        class: BitBag\CmsPlugin\Fixture\ImageBlockFixture
+        arguments:
+            - '@bitbag.manager.block'
+            - '@sylius.image_uploader'
+        tags:
+            - { name: sylius_fixtures.fixture }
