@@ -13,7 +13,7 @@ default:
             kernel:
                 class: AppKernel
                 path: tests/Application/app/AppKernel.php
-                bootstrap: tests/Application/app/autoload.php
+                bootstrap: vendor/autoload.php
 
         Lakion\Behat\MinkDebugExtension:
             directory: etc/build
