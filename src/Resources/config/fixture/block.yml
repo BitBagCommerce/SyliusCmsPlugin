@@ -1,0 +1,7 @@
+services:
+    bitbag.cms_plugin.fixture.html_block:
+        class: BitBag\CmsPlugin\Fixture\HtmlBlockFixture
+        arguments:
+            - '@bitbag.manager.block'
+        tags:
+            - { name: sylius_fixtures.fixture }
