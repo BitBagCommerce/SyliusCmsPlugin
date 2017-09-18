@@ -29,5 +29,8 @@
             "Acme\\ExamplePlugin\\": "src/",
             "Tests\\Acme\\ExamplePlugin\\": "tests/"
         }
+    },
+    "autoload-dev": {
+        "classmap": ["tests/Application/app/AppKernel.php"]
     }
 }
