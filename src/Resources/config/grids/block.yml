@@ -12,17 +12,16 @@ sylius_grid:
                     type: twig
                     path: .
                     label: sylius.ui.content
-                    sortable: ~
                     options:
                         template: '@BitBagCmsPlugin/Grid/Field/content.html.twig'
                 code:
                     type: string
                     label: sylius.ui.code
-                    sortable: code
+                    sortable: ~
                 type:
                     type: string
                     label: sylius.ui.type
-                    sortable: type
+                    sortable: ~
                 enabled:
                     type: twig
                     label: sylius.ui.enabled
@@ -45,3 +44,5 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+            sorting:
+                code: asc

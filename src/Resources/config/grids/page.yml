@@ -11,21 +11,19 @@ sylius_grid:
                 code:
                     type: string
                     label: sylius.ui.code
-                    sortable: code
+                    sortable: ~
                 name:
                     type: string
-                    label: sylius.ui.type
-                    sortable: name
-                name:
+                    label: sylius.ui.name
+                slug:
                     type: string
-                    label: sylius.ui.type
-                    sortable: name
+                    label: sylius.ui.slug
             filters:
                 search:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, type]
+                        fields: [code, name, slug]
             actions:
                 main:
                     create:
@@ -35,3 +33,5 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+            sorting:
+                code: asc
