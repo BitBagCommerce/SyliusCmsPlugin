@@ -50,11 +50,13 @@ $ bin/phpspec
 - Using `test` environment:
 
     ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
     $ (cd tests/Application && bin/console server:run -d web -e test)
     ```
     
-- Using `dev` environment
+- Using `dev` environment:
 
     ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
     $ (cd tests/Application && bin/console server:run -d web -e dev)
     ```
