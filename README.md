@@ -5,49 +5,58 @@
 </p>
 <h1 align="center">Plugin Skeleton</h1>
 <p align="center">
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton">
-        <img src="https://img.shields.io/packagist/l/sylius/plugin-skeleton.svg" alt="License" />
+    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="License">
+        <img src="https://img.shields.io/packagist/l/sylius/plugin-skeleton.svg" />
     </a>
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton">
-        <img src="https://img.shields.io/packagist/v/sylius/plugin-skeleton.svg" alt="Version" />
+    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="Version">
+        <img src="https://img.shields.io/packagist/v/sylius/plugin-skeleton.svg" />
     </a>
-    <a href="http://travis-ci.org/Sylius/PluginSkeleton">
-        <img src="https://img.shields.io/travis/Sylius/PluginSkeleton/master.svg" alt="Build status" />
+    <a href="http://travis-ci.org/Sylius/PluginSkeleton" title="Build status">
+        <img src="https://img.shields.io/travis/Sylius/PluginSkeleton/master.svg" />
     </a>
-    <a href="https://scrutinizer-ci.com/g/Sylius/PluginSkeleton/">
-        <img src="https://img.shields.io/scrutinizer/g/Sylius/PluginSkeleton.svg" alt="Scrutinizer" />
+    <a href="https://scrutinizer-ci.com/g/Sylius/PluginSkeleton/" title="Scrutinizer">
+        <img src="https://img.shields.io/scrutinizer/g/Sylius/PluginSkeleton.svg" />
     </a>
 </p>
 
-## Usage
+## Installation
 
 1. Run `composer create-project sylius/plugin-skeleton -s dev ProjectName`.
 
-## Testing & Development
+2. From the plugin skeleton root directory, run the following commands:
 
-In order to run tests, execute following commands:
+    ```bash
+    $ composer install
+    
+    $ (cd tests/Application && yarn install)
+    $ (cd tests/Application && yarn run gulp)
+    
+    $ (cd tests/Application && bin/console doctrine:database:create -e test)
+    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
+    ```
 
-```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ vendor/bin/behat
-$ vendor/bin/phpunit
-$ vendor/bin/phpspec
-```
+## Usage
 
-In order to open test app in your browser, do the following:
+### Running plugin tests
 
 ```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ bin/console server:start --env test
-$ open http://127.0.0.1:8000/
+$ bin/behat
+$ bin/phpunit
+$ bin/phpspec
 ```
+
+### Opening Sylius with your plugin
+
+- Using `test` environment:
+
+    ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
+    $ (cd tests/Application && bin/console server:run -d web -e test)
+    ```
+    
+- Using `dev` environment:
+
+    ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
+    $ (cd tests/Application && bin/console server:run -d web -e dev)
+    ```
