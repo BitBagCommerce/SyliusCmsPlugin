@@ -26,8 +26,6 @@
 2. From the plugin skeleton root directory, run the following commands:
 
     ```bash
-    $ composer install
-    
     $ (cd tests/Application && yarn install)
     $ (cd tests/Application && yarn run gulp)
     
