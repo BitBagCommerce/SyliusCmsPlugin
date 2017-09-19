@@ -40,9 +40,9 @@
 ### Running plugin tests
 
 ```bash
-$ vendor/bin/behat
-$ vendor/bin/phpunit
-$ vendor/bin/phpspec
+$ bin/behat
+$ bin/phpunit
+$ bin/phpspec
 ```
 
 ### Opening Sylius with your plugin

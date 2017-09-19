@@ -32,5 +32,8 @@
     },
     "autoload-dev": {
         "classmap": ["tests/Application/app/AppKernel.php"]
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
