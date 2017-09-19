@@ -28,4 +28,20 @@ final class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir() . '/config/config.yml');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheDir(): string
+    {
+        return sprintf('%s/%s/cache', sys_get_temp_dir(), md5(__DIR__));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogDir(): string
+    {
+        return sprintf('%s/%s/logs', sys_get_temp_dir(), md5(__DIR__));
+    }
 }
