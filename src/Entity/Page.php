@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ToggleableTrait;
@@ -45,7 +47,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -53,7 +55,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setId($id)
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -61,7 +63,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -69,7 +71,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setCode($code)
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -77,7 +79,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->getPageTranslation()->getSlug();
     }
@@ -85,7 +87,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setSlug($slug)
+    public function setSlug(?string $slug): void
     {
         $this->getPageTranslation()->setSlug($slug);
     }
@@ -93,7 +95,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getMetaKeywords()
+    public function getMetaKeywords(): ?string
     {
         return $this->getPageTranslation()->getMetaKeywords();
     }
@@ -101,7 +103,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setMetaKeywords($metaKeywords)
+    public function setMetaKeywords(?string $metaKeywords): void
     {
         $this->getPageTranslation()->setMetaKeywords($metaKeywords);
     }
@@ -109,7 +111,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getMetaDescription()
+    public function getMetaDescription(): ?string
     {
         return $this->getPageTranslation()->getMetaDescription();
     }
@@ -117,7 +119,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setMetaDescription($metaDescription)
+    public function setMetaDescription(?string $metaDescription): void
     {
         $this->getPageTranslation()->setMetaDescription($metaDescription);
     }
@@ -125,7 +127,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->getPageTranslation()->getContent();
     }
@@ -133,7 +135,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setContent($content)
+    public function setContent(?string $content): void
     {
         $this->getPageTranslation()->setContent($content);
     }
@@ -141,7 +143,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->getPageTranslation()->getName();
     }
@@ -149,15 +151,15 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->getPageTranslation()->setName($name);
     }
 
     /**
-     * @return PageTranslationInterface|TranslationInterface
+     * @return PageTranslationInterface|TranslationInterface|null
      */
-    protected function getPageTranslation()
+    protected function getPageTranslation(): ?PageTranslationInterface
     {
         return $this->getTranslation();
     }
@@ -165,7 +167,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): ?PageTranslationInterface
     {
         return new PageTranslation();
     }

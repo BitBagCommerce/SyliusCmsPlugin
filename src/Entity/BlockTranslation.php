@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
@@ -46,7 +48,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -54,7 +56,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -62,7 +64,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -70,15 +72,15 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function setContent($content)
+    public function setContent(?string $content): void
     {
         $this->content = $content;
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -86,7 +88,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getImage()
+    public function getImage(): ?ImageInterface
     {
         return $this->image;
     }
@@ -94,7 +96,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function setImage(ImageInterface $image)
+    public function setImage(?ImageInterface $image): void
     {
         $image->setOwner($this);
 
@@ -104,7 +106,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getLink()
+    public function getLink(): ?string
     {
         return $this->link;
     }
@@ -112,7 +114,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function setLink($link)
+    public function setLink(?string $link): void
     {
         $this->link = $link;
     }

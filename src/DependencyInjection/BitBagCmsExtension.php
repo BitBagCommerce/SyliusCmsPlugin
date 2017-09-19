@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,7 +23,7 @@ final class BitBagCmsExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
     }
 }

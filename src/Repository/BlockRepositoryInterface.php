@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Repository;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -22,14 +24,14 @@ interface BlockRepositoryInterface extends RepositoryInterface
     /**
      * @return QueryBuilder
      */
-    public function createListQueryBuilder();
+    public function createListQueryBuilder(): QueryBuilder;
 
     /**
      * @param string $code
      *
      * @return BlockInterface|null
      */
-    public function findOneByCode($code);
+    public function findOneByCode(string $code): ?BlockInterface;
 
     /**
      * @param string $code
@@ -37,7 +39,7 @@ interface BlockRepositoryInterface extends RepositoryInterface
      *
      * @return BlockInterface|null
      */
-    public function findOneByCodeAndContent($code, $content);
+    public function findOneByCodeAndContent(string $code, string $content): ?BlockInterface;
 
     /**
      * @param string $type
@@ -45,5 +47,5 @@ interface BlockRepositoryInterface extends RepositoryInterface
      *
      * @return BlockInterface|null
      */
-    public function findOneByTypeAndContent($type, $content);
+    public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface;
 }

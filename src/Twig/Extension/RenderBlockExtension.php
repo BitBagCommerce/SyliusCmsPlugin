@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -51,7 +53,7 @@ final class RenderBlockExtension extends \Twig_Extension
     /**
      * @return \Twig_SimpleFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html'],]),
@@ -61,11 +63,12 @@ final class RenderBlockExtension extends \Twig_Extension
     /**
      * @param \Twig_Environment $twigEnvironment
      * @param string $code
+     * @param array $attributes
      *
-     * @return string|null
+     * @return null|string
      * @throws TemplateTypeNotFound
      */
-    public function renderBlock(\Twig_Environment $twigEnvironment, $code)
+    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, array $attributes = []): ?string
     {
         $block = $this->blockRepository->findOneByCode($code);
 
@@ -81,17 +84,26 @@ final class RenderBlockExtension extends \Twig_Extension
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
 
-            return $twigEnvironment->render(self::TEXT_BLOCK_TEMPLATE, ['block' => $block]);
+            return $twigEnvironment->render(self::TEXT_BLOCK_TEMPLATE, [
+                'block' => $block,
+                'attributes' => $attributes,
+            ]);
         }
 
         if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
 
-            return $twigEnvironment->render(self::HTML_BLOCK_TEMPLATE, ['block' => $block]);
+            return $twigEnvironment->render(self::HTML_BLOCK_TEMPLATE, [
+                'block' => $block,
+                'attributes' => $attributes,
+            ]);
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
 
-            return $twigEnvironment->render(self::IMAGE_BLOCK_TEMPLATE, ['block' => $block]);
+            return $twigEnvironment->render(self::IMAGE_BLOCK_TEMPLATE, [
+                'block' => $block,
+                'attributes' => $attributes,
+            ]);
         }
 
         throw new TemplateTypeNotFound($block->getType());

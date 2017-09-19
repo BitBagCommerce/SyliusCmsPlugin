@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,7 +26,7 @@ final class PageSlugController extends Controller
      *
      * @return JsonResponse
      */
-    public function generateAction(Request $request)
+    public function generateAction(Request $request): JsonResponse
     {
         $name = $request->query->get('name');
 

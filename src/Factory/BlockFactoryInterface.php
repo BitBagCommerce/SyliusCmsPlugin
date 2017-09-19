@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Factory;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -23,5 +25,5 @@ interface BlockFactoryInterface extends FactoryInterface
      *
      * @return BlockInterface
      */
-    public function createWithType($type);
+    public function createWithType(?string $type): BlockInterface;
 }

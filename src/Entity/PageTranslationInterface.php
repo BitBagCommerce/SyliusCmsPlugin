@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -20,52 +22,52 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface PageTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContent();
+    public function getContent(): ?string;
 
     /**
-     * @param string $content
+     * @param string $content |string
      */
-    public function setContent($content);
+    public function setContent(?string $content): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSlug();
+    public function getSlug(): ?string;
 
     /**
-     * @param string $slug
+     * @param string|null $slug
      */
-    public function setSlug($slug);
+    public function setSlug(?string $slug): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName($name);
+    public function setName(?string $name): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMetaKeywords();
+    public function getMetaKeywords(): ?string;
 
     /**
-     * @param string $metaKeywords
+     * @param string|null $metaKeywords
      */
-    public function setMetaKeywords($metaKeywords);
+    public function setMetaKeywords(?string $metaKeywords): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMetaDescription();
+    public function getMetaDescription(): ?string;
 
     /**
-     * @param string $metaDescription
+     * @param string|null $metaDescription
      */
-    public function setMetaDescription($metaDescription);
+    public function setMetaDescription(?string $metaDescription): void;
 }

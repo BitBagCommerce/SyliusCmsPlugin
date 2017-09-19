@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Form\Type\Translation;
 
 use BitBag\CmsPlugin\Form\Type\ImageType;
@@ -23,7 +25,7 @@ final class ImageBlockTranslationType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
@@ -43,7 +45,7 @@ final class ImageBlockTranslationType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'bitbag_cms_plugin_image_translation';
     }
