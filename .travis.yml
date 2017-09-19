@@ -51,7 +51,7 @@ before_script:
 script:
     - composer validate --strict
 
-    - vendor/bin/behat --strict -vvv --no-interaction
+    - vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun
 
 after_failure:
     - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
