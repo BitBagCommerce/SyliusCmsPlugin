@@ -21,7 +21,7 @@
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton -s dev ProjectName`.
+1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
 
 2. From the plugin skeleton root directory, run the following commands:
 
