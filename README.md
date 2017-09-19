@@ -19,35 +19,44 @@
     </a>
 </p>
 
-## Usage
+## Installation
 
 1. Run `composer create-project sylius/plugin-skeleton -s dev ProjectName`.
 
-## Testing & Development
+2. From the plugin skeleton root directory, run the following commands:
 
-In order to run tests, execute following commands:
+    ```bash
+    $ composer install
+    
+    $ (cd tests/Application && yarn install)
+    $ (cd tests/Application && yarn run gulp)
+    
+    $ (cd tests/Application && bin/console doctrine:database:create -e test)
+    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
+    ```
 
-```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ vendor/bin/behat
-$ vendor/bin/phpunit
-$ vendor/bin/phpspec
-```
+## Usage
 
-In order to open test app in your browser, do the following:
+### Running plugin tests
 
 ```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console doctrine:database:create --env test
-$ bin/console doctrine:schema:create --env test
-$ bin/console server:start --env test
-$ open http://127.0.0.1:8000/
+$ bin/behat
+$ bin/phpunit
+$ bin/phpspec
 ```
+
+### Opening Sylius with your plugin
+
+- Using `test` environment:
+
+    ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
+    $ (cd tests/Application && bin/console server:run -d web -e test)
+    ```
+    
+- Using `dev` environment:
+
+    ```bash
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
+    $ (cd tests/Application && bin/console server:run -d web -e dev)
+    ```
