@@ -7,6 +7,8 @@ sylius_grid:
                     class: '%bitbag.model.block.class%'
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                code: asc
             fields:
                 content:
                     type: twig
@@ -18,6 +20,10 @@ sylius_grid:
                     type: string
                     label: sylius.ui.code
                     sortable: ~
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: translation.name
                 type:
                     type: string
                     label: sylius.ui.type
@@ -44,5 +50,3 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
-            sorting:
-                code: asc
