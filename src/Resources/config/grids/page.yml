@@ -7,6 +7,8 @@ sylius_grid:
                     class: "%bitbag.model.page.class%"
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                code: asc
             fields:
                 code:
                     type: string
@@ -15,9 +17,11 @@ sylius_grid:
                 name:
                     type: string
                     label: sylius.ui.name
+                    sortable: translation.name
                 slug:
                     type: string
                     label: sylius.ui.slug
+                    sortable: translation.slug
             filters:
                 search:
                     type: string
@@ -33,5 +37,3 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
-            sorting:
-                code: asc

@@ -28,7 +28,8 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation');
+            ->leftJoin('o.translations', 'translation')
+        ;
     }
 
     /**
