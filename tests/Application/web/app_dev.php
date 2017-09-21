@@ -7,7 +7,7 @@ require __DIR__ . '/../../../vendor/autoload.php';
 
 Debug::enable();
 
-$kernel = new AppKernel('test', true);
+$kernel = new AppKernel('dev', true);
 
 $request = Request::createFromGlobals();
 

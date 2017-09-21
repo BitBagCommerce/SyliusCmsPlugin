@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class AppKernel extends Kernel
+final class AppKernel extends Kernel
 {
     /**
      * {@inheritdoc}
@@ -29,5 +29,21 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load($this->getRootDir() . '/config/config.yml');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheDir(): string
+    {
+        return sprintf('%s/%s/cache', sys_get_temp_dir(), md5(__DIR__));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogDir(): string
+    {
+        return sprintf('%s/%s/logs', sys_get_temp_dir(), md5(__DIR__));
     }
 }

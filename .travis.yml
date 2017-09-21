@@ -1,11 +1,21 @@
 language: php
 
+dist: precise
+
+sudo: required
+
 php:
     - 7.1
 
 cache:
     directories:
         - ~/.composer/cache/files
+    yarn: true
+
+env:
+    global:
+        - SYLIUS_BUILD_DIR=etc/build
+        - TRAVIS_NODE_VERSION="7.5"
 
 before_install:
     - phpenv config-rm xdebug.ini || true
@@ -13,10 +23,17 @@ before_install:
 
 install:
     - composer update --prefer-dist
+    - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout $(git describe --abbrev=0 --tags)) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+
+    - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+    - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    - sudo apt-get update -qq
+    - sudo apt-get install -y -qq yarn=0.21.3-1
 
 before_script:
     - (cd tests/Application && bin/console doctrine:schema:create --env=test)
     - (cd tests/Application && bin/console assets:install web --env=test)
+    - (cd tests/Application && yarn run gulp)
 
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
     - export DISPLAY=:99
@@ -24,6 +41,7 @@ before_script:
     - curl http://chromedriver.storage.googleapis.com/2.12/chromedriver_linux64.zip > chromedriver.zip && unzip chromedriver.zip
 
     - cp etc/travis/behat.yml ./behat.yml
+
     - vendor/bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver > /dev/null 2>&1 &
     - (cd tests/Application && bin/console server:run 127.0.0.1:8080 --env=test --quiet > /dev/null 2>&1 &)
 
@@ -33,3 +51,5 @@ script:
     - vendor/bin/phpspec run
     - vendor/bin/behat --strict -vvv --no-interaction --tags ~@javascript
 
+after_failure:
+    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
