@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ExamplePlugin\DependencyInjection;
+namespace BitBag\CmsPlugin\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
