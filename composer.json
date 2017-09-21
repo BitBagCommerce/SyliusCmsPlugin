@@ -5,7 +5,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-
         "sylius/sylius": "^1.1@dev"
     },
     "require-dev": {
