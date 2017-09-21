@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bcf9b13cf72981dbc4d3a26e34d21bf",
+    "content-hash": "4c258273bf7e8425ec7bbcf7f1ddd26b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -995,32 +995,32 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.0.5",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
-                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3,<8.0-DEV"
+                "php": "^7.1"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
+                "phpunit/phpunit": "^6.2.3",
+                "squizlabs/php_codesniffer": "^3.0.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -1045,7 +1045,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2015-06-14T21:17:01+00:00"
+            "time": "2017-07-22T11:58:36+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1177,16 +1177,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.10",
+            "version": "v2.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "c78afd51721804f4f76ff30d9b6f6159eb046161"
+                "reference": "249b737094f1e7cba4f0a8d19acf5be6cf3ed504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c78afd51721804f4f76ff30d9b6f6159eb046161",
-                "reference": "c78afd51721804f4f76ff30d9b6f6159eb046161",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/249b737094f1e7cba4f0a8d19acf5be6cf3ed504",
+                "reference": "249b737094f1e7cba4f0a8d19acf5be6cf3ed504",
                 "shasum": ""
             },
             "require": {
@@ -1194,7 +1194,7 @@
                 "doctrine/collections": "~1.2",
                 "doctrine/common": ">=2.5-dev,<2.9-dev",
                 "doctrine/dbal": ">=2.5-dev,<2.7-dev",
-                "doctrine/instantiator": "~1.0.1",
+                "doctrine/instantiator": "^1.0.1",
                 "ext-pdo": "*",
                 "php": ">=5.4",
                 "symfony/console": "~2.5|~3.0"
@@ -1249,7 +1249,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-08-18T19:17:35+00:00"
+            "time": "2017-09-18T06:50:20+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -4348,33 +4348,38 @@
         },
         {
             "name": "sonata-project/block-bundle",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "7cdf6e5620696cdd962eb4c404beeedaf20c3570"
+                "reference": "052f1eb4b84951eb6c25acaf52787346845fc6d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/7cdf6e5620696cdd962eb4c404beeedaf20c3570",
-                "reference": "7cdf6e5620696cdd962eb4c404beeedaf20c3570",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/052f1eb4b84951eb6c25acaf52787346845fc6d3",
+                "reference": "052f1eb4b84951eb6c25acaf52787346845fc6d3",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "^2.3",
                 "php": "^5.3 || ^7.0",
                 "sonata-project/cache": "^1.0",
-                "sonata-project/core-bundle": "^3.0",
+                "sonata-project/core-bundle": "^3.4",
                 "symfony/form": "^2.3 || ^3.0",
                 "symfony/http-kernel": "^2.3 || ^3.0"
             },
+            "conflict": {
+                "jms/di-extra-bundle": "<1.7.0"
+            },
             "require-dev": {
+                "jms/di-extra-bundle": "^1.7",
                 "knplabs/knp-menu-bundle": "^2.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-                "sonata-project/admin-bundle": "^3.0",
+                "sonata-project/admin-bundle": "^3.22",
                 "symfony/phpunit-bridge": "^2.7 || ^3.0"
             },
             "suggest": {
+                "jms/di-extra-bundle": "Annotations for Block definition",
                 "knplabs/knp-menu-bundle": "^2.0",
                 "sonata-project/cache-bundle": "^3.0"
             },
@@ -4416,7 +4421,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2017-03-23T12:54:15+00:00"
+            "time": "2017-09-19T15:14:45+00:00"
         },
         {
             "name": "sonata-project/cache",
@@ -4483,16 +4488,16 @@
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "3.4.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "a1b837101262af856c45b22e8f0887553edf0fb0"
+                "reference": "a8cc1731d832e6bde3fdad2334cfd158d1d45fbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/a1b837101262af856c45b22e8f0887553edf0fb0",
-                "reference": "a1b837101262af856c45b22e8f0887553edf0fb0",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/a8cc1731d832e6bde3fdad2334cfd158d1d45fbb",
+                "reference": "a8cc1731d832e6bde3fdad2334cfd158d1d45fbb",
                 "shasum": ""
             },
             "require": {
@@ -4558,7 +4563,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-05-09T15:05:32+00:00"
+            "time": "2017-09-20T14:14:38+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -4623,16 +4628,16 @@
         },
         {
             "name": "sonata-project/intl-bundle",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "d01e85fbc740452b7590d6e465bbcf852def00cc"
+                "reference": "dedaf0752b36742c1f782d4d3953815a270c83f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/d01e85fbc740452b7590d6e465bbcf852def00cc",
-                "reference": "d01e85fbc740452b7590d6e465bbcf852def00cc",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/dedaf0752b36742c1f782d4d3953815a270c83f8",
+                "reference": "dedaf0752b36742c1f782d4d3953815a270c83f8",
                 "shasum": ""
             },
             "require": {
@@ -4644,7 +4649,7 @@
                 "twig/twig": "^1.12 || ^2.0"
             },
             "conflict": {
-                "sonata-project/user-bundle": "<2.0 || >=4.0"
+                "sonata-project/user-bundle": "<2.0 || >=5.0"
             },
             "require-dev": {
                 "matthiasnoback/symfony-dependency-injection-test": "^0.7.6 || ^1.0",
@@ -4693,7 +4698,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2017-06-27T15:35:25+00:00"
+            "time": "2017-09-14T10:52:04+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4852,16 +4857,16 @@
         },
         {
             "name": "sylius/sylius",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Sylius.git",
-                "reference": "b5920f580e7ffddacdd507161f3cb94a1e7f4ed2"
+                "reference": "71822cf32012d8d10ba29d6153ddb29fdfabda6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Sylius/zipball/b5920f580e7ffddacdd507161f3cb94a1e7f4ed2",
-                "reference": "b5920f580e7ffddacdd507161f3cb94a1e7f4ed2",
+                "url": "https://api.github.com/repos/Sylius/Sylius/zipball/71822cf32012d8d10ba29d6153ddb29fdfabda6b",
+                "reference": "71822cf32012d8d10ba29d6153ddb29fdfabda6b",
                 "shasum": ""
             },
             "require": {
@@ -4997,7 +5002,7 @@
                     "file": "app/config/parameters.yml"
                 },
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -5030,7 +5035,7 @@
             ],
             "description": "E-Commerce platform for PHP, based on Symfony framework.",
             "homepage": "http://sylius.org",
-            "time": "2017-09-13T10:31:29+00:00"
+            "time": "2017-09-20T15:09:49+00:00"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -6342,24 +6347,24 @@
         },
         {
             "name": "zendframework/zend-hydrator",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-hydrator.git",
-                "reference": "e3ecc4920c1724e1949213163fee82200e8e6f6c"
+                "reference": "7aa33949227fcabb5634a61f97fe78cccbb25c98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/e3ecc4920c1724e1949213163fee82200e8e6f6c",
-                "reference": "e3ecc4920c1724e1949213163fee82200e8e6f6c",
+                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/7aa33949227fcabb5634a61f97fe78cccbb25c98",
+                "reference": "7aa33949227fcabb5634a61f97fe78cccbb25c98",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0 || ^5.6",
+                "php": "^5.6 || ^7.0",
                 "zendframework/zend-stdlib": "^3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0.10 || ^5.7.17",
+                "phpunit/phpunit": "^5.7.21 || ^6.3",
                 "zendframework/zend-coding-standard": "~1.0.0",
                 "zendframework/zend-eventmanager": "^3.0",
                 "zendframework/zend-filter": "^2.6",
@@ -6378,8 +6383,8 @@
                 "branch-alias": {
                     "dev-release-1.0": "1.0-dev",
                     "dev-release-1.1": "1.1-dev",
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
+                    "dev-master": "2.3-dev",
+                    "dev-develop": "2.4-dev"
                 },
                 "zf": {
                     "component": "Zend\\Hydrator",
@@ -6400,7 +6405,7 @@
                 "hydrator",
                 "zf2"
             ],
-            "time": "2017-05-17T18:40:45+00:00"
+            "time": "2017-09-20T22:02:25+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
@@ -6451,16 +6456,16 @@
     "packages-dev": [
         {
             "name": "behat/behat",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "7de1a2207735fe7e2c06373dea3fd64c27c367fc"
+                "reference": "cb51d4b0b11ea6d3897f3589a871a63a33632692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/7de1a2207735fe7e2c06373dea3fd64c27c367fc",
-                "reference": "7de1a2207735fe7e2c06373dea3fd64c27c367fc",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/cb51d4b0b11ea6d3897f3589a871a63a33632692",
+                "reference": "cb51d4b0b11ea6d3897f3589a871a63a33632692",
                 "shasum": ""
             },
             "require": {
@@ -6530,7 +6535,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2017-09-10T11:21:07+00:00"
+            "time": "2017-09-18T11:10:28+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -6858,30 +6863,30 @@
         },
         {
             "name": "friends-of-behat/context-service-extension",
-            "version": "v0.3.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/ContextServiceExtension.git",
-                "reference": "c63bfeb6a5c4b1cf2b88914d7a06a3a95dc9650e"
+                "reference": "b03e3a87a948e79ae33a2a72bb5f4f72ec13787c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/ContextServiceExtension/zipball/c63bfeb6a5c4b1cf2b88914d7a06a3a95dc9650e",
-                "reference": "c63bfeb6a5c4b1cf2b88914d7a06a3a95dc9650e",
+                "url": "https://api.github.com/repos/FriendsOfBehat/ContextServiceExtension/zipball/b03e3a87a948e79ae33a2a72bb5f4f72ec13787c",
+                "reference": "b03e3a87a948e79ae33a2a72bb5f4f72ec13787c",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0",
+                "php": "^7.1",
                 "symfony/dependency-injection": "^2.8|^3.0"
             },
             "require-dev": {
-                "friends-of-behat/cross-container-extension": "^0.1.3",
-                "friends-of-behat/test-context": "^0.3",
-                "phpspec/phpspec": "^3.1"
+                "friends-of-behat/cross-container-extension": "^1.0",
+                "friends-of-behat/test-context": "^1.0",
+                "phpspec/phpspec": "^4.0@alpha"
             },
             "suggest": {
-                "friends-of-behat/cross-container-extension": "^0.1",
+                "friends-of-behat/cross-container-extension": "^1.0",
                 "ocramius/proxy-manager": "^1.0|^2.0",
                 "symfony/proxy-manager-bridge": "^2.8|^3.0"
             },
@@ -6903,31 +6908,31 @@
                 }
             ],
             "description": "Allows to declare and use contexts services in scenario scoped container.",
-            "time": "2016-11-03T15:23:17+00:00"
+            "time": "2017-07-10T21:52:32+00:00"
         },
         {
             "name": "friends-of-behat/cross-container-extension",
-            "version": "v0.2.1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/CrossContainerExtension.git",
-                "reference": "d40f5c722efe9d94c531b8ac207f13f5937fbcf2"
+                "reference": "dc185a67181da54702f1efa3d5ca0e289131f771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/CrossContainerExtension/zipball/d40f5c722efe9d94c531b8ac207f13f5937fbcf2",
-                "reference": "d40f5c722efe9d94c531b8ac207f13f5937fbcf2",
+                "url": "https://api.github.com/repos/FriendsOfBehat/CrossContainerExtension/zipball/dc185a67181da54702f1efa3d5ca0e289131f771",
+                "reference": "dc185a67181da54702f1efa3d5ca0e289131f771",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0",
+                "php": "^7.1",
                 "symfony/dependency-injection": "^2.8|^3.0"
             },
             "require-dev": {
-                "friends-of-behat/test-context": "^0.3",
-                "phpspec/phpspec": "^3.1",
-                "phpunit/phpunit": "^5.6",
+                "friends-of-behat/test-context": "^1.0",
+                "phpspec/phpspec": "^4.0@alpha",
+                "phpunit/phpunit": "^5.7.13|^6.0",
                 "symfony/http-kernel": "^2.8|^3.0"
             },
             "suggest": {
@@ -6951,7 +6956,7 @@
                 }
             ],
             "description": "Makes possible to inject services and parameters from other containers.",
-            "time": "2017-02-16T20:49:33+00:00"
+            "time": "2017-07-10T21:28:32+00:00"
         },
         {
             "name": "friends-of-behat/performance-extension",
@@ -6996,29 +7001,29 @@
         },
         {
             "name": "friends-of-behat/service-container-extension",
-            "version": "v0.3.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/ServiceContainerExtension.git",
-                "reference": "203d0f30a3d17d47e7bb1a6842c8266911f30e45"
+                "reference": "016d600fc99f1fc237503aa05e3b22ccad032b31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/ServiceContainerExtension/zipball/203d0f30a3d17d47e7bb1a6842c8266911f30e45",
-                "reference": "203d0f30a3d17d47e7bb1a6842c8266911f30e45",
+                "url": "https://api.github.com/repos/FriendsOfBehat/ServiceContainerExtension/zipball/016d600fc99f1fc237503aa05e3b22ccad032b31",
+                "reference": "016d600fc99f1fc237503aa05e3b22ccad032b31",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
-                "friends-of-behat/cross-container-extension": "^0.1",
-                "friends-of-behat/test-context": "^0.3",
+                "friends-of-behat/cross-container-extension": "^1.0",
+                "friends-of-behat/test-context": "^1.0",
                 "symfony/process": "^2.7|^3.0"
             },
             "suggest": {
-                "friends-of-behat/cross-container-extension": "^0.1"
+                "friends-of-behat/cross-container-extension": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -7038,38 +7043,38 @@
                 }
             ],
             "description": "Allows to declare own services inside Behat container without writing an extension.",
-            "time": "2016-11-03T09:47:50+00:00"
+            "time": "2017-07-10T21:46:01+00:00"
         },
         {
             "name": "friends-of-behat/symfony-extension",
-            "version": "v0.2.1",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/SymfonyExtension.git",
-                "reference": "293d02deb525015b13eeedc7c76982f0a87eb4a1"
+                "reference": "5e05e35c20204353e05680b8694d29d3ed637d33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/SymfonyExtension/zipball/293d02deb525015b13eeedc7c76982f0a87eb4a1",
-                "reference": "293d02deb525015b13eeedc7c76982f0a87eb4a1",
+                "url": "https://api.github.com/repos/FriendsOfBehat/SymfonyExtension/zipball/5e05e35c20204353e05680b8694d29d3ed637d33",
+                "reference": "5e05e35c20204353e05680b8694d29d3ed637d33",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0",
+                "php": "^7.1",
                 "symfony/http-kernel": "^2.7|^3.0"
             },
             "require-dev": {
                 "behat/mink": "^1.7",
                 "behat/mink-browserkit-driver": "^1.3",
                 "behat/mink-extension": "^2.2",
-                "friends-of-behat/cross-container-extension": "^0.1",
-                "friends-of-behat/test-context": "^0.3",
+                "friends-of-behat/cross-container-extension": "^1.0",
+                "friends-of-behat/test-context": "^1.0",
                 "symfony/framework-bundle": "^2.7|^3.0"
             },
             "suggest": {
                 "behat/mink-browserkit-driver": "^1.3",
-                "friends-of-behat/cross-container-extension": "^0.1"
+                "friends-of-behat/cross-container-extension": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -7089,29 +7094,29 @@
                 }
             ],
             "description": "Integrates Behat with Symfony (both 2 and 3).",
-            "time": "2016-11-03T13:38:02+00:00"
+            "time": "2017-07-10T21:45:28+00:00"
         },
         {
             "name": "friends-of-behat/variadic-extension",
-            "version": "v0.1.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/VariadicExtension.git",
-                "reference": "d85fcc04318938f5af8799c73b16c9ec3fc8d40e"
+                "reference": "ba3964027fef9a4c77c57693ac22bd67eb6b22e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/VariadicExtension/zipball/d85fcc04318938f5af8799c73b16c9ec3fc8d40e",
-                "reference": "d85fcc04318938f5af8799c73b16c9ec3fc8d40e",
+                "url": "https://api.github.com/repos/FriendsOfBehat/VariadicExtension/zipball/ba3964027fef9a4c77c57693ac22bd67eb6b22e2",
+                "reference": "ba3964027fef9a4c77c57693ac22bd67eb6b22e2",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0",
-                "symfony/dependency-injection": "~2.5||~3.0"
+                "php": "^7.1",
+                "symfony/dependency-injection": "^2.8|^3.0"
             },
             "require-dev": {
-                "friends-of-behat/test-context": "^0.2.0"
+                "friends-of-behat/test-context": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -7130,7 +7135,7 @@
                 }
             ],
             "description": "Variadic support for behat context arguments",
-            "time": "2016-08-25T22:34:32+00:00"
+            "time": "2017-07-10T20:43:33+00:00"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -7858,7 +7863,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "sylius/sylius": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
