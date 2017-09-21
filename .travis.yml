@@ -23,7 +23,6 @@ before_install:
 
 install:
     - composer update --prefer-dist
-    - (cd tests/Application && yarn install)
     - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout $(git describe --abbrev=0 --tags)) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
 
     - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
