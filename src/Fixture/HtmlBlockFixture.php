@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin\Fixture;
 
 use BitBag\CmsPlugin\Entity\Block;
@@ -36,9 +38,9 @@ final class HtmlBlockFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function load(array $options)
+    public function load(array $options): void
     {
         $block = new Block();
 
@@ -52,22 +54,21 @@ final class HtmlBlockFixture extends AbstractFixture implements FixtureInterface
         }
 
         $this->blockManager->persist($block);
-
         $this->blockManager->flush();
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'bitbag_cms_block_html';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    protected function configureOptionsNode(ArrayNodeDefinition $optionsNode)
+    protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode
             ->children()
