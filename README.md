@@ -9,6 +9,10 @@ So far it supports dynamic images and text blocks as well as pages with custom c
 This plugin was developed with BDD rules in mind, so it's probably the most stable CMS for Sylius available for now. 
 It is still a little bit basic, but we are planning to make it more advanced in incoming future. Contributors, ideas as well as any feedback warmly welcomed!
 
+## Support
+
+Do you want us to customize this plugin for your specific needs? Write us an email on mikolaj.krol@bitbag.pl :computer:
+
 ## Installation
 ```bash
 $ composer require bitbag/cms-plugin
