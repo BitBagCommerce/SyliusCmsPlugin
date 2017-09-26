@@ -54,7 +54,6 @@ final class TextBlockFixture extends AbstractFixture implements FixtureInterface
         }
 
         $this->blockManager->persist($block);
-
         $this->blockManager->flush();
     }
 

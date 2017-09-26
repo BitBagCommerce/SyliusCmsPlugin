@@ -74,7 +74,6 @@ final class ImageBlockFixture extends AbstractFixture implements FixtureInterfac
         }
 
         $this->blockManager->persist($block);
-
         $this->blockManager->flush();
     }
 
