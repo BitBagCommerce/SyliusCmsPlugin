@@ -1,0 +1,9 @@
+bitbag_cms_api_block:
+    resource: |
+        alias: bitbag.block
+    type: sylius.resource_api
+
+bitbag_cms_api_page:
+    resource: |
+        alias: bitbag.page
+    type: sylius.resource_api
