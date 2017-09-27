@@ -31,3 +31,6 @@ bitbag_cms_shop_page_show:
 bitbag_cms_api:
     resource: '@BitBagCmsPlugin/Resources/config/routing/api.yml'
     prefix: /api
+
+fos_oauth_server_token:
+  resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
