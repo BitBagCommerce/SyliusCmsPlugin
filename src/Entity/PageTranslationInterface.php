@@ -27,7 +27,7 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function getContent(): ?string;
 
     /**
-     * @param string $content|string
+     * @param string $content |string
      */
     public function setContent(?string $content): void;
 

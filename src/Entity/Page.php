@@ -71,7 +71,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setCode(?string $code):void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -159,8 +159,7 @@ class Page implements PageInterface
     /**
      * @return PageTranslationInterface|TranslationInterface|null
      */
-    protected function getPageTranslation(): PageTranslationInterface
-
+    protected function getPageTranslation(): ?PageTranslationInterface
     {
         return $this->getTranslation();
     }

@@ -38,7 +38,7 @@ final class ImageBlockUploadListener
     /**
      * @param ResourceControllerEvent $event
      */
-    public function uploadImage(ResourceControllerEvent $event)
+    public function uploadImage(ResourceControllerEvent $event): void
     {
         $block = $event->getSubject();
 

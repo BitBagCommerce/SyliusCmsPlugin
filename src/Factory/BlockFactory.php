@@ -36,8 +36,9 @@ final class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createWithType(?string $type)
+    public function createWithType(?string $type): BlockInterface
     {
+        /** @var BlockInterface $block */
         $block = $this->resourceFactory->createNew();
         $block->setType($type);
 
@@ -47,8 +48,11 @@ final class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNew()
+    public function createNew(): BlockInterface
     {
-        return $this->resourceFactory->createNew();
+        /** @var BlockInterface $block */
+        $block = $this->resourceFactory->createNew();
+
+        return $block;
     }
 }

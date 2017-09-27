@@ -22,7 +22,7 @@ final class ContentManagementMenuBuilder
     /**
      * @param MenuBuilderEvent $menuBuilderEvent
      */
-    public function buildMenu(MenuBuilderEvent $menuBuilderEvent)
+    public function buildMenu(MenuBuilderEvent $menuBuilderEvent): void
     {
         $menu = $menuBuilderEvent->getMenu();
 
