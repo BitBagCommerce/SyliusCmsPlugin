@@ -47,7 +47,7 @@
   - PHPSpec
 
     ```bash
-    $ bin/phpspec
+    $ bin/phpspec run
     ```
 
   - Behat (non-JS scenarios)
