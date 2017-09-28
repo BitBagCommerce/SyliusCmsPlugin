@@ -49,3 +49,19 @@ services:
             - '@__symfony__.bitbag.manager.page'
         tags:
             - { name: fob.context_service }
+
+    bitbag.behat.context.api.managing_blocks:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Api\ManagingBlocksContext
+        arguments:
+            - '@bitbag.behat.page.admin.block.index'
+            - '@bitbag.behat.page.admin.block.create'
+            - '@bitbag.behat.page.admin.block.update'
+            - '@sylius.behat.current_page_resolver'
+            - '@sylius.behat.notification_checker'
+            - '@sylius.behat.shared_storage'
+            - '@__symfony__.bitbag.repository.block'
+            - '@__symfony__.bitbag.manager.block'
+            - '@__symfony__.test.client'
+            - '@__symfony__.session'
+        tags:
+            - { name: fob.context_service }

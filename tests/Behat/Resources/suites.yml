@@ -9,6 +9,7 @@ default:
                 - bitbag.behat.context.setup.block
 
                 - bitbag.behat.context.ui.admin.managing_blocks
+                - bitbag.behat.context.api.managing_blocks
             filters:
                 tags: '@managing_blocks'
         
@@ -22,5 +23,6 @@ default:
                 - bitbag.behat.context.setup.page
 
                 - bitbag.behat.context.ui.admin.managing_pages
+                - bitbag.behat.context.api.managing_pages
             filters:
                 tags: '@managing_pages'
