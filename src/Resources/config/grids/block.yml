@@ -9,6 +9,7 @@ sylius_grid:
                         method: createListQueryBuilder
             sorting:
                 code: asc
+            limits: [10, 25, 50]
             fields:
                 content:
                     type: twig
