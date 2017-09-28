@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Acme\ExamplePlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;

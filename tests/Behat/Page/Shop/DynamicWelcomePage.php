@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Acme\ExamplePlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\SymfonyPage;
@@ -15,7 +17,7 @@ class DynamicWelcomePage extends SymfonyPage implements WelcomePageInterface
             $greeting = $this->getElement('greeting')->getText();
 
             if ('Loading...' === $greeting) {
-                return false;
+                return '';
             }
 
             return $greeting;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Acme\ExamplePlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
