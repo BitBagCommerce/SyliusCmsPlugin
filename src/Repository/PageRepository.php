@@ -25,10 +25,12 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.translations', 'translation')
+            ->where('translation.locale = :locale')
+            ->setParameter('locale', $locale)
         ;
     }
 

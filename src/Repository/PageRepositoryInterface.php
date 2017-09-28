@@ -23,9 +23,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface PageRepositoryInterface extends RepositoryInterface
 {
     /**
+     * @param string $locale
+     *
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(): QueryBuilder;
+    public function createListQueryBuilder(string $locale): QueryBuilder;
 
     /**
      * @param string $code
