@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Acme\ExamplePlugin\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,10 +39,8 @@ final class GreetingController extends Controller
         switch ($name) {
             case null:
                 return 'Hello!';
-
             case 'Lionel Richie':
                 return 'Hello, is it me you\'re looking for?';
-
             default:
                 return sprintf('Hello, %s!', $name);
         }

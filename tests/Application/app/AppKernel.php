@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
