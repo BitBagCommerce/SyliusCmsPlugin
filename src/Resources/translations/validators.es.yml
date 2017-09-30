@@ -3,6 +3,7 @@ bitbag:
         block:
             image:
                 mime_types: Solo se permiten archivos PNG y JPEG
+                not_blank: La foto no puede estar vacía.
             code:
                 unique: Ya existe un bloque con este código.
                 not_blank: El código no puede ir vacío.

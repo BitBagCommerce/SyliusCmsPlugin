@@ -3,6 +3,7 @@ bitbag:
         block:
             image:
                 mime_types: Dozwolone są tylko pliki PNG i JPEG.
+                not_blank: Zdjęcie nie może być puste.
             code:
                 unique: Blok o podanym kodzie już istnieje.
                 not_blank: Kod nie może być pusty.
