@@ -28,7 +28,7 @@ use Webmozart\Assert\Assert;
 use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Zend\Stdlib\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -106,8 +106,7 @@ final class ManagingBlocksContext implements Context
         BlockRepositoryInterface $blockRepository,
         EntityManagerInterface $entityManager,
         Client $client,
-        SessionInterface $session,
-        Request $request
+        SessionInterface $session
     )
     {
         $this->createPage = $createPage;
@@ -120,16 +119,26 @@ final class ManagingBlocksContext implements Context
         $this->entityManager = $entityManager;
         $this->client = $client;
         $this->session = $session;
-        $this->request = $request;
     }
 
     /**
      * @When I make a :request request to :address
      */
-    public function iMakeARequestto($request, $address)
+    public function iMakeARequestto($address)
     {
         $this->client->getCookieJar()->set(new Cookie($this->session->getName(), $this->session->getId()));
-        $this->client->request($request, $address, [], [], ['ACCEPT' => 'application/json']);
+        var_dump($this->client->request('GET', '/api/pages/', [
+         //   'Authorization'=> ['Bearer'=>'SampleToken']
+        ], [], ['ACCEPT' => 'application/json']));
+        /**
+         * var_dump($this->client->request('POST', '/oauth/v2/token', [
+            "client_id" => 'demo_client',
+            "client_secret" => 'secret_demo_client',
+            "grant_type" => 'password',
+            "username" => 'api@example.com',
+            "password" => 'sylius-api'
+        ], [], ['ACCEPT' => 'application/json']));
+         **/
     }
 
     /**
@@ -137,7 +146,10 @@ final class ManagingBlocksContext implements Context
      */
     public function responseStatusCodeShouldBe($code)
     {
-        echo $this->getClientForAuthorization()->access_token;
+        Assert::eq(
+            $this->client->getResponse()->getStatusCode(),
+            200
+        );
     }
 
     private function getClientForAuthorization()
