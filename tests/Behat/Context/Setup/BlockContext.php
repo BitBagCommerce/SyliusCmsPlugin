@@ -94,12 +94,12 @@ final class BlockContext implements Context
             if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
                 $image = $this->uploadImage(self::IMAGE_MOCK);
 
-                $this->createBlock($type, $image);
+                $this->createBlock($type, $image, uniqid('', true));
 
                 continue;
             }
 
-            $this->createBlock($type);
+            $this->createBlock($type, null, uniqid('', true));
         }
     }
 
