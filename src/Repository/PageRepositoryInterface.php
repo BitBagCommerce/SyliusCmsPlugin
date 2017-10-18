@@ -32,7 +32,7 @@ interface PageRepositoryInterface extends RepositoryInterface
      *
      * @return PageInterface|null
      */
-    public function findOneByCode(string $code): ?PageInterface;
+    public function findEnabledByCode(string $code): ?PageInterface;
 
     /**
      * @param ChannelInterface $channel

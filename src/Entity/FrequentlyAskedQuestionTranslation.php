@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
+declare(strict_types=1);
+
+namespace BitBag\CmsPlugin\Entity;
+
+use Sylius\Component\Resource\Model\AbstractTranslation;
+
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
+class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements FrequentlyAskedQuestionTranslationInterface
+{
+    /**
+     * @var int
+     */
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $question;
+
+    /**
+     * @var string
+     */
+    protected $answer;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getQuestion(): ?string
+    {
+        return $this->question;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setQuestion(string $question): void
+    {
+        $this->question = $question;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAnswer(): ?string
+    {
+        return $this->answer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAnswer(string $answer): void
+    {
+        $this->answer = $answer;
+    }
+}

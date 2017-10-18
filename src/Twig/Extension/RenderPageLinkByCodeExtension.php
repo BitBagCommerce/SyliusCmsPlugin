@@ -61,7 +61,7 @@ final class RenderPageLinkByCodeExtension extends \Twig_Extension
      */
     public function renderPageLinkByCode(\Twig_Environment $twigEnvironment, $code)
     {
-        $page = $this->pageRepository->findOneByCode($code);
+        $page = $this->pageRepository->findEnabledByCode($code);
 
         if (false === $page instanceof PageInterface) {
 

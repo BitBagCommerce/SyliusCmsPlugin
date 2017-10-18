@@ -67,7 +67,7 @@ final class RenderBlockExtension extends \Twig_Extension
      */
     public function renderBlock(\Twig_Environment $twigEnvironment, $code)
     {
-        $block = $this->blockRepository->findOneByCode($code);
+        $block = $this->blockRepository->findEnabledByCode($code);
 
         if (false === $block instanceof BlockInterface) {
 

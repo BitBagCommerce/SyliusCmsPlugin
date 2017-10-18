@@ -33,7 +33,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode(string $code): ?PageInterface
+    public function findEnabledByCode(string $code): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
