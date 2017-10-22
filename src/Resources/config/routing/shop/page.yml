@@ -1,0 +1,13 @@
+bitbag_shop_page_show:
+    path: /page/{slug}
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.page:showAction
+        _sylius:
+            template: BitBagCmsPlugin:Shop:Page:show.html.twig
+            repository:
+                method: findOneByChannelAndSlug
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - $slug

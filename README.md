@@ -74,7 +74,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 ### Pages
 
-For rendering pages you can use `bitbag_cms_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
+For rendering pages you can use `bitbag_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
 For more information about how to do it, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html). If you are lazy guy, take a look at 
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 

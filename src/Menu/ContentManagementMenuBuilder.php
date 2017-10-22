@@ -28,14 +28,14 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem = $menu
             ->addChild('bitbag_cms')
-            ->setLabel('bitbag.cms.cms')
+            ->setLabel('bitbag.ui.cms')
         ;
 
         $cmsRootMenuItem
             ->addChild('blocks', [
                 'route' => 'bitbag_admin_block_index'
             ])
-            ->setLabel('bitbag.cms.blocks')
+            ->setLabel('bitbag.ui.blocks')
             ->setLabelAttribute('icon', 'block layout')
         ;
 
@@ -43,8 +43,16 @@ final class ContentManagementMenuBuilder
             ->addChild('pages', [
                 'route' => 'bitbag_admin_page_index'
             ])
-            ->setLabel('bitbag.cms.pages')
+            ->setLabel('bitbag.ui.pages')
             ->setLabelAttribute('icon', 'sticky note')
+        ;
+
+        $cmsRootMenuItem
+            ->addChild('faq', [
+                'route' => 'bitbag_admin_frequently_asked_question_index'
+            ])
+            ->setLabel('bitbag.ui.faq')
+            ->setLabelAttribute('icon', 'help')
         ;
     }
 }

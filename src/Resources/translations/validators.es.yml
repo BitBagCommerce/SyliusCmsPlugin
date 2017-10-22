@@ -1,33 +1,32 @@
 bitbag:
-    cms:
-        block:
-            image:
-                mime_types: Solo se permiten archivos PNG y JPEG
-            code:
-                unique: Ya existe un bloque con este código.
-                not_blank: El código no puede ir vacío.
-                min_length: El código debe tener al menos {{ limit }} caracteres.
-                max_length: El código no puede tener más de {{ limit }} caracteres.
-        page:
-            code:
-                unique: Ya existe una página con este código.
-                not_blank: El código no puede ir vacío.
-                min_length: El código debe tener al menos {{ limit }} caracteres.
-                max_length: El código no puede tener más de {{ limit }} caracteres.
-            name:
-                not_blank: El nombre no puede ir vacío.
-                min_length: El nombre debe tener al menos {{ limit }} caracteres.
-                max_length: El nombre no puede tener más de {{ limit }} caracteres.
-            slug:
-                not_blank:  El slug no puede ir vacío.
-                min_length: El slug debe tener al menos  {{ limit }} caracteres.
-                max_length: El slug no puede tener más de {{ limit }} caracteres.
-            meta_keywords:
-                min_length: Meta keywords debe tener al menos {{ limit }} caracteres.
-                max_length: Meta keywords no puede tener más de {{ limit }} caracteres.
-            meta_description:
-                min_length: Meta description debe tener al menos {{ limit }} caracteres.
-                max_length: Meta description no puede tener más de {{ limit }} caracteres.
-            content:
-                not_blank: El contenido no puede ir vacío.
-                min_length: El contenido debe tener al menos {{ limit }} caracteres.
+    block:
+        image:
+            mime_types: Solo se permiten archivos PNG y JPEG
+        code:
+            unique: Ya existe un bloque con este código.
+            not_blank: El código no puede ir vacío.
+            min_length: El código debe tener al menos {{ limit }} caracteres.
+            max_length: El código no puede tener más de {{ limit }} caracteres.
+    page:
+        code:
+            unique: Ya existe una página con este código.
+            not_blank: El código no puede ir vacío.
+            min_length: El código debe tener al menos {{ limit }} caracteres.
+            max_length: El código no puede tener más de {{ limit }} caracteres.
+        name:
+            not_blank: El nombre no puede ir vacío.
+            min_length: El nombre debe tener al menos {{ limit }} caracteres.
+            max_length: El nombre no puede tener más de {{ limit }} caracteres.
+        slug:
+            not_blank:  El slug no puede ir vacío.
+            min_length: El slug debe tener al menos  {{ limit }} caracteres.
+            max_length: El slug no puede tener más de {{ limit }} caracteres.
+        meta_keywords:
+            min_length: Meta keywords debe tener al menos {{ limit }} caracteres.
+            max_length: Meta keywords no puede tener más de {{ limit }} caracteres.
+        meta_description:
+            min_length: Meta description debe tener al menos {{ limit }} caracteres.
+            max_length: Meta description no puede tener más de {{ limit }} caracteres.
+        content:
+            not_blank: El contenido no puede ir vacío.
+            min_length: El contenido debe tener al menos {{ limit }} caracteres.

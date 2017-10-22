@@ -25,19 +25,19 @@ class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements 
     protected $id;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $question;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $answer;
 
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }

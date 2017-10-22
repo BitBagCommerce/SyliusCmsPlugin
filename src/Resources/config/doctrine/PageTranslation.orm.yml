@@ -1,6 +1,6 @@
 BitBag\CmsPlugin\Entity\PageTranslation:
     type: entity
-    table: bitbag_cms_page_translation
+    table: bitbag_page_translation
     id:
         id:
             type: integer

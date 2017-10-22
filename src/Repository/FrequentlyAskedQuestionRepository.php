@@ -32,6 +32,20 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
+    public function createShopListQueryBuilder(string $localeCode): QueryBuilder
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->where('translation.code = :localeCode')
+            ->andWhere('o.enabled = true')
+            ->orderBy('o.position', 'DESC')
+            ->setParameter('localeCode', $localeCode)
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface
     {
         return $this->createQueryBuilder('o')

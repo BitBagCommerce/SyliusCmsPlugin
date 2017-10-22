@@ -5,7 +5,7 @@
         pageSlugGenerator: function () {
             var timeout;
 
-            $('[name*="bitbag_cms_plugin_page[translations]"][name*="[name]"]').on('input', function() {
+            $('[name*="bitbag_plugin_page[translations]"][name*="[name]"]').on('input', function() {
                 clearTimeout(timeout);
                 var element = $(this);
 
@@ -61,6 +61,6 @@
 
 (function($) {
     $(document).ready(function () {
-        $(document).pageSlugGenerator();
+        $(this).pageSlugGenerator();
     });
 })(jQuery);

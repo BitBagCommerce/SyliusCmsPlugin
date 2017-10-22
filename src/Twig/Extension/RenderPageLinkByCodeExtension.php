@@ -9,6 +9,7 @@
  */
 
 namespace BitBag\CmsPlugin\Twig\Extension;
+
 use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
@@ -18,7 +19,7 @@ use Psr\Log\LoggerInterface;
  */
 final class RenderPageLinkByCodeExtension extends \Twig_Extension
 {
-    const PAGE_LINK_TEMPLATE = 'BitBagCmsPlugin:Page:_link.html.twig';
+    const PAGE_LINK_TEMPLATE = 'BitBagCmsPlugin:Shop:Page:_link.html.twig';
 
     /**
      * @var PageRepositoryInterface
@@ -57,7 +58,7 @@ final class RenderPageLinkByCodeExtension extends \Twig_Extension
      * @param \Twig_Environment $twigEnvironment
      * @param string $code
      *
-     * @return string|null
+     * @return null|string
      */
     public function renderPageLinkByCode(\Twig_Environment $twigEnvironment, $code)
     {

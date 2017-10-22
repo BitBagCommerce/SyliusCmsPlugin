@@ -39,12 +39,12 @@ class Block implements BlockInterface
     protected $id;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $code;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $type;
 
@@ -67,7 +67,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -75,7 +75,7 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
@@ -83,13 +83,13 @@ class Block implements BlockInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName(): ?string
     {
@@ -97,7 +97,7 @@ class Block implements BlockInterface
     }
 
     /**
-     * @param string|null $name
+     * {@inheritdoc}
      */
     public function setName(?string $name): void
     {

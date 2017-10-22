@@ -26,6 +26,13 @@ interface FrequentlyAskedQuestionRepositoryInterface
     public function createListQueryBuilder(): QueryBuilder;
 
     /**
+     * @param string $localeCode
+     *
+     * @return QueryBuilder
+     */
+    public function createShopListQueryBuilder(string $localeCode): QueryBuilder;
+
+    /**
      * @param string $code
      *
      * @return FrequentlyAskedQuestionInterface|null

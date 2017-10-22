@@ -36,10 +36,10 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     /**
      * @param ChannelInterface $channel
-     * @param string $locale
+     * @param string $localeCode
      * @param string $slug
      *
      * @return PageInterface|null
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $locale, string $slug): ?PageInterface;
+    public function findOneByChannelAndSlug(ChannelInterface $channel, string $localeCode, string $slug): ?PageInterface;
 }

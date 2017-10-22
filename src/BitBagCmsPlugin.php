@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace BitBag\CmsPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;

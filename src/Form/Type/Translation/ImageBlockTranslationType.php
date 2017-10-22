@@ -29,11 +29,11 @@ final class ImageBlockTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.cms.form.name',
+                'label' => 'bitbag.ui.name',
                 'required' => false,
             ])
             ->add('link', TextType::class, [
-                'label' => 'bitbag.cms.form.link',
+                'label' => 'bitbag.ui.link',
                 'required' => false,
             ])
             ->add('image', ImageType::class, [
@@ -47,6 +47,6 @@ final class ImageBlockTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_image_translation';
+        return 'bitbag_plugin_image_translation';
     }
 }

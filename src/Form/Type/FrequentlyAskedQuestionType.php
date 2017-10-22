@@ -33,7 +33,7 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
             ->add('code', TextType::class)
             ->add('position', IntegerType::class)
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.cms.form.questions',
+                'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
             ])
         ;

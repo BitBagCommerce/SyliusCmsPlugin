@@ -1,16 +1,16 @@
-bitbag_cms_admin_block_resource:
+bitbag_admin_block:
     resource: |
         alias: bitbag.block
         section: admin
         templates: SyliusAdminBundle:Crud
         except: ['show']
         redirect: update
-        grid: bitbag_cms_admin_block
+        grid: bitbag_admin_block
         permission: true
         vars:
             all:
-                header: bitbag.cms.blocks_header
-                subheader: bitbag.cms.blocks_subheader
+                header: bitbag.ui.blocks_header
+                subheader: bitbag.ui.blocks_subheader
                 templates:
                     form: BitBagCmsPlugin:Block:Crud/_form.html.twig
             index:
@@ -29,15 +29,15 @@ bitbag_admin_block_create:
             section: admin
             template: SyliusAdminBundle:Crud:create.html.twig
             redirect:
-                route: bitbag_admin_block_index
+                route: bitbag_admin_block_update
                 parameters: ~
             permission: true
             factory:
                 method: createWithType
                 arguments: [$type]
             vars:
-                header: bitbag.cms.blocks_header
-                subheader: bitbag.cms.blocks_subheader
+                header: bitbag.ui.blocks_header
+                subheader: bitbag.ui.blocks_subheader
                 templates:
                     form: BitBagCmsPlugin:Block:Crud/_form.html.twig
                 route:

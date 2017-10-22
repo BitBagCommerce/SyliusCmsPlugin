@@ -24,6 +24,6 @@ final class ImageType extends BaseImageType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_image_block';
+        return 'bitbag_plugin_image_block';
     }
 }

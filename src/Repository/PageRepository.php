@@ -47,7 +47,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $locale, string $slug): ?PageInterface
+    public function findOneByChannelAndSlug(ChannelInterface $channel, string $localeCode, string $slug): ?PageInterface
     {
         $page = $this->createQueryBuilder('o')
             ->addSelect('translation')
