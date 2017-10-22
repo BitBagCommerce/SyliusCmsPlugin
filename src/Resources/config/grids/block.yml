@@ -7,25 +7,29 @@ sylius_grid:
                     class: "%bitbag.model.block.class%"
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                code: asc
             fields:
-                content:
-                    type: twig
-                    path: .
-                    label: sylius.ui.content
-                    sortable: ~
-                    options:
-                        template: "@BitBagCmsPlugin/Grid/Field/content.html.twig"
                 code:
                     type: string
                     label: sylius.ui.code
-                    sortable: code
+                    sortable: ~
+                content:
+                    type: twig
+                    label: sylius.ui.content
+                    path: .
+                    sortable: translation.content
+                    options:
+                        template: "@BitBagCmsPlugin/Grid/Field/content.html.twig"
                 type:
                     type: string
                     label: sylius.ui.type
-                    sortable: type
+                    sortable: ~
                 enabled:
                     type: twig
                     label: sylius.ui.enabled
+                    path: .
+                    sortable: ~
                     options:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
             filters:

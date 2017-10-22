@@ -7,19 +7,21 @@ sylius_grid:
                     class: "%bitbag.model.page.class%"
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                code: asc
             fields:
                 code:
                     type: string
-                    label: sylius.ui.code
-                    sortable: code
+                    label: bitbag.ui.code
+                    sortable: ~
                 name:
                     type: string
-                    label: sylius.ui.type
-                    sortable: name
-                name:
+                    label: bitbag.ui.name
+                    sortable: translation.name
+                slug:
                     type: string
-                    label: sylius.ui.type
-                    sortable: name
+                    label: bitbag.ui.slug
+                    sortable: translation.slug
             filters:
                 search:
                     type: string

@@ -29,7 +29,7 @@ class Page implements PageInterface
     }
 
     /**
-     * @var int
+     * @var null|int
      */
     protected $id;
 
@@ -47,7 +47,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
