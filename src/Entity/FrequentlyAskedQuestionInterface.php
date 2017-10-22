@@ -38,4 +38,24 @@ interface FrequentlyAskedQuestionInterface extends ResourceInterface
      * @param int|null $position
      */
     public function setPosition(?int $position): void;
+
+    /**
+     * @return null|string
+     */
+    public function getQuestion(): ?string;
+
+    /**
+     * @param null|string $question
+     */
+    public function setQuestion(?string $question): void;
+
+    /**
+     * @return null|string
+     */
+    public function getAnswer(): ?string;
+
+    /**
+     * @param null|string $answer
+     */
+    public function setAnswer(?string $answer): void;
 }

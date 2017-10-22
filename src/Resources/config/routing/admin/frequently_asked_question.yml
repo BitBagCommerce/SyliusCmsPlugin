@@ -4,7 +4,7 @@ bitbag_admin_frequently_asked_question:
         section: admin
         templates: SyliusAdminBundle:Crud
         redirect: update
-        grid: bitbag_admin_page
+        grid: bitbag_admin_frequently_asked_question
         except: ['show']
         permission: true
         vars:

@@ -155,7 +155,7 @@ class Block implements BlockInterface
     /**
      * @return BlockTranslationInterface|TranslationInterface
      */
-    protected function getBlockTranslation(): ?TranslationInterface
+    protected function getBlockTranslation(): TranslationInterface
     {
         return $this->getTranslation();
     }

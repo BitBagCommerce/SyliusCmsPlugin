@@ -84,6 +84,46 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     /**
      * {@inheritdoc}
      */
+    public function getQuestion(): ?string
+    {
+        return $this->getFrequentlyAskedQuestionTranslation()->getQuestion();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setQuestion(?string $question): void
+    {
+        $this->getFrequentlyAskedQuestionTranslation()->setQuestion($question);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAnswer(): ?string
+    {
+        return $this->getFrequentlyAskedQuestionTranslation()->getAnswer();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAnswer(?string $answer): void
+    {
+        $this->getFrequentlyAskedQuestionTranslation()->setAnswer($answer);
+    }
+
+    /**
+     * @return TranslationInterface|FrequentlyAskedQuestionTranslationInterface
+     */
+    protected function getFrequentlyAskedQuestionTranslation(): TranslationInterface
+    {
+        return $this->getTranslation();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTranslation(): TranslationInterface
     {
         return new FrequentlyAskedQuestionTranslation();

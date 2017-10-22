@@ -25,4 +25,3 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
             joinColumn:
                 name: image_id
                 referencedColumnName: id
-                onDelete: null

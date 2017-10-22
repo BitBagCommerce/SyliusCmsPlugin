@@ -10,9 +10,8 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
     fields:
         question:
             type: string
-            length: 1024
+            length: 1500
             nullable: false
         answer:
-            type: string
-            length: 1024
+            type: text
             nullable: false

@@ -88,6 +88,6 @@ final class BlockType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_block';
+        return 'bitbag_cms_block';
     }
 }

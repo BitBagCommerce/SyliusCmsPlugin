@@ -159,7 +159,7 @@ class Page implements PageInterface
     /**
      * @return PageTranslationInterface|TranslationInterface|null
      */
-    protected function getPageTranslation(): ?PageTranslationInterface
+    protected function getPageTranslation(): PageTranslationInterface
     {
         return $this->getTranslation();
     }
