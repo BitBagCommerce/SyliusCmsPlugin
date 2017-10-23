@@ -10,7 +10,9 @@
 
 namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
+use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Behaviour\DocumentAccessor;
+use Sylius\Behat\Service\SlugGenerationHelper;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -25,6 +27,10 @@ trait GenericPage
     public function fillName($name)
     {
         $this->getDocument()->fillField('Name', $name);
+
+        if ($this->getDriver() instanceof Selenium2Driver) {
+            SlugGenerationHelper::waitForSlugGeneration($this->getSession(), $this->getElement('slug'));
+        }
     }
 
     /**
@@ -66,5 +72,15 @@ trait GenericPage
     public function fillField($field, $value)
     {
         $this->getDocument()->fillField($field, $value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefinedElements()
+    {
+        return array_merge(parent::getDefinedElements(), [
+            'slug' => '#bitbag_plugin_page_translations_en_US_slug',
+        ]);
     }
 }
