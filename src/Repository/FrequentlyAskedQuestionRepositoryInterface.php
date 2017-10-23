@@ -14,11 +14,12 @@ namespace BitBag\CmsPlugin\Repository;
 
 use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Doctrine\ORM\QueryBuilder;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface FrequentlyAskedQuestionRepositoryInterface
+interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
     /**
      * @return QueryBuilder

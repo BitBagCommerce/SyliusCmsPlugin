@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * This file was created by the developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on kontakt@bitbag.pl.
+ */
+
+declare(strict_types=1);
+
+namespace spec\BitBag\CmsPlugin\Entity;
+
+use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion;
+use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
+use PhpSpec\ObjectBehavior;
+use Sylius\Component\Resource\Model\ResourceInterface;
+
+/**
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ */
+final class FrequentlyAskedQuestionSpec extends ObjectBehavior
+{
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(FrequentlyAskedQuestion::class);
+    }
+
+    function it_is_a_resource()
+    {
+        $this->shouldHaveType(ResourceInterface::class);
+    }
+
+    function it_implements_frequently_asked_question_interface()
+    {
+        $this->shouldHaveType(FrequentlyAskedQuestionInterface::class);
+    }
+
+    function it_allows_access_via_properties()
+    {
+        $this->setCode('delivery_charges_for_orders');
+        $this->getCode()->shouldReturn('delivery_charges_for_orders');
+
+        $this->setPosition(2);
+        $this->getPosition()->shouldReturn(2);
+
+        $this->setEnabled(true);
+        $this->isEnabled()->shouldReturn(true);
+    }
+
+    function it_toggles()
+    {
+        $this->enable();
+        $this->isEnabled()->shouldReturn(true);
+
+        $this->disable();
+        $this->isEnabled()->shouldReturn(false);
+    }
+}
