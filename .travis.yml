@@ -32,4 +32,3 @@ script:
 
     - vendor/bin/phpspec run
     - vendor/bin/behat --strict -vvv --no-interaction --tags ~@javascript
-

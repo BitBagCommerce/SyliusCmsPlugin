@@ -90,15 +90,13 @@ To see which forms you may want to extend, run `$ bin/console debug:container | 
 
 ## Testing
 ```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar install
-$ yarn install
-$ yarn run gulp
-$ php bin/console sylius:install --env test
-$ php bin/console server:start --env test
-$ open http://localhost:8000
-$ bin/behat features/*
-$ bin/phpspec run
+$ composer install
+$ bin/console assets:install web -e test
+$ bin/console doctrine:database:create -e test
+$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ open http://localhost:8080
+$ vendor/bin/behat
+$ vendor/bin/phpspec run
 ```
 
 ## Contribution
