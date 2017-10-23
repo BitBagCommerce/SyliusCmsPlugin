@@ -51,10 +51,12 @@ final class FrequentlyAskedQuestionContext implements Context
 
     /**
      * @When I set the position to :position
+     *
+     * @param int $position
      */
-    public function iSetThePositionTo($position)
+    public function iSetThePositionTo(int $position): void
     {
-
+        $this->createPage->setPosition($position);
     }
 
     /**
@@ -62,6 +64,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iFillTheQuestionWith($question)
     {
+        $this->createPage->fillQuestion($question);
     }
 
     /**
@@ -69,6 +72,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iSetTheAnswerTo($answer)
     {
+        $this->createPage->fillAnswer($answer);
     }
 
     /**
