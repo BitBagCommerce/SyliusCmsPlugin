@@ -37,7 +37,7 @@ class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements 
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
