@@ -269,7 +269,7 @@ final class ManagingBlocksContext implements Context
      */
     public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
     {
-        $block = $this->blockRepository->findOneByCodeAndContent($code, $content);
+        $block = $this->blockRepository->findEnabledByCodeAndContent($code, $content);
 
         Assert::isInstanceOf($block, BlockInterface::class);
     }
@@ -334,7 +334,7 @@ final class ManagingBlocksContext implements Context
      */
     public function blockWithShouldNotAppearInTheStore($code)
     {
-        Assert::null($this->blockRepository->findOneByCode($code));
+        Assert::null($this->blockRepository->findEnabledByCode($code));
     }
 
     /**

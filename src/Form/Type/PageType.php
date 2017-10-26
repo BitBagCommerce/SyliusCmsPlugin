@@ -34,18 +34,18 @@ final class PageType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.cms.form.code',
+                'label' => 'bitbag.ui.code',
                 'disabled' => null !== $page->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.cms.enabled',
+                'label' => 'bitbag.ui.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.cms.products',
+                'label' => 'bitbag.ui.products',
                 'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.cms.form.images',
+                'label' => 'bitbag.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
         ;
@@ -56,6 +56,6 @@ final class PageType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_page';
+        return 'bitbag_plugin_page';
     }
 }

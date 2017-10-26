@@ -1,16 +1,16 @@
-bitbag_cms_admin_page_resource:
+bitbag_admin_page:
     resource: |
         alias: bitbag.page
         section: admin
         templates: BitBagCmsPlugin:Page
         redirect: update
-        grid: bitbag_cms_admin_page
+        grid: bitbag_admin_page
         except: ['show']
         permission: true
         vars:
             all:
-                header: bitbag.cms.pages_header
-                subheader: bitbag.cms.pages_subheader
+                header: bitbag.ui.pages_header
+                subheader: bitbag.ui.pages_subheader
                 templates:
                     form: BitBagCmsPlugin:Page:Crud/_form.html.twig
             index:

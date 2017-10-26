@@ -35,7 +35,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode(string $code): ?BlockInterface
+    public function findEnabledByCode(string $code): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -49,7 +49,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findOneByCodeAndContent(string $code, string $content): ?BlockInterface
+    public function findEnabledByCodeAndContent(string $code, string $content): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')

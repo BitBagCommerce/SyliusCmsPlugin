@@ -29,12 +29,12 @@ class Page implements PageInterface
     }
 
     /**
-     * @var int
+     * @var null|int
      */
     protected $id;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $code;
 
@@ -159,7 +159,7 @@ class Page implements PageInterface
     /**
      * @return PageTranslationInterface|TranslationInterface|null
      */
-    protected function getPageTranslation(): ?PageTranslationInterface
+    protected function getPageTranslation(): PageTranslationInterface
     {
         return $this->getTranslation();
     }

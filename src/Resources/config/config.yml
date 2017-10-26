@@ -1,8 +1,4 @@
 imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/sylius_resource.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/event_listener.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/form.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/factory.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/twig.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/fixture.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services.yml" }

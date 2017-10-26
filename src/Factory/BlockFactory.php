@@ -23,23 +23,23 @@ final class BlockFactory implements BlockFactoryInterface
     /**
      * @var FactoryInterface
      */
-    private $resourceFactory;
+    private $factory;
 
     /**
-     * @param FactoryInterface $resourceFactory
+     * @param FactoryInterface $factory
      */
-    public function __construct(FactoryInterface $resourceFactory)
+    public function __construct(FactoryInterface $factory)
     {
-        $this->resourceFactory = $resourceFactory;
+        $this->factory = $factory;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function createWithType(?string $type): BlockInterface
+    public function createWithType(string $type): BlockInterface
     {
         /** @var BlockInterface $block */
-        $block = $this->resourceFactory->createNew();
+        $block = $this->factory->createNew();
         $block->setType($type);
 
         return $block;
@@ -51,7 +51,7 @@ final class BlockFactory implements BlockFactoryInterface
     public function createNew(): BlockInterface
     {
         /** @var BlockInterface $block */
-        $block = $this->resourceFactory->createNew();
+        $block = $this->factory->createNew();
 
         return $block;
     }

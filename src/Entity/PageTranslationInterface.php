@@ -22,7 +22,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface PageTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getContent(): ?string;
 
@@ -32,42 +32,42 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function setContent(?string $content): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getSlug(): ?string;
 
     /**
-     * @param string|null $slug
+     * @param null|string $slug
      */
     public function setSlug(?string $slug): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string;
 
     /**
-     * @param string|null $name
+     * @param null|string $name
      */
     public function setName(?string $name): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getMetaKeywords(): ?string;
 
     /**
-     * @param string|null $metaKeywords
+     * @param null|string $metaKeywords
      */
     public function setMetaKeywords(?string $metaKeywords): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getMetaDescription(): ?string;
 
     /**
-     * @param string|null $metaDescription
+     * @param null|string $metaDescription
      */
     public function setMetaDescription(?string $metaDescription): void;
 }

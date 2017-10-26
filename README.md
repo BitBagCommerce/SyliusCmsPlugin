@@ -78,7 +78,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 ### Pages
 
-For rendering pages you can use `bitbag_cms_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
+For rendering pages you can use `bitbag_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
 For more information about how to do it, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html). If you are lazy guy, take a look at 
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 
@@ -94,15 +94,13 @@ To see which forms you may want to extend, run `$ bin/console debug:container | 
 
 ## Testing
 ```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar install
-$ yarn install
-$ yarn run gulp
-$ php bin/console sylius:install --env test
-$ php bin/console server:start --env test
-$ open http://localhost:8000
-$ bin/behat features/*
-$ bin/phpspec run
+$ composer install
+$ bin/console assets:install web -e test
+$ bin/console doctrine:database:create -e test
+$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ open http://localhost:8080
+$ vendor/bin/behat
+$ vendor/bin/phpspec run
 ```
 
 ## Contribution

@@ -1,0 +1,2 @@
+bitbag_admin_page:
+    resource: "@BitBagCmsPlugin/Resources/config/routing/shop/page.yml"

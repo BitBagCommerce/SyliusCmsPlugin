@@ -1,6 +1,6 @@
 BitBag\CmsPlugin\Entity\Image:
     type: entity
-    table: bitbag_cms_image
+    table: bitbag_image
     oneToOne:
         owner:
             targetEntity: BitBag\CmsPlugin\Entity\BlockTranslation

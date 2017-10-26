@@ -55,7 +55,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     )
     {
-        $blockRepository->findOneByCode('bitbag')->willReturn(null);
+        $blockRepository->findEnabledByCode('bitbag')->willReturn(null);
         $logger->warning('Block with "bitbag" code was not found in the database.')->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag')->shouldReturn(null);
@@ -67,12 +67,9 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     )
     {
-        $blockRepository->findOneByCode('bitbag')->willReturn($block);
+        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('text');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:textBlock.html.twig', [
-            'block' => $block,
-            'attributes' => [],
-        ])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:textBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -83,12 +80,9 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     )
     {
-        $blockRepository->findOneByCode('bitbag')->willReturn($block);
+        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('html');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:htmlBlock.html.twig', [
-            'block' => $block,
-            'attributes' => [],
-        ])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -99,33 +93,10 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     )
     {
-        $blockRepository->findOneByCode('bitbag')->willReturn($block);
+        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('image');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:imageBlock.html.twig', [
-            'block' => $block,
-            'attributes' => [],
-        ])->shouldBeCalled();
+        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:imageBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
-    }
-
-    function it_renders_block_with_attributes(
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block,
-        \Twig_Environment $twigEnvironment
-    )
-    {
-        $blockRepository->findOneByCode('bitbag')->willReturn($block);
-        $block->getType()->willReturn('image');
-        $twigEnvironment->render('BitBagCmsPlugin:Block:imageBlock.html.twig', [
-            'block' => $block,
-            'attributes' => [
-                'title' => 'Pink Floyd - Money',
-            ],
-        ])->shouldBeCalled();
-
-        $this->renderBlock($twigEnvironment, 'bitbag', [
-            'title' => 'Pink Floyd - Money',
-        ]);
     }
 }

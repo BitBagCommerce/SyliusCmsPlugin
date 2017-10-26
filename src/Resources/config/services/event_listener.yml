@@ -1,13 +1,13 @@
 services:
-    bitbag.cms_plugin.menu.content_management:
+    bitbag.menu.content_management:
         class: BitBag\CmsPlugin\Menu\ContentManagementMenuBuilder
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }
 
-    bitbag.cms_plugin.event_listener.:
+    bitbag.event_listener.image_block_upload:
         class: BitBag\CmsPlugin\EventListener\ImageBlockUploadListener
         arguments:
-            - '@sylius.image_uploader'
+            - "@sylius.image_uploader"
         tags:
             - { name: kernel.event_listener, event: bitbag.block.pre_create, method: uploadImage }
             - { name: kernel.event_listener, event: bitbag.block.pre_update, method: uploadImage }
