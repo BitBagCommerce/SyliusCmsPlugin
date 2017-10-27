@@ -26,4 +26,27 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         $this->getDocument()->fillField('Code', $code);
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function setPosition(int $position): void
+    {
+        $this->getDocument()->fillField('Position', $position);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function fillQuestion(string $question): void
+    {
+        $this->getDocument()->fillField('Question', $question);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function fillAnswer(string $answer): void
+    {
+        $this->getDocument()->fillField('Answer', $answer);
+    }
 }
