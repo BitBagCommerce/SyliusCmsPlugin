@@ -26,6 +26,8 @@
         "symplify/easy-coding-standard": "^2.4",
         "sylius-labs/coding-standard": "^1.0"
     },
+    "prefer-stable": true,
+    "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
             "Acme\\ExamplePlugin\\": "src/",
