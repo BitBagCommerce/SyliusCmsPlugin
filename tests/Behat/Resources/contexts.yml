@@ -62,6 +62,8 @@ services:
     bitbag.behat.context.ui.admin.frequently_asked_question:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
         arguments:
+            - "@sylius.behat.notification_checker"
+            - "@sylius.behat.current_page_resolver"
             - "@bitbag.behat.page.admin.frequently_asked_question.create"
         tags:
             - { name: fob.context_service }
