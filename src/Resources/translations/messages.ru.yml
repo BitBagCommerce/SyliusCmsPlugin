@@ -1,0 +1,31 @@
+bitbag:
+  ui:
+    blocks: Блоки
+    pages: Страницы
+  cms:
+    content_management: Наполнение
+    cms: Управление наполнением
+    enabled: Вкл
+    blocks: Блоки
+    pages: Страницы
+    blocks_header: Блоки
+    blocks_subheader: Управление блоками
+    text_block: Блок с текстом
+    html_block: Блок с HTML
+    image_block: Блок с изображением
+    pages_header: Страница
+    pages_subheader: Управление страницами
+    products: Продукты
+    name: Имя
+    slug: Путь
+    meta_keywords: Ключевые слова
+    meta_description: Описание
+    content: Наполнение
+    form:
+      code: Код
+      enabled: Вкл
+      name: Имя
+      contents: Содержит
+      content: Содержимое
+      images: Изображения
+      link: Ссылка
