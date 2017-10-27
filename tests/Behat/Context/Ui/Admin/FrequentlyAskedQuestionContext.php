@@ -13,7 +13,13 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
+use Sylius\Behat\NotificationType;
+use Sylius\Behat\Page\SymfonyPageInterface;
+use Sylius\Behat\Service\NotificationCheckerInterface;
+use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePageInterface;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -21,22 +27,41 @@ use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePageIn
 final class FrequentlyAskedQuestionContext implements Context
 {
     /**
+     * @var NotificationCheckerInterface
+     */
+    private $notificationChecker;
+
+    /**
+     * @var CurrentPageResolverInterface
+     */
+    private $currentPageResolver;
+
+    /**
      * @var CreatePageInterface
      */
     private $createPage;
 
+
     /**
+     * @param NotificationCheckerInterface $notificationChecker
+     * @param CurrentPageResolverInterface $currentPageResolver
      * @param CreatePageInterface $createPage
      */
-    public function __construct(CreatePageInterface $createPage)
+    public function __construct(
+        NotificationCheckerInterface $notificationChecker,
+        CurrentPageResolverInterface $currentPageResolver,
+        CreatePageInterface $createPage
+    )
     {
+        $this->notificationChecker = $notificationChecker;
+        $this->currentPageResolver = $currentPageResolver;
         $this->createPage = $createPage;
     }
 
     /**
      * @When I go to the create faq page
      */
-    public function iGoToTheCreateFaqPage()
+    public function iGoToTheCreateFaqPage(): void
     {
         $this->createPage->open();
     }
@@ -44,7 +69,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @When I fill code with :code
      */
-    public function iFillCodeWith($code)
+    public function iFillCodeWith(string $code): void
     {
         $this->createPage->fillCode($code);
     }
@@ -62,7 +87,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @When I fill the question with :question
      */
-    public function iFillTheQuestionWith($question)
+    public function iFillTheQuestionWith(string $question): void
     {
         $this->createPage->fillQuestion($question);
     }
@@ -70,7 +95,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @When I set the answer to :answer
      */
-    public function iSetTheAnswerTo($answer)
+    public function iSetTheAnswerTo(string $answer): void
     {
         $this->createPage->fillAnswer($answer);
     }
@@ -78,41 +103,68 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @When I add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
-
+        $this->createPage->create();
     }
 
     /**
      * @Then I should be notified that a new faq has been created
      */
-    public function iShouldBeNotifiedThatANewFaqHasBeenCreated()
+    public function iShouldBeNotifiedThatANewFaqHasBeenCreated(): void
     {
-
+        $this->notificationChecker->checkNotification(
+            'New frequently asked question has been created.',
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that :fields can not be blank
      */
-    public function iShouldBeNotifiedThatCanNotBeBlank($fields)
+    public function iShouldBeNotifiedThatCanNotBeBlank($fields): void
     {
+        $fields = explode(',', $fields);
 
+        foreach ($fields as $field) {
+            Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
+                "%s can not be blank.",
+                trim($field)
+            )));
+        }
     }
-
 
     /**
      * @Then I should be notified that there is already an existing faq with selected position
      */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithSelectedPosition()
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithSelectedPosition(): void
     {
-
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            "There is already an existing FAQ with selected position.",
+            false
+        ));
     }
 
     /**
-     * @Then I should be suggested to select :arg1 position
+     * @Then I should be suggested to select :position position
      */
-    public function iShouldBeSuggestedToSelectPosition($arg1)
+    public function iShouldBeSuggestedToSelectPosition($position): void
     {
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            sprintf(
+                "The lowest position you can select is %d.",
+                $position
+            ), false
+        ));
+    }
 
+    /**
+     * @return SymfonyPageInterface|CreatePageInterface|ContainsError
+     */
+    private function resolveCurrentPage(): SymfonyPageInterface
+    {
+        return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->createPage,
+        ]);
     }
 }

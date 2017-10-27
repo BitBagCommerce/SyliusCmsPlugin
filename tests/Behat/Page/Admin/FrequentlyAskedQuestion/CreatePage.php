@@ -13,12 +13,15 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use ContainsError;
+
     /**
      * {@inheritdoc}
      */
