@@ -67,12 +67,12 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
     public function setContent(?string $content): void;
 
     /**
-     * @return ImageInterface
+     * @return null|ImageInterface
      */
     public function getImage(): ?ImageInterface;
 
     /**
-     * @param ImageInterface $image
+     * @param null|ImageInterface $image
      */
     public function setImage(?ImageInterface $image): void;
 
