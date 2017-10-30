@@ -4,5 +4,6 @@ services:
         arguments:
             - "@bitbag.factory.block"
             - "@bitbag.repository.block"
+            - "@sylius.image_uploader"
         tags:
             - { name: sylius_fixtures.fixture }

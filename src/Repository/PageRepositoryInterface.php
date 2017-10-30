@@ -30,7 +30,7 @@ interface PageRepositoryInterface extends RepositoryInterface
     /**
      * @param string $code
      *
-     * @return PageInterface|null
+     * @return null|PageInterface
      */
     public function findEnabledByCode(string $code): ?PageInterface;
 
@@ -39,7 +39,7 @@ interface PageRepositoryInterface extends RepositoryInterface
      * @param string $localeCode
      * @param string $slug
      *
-     * @return PageInterface|null
+     * @return null|PageInterface
      */
     public function findOneByChannelAndSlug(ChannelInterface $channel, string $localeCode, string $slug): ?PageInterface;
 }
