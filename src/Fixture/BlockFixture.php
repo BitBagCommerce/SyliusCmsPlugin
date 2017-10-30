@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\CmsPlugin\Fixture;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Entity\BlockTranslation;
 use BitBag\CmsPlugin\Entity\Image;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
@@ -65,7 +66,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     {
         foreach ($options['blocks'] as $code => $fields) {
 
-            if (null !== $block = $this->blockRepository->findOneBy(['code' => $code])) {
+            if (null !== $this->blockRepository->findOneBy(['code' => $code])) {
                 continue;
             }
 
@@ -75,9 +76,10 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
             $block->setCode($code);
 
             foreach ($fields['translations'] as $localeCode => $translation) {
-                $block->setCurrentLocale($localeCode);
-                $block->setName($translation['name']);
-                $block->setContent($translation['content']);
+                $blockTranslation = new BlockTranslation();
+                $blockTranslation->setLocale($localeCode);
+                $blockTranslation->setName($translation['name']);
+                $blockTranslation->setContent($translation['content']);
 
                 if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
                     $image = new Image();
@@ -85,10 +87,12 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                     $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 
                     $image->setFile($uploadedImage);
-                    $block->setImage($image);
+                    $blockTranslation->setImage($image);
 
                     $this->imageUploader->upload($image);
                 }
+
+                $block->addTranslation($blockTranslation);
             }
 
             $this->blockRepository->add($block);
