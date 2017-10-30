@@ -63,29 +63,36 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        $type = $options['type'];
-        $block = $this->blockFactory->createWithType($type);
+        foreach ($options['blocks'] as $code => $fields) {
 
-        $block->setCode($options['code']);
-
-        foreach ($options['translations'] as $localeCode => $translation) {
-            $block->setCurrentLocale($localeCode);
-            $block->setName($translation['name']);
-            $block->setContent($translation['content']);
-
-            if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                $image = new Image();
-                $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
-
-                $image->setFile($uploadedImage);
-                $block->setImage($image);
-
-                $this->imageUploader->upload($image);
+            if (null !== $block = $this->blockRepository->findOneBy(['code' => $code])) {
+                continue;
             }
-        }
 
-        $this->blockRepository->add($block);
+            $type = $fields['type'];
+            $block = $this->blockFactory->createWithType($type);
+
+            $block->setCode($code);
+
+            foreach ($fields['translations'] as $localeCode => $translation) {
+                $block->setCurrentLocale($localeCode);
+                $block->setName($translation['name']);
+                $block->setContent($translation['content']);
+
+                if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
+                    $image = new Image();
+                    $path = $translation['image_path'];
+                    $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
+
+                    $image->setFile($uploadedImage);
+                    $block->setImage($image);
+
+                    $this->imageUploader->upload($image);
+                }
+            }
+
+            $this->blockRepository->add($block);
+        }
     }
 
     /**
@@ -103,15 +110,20 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->scalarNode('code')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
-                    ->arrayNode('translations')
-                        ->prototype('array')
-                            ->children()
-                                ->scalarNode('name')->defaultValue(null)->end()
-                                ->scalarNode('content')->defaultValue(null)->end()
-                                ->scalarNode('link')->defaultValue(null)->end()
-                                ->scalarNode('image_path')->defaultValue(null)->end()
+                ->arrayNode('blocks')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('enabled')->defaultTrue()->end()
+                            ->arrayNode('translations')
+                                ->prototype('array')
+                                    ->children()
+                                        ->scalarNode('name')->defaultNull()->end()
+                                        ->scalarNode('content')->defaultNull()->end()
+                                        ->scalarNode('link')->defaultNull()->end()
+                                        ->scalarNode('image_path')->defaultNull()->end()
+                                    ->end()
+                                ->end()
                             ->end()
                         ->end()
                 ->end()
