@@ -68,8 +68,8 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
 
         $block->setCode($options['code']);
 
-        foreach ($options['translations'] as $translation) {
-            $block->setCurrentLocale($translation['locale']);
+        foreach ($options['translations'] as $localeCode => $translation) {
+            $block->setCurrentLocale($localeCode);
             $block->setName($translation['name']);
             $block->setContent($translation['content']);
 
@@ -108,7 +108,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                     ->arrayNode('translations')
                         ->prototype('array')
                             ->children()
-                                ->scalarNode('locale')->isRequired()->cannotBeEmpty()->end()
+//                                ->scalarNode('locale')->isRequired()->cannotBeEmpty()->end()
                                 ->scalarNode('name')->defaultValue(null)->end()
                                 ->scalarNode('content')->defaultValue(null)->end()
                                 ->scalarNode('link')->defaultValue(null)->end()
