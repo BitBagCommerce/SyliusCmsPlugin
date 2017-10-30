@@ -108,7 +108,6 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                     ->arrayNode('translations')
                         ->prototype('array')
                             ->children()
-//                                ->scalarNode('locale')->isRequired()->cannotBeEmpty()->end()
                                 ->scalarNode('name')->defaultValue(null)->end()
                                 ->scalarNode('content')->defaultValue(null)->end()
                                 ->scalarNode('link')->defaultValue(null)->end()
