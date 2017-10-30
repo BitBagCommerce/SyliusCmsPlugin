@@ -1,0 +1,8 @@
+services:
+    bitbag.cms_plugin.fixture.html_block:
+        class: BitBag\CmsPlugin\Fixture\BlockFixture
+        arguments:
+            - "@bitbag.factory.block"
+            - "@bitbag.repository.block"
+        tags:
+            - { name: sylius_fixtures.fixture }
