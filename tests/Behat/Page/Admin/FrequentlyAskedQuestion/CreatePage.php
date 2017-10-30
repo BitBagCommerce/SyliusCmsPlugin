@@ -13,17 +13,43 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use ContainsError;
+
     /**
      * {@inheritdoc}
      */
     public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setPosition(int $position): void
+    {
+        $this->getDocument()->fillField('Position', $position);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function fillQuestion(string $question): void
+    {
+        $this->getDocument()->fillField('Question', $question);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function fillAnswer(string $answer): void
+    {
+        $this->getDocument()->fillField('Answer', $answer);
     }
 }

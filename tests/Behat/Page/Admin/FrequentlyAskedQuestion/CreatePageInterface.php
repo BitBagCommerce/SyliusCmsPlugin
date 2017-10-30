@@ -23,4 +23,19 @@ interface CreatePageInterface extends BaseCreatePageInterface
      * @param string $code
      */
     public function fillCode(string $code): void;
+
+    /**
+     * @param int $position
+     */
+    public function setPosition(int $position): void;
+
+    /**
+     * @param string $question
+     */
+    public function fillQuestion(string $question): void;
+
+    /**
+     * @param string $answer
+     */
+    public function fillAnswer(string $answer): void;
 }
