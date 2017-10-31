@@ -1,0 +1,31 @@
+bitbag:
+    ui:
+        blocks: Blokken
+        pages: Pagina's
+    cms:
+        content_management: Beheer content
+        cms: Beheer content
+        enabled: Ingeschakeld
+        blocks: Blokken
+        pages: Pagina's
+        blocks_header: Blokken
+        blocks_subheader: Blokken beheren
+        text_block: Text blok
+        html_block: HTML blok
+        image_block: Afbeelding blok
+        pages_header: Pagina
+        pages_subheader: Pagina's beheren
+        products: Producten
+        name: Naam
+        slug: Slug
+        meta_keywords: Meta keywords
+        meta_description: Meta description
+        content: Inhoud
+        form:
+            code: Code
+            enabled: Ingeschakeld
+            name: Naam
+            contents: Inhoud
+            content: Inhoud
+            images: Afbeeldingen
+            link: Link
