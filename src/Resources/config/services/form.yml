@@ -66,7 +66,7 @@ services:
     bitbag.form.type.translation.frequently_asked_question:
         class: BitBag\CmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType
         arguments:
-            - "%bitbag.model.frequently_asked_question.class%"
+            - "%bitbag.model.frequently_asked_question_translation.class%"
             - ['bitbag']
         tags:
             - { name: form.type }

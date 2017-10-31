@@ -35,3 +35,17 @@ bitbag:
         content:
             not_blank: Content can not be blank.
             min_length: Content must be at least {{ limit }} characters long.
+    frequently_asked_question:
+        code:
+            not_blank: Code can not be blank.
+            min_length: Code must be at least {{ limit }} characters long.
+            max_length: Code can not be longer than {{ limit }} characters.
+        position:
+            unique: There is an existing faq with this position.
+            not_blank: Position can not be blank.
+        question:
+            not_blank: Question can not be blank.
+            min_length: Question must be at least {{ limit }} characters long.
+            max_length: Question can not be longer than {{ limit }} characters.
+        answer:
+            not_blank: Answer can not be blank.
