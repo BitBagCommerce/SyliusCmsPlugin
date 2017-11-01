@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -7,15 +6,11 @@
  * You can find more information about us on https://bitbag.shop and write us
  * an email on kontakt@bitbag.pl.
  */
-
 declare(strict_types=1);
-
 namespace BitBag\CmsPlugin\Repository;
-
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -29,9 +24,8 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-        ;
+            ;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -43,9 +37,8 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -60,9 +53,8 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('content', $content)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -77,6 +69,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('content', $content)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
 }
