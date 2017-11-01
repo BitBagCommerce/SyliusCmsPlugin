@@ -8,6 +8,9 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
             generator:
                 strategy: AUTO
     fields:
+        code:
+            type: string
+            nullable: true
         position:
             type: integer
             nullable: false

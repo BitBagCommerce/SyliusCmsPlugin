@@ -31,3 +31,5 @@ bitbag:
         faq_header: FAQ
         faq_subheader: Manage frequently asked questions
         frequently_asked_questions: Frequently asked questions
+        question: Question
+        answer: Answer

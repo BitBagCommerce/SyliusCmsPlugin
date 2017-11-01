@@ -7,19 +7,25 @@ sylius_grid:
                     class: "%bitbag.model.frequently_asked_question.class%"
                     repository:
                         method: createListQueryBuilder
+            sorting:
+                position: desc
             fields:
+                position:
+                    type: string
+                    label: sylius.ui.position
+                    sortable: ~
                 code:
                     type: string
                     label: sylius.ui.code
-                    sortable: code
+                    sortable: ~
                 question:
                     type: string
-                    label: bitbag_cms.ui.question
-                    sortable: name
+                    label: bitbag.ui.question
+                    sortable: translation.question
                 answer:
                     type: string
-                    label: bitbag_cms.ui.answer
-                    sortable: name
+                    label: bitbag.ui.answer
+                    sortable: translation.answer
             filters:
                 search:
                     type: string
