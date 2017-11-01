@@ -10,7 +10,7 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
     fields:
         code:
             type: string
-            nullable: true
+            nullable: false
         position:
             type: integer
             nullable: false
