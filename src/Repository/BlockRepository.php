@@ -29,7 +29,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ;
+        ;
     }
 
     /**
@@ -43,7 +43,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 
     /**
@@ -60,7 +60,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('content', $content)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 
     /**
@@ -77,6 +77,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('content', $content)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 }
