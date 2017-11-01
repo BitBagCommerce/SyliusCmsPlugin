@@ -1,0 +1,9 @@
+services:
+    bitbag.cms_plugin.fixture.html_block:
+        class: BitBag\CmsPlugin\Fixture\BlockFixture
+        arguments:
+            - "@bitbag.factory.block"
+            - "@bitbag.repository.block"
+            - "@sylius.image_uploader"
+        tags:
+            - { name: sylius_fixtures.fixture }

@@ -23,9 +23,9 @@ use Psr\Log\LoggerInterface;
  */
 final class RenderBlockExtension extends \Twig_Extension
 {
-    const TEXT_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Shop:Block:textBlock.html.twig';
-    const HTML_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Shop:Block:htmlBlock.html.twig';
-    const IMAGE_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Shop:Block:imageBlock.html.twig';
+    const TEXT_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/textBlock.html.twig';
+    const HTML_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig';
+    const IMAGE_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/imageBlock.html.twig';
 
     /**
      * @var BlockRepositoryInterface
@@ -72,7 +72,6 @@ final class RenderBlockExtension extends \Twig_Extension
         $block = $this->blockRepository->findEnabledByCode($code);
 
         if (false === $block instanceof BlockInterface) {
-
             $this->logger->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
                 $code
