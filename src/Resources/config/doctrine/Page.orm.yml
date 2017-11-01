@@ -25,3 +25,4 @@ BitBag\CmsPlugin\Entity\Page:
                 inverseJoinColumns:
                     product_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
