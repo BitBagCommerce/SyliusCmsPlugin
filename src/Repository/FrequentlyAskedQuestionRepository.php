@@ -26,7 +26,9 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
      */
     public function createListQueryBuilder(): QueryBuilder
     {
-        return $this->createQueryBuilder('o');
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+        ;
     }
 
     /**

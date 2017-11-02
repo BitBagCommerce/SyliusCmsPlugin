@@ -1,0 +1,22 @@
+BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
+    properties:
+        question:
+            - NotBlank:
+                message: 'bitbag.frequently_asked_question.question.not_blank'
+                groups: ['bitbag']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'bitbag.frequently_asked_question.question.min_length'
+                maxMessage: 'bitbag.frequently_asked_question.question.max_length'
+                groups: ['bitbag']
+        answer:
+            - NotBlank:
+                message: 'bitbag.frequently_asked_question.answer.not_blank'
+                groups: ['bitbag']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'bitbag.frequently_asked_question.answer.min_length'
+                maxMessage: 'bitbag.frequently_asked_question.answer.max_length'
+                groups: ['bitbag']

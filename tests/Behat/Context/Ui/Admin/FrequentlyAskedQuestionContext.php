@@ -114,7 +114,7 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iShouldBeNotifiedThatANewFaqHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
-            'New frequently asked question has been created.',
+            'Success Frequently asked question has been successfully created.',
             NotificationType::success()
         );
     }
@@ -140,7 +140,7 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithSelectedPosition(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is already an existing FAQ with selected position.",
+            "There is an existing faq with this position.",
             false
         ));
     }
