@@ -27,3 +27,10 @@ bitbag_cms_shop_page_show:
                     - "expr:service('sylius.context.channel').getChannel()"
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - $slug
+
+bitbag_cms_api:
+    resource: '@BitBagCmsPlugin/Resources/config/routing/api.yml'
+    prefix: /api
+
+fos_oauth_server_token:
+  resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
