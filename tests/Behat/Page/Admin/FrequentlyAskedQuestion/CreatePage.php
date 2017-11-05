@@ -38,7 +38,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function fillQuestion(string $question): void
     {
@@ -46,7 +46,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function fillAnswer(string $answer): void
     {

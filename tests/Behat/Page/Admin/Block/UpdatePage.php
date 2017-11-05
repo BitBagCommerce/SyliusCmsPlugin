@@ -13,12 +13,52 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
+
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
-    use GenericBlock;
+    /**
+     * {@inheritdoc}
+     */
+    public function uploadImage(string $image): void
+    {
+        $this->getDocument()
+            ->attachFileToField('Choose file', __DIR__ . '/../Resources/images/' . $image)
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillName(string $name): void
+    {
+        $this->getDocument()->fillField('Name', $name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillLink(string $link): void
+    {
+        $this->getDocument()->fillField('Link', $link);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillContent(string $content): void
+    {
+        $this->getDocument()->fillField('Content', $content);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable(): void
+    {
+        $this->getDocument()->uncheckField('Enabled');
+    }
 }

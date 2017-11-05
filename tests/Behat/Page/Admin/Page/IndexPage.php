@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 
-use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
 
 /**

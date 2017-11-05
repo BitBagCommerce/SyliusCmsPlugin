@@ -22,7 +22,6 @@ use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericPage;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
@@ -367,7 +366,7 @@ final class ManagingPagesContext implements Context
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|ContainsError|GenericPage|SymfonyPageInterface
+     * @return CreatePageInterface|UpdatePageInterface|ContainsError|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {

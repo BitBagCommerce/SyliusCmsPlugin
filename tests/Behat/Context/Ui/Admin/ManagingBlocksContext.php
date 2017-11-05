@@ -22,7 +22,6 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
@@ -350,7 +349,7 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|GenericBlock|SymfonyPageInterface
+     * @return CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
