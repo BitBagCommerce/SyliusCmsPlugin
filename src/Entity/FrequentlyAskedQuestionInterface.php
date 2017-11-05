@@ -32,12 +32,12 @@ interface FrequentlyAskedQuestionInterface extends ResourceInterface, Translatab
     public function setCode(?string $code): void;
 
     /**
-     * @return int|null
+     * @return null|int
      */
     public function getPosition(): ?int;
 
     /**
-     * @param int|null $position
+     * @param null|int $position
      */
     public function setPosition(?int $position): void;
 

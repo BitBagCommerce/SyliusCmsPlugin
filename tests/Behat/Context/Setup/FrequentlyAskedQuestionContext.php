@@ -17,12 +17,18 @@ use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use BitBag\CmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class FrequentlyAskedQuestionContext implements Context
 {
+    /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
+
     /**
      * @var SharedStorageInterface
      */
@@ -39,16 +45,19 @@ final class FrequentlyAskedQuestionContext implements Context
     private $askedQuestionRepository;
 
     /**
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param SharedStorageInterface $sharedStorage
      * @param FactoryInterface $frequentlyAskedQuestionFactory
      * @param FrequentlyAskedQuestionRepositoryInterface $askedQuestionRepository
      */
     public function __construct(
+        RandomStringGeneratorInterface $randomStringGenerator,
         SharedStorageInterface $sharedStorage,
         FactoryInterface $frequentlyAskedQuestionFactory,
         FrequentlyAskedQuestionRepositoryInterface $askedQuestionRepository
     )
     {
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->sharedStorage = $sharedStorage;
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->askedQuestionRepository = $askedQuestionRepository;
@@ -61,6 +70,8 @@ final class FrequentlyAskedQuestionContext implements Context
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+
+        $frequentlyAskedQuestion->setCode($this->randomStringGenerator->generate());
         $frequentlyAskedQuestion->setPosition($position);
 
         $this->askedQuestionRepository->add($frequentlyAskedQuestion);

@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
@@ -20,5 +22,27 @@ interface CreatePageInterface extends BaseCreatePageInterface
     /**
      * @param string $code
      */
-    public function fillCode($code);
+    public function fillCode(string $code): void;
+
+    /**
+     * @param string $image
+     */
+    public function uploadImage(string $image): void;
+
+    /**
+     * @param string $name
+     */
+    public function fillName(string $name): void;
+
+    /**
+     * @param string $link
+     */
+    public function fillLink(string $link): void;
+
+    /**
+     * @param string $content
+     */
+    public function fillContent(string $content): void;
+
+    public function disable(): void;
 }

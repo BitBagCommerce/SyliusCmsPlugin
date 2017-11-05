@@ -13,13 +13,14 @@ declare(strict_types=1);
 namespace BitBag\CmsPlugin\Fixture;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\BlockTranslation;
-use BitBag\CmsPlugin\Entity\Image;
+use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
+use BitBag\CmsPlugin\Entity\BlockImage;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
+use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -34,6 +35,11 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     private $blockFactory;
 
     /**
+     * @var FactoryInterface
+     */
+    private $blockTranslationFactory;
+
+    /**
      * @var BlockRepositoryInterface
      */
     private $blockRepository;
@@ -45,22 +51,25 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
 
     /**
      * @param BlockFactoryInterface $blockFactory
+     * @param FactoryInterface $blockTranslationFactory
      * @param BlockRepositoryInterface $blockRepository
      * @param ImageUploaderInterface $imageUploader
      */
     public function __construct(
         BlockFactoryInterface $blockFactory,
+        FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
         ImageUploaderInterface $imageUploader
     )
     {
         $this->blockFactory = $blockFactory;
+        $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
         $this->imageUploader = $imageUploader;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $options): void
     {
@@ -74,15 +83,18 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
             $block = $this->blockFactory->createWithType($type);
 
             $block->setCode($code);
+            $block->setEnabled($fields['enabled']);
 
             foreach ($fields['translations'] as $localeCode => $translation) {
-                $blockTranslation = new BlockTranslation();
+                /** @var BlockTranslationInterface $blockTranslation */
+                $blockTranslation = $this->blockTranslationFactory->createNew();
+
                 $blockTranslation->setLocale($localeCode);
                 $blockTranslation->setName($translation['name']);
                 $blockTranslation->setContent($translation['content']);
 
                 if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                    $image = new Image();
+                    $image = new BlockImage();
                     $path = $translation['image_path'];
                     $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 
@@ -100,7 +112,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -108,7 +120,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
@@ -130,6 +142,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                                 ->end()
                             ->end()
                         ->end()
+                    ->end()
                 ->end()
             ->end()
         ;

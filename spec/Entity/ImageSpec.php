@@ -10,7 +10,7 @@
 
 namespace spec\BitBag\CmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\Image;
+use BitBag\CmsPlugin\Entity\BlockImage;
 use Sylius\Component\Core\Model\Image as SyliusImage;
 use PhpSpec\ObjectBehavior;
 
@@ -21,7 +21,7 @@ final class ImageSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Image::class);
+        $this->shouldHaveType(BlockImage::class);
     }
 
     function it_extends_sylius_image()

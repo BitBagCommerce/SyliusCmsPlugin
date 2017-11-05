@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
@@ -73,10 +75,8 @@ final class PageContext implements Context
     /**
      * @Given there are :number pages
      */
-    public function thereArePages($number)
+    public function thereArePages(int $number)
     {
-        $number = (int)$number;
-
         for ($i = 0; $i < $number; $i++) {
             $this->createPage();
         }
@@ -85,11 +85,10 @@ final class PageContext implements Context
     /**
      * @Given there is a cms page with :name name
      */
-    public function thereIsACmsPageWithName($name)
+    public function thereIsACmsPageWithName(string $name): void
     {
-        $this->createPage();
-        /** @var PageInterface $page */
-        $page = $this->sharedStorage->get('page');
+        $page = $this->createPage();
+
         $page->setName($name);
         $page->setCode(strtolower(str_replace(' ', '_', $name)));
 
@@ -99,11 +98,10 @@ final class PageContext implements Context
     /**
      * @Given it has :metaKeywords meta keywords
      */
-    public function itHasMetaKeywords($metaKeywords)
+    public function itHasMetaKeywords(string $metaKeywords): void
     {
-        $this->createPage();
-        /** @var PageInterface $page */
-        $page = $this->sharedStorage->get('page');
+        $page = $this->createPage();
+
         $page->setMetaKeywords($metaKeywords);
 
         $this->entityManager->flush();
@@ -112,11 +110,10 @@ final class PageContext implements Context
     /**
      * @Given it has :metaDescription meta description
      */
-    public function itHas($metaDescription)
+    public function itHasMetaDescription(string $metaDescription): void
     {
-        $this->createPage();
-        /** @var PageInterface $page */
-        $page = $this->sharedStorage->get('page');
+        $page = $this->createPage();
+        
         $page->setMetaDescription($metaDescription);
 
         $this->entityManager->flush();
@@ -125,22 +122,25 @@ final class PageContext implements Context
     /**
      * @Given it has :content content
      */
-    public function itHasContent($content)
+    public function itHasContent(string $content)
     {
-        $this->createPage();
-        /** @var PageInterface $page */
-        $page = $this->sharedStorage->get('page');
+        $page = $this->createPage();
+        
         $page->setMetaKeywords($content);
 
         $this->entityManager->flush();
     }
 
-    private function createPage()
+    /**
+     * @return PageInterface
+     */
+    private function createPage(): PageInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
-        $page->setCode($this->randomStringGenerator->generate());
         $channel = $this->sharedStorage->get('channel');
+
+        $page->setCode($this->randomStringGenerator->generate());
         $page->setCurrentLocale($channel->getLocales()->first()->getCode());
         $page->setName($this->randomStringGenerator->generate());
         $page->setSlug($this->randomStringGenerator->generate());
@@ -148,5 +148,7 @@ final class PageContext implements Context
 
         $this->pageRepository->add($page);
         $this->sharedStorage->set('page', $page);
+        
+        return $page;
     }
 }
