@@ -34,8 +34,11 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
 (function($) {
   $(document).ready(function() {
     $('#sidebar').addClass('visible');
-    $('#sidebar').first().sidebar('attach events', '#sidebar-toggle', 'toggle');
-    $('#sidebar').first().sidebar('setting', { dimPage: false });
+    $('#sidebar').sidebar('attach events', '#sidebar-toggle', 'toggle');
+    $('#sidebar').sidebar('setting', {
+      dimPage: false,
+      closable: false
+    });
 
     $('.ui.checkbox').checkbox();
     $('.ui.accordion').accordion();
@@ -265,9 +268,6 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
  * file that was distributed with this source code.
  */
 
-/**
- * @author Arnaud Langlade <arn0d.dev@gmail.com>
- */
 !function($){
 
     "use strict";
@@ -825,6 +825,9 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
         $(document).notification();
         $(document).productSlugGenerator();
         $(document).taxonSlugGenerator();
+
+        $(document).previewUploadedImage('#sylius_product_images');
+        $(document).previewUploadedImage('#sylius_taxon_images');
     });
 })(jQuery);
 
@@ -987,25 +990,17 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
             var bindExpandLeafAction = function (parentCode, expandButton, content, icon, level) {
                 var leafContainerElement = createLeafContainerElement();
                 if (defaultLevel > level) {
-                    loadLeafAction(parentCode, expandButton, content, leafContainerElement);
-                    icon.addClass('open');
+                    loadLeafAction(parentCode, expandButton, content, icon, leafContainerElement);
                 }
 
                 expandButton.click(function () {
-                    loadLeafAction(parentCode, expandButton, content, leafContainerElement);
-                    leafContainerElement.toggle(200, function () {
-                        if (icon.hasClass('open')) {
-                            icon.removeClass('open');
-
-                            return;
-                        }
-
-                        icon.addClass('open');
-                    });
+                    loadLeafAction(parentCode, expandButton, content, icon, leafContainerElement);
                 });
             };
 
-            var loadLeafAction = function (parentCode, expandButton, content, leafContainerElement) {
+            var loadLeafAction = function (parentCode, expandButton, content, icon, leafContainerElement) {
+                icon.toggleClass('open');
+
                 if (!isLeafLoaded(parentCode)) {
                     expandButton.api({
                         on: 'now',
@@ -1029,7 +1024,11 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
                             loadedLeafs.push(parentCode);
                         }
                     });
+
+                    return;
                 }
+
+                leafContainerElement.toggle();
             };
 
             var bindCheckboxAction = function (checkboxElement) {
@@ -1317,6 +1316,50 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
         }
     });
 })(jQuery);
+
+(function ( $ ) {
+    'use strict';
+
+    $.fn.extend({
+        previewUploadedImage: function (root) {
+            $(root + ' input[type="file"]').each(function() {
+                $(this).change(function() {
+                    displayUploadedImage(this);
+                });
+            });
+
+            $(root + ' [data-form-collection="add"]').on('click', function() {
+                var self = $(this);
+
+                setTimeout(function() {
+                    self.parent().find('.column:last-child input[type="file"]').on('change', function() {
+                        displayUploadedImage(this);
+                    });
+                }, 500);
+            });
+        }
+    });
+})( jQuery );
+
+function displayUploadedImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var image = $(input).parent().siblings('.image');
+
+            if (image.length > 0) {
+                image.attr('src', e.target.result);
+            } else {
+                var img = $('<img class="ui small bordered image"/>');
+                img.attr('src', e.target.result);
+                $(input).parent().before(img);
+            }
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 /*
  * This file is part of the Sylius package.

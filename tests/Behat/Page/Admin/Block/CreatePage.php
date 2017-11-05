@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -32,8 +33,13 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
      */
     public function uploadImage(string $image): void
     {
+        $path = __DIR__ . '/../../../Resources/images/' . $image;
+
+        Assert::fileExists($path);
+
         $this->getDocument()
-            ->attachFileToField('Choose file', __DIR__ . '/../Resources/images/' . $image);
+            ->attachFileToField('Choose file', $path);
+        ;
     }
 
     /**

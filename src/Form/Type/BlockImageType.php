@@ -17,13 +17,13 @@ use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class ImageType extends BaseImageType
+final class BlockImageType extends BaseImageType
 {
     /**
      * {@inheritdoc}
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_image_block';
+        return 'bitbag_plugin_block_image';
     }
 }

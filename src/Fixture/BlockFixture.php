@@ -14,7 +14,7 @@ namespace BitBag\CmsPlugin\Fixture;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\CmsPlugin\Entity\Image;
+use BitBag\CmsPlugin\Entity\BlockImage;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
@@ -94,7 +94,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                 $blockTranslation->setContent($translation['content']);
 
                 if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                    $image = new Image();
+                    $image = new BlockImage();
                     $path = $translation['image_path'];
                     $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 

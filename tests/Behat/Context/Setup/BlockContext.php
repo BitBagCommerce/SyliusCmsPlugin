@@ -14,7 +14,7 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\Image;
+use BitBag\CmsPlugin\Entity\BlockImage;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -152,7 +152,7 @@ final class BlockContext implements Context
      */
     private function uploadImage(string $name): ImageInterface
     {
-        $image = new Image();
+        $image = new BlockImage();
         $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
         $image->setFile($uploadedImage);
 

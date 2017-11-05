@@ -31,10 +31,10 @@ services:
         tags:
             - { name: form.type }
 
-    bitbag.form.type.image:
-        class: BitBag\CmsPlugin\Form\Type\ImageType
+    bitbag.form.type.block_image:
+        class: BitBag\CmsPlugin\Form\Type\BlockImageType
         arguments:
-            - BitBag\CmsPlugin\Entity\Image
+            - BitBag\CmsPlugin\Entity\BlockImage
             - ['bitbag']
         tags:
             - { name: form.type }

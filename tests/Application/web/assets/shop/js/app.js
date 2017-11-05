@@ -543,8 +543,11 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
 (function($) {
   $(document).ready(function() {
     $('#sidebar').addClass('visible');
-    $('#sidebar').first().sidebar('attach events', '#sidebar-toggle', 'toggle');
-    $('#sidebar').first().sidebar('setting', { dimPage: false });
+    $('#sidebar').sidebar('attach events', '#sidebar-toggle', 'toggle');
+    $('#sidebar').sidebar('setting', {
+      dimPage: false,
+      closable: false
+    });
 
     $('.ui.checkbox').checkbox();
     $('.ui.accordion').accordion();
@@ -774,9 +777,6 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
  * file that was distributed with this source code.
  */
 
-/**
- * @author Arnaud Langlade <arn0d.dev@gmail.com>
- */
 !function($){
 
     "use strict";
@@ -1295,8 +1295,14 @@ if(n.refresh(),e.fn.api!==i)if(t=C.api("get request"),o=C.api("was cancelled"))n
             throttle: 1500,
 
             beforeSend: function (settings) {
+                var email = $('#sylius_checkout_address_customer_email').val();
+
+                if (email.length < 3) {
+                    return false;
+                }
+
                 settings.data = {
-                    email: $('#sylius_checkout_address_customer_email').val()
+                    email: email
                 };
 
                 return settings;
