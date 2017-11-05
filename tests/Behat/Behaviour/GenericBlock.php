@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
 use Sylius\Behat\Behaviour\DocumentAccessor;
@@ -22,7 +24,7 @@ trait GenericBlock
     /**
      * @param string $image
      */
-    public function uploadImage($image)
+    public function uploadImage(string $image): void
     {
         $this->getDocument()
             ->attachFileToField('Choose file', __DIR__ . '/../Resources/images/' . $image)
@@ -32,7 +34,7 @@ trait GenericBlock
     /**
      * @param string $name
      */
-    public function fillName($name)
+    public function fillName(string $name): void
     {
         $this->getDocument()->fillField('Name', $name);
     }
@@ -40,7 +42,7 @@ trait GenericBlock
     /**
      * @param string $link
      */
-    public function fillLink($link)
+    public function fillLink(string $link): void
     {
         $this->getDocument()->fillField('Link', $link);
     }
@@ -48,12 +50,12 @@ trait GenericBlock
     /**
      * @param string $content
      */
-    public function fillContent($content)
+    public function fillContent(string $content): void
     {
         $this->getDocument()->fillField('Content', $content);
     }
 
-    public function disable()
+    public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled');
     }

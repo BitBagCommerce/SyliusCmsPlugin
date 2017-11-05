@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
@@ -114,7 +116,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I go to the cms pages page
      */
-    public function iGoToTheCmsPagesPage()
+    public function iGoToTheCmsPagesPage(): void
     {
         $this->indexPage->open();
     }
@@ -122,7 +124,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I go to the create new page page
      */
-    public function iGoToTheCreateNewPagePage()
+    public function iGoToTheCreateNewPagePage(): void
     {
         $this->createPage->open();
     }
@@ -130,10 +132,12 @@ final class ManagingPagesContext implements Context
     /**
      * @When I go to the update :code page page
      */
-    public function iGoToTheUpdatePagePage($code)
+    public function iGoToTheUpdatePagePage(string $code): void
     {
-        $page = $this->pageRepository->findOneByCode($code);
+        $page = $this->pageRepository->findOneBy(['code' => $code]);
+
         Assert::notNull($page);
+
         $this->sharedStorage->set('page_code', $code);
 
         $this->updatePage->open(['id' => $page->getId()]);
@@ -142,7 +146,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the code with :code
      */
-    public function iFillTheCodeWith($code)
+    public function iFillTheCodeWith(string $code): void
     {
         $this->resolveCurrentPage()->fillCode($code);
 
@@ -152,7 +156,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the name with :name
      */
-    public function iFillTheNameWith($name)
+    public function iFillTheNameWith(string $name): void
     {
         $this->resolveCurrentPage()->fillName($name);
     }
@@ -160,7 +164,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the link with :link
      */
-    public function iFillTheLinkWith($link)
+    public function iFillTheLinkWith(string $link): void
     {
         $this->resolveCurrentPage()->fillLink($link);
     }
@@ -168,7 +172,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the slug with :slug
      */
-    public function iFillTheSlugWith($slug)
+    public function iFillTheSlugWith(string $slug): void
     {
         $this->resolveCurrentPage()->fillSlug($slug);
     }
@@ -176,7 +180,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the meta keywords with :metaKeywords
      */
-    public function iFillTheMetaKeywordsWith($metaKeywords)
+    public function iFillTheMetaKeywordsWith(string $metaKeywords): void
     {
         $this->resolveCurrentPage()->fillMetaKeywords($metaKeywords);
     }
@@ -184,7 +188,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the meta description with :metaDescription
      */
-    public function iFillTheMetaDescriptionWith($metaDescription)
+    public function iFillTheMetaDescriptionWith(string $metaDescription): void
     {
         $this->resolveCurrentPage()->fillMetaDescription($metaDescription);
     }
@@ -192,7 +196,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I fill the content with :content
      */
-    public function iFillTheContentWith($content)
+    public function iFillTheContentWith(string $content): void
     {
         $this->resolveCurrentPage()->fillContent($content);
     }
@@ -200,7 +204,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When /^I fill "([^"]*)" with (\d+) (?:character|characters)$/
      */
-    public function iFillWithCharacter($fields, $length)
+    public function iFillWithCharacter(string $fields, int $length): void
     {
         $fields = explode(',', $fields);
 
@@ -213,7 +217,7 @@ final class ManagingPagesContext implements Context
      * @When I add it
      * @When I try to add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->resolveCurrentPage()->create();
     }
@@ -221,7 +225,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I update it
      */
-    public function iUpdateIt()
+    public function iUpdateIt(): void
     {
         $this->resolveCurrentPage()->saveChanges();
     }
@@ -229,7 +233,7 @@ final class ManagingPagesContext implements Context
     /**
      * @When I remove last page
      */
-    public function iRemoveLastPage()
+    public function iRemoveLastPage(): void
     {
         $code = $this->sharedStorage->get('page')->getCode();
 
@@ -239,31 +243,40 @@ final class ManagingPagesContext implements Context
     /**
      * @Then I should be notified that new page was created
      */
-    public function iShouldBeNotifiedThatNewPageWasCreated()
+    public function iShouldBeNotifiedThatNewPageWasCreated(): void
     {
-        $this->notificationChecker->checkNotification("Page has been successfully created.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Page has been successfully created.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that the page was updated
      */
-    public function iShouldBeNotifiedThatThePageWasUpdated()
+    public function iShouldBeNotifiedThatThePageWasUpdated(): void
     {
-        $this->notificationChecker->checkNotification("Page has been successfully updated.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Page has been successfully updated.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that this page was removed
      */
-    public function iShouldBeNotifiedThatThisPageWasRemoved()
+    public function iShouldBeNotifiedThatThisPageWasRemoved(): void
     {
-        $this->notificationChecker->checkNotification("Page has been successfully deleted.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Page has been successfully deleted.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that :fields fields can not be blank
      */
-    public function iShouldBeNotifiedThatFieldsCanNotBeBlank($fields)
+    public function iShouldBeNotifiedThatFieldsCanNotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 
@@ -278,7 +291,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then I should be notified that the :fields fields are too short
      */
-    public function iShouldBeNotifiedThatTheFieldsAreTooShort($fields)
+    public function iShouldBeNotifiedThatTheFieldsAreTooShort(string $fields): void
     {
         $fields = explode(',', $fields);
 
@@ -293,7 +306,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then I should be notified that :fields fields are too long
      */
-    public function iShouldBeNotifiedThatFieldsAreTooLong($fields)
+    public function iShouldBeNotifiedThatFieldsAreTooLong(string $fields): void
     {
         $fields = explode(',', $fields);
 
@@ -308,7 +321,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then this page should have :code code
      */
-    public function thisPageShouldHaveCode($code)
+    public function thisPageShouldHaveCode(string $code): void
     {
         Assert::eq($code, $this->getPage()->getCode());
     }
@@ -316,7 +329,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then it should have :name name
      */
-    public function itShouldHaveName($name)
+    public function itShouldHaveName(string $name): void
     {
         Assert::eq($this->getPage()->getName(), $name);
     }
@@ -324,7 +337,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then it should have :slug slug
      */
-    public function itShouldHaveSlug($slug)
+    public function itShouldHaveSlug(string $slug): void
     {
         Assert::eq($this->getPage()->getSlug(), $slug);
     }
@@ -332,7 +345,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then it should have :metaKeywords meta keywords
      */
-    public function itShouldHaveMetaKeywords($metaKeywords)
+    public function itShouldHaveMetaKeywords(string $metaKeywords): void
     {
         Assert::eq($metaKeywords, $this->getPage()->getMetaKeywords());
     }
@@ -340,7 +353,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then it should have :content content
      */
-    public function itShouldHaveContent($content)
+    public function itShouldHaveContent(string $content): void
     {
         Assert::eq($content, $this->getPage()->getContent());
     }
@@ -348,7 +361,7 @@ final class ManagingPagesContext implements Context
     /**
      * @Then :number pages should exist in the store
      */
-    public function pagesShouldExistInTheStore($number)
+    public function pagesShouldExistInTheStore(int $number): void
     {
         Assert::eq((int)$number, count($this->pageRepository->findAll()));
     }
@@ -356,19 +369,22 @@ final class ManagingPagesContext implements Context
     /**
      * @return CreatePageInterface|UpdatePageInterface|ContainsError|GenericPage|SymfonyPageInterface
      */
-    private function resolveCurrentPage()
+    private function resolveCurrentPage(): SymfonyPageInterface
     {
         return $this->currentPageResolver->getCurrentPageWithForm([$this->createPage, $this->updatePage]);
     }
 
     /**
-     * @return PageInterface
+     * @return null|PageInterface
      */
-    private function getPage()
+    private function getPage(): ?PageInterface
     {
         $code = $this->sharedStorage->get('page_code');
-        $page = $this->pageRepository->findOneByCode($code);
+        /** @var null|PageInterface $page */
+        $page = $this->pageRepository->findOneBy(['code' => $code]);
+
         $this->entityManager->refresh($page->getTranslation());
+
         Assert::notNull($page);
 
         return $page;

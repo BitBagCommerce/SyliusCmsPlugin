@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
 use Behat\Mink\Driver\Selenium2Driver;
@@ -24,7 +26,7 @@ trait GenericPage
     /**
      * @param string $name
      */
-    public function fillName($name)
+    public function fillName(string $name): void
     {
         $this->getDocument()->fillField('Name', $name);
 
@@ -36,7 +38,7 @@ trait GenericPage
     /**
      * @param string $slug
      */
-    public function fillSlug($slug)
+    public function fillSlug(string $slug): void
     {
         $this->getDocument()->fillField('Slug', $slug);
     }
@@ -44,7 +46,7 @@ trait GenericPage
     /**
      * @param string $metaKeywords
      */
-    public function fillMetaKeywords($metaKeywords)
+    public function fillMetaKeywords(string $metaKeywords): void
     {
         $this->getDocument()->fillField('Meta keywords', $metaKeywords);
     }
@@ -52,7 +54,7 @@ trait GenericPage
     /**
      * @param string $metaDescription
      */
-    public function fillMetaDescription($metaDescription)
+    public function fillMetaDescription(string $metaDescription): void
     {
         $this->getDocument()->fillField('Meta description', $metaDescription);
     }
@@ -60,7 +62,7 @@ trait GenericPage
     /**
      * @param string $content
      */
-    public function fillContent($content)
+    public function fillContent(string $content): void
     {
         $this->getDocument()->fillField('Content', $content);
     }
@@ -69,15 +71,15 @@ trait GenericPage
      * @param string $field
      * @param string $value
      */
-    public function fillField($field, $value)
+    public function fillField(string $field, string $value): void
     {
-        $this->getDocument()->fillField($field, $value);
+        $this->getDocument()->fillField( $field, $value);
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function getDefinedElements()
+    protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'slug' => '#bitbag_plugin_page_translations_en_US_slug',

@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
@@ -113,7 +115,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I go to the create :blockType block page
      */
-    public function iGoToTheCreateImageBlockPage($blockType)
+    public function iGoToTheCreateImageBlockPage(string $blockType): void
     {
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
@@ -140,9 +142,9 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I go to the update :code block page
      */
-    public function iGoToTheUpdateBlockPage($code)
+    public function iGoToTheUpdateBlockPage(string $code)
     {
-        $id = $this->blockRepository->findOneByCode($code)->getId();
+        $id = $this->blockRepository->findOneBy(['code' => $code])->getId();
 
         $this->updatePage->open(['id' => $id]);
     }
@@ -150,7 +152,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I fill the code with :code
      */
-    public function iFillTheCodeWith($code)
+    public function iFillTheCodeWith(string $code): void
     {
         $this->resolveCurrentPage()->fillCode($code);
     }
@@ -158,7 +160,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I fill the name with :name
      */
-    public function iFillTheNameWith($name)
+    public function iFillTheNameWith(string $name): void
     {
         $this->resolveCurrentPage()->fillName($name);
     }
@@ -166,7 +168,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I fill the link with :link
      */
-    public function iFillTheLinkWith($link)
+    public function iFillTheLinkWith(string $link): void
     {
         $this->resolveCurrentPage()->fillLink($link);
     }
@@ -174,7 +176,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I upload the :image image
      */
-    public function iUploadTheImage($image)
+    public function iUploadTheImage(string $image): void
     {
         $this->resolveCurrentPage()->uploadImage($image);
     }
@@ -182,7 +184,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I disable it
      */
-    public function iDisableIt()
+    public function iDisableIt(): void
     {
         $this->resolveCurrentPage()->disable();
     }
@@ -190,7 +192,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I fill the content with :content
      */
-    public function iFillTheContentWith($content)
+    public function iFillTheContentWith(string $content): void
     {
         $this->resolveCurrentPage()->fillContent($content);
     }
@@ -198,7 +200,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I remove this image block
      */
-    public function iRemoveThisImageBlock()
+    public function iRemoveThisImageBlock(): void
     {
         /** @var BlockInterface $block */
         $block = $this->sharedStorage->get('block');
@@ -210,7 +212,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->createPage->create();
     }
@@ -218,7 +220,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @When I update it
      */
-    public function iUpdateIt()
+    public function iUpdateIt(): void
     {
         $this->updatePage->saveChanges();
     }
@@ -226,7 +228,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then no dynamic content blocks should appear in the store
      */
-    public function noDynamicContentBlocksShouldAppearInTheStore()
+    public function noDynamicContentBlocksShouldAppearInTheStore(): void
     {
         Assert::eq(0, count($this->blockRepository->findAll()));
     }
@@ -234,7 +236,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then I should see :number dynamic content blocks with :type type
      */
-    public function iShouldSeeDynamicContentBlocksWithType($number, $type)
+    public function iShouldSeeDynamicContentBlocksWithType(int $number, string $type): void
     {
         Assert::eq($number, $this->indexPage->getBlocksWithTypeCount($type));
     }
@@ -243,31 +245,40 @@ final class ManagingBlocksContext implements Context
      * @Then I should be notified that new image block was created
      * @Then I should be notified that new text block was created
      */
-    public function iShouldBeNotifiedThatNewImageBlockWasCreated()
+    public function iShouldBeNotifiedThatNewImageBlockWasCreated(): void
     {
-        $this->notificationChecker->checkNotification("Block has been successfully created.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Block has been successfully created.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that the block was successfully updated
      */
-    public function iShouldBeNotifiedThatTheBlockWasSuccessfullyUpdated()
+    public function iShouldBeNotifiedThatTheBlockWasSuccessfullyUpdated(): void
     {
-        $this->notificationChecker->checkNotification("Block has been successfully updated.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Block has been successfully updated.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then I should be notified that this block was removed
      */
-    public function iShouldBeNotifiedThatThisBlockWasRemoved()
+    public function iShouldBeNotifiedThatThisBlockWasRemoved(): void
     {
-        $this->notificationChecker->checkNotification("Block has been successfully deleted.", NotificationType::success());
+        $this->notificationChecker->checkNotification(
+            "Block has been successfully deleted.",
+            NotificationType::success()
+        );
     }
 
     /**
      * @Then block with :code code and :content content should exist in the store
      */
-    public function blockWithCodeAndContentShouldBeInTheStore($code, $content)
+    public function blockWithCodeAndContentShouldBeInTheStore(string $code, string $content): void
     {
         $block = $this->blockRepository->findEnabledByCodeAndContent($code, $content);
 
@@ -277,9 +288,10 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then block with :type type and :content content should exist in the store
      */
-    public function blockWithTypeAndContentShouldBeInTheStore($type, $content)
+    public function blockWithTypeAndContentShouldBeInTheStore(string $type, string $content): void
     {
         $block = $this->blockRepository->findOneByTypeAndContent($type, $content);
+
         $this->sharedStorage->set('block', $block);
 
         Assert::isInstanceOf($block, BlockInterface::class);
@@ -289,7 +301,7 @@ final class ManagingBlocksContext implements Context
      * @Then this block should also have :name name and :link link
      * @Then this block should also have :name name
      */
-    public function thisBlockShouldAlsoHaveNameAndLink($name, $link = null)
+    public function thisBlockShouldAlsoHaveNameAndLink(string $name, string $link = null): void
     {
         /** @var BlockInterface $block */
         $block = $this->sharedStorage->get('block');
@@ -301,9 +313,9 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then image block with :code code and :image image should exist in the store
      */
-    public function imageBlockWithTypeAndImageShouldBeInTheStore($code, $image)
+    public function imageBlockWithTypeAndImageShouldBeInTheStore(string $code, string $image): void
     {
-        $block = $this->blockRepository->findOneByCode($code);
+        $block = $this->blockRepository->findOneBy(['code' => $code]);
         $blockImage = $block->getImage();
         $this->entityManager->refresh($blockImage);
         $this->sharedStorage->set('block', $block);
@@ -318,7 +330,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
      */
-    public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(...$blockTypes)
+    public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(string ...$blockTypes): void
     {
         $blockTypesOnPage = $this->indexPage->getBlockTypes();
 
@@ -332,7 +344,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @Then block with :code should not appear in the store
      */
-    public function blockWithShouldNotAppearInTheStore($code)
+    public function blockWithShouldNotAppearInTheStore(string $code): void
     {
         Assert::null($this->blockRepository->findEnabledByCode($code));
     }
@@ -340,7 +352,7 @@ final class ManagingBlocksContext implements Context
     /**
      * @return CreatePageInterface|UpdatePageInterface|GenericBlock|SymfonyPageInterface
      */
-    private function resolveCurrentPage()
+    private function resolveCurrentPage(): SymfonyPageInterface
     {
         return $this->currentPageResolver->getCurrentPageWithForm([$this->createPage, $this->updatePage]);
     }

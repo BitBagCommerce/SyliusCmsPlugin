@@ -13,14 +13,13 @@ declare(strict_types=1);
 namespace BitBag\CmsPlugin\Controller;
 
 use Sylius\Component\Product\Generator\SlugGeneratorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class PageSlugController extends Controller
+final class PageSlugController
 {
     /**
      * @var SlugGeneratorInterface

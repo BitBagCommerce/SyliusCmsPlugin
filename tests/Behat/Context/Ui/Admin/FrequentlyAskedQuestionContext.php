@@ -41,7 +41,6 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     private $createPage;
 
-
     /**
      * @param NotificationCheckerInterface $notificationChecker
      * @param CurrentPageResolverInterface $currentPageResolver
@@ -122,7 +121,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @Then I should be notified that :fields can not be blank
      */
-    public function iShouldBeNotifiedThatCanNotBeBlank($fields): void
+    public function iShouldBeNotifiedThatCanNotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 

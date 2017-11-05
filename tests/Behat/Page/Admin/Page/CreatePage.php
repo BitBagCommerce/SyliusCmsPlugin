@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
@@ -25,7 +27,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * {@inheritDoc}
      */
-    public function fillCode($code)
+    public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
     }
