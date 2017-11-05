@@ -146,19 +146,6 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be suggested to select :position position
-     */
-    public function iShouldBeSuggestedToSelectPosition($position): void
-    {
-        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            sprintf(
-                "The lowest position you can select is %d.",
-                $position
-            ), false
-        ));
-    }
-
-    /**
      * @return SymfonyPageInterface|CreatePageInterface|ContainsError
      */
     private function resolveCurrentPage(): SymfonyPageInterface

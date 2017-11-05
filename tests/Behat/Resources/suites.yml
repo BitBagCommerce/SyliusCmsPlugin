@@ -1,38 +1,4 @@
-default:
-    suites:
-        managing_blocks:
-            contexts_services:
-                - sylius.behat.context.hook.doctrine_orm
-
-                - sylius.behat.context.setup.channel
-                - sylius.behat.context.setup.admin_security
-                - bitbag.behat.context.setup.block
-
-                - bitbag.behat.context.ui.admin.managing_blocks
-            filters:
-                tags: "@managing_blocks"
-        
-        managing_pages:
-            contexts_services:
-                - sylius.behat.context.hook.doctrine_orm
-
-                - sylius.behat.context.setup.channel
-                - sylius.behat.context.setup.admin_security
-                - sylius.behat.context.setup.product
-                - bitbag.behat.context.setup.page
-
-                - bitbag.behat.context.ui.admin.managing_pages
-            filters:
-                tags: "@managing_pages"
-
-        managing_faq:
-            contexts_services:
-                - sylius.behat.context.hook.doctrine_orm
-
-                - sylius.behat.context.setup.channel
-                - sylius.behat.context.setup.admin_security
-                - bitbag.behat.context.setup.frequently_asked_question
-
-                - bitbag.behat.context.ui.admin.frequently_asked_question
-            filters:
-                tags: "@managing_faq"
+imports:
+    - suites/ui/managing_blocks.yml
+    - suites/ui/managing_pages.yml
+    - suites/ui/managing_faq.yml

@@ -1,4 +1,4 @@
-![BitBag](https://bitbag.pl/static/bitbag-logo.png)
+![BitBag](https://lh6.googleusercontent.com/zj9Paf-0CgHtwr_uqtM722d_sVtfNI-YfIpoaU9SZEc8_QFvIJ68fqDAXwtIqhTp6DWwannD=w1440-h729-rw)
 
 # BitBag CmsPlugin [![Build Status](https://travis-ci.org/bitbag-commerce/CmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
 
@@ -102,3 +102,7 @@ $ vendor/bin/phpspec run
 ## Contribution
 
 Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
+
+## Support
+
+Do you want us to customize this plugin for your specific needs? Write us an email on mikolaj.krol@bitbag.pl :computer:

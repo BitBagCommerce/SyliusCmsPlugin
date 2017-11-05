@@ -34,14 +34,16 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
-    public function createShopListQueryBuilder(string $localeCode): QueryBuilder
+    public function findEnabledOrderedByPosition(string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->where('translation.code = :localeCode')
+            ->where('translation.locale = :localeCode')
             ->andWhere('o.enabled = true')
             ->orderBy('o.position', 'DESC')
             ->setParameter('localeCode', $localeCode)
+            ->getQuery()
+            ->getResult()
         ;
     }
 

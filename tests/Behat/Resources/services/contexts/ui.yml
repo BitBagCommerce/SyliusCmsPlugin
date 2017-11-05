@@ -1,15 +1,4 @@
 services:
-    bitbag.behat.context.setup.block:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\BlockContext
-        arguments:
-            - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.block"
-            - "@__symfony__.bitbag.repository.block"
-            - "@__symfony__.sylius.image_uploader"
-        tags:
-            - { name: fob.context_service }
-
     bitbag.behat.context.ui.admin.managing_blocks:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\ManagingBlocksContext
         arguments:
@@ -21,17 +10,6 @@ services:
             - "@sylius.behat.shared_storage"
             - "@__symfony__.bitbag.repository.block"
             - "@__symfony__.bitbag.manager.block"
-        tags:
-            - { name: fob.context_service }
-
-    bitbag.behat.context.setup.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\PageContext
-        arguments:
-            - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.page"
-            - "@__symfony__.bitbag.repository.page"
-            - "@__symfony__.bitbag.manager.page"
         tags:
             - { name: fob.context_service }
 
@@ -47,15 +25,6 @@ services:
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.page"
             - "@__symfony__.bitbag.manager.page"
-        tags:
-            - { name: fob.context_service }
-
-    bitbag.behat.context.setup.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext
-        arguments:
-            - "@sylius.behat.shared_storage"
-            - "@__symfony__.bitbag.factory.frequently_asked_question"
-            - "@__symfony__.bitbag.repository.frequently_asked_question"
         tags:
             - { name: fob.context_service }
 

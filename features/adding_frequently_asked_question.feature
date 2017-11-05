@@ -34,4 +34,3 @@ Feature: Adding frequently asked question
         And I set the answer to "Yes"
         And I add it
         Then I should be notified that there is already an existing faq with selected position
-        And I should be suggested to select 2 position

@@ -1,3 +1,7 @@
+imports:
+    - { resource: "services/contexts.yml" }
+    - { resource: "services/pages.yml" }
+
 services:
     bitbag.behat.random_string_generator:
         class: Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGenerator

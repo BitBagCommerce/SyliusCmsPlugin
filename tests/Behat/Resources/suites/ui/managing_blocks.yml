@@ -1,0 +1,13 @@
+default:
+    suites:
+        ui_managing_blocks:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - bitbag.behat.context.setup.block
+
+                - bitbag.behat.context.ui.admin.managing_blocks
+            filters:
+                tags: "@managing_blocks && @ui"
