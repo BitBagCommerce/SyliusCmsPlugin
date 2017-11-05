@@ -14,7 +14,6 @@ namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 
-
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
