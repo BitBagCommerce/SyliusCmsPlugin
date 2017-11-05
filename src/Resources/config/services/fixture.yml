@@ -1,9 +1,28 @@
 services:
-    bitbag.cms_plugin.fixture.html_block:
+    bitbag.fixture.block:
         class: BitBag\CmsPlugin\Fixture\BlockFixture
         arguments:
             - "@bitbag.factory.block"
+            - "@bitbag.factory.block_translation"
             - "@bitbag.repository.block"
             - "@sylius.image_uploader"
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag.fixture.page:
+        class: BitBag\CmsPlugin\Fixture\PageFixture
+        arguments:
+            - "@bitbag.factory.page"
+            - "@bitbag.factory.page_translation"
+            - "@bitbag.repository.page"
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag.fixture.frequently_asked_question:
+        class: BitBag\CmsPlugin\Fixture\FrequentlyAskedQuestionFixture
+        arguments:
+            - "@bitbag.factory.frequently_asked_question"
+            - "@bitbag.factory.frequently_asked_question_translation"
+            - "@bitbag.repository.frequently_asked_question"
         tags:
             - { name: sylius_fixtures.fixture }
