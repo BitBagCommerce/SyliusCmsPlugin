@@ -1,0 +1,10 @@
+bitbag_shop_block_show:
+    path: /block/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.block:showAction
+        _sylius:
+            repository:
+                method: findOneByCode
+                arguments:
+                    - $code

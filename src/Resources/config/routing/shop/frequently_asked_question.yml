@@ -1,4 +1,4 @@
-bitbag_shop_page_show:
+bitbag_shop_frequently_asked_question_index:
     path: /faq
     methods: [GET]
     defaults:
