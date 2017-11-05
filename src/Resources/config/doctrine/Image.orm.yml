@@ -5,8 +5,7 @@ BitBag\CmsPlugin\Entity\Image:
         owner:
             targetEntity: BitBag\CmsPlugin\Entity\BlockTranslation
             inversedBy: image
+            cascade: [ALL]
             joinColumn:
                 name: owner_id
                 referencedColumnName: id
-                onDelete: CASCADE
-                nullable: false

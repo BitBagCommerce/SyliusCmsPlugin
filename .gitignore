@@ -1,7 +1,5 @@
 /vendor/
-
 /node_modules/
-tests/Application/node_modules/
 
 /etc/build/*
 !/etc/build/.gitkeep
@@ -12,3 +10,6 @@ tests/Application/var/
 !tests/Application/web/app_test.php
 tests/Application/web/media/*
 tests/Application/web/bundles
+
+/bin/
+!/bin/.gitkeep
