@@ -4,3 +4,4 @@ bitbag_admin:
 
 bitbag_shop:
     resource: "@BitBagCmsPlugin/Resources/config/routing/shop.yml"
+    prefix: /{_locale}
