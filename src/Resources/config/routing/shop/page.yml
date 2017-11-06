@@ -6,8 +6,7 @@ bitbag_shop_page_show:
         _sylius:
             template: BitBagCmsPlugin:Shop:Page:show.html.twig
             repository:
-                method: findOneByChannelAndSlug
+                method: findEnabledBySlug
                 arguments:
-                    - "expr:service('sylius.context.channel').getChannel()"
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"

@@ -25,10 +25,12 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.translations', 'translation')
+            ->where('translation.locale = :locale')
+            ->setParameter('locale', $locale)
         ;
     }
 
@@ -49,19 +51,17 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $localeCode, string $slug): ?PageInterface
+    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface
     {
-        $page = $this->createQueryBuilder('o')
+        return $this->createQueryBuilder('o')
             ->addSelect('translation')
             ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->andWhere('translation.slug = :slug')
             ->andWhere('o.enabled = true')
-            ->setParameter('locale', $locale)
+            ->setParameter('locale', $localeCode)
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
         ;
-
-        return $page;
     }
 }

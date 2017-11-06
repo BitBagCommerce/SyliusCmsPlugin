@@ -1,0 +1,31 @@
+bitbag:
+    ui:
+        blocks: Bloky
+        pages: Stránky
+    cms:
+        content_management: Obsahový management
+        cms: Obsahový management
+        enabled: Povoleno
+        blocks: Bloky
+        pages: Stránky
+        blocks_header: Bloky
+        blocks_subheader: Správa bloků
+        text_block: Textový blok
+        html_block: HTML blok
+        image_block: Obrázkový blok
+        pages_header: Stránka
+        pages_subheader: Správa stránek
+        products: Produkty
+        name: Název
+        slug: Slug
+        meta_keywords: Meta klíčová slova
+        meta_description: Meta popis
+        content: Obsah
+        form:
+            code: Kód
+            enabled: Povoleno
+            name: Název
+            contents: Obsahy
+            content: Obsah
+            images: Obrázky
+            link: Odkaz

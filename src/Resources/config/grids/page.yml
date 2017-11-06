@@ -7,8 +7,10 @@ sylius_grid:
                     class: "%bitbag.model.page.class%"
                     repository:
                         method: createListQueryBuilder
+                        arguments: ["%locale%"]
             sorting:
                 code: asc
+            limits: [10, 25, 50]
             fields:
                 code:
                     type: string

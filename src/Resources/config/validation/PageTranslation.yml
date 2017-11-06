@@ -1,7 +1,8 @@
 BitBag\CmsPlugin\Entity\PageTranslation:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [slug]
+            fields: [slug, locale]
+            errorPath: slug
             groups: [bitbag]
             message: bitbag.page.slug.unique
     properties:

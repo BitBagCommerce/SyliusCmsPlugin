@@ -1,6 +1,6 @@
 ![BitBag](https://lh6.googleusercontent.com/zj9Paf-0CgHtwr_uqtM722d_sVtfNI-YfIpoaU9SZEc8_QFvIJ68fqDAXwtIqhTp6DWwannD=w1440-h729-rw)
 
-# BitBag CmsPlugin [![Build Status](https://travis-ci.org/bitbag-commerce/CmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
+# SyliusCmsPlugin [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
 
 ## Overview
 

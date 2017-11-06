@@ -23,9 +23,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface PageRepositoryInterface extends RepositoryInterface
 {
     /**
+     * @param string $locale
+     *
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(): QueryBuilder;
+    public function createListQueryBuilder(string $locale): QueryBuilder;
 
     /**
      * @param string $code
@@ -35,11 +37,10 @@ interface PageRepositoryInterface extends RepositoryInterface
     public function findEnabledByCode(string $code): ?PageInterface;
 
     /**
-     * @param ChannelInterface $channel
-     * @param string $localeCode
      * @param string $slug
+     * @param string $localeCode
      *
      * @return null|PageInterface
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $localeCode, string $slug): ?PageInterface;
+    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface;
 }
