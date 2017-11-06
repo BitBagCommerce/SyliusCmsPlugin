@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Exception;
 
 use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
@@ -18,22 +20,22 @@ use PhpSpec\ObjectBehavior;
  */
 final class TemplateTypeNotFoundSpec extends ObjectBehavior
 {
-    function let()
+    function let(): void
     {
         $this->beConstructedWith('bitbag');
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(TemplateTypeNotFound::class);
     }
 
-    function it_is_an_exception()
+    function it_is_an_exception(): void
     {
         $this->shouldHaveType(\Exception::class);
     }
 
-    function it_has_custom_message()
+    function it_has_custom_message(): void
     {
         $this->getMessage()->shouldReturn('Template type "bitbag" was not found.');
     }

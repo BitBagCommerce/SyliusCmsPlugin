@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\EventListener;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -25,12 +27,12 @@ use Sylius\Component\Core\Uploader\ImageUploaderInterface;
  */
 final class ImageBlockUploadListenerSpec extends ObjectBehavior
 {
-    public function let(ImageUploaderInterface $imageUploader)
+    public function let(ImageUploaderInterface $imageUploader): void
     {
         $this->beConstructedWith($imageUploader);
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ImageBlockUploadListener::class);
     }
@@ -38,7 +40,7 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
     function it_does_not_upload_if_not_block_instance(
         ResourceControllerEvent $event,
         BlockInterface $block
-    )
+    ): void
     {
         $event->getSubject()->willReturn(Argument::any());
 
@@ -48,7 +50,7 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
     function it_does_not_upload_if_not_image_Block(
         ResourceControllerEvent $event,
         BlockInterface $block
-    )
+    ): void
     {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn(Argument::any());
@@ -62,7 +64,7 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
         BlockTranslationInterface $blockTranslation,
         ImageInterface $image,
         ImageUploaderInterface $imageUploader
-    )
+    ): void
     {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn('image');

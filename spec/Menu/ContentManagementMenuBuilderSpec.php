@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Menu;
 
 use BitBag\CmsPlugin\Menu\ContentManagementMenuBuilder;
@@ -20,7 +22,7 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
  */
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ContentManagementMenuBuilder::class);
     }
@@ -29,7 +31,7 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         MenuBuilderEvent $menuBuilderEvent,
         ItemInterface $menu,
         ItemInterface $cmsRootMenuItem
-    )
+    ): void
     {
         $menuBuilderEvent->getMenu()->willReturn($menu);
         $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);

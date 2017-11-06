@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Entity;
 
 use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
@@ -21,23 +23,23 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 final class BlockTranslationSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_is_a_resource()
+    function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_block_translation_interface()
+    function it_implements_block_translation_interface(): void
     {
         $this->shouldHaveType(BlockTranslationInterface::class);
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(ImageInterface $image)
+    function it_allows_access_via_properties(ImageInterface $image): void
     {
         $this->setName('Escobar favorite quote');
         $this->getName()->shouldReturn('Escobar favorite quote');

@@ -22,22 +22,22 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  */
 final class FrequentlyAskedQuestionSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(FrequentlyAskedQuestion::class);
     }
 
-    function it_is_a_resource()
+    function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_frequently_asked_question_interface()
+    function it_implements_frequently_asked_question_interface(): void
     {
         $this->shouldHaveType(FrequentlyAskedQuestionInterface::class);
     }
 
-    function it_allows_access_via_properties()
+    function it_allows_access_via_properties(): void
     {
         $this->setCode('delivery_charges_for_orders');
         $this->getCode()->shouldReturn('delivery_charges_for_orders');
@@ -49,7 +49,7 @@ final class FrequentlyAskedQuestionSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(true);
     }
 
-    function it_toggles()
+    function it_toggles(): void
     {
         $this->enable();
         $this->isEnabled()->shouldReturn(true);

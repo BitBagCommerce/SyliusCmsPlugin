@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\PageInterface;
@@ -24,22 +26,22 @@ final class RenderPageLinkByCodeExtensionSpec extends ObjectBehavior
     function let(
         PageRepositoryInterface $pageRepository,
         LoggerInterface $logger
-    )
+    ): void
     {
         $this->beConstructedWith($pageRepository, $logger);
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderPageLinkByCodeExtension::class);
     }
 
-    function it_extends_twig_extension()
+    function it_extends_twig_extension(): void
     {
         $this->shouldHaveType(\Twig_Extension::class);
     }
 
-    function it_returns_functions()
+    function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
         $functions->shouldHaveCount(1);
@@ -53,7 +55,7 @@ final class RenderPageLinkByCodeExtensionSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $pageRepository->findEnabledByCode('bitbag')->willReturn($page);
         $twigEnvironment->render('BitBagCmsPlugin:Shop:Page:_link.html.twig', ['page' => $page])->shouldBeCalled();
@@ -65,7 +67,7 @@ final class RenderPageLinkByCodeExtensionSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         LoggerInterface $logger,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $pageRepository->findEnabledByCode('bitbag')->willReturn(null);
         $logger->warning('Page with "bitbag" code was not found in the database.')->shouldBeCalled();

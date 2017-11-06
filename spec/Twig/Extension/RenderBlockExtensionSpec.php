@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
@@ -24,22 +26,22 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     function let(
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger
-    )
+    ): void
     {
         $this->beConstructedWith($blockRepository, $logger);
     }
 
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderBlockExtension::class);
     }
 
-    function it_extends_twig_extension()
+    function it_extends_twig_extension(): void
     {
         $this->shouldHaveType(\Twig_Extension::class);
     }
 
-    function it_returns_functions()
+    function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
         $functions->shouldHaveCount(1);
@@ -53,7 +55,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $blockRepository->findEnabledByCode('bitbag')->willReturn(null);
         $logger->warning('Block with "bitbag" code was not found in the database.')->shouldBeCalled();
@@ -65,11 +67,11 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('text');
-        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:textBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/textBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -78,11 +80,11 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('html');
-        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
@@ -91,11 +93,11 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
-    )
+    ): void
     {
         $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
         $block->getType()->willReturn('image');
-        $twigEnvironment->render('BitBagCmsPlugin:Shop:Block:imageBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/imageBlock.html.twig', ['block' => $block])->shouldBeCalled();
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }

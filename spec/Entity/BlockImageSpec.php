@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Entity;
 
 use BitBag\CmsPlugin\Entity\BlockImage;
@@ -17,14 +19,14 @@ use PhpSpec\ObjectBehavior;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ImageSpec extends ObjectBehavior
+final class BlockImageSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(BlockImage::class);
     }
 
-    function it_extends_sylius_image()
+    function it_extends_sylius_image(): void
     {
         $this->shouldHaveType(SyliusImage::class);
     }
