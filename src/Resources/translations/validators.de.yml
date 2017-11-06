@@ -1,39 +1,37 @@
 bitbag:
-    cms:
-        block:
-            image:
-                mime_types: Nur PNG und JPEG Dateien sind erlaubt.
-                not_blank: Foto kann nicht leer sein
-            code:
-                unique: Es existiert bereits ein Block für diesen Code.
-                not_blank: Code darf nicht leer sein.
-                min_length: Code muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Code darf nicht länger als {{ limit }} Zeichen sein.
-            name:
-                min_length: Name muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Name darf nicht länger als {{ limit }} Zeichen sein.
-            content:
-                min_length: Inhalt muss mindestens {{ limit }} Zeichen lang sein.
-        page:
-            code:
-                unique: Es existiert bereits eine Seite für diesen Code.
-                not_blank: Code darf nicht leer sein.
-                min_length: Code muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Code darf nicht länger als {{ limit }} Zeichen sein.
-            name:
-                not_blank: Name darf nicht leer sein.
-                min_length: Name muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Name darf nicht länger als {{ limit }} Zeichen sein.
-            slug:
-                not_blank:  Slug darf nicht leer sein.
-                min_length: Slug muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Slug darf nicht länger als {{ limit }} Zeichen sein.
-            meta_keywords:
-                min_length: Meta Stichwörter müssen mindestens {{ limit }} Zeichen lang sein.
-                max_length: Meta Stichwörter dürfen nicht länger als {{ limit }} Zeichen sein.
-            meta_description:
-                min_length: Meta Beschreibung muss mindestens {{ limit }} Zeichen lang sein.
-                max_length: Meta Beschreibung darf nicht länger als {{ limit }} Zeichen sein.
-            content:
-                not_blank: Inhalt darf nicht leer sein.
-                min_length: Inhalt muss mindestens {{ limit }} Zeichen lang sein.
+    block:
+        image:
+            mime_types: Nur PNG und JPEG Dateien sind erlaubt.
+        code:
+            unique: Es existiert bereits ein Block für diesen Code.
+            not_blank: Code darf nicht leer sein.
+            min_length: Code muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Code darf nicht länger als {{ limit }} Zeichen sein.
+        name:
+            min_length: Name muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Name darf nicht länger als {{ limit }} Zeichen sein.
+        content:
+            min_length: Inhalt muss mindestens {{ limit }} Zeichen lang sein.
+    page:
+        code:
+            unique: Es existiert bereits eine Seite für diesen Code.
+            not_blank: Code darf nicht leer sein.
+            min_length: Code muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Code darf nicht länger als {{ limit }} Zeichen sein.
+        name:
+            not_blank: Name darf nicht leer sein.
+            min_length: Name muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Name darf nicht länger als {{ limit }} Zeichen sein.
+        slug:
+            not_blank:  Slug darf nicht leer sein.
+            min_length: Slug muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Slug darf nicht länger als {{ limit }} Zeichen sein.
+        meta_keywords:
+            min_length: Meta Stichwörter müssen mindestens {{ limit }} Zeichen lang sein.
+            max_length: Meta Stichwörter dürfen nicht länger als {{ limit }} Zeichen sein.
+        meta_description:
+            min_length: Meta Beschreibung muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Meta Beschreibung darf nicht länger als {{ limit }} Zeichen sein.
+        content:
+            not_blank: Inhalt darf nicht leer sein.
+            min_length: Inhalt muss mindestens {{ limit }} Zeichen lang sein.

@@ -1,39 +1,52 @@
 bitbag:
-    cms:
-        block:
-            image:
-                mime_types: Only PNG and JPEG files are allowed.
-                not_blank: Photo can not be empty.
-            code:
-                unique: There is an existing block with this code.
-                not_blank: Code can not be blank.
-                min_length: Code must be at least {{ limit }} characters long.
-                max_length: Code can not be longer than {{ limit }} characters.
-            name:
-                min_length: Name must be at least {{ limit }} characters long.
-                max_length: Name can not be longer than {{ limit }} characters.
-            content:
-                min_length: Content must be at least {{ limit }} characters long.
-        page:
-            code:
-                unique: There is an existing page with this code.
-                not_blank: Code can not be blank.
-                min_length: Code must be at least {{ limit }} characters long.
-                max_length: Code can not be longer than {{ limit }} characters.
-            name:
-                not_blank: Name can not be blank.
-                min_length: Name must be at least {{ limit }} characters long.
-                max_length: Name can not be longer than {{ limit }} characters.
-            slug:
-                not_blank:  Slug can not be blank.
-                min_length: Slug must be at least {{ limit }} characters long.
-                max_length: Slug can not be longer than {{ limit }} characters.
-            meta_keywords:
-                min_length: Meta keywords must be at least {{ limit }} characters long.
-                max_length: Meta keywords can not be longer than {{ limit }} characters.
-            meta_description:
-                min_length: Meta description must be at least {{ limit }} characters long.
-                max_length: Meta description can not be longer than {{ limit }} characters.
-            content:
-                not_blank: Content can not be blank.
-                min_length: Content must be at least {{ limit }} characters long.
+    block:
+        image:
+            mime_types: Only PNG and JPEG files are allowed.
+            not_blank: Upload an image.
+        code:
+            unique: There is an existing block with this code.
+            not_blank: Code can not be blank.
+            min_length: Code must be at least {{ limit }} characters long.
+            max_length: Code can not be longer than {{ limit }} characters.
+        name:
+            min_length: Name must be at least {{ limit }} characters long.
+            max_length: Name can not be longer than {{ limit }} characters.
+        content:
+            min_length: Content must be at least {{ limit }} characters long.
+    page:
+        code:
+            unique: There is an existing page with this code.
+            not_blank: Code can not be blank.
+            min_length: Code must be at least {{ limit }} characters long.
+            max_length: Code can not be longer than {{ limit }} characters.
+        name:
+            not_blank: Name can not be blank.
+            min_length: Name must be at least {{ limit }} characters long.
+            max_length: Name can not be longer than {{ limit }} characters.
+        slug:
+            not_blank:  Slug can not be blank.
+            min_length: Slug must be at least {{ limit }} characters long.
+            max_length: Slug can not be longer than {{ limit }} characters.
+        meta_keywords:
+            min_length: Meta keywords must be at least {{ limit }} characters long.
+            max_length: Meta keywords can not be longer than {{ limit }} characters.
+        meta_description:
+            min_length: Meta description must be at least {{ limit }} characters long.
+            max_length: Meta description can not be longer than {{ limit }} characters.
+        content:
+            not_blank: Content can not be blank.
+            min_length: Content must be at least {{ limit }} characters long.
+    frequently_asked_question:
+        code:
+            not_blank: Code can not be blank.
+            min_length: Code must be at least {{ limit }} characters long.
+            max_length: Code can not be longer than {{ limit }} characters.
+        position:
+            unique: There is an existing faq with this position.
+            not_blank: Position can not be blank.
+        question:
+            not_blank: Question can not be blank.
+            min_length: Question must be at least {{ limit }} characters long.
+            max_length: Question can not be longer than {{ limit }} characters.
+        answer:
+            not_blank: Answer can not be blank.

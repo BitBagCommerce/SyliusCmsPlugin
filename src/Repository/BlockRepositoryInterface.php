@@ -31,23 +31,23 @@ interface BlockRepositoryInterface extends RepositoryInterface
     /**
      * @param string $code
      *
-     * @return BlockInterface|null
+     * @return null|BlockInterface
      */
-    public function findOneByCode(string $code): ?BlockInterface;
+    public function findEnabledByCode(string $code): ?BlockInterface;
 
     /**
      * @param string $code
      * @param string $content
      *
-     * @return BlockInterface|null
+     * @return null|BlockInterface
      */
-    public function findOneByCodeAndContent(string $code, string $content): ?BlockInterface;
+    public function findEnabledByCodeAndContent(string $code, string $content): ?BlockInterface;
 
     /**
      * @param string $type
      * @param string $content
      *
-     * @return BlockInterface|null
+     * @return null|BlockInterface
      */
     public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface;
 }

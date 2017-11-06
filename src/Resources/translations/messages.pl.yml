@@ -2,7 +2,6 @@ bitbag:
     ui:
         blocks: Bloki
         pages: Strony
-    cms:
         content_management: Zarządzanie treścią
         cms: Zarządzanie treścią
         enabled: Włączone
@@ -22,10 +21,10 @@ bitbag:
         meta_description: Opis sekcji meta
         content: Treść
         form:
-            code: Kod
-            enabled: Włączone
-            name: Nazwa
-            contents: Treści
-            content: Treść
-            images: Zdjęcia
-            link: Link
+        code: Kod
+        enabled: Włączone
+        name: Nazwa
+        contents: Treści
+        content: Treść
+        images: Zdjęcia
+        link: Link

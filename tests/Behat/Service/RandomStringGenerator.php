@@ -18,7 +18,7 @@ final class RandomStringGenerator implements RandomStringGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generate($length = 10)
+    public function generate(int $length = 10): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

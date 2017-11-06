@@ -1,0 +1,17 @@
+BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
+    type: entity
+    table: bitbag_frequently_asked_question_translation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        question:
+            type: string
+            length: 1500
+            nullable: false
+        answer:
+            type: text
+            nullable: false

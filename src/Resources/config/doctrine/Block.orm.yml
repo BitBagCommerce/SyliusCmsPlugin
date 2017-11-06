@@ -1,6 +1,6 @@
 BitBag\CmsPlugin\Entity\Block:
     type: entity
-    table: bitbag_cms_block
+    table: bitbag_block
     id:
         id:
             type: integer

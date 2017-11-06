@@ -29,11 +29,11 @@ final class HtmlBlockTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.cms.form.name',
+                'label' => 'bitbag.ui.name',
                 'required' => false,
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.cms.form.content',
+                'label' => 'bitbag.ui.content',
             ])
         ;
     }
@@ -43,6 +43,6 @@ final class HtmlBlockTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_text_translation';
+        return 'bitbag_plugin_text_translation';
     }
 }

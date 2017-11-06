@@ -11,6 +11,7 @@
 namespace BitBag\CmsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ProductInterface;
 
 /**
@@ -19,7 +20,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 trait ProductAssociationTrait
 {
     /**
-     * @var ArrayCollection|ProductInterface[]
+     * @var Collection|ProductInterface[]
      */
     protected $products;
 
@@ -29,7 +30,7 @@ trait ProductAssociationTrait
     }
 
     /**
-     * @return ArrayCollection|ProductInterface[]
+     * @return Collection|ProductInterface[]
      */
     public function getProducts()
     {

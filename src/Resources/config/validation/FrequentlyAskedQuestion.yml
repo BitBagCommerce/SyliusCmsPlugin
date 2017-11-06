@@ -1,0 +1,23 @@
+BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [position]
+            message: 'bitbag.frequently_asked_question.position.unique'
+            groups: ['bitbag']
+    properties:
+        code:
+            - NotBlank:
+                message: 'bitbag.frequently_asked_question.code.not_blank'
+                groups: ['bitbag']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'bitbag.frequently_asked_question.code.min_length'
+                maxMessage: 'bitbag.frequently_asked_question.code.max_length'
+                groups: ['bitbag']
+        position:
+            - NotBlank:
+                message: 'bitbag.frequently_asked_question.position.not_blank'
+                groups: ['bitbag']
+        translations:
+            - Valid: ~

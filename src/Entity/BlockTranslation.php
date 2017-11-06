@@ -26,22 +26,22 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $id;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $name = null;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $content;
 
     /**
-     * @var ImageInterface
+     * @var null|ImageInterface
      */
     protected $image;
 
     /**
-     * @var string
+     * @var null|string
      */
     protected $link;
 
@@ -80,7 +80,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }

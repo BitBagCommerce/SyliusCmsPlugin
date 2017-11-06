@@ -38,11 +38,11 @@ final class BlockType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.cms.form.code',
+                'label' => 'bitbag.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.cms.form.enabled',
+                'label' => 'bitbag.ui.enabled',
             ])
         ;
 
@@ -57,7 +57,7 @@ final class BlockType extends AbstractResourceType
     {
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.cms.form.contents',
+                'label' => 'bitbag.ui.contents',
                 'entry_type' => TextBlockTranslationType::class,
             ]);
 
@@ -66,7 +66,7 @@ final class BlockType extends AbstractResourceType
 
         if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.cms.form.contents',
+                'label' => 'bitbag.ui.contents',
                 'entry_type' => HtmlBlockTranslationType::class,
             ]);
 
@@ -75,7 +75,7 @@ final class BlockType extends AbstractResourceType
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.cms.form.images',
+                'label' => 'bitbag.ui.images',
                 'entry_type' => ImageBlockTranslationType::class,
             ]);
 
@@ -88,6 +88,6 @@ final class BlockType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_block';
+        return 'bitbag_cms_block';
     }
 }

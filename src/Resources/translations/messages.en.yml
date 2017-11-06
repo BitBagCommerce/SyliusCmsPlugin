@@ -2,7 +2,6 @@ bitbag:
     ui:
         blocks: Blocks
         pages: Pages
-    cms:
         content_management: Content management
         cms: Content management
         enabled: Enabled
@@ -13,7 +12,7 @@ bitbag:
         text_block: Text block
         html_block: HTML block
         image_block: Image block
-        pages_header: Page
+        pages_header: Pages
         pages_subheader: Manage your pages
         products: Products
         name: Name
@@ -21,11 +20,16 @@ bitbag:
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Content
-        form:
-            code: Code
-            enabled: Enabled
-            name: Name
-            contents: Contents
-            content: Content
-            images: Images
-            link: Link
+        faq: FAQ
+        code: Code
+        enabled: Enabled
+        name: Name
+        contents: Contents
+        content: Content
+        images: Images
+        link: Link
+        faq_header: FAQ
+        faq_subheader: Manage frequently asked questions
+        frequently_asked_questions: Frequently asked questions
+        question: Question
+        answer: Answer

@@ -1,6 +1,6 @@
-![BitBag](https://bitbag.pl/static/bitbag-logo.png)
+![BitBag](https://lh6.googleusercontent.com/zj9Paf-0CgHtwr_uqtM722d_sVtfNI-YfIpoaU9SZEc8_QFvIJ68fqDAXwtIqhTp6DWwannD=w1440-h729-rw)
 
-# BitBag CmsPlugin [![Build Status](https://travis-ci.org/bitbag-commerce/CmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
+# SyliusCmsPlugin [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
 
 ## Overview
 
@@ -8,10 +8,6 @@ Many of Sylius community folks asked about the right CMS plugin for their Sylius
 So far it supports dynamic images and text blocks as well as pages with custom content. 
 This plugin was developed with BDD rules in mind, so it's probably the most stable CMS for Sylius available for now. 
 It is still a little bit basic, but we are planning to make it more advanced in incoming future. Contributors, ideas as well as any feedback warmly welcomed!
-
-## Support
-
-Do you want us to customize this plugin for your specific needs? Write us an email on mikolaj.krol@bitbag.pl :computer:
 
 ## Installation
 ```bash
@@ -78,7 +74,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 ### Pages
 
-For rendering pages you can use `bitbag_cms_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
+For rendering pages you can use `bitbag_shop_page_show` route which takes the `slug` as a parameter. You can also override the page template. 
 For more information about how to do it, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html). If you are lazy guy, take a look at 
 `vendor/bitbag/cms-plugin/src/Resources/views/Page/show.html.twig` template, create `show.html.twig` file in `app/Resources/BitBagCmsPlugin/views` directory and paste 
  the vendor's `show.html.twig` file content to it. 
@@ -94,17 +90,19 @@ To see which forms you may want to extend, run `$ bin/console debug:container | 
 
 ## Testing
 ```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar install
-$ yarn install
-$ yarn run gulp
-$ php bin/console sylius:install --env test
-$ php bin/console server:start --env test
-$ open http://localhost:8000
-$ bin/behat features/*
-$ bin/phpspec run
+$ composer install
+$ bin/console assets:install web -e test
+$ bin/console doctrine:schema:create -e test
+$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ open http://localhost:8080
+$ vendor/bin/behat
+$ vendor/bin/phpspec run
 ```
 
 ## Contribution
 
 Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
+
+## Support
+
+Do you want us to customize this plugin for your specific needs? Write us an email on mikolaj.krol@bitbag.pl :computer:

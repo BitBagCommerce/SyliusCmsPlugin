@@ -1,0 +1,19 @@
+BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
+    type: entity
+    table: bitbag_frequently_asked_question
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            nullable: false
+        position:
+            type: integer
+            nullable: false
+        enabled:
+            type: boolean
+            nullable: false

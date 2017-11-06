@@ -43,12 +43,10 @@ final class ImageBlockUploadListener
         $block = $event->getSubject();
 
         if (false === $block instanceof BlockInterface) {
-
             return;
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE !== $block->getType()) {
-
             return;
         }
 
