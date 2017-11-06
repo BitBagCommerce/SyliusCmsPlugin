@@ -31,7 +31,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      *
      * @return QueryBuilder
      */
-    public function createShopListQueryBuilder(string $localeCode): QueryBuilder;
+    public function findEnabledOrderedByPosition(string $localeCode): array;
 
     /**
      * @param string $code

@@ -2,6 +2,7 @@ bitbag:
     block:
         image:
             mime_types: Only PNG and JPEG files are allowed.
+            not_blank: Upload an image.
         code:
             unique: There is an existing block with this code.
             not_blank: Code can not be blank.

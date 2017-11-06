@@ -8,15 +8,61 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\GenericBlock;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
-    use GenericBlock;
+    /**
+     * {@inheritdoc}
+     */
+    public function uploadImage(string $image): void
+    {
+        $path = __DIR__ . '/../../../Resources/images/' . $image;
+
+        Assert::fileExists($path);
+
+        $this->getDocument()
+            ->attachFileToField('Choose file', $path);
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillName(string $name): void
+    {
+        $this->getDocument()->fillField('Name', $name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillLink(string $link): void
+    {
+        $this->getDocument()->fillField('Link', $link);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function fillContent(string $content): void
+    {
+        $this->getDocument()->fillField('Content', $content);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable(): void
+    {
+        $this->getDocument()->uncheckField('Enabled');
+    }
 }

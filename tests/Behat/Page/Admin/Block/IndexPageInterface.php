@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
@@ -22,12 +24,15 @@ interface IndexPageInterface extends BaseIndexPageInterface
      *
      * @return int
      */
-    public function getBlocksWithTypeCount($type);
+    public function getBlocksWithTypeCount(string $type): int;
 
     /**
      * @param string $code
      */
-    public function removeBlock($code);
+    public function removeBlock(string $code): void;
 
-    public function getBlockTypes();
+    /**
+     * @return array
+     */
+    public function getBlockTypes(): array;
 }

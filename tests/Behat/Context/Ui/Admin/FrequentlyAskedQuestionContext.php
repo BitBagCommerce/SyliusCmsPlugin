@@ -41,7 +41,6 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     private $createPage;
 
-
     /**
      * @param NotificationCheckerInterface $notificationChecker
      * @param CurrentPageResolverInterface $currentPageResolver
@@ -122,7 +121,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @Then I should be notified that :fields can not be blank
      */
-    public function iShouldBeNotifiedThatCanNotBeBlank($fields): void
+    public function iShouldBeNotifiedThatCanNotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 
@@ -142,19 +141,6 @@ final class FrequentlyAskedQuestionContext implements Context
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
             "There is an existing faq with this position.",
             false
-        ));
-    }
-
-    /**
-     * @Then I should be suggested to select :position position
-     */
-    public function iShouldBeSuggestedToSelectPosition($position): void
-    {
-        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            sprintf(
-                "The lowest position you can select is %d.",
-                $position
-            ), false
         ));
     }
 

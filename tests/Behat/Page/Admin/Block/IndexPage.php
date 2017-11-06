@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Behat\Mink\Element\NodeElement;
@@ -21,7 +23,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
     /**
      * {@inheritdoc}
      */
-    public function getBlocksWithTypeCount($type)
+    public function getBlocksWithTypeCount(string $type): int
     {
         $tableAccessor = $this->getTableAccessor();
         $table = $this->getElement('table');
@@ -32,7 +34,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
     /**
      * {@inheritdoc}
      */
-    public function removeBlock($code)
+    public function removeBlock(string $code): void
     {
         $this->deleteResourceOnPage(['code' => $code]);
     }
@@ -40,7 +42,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
     /**
      * {@inheritdoc}
      */
-    public function getBlockTypes()
+    public function getBlockTypes(): array
     {
         $blockTypes = $this->getDocument()->findAll('css', '#create-block-dropdown a');
         $result = [];

@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
 use Behat\Mink\Element\NodeElement;
@@ -26,7 +28,7 @@ trait ContainsError
      *
      * @return bool
      */
-    public function containsErrorWithMessage($message, $strict = true): bool
+    public function containsErrorWithMessage(string $message, bool $strict = true): bool
     {
         $validationMessageElements = $this->getDocument()->findAll('css', '.sylius-validation-error');
         $result = false;

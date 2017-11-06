@@ -14,13 +14,14 @@ namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface BlockInterface extends ResourceInterface, TranslatableInterface
+interface BlockInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
 {
     const TEXT_BLOCK_TYPE = 'text';
     const IMAGE_BLOCK_TYPE = 'image';

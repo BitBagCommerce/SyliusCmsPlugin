@@ -15,6 +15,7 @@ namespace BitBag\CmsPlugin\Form\Type;
 use BitBag\CmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +33,7 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
         $builder
             ->add('code', TextType::class)
             ->add('position', IntegerType::class)
+            ->add('enabled', CheckboxType::class)
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
