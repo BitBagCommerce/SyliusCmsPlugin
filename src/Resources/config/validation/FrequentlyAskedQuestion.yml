@@ -16,7 +16,6 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
                 maxMessage: 'bitbag.frequently_asked_question.code.max_length'
                 groups: ['bitbag']
         position:
-            - BitBag\CmsPlugin\Validator\Constraints\PositionUnique: ~
             - NotBlank:
                 message: 'bitbag.frequently_asked_question.position.not_blank'
                 groups: ['bitbag']

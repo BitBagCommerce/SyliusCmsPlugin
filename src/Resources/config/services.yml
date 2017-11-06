@@ -5,4 +5,3 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/services/event_listener.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/services/controller.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/services/fixture.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/validator.yml" }

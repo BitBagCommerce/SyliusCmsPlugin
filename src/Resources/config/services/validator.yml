@@ -1,5 +1,0 @@
-services:
-    bitbag.validator.constraint.position_unique_validator:
-        class: BitBag\CmsPlugin\Validator\Constraints\PositionUniqueValidator
-        tags:
-             - { name: validator.position_unique_validator }
