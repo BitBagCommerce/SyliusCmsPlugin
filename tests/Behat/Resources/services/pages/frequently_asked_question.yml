@@ -1,0 +1,7 @@
+services:
+    bitbag.behat.page.admin.frequently_asked_question.create:
+        class: Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePage
+        parent: sylius.behat.page.admin.crud.create
+        public: false
+        arguments:
+            - 'bitbag_admin_frequently_asked_question_create'

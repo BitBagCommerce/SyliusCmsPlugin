@@ -37,7 +37,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByCode(string $code): ?PageInterface
+    public function findEnabledByCode(string $code): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -51,19 +51,17 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $locale, string $slug): ?PageInterface
+    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface
     {
-        $page = $this->createQueryBuilder('o')
+        return $this->createQueryBuilder('o')
             ->addSelect('translation')
             ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->andWhere('translation.slug = :slug')
             ->andWhere('o.enabled = true')
-            ->setParameter('locale', $locale)
+            ->setParameter('locale', $localeCode)
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
         ;
-
-        return $page;
     }
 }

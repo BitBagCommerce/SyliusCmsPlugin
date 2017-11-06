@@ -8,11 +8,13 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\Image;
+use BitBag\CmsPlugin\Entity\BlockImage;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -28,12 +30,12 @@ use Webmozart\Assert\Assert;
  */
 final class BlockContext implements Context
 {
+    const IMAGE_MOCK = 'aston_martin_db_11.jpg';
     const ALLOWED_TYPES = [
         BlockInterface::TEXT_BLOCK_TYPE,
         BlockInterface::HTML_BLOCK_TYPE,
         BlockInterface::IMAGE_BLOCK_TYPE,
     ];
-    const IMAGE_MOCK = 'aston_martin_db_11.jpg';
 
     /**
      * @var SharedStorageInterface
@@ -85,10 +87,8 @@ final class BlockContext implements Context
     /**
      * @Given there are :number dynamic content blocks with :type type
      */
-    public function thereAreDynamicContentBlocksWithType($number, $type)
+    public function thereAreDynamicContentBlocksWithType(int $number, string $type): void
     {
-        $number = (int)$number;
-
         for ($i = 0; $i < $number; $i++) {
 
             if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
@@ -106,7 +106,7 @@ final class BlockContext implements Context
     /**
      * @Given there is a dynamic content block with :type type
      */
-    public function thereIsADynamicContentBlockWithType($type)
+    public function thereIsADynamicContentBlockWithType(string $type): void
     {
         if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
             $image = $this->uploadImage(self::IMAGE_MOCK);
@@ -122,7 +122,7 @@ final class BlockContext implements Context
     /**
      * @Given there is a cms text block with :code code and :content content
      */
-    public function thereIsATextCmsBlockWithCodeAndContent($code, $content)
+    public function thereIsATextCmsBlockWithCodeAndContent(string $code, string $content): void
     {
         $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code, $content);
     }
@@ -130,7 +130,7 @@ final class BlockContext implements Context
     /**
      * @Given there is a cms html block with :code code and :content content
      */
-    public function thereIsAHtmlCmsBlockWithCodeAndContent($code, $content)
+    public function thereIsAHtmlCmsBlockWithCodeAndContent($code, $content): void
     {
         $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, null, $code, $content);
     }
@@ -138,7 +138,7 @@ final class BlockContext implements Context
     /**
      * @Given there is a cms block with :code code and :name image
      */
-    public function thereIsCmsBlockWithCodeAndImage($code, $name)
+    public function thereIsCmsBlockWithCodeAndImage(string $code, string $name): void
     {
         $image = $this->uploadImage($name);
 
@@ -146,13 +146,13 @@ final class BlockContext implements Context
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
      * @return ImageInterface
      */
-    private function uploadImage($name)
+    private function uploadImage(string $name): ImageInterface
     {
-        $image = new Image();
+        $image = new BlockImage();
         $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
         $image->setFile($uploadedImage);
 
@@ -163,16 +163,22 @@ final class BlockContext implements Context
 
     /**
      * @param string $type
-     * @param ImageInterface|null $image
+     * @param null|ImageInterface $image
      * @param null|string $code
      * @param null|string $content
      */
-    private function createBlock($type, ImageInterface $image = null, $code = null, $content = null)
+    private function createBlock(
+        string $type,
+        ImageInterface $image = null,
+        string $code = null,
+        string $content = null
+    ): void
     {
         Assert::oneOf($type, self::ALLOWED_TYPES);
 
-        $code = null !== $code ? $code : time();
+        $code = null !== $code ? $code : $this->randomStringGenerator->generate();
         $block = $this->blockFactory->createWithType($type);
+
         $block->setCode($code);
         $this->setUpCurrentLocale($block);
 
@@ -183,7 +189,7 @@ final class BlockContext implements Context
         if (null !== $content) {
             $block->setContent($content);
         } else {
-            $block->setContent($this->randomStringGenerator->generate(5));
+            $block->setContent($this->randomStringGenerator->generate());
         }
 
         $this->blockRepository->add($block);
@@ -193,10 +199,11 @@ final class BlockContext implements Context
     /**
      * @param BlockInterface $block
      */
-    private function setUpCurrentLocale(BlockInterface $block)
+    private function setUpCurrentLocale(BlockInterface $block): void
     {
         /** @var ChannelInterface $channel */
         $channel = $this->sharedStorage->get('channel');
+
         $block->setCurrentLocale($channel->getLocales()->first()->getCode());
     }
 }

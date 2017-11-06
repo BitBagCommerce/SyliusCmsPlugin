@@ -14,13 +14,14 @@ namespace BitBag\CmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface BlockInterface extends ResourceInterface, TranslatableInterface
+interface BlockInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
 {
     const TEXT_BLOCK_TYPE = 'text';
     const IMAGE_BLOCK_TYPE = 'image';
@@ -29,35 +30,35 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
     /**
      * @return string
      */
-    public function getType(): string;
+    public function getType(): ?string;
 
     /**
-     * @param string $type
+     * @param null|string $type
      */
-    public function setType(string $type): void;
+    public function setType(?string $type): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getCode(): ?string;
 
     /**
-     * @param string|null $code
+     * @param null|string $code
      */
     public function setCode(?string $code): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string;
 
     /**
-     * @param string|null $name
+     * @param null|string $name
      */
     public function setName(?string $name): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getContent(): ?string;
 
@@ -67,22 +68,22 @@ interface BlockInterface extends ResourceInterface, TranslatableInterface
     public function setContent(?string $content): void;
 
     /**
-     * @return ImageInterface
+     * @return null|ImageInterface
      */
     public function getImage(): ?ImageInterface;
 
     /**
-     * @param ImageInterface $image
+     * @param null|ImageInterface $image
      */
     public function setImage(?ImageInterface $image): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getLink(): ?string;
 
     /**
-     * @param string|null $link
+     * @param null|string $link
      */
     public function setLink(?string $link): void;
 }

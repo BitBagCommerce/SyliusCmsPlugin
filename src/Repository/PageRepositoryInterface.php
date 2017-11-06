@@ -32,16 +32,15 @@ interface PageRepositoryInterface extends RepositoryInterface
     /**
      * @param string $code
      *
-     * @return PageInterface|null
+     * @return null|PageInterface
      */
-    public function findOneByCode(string $code): ?PageInterface;
+    public function findEnabledByCode(string $code): ?PageInterface;
 
     /**
-     * @param ChannelInterface $channel
-     * @param string $locale
      * @param string $slug
+     * @param string $localeCode
      *
-     * @return PageInterface|null
+     * @return null|PageInterface
      */
-    public function findOneByChannelAndSlug(ChannelInterface $channel, string $locale, string $slug): ?PageInterface;
+    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface;
 }

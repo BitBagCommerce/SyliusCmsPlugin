@@ -29,21 +29,21 @@ final class PageTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.cms.name',
+                'label' => 'bitbag.ui.name',
             ])
             ->add('slug', TextType::class, [
-                'label' => 'bitbag.cms.slug',
+                'label' => 'bitbag.ui.slug',
             ])
             ->add('metaKeywords', TextareaType::class, [
-                'label' => 'bitbag.cms.meta_keywords',
+                'label' => 'bitbag.ui.meta_keywords',
                 'required' => false,
             ])
             ->add('metaDescription', TextareaType::class, [
-                'label' => 'bitbag.cms.meta_description',
+                'label' => 'bitbag.ui.meta_description',
                 'required' => false,
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.cms.content',
+                'label' => 'bitbag.ui.content',
             ])
         ;
     }
@@ -53,6 +53,6 @@ final class PageTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_plugin_page_translation';
+        return 'bitbag_page_translation';
     }
 }

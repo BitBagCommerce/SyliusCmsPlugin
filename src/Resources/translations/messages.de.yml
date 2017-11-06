@@ -2,7 +2,6 @@ bitbag:
     ui:
         blocks: Blöcke
         pages: Seiten
-    cms:
         content_management: Content Management
         cms: Content Management
         enabled: Aktiviert
@@ -21,11 +20,10 @@ bitbag:
         meta_keywords: Meta Stichwörter
         meta_description: Meta Beschreibung
         content: Inhalt
-        form:
-            code: Code
-            enabled: Aktiviert
-            name: Name
-            contents: Inhalte
-            content: Inhalt
-            images: Bilder
-            link: Link
+        code: Code
+        enabled: Aktiviert
+        name: Name
+        contents: Inhalte
+        content: Inhalt
+        images: Bilder
+        link: Link

@@ -23,47 +23,47 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 interface PageInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
 {
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getSlug(): ?string;
 
     /**
-     * @param string|null $slug
+     * @param null|string $slug
      */
     public function setSlug(?string $slug): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getCode(): ?string;
 
     /**
-     * @param string|null $code
+     * @param null|string $code
      */
     public function setCode(?string $code): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getMetaKeywords(): ?string;
 
     /**
-     * @param string|null $metaKeywords
+     * @param null|string $metaKeywords
      */
     public function setMetaKeywords(?string $metaKeywords): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getMetaDescription(): ?string;
 
     /**
-     * @param string|null $metaDescription
+     * @param null|string $metaDescription
      */
     public function setMetaDescription(?string $metaDescription): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getContent(): ?string;
 
@@ -73,12 +73,12 @@ interface PageInterface extends ResourceInterface, TranslatableInterface, Toggle
     public function setContent(?string $content): void;
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string;
 
     /**
-     * @param string|null $name
+     * @param null|string $name
      */
     public function setName(?string $name): void;
 }

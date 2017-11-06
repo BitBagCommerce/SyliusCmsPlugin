@@ -1,6 +1,6 @@
 BitBag\CmsPlugin\Entity\BlockTranslation:
     type: entity
-    table: bitbag_cms_block_translation
+    table: bitbag_block_translation
     id:
         id:
             type: integer
@@ -19,10 +19,9 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
             nullable: true
     oneToOne:
         image:
-            targetEntity: BitBag\CmsPlugin\Entity\Image
+            targetEntity: BitBag\CmsPlugin\Entity\BlockImage
             mappedBy: owner
             cascade: [ALL]
             joinColumn:
                 name: image_id
                 referencedColumnName: id
-                onDelete: null

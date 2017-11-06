@@ -23,9 +23,9 @@ use Psr\Log\LoggerInterface;
  */
 final class RenderBlockExtension extends \Twig_Extension
 {
-    const TEXT_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:textBlock.html.twig';
-    const HTML_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:htmlBlock.html.twig';
-    const IMAGE_BLOCK_TEMPLATE = 'BitBagCmsPlugin:Block:imageBlock.html.twig';
+    const TEXT_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/textBlock.html.twig';
+    const HTML_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig';
+    const IMAGE_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/imageBlock.html.twig';
 
     /**
      * @var BlockRepositoryInterface
@@ -63,17 +63,15 @@ final class RenderBlockExtension extends \Twig_Extension
     /**
      * @param \Twig_Environment $twigEnvironment
      * @param string $code
-     * @param array $attributes
      *
      * @return null|string
      * @throws TemplateTypeNotFound
      */
-    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, array $attributes = []): ?string
+    public function renderBlock(\Twig_Environment $twigEnvironment, $code): ?string
     {
-        $block = $this->blockRepository->findOneByCode($code);
+        $block = $this->blockRepository->findEnabledByCode($code);
 
         if (false === $block instanceof BlockInterface) {
-
             $this->logger->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
                 $code
@@ -83,27 +81,15 @@ final class RenderBlockExtension extends \Twig_Extension
         }
 
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
-
-            return $twigEnvironment->render(self::TEXT_BLOCK_TEMPLATE, [
-                'block' => $block,
-                'attributes' => $attributes,
-            ]);
+            return $twigEnvironment->render(self::TEXT_BLOCK_TEMPLATE, ['block' => $block]);
         }
 
         if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
-
-            return $twigEnvironment->render(self::HTML_BLOCK_TEMPLATE, [
-                'block' => $block,
-                'attributes' => $attributes,
-            ]);
+            return $twigEnvironment->render(self::HTML_BLOCK_TEMPLATE, ['block' => $block]);
         }
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
-
-            return $twigEnvironment->render(self::IMAGE_BLOCK_TEMPLATE, [
-                'block' => $block,
-                'attributes' => $attributes,
-            ]);
+            return $twigEnvironment->render(self::IMAGE_BLOCK_TEMPLATE, ['block' => $block]);
         }
 
         throw new TemplateTypeNotFound($block->getType());

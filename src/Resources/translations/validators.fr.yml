@@ -1,39 +1,37 @@
 bitbag:
-    cms:
-        block:
-            image:
-                mime_types: Seuls les fichiers PNG et JPEG sont autorisés.
-                not_blank: La photo ne peut pas être vide.
-            code:
-                unique: Il existe un bloc existant avec ce code.
-                not_blank: Le code ne peut pas être vide.
-                min_length: Code doit être au moins {{limit}} caractères long.
-                max_length: Le code ne peut pas dépasser les caractères {{limit}}.
-            name:
-                min_lenght: Longeur minimale de la prénom.
-                max_lenght: Longeur maximale de la prénom.
-            content:
-                min_lenght: Le contenu doit être au moins {{limit}} caractères long.
-        page:
-            code:
-                unique: Il existe une page existante avec ce code.
-                not_blank: Le code ne peut pas être vide.
-                min_lenght: Code doit être au moins {{limit}} caractères long.
-                max_lenght: Le code ne peut pas dépasser les caractères {{limit}}.
-            name:
-                not_blank: Le nom de la page ne peut pas être vide.
-                min_lenght: Longeur minimale de la prénom.
-                max_lenght: Longeur maximale de la prénom.
-            slug:
-                not_blank: Slug ne peut pas être vide.
-                min_lenght: Slug doit être au moins {{limit}} caractères long.
-                max_lenght: Slug ne peut pas dépasser les caractères {{limit}}.
-            meta_keywords:
-                min_lenght: Les mots-clés Meta doivent être au moins {{limit}} caractères longs.
-                max lenght: Les mots-clés Meta ne peuvent pas dépasser les caractères {{limit}}.
-            meta_description:
-                min_lenght: La description Meta doit être au moins {{limit}} caractères long.
-                max_lenght: La description Meta ne peut pas dépasser les caractères {{limit}}.
-            content:
-                not_blank: Le contenu ne peut pas être vide.
-                min_lenght: Le contenu doit être au moins {{limit}} caractères long.
+    block:
+        image:
+            mime_types: Seuls les fichiers PNG et JPEG sont autorisés.
+        code:
+            unique: Il existe un bloc existant avec ce code.
+            not_blank: Le code ne peut pas être vide.
+            min_length: Code doit être au moins {{limit}} caractères long.
+            max_length: Le code ne peut pas dépasser les caractères {{limit}}.
+        name:
+            min_lenght: Longeur minimale de la prénom.
+            max_lenght: Longeur maximale de la prénom.
+        content:
+            min_lenght: Le contenu doit être au moins {{limit}} caractères long.
+    page:
+        code:
+            unique: Il existe une page existante avec ce code.
+            not_blank: Le code ne peut pas être vide.
+            min_lenght: Code doit être au moins {{limit}} caractères long.
+            max_lenght: Le code ne peut pas dépasser les caractères {{limit}}.
+        name:
+            not_blank: Le nom de la page ne peut pas être vide.
+            min_lenght: Longeur minimale de la prénom.
+            max_lenght: Longeur maximale de la prénom.
+        slug:
+            not_blank: Slug ne peut pas être vide.
+            min_lenght: Slug doit être au moins {{limit}} caractères long.
+            max_lenght: Slug ne peut pas dépasser les caractères {{limit}}.
+        meta_keywords:
+            min_lenght: Les mots-clés Meta doivent être au moins {{limit}} caractères longs.
+            max lenght: Les mots-clés Meta ne peuvent pas dépasser les caractères {{limit}}.
+        meta_description:
+            min_lenght: La description Meta doit être au moins {{limit}} caractères long.
+            max_lenght: La description Meta ne peut pas dépasser les caractères {{limit}}.
+        content:
+            not_blank: Le contenu ne peut pas être vide.
+            min_lenght: Le contenu doit être au moins {{limit}} caractères long.

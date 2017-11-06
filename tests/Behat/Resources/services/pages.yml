@@ -1,0 +1,4 @@
+imports:
+    - { resource: "pages/block.yml" }
+    - { resource: "pages/page.yml" }
+    - { resource: "pages/frequently_asked_question.yml" }

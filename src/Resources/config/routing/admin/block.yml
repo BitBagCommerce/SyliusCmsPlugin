@@ -1,0 +1,47 @@
+bitbag_admin_block:
+    resource: |
+        alias: bitbag.block
+        section: admin
+        templates: BitBagCmsPlugin:Block
+        except: ['show']
+        redirect: update
+        grid: bitbag_admin_block
+        permission: true
+        vars:
+            all:
+                header: bitbag.ui.blocks_header
+                subheader: bitbag.ui.blocks_subheader
+                templates:
+                    form: BitBagCmsPlugin:Block:Crud/_form.html.twig
+            index:
+                icon: block layout
+            route:
+                parameters:
+                    code: $type
+    type: sylius.resource
+
+bitbag_admin_block_create:
+    path: /blocks/new/{type}
+    methods: [GET, POST]
+    defaults:
+        _controller: bitbag.controller.block:createAction
+        _sylius:
+            section: admin
+            template: BitBagCmsPlugin:Block:create.html.twig
+            redirect:
+                route: bitbag_admin_block_update
+                parameters: ~
+            permission: true
+            factory:
+                method: createWithType
+                arguments: [$type]
+            vars:
+                header: bitbag.ui.blocks_header
+                subheader: bitbag.ui.blocks_subheader
+                templates:
+                    form: BitBagCmsPlugin:Block:Crud/_form.html.twig
+                route:
+                    parameters:
+                        type: $type
+    requirements:
+        type: text|html|image

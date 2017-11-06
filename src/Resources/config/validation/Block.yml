@@ -3,17 +3,17 @@ BitBag\CmsPlugin\Entity\Block:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]
             groups: ['bitbag']
-            message: 'bitbag.cms.block.code.unique'
+            message: 'bitbag.block.code.unique'
     properties:
         code:
             - NotBlank:
-                message: 'bitbag.cms.block.code.not_blank'
+                message: 'bitbag.block.code.not_blank'
                 groups: ['bitbag']
             - Length:
                 min: 2
                 max: 250
-                minMessage: 'bitbag.cms.block.code.min_length'
-                maxMessage: 'bitbag.cms.block.code.max_length'
+                minMessage: 'bitbag.block.code.min_length'
+                maxMessage: 'bitbag.block.code.max_length'
                 groups: ['bitbag']
         translations:
             - Valid: ~

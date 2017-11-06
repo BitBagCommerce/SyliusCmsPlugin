@@ -1,0 +1,7 @@
+imports:
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/twig.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/form.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/factory.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/event_listener.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/controller.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/services/fixture.yml" }

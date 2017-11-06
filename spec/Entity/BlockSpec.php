@@ -8,6 +8,8 @@
  * an email on kontakt@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace spec\BitBag\CmsPlugin\Entity;
 
 use BitBag\CmsPlugin\Entity\Block;
@@ -20,22 +22,22 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  */
 final class BlockSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(Block::class);
     }
 
-    function it_is_a_resource()
+    function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_block_interface()
+    function it_implements_block_interface(): void
     {
         $this->shouldHaveType(BlockInterface::class);
     }
 
-    function it_allows_access_via_properties()
+    function it_allows_access_via_properties(): void
     {
         $this->setType('image');
         $this->getType()->shouldReturn('image');
@@ -47,7 +49,7 @@ final class BlockSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(true);
     }
 
-    function it_toggles()
+    function it_toggles(): void
     {
         $this->enable();
         $this->isEnabled()->shouldReturn(true);

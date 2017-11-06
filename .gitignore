@@ -1,14 +1,18 @@
-/vendor/
+/bin/
+!/bin/.gitkeep
 
+/vendor/
 /node_modules/
-tests/Application/node_modules/
+/composer.lock
 
 /etc/build/*
 !/etc/build/.gitkeep
 
+tests/Application/node_modules/
+
 tests/Application/var/
 !tests/Application/var/.gitkeep
 
+tests/Application/web/*
+!tests/Application/web/app_dev.php
 !tests/Application/web/app_test.php
-tests/Application/web/media/*
-tests/Application/web/bundles

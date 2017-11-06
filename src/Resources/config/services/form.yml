@@ -1,0 +1,72 @@
+services:
+    bitbag.form.type.block:
+        class: BitBag\CmsPlugin\Form\Type\BlockType
+        arguments:
+            - "%bitbag.model.block.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.translation.text_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType
+        arguments:
+            - "%bitbag.model.block_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.translation.html_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
+        arguments:
+            - "%bitbag.model.block_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.translation.image_block:
+        class: BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType
+        arguments:
+            - "%bitbag.model.block_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.block_image:
+        class: BitBag\CmsPlugin\Form\Type\BlockImageType
+        arguments:
+            - BitBag\CmsPlugin\Entity\BlockImage
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.page:
+        class: BitBag\CmsPlugin\Form\Type\PageType
+        arguments:
+            - "%bitbag.model.page.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.translation.page:
+        class: BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType
+        arguments:
+            - "%bitbag.model.page_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.frequently_asked_question:
+        class: BitBag\CmsPlugin\Form\Type\FrequentlyAskedQuestionType
+        arguments:
+            - "%bitbag.model.frequently_asked_question.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag.form.type.translation.frequently_asked_question:
+        class: BitBag\CmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType
+        arguments:
+            - "%bitbag.model.frequently_asked_question_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
