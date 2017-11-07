@@ -1,4 +1,4 @@
-![BitBag](https://lh4.googleusercontent.com/8GSA4SfQTr8KqjOxv_SRmwJx5bWHuaScBTktH4dMngeOymDTBPbObunuMn9yykS4PcCoXrBEvx9xT1Q=w1440-h729-rw)
+![BitBag](https://lh6.googleusercontent.com/nAkprRa8IQZbG4QKrrVfDdGF_bn7sWtJR0o6pJku_DfhJW1ULLkkTU56lyQX7CzBXrZoupivW9FMo7Q=w1440-h729-rw)
 
 # SyliusCmsPlugin [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
 
