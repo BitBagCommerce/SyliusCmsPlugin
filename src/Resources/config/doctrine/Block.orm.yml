@@ -23,7 +23,7 @@ BitBag\CmsPlugin\Entity\Block:
             joinTable:
                 name: bitbag_block_products
                 joinColumns:
-                    page_id:
+                    block_id:
                         referencedColumnName: id
                 inverseJoinColumns:
                     product_id:
