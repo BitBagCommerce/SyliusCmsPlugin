@@ -43,3 +43,12 @@ Feature: Adding new page
         And I fill "Code, Name, Slug, Meta keywords, Meta description" with 6000 characters
         And I try to add it
         Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description" fields are too long
+
+    @todo
+    Scenario: Adding new page with sections
+        Given there is are existing sections named "Blog" and "Homepage"
+        When I go to the create new page page
+        And I fill "Code, Name, Slug, Meta keywords, Meta description" with 5 characters
+        And I add "Blog" and "Homepage" sections to it
+        And I add it
+        Then I should be notified that new page has been created
