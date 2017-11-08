@@ -6,7 +6,7 @@
          colors="true"
          bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="AcmeExamplePlugin Test Suite">
+        <testsuite name="AcmeSyliusExamplePlugin Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
