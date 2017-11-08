@@ -2,5 +2,5 @@ BitBag\CmsPlugin\Entity\BlockImage:
     properties:
         file:
             - NotBlank:
-                message: 'bitbag.cms.block.image.not_blank'
+                message: 'bitbag.block.image.not_blank'
                 groups: ['bitbag']

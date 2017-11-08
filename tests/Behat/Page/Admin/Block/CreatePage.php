@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
 use Webmozart\Assert\Assert;
 
 /**
@@ -20,6 +21,7 @@ use Webmozart\Assert\Assert;
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use ContainsError;
     /**
      * {@inheritdoc}
      */
