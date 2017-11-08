@@ -1,6 +1,6 @@
 language: php
 
-dist: precise
+dist: trusty
 
 sudo: required
 
@@ -10,10 +10,12 @@ php:
 cache:
     directories:
         - ~/.composer/cache/files
+        - $SYLIUS_CACHE_DIR
     yarn: true
 
 env:
     global:
+        - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
         - SYLIUS_BUILD_DIR=etc/build
         - TRAVIS_NODE_VERSION="7.5"
 
@@ -39,13 +41,33 @@ before_script:
     - (cd tests/Application && bin/console assets:install web --env=test)
     - (cd tests/Application && yarn run gulp)
 
+    # Configure display
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
     - export DISPLAY=:99
 
-    - curl http://chromedriver.storage.googleapis.com/2.12/chromedriver_linux64.zip > chromedriver.zip && unzip chromedriver.zip
+    # Download and configure ChromeDriver
+    - |
+        if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ]; then
+            curl http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip > chromedriver.zip
+            unzip chromedriver.zip
+            chmod +x chromedriver
+            mv chromedriver $SYLIUS_CACHE_DIR
+        fi
 
-    - cp etc/travis/behat.yml ./behat.yml
-    - bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver > /dev/null 2>&1 &
+    # Run ChromeDriver
+    - $SYLIUS_CACHE_DIR/chromedriver > /dev/null 2>&1 &
+
+    # Download and configure Selenium
+    - |
+        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ]; then
+            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
+            mv selenium.jar $SYLIUS_CACHE_DIR
+        fi
+
+    # Run Selenium
+    - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
+
+    # Run webserver
     - (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web --env=test --quiet > /dev/null 2>&1 &)
 
 script:
