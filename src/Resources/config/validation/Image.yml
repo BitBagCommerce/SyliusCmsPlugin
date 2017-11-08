@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\Image:
+BitBag\CmsPlugin\Entity\BlockImage:
     properties:
         file:
             - NotBlank:
