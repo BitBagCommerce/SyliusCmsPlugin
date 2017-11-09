@@ -30,8 +30,8 @@
     "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
-            "Acme\\ExamplePlugin\\": "src/",
-            "Tests\\Acme\\ExamplePlugin\\": "tests/"
+            "Acme\\SyliusExamplePlugin\\": "src/",
+            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
         }
     },
     "autoload-dev": {
