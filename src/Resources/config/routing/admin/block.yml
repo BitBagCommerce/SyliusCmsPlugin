@@ -45,6 +45,6 @@ bitbag_admin_block_create:
                         type: $type
             form:
                 options:
-                    validation_groups: ['bitbag','bitbag_update']
+                    validation_groups: ['bitbag','bitbag_image_not_blank']
     requirements:
         type: text|html|image
