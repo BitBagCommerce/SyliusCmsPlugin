@@ -3,5 +3,5 @@ sylius:
 
 # Put your own routes here
 
-acme_example_shop:
-    resource: "@AcmeExamplePlugin/Resources/config/app/shop_routing.yml"
+acme_sylius_example_shop:
+    resource: "@AcmeSyliusExamplePlugin/Resources/config/app/shop_routing.yml"

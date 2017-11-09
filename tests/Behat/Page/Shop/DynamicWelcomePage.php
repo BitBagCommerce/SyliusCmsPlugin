@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Acme\ExamplePlugin\Behat\Page\Shop;
+namespace Tests\Acme\SyliusExamplePlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\SymfonyPage;
 
@@ -29,7 +29,7 @@ class DynamicWelcomePage extends SymfonyPage implements WelcomePageInterface
      */
     public function getRouteName(): string
     {
-        return 'acme_example_dynamic_welcome';
+        return 'acme_sylius_example_dynamic_welcome';
     }
 
     /**
