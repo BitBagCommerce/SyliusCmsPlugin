@@ -22,10 +22,7 @@
 
 ## Overview
 
-Many of Sylius community folks asked about the right CMS plugin for their Sylius instances.  Because the original Lakion CMS plugin does not work as expected, it uses deprecated bundles and in general is not finished and EZ Platform is often too much for basic CMS usage, we decided to start the development of CMS plugin from scratch. 
-So far it supports dynamic images and text blocks as well as pages with custom content. 
-This plugin was developed with BDD rules in mind, so it's probably the most stable CMS for Sylius available for now. 
-It is still a little bit basic, but we are planning to make it more advanced in incoming future. Contributors, ideas as well as any feedback warmly welcomed!
+Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQ section.
 
 ## Installation
 ```bash
