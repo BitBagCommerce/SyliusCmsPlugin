@@ -1,0 +1,13 @@
+BitBag\CmsPlugin\Entity\SectionTranslation:
+    type: entity
+    table: bitbag_section_translation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            nullable: true

@@ -33,3 +33,6 @@ bitbag:
         frequently_asked_questions: Frequently asked questions
         question: Question
         answer: Answer
+        sections: Sections
+        sections_header: Sections
+        sections_subheader: Manage your sections

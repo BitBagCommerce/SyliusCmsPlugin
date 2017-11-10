@@ -41,6 +41,10 @@ final class BlockType extends AbstractResourceType
                 'label' => 'bitbag.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
+            ->add('sections', SectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.sections',
+                'multiple' => true,
+            ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag.ui.enabled',
             ])

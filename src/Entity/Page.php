@@ -22,6 +22,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class Page implements PageInterface
 {
+    use SectionAssociationTrait;
     use ToggleableTrait;
     use ProductAssociationTrait;
     use TranslatableTrait {
@@ -42,6 +43,7 @@ class Page implements PageInterface
     {
         $this->initializeTranslationsCollection();
         $this->initializeProductsCollection();
+        $this->initializeSectionsCollection();
     }
 
     /**

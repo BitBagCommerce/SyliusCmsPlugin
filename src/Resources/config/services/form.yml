@@ -70,3 +70,19 @@ services:
             - ['bitbag']
         tags:
             - { name: form.type }
+
+    bitbag.form.type.section:
+            class: BitBag\CmsPlugin\Form\Type\SectionType
+            arguments:
+                - "%bitbag.model.section.class%"
+                - ['bitbag']
+            tags:
+                - { name: form.type }
+
+    bitbag.form.type.translation.section:
+        class: BitBag\CmsPlugin\Form\Type\Translation\SectionTranslationType
+        arguments:
+            - "%bitbag.model.section_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }

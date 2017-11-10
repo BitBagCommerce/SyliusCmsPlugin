@@ -36,3 +36,12 @@ services:
             - "@bitbag.behat.page.admin.frequently_asked_question.create"
         tags:
             - { name: fob.context_service }
+
+    bitbag.behat.context.ui.admin.section:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\SectionContext
+        arguments:
+            - "@sylius.behat.notification_checker"
+            - "@sylius.behat.current_page_resolver"
+            - "@bitbag.behat.page.admin.section.create"
+        tags:
+            - { name: fob.context_service }

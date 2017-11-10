@@ -24,6 +24,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
+    use SectionAssociationTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -31,6 +32,7 @@ class Block implements BlockInterface
     public function __construct()
     {
         $this->initializeTranslationsCollection();
+        $this->initializeSectionsCollection();
     }
 
     /**

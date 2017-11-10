@@ -54,5 +54,13 @@ final class ContentManagementMenuBuilder
             ->setLabel('bitbag.ui.faq')
             ->setLabelAttribute('icon', 'help')
         ;
+
+        $cmsRootMenuItem
+            ->addChild('sections', [
+                'route' => 'bitbag_admin_section_index'
+            ])
+            ->setLabel('bitbag.ui.sections')
+            ->setLabelAttribute('icon', 'grid layout')
+        ;
     }
 }

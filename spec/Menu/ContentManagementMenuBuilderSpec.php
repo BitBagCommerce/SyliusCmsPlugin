@@ -57,6 +57,13 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $cmsRootMenuItem->setLabel('bitbag.ui.faq')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'help')->shouldBeCalled();
 
+        $cmsRootMenuItem
+            ->addChild('sections', ['route' => 'bitbag_admin_section_index'])
+            ->willReturn($cmsRootMenuItem)
+        ;
+        $cmsRootMenuItem->setLabel('bitbag.ui.sections')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
+
         $this->buildMenu($menuBuilderEvent);
     }
 }
