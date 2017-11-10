@@ -19,3 +19,10 @@ Feature: Adding image block
         Then I should be notified that new image block was created
         And image block with "aston_martin_db_11" code and "aston_martin_db_11.jpg" image should exist in the store
         And this block should also have "Aston Marting DB 11 image" name and "/page/aston-martin-db-11-review" link
+
+    @ui
+    Scenario: Seeing menu items
+        When I go to the create "image" block page
+        And I fill the code with "aston_martin_db_11"
+        And I add it
+        Then I should be notified that "Image" can not be blank

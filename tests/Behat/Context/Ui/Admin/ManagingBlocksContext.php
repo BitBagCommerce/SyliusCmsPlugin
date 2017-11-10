@@ -21,6 +21,7 @@ use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
@@ -346,6 +347,21 @@ final class ManagingBlocksContext implements Context
     public function blockWithShouldNotAppearInTheStore(string $code): void
     {
         Assert::null($this->blockRepository->findEnabledByCode($code));
+    }
+
+    /**
+     * @Then I should be notified that :fields can not be blank
+     */
+    public function iShouldBeNotifiedThatCanNotBeBlank(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
+                "Upload an image.",
+                trim($field)
+            )));
+        }
     }
 
     /**

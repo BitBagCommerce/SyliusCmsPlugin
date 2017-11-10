@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\CmsPlugin\Form\Type;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
 use BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
 use BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType;
@@ -43,6 +44,10 @@ final class BlockType extends AbstractResourceType
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag.ui.enabled',
+            ])
+            ->add('products', ProductAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.products',
+                'multiple' => true,
             ])
         ;
 
