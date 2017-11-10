@@ -1,8 +1,3 @@
-![BitBag](https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png)
-
-[![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/?branch=master)
-
 <h1 align="center">
     <a href="http://bitbag.shop" target="_blank">
         <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png" />
