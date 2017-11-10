@@ -3,6 +3,28 @@
 [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/?branch=master)
 
+<h1 align="center">
+    <a href="http://bitbag.shop" target="_blank">
+        <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png" />
+    </a>
+    <br />
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/bitbag/cms-plugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/bitbag/cms-plugin.svg" />
+    </a>
+    <a href="http://travis-ci.org/BitBagCommerce/SyliusCmsPlugin" title="Build status" target="_blank">
+        <img src="https://img.shields.io/travis/BitBagCommerce/SyliusCmsPlugin/master.svg" />
+    </a>
+    <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/" title="Scrutinizer" target="_blank">
+        <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCmsPlugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/BitBagCommerce/SyliusCmsPlugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
+    </a>
+</h1>
+
 ## Overview
 
 Many of Sylius community folks asked about the right CMS plugin for their Sylius instances.  Because the original Lakion CMS plugin does not work as expected, it uses deprecated bundles and in general is not finished and EZ Platform is often too much for basic CMS usage, we decided to start the development of CMS plugin from scratch. 
