@@ -7,7 +7,7 @@ Feature: Updating image block
     Background:
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
-        And there is a cms html block with "store_email" code and "<a href='mailto:kontakt@bitbag.pl'>kontakt@bitbag.pl</a>" content
+        And there is a cms html block with "store_email" code and "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>" content
 
     @ui
     Scenario: Seeing menu items
