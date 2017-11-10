@@ -15,7 +15,7 @@
     <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/" title="Scrutinizer" target="_blank">
         <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCmsPlugin.svg" />
     </a>
-    <a href="https://packagist.org/packages/BitBagCommerce/SyliusCmsPlugin" title="Total Downloads" target="_blank">
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
     </a>
 </h1>
