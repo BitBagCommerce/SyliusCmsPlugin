@@ -1,6 +1,6 @@
 default:
     suites:
-        ui_managing_faq:
+        ui_managing_frequently_asked_questions:
             contexts_services:
                 - sylius.behat.context.hook.doctrine_orm
 
@@ -10,4 +10,4 @@ default:
 
                 - bitbag.behat.context.ui.admin.frequently_asked_question
             filters:
-                tags: "@managing_faq && @ui"
+                tags: "@managing_frequently_asked_questions && @ui"

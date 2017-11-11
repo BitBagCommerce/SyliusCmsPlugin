@@ -14,13 +14,11 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
@@ -73,11 +71,6 @@ final class PageContext implements Context
     private $pageRepository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
@@ -86,7 +79,6 @@ final class PageContext implements Context
      * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         IndexPageInterface $indexPage,
@@ -96,23 +88,21 @@ final class PageContext implements Context
         NotificationCheckerInterface $notificationChecker,
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
-        PageRepositoryInterface $pageRepository,
-        EntityManagerInterface $entityManager
+        PageRepositoryInterface $pageRepository
     )
     {
+        $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
-        $this->indexPage = $indexPage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageRepository = $pageRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
-     * @When I go to the cms pages page
+     * @When I go to the pages page
      */
     public function iGoToTheCmsPagesPage(): void
     {
@@ -125,6 +115,26 @@ final class PageContext implements Context
     public function iGoToTheCreatePagePage(): void
     {
         $this->createPage->open();
+    }
+
+    /**
+     * @When I delete this page
+     */
+    public function iDeleteThisPage(): void
+    {
+        $page = $this->sharedStorage->get('page');
+
+        $this->indexPage->deletePage($page->getCode());
+    }
+
+    /**
+     * @When I want to edit this page
+     */
+    public function iWantToEditThisPage(): void
+    {
+       $page = $this->sharedStorage->get('page');
+
+       $this->updatePage->open(['id' => $page->getId()]);
     }
 
     /**
@@ -211,7 +221,7 @@ final class PageContext implements Context
         $fields = explode(',', $fields);
 
         foreach ($fields as $field) {
-            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate(5));
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate());
         }
     }
 
@@ -241,16 +251,6 @@ final class PageContext implements Context
     }
 
     /**
-     * @When I remove last page
-     */
-    public function iRemoveLastPage(): void
-    {
-        $code = $this->sharedStorage->get('page')->getCode();
-
-        $this->indexPage->deleteResourceOnPage(['code' => $code]);
-    }
-
-    /**
      * @Then I should be notified that the page has been created
      */
     public function iShouldBeNotifiedThatNewPageWasCreated(): void
@@ -273,14 +273,25 @@ final class PageContext implements Context
     }
 
     /**
-     * @Then I should be notified that this page has been removed
+     * @Then I should be notified that the page has been deleted
      */
-    public function iShouldBeNotifiedThatThisPageHasBeenRemoved(): void
+    public function iShouldBeNotifiedThatThePageHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
             "Page has been successfully deleted.",
             NotificationType::success()
         );
+    }
+
+    /**
+     * @Then I should be notified that there is already an existing page with provided code
+     */
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingPageWithCode(): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            "There is an existing page with this code.",
+            false
+        ));
     }
 
     /**
@@ -331,19 +342,36 @@ final class PageContext implements Context
     /**
      * @Then only :number pages should exist in the store
      */
-    public function onlyPagesShouldExistInTheStore(int $number): void
+    public function onlyPagesShouldAppearInTheStore(int $number): void
     {
+        Assert::eq($number, $this->resolveCurrentPage()->countItems());
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|IndexPageInterface|SymfonyPageInterface
+     * @Then the code field should be disabled
+     */
+    public function theCodeFieldShouldBeDisabled()
+    {
+        Assert::true($this->resolveCurrentPage()->isCodeDisabled());
+    }
+
+    /**
+     * @Then I should see empty list of pages
+     */
+    public function iShouldSeeEmptyListOfBlocks(): void
+    {
+        $this->resolveCurrentPage()->isEmpty();
+    }
+
+    /**
+     * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
         return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->indexPage,
             $this->createPage,
             $this->updatePage,
-            $this->indexPage,
         ]);
     }
 }

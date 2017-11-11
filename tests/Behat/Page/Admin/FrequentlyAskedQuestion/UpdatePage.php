@@ -5,19 +5,18 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Section;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 /**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {

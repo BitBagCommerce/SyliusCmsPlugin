@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Section;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
 
 /**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {

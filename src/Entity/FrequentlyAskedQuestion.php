@@ -51,7 +51,7 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

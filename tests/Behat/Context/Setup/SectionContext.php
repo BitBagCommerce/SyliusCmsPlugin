@@ -64,16 +64,44 @@ final class SectionContext implements Context
     }
 
     /**
+     * @Given there is a section in the store
+     */
+    public function thereIsAnExistingSection(): void
+    {
+        /** @var SectionInterface $section */
+        $section = $this->sectionFactory->createNew();
+
+        $section->setCode($this->randomStringGenerator->generate());
+
+        $this->sharedStorage->set('section', $section);
+        $this->sectionRepository->add($section);
+    }
+
+    /**
      * @Given there are existing sections named :firstNameSection and :secondNameSection
      */
-    public function thereAreExistingSections(...$sectionNames): void
+    public function thereAreExistingSections(string ...$sectionNames): void
     {
         foreach ($sectionNames as $sectionName) {
             $section = $this->createSection();
+
+            $section->setCurrentLocale('en_US');
             $section->setName($sectionName);
 
             $this->sectionRepository->add($section);
         }
+    }
+
+    /**
+     * @Given there is an existing section with :code code
+     */
+    public function thereIsAnExistingSectionWithCode(string $code): void
+    {
+        $section = $this->createSection();
+
+        $section->setCode($code);
+
+        $this->sectionRepository->add($section);
     }
 
     /**
@@ -83,11 +111,8 @@ final class SectionContext implements Context
     {
         /** @var SectionInterface $section */
         $section = $this->sectionFactory->createNew();
-        $channel = $this->sharedStorage->get('channel');
 
-        $section->setCurrentLocale($channel->getLocales()->first()->getCode());
         $section->setCode($this->randomStringGenerator->generate());
-        $section->setName($this->randomStringGenerator->generate());
 
         return $section;
     }

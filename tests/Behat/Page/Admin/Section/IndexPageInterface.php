@@ -13,10 +13,15 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Section;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-interface IndexPageInterface extends BaseIndexPageInterface
+interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListInterface
 {
+    /**
+     * @param string $code
+     */
+    public function deleteSection(string $code): void;
 }

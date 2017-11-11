@@ -20,6 +20,14 @@ Feature: Adding new page
         Then I should be notified that the page has been created
 
     @ui
+    Scenario: Trying to add page with existing code
+        Given there is an existing page with "terms" code
+        When I go to the create page page
+        And I fill the code with "terms"
+        And I try to add it
+        Then I should be notified that there is already an existing page with provided code
+
+    @ui
     Scenario: Adding new page with blank data
         When I go to the create page page
         And I add it

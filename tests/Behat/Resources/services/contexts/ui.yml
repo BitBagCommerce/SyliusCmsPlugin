@@ -24,16 +24,18 @@ services:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.page"
-            - "@__symfony__.bitbag.manager.page"
         tags:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.admin.frequently_asked_question:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
         arguments:
+            - "@bitbag.behat.page.admin.frequently_asked_question.index"
+            - "@bitbag.behat.page.admin.frequently_asked_question.create"
+            - "@bitbag.behat.page.admin.frequently_asked_question.update"
+            - "@sylius.behat.shared_storage"
             - "@sylius.behat.notification_checker"
             - "@sylius.behat.current_page_resolver"
-            - "@bitbag.behat.page.admin.frequently_asked_question.create"
             - "@bitbag.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
@@ -41,8 +43,12 @@ services:
     bitbag.behat.context.ui.admin.section:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\SectionContext
         arguments:
+            - "@bitbag.behat.page.admin.section.index"
+            - "@bitbag.behat.page.admin.section.create"
+            - "@bitbag.behat.page.admin.section.update"
+            - "@sylius.behat.shared_storage"
             - "@sylius.behat.notification_checker"
             - "@sylius.behat.current_page_resolver"
-            - "@bitbag.behat.page.admin.section.create"
+            - "@bitbag.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
