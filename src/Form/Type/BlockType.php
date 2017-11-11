@@ -22,6 +22,7 @@ use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Valid;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -68,6 +69,10 @@ final class BlockType extends AbstractResourceType
             $builder->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag.ui.contents',
                 'entry_type' => TextBlockTranslationType::class,
+                'validation_groups' => ['bitbag_content'],
+                'constraints' => [
+                    new Valid(),
+                ],
             ]);
 
             return;
@@ -77,6 +82,10 @@ final class BlockType extends AbstractResourceType
             $builder->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag.ui.contents',
                 'entry_type' => HtmlBlockTranslationType::class,
+                'validation_groups' => ['bitbag_content'],
+                'constraints' => [
+                    new Valid(),
+                ],
             ]);
 
             return;
@@ -86,6 +95,10 @@ final class BlockType extends AbstractResourceType
             $builder->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag.ui.images',
                 'entry_type' => ImageBlockTranslationType::class,
+                'validation_groups' => null === $block->getId() ? ['bitbag_image'] : [],
+                'constraints' => [
+                    new Valid(),
+                ],
             ]);
 
             return;
