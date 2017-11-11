@@ -23,12 +23,10 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(string $locale): QueryBuilder
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.translations', 'translation')
-            ->where('translation.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->leftJoin('o.translations', 'translation')
         ;
     }
 

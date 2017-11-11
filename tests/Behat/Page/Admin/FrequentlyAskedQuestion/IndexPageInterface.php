@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
+namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
@@ -23,5 +23,5 @@ interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListIn
     /**
      * @param string $code
      */
-    public function deletePage(string $code): void;
+    public function deleteFrequentlyAskedQuestion(string $code): void;
 }

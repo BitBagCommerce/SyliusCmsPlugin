@@ -139,6 +139,16 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I delete this block
+     */
+    public function iDeleteThisBlock()
+    {
+        $block = $this->sharedStorage->get('block');
+
+        $this->indexPage->deleteBlock($block->getCode());
+    }
+
+    /**
      * @When I go to the update :code block page
      */
     public function iGoToTheUpdateBlockPage(string $code)
@@ -149,6 +159,16 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I want to edit this block
+     */
+    public function iWantToEditThisBlock()
+    {
+        $block = $this->sharedStorage->get('block');
+
+        $this->updatePage->open(['id' => $block->getId()]);
+    }
+
+    /**
      * @When I fill :fields fields
      */
     public function iFillFields(string $fields): void
@@ -156,7 +176,7 @@ final class BlockContext implements Context
         $fields = explode(',', $fields);
 
         foreach ($fields as $field) {
-            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate(5));
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate());
         }
     }
 
@@ -233,6 +253,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add :firstSection and :secondSection sections to it
+     */
+    public function iAddAndSectionsToIt(string ...$sectionNames): void
+    {
+        $this->resolveCurrentPage()->associateSections($sectionNames);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
@@ -280,9 +308,9 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I should be notified that this block was removed
+     * @Then I should be notified that the block has been deleted
      */
-    public function iShouldBeNotifiedThatThisBlockWasRemoved(): void
+    public function iShouldBeNotifiedThatTheBlockHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
             "Block has been successfully deleted.",
@@ -291,7 +319,15 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I should be notified that :fields cannot be blank
+     * @Then this block should be disabled
+     */
+    public function thisBlockShouldBeDisabled(): void
+    {
+        Assert::false($this->resolveCurrentPage()->isBlockDisabled());
+    }
+
+    /**
+     * @Then I should be notified that :fields fields cannot be blank
      */
     public function iShouldBeNotifiedThatCannotBeBlank(string $fields): void
     {
@@ -346,18 +382,30 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I add :firstSection and :secondSection sections to it
+     * @Then the code field should be disabled
      */
-    public function iAddAndSectionsToIt(string ...$sectionNames): void
+    public function theCodeFieldShouldBeDisabled(): void
     {
-        $this->resolveCurrentPage()->associateSections($sectionNames);
+        Assert::true($this->resolveCurrentPage()->isCodeDisabled());
     }
 
     /**
-     * @return CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
+     * @Then I should see empty list of blocks
+     */
+    public function iShouldSeeEmptyListOfBlocks(): void
+    {
+        $this->resolveCurrentPage()->isEmpty();
+    }
+
+    /**
+     * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
-        return $this->currentPageResolver->getCurrentPageWithForm([$this->createPage, $this->updatePage]);
+        return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->indexPage,
+            $this->createPage,
+            $this->updatePage,
+        ]);
     }
 }

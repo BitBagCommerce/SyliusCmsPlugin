@@ -13,12 +13,11 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Entity\BlockImage;
+use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -85,12 +84,19 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Given there is a block in the store
+     */
+    public function thereIsABlockInTheStore(): void
+    {
+        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE);
+    }
+
+    /**
      * @Given there are :number dynamic content blocks with :type type
      */
     public function thereAreDynamicContentBlocksWithType(int $number, string $type): void
     {
         for ($i = 0; $i < $number; $i++) {
-
             if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
                 $image = $this->uploadImage(self::IMAGE_MOCK);
 
@@ -188,7 +194,7 @@ final class BlockContext implements Context
         $block = $this->blockFactory->createWithType($type);
 
         $block->setCode($code);
-        $this->setUpCurrentLocale($block);
+        $block->setCurrentLocale('en_US');
 
         if (null !== $image) {
             $block->setImage($image);
@@ -202,16 +208,5 @@ final class BlockContext implements Context
 
         $this->blockRepository->add($block);
         $this->sharedStorage->set('block', $block);
-    }
-
-    /**
-     * @param BlockInterface $block
-     */
-    private function setUpCurrentLocale(BlockInterface $block): void
-    {
-        /** @var ChannelInterface $channel */
-        $channel = $this->sharedStorage->get('channel');
-
-        $block->setCurrentLocale($channel->getLocales()->first()->getCode());
     }
 }

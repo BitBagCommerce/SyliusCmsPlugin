@@ -42,31 +42,46 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @var FrequentlyAskedQuestionRepositoryInterface
      */
-    private $askedQuestionRepository;
+    private $frequentlyAskedQuestionRepository;
 
     /**
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param SharedStorageInterface $sharedStorage
      * @param FactoryInterface $frequentlyAskedQuestionFactory
-     * @param FrequentlyAskedQuestionRepositoryInterface $askedQuestionRepository
+     * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
      */
     public function __construct(
         RandomStringGeneratorInterface $randomStringGenerator,
         SharedStorageInterface $sharedStorage,
         FactoryInterface $frequentlyAskedQuestionFactory,
-        FrequentlyAskedQuestionRepositoryInterface $askedQuestionRepository
+        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
     )
     {
         $this->randomStringGenerator = $randomStringGenerator;
         $this->sharedStorage = $sharedStorage;
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
-        $this->askedQuestionRepository = $askedQuestionRepository;
+        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
 
     /**
-     * @Given there is an existing faq with :position position
+     * @Given the store has a frequently asked question
      */
-    public function thereIsAnExistingFaqWithPosition(int $position): void
+    public function thereIsAnExistingFrequentlyAskedQuestion(): void
+    {
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
+        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+        
+        $frequentlyAskedQuestion->setCode($this->randomStringGenerator->generate());
+        $frequentlyAskedQuestion->setPosition(1);
+
+        $this->sharedStorage->set('frequently_asked_question', $frequentlyAskedQuestion);
+        $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
+    }
+
+    /**
+     * @Given there is an existing frequently asked question with :position position
+     */
+    public function thereIsAnExistingFrequentlyAskedQuestionWithPosition(int $position): void
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
@@ -74,13 +89,13 @@ final class FrequentlyAskedQuestionContext implements Context
         $frequentlyAskedQuestion->setCode($this->randomStringGenerator->generate());
         $frequentlyAskedQuestion->setPosition($position);
 
-        $this->askedQuestionRepository->add($frequentlyAskedQuestion);
+        $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
     }
 
     /**
-     * @Given there is an existing faq with :code code
+     * @Given there is an existing frequently asked question with :code code
      */
-    public function thereIsAnExistingFaqWithCode(string $code): void
+    public function thereIsAnExistingFrequentlyAskedQuestionWithCode(string $code): void
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
@@ -88,6 +103,6 @@ final class FrequentlyAskedQuestionContext implements Context
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setPosition(1);
 
-        $this->askedQuestionRepository->add($frequentlyAskedQuestion);
+        $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
     }
 }

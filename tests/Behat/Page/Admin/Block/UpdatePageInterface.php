@@ -13,11 +13,12 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface UpdatePageInterface extends BaseUpdatePageInterface
+interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {
     /**
      * @param string $field
@@ -46,4 +47,9 @@ interface UpdatePageInterface extends BaseUpdatePageInterface
     public function fillContent(string $content): void;
 
     public function disable(): void;
+
+    /**
+     * @return bool
+     */
+    public function isBlockDisabled(): bool;
 }

@@ -15,7 +15,6 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -66,15 +65,13 @@ final class PageContext implements Context
     }
 
     /**
-     * @Given there are :number pages
+     * @Given there is a page in the store
      */
-    public function thereArePages(int $number)
+    public function thereIsAPageInTheStore(): void
     {
-        for ($i = 0; $i < $number; $i++) {
-            $page = $this->createPage();
+        $page = $this->createPage();
 
-            $this->pageRepository->add($page);
-        }
+        $this->pageRepository->add($page);
     }
 
     /**
@@ -85,7 +82,7 @@ final class PageContext implements Context
         $page = $this->createPage();
 
         $page->setName($name);
-        $page->setCode(StringInflector::nameToCode($name));
+        $page->setCode(strtolower(StringInflector::nameToCode($name)));
 
         $this->pageRepository->add($page);
     }
@@ -145,10 +142,9 @@ final class PageContext implements Context
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
-        $channel = $this->sharedStorage->get('channel');
 
         $page->setCode($this->randomStringGenerator->generate());
-        $page->setCurrentLocale($channel->getLocales()->first()->getCode());
+        $page->setCurrentLocale('en_US');
         $page->setName($this->randomStringGenerator->generate());
         $page->setSlug($this->randomStringGenerator->generate());
         $page->setContent($this->randomStringGenerator->generate());

@@ -20,12 +20,6 @@ sylius_grid:
                     type: string
                     label: bitbag.ui.name
                     sortable: translation.name
-                sections:
-                    type: twig
-                    label: bitbag.ui.sections
-                    path: .
-                    options:
-                        template: "@BitBagCmsPlugin/Grid/Field/sections.html.twig"
             filters:
                 search:
                     type: string

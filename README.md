@@ -106,6 +106,9 @@ To see which forms you may want to extend, run `$ bin/console debug:container | 
 ## Testing
 ```bash
 $ composer install
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
 $ bin/console assets:install web -e test
 $ bin/console doctrine:schema:create -e test
 $ bin/console server:run 127.0.0.1:8080 -d web -e test

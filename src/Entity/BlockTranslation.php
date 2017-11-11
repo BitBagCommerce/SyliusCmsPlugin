@@ -80,7 +80,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

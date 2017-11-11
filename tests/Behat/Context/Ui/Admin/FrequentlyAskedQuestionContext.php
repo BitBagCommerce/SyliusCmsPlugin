@@ -17,8 +17,10 @@ use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\IndexPageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\UpdatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
@@ -27,6 +29,26 @@ use Webmozart\Assert\Assert;
  */
 final class FrequentlyAskedQuestionContext implements Context
 {
+    /**
+     * @var IndexPageInterface
+     */
+    private $indexPage;
+
+    /**
+     * @var CreatePageInterface
+     */
+    private $createPage;
+
+    /**
+     * @var UpdatePageInterface
+     */
+    private $updatePage;
+
+    /**
+     * @var SharedStorageInterface
+     */
+    private $sharedStorage;
+
     /**
      * @var NotificationCheckerInterface
      */
@@ -38,40 +60,72 @@ final class FrequentlyAskedQuestionContext implements Context
     private $currentPageResolver;
 
     /**
-     * @var CreatePageInterface
-     */
-    private $createPage;
-
-    /**
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
 
     /**
+     * @param IndexPageInterface $indexPage
+     * @param CreatePageInterface $createPage
+     * @param UpdatePageInterface $updatePage
+     * @param SharedStorageInterface $sharedStorage
      * @param NotificationCheckerInterface $notificationChecker
      * @param CurrentPageResolverInterface $currentPageResolver
-     * @param CreatePageInterface $createPage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      */
     public function __construct(
+        IndexPageInterface $indexPage,
+        CreatePageInterface $createPage,
+        UpdatePageInterface $updatePage,
+        SharedStorageInterface $sharedStorage,
         NotificationCheckerInterface $notificationChecker,
         CurrentPageResolverInterface $currentPageResolver,
-        CreatePageInterface $createPage,
         RandomStringGeneratorInterface $randomStringGenerator
     )
     {
+        $this->indexPage = $indexPage;
+        $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
+        $this->sharedStorage = $sharedStorage;
         $this->notificationChecker = $notificationChecker;
         $this->currentPageResolver = $currentPageResolver;
-        $this->createPage = $createPage;
         $this->randomStringGenerator = $randomStringGenerator;
     }
 
     /**
-     * @When I go to the create faq page
+     * @When I go to the frequently asked questions page
      */
-    public function iGoToTheCreateFaqPage(): void
+    public function iGoToTheFrequentlyAskedQuestionsPage(): void
+    {
+        $this->indexPage->open();
+    }
+
+    /**
+     * @When I go to the create frequently asked question page
+     */
+    public function iGoToTheCreateFrequentlyAskedQuestionPage(): void
     {
         $this->createPage->open();
+    }
+
+    /**
+     * @When I want to edit this frequently asked question
+     */
+    public function iWantToEditThisFrequentlyAskedQuestion(): void
+    {
+        $frequentlyAskedQuestion = $this->sharedStorage->get('frequently_asked_question');
+
+        $this->updatePage->open(['id' => $frequentlyAskedQuestion->getId()]);
+    }
+
+    /**
+     * @When I delete this frequently asked question
+     */
+    public function iDeleteThisFrequentlyAskedQuestion()
+    {
+        $frequentlyAskedQuestion = $this->sharedStorage->get('frequently_asked_question');
+
+        $this->indexPage->deleteFrequentlyAskedQuestion($frequentlyAskedQuestion->getCode());
     }
 
     /**
@@ -128,12 +182,23 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be notified that a new faq has been created
+     * @Then I should be notified that a new frequently asked question has been created
      */
-    public function iShouldBeNotifiedThatANewFaqHasBeenCreated(): void
+    public function iShouldBeNotifiedThatANewFrequentlyAskedQuestionHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
             'Success Frequently asked question has been successfully created.',
+            NotificationType::success()
+        );
+    }
+
+    /**
+     * @Then I should be notified that the fequently asked question has been deleted
+     */
+    public function iShouldBeNotifiedThatTheFrequentlyAskedQuestionHasBeenDeleted(): void
+    {
+        $this->notificationChecker->checkNotification(
+            "Frequently asked question has been successfully deleted.",
             NotificationType::success()
         );
     }
@@ -169,34 +234,52 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be notified that there is already an existing faq with provided code
+     * @Then I should be notified that there is already an existing frequently asked question with provided code
      */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithProvidedCode(): void
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFrequentlyAskedQuestionWithProvidedCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing faq with this code.",
+            "There is an existing FAQ with this code.",
             false
         ));
     }
 
     /**
-     * @Then I should be notified that there is already an existing faq with selected position
+     * @Then I should be notified that there is already an existing frequently asked question with selected position
      */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithSelectedPosition(): void
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFrequentlyAskedQuestionWithSelectedPosition(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing faq with this position.",
+            "There is an existing FAQ with this position.",
             false
         ));
     }
 
     /**
-     * @return SymfonyPageInterface|CreatePageInterface|ContainsErrorTrait
+     * @Then the code field should be disabled
+     */
+    public function theCodeFieldShouldBeDisabled()
+    {
+        Assert::true($this->resolveCurrentPage()->isCodeDisabled());
+    }
+
+    /**
+     * @Then I should see empty list of frequently asked questions
+     */
+    public function iShouldSeeEmptyListOfFrequentlyAskedQuestions(): void
+    {
+        $this->resolveCurrentPage()->isEmpty();
+    }
+
+    /**
+     * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
         return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->indexPage,
             $this->createPage,
+            $this->updatePage,
         ]);
     }
 }
