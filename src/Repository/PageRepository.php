@@ -15,7 +15,6 @@ namespace BitBag\CmsPlugin\Repository;
 use BitBag\CmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Sylius\Component\Core\Model\ChannelInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -62,6 +61,21 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findEnabledBySectionCode(string $code): array
+    {
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.sections', 'section')
+            ->andWhere('section.code = :sectionCode')
+            ->andWhere('o.enabled = true')
+            ->setParameter('sectionCode', $code)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

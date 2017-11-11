@@ -10,3 +10,15 @@ bitbag_shop_page_show:
                 arguments:
                     - $slug
                     - "expr:service('sylius.context.locale').getLocaleCode()"
+
+bitbag_render_pages_by_section_code:
+    path: /page/section/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.page:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findEnabledBySectionCode
+                arguments:
+                    - $code

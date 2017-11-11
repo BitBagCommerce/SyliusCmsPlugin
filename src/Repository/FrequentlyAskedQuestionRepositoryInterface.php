@@ -18,6 +18,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
@@ -29,7 +30,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
     /**
      * @param string $localeCode
      *
-     * @return QueryBuilder
+     * @return array|FrequentlyAskedQuestionInterface[]
      */
     public function findEnabledOrderedByPosition(string $localeCode): array;
 
@@ -39,4 +40,11 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      * @return null|FrequentlyAskedQuestionInterface
      */
     public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
+
+    /**
+     * @param string $sectionCode
+     *
+     * @return array|FrequentlyAskedQuestionInterface[]
+     */
+    public function findEnabledBySectionCode(string $sectionCode): array;
 }
