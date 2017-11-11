@@ -32,7 +32,7 @@ interface SectionRepositoryInterface extends RepositoryInterface
      * @param string $phrase
      * @param string|null $locale
      *
-     * @return array|SectionInterface[]
+     * @return SectionInterface[]
      */
     public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

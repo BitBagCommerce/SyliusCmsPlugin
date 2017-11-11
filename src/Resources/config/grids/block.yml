@@ -34,6 +34,12 @@ sylius_grid:
                     sortable: ~
                     options:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
+                sections:
+                    type: twig
+                    label: bitbag.ui.sections
+                    path: .
+                    options:
+                        template: "@BitBagCmsPlugin/Grid/Field/sections.html.twig"
             filters:
                 search:
                     type: string

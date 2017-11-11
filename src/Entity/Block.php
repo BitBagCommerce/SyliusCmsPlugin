@@ -34,6 +34,7 @@ class Block implements BlockInterface
     {
         $this->initializeTranslationsCollection();
         $this->initializeSectionsCollection();
+        $this->initializeProductsCollection();
     }
 
     /**

@@ -1,3 +1,6 @@
+bitbag_shop_block:
+    resource: "@BitBagCmsPlugin/Resources/config/routing/shop/block.yml"
+
 bitbag_shop_page:
     resource: "@BitBagCmsPlugin/Resources/config/routing/shop/page.yml"
 

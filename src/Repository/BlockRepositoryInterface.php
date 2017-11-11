@@ -50,4 +50,11 @@ interface BlockRepositoryInterface extends RepositoryInterface
      * @return null|BlockInterface
      */
     public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface;
+
+    /**
+     * @param string $sectionCode
+     *
+     * @return BlockInterface[]
+     */
+    public function findEnabledBySectionCode(string $sectionCode): array;
 }
