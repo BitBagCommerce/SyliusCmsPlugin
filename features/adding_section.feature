@@ -8,7 +8,7 @@ Feature: Adding new section
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @todo
+    @ui
     Scenario: Adding new section
         When I go to the create new section page
         And I fill the code with "blog"

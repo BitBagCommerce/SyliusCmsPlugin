@@ -28,3 +28,6 @@ bitbag:
         content: Treść
         images: Zdjęcia
         link: Link
+        sections: Sekcje
+        sections_header: Sekcje
+        sections_subheader: Zarządzaj swoimi sekcjami

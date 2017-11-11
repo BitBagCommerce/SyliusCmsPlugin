@@ -349,6 +349,14 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
+     * @When I add :arg1 and :arg2 sections to it
+     */
+    public function iAddAndSectionsToIt(string ...$sectionsNames): void
+    {
+        $this->resolveCurrentPage()->associateSections($sectionsNames);
+    }
+
+    /**
      * @return CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface

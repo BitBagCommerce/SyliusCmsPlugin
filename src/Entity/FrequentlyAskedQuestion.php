@@ -21,6 +21,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
 {
+    use SectionAssociationTrait;
     use ToggleableTrait,
         TranslatableTrait {
         __construct as private initializeTranslationsCollection;
@@ -40,6 +41,12 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
      * @var null|int
      */
     protected $position;
+
+    public function __construct()
+    {
+        $this->initializeSectionsCollection();
+        $this->initializeTranslationsCollection();
+    }
 
     /**
      * {@inheritdoc}

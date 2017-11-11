@@ -1,4 +1,5 @@
 {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationFormWithSlug %}
+{% form_theme form '@BitBagCmsPlugin/Form/theme.html.twig' %}
 
 <div class="ui two column stackable grid">
     <div class="column">
@@ -8,6 +9,7 @@
                 {{ form_row(form.code) }}
                 {{ form_row(form.enabled) }}
                 {{ form_row(form.products) }}
+                {{ form_row(form.sections) }}
             </div>
         </div>
     </div>

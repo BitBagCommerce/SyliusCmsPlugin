@@ -48,6 +48,10 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
+            ->add('sections', SectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.sections',
+                'multiple' => true,
+            ])
         ;
     }
 

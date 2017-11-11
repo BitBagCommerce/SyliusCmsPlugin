@@ -30,3 +30,14 @@ services:
             - "@__symfony__.bitbag.repository.frequently_asked_question"
         tags:
             - { name: fob.context_service }
+
+    bitbag.behat.context.setup.section:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\SectionContext
+        arguments:
+            - "@bitbag.behat.random_string_generator"
+            - "@sylius.behat.shared_storage"
+            - "@__symfony__.bitbag.factory.section"
+            - "@__symfony__.bitbag.repository.section"
+            - "@__symfony__.bitbag.manager.section"
+        tags:
+            - { name: fob.context_service }
