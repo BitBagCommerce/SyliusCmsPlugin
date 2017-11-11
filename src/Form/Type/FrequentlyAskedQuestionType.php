@@ -38,6 +38,10 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
                 'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
             ])
+            ->add('sections', SectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.sections',
+                'multiple' => true,
+            ])
         ;
     }
 }

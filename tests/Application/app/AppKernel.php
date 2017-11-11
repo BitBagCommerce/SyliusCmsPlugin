@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-final class AppKernel extends Kernel
+class AppKernel extends Kernel
 {
     /**
      * {@inheritdoc}

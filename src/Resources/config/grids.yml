@@ -2,6 +2,7 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/grids/block.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids/page.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids/frequently_asked_question.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/section.yml" }
 
 sylius_grid:
     templates:

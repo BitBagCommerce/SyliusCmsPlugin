@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
+use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Webmozart\Assert\Assert;
 
@@ -72,5 +73,41 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function associateSections(array $sectionsNames): void
+    {
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+
+        $dropdown = $this->getElement('association_dropdown_section');
+        $dropdown->click();
+
+        foreach ($sectionsNames as $sectionName) {
+            $dropdown->waitFor(5, function () use ($sectionName) {
+                return $this->hasElement('association_dropdown_section_item', [
+                    '%item%' => $sectionName,
+                ]);
+            });
+
+            $item = $this->getElement('association_dropdown_section_item', [
+                '%item%' => $sectionName,
+            ]);
+
+            $item->click();
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefinedElements()
+    {
+        return array_merge(parent::getDefinedElements(), [
+            'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
+            'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+        ]);
     }
 }

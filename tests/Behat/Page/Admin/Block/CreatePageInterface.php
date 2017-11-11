@@ -44,5 +44,10 @@ interface CreatePageInterface extends BaseCreatePageInterface
      */
     public function fillContent(string $content): void;
 
+    /**
+     * @param array $sectionsNames
+     */
+    public function associateSections(array $sectionsNames): void;
+
     public function disable(): void;
 }
