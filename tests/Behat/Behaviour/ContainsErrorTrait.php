@@ -18,7 +18,7 @@ use Sylius\Behat\Behaviour\DocumentAccessor;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-trait ContainsError
+trait ContainsErrorTrait
 {
     use DocumentAccessor;
 

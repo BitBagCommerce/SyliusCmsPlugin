@@ -13,12 +13,19 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface CreatePageInterface extends BaseCreatePageInterface
+interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
+    /**
+     * @param string $field
+     * @param string $value
+     */
+    public function fillField(string $field, string $value): void;
+
     /**
      * @param string $code
      */
@@ -43,15 +50,13 @@ interface CreatePageInterface extends BaseCreatePageInterface
      * @param string $metaDescription
      */
     public function fillMetaDescription(string $metaDescription): void;
-
     /**
      * @param string $content
      */
     public function fillContent(string $content): void;
 
     /**
-     * @param string $field
-     * @param string $value
+     * @param array $sectionsNames
      */
-    public function fillField(string $field, string $value): void;
+    public function associateSections(array $sectionsNames): void;
 }

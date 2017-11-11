@@ -20,13 +20,13 @@ use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
 interface UpdatePageInterface extends BaseUpdatePageInterface
 {
     /**
-     * @param string $name
-     */
-    public function fillName(string $name): void;
-
-    /**
      * @param string $field
      * @param string $value
      */
     public function fillField(string $field, string $value): void;
+
+    /**
+     * @param string $name
+     */
+    public function fillName(string $name): void;
 }

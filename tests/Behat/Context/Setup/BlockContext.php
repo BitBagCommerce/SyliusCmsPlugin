@@ -120,6 +120,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Given there is a cms block with :code code
+     */
+    public function thereIsATextCmsBlockWithCode(string $code): void
+    {
+        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code);
+    }
+
+    /**
      * @Given there is a cms text block with :code code and :content content
      */
     public function thereIsATextCmsBlockWithCodeAndContent(string $code, string $content): void

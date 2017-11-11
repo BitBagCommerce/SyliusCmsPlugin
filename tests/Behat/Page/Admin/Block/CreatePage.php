@@ -14,6 +14,7 @@ namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
 
 /**
@@ -21,6 +22,16 @@ use Webmozart\Assert\Assert;
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
+    use ContainsErrorTrait;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -103,7 +114,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * {@inheritdoc}
      */
-    protected function getDefinedElements()
+    protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',

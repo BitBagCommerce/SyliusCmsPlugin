@@ -15,14 +15,14 @@ namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
-    use ContainsError;
+    use ContainsErrorTrait;
 
     /**
      * @param string $name

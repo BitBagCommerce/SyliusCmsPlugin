@@ -21,6 +21,14 @@ use Webmozart\Assert\Assert;
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function uploadImage(string $image): void

@@ -38,6 +38,5 @@ services:
             - "@sylius.behat.shared_storage"
             - "@__symfony__.bitbag.factory.section"
             - "@__symfony__.bitbag.repository.section"
-            - "@__symfony__.bitbag.manager.section"
         tags:
             - { name: fob.context_service }

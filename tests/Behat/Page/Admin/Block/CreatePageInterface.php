@@ -13,12 +13,19 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface CreatePageInterface extends BaseCreatePageInterface
+interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
+    /**
+     * @param string $label
+     * @param string $value
+     */
+    public function fillField(string $label, string $value);
+
     /**
      * @param string $code
      */

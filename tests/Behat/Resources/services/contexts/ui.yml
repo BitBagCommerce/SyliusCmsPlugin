@@ -1,6 +1,6 @@
 services:
     bitbag.behat.context.ui.admin.managing_blocks:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\ManagingBlocksContext
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
             - "@bitbag.behat.page.admin.block.index"
             - "@bitbag.behat.page.admin.block.create"
@@ -8,13 +8,13 @@ services:
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
             - "@sylius.behat.shared_storage"
+            - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.block"
-            - "@__symfony__.bitbag.manager.block"
         tags:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.admin.managing_pages:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\ManagingPagesContext
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\PageContext
         arguments:
             - "@bitbag.behat.page.admin.page.index"
             - "@bitbag.behat.page.admin.page.create"

@@ -20,6 +20,12 @@ use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
 interface UpdatePageInterface extends BaseUpdatePageInterface
 {
     /**
+     * @param string $field
+     * @param string $value
+     */
+    public function fillField(string $field, string $value): void;
+
+    /**
      * @param string $image
      */
     public function uploadImage(string $image): void;
