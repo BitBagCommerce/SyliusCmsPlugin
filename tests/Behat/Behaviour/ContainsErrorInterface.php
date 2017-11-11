@@ -5,20 +5,18 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on mikolaj.krol@bitbag.pl.
+ * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Service;
+declare(strict_types=1);
+
+
+namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface RandomStringGeneratorInterface
+interface ContainsErrorInterface
 {
-    /**
-     * @param int $length
-     *
-     * @return string
-     */
-    public function generate(int $length = 10): string;
+    public function containsErrorWithMessage(string $message, bool $strict = true): bool;
 }

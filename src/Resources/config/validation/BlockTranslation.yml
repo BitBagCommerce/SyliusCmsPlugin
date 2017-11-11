@@ -8,9 +8,12 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
                 max: 250
                 minMessage: bitbag.block.name.min_length
                 maxMessage: bitbag.block.name.max_length
-                groups: [bitbag]
+                groups: ['bitbag']
         content:
+            - NotBlank:
+                message: bitbag.block.content.not_blank
+                groups: ['bitbag_content']
             - Length:
                 min: 2
                 minMessage: bitbag.block.content.min_length
-                groups: [bitbag]
+                groups: ['bitbag']

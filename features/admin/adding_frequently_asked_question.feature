@@ -9,7 +9,7 @@ Feature: Adding frequently asked question
         And the store operates on a single channel in "United States"
 
     @ui
-    Scenario: Adding new frequently asked question with valid data
+    Scenario: Adding frequently asked
         When I go to the create faq page
         And I fill code with "each_order_payment"
         And I set the position to 1
@@ -19,18 +19,22 @@ Feature: Adding frequently asked question
         Then I should be notified that a new faq has been created
 
     @ui
-    Scenario: Adding new frequently asked question with invalid data
+    Scenario: Adding new frequently asked question with blank data
         When I go to the create faq page
         And I add it
-        Then I should be notified that "Code, Position, Question, Answer" can not be blank
+        Then I should be notified that "Code, Position, Question, Answer" fields cannot be blank
+
+    @ui
+    Scenario: Adding new frequently asked question with too long short data
+        When I go to the create faq page
+        And I fill "Question, Answer" fields with 1 character
+        And I add it
+        Then I should be notified that "Question, Answer" fields are too short
 
     @ui
     Scenario: Adding new frequently asked question with existing position
         Given there is an existing faq with 1 position
         When I go to the create faq page
-        And I fill code with "delivery_zones"
         And I set the position to 1
-        And I fill the question with "Do you send packages to Russia?"
-        And I set the answer to "Yes"
-        And I add it
+        And I try to add it
         Then I should be notified that there is already an existing faq with selected position
