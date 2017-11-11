@@ -54,7 +54,7 @@ interface BlockRepositoryInterface extends RepositoryInterface
     /**
      * @param string $sectionCode
      *
-     * @return array|BlockInterface[]
+     * @return BlockInterface[]
      */
     public function findEnabledBySectionCode(string $sectionCode): array;
 }
