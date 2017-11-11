@@ -120,9 +120,9 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Given there is a cms block with :code code
+     * @Given there is an existing block with :code code
      */
-    public function thereIsATextCmsBlockWithCode(string $code): void
+    public function thereIsABlockWithCode(string $code): void
     {
         $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code);
     }
@@ -144,9 +144,9 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Given there is a cms block with :code code and :name image
+     * @Given there is an existing block with :code code and :name image
      */
-    public function thereIsCmsBlockWithCodeAndImage(string $code, string $name): void
+    public function thereIsAnExistingBlockWithCodeAndImage(string $code, string $name): void
     {
         $image = $this->uploadImage($name);
 

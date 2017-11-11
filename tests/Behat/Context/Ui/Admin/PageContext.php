@@ -14,13 +14,11 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
@@ -73,11 +71,6 @@ final class PageContext implements Context
     private $pageRepository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
@@ -86,7 +79,6 @@ final class PageContext implements Context
      * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         IndexPageInterface $indexPage,
@@ -96,8 +88,7 @@ final class PageContext implements Context
         NotificationCheckerInterface $notificationChecker,
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
-        PageRepositoryInterface $pageRepository,
-        EntityManagerInterface $entityManager
+        PageRepositoryInterface $pageRepository
     )
     {
         $this->createPage = $createPage;
@@ -108,7 +99,6 @@ final class PageContext implements Context
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageRepository = $pageRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
@@ -284,6 +274,17 @@ final class PageContext implements Context
     }
 
     /**
+     * @Then I should be notified that there is already an existing page with provided code
+     */
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingPageWithCode(): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            "There is an existing page with this code.",
+            false
+        ));
+    }
+
+    /**
      * @Then I should be notified that :fields fields cannot be blank
      */
     public function iShouldBeNotifiedThatFieldsCannotBeBlank(string $fields): void
@@ -329,13 +330,6 @@ final class PageContext implements Context
     }
 
     /**
-     * @Then only :number pages should exist in the store
-     */
-    public function onlyPagesShouldExistInTheStore(int $number): void
-    {
-    }
-
-    /**
      * @return CreatePageInterface|UpdatePageInterface|IndexPageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
@@ -347,3 +341,4 @@ final class PageContext implements Context
         ]);
     }
 }
+

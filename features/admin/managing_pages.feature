@@ -18,7 +18,7 @@ Feature: Managing cms pages
 
     @ui
     Scenario: Updating page
-        Given there is a cms page with "How to tie a tie" name
+        Given there is an existing page with "How to tie a tie" name
         And it has "tie a tie, 100 ways to tie a tie" meta keywords
         And it has "After reading this tut you will never get stuck while trying to tie a tie." meta description
         And it has "Learn how to tie a tie with the Windsor, Half Windsor, Four in Hand and Pratt necktie knots by following step-by-step video." content

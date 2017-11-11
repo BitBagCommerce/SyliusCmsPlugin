@@ -44,6 +44,14 @@ Feature: Adding blocks
         And I add it
         Then I should be notified that the block has been created
 
+    @ui
+    Scenario: Trying to add block with existing code
+        Given there is an existing block with "homepage_image" code
+        When I go to the create "text" block page
+        And I fill the code with "homepage_image"
+        And I try to add it
+        Then I should be notified that there is already an existing block with provided code
+
     @todo
     Scenario: Trying to add text block with blank data
         When I go to the create "text" block page

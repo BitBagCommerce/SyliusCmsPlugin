@@ -306,6 +306,17 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Then I should be notified that there is already an existing block with provided code
+     */
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingBlockWithCode(): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            "There is an existing block with this code.",
+            false
+        ));
+    }
+
+    /**
      * @Then I should be notified that :fields fields are too long
      */
     public function iShouldBeNotifiedThatFieldsAreTooLong(string $fields): void

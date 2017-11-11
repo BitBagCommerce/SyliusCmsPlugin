@@ -24,7 +24,6 @@ services:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.page"
-            - "@__symfony__.bitbag.manager.page"
         tags:
             - { name: fob.context_service }
 

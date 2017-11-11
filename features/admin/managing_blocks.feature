@@ -26,7 +26,7 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Updating image block
-        Given there is a cms block with "porsche_911_singer" code and "porsche_911_singer_1.jpg" image
+        Given there is an existing block with "porsche_911_singer" code and "porsche_911_singer_1.jpg" image
         When I go to the update "porsche_911_singer" block page
         And I upload the "porsche_911_singer_2.jpg" image
         And I update it
@@ -34,7 +34,7 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Disabling block
-        Given there is a cms block with "bitbag_quote" code
+        Given there is an existing block with "bitbag_quote" code
         When I go to the update "bitbag_quote" block page
         And I disable it
         And I update it

@@ -17,6 +17,7 @@ use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
@@ -34,7 +35,7 @@ final class PageContext implements Context
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
-    
+
     /**
      * @var FactoryInterface
      */
@@ -46,30 +47,22 @@ final class PageContext implements Context
     private $pageRepository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param FactoryInterface $pageFactory
      * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $pageFactory,
-        PageRepositoryInterface $pageRepository,
-        EntityManagerInterface $entityManager
+        PageRepositoryInterface $pageRepository
     )
     {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageFactory = $pageFactory;
         $this->pageRepository = $pageRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
@@ -78,21 +71,35 @@ final class PageContext implements Context
     public function thereArePages(int $number)
     {
         for ($i = 0; $i < $number; $i++) {
-            $this->createPage();
+            $page = $this->createPage();
+
+            $this->pageRepository->add($page);
         }
     }
 
     /**
-     * @Given there is a cms page with :name name
+     * @Given there is an existing page with :name name
      */
     public function thereIsACmsPageWithName(string $name): void
     {
         $page = $this->createPage();
 
         $page->setName($name);
-        $page->setCode(strtolower(str_replace(' ', '_', $name)));
+        $page->setCode(StringInflector::nameToCode($name));
 
-        $this->entityManager->flush();
+        $this->pageRepository->add($page);
+    }
+
+    /**
+     * @Given there is an existing page with :code code
+     */
+    public function thereIsAnExistingPageWithCode(string $code): void
+    {
+        $page = $this->createPage();
+
+        $page->setCode($code);
+
+        $this->pageRepository->add($page);
     }
 
     /**
@@ -104,7 +111,7 @@ final class PageContext implements Context
 
         $page->setMetaKeywords($metaKeywords);
 
-        $this->entityManager->flush();
+        $this->pageRepository->add($page);
     }
 
     /**
@@ -113,10 +120,10 @@ final class PageContext implements Context
     public function itHasMetaDescription(string $metaDescription): void
     {
         $page = $this->createPage();
-        
+
         $page->setMetaDescription($metaDescription);
 
-        $this->entityManager->flush();
+        $this->pageRepository->add($page);
     }
 
     /**
@@ -125,10 +132,10 @@ final class PageContext implements Context
     public function itHasContent(string $content)
     {
         $page = $this->createPage();
-        
+
         $page->setMetaKeywords($content);
 
-        $this->entityManager->flush();
+        $this->pageRepository->add($page);
     }
 
     /**
@@ -146,9 +153,8 @@ final class PageContext implements Context
         $page->setSlug($this->randomStringGenerator->generate());
         $page->setContent($this->randomStringGenerator->generate());
 
-        $this->pageRepository->add($page);
         $this->sharedStorage->set('page', $page);
-        
+
         return $page;
     }
 }
