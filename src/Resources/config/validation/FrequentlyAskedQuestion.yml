@@ -4,6 +4,10 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
             fields: [position]
             message: 'bitbag.frequently_asked_question.position.unique'
             groups: ['bitbag']
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [code]
+            message: 'bitbag.frequently_asked_question.code.unique'
+            groups: ['bitbag']
     properties:
         code:
             - NotBlank:

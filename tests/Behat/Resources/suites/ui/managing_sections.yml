@@ -1,6 +1,6 @@
 default:
     suites:
-        ui_managing_faq:
+        ui_managing_sections:
             contexts_services:
                 - sylius.behat.context.hook.doctrine_orm
 

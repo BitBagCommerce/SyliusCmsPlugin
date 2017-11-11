@@ -28,12 +28,10 @@ final class SectionType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $section = $builder->getData();
-
         $builder
             ->add('code', TextType::class, [
                 'label' => 'bitbag.ui.code',
-                'disabled' => null !== $section->getCode(),
+                'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => SectionTranslationType::class,
@@ -46,6 +44,6 @@ final class SectionType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_section';
+        return 'bitbag_section';
     }
 }

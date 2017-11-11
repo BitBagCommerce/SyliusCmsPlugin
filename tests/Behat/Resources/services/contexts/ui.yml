@@ -34,6 +34,7 @@ services:
             - "@sylius.behat.notification_checker"
             - "@sylius.behat.current_page_resolver"
             - "@bitbag.behat.page.admin.frequently_asked_question.create"
+            - "@bitbag.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
 

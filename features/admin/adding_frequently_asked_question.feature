@@ -11,7 +11,7 @@ Feature: Adding frequently asked question
     @ui
     Scenario: Adding frequently asked
         When I go to the create faq page
-        And I fill code with "each_order_payment"
+        And I fill the code with "each_order_payment"
         And I set the position to 1
         And I fill the question with "Should I pay for each order?"
         And I set the answer to "Yes"
@@ -19,20 +19,37 @@ Feature: Adding frequently asked question
         Then I should be notified that a new faq has been created
 
     @ui
-    Scenario: Adding new frequently asked question with blank data
+    Scenario: Adding new frequently asked question with long data
+        When I go to the create faq page
+        And I fill the code with "whats_the_js_framework_of_the_week"
+        And I set the position to 1
+        And I fill "Question, Answer" fields with 6000 characters
+        And I add it
+        Then I should be notified that a new faq has been created
+
+    @ui
+    Scenario: Trying to add frequently asked question with existing code
+        Given there is an existing faq with "stupid_question" code
+        When I go to the create faq page
+        And I fill the code with "stupid_question"
+        And I try to add it
+        Then I should be notified that there is already an existing faq with provided code
+
+    @ui
+    Scenario: Trying to add new frequently asked question with blank data
         When I go to the create faq page
         And I add it
         Then I should be notified that "Code, Position, Question, Answer" fields cannot be blank
 
     @ui
-    Scenario: Adding new frequently asked question with too long short data
+    Scenario: Trying to add new frequently asked question with too long short data
         When I go to the create faq page
         And I fill "Question, Answer" fields with 1 character
         And I add it
         Then I should be notified that "Question, Answer" fields are too short
 
     @ui
-    Scenario: Adding new frequently asked question with existing position
+    Scenario: Trying to add new frequently asked question with existing position
         Given there is an existing faq with 1 position
         When I go to the create faq page
         And I set the position to 1

@@ -20,7 +20,12 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-interface PageInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
+interface PageInterface extends
+    ResourceInterface,
+    TranslatableInterface,
+    ToggleableInterface,
+    ProductableInterface,
+    SectionableInterface
 {
     /**
      * @return null|string
