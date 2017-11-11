@@ -11,9 +11,7 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
                 groups: ['bitbag']
             - Length:
                 min: 2
-                max: 250
                 minMessage: 'bitbag.frequently_asked_question.code.min_length'
-                maxMessage: 'bitbag.frequently_asked_question.code.max_length'
                 groups: ['bitbag']
         position:
             - NotBlank:

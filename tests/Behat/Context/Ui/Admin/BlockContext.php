@@ -161,6 +161,18 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When /^I fill "([^"]*)" fields with (\d+) (?:character|characters)$/
+     */
+    public function iFillFieldsWithCharacters(string $fields, int $length): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate($length));
+        }
+    }
+
+    /**
      * @When I fill the code with :code
      */
     public function iFillTheCodeWith(string $code): void
@@ -222,6 +234,7 @@ final class BlockContext implements Context
 
     /**
      * @When I add it
+     * @When I try to add it
      */
     public function iAddIt(): void
     {
@@ -275,6 +288,36 @@ final class BlockContext implements Context
             "Block has been successfully deleted.",
             NotificationType::success()
         );
+    }
+
+    /**
+     * @Then I should be notified that :fields cannot be blank
+     */
+    public function iShouldBeNotifiedThatCannotBeBlank(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
+                "%s cannot be blank.",
+                trim($field)
+            )));
+        }
+    }
+
+    /**
+     * @Then I should be notified that :fields fields are too long
+     */
+    public function iShouldBeNotifiedThatFieldsAreTooLong(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
+                "%s can not be longer than",
+                trim($field)
+            ), false));
+        }
     }
 
     /**

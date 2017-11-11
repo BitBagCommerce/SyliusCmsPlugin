@@ -120,16 +120,31 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be notified that :fields cannot be blank
+     * @Then I should be notified that :fields fields cannot be blank
      */
-    public function iShouldBeNotifiedThatCannotBeBlank(string $fields): void
+    public function iShouldBeNotifiedThatFieldsCannotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s can not be blank.",
+                "%s cannot be blank.",
                 trim($field)
+            )));
+        }
+    }
+
+    /**
+     * @Then I should be notified that :fields fields are too short
+     */
+    public function iShouldBeNotifiedThatFieldsAreTooShort(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
+                "%s must be at least %d characters long.",
+                trim($field), 2
             )));
         }
     }

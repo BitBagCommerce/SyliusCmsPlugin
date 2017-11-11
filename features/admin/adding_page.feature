@@ -23,19 +23,19 @@ Feature: Adding new page
     Scenario: Adding new page with blank data
         When I go to the create page page
         And I add it
-        And I should be notified that "Code, Name, Slug, Content" fields can not be blank
+        And I should be notified that "Code, Name, Slug, Content" fields cannot be blank
 
     @ui
     Scenario: Trying to add a page with too short data
         When I go to the create page page
-        And I fill "Code, Name, Slug, Meta keywords, Meta description, Content" with 1 character
+        And I fill "Code, Name, Slug, Meta keywords, Meta description, Content" fields with 1 character
         And I try to add it
-        Then I should be notified that the "Code, Name, Slug, Meta keywords, Meta description, Content" fields are too short
+        Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description, Content" fields are too short
 
     @ui
     Scenario: Trying to add a page with too long data
         When I go to the create page page
-        And I fill "Code, Name, Slug, Meta keywords, Meta description" with 6000 characters
+        And I fill "Code, Name, Slug, Meta keywords, Meta description" fields with 6000 characters
         And I try to add it
         Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description" fields are too long
 
