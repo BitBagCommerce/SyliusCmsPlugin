@@ -1,0 +1,3 @@
+{% for section in data.sections %}
+    {{ section.name }}{{ loop.last ? "" : ", " }}
+{% endfor %}

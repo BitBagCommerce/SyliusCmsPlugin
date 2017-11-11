@@ -29,3 +29,14 @@ BitBag\CmsPlugin\Entity\Block:
                     section_id:
                         referencedColumnName: id
                         onDelete: CASCADE
+        products:
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
+            joinTable:
+                name: bitbag_block_products
+                joinColumns:
+                    page_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE

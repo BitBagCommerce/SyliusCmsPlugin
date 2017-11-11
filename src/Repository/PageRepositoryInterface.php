@@ -14,7 +14,6 @@ namespace BitBag\CmsPlugin\Repository;
 
 use BitBag\CmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
@@ -43,4 +42,11 @@ interface PageRepositoryInterface extends RepositoryInterface
      * @return null|PageInterface
      */
     public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface;
+
+    /**
+     * @param string $sectionCode
+     *
+     * @return PageInterface[]
+     */
+    public function findEnabledBySectionCode(string $sectionCode): array;
 }
