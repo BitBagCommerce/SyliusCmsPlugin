@@ -52,19 +52,19 @@ Feature: Adding blocks
         And I try to add it
         Then I should be notified that there is already an existing block with provided code
 
-    @todo
+    @ui
     Scenario: Trying to add text block with blank data
         When I go to the create "text" block page
         And I try to add it
         Then I should be notified that "Code, Content" cannot be blank
 
-    @todo
+    @ui
     Scenario: Trying to add html block with blank data
         When I go to the create "html" block page
         And I try to add it
         Then I should be notified that "Code, Content" cannot be blank
 
-    @todo
+    @ui
     Scenario: Trying to add image block with blank data
         When I go to the create "image" block page
         And I try to add it
