@@ -43,6 +43,6 @@ final class HtmlBlockTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_text_translation';
+        return 'bitbag_text_translation';
     }
 }

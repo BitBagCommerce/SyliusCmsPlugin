@@ -31,7 +31,9 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', TextType::class)
+            ->add('code', TextType::class, [
+                'disabled' => null !== $builder->getData()->getCode(),
+            ])
             ->add('position', IntegerType::class)
             ->add('enabled', CheckboxType::class)
             ->add('translations', ResourceTranslationsType::class, [

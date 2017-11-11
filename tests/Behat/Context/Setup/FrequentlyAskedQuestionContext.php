@@ -76,4 +76,18 @@ final class FrequentlyAskedQuestionContext implements Context
 
         $this->askedQuestionRepository->add($frequentlyAskedQuestion);
     }
+
+    /**
+     * @Given there is an existing faq with :code code
+     */
+    public function thereIsAnExistingFaqWithCode(string $code): void
+    {
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
+        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+
+        $frequentlyAskedQuestion->setCode($code);
+        $frequentlyAskedQuestion->setPosition(1);
+
+        $this->askedQuestionRepository->add($frequentlyAskedQuestion);
+    }
 }

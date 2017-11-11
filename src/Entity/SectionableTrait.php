@@ -18,7 +18,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-trait SectionAssociationTrait
+trait SectionableTrait
 {
     /**
      * @var Collection|SectionInterface[]

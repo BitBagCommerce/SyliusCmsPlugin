@@ -48,6 +48,6 @@ final class ImageBlockTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_image_translation';
+        return 'bitbag_image_translation';
     }
 }

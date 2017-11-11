@@ -21,6 +21,12 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
     /**
+     * @param string $label
+     * @param string $value
+     */
+    public function fillField(string $label, string $value): void;
+
+    /**
      * @param string $code
      */
     public function fillCode(string $code): void;
