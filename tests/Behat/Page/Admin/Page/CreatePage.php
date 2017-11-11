@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -15,14 +15,23 @@ namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
-    use ContainsError;
+    use ContainsErrorTrait;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
 
     /**
      * {@inheritDoc}
@@ -79,9 +88,26 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * {@inheritDoc}
      */
-    public function fillField(string $field, string $value): void
+    public function associateSections(array $sectionsNames): void
     {
-        $this->getDocument()->fillField($field, $value);
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+
+        $dropdown = $this->getElement('association_dropdown_section');
+        $dropdown->click();
+
+        foreach ($sectionsNames as $sectionName) {
+            $dropdown->waitFor(5, function () use ($sectionName) {
+                return $this->hasElement('association_dropdown_section_item', [
+                    '%item%' => $sectionName,
+                ]);
+            });
+
+            $item = $this->getElement('association_dropdown_section_item', [
+                '%item%' => $sectionName,
+            ]);
+
+            $item->click();
+        }
     }
 
     /**
@@ -91,6 +117,8 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         return array_merge(parent::getDefinedElements(), [
             'slug' => '#bitbag_plugin_page_translations_en_US_slug',
+            'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
+            'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }

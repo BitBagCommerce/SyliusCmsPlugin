@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -20,6 +20,14 @@ use Webmozart\Assert\Assert;
  */
 final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
+    /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
     /**
      * {@inheritdoc}
      */

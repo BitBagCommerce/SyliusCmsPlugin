@@ -5,7 +5,7 @@
 {% set header = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
 {% set event_prefix = metadata.applicationName ~ '.admin.' ~ metadata.name ~ '.create' %}
 
-{% block title %}{{ parent() }} {{ header|trans }}{% endblock %}
+{% block title %}{{ header|trans }} {{ parent() }}{% endblock %}
 
 {% form_theme form '@SyliusAdmin/Form/theme.html.twig' %}
 
@@ -33,5 +33,4 @@
     {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
 
     <script src="{{ asset('bundles/bitbagcmsplugin/js/bitbag-block-image-preview.js') }}"></script>
-
 {% endblock %}

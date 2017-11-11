@@ -15,7 +15,6 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\SectionInterface;
 use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
@@ -46,48 +45,35 @@ final class SectionContext implements Context
     private $sectionRepository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
-     * SectionContext constructor.
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param SharedStorageInterface $sharedStorage
      * @param FactoryInterface $sectionFactory
      * @param SectionRepositoryInterface $sectionRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         RandomStringGeneratorInterface $randomStringGenerator,
         SharedStorageInterface $sharedStorage,
         FactoryInterface $sectionFactory,
-        SectionRepositoryInterface $sectionRepository,
-        EntityManagerInterface $entityManager
+        SectionRepositoryInterface $sectionRepository
     )
     {
         $this->randomStringGenerator = $randomStringGenerator;
         $this->sharedStorage = $sharedStorage;
         $this->sectionFactory = $sectionFactory;
         $this->sectionRepository = $sectionRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
-     * @Given there is are existing sections named :firstNameSection and :secondNameSection
+     * @Given there are existing sections named :firstNameSection and :secondNameSection
      */
-    public function thereIsAnExistingFaqWithPosition(string $firstNameSection, string $secondNameSection): void
+    public function thereAreExistingSections(...$sectionNames): void
     {
-        /** @var SectionInterface $firstSection */
-        $firstSection = $this->createSection();
-        /** @var SectionInterface $secondSection */
-        $secondSection = $this->createSection();
+        foreach ($sectionNames as $sectionName) {
+            $section = $this->createSection();
+            $section->setName($sectionName);
 
-        $firstSection->setName($firstNameSection);
-
-        $secondSection->setName($secondNameSection);
-
-        $this->entityManager->flush();
+            $this->sectionRepository->add($section);
+        }
     }
 
     /**
@@ -102,8 +88,6 @@ final class SectionContext implements Context
         $section->setCurrentLocale($channel->getLocales()->first()->getCode());
         $section->setCode($this->randomStringGenerator->generate());
         $section->setName($this->randomStringGenerator->generate());
-
-        $this->sectionRepository->add($section);
 
         return $section;
     }

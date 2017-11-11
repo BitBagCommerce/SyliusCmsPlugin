@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -16,7 +16,6 @@ use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
@@ -25,12 +24,13 @@ use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ManagingBlocksContext implements Context
+final class BlockContext implements Context
 {
     /**
      * @var IndexPageInterface
@@ -63,14 +63,14 @@ final class ManagingBlocksContext implements Context
     private $sharedStorage;
 
     /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
+
+    /**
      * @var BlockRepositoryInterface
      */
     private $blockRepository;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
 
     /**
      * @param IndexPageInterface $indexPage
@@ -79,8 +79,8 @@ final class ManagingBlocksContext implements Context
      * @param CurrentPageResolverInterface $currentPageResolver
      * @param NotificationCheckerInterface $notificationChecker
      * @param SharedStorageInterface $sharedStorage
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param BlockRepositoryInterface $blockRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         IndexPageInterface $indexPage,
@@ -89,8 +89,8 @@ final class ManagingBlocksContext implements Context
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
         SharedStorageInterface $sharedStorage,
-        BlockRepositoryInterface $blockRepository,
-        EntityManagerInterface $entityManager
+        RandomStringGeneratorInterface $randomStringGenerator,
+        BlockRepositoryInterface $blockRepository
     )
     {
         $this->createPage = $createPage;
@@ -99,8 +99,8 @@ final class ManagingBlocksContext implements Context
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
         $this->sharedStorage = $sharedStorage;
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->blockRepository = $blockRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
@@ -146,6 +146,18 @@ final class ManagingBlocksContext implements Context
         $id = $this->blockRepository->findOneBy(['code' => $code])->getId();
 
         $this->updatePage->open(['id' => $id]);
+    }
+
+    /**
+     * @When I fill :fields fields
+     */
+    public function iFillFields(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate(5));
+        }
     }
 
     /**
@@ -225,14 +237,6 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then no dynamic content blocks should appear in the store
-     */
-    public function noDynamicContentBlocksShouldAppearInTheStore(): void
-    {
-        Assert::eq(0, count($this->blockRepository->findAll()));
-    }
-
-    /**
      * @Then I should see :number dynamic content blocks with :type type
      */
     public function iShouldSeeDynamicContentBlocksWithType(int $number, string $type): void
@@ -241,10 +245,9 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then I should be notified that new image block was created
-     * @Then I should be notified that new text block was created
+     * @Then I should be notified that the block has been created
      */
-    public function iShouldBeNotifiedThatNewImageBlockWasCreated(): void
+    public function iShouldBeNotifiedThatNewImageBlockHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
             "Block has been successfully created.",
@@ -253,9 +256,9 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then I should be notified that the block was successfully updated
+     * @Then I should be notified that the block has been successfully updated
      */
-    public function iShouldBeNotifiedThatTheBlockWasSuccessfullyUpdated(): void
+    public function iShouldBeNotifiedThatTheBlockHasBeenSuccessfullyUpdated(): void
     {
         $this->notificationChecker->checkNotification(
             "Block has been successfully updated.",
@@ -275,58 +278,6 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then block with :code code and :content content should exist in the store
-     */
-    public function blockWithCodeAndContentShouldBeInTheStore(string $code, string $content): void
-    {
-        $block = $this->blockRepository->findEnabledByCodeAndContent($code, $content);
-
-        Assert::isInstanceOf($block, BlockInterface::class);
-    }
-
-    /**
-     * @Then block with :type type and :content content should exist in the store
-     */
-    public function blockWithTypeAndContentShouldBeInTheStore(string $type, string $content): void
-    {
-        $block = $this->blockRepository->findOneByTypeAndContent($type, $content);
-
-        $this->sharedStorage->set('block', $block);
-
-        Assert::isInstanceOf($block, BlockInterface::class);
-    }
-
-    /**
-     * @Then this block should also have :name name and :link link
-     * @Then this block should also have :name name
-     */
-    public function thisBlockShouldAlsoHaveNameAndLink(string $name, string $link = null): void
-    {
-        /** @var BlockInterface $block */
-        $block = $this->sharedStorage->get('block');
-
-        Assert::eq($name, $block->getName());
-        Assert::eq($link, $block->getLink());
-    }
-
-    /**
-     * @Then image block with :code code and :image image should exist in the store
-     */
-    public function imageBlockWithTypeAndImageShouldBeInTheStore(string $code, string $image): void
-    {
-        $block = $this->blockRepository->findOneBy(['code' => $code]);
-        $blockImage = $block->getImage();
-        $this->entityManager->refresh($blockImage);
-        $this->sharedStorage->set('block', $block);
-
-        Assert::eq(BlockInterface::IMAGE_BLOCK_TYPE, $block->getType());
-        Assert::eq(
-            file_get_contents(__DIR__ . '/../../../../Application/web/media/image/' . $block->getImage()->getPath()),
-            file_get_contents(__DIR__ . '/../../../Resources/images/' . $image)
-        );
-    }
-
-    /**
      * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
      */
     public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(string ...$blockTypes): void
@@ -341,19 +292,11 @@ final class ManagingBlocksContext implements Context
     }
 
     /**
-     * @Then block with :code should not appear in the store
+     * @When I add :firstSection and :secondSection sections to it
      */
-    public function blockWithShouldNotAppearInTheStore(string $code): void
+    public function iAddAndSectionsToIt(string ...$sectionNames): void
     {
-        Assert::null($this->blockRepository->findEnabledByCode($code));
-    }
-
-    /**
-     * @When I add :arg1 and :arg2 sections to it
-     */
-    public function iAddAndSectionsToIt(string ...$sectionsNames): void
-    {
-        $this->resolveCurrentPage()->associateSections($sectionsNames);
+        $this->resolveCurrentPage()->associateSections($sectionNames);
     }
 
     /**

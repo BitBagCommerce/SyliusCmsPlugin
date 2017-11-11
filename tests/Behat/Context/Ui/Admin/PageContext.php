@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\NotificationType;
@@ -21,7 +20,7 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
@@ -31,7 +30,7 @@ use Webmozart\Assert\Assert;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class ManagingPagesContext implements Context
+final class PageContext implements Context
 {
     /**
      * @var IndexPageInterface
@@ -121,9 +120,9 @@ final class ManagingPagesContext implements Context
     }
 
     /**
-     * @When I go to the create new page page
+     * @When I go to the create page page
      */
-    public function iGoToTheCreateNewPagePage(): void
+    public function iGoToTheCreatePagePage(): void
     {
         $this->createPage->open();
     }
@@ -158,14 +157,6 @@ final class ManagingPagesContext implements Context
     public function iFillTheNameWith(string $name): void
     {
         $this->resolveCurrentPage()->fillName($name);
-    }
-
-    /**
-     * @When I fill the link with :link
-     */
-    public function iFillTheLinkWith(string $link): void
-    {
-        $this->resolveCurrentPage()->fillLink($link);
     }
 
     /**
@@ -213,6 +204,26 @@ final class ManagingPagesContext implements Context
     }
 
     /**
+     * @When I fill :fields fields
+     */
+    public function iFillFields(string $fields): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate(5));
+        }
+    }
+
+    /**
+     * @When I add :firstSection and :secondSection sections to it
+     */
+    public function iAddAndSectionsToIt(string ...$sectionNames): void
+    {
+        $this->resolveCurrentPage()->associateSections($sectionNames);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
@@ -240,7 +251,7 @@ final class ManagingPagesContext implements Context
     }
 
     /**
-     * @Then I should be notified that new page was created
+     * @Then I should be notified that the page has been created
      */
     public function iShouldBeNotifiedThatNewPageWasCreated(): void
     {
@@ -262,9 +273,9 @@ final class ManagingPagesContext implements Context
     }
 
     /**
-     * @Then I should be notified that this page was removed
+     * @Then I should be notified that this page has been removed
      */
-    public function iShouldBeNotifiedThatThisPageWasRemoved(): void
+    public function iShouldBeNotifiedThatThisPageHasBeenRemoved(): void
     {
         $this->notificationChecker->checkNotification(
             "Page has been successfully deleted.",
@@ -318,74 +329,21 @@ final class ManagingPagesContext implements Context
     }
 
     /**
-     * @Then this page should have :code code
+     * @Then only :number pages should exist in the store
      */
-    public function thisPageShouldHaveCode(string $code): void
+    public function onlyPagesShouldExistInTheStore(int $number): void
     {
-        Assert::eq($code, $this->getPage()->getCode());
     }
 
     /**
-     * @Then it should have :name name
-     */
-    public function itShouldHaveName(string $name): void
-    {
-        Assert::eq($this->getPage()->getName(), $name);
-    }
-
-    /**
-     * @Then it should have :slug slug
-     */
-    public function itShouldHaveSlug(string $slug): void
-    {
-        Assert::eq($this->getPage()->getSlug(), $slug);
-    }
-
-    /**
-     * @Then it should have :metaKeywords meta keywords
-     */
-    public function itShouldHaveMetaKeywords(string $metaKeywords): void
-    {
-        Assert::eq($metaKeywords, $this->getPage()->getMetaKeywords());
-    }
-
-    /**
-     * @Then it should have :content content
-     */
-    public function itShouldHaveContent(string $content): void
-    {
-        Assert::eq($content, $this->getPage()->getContent());
-    }
-
-    /**
-     * @Then :number pages should exist in the store
-     */
-    public function pagesShouldExistInTheStore(int $number): void
-    {
-        Assert::eq((int)$number, count($this->pageRepository->findAll()));
-    }
-
-    /**
-     * @return CreatePageInterface|UpdatePageInterface|ContainsError|SymfonyPageInterface
+     * @return CreatePageInterface|UpdatePageInterface|IndexPageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
-        return $this->currentPageResolver->getCurrentPageWithForm([$this->createPage, $this->updatePage]);
-    }
-
-    /**
-     * @return null|PageInterface
-     */
-    private function getPage(): ?PageInterface
-    {
-        $code = $this->sharedStorage->get('page_code');
-        /** @var null|PageInterface $page */
-        $page = $this->pageRepository->findOneBy(['code' => $code]);
-
-        $this->entityManager->refresh($page->getTranslation());
-
-        Assert::notNull($page);
-
-        return $page;
+        return $this->currentPageResolver->getCurrentPageWithForm([
+            $this->createPage,
+            $this->updatePage,
+            $this->indexPage,
+        ]);
     }
 }

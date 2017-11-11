@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -17,7 +17,7 @@ use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePageInterface;
 use Webmozart\Assert\Assert;
 
@@ -101,6 +101,7 @@ final class FrequentlyAskedQuestionContext implements Context
 
     /**
      * @When I add it
+     * @When I try to add it
      */
     public function iAddIt(): void
     {
@@ -119,9 +120,9 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be notified that :fields can not be blank
+     * @Then I should be notified that :fields cannot be blank
      */
-    public function iShouldBeNotifiedThatCanNotBeBlank(string $fields): void
+    public function iShouldBeNotifiedThatCannotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 
@@ -145,7 +146,7 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @return SymfonyPageInterface|CreatePageInterface|ContainsError
+     * @return SymfonyPageInterface|CreatePageInterface|ContainsErrorTrait
      */
     private function resolveCurrentPage(): SymfonyPageInterface
     {
