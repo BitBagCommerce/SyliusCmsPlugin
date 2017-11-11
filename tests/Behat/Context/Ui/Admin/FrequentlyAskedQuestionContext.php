@@ -19,6 +19,7 @@ use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 /**
@@ -42,19 +43,27 @@ final class FrequentlyAskedQuestionContext implements Context
     private $createPage;
 
     /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
+
+    /**
      * @param NotificationCheckerInterface $notificationChecker
      * @param CurrentPageResolverInterface $currentPageResolver
      * @param CreatePageInterface $createPage
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      */
     public function __construct(
         NotificationCheckerInterface $notificationChecker,
         CurrentPageResolverInterface $currentPageResolver,
-        CreatePageInterface $createPage
+        CreatePageInterface $createPage,
+        RandomStringGeneratorInterface $randomStringGenerator
     )
     {
         $this->notificationChecker = $notificationChecker;
         $this->currentPageResolver = $currentPageResolver;
         $this->createPage = $createPage;
+        $this->randomStringGenerator = $randomStringGenerator;
     }
 
     /**
@@ -66,17 +75,15 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @When I fill code with :code
+     * @When I fill the code with :code
      */
-    public function iFillCodeWith(string $code): void
+    public function iFillTheCodeWith(string $code): void
     {
         $this->createPage->fillCode($code);
     }
 
     /**
      * @When I set the position to :position
-     *
-     * @param int $position
      */
     public function iSetThePositionTo(int $position): void
     {
@@ -97,6 +104,18 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iSetTheAnswerTo(string $answer): void
     {
         $this->createPage->fillAnswer($answer);
+    }
+
+    /**
+     * @When /^I fill "([^"]*)" fields with (\d+) (?:character|characters)$/
+     */
+    public function iFillFieldsWithCharacters(string $fields, int $length): void
+    {
+        $fields = explode(',', $fields);
+
+        foreach ($fields as $field) {
+            $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate($length));
+        }
     }
 
     /**
@@ -147,6 +166,17 @@ final class FrequentlyAskedQuestionContext implements Context
                 trim($field), 2
             )));
         }
+    }
+
+    /**
+     * @Then I should be notified that there is already an existing faq with provided code
+     */
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFaqWithProvidedCode(): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
+            "There is an existing faq with this code.",
+            false
+        ));
     }
 
     /**

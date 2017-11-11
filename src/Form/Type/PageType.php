@@ -30,12 +30,10 @@ final class PageType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $page = $builder->getData();
-
         $builder
             ->add('code', TextType::class, [
                 'label' => 'bitbag.ui.code',
-                'disabled' => null !== $page->getCode(),
+                'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag.ui.enabled',
@@ -60,6 +58,6 @@ final class PageType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_page';
+        return 'bitbag_page';
     }
 }

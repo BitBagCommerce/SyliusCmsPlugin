@@ -22,9 +22,9 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class Page implements PageInterface
 {
-    use SectionAssociationTrait;
+    use SectionableTrait;
     use ToggleableTrait;
-    use ProductAssociationTrait;
+    use ProductableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

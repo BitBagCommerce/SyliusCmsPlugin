@@ -24,8 +24,8 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-    use SectionAssociationTrait;
-    use ProductAssociationTrait;
+    use SectionableTrait;
+    use ProductableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

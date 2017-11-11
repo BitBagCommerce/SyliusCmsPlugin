@@ -21,7 +21,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
 {
-    use SectionAssociationTrait;
+    use SectionableTrait;
     use ToggleableTrait,
         TranslatableTrait {
         __construct as private initializeTranslationsCollection;

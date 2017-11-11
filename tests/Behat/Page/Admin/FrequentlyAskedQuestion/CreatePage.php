@@ -23,6 +23,14 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     use ContainsErrorTrait;
 
     /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function fillCode(string $code): void

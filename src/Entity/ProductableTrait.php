@@ -17,14 +17,14 @@ use Sylius\Component\Core\Model\ProductInterface;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-trait ProductAssociationTrait
+trait ProductableTrait
 {
     /**
      * @var Collection|ProductInterface[]
      */
     protected $products;
 
-    public function initializeProductsCollection()
+    public function initializeProductsCollection(): void
     {
         $this->products = new ArrayCollection();
     }
@@ -32,7 +32,7 @@ trait ProductAssociationTrait
     /**
      * @return Collection|ProductInterface[]
      */
-    public function getProducts()
+    public function getProducts(): Collection
     {
         return $this->products;
     }
@@ -42,7 +42,7 @@ trait ProductAssociationTrait
      *
      * @return bool
      */
-    public function hasProduct(ProductInterface $product)
+    public function hasProduct(ProductInterface $product): bool
     {
         return $this->products->contains($product);
     }
@@ -50,7 +50,7 @@ trait ProductAssociationTrait
     /**
      * @param ProductInterface $product
      */
-    public function addProduct(ProductInterface $product)
+    public function addProduct(ProductInterface $product): void
     {
         $this->products->add($product);
     }
@@ -58,7 +58,7 @@ trait ProductAssociationTrait
     /**
      * @param ProductInterface $product
      */
-    public function removeProduct(ProductInterface $product)
+    public function removeProduct(ProductInterface $product): void
     {
         if (true === $this->hasProduct($product)) {
             $this->products->removeElement($product);

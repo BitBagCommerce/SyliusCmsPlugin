@@ -82,7 +82,7 @@ final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'slug' => '#bitbag_plugin_page_translations_en_US_slug',
+            'slug' => '#bitbag_page_translations_en_US_slug',
         ]);
     }
 }
