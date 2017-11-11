@@ -5,7 +5,7 @@
         pageSlugGenerator: function () {
             var timeout;
 
-            $('[name*="bitbag_plugin_page[translations]"][name*="[name]"]').on('input', function() {
+            $('[name*="bitbag_page[translations]"][name*="[name]"]').on('input', function() {
                 clearTimeout(timeout);
                 var element = $(this);
 

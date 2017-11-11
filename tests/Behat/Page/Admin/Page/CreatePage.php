@@ -116,7 +116,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'slug' => '#bitbag_plugin_page_translations_en_US_slug',
+            'slug' => '#bitbag_page_translations_en_US_slug',
             'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
             'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
