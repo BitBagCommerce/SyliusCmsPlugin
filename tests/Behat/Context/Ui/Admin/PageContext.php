@@ -192,9 +192,9 @@ final class PageContext implements Context
     }
 
     /**
-     * @When /^I fill "([^"]*)" with (\d+) (?:character|characters)$/
+     * @When /^I fill "([^"]*)" fields with (\d+) (?:character|characters)$/
      */
-    public function iFillWithCharacter(string $fields, int $length): void
+    public function iFillFieldsWithCharacters(string $fields, int $length): void
     {
         $fields = explode(',', $fields);
 
@@ -284,24 +284,24 @@ final class PageContext implements Context
     }
 
     /**
-     * @Then I should be notified that :fields fields can not be blank
+     * @Then I should be notified that :fields fields cannot be blank
      */
-    public function iShouldBeNotifiedThatFieldsCanNotBeBlank(string $fields): void
+    public function iShouldBeNotifiedThatFieldsCannotBeBlank(string $fields): void
     {
         $fields = explode(',', $fields);
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s can not be blank.",
+                "%s cannot be blank.",
                 trim($field)
             )));
         }
     }
 
     /**
-     * @Then I should be notified that the :fields fields are too short
+     * @Then I should be notified that :fields fields are too short
      */
-    public function iShouldBeNotifiedThatTheFieldsAreTooShort(string $fields): void
+    public function iShouldBeNotifiedThatFieldsAreTooShort(string $fields): void
     {
         $fields = explode(',', $fields);
 

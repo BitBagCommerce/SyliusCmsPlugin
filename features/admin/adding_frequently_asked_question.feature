@@ -22,7 +22,14 @@ Feature: Adding frequently asked question
     Scenario: Adding new frequently asked question with blank data
         When I go to the create faq page
         And I add it
-        Then I should be notified that "Code, Position, Question, Answer" cannot be blank
+        Then I should be notified that "Code, Position, Question, Answer" fields cannot be blank
+
+    @ui
+    Scenario: Adding new frequently asked question with too long short data
+        When I go to the create faq page
+        And I fill "Question, Answer" fields with 1 character
+        And I add it
+        Then I should be notified that "Question, Answer" fields are too short
 
     @ui
     Scenario: Adding new frequently asked question with existing position
