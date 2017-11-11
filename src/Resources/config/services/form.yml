@@ -11,7 +11,6 @@ services:
         class: BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType
         arguments:
             - "%bitbag.model.block_translation.class%"
-            - []
         tags:
             - { name: form.type }
 
@@ -19,7 +18,6 @@ services:
         class: BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
         arguments:
             - "%bitbag.model.block_translation.class%"
-            - []
         tags:
             - { name: form.type }
 
@@ -27,7 +25,6 @@ services:
         class: BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType
         arguments:
             - "%bitbag.model.block_translation.class%"
-            - []
         tags:
             - { name: form.type }
 
