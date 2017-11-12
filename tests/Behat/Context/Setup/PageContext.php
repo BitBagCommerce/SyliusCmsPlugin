@@ -71,7 +71,7 @@ final class PageContext implements Context
     {
         $page = $this->createPage();
 
-        $this->pageRepository->add($page);
+        $this->savePage($page);
     }
 
     /**
@@ -79,12 +79,9 @@ final class PageContext implements Context
      */
     public function thereIsACmsPageWithName(string $name): void
     {
-        $page = $this->createPage();
+        $page = $this->createPage(strtolower(StringInflector::nameToCode($name)), $name);
 
-        $page->setName($name);
-        $page->setCode(strtolower(StringInflector::nameToCode($name)));
-
-        $this->pageRepository->add($page);
+        $this->savePage($page);
     }
 
     /**
@@ -92,65 +89,43 @@ final class PageContext implements Context
      */
     public function thereIsAnExistingPageWithCode(string $code): void
     {
-        $page = $this->createPage();
+        $page = $this->createPage($code);
 
-        $page->setCode($code);
-
-        $this->pageRepository->add($page);
+        $this->savePage($page);
     }
 
-    /**
-     * @Given it has :metaKeywords meta keywords
-     */
-    public function itHasMetaKeywords(string $metaKeywords): void
-    {
-        $page = $this->createPage();
-
-        $page->setMetaKeywords($metaKeywords);
-
-        $this->pageRepository->add($page);
-    }
-
-    /**
-     * @Given it has :metaDescription meta description
-     */
-    public function itHasMetaDescription(string $metaDescription): void
-    {
-        $page = $this->createPage();
-
-        $page->setMetaDescription($metaDescription);
-
-        $this->pageRepository->add($page);
-    }
-
-    /**
-     * @Given it has :content content
-     */
-    public function itHasContent(string $content)
-    {
-        $page = $this->createPage();
-
-        $page->setMetaKeywords($content);
-
-        $this->pageRepository->add($page);
-    }
-
-    /**
-     * @return PageInterface
-     */
-    private function createPage(): PageInterface
+    private function createPage(?string $code = null, ?string $name = null, ?string $content = null): PageInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
 
-        $page->setCode($this->randomStringGenerator->generate());
-        $page->setCurrentLocale('en_US');
-        $page->setName($this->randomStringGenerator->generate());
-        $page->setSlug($this->randomStringGenerator->generate());
-        $page->setContent($this->randomStringGenerator->generate());
+        if (null === $code) {
+            $code = $this->randomStringGenerator->generate();
+        }
 
-        $this->sharedStorage->set('page', $page);
+        if (null === $name) {
+            $name = $this->randomStringGenerator->generate();
+        }
+
+        if (null === $content) {
+            $content = $this->randomStringGenerator->generate();
+        }
+
+        $page->setCode($code);
+        $page->setCurrentLocale('en_US');
+        $page->setName($name);
+        $page->setSlug($this->randomStringGenerator->generate());
+        $page->setContent($content);
 
         return $page;
+    }
+
+    /**
+     * @param PageInterface $page
+     */
+    private function savePage(PageInterface $page): void
+    {
+        $this->pageRepository->add($page);
+        $this->sharedStorage->set('page', $page);
     }
 }

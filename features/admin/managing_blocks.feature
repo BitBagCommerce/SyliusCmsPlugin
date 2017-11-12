@@ -11,14 +11,14 @@ Feature: Managing cms blocks
     @ui
     Scenario: Deleting block
         Given there is a block in the store
-        When I go to the cms blocks page
+        When I go to the blocks page
         And I delete this block
         Then I should be notified that the block has been deleted
         And I should see empty list of blocks
 
     @ui
     Scenario: Updating text block
-        Given there is a cms text block with "store_phone_number" code and "123456789" content
+        Given there is a text block with "store_phone_number" code and "123456789" content
         When I go to the update "store_phone_number" block page
         And I fill the content with "987654321"
         And I update it
@@ -26,7 +26,7 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Updating html block
-        Given there is a cms html block with "store_email" code and "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>" content
+        Given there is a html block with "store_email" code and "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>" content
         When I go to the update "store_email" block page
         And I fill the content with "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>"
         And I update it
@@ -50,14 +50,6 @@ Feature: Managing cms blocks
         And this block should be disabled
 
     @ui
-    Scenario: Seeing dynamic blocks in the admin panel
-        Given there are 2 dynamic content blocks with "image" type
-        And there are 3 dynamic content blocks with "text" type
-        When I go to the cms blocks page
-        Then I should see 2 dynamic content blocks with "image" type
-        And I should see 3 dynamic content blocks with "text" type
-
-    @ui
     Scenario: Seeing disabled code field while editing a block
         Given there is a block in the store
         When I want to edit this block
@@ -65,5 +57,5 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Being able to chose which block type to create
-        When I go to the cms blocks page
+        When I go to the blocks page
         Then I should be able to select between "Text block", "HTML block" and "Image block" block types under Create button
