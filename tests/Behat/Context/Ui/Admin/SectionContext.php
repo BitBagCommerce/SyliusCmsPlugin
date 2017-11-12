@@ -30,6 +30,21 @@ use Webmozart\Assert\Assert;
 final class SectionContext implements Context
 {
     /**
+     * @var SharedStorageInterface
+     */
+    private $sharedStorage;
+
+    /**
+     * @var CurrentPageResolverInterface
+     */
+    private $currentPageResolver;
+
+    /**
+     * @var NotificationCheckerInterface
+     */
+    private $notificationChecker;
+
+    /**
      * @var IndexPageInterface
      */
     private $indexPage;
@@ -45,50 +60,35 @@ final class SectionContext implements Context
     private $updatePage;
 
     /**
-     * @var SharedStorageInterface
-     */
-    private $sharedStorage;
-
-    /**
-     * @var NotificationCheckerInterface
-     */
-    private $notificationChecker;
-
-    /**
-     * @var CurrentPageResolverInterface
-     */
-    private $currentPageResolver;
-
-    /**
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
 
     /**
+     * @param SharedStorageInterface $sharedStorage
+     * @param CurrentPageResolverInterface $currentPageResolver
+     * @param NotificationCheckerInterface $notificationChecker
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
-     * @param SharedStorageInterface $sharedStorage
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param CurrentPageResolverInterface $currentPageResolver
      * @param RandomStringGeneratorInterface $randomStringGenerator
      */
     public function __construct(
+        SharedStorageInterface $sharedStorage,
+        CurrentPageResolverInterface $currentPageResolver,
+        NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        SharedStorageInterface $sharedStorage,
-        NotificationCheckerInterface $notificationChecker,
-        CurrentPageResolverInterface $currentPageResolver,
         RandomStringGeneratorInterface $randomStringGenerator
     )
     {
+        $this->sharedStorage = $sharedStorage;
+        $this->currentPageResolver = $currentPageResolver;
+        $this->notificationChecker = $notificationChecker;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
-        $this->sharedStorage = $sharedStorage;
-        $this->notificationChecker = $notificationChecker;
-        $this->currentPageResolver = $currentPageResolver;
         $this->randomStringGenerator = $randomStringGenerator;
     }
 

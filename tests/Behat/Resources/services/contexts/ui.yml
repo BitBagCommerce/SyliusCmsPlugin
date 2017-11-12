@@ -2,12 +2,12 @@ services:
     bitbag.behat.context.ui.admin.managing_blocks:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
+            - "@sylius.behat.shared_storage"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.notification_checker"
             - "@bitbag.behat.page.admin.block.index"
             - "@bitbag.behat.page.admin.block.create"
             - "@bitbag.behat.page.admin.block.update"
-            - "@sylius.behat.current_page_resolver"
-            - "@sylius.behat.notification_checker"
-            - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.block"
         tags:
@@ -16,12 +16,12 @@ services:
     bitbag.behat.context.ui.admin.managing_pages:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\PageContext
         arguments:
+            - "@sylius.behat.shared_storage"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.notification_checker"
             - "@bitbag.behat.page.admin.page.index"
             - "@bitbag.behat.page.admin.page.create"
             - "@bitbag.behat.page.admin.page.update"
-            - "@sylius.behat.current_page_resolver"
-            - "@sylius.behat.notification_checker"
-            - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.repository.page"
         tags:
@@ -30,12 +30,12 @@ services:
     bitbag.behat.context.ui.admin.frequently_asked_question:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
         arguments:
+            - "@sylius.behat.shared_storage"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.notification_checker"
             - "@bitbag.behat.page.admin.frequently_asked_question.index"
             - "@bitbag.behat.page.admin.frequently_asked_question.create"
             - "@bitbag.behat.page.admin.frequently_asked_question.update"
-            - "@sylius.behat.shared_storage"
-            - "@sylius.behat.notification_checker"
-            - "@sylius.behat.current_page_resolver"
             - "@bitbag.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
@@ -43,12 +43,12 @@ services:
     bitbag.behat.context.ui.admin.section:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\SectionContext
         arguments:
+            - "@sylius.behat.shared_storage"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.notification_checker"
             - "@bitbag.behat.page.admin.section.index"
             - "@bitbag.behat.page.admin.section.create"
             - "@bitbag.behat.page.admin.section.update"
-            - "@sylius.behat.shared_storage"
-            - "@sylius.behat.notification_checker"
-            - "@sylius.behat.current_page_resolver"
             - "@bitbag.behat.random_string_generator"
         tags:
             - { name: fob.context_service }

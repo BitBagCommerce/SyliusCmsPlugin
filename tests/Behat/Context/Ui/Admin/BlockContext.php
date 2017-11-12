@@ -33,6 +33,21 @@ use Webmozart\Assert\Assert;
 final class BlockContext implements Context
 {
     /**
+     * @var SharedStorageInterface
+     */
+    private $sharedStorage;
+
+    /**
+     * @var CurrentPageResolverInterface
+     */
+    private $currentPageResolver;
+
+    /**
+     * @var NotificationCheckerInterface
+     */
+    private $notificationChecker;
+
+    /**
      * @var IndexPageInterface
      */
     private $indexPage;
@@ -48,21 +63,6 @@ final class BlockContext implements Context
     private $updatePage;
 
     /**
-     * @var CurrentPageResolverInterface
-     */
-    private $currentPageResolver;
-
-    /**
-     * @var NotificationCheckerInterface
-     */
-    private $notificationChecker;
-
-    /**
-     * @var SharedStorageInterface
-     */
-    private $sharedStorage;
-
-    /**
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
@@ -73,32 +73,32 @@ final class BlockContext implements Context
     private $blockRepository;
 
     /**
+     * @param SharedStorageInterface $sharedStorage
+     * @param CurrentPageResolverInterface $currentPageResolver
+     * @param NotificationCheckerInterface $notificationChecker
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param BlockRepositoryInterface $blockRepository
      */
     public function __construct(
+        SharedStorageInterface $sharedStorage,
+        CurrentPageResolverInterface $currentPageResolver,
+        NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
         BlockRepositoryInterface $blockRepository
     )
     {
-        $this->createPage = $createPage;
-        $this->updatePage = $updatePage;
-        $this->indexPage = $indexPage;
+        $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
-        $this->sharedStorage = $sharedStorage;
+        $this->indexPage = $indexPage;
+        $this->createPage = $createPage;
+        $this->updatePage = $updatePage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->blockRepository = $blockRepository;
     }
@@ -241,18 +241,6 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I remove this image block
-     */
-    public function iRemoveThisImageBlock(): void
-    {
-        /** @var BlockInterface $block */
-        $block = $this->sharedStorage->get('block');
-        $code = $block->getCode();
-
-        $this->indexPage->removeBlock($code);
-    }
-
-    /**
      * @When I add :firstSection and :secondSection sections to it
      */
     public function iAddAndSectionsToIt(string ...$sectionNames): void
@@ -360,7 +348,8 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
+     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under
+     *     Create button
      */
     public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(string ...$blockTypes): void
     {

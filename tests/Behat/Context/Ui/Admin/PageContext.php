@@ -31,6 +31,21 @@ use Webmozart\Assert\Assert;
 final class PageContext implements Context
 {
     /**
+     * @var SharedStorageInterface
+     */
+    private $sharedStorage;
+
+    /**
+     * @var CurrentPageResolverInterface
+     */
+    private $currentPageResolver;
+
+    /**
+     * @var NotificationCheckerInterface
+     */
+    private $notificationChecker;
+
+    /**
      * @var IndexPageInterface
      */
     private $indexPage;
@@ -46,21 +61,6 @@ final class PageContext implements Context
     private $updatePage;
 
     /**
-     * @var CurrentPageResolverInterface
-     */
-    private $currentPageResolver;
-
-    /**
-     * @var NotificationCheckerInterface
-     */
-    private $notificationChecker;
-
-    /**
-     * @var SharedStorageInterface
-     */
-    private $sharedStorage;
-
-    /**
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
@@ -71,32 +71,33 @@ final class PageContext implements Context
     private $pageRepository;
 
     /**
+     * @param SharedStorageInterface $sharedStorage
+     * @param CurrentPageResolverInterface $currentPageResolver
+     * @param NotificationCheckerInterface $notificationChecker
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param PageRepositoryInterface $pageRepository
      */
     public function __construct(
+        SharedStorageInterface $sharedStorage,
+        CurrentPageResolverInterface $currentPageResolver,
+        NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
         PageRepositoryInterface $pageRepository
     )
     {
+
+        $this->sharedStorage = $sharedStorage;
+        $this->currentPageResolver = $currentPageResolver;
+        $this->notificationChecker = $notificationChecker;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
-        $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
-        $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageRepository = $pageRepository;
     }
