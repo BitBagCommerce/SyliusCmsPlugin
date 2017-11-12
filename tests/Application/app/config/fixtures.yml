@@ -1,0 +1,17 @@
+parameters:
+    fixtures_dir: "%kernel.root_dir%/../app/Resources/fixtures/"
+
+sylius_fixtures:
+    suites:
+        cms:
+            listeners:
+                logger: ~
+            fixtures:
+                blocks:
+                    options:
+                        custom:
+                            homepage_slide_image_1:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_header.jpeg"

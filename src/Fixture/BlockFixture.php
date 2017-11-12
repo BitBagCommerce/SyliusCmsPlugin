@@ -73,7 +73,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        foreach ($options['blocks'] as $code => $fields) {
+        foreach ($options['custom'] as $code => $fields) {
 
             if (null !== $this->blockRepository->findOneBy(['code' => $code])) {
                 continue;
@@ -126,7 +126,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->arrayNode('blocks')
+                ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()

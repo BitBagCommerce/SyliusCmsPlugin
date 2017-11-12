@@ -1,8 +1,8 @@
-bitbag_shop_block_show:
+bitbag_shop_block_render:
     path: /block/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.block:showAction
+        _controller: bitbag.controller.block:renderBlockAction
         _sylius:
             repository:
                 method: findOneByCode

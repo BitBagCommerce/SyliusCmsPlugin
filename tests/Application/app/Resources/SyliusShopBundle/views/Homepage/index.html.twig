@@ -1,0 +1,13 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
+
+    {{ bitbag_render_block('homepage_banner_1') }}
+    {{ bitbag_render_block('homepage_banner_2') }}
+
+    <h2 class="ui horizontal section divider header">
+        {{ 'sylius.ui.latest_products'|trans }}
+    </h2>
+    {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
+{% endblock %}
