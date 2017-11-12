@@ -100,7 +100,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->arrayNode('pages')
+                ->arrayNode('sections')
                     ->prototype('array')
                         ->children()
                             ->arrayNode('translations')
