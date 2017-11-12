@@ -62,9 +62,11 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture implements Fi
     public function load(array $options): void
     {
         foreach ($options['frequently_asked_questions'] as $code => $fields) {
-
-            if (null !== $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code])) {
-                continue;
+            if (
+                true === $fields['remove_existing'] &&
+                null !== $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code])
+            ) {
+                $this->frequentlyAskedQuestionRepository->remove($frequentlyAskedQuestion);
             }
 
             /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
@@ -107,6 +109,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture implements Fi
                 ->arrayNode('frequently_asked_questions')
                     ->prototype('array')
                         ->children()
+                            ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('position')->defaultNull()->end()
                             ->arrayNode('translations')

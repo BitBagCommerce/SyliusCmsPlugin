@@ -61,10 +61,12 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        foreach ($options['sections'] as $code => $fields) {
-
-            if (null !== $this->sectionRepository->findOneBy(['code' => $code])) {
-                continue;
+        foreach ($options['custom'] as $code => $fields) {
+            if (
+                true === $fields['remove_existing'] &&
+                null !== $section = $this->sectionRepository->findOneBy(['code' => $code])
+            ) {
+                $this->sectionRepository->remove($section);
             }
 
             /** @var SectionInterface $section */
@@ -76,6 +78,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
                 /** @var SectionTranslationInterface $sectionTranslation */
                 $sectionTranslation = $this->sectionTranslationFactory->createNew();
 
+                $sectionTranslation->setLocale($localeCode);
                 $sectionTranslation->setName($translation['name']);
 
                 $section->addTranslation($sectionTranslation);
@@ -100,9 +103,10 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->arrayNode('sections')
+                ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
+                            ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()
@@ -113,6 +117,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
     }
 }

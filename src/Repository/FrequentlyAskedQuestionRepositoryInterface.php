@@ -44,7 +44,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
     /**
      * @param string $sectionCode
      *
-     * @return FrequentlyAskedQuestionInterface[]
+     * @return QueryBuilder
      */
-    public function findEnabledBySectionCode(string $sectionCode): array;
+    public function createEnabledBySectionCodeListQueryBuilder(string $sectionCode): QueryBuilder;
 }

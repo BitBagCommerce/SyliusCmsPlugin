@@ -15,6 +15,8 @@ services:
             - "@bitbag.factory.page"
             - "@bitbag.factory.page_translation"
             - "@bitbag.repository.page"
+            - "@sylius.repository.product"
+            - "@bitbag.repository.section"
         tags:
             - { name: sylius_fixtures.fixture }
 

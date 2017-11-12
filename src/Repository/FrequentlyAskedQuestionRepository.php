@@ -64,15 +64,13 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
-    public function findEnabledBySectionCode(string $code): array
+    public function createEnabledBySectionCodeListQueryBuilder(string $code): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.sections', 'section')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
             ->setParameter('sectionCode', $code)
-            ->getQuery()
-            ->getResult()
         ;
     }
 }

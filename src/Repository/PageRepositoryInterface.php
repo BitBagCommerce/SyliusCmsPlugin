@@ -46,7 +46,7 @@ interface PageRepositoryInterface extends RepositoryInterface
     /**
      * @param string $sectionCode
      *
-     * @return PageInterface[]
+     * @return QueryBuilder
      */
-    public function findEnabledBySectionCode(string $sectionCode): array;
+    public function createEnabledBySectionCodeListQueryBuilder(string $sectionCode): QueryBuilder;
 }

@@ -4,7 +4,7 @@ bitbag_shop_page_show:
     defaults:
         _controller: bitbag.controller.page:showAction
         _sylius:
-            template: BitBagCmsPlugin:Shop:Page:show.html.twig
+            template: "@BitBagCmsPlugin/Shop/Page/show.html.twig"
             repository:
                 method: findEnabledBySlug
                 arguments:
@@ -17,8 +17,8 @@ bitbag_render_pages_by_section_code:
     defaults:
         _controller: bitbag.controller.page:indexAction
         _sylius:
-            template: $template
+            template: "@BitBagCmsPlugin/Shop/Page/index.html.twig"
             repository:
-                method: findEnabledBySectionCode
+                method: createEnabledBySectionCodeListQueryBuilder
                 arguments:
                     - $code

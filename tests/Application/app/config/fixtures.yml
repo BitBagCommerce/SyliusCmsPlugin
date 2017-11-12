@@ -1,17 +1,93 @@
 parameters:
-    fixtures_dir: "%kernel.root_dir%/../app/Resources/fixtures/"
+    fixtures_dir: "%kernel.root_dir%/../app/Resources/fixtures"
 
 sylius_fixtures:
     suites:
-        cms:
+        default:
             listeners:
                 logger: ~
             fixtures:
-                blocks:
+                bitbag_cms_block:
                     options:
                         custom:
-                            homepage_slide_image_1:
+                            homepage_header_image:
                                 type: image
                                 translations:
                                     en_US:
                                         image_path: "%fixtures_dir%/homepage_header.jpeg"
+                                        name: |
+                                            Here's my name <i class="em em-sunglasses"></i>
+                            homepage_banner_image_1:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
+                                        link: "/en_US/page/about"
+                                        name: |
+                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
+                            homepage_banner_image_2:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                            homepage_intro:
+                                type: html
+                                translations:
+                                    en_US:
+                                        content: |
+                                                <h3>Blocks</h3>
+                                                <p>
+                                                    The left block is being rendered with the usage of the special controller like this:
+                                                </p>
+                                                <pre>
+                                                {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
+                                                </pre>
+                                                <p>
+                                                    It also can take template as a parameter, but it's optional. In this case, it works exactly the same as below Twig functions.
+                                                    Sometimes you might want the block to be rendered in a different template, that's where the controller is useful <i class="em em-rocket"></i>
+                                                </p>
+                                                <p>
+                                                    The other three blocks, including this one you are reading right now, are using Twig helper method.
+                                                </p>
+
+                                                <pre>
+                                                {{ bitbag_render_block('homepage_intro') }}
+                                                {{ bitbag_render_block('homepage_banner_image_1') }}
+                                                {{ bitbag_render_block('homepage_banner_image_2') }}
+                                                </pre>
+
+                                                <p>
+                                                    The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
+                                                </p>
+                bitbag_cms_section:
+                    options:
+                        custom:
+                            blog:
+                                translations:
+                                    en_US:
+                                        name: "Blog"
+                            general:
+                                translations:
+                                    en_US:
+                                        name: "General"
+                bitbag_cms_page:
+                    options:
+                        custom:
+                            about:
+                                products: 5
+                                sections:
+                                    - "general"
+                                    - "blog"
+                                translations:
+                                    en_US:
+                                        name: "See? No pornography!"
+                                        slug: "about"
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                               <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                               <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                               <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                               <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene

@@ -74,9 +74,11 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
     public function load(array $options): void
     {
         foreach ($options['custom'] as $code => $fields) {
-
-            if (null !== $this->blockRepository->findOneBy(['code' => $code])) {
-                continue;
+            if (
+                true === $fields['remove_existing'] &&
+                null !== $block = $this->blockRepository->findOneBy(['code' => $code])
+            ) {
+                $this->blockRepository->remove($block);
             }
 
             $type = $fields['type'];
@@ -92,6 +94,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                 $blockTranslation->setLocale($localeCode);
                 $blockTranslation->setName($translation['name']);
                 $blockTranslation->setContent($translation['content']);
+                $blockTranslation->setLink($translation['link']);
 
                 if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
                     $image = new BlockImage();
@@ -129,6 +132,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                 ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
+                            ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('translations')

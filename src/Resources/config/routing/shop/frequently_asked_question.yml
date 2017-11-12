@@ -18,6 +18,6 @@ bitbag_render_frequently_asked_questions_by_section_code:
         _sylius:
             template: $template
             repository:
-                method: findEnabledBySectionCode
+                method: createEnabledBySectionCodeListQueryBuilder
                 arguments:
                     - $code

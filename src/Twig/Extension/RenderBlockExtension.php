@@ -79,7 +79,7 @@ final class RenderBlockExtension extends \Twig_Extension
         if (null !== $block) {
             $template = $this->blockTemplateResolver->resolveTemplate($block);
 
-            return $twigEnvironment->render($template);
+            return $twigEnvironment->render($template, ['block' => $block]);
         }
 
         return '';

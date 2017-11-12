@@ -1,0 +1,14 @@
+{% if resources.data|length > 0 %}
+    <div class="ui three column stackable grid" id="products">
+        {% for page in resources.data %}
+            <a href="{{ path('bitbag_shop_page_show', {'slug' : page.slug}) }}">
+                {{ page.name }}
+            </a>
+        {% endfor %}
+    </div>
+    <div class="ui hidden divider"></div>
+
+    {{ pagination.simple(resources.data) }}
+{% else %}
+    {{ messages.info('sylius.ui.no_results_to_display') }}
+{% endif %}
