@@ -104,9 +104,9 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I go to the cms blocks page
+     * @When I go to the blocks page
      */
-    public function iGoToTheCmsBlocksPage()
+    public function iGoToTheBlocksPage()
     {
         $this->indexPage->open();
     }
@@ -275,14 +275,6 @@ final class BlockContext implements Context
     public function iUpdateIt(): void
     {
         $this->updatePage->saveChanges();
-    }
-
-    /**
-     * @Then I should see :number dynamic content blocks with :type type
-     */
-    public function iShouldSeeDynamicContentBlocksWithType(int $number, string $type): void
-    {
-        Assert::eq($number, $this->indexPage->getBlocksWithTypeCount($type));
     }
 
     /**

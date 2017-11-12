@@ -22,7 +22,6 @@ use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
-use Webmozart\Assert\Assert;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -30,11 +29,6 @@ use Webmozart\Assert\Assert;
 final class BlockContext implements Context
 {
     const IMAGE_MOCK = 'aston_martin_db_11.jpg';
-    const ALLOWED_TYPES = [
-        BlockInterface::TEXT_BLOCK_TYPE,
-        BlockInterface::HTML_BLOCK_TYPE,
-        BlockInterface::IMAGE_BLOCK_TYPE,
-    ];
 
     /**
      * @var SharedStorageInterface
@@ -88,25 +82,9 @@ final class BlockContext implements Context
      */
     public function thereIsABlockInTheStore(): void
     {
-        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE);
-    }
+        $block = $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE);
 
-    /**
-     * @Given there are :number dynamic content blocks with :type type
-     */
-    public function thereAreDynamicContentBlocksWithType(int $number, string $type): void
-    {
-        for ($i = 0; $i < $number; $i++) {
-            if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                $image = $this->uploadImage(self::IMAGE_MOCK);
-
-                $this->createBlock($type, $image, uniqid('', true));
-
-                continue;
-            }
-
-            $this->createBlock($type, null, uniqid('', true));
-        }
+        $this->saveBlock($block);
     }
 
     /**
@@ -114,15 +92,9 @@ final class BlockContext implements Context
      */
     public function thereIsADynamicContentBlockWithType(string $type): void
     {
-        if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-            $image = $this->uploadImage(self::IMAGE_MOCK);
+        $block = $this->createBlock($type);
 
-            $this->createBlock($type, $image);
-
-            return;
-        }
-
-        $this->createBlock($type);
+        $this->saveBlock($block);
     }
 
     /**
@@ -130,33 +102,76 @@ final class BlockContext implements Context
      */
     public function thereIsABlockWithCode(string $code): void
     {
-        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code);
+        $block = $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, $code);
+
+        $this->saveBlock($block);
     }
 
     /**
-     * @Given there is a cms text block with :code code and :content content
+     * @Given there is a text block with :code code and :content content
      */
-    public function thereIsATextCmsBlockWithCodeAndContent(string $code, string $content): void
+    public function thereIsATextBlockWithCodeAndContent(string $code, string $content): void
     {
-        $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, null, $code, $content);
+        $block = $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, $code, $content);
+
+        $this->saveBlock($block);
     }
 
     /**
-     * @Given there is a cms html block with :code code and :content content
+     * @Given there is a html block with :code code and :content content
      */
-    public function thereIsAHtmlCmsBlockWithCodeAndContent($code, $content): void
+    public function thereIsAHtmlBlockWithCodeAndContent(string $code, string $content): void
     {
-        $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, null, $code, $content);
+        $block = $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, $code, $content);
+
+        $this->saveBlock($block);
     }
 
     /**
-     * @Given there is an existing block with :code code and :name image
+     * @Given there is an existing block with :code code and :image image
      */
-    public function thereIsAnExistingBlockWithCodeAndImage(string $code, string $name): void
+    public function thereIsAnExistingBlockWithCodeAndImage(string $code, string $image): void
     {
-        $image = $this->uploadImage($name);
+        $block = $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $code, $image);
 
-        $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $image, $code);
+        $this->saveBlock($block);
+    }
+
+    /**
+     * @param string $type
+     * @param null|string $code
+     * @param null|string $content
+     * @param string|null $image
+     *
+     * @return BlockInterface
+     */
+    private function createBlock(string $type, ?string $code = null, ?string $content = null, string $image = null): BlockInterface
+    {
+        $block = $this->blockFactory->createWithType($type);
+
+        $block->setCurrentLocale('en_US');
+
+        if (null === $code) {
+            $code = $this->randomStringGenerator->generate();
+        }
+
+        if (BlockInterface::IMAGE_BLOCK_TYPE === $type && null !== $image) {
+            $image = $this->uploadImage($image);
+
+            $block->setImage($image);
+        }
+
+        if (true === in_array($type, [BlockInterface::HTML_BLOCK_TYPE, BlockInterface::TEXT_BLOCK_TYPE])) {
+            if (null === $content) {
+                $content = $this->randomStringGenerator->generate();
+            }
+
+            $block->setContent($content);
+        }
+
+        $block->setCode($code);
+
+        return $block;
     }
 
     /**
@@ -168,6 +183,7 @@ final class BlockContext implements Context
     {
         $image = new BlockImage();
         $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
+
         $image->setFile($uploadedImage);
 
         $this->imageUploader->upload($image);
@@ -176,36 +192,10 @@ final class BlockContext implements Context
     }
 
     /**
-     * @param string $type
-     * @param null|ImageInterface $image
-     * @param null|string $code
-     * @param null|string $content
+     * @param BlockInterface $block
      */
-    private function createBlock(
-        string $type,
-        ImageInterface $image = null,
-        string $code = null,
-        string $content = null
-    ): void
+    private function saveBlock(BlockInterface $block): void
     {
-        Assert::oneOf($type, self::ALLOWED_TYPES);
-
-        $code = null !== $code ? $code : $this->randomStringGenerator->generate();
-        $block = $this->blockFactory->createWithType($type);
-
-        $block->setCode($code);
-        $block->setCurrentLocale('en_US');
-
-        if (null !== $image) {
-            $block->setImage($image);
-        }
-
-        if (null !== $content) {
-            $block->setContent($content);
-        } else {
-            $block->setContent($this->randomStringGenerator->generate());
-        }
-
         $this->blockRepository->add($block);
         $this->sharedStorage->set('block', $block);
     }

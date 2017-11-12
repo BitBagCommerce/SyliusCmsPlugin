@@ -25,14 +25,14 @@ use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class FrequentlyAskedQuestionContext implements Context
 {
     /**
-     * @var RandomStringGeneratorInterface
-     */
-    private $randomStringGenerator;
-
-    /**
      * @var SharedStorageInterface
      */
     private $sharedStorage;
+
+    /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
 
     /**
      * @var FactoryInterface
@@ -40,42 +40,37 @@ final class FrequentlyAskedQuestionContext implements Context
     private $frequentlyAskedQuestionFactory;
 
     /**
-     * @var FrequentlyAskedQuestionRepositoryInterface
-     */
-    private $frequentlyAskedQuestionRepository;
-
-    /**
-     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param SharedStorageInterface $sharedStorage
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param FactoryInterface $frequentlyAskedQuestionFactory
      * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
      */
     public function __construct(
-        RandomStringGeneratorInterface $randomStringGenerator,
         SharedStorageInterface $sharedStorage,
+        RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $frequentlyAskedQuestionFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
     )
     {
-        $this->randomStringGenerator = $randomStringGenerator;
         $this->sharedStorage = $sharedStorage;
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
+
+    /**
+     * @var FrequentlyAskedQuestionRepositoryInterface
+     */
+    private $frequentlyAskedQuestionRepository;
 
     /**
      * @Given the store has a frequently asked question
      */
     public function thereIsAnExistingFrequentlyAskedQuestion(): void
     {
-        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
-        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
-        
-        $frequentlyAskedQuestion->setCode($this->randomStringGenerator->generate());
-        $frequentlyAskedQuestion->setPosition(1);
+        $frequentlyAskedQuestion = $this->createFrequentlyAskedQuestion();
 
-        $this->sharedStorage->set('frequently_asked_question', $frequentlyAskedQuestion);
-        $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
+        $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
     }
 
     /**
@@ -83,13 +78,9 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function thereIsAnExistingFrequentlyAskedQuestionWithPosition(int $position): void
     {
-        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
-        $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+        $frequentlyAskedQuestion = $this->createFrequentlyAskedQuestion(null, $position);
 
-        $frequentlyAskedQuestion->setCode($this->randomStringGenerator->generate());
-        $frequentlyAskedQuestion->setPosition($position);
-
-        $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
+        $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
     }
 
     /**
@@ -97,12 +88,36 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function thereIsAnExistingFrequentlyAskedQuestionWithCode(string $code): void
     {
+        $frequentlyAskedQuestion = $this->createFrequentlyAskedQuestion($code);
+
+        $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
+    }
+
+    private function createFrequentlyAskedQuestion(?string $code = null, int $position = null): FrequentlyAskedQuestionInterface
+    {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 
-        $frequentlyAskedQuestion->setCode($code);
-        $frequentlyAskedQuestion->setPosition(1);
+        if (null === $code) {
+            $code = $this->randomStringGenerator->generate();
+        }
 
+        if (null === $position) {
+            $position = 1;
+        }
+
+        $frequentlyAskedQuestion->setCode($code);
+        $frequentlyAskedQuestion->setPosition($position);
+
+        return $frequentlyAskedQuestion;
+    }
+
+    /**
+     * @param FrequentlyAskedQuestionInterface $frequentlyAskedQuestion
+     */
+    private function saveFrequentlyAskedQuestion(FrequentlyAskedQuestionInterface $frequentlyAskedQuestion): void
+    {
         $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
+        $this->sharedStorage->set('frequently_asked_question', $frequentlyAskedQuestion);
     }
 }

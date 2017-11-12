@@ -25,14 +25,14 @@ use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class SectionContext implements Context
 {
     /**
-     * @var RandomStringGeneratorInterface
-     */
-    private $randomStringGenerator;
-
-    /**
      * @var SharedStorageInterface
      */
     private $sharedStorage;
+
+    /**
+     * @var RandomStringGeneratorInterface
+     */
+    private $randomStringGenerator;
 
     /**
      * @var FactoryInterface
@@ -40,41 +40,37 @@ final class SectionContext implements Context
     private $sectionFactory;
 
     /**
-     * @var SectionRepositoryInterface
-     */
-    private $sectionRepository;
-
-    /**
-     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param SharedStorageInterface $sharedStorage
+     * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param FactoryInterface $sectionFactory
      * @param SectionRepositoryInterface $sectionRepository
      */
     public function __construct(
-        RandomStringGeneratorInterface $randomStringGenerator,
         SharedStorageInterface $sharedStorage,
+        RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $sectionFactory,
         SectionRepositoryInterface $sectionRepository
     )
     {
-        $this->randomStringGenerator = $randomStringGenerator;
         $this->sharedStorage = $sharedStorage;
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->sectionFactory = $sectionFactory;
         $this->sectionRepository = $sectionRepository;
     }
+
+    /**
+     * @var SectionRepositoryInterface
+     */
+    private $sectionRepository;
 
     /**
      * @Given there is a section in the store
      */
     public function thereIsAnExistingSection(): void
     {
-        /** @var SectionInterface $section */
-        $section = $this->sectionFactory->createNew();
+        $section = $this->createSection();
 
-        $section->setCode($this->randomStringGenerator->generate());
-
-        $this->sharedStorage->set('section', $section);
-        $this->sectionRepository->add($section);
+        $this->saveSection($section);
     }
 
     /**
@@ -83,12 +79,9 @@ final class SectionContext implements Context
     public function thereAreExistingSections(string ...$sectionNames): void
     {
         foreach ($sectionNames as $sectionName) {
-            $section = $this->createSection();
+            $section = $this->createSection(null, $sectionName);
 
-            $section->setCurrentLocale('en_US');
-            $section->setName($sectionName);
-
-            $this->sectionRepository->add($section);
+            $this->saveSection($section);
         }
     }
 
@@ -97,23 +90,42 @@ final class SectionContext implements Context
      */
     public function thereIsAnExistingSectionWithCode(string $code): void
     {
-        $section = $this->createSection();
+        $section = $this->createSection($code);
 
-        $section->setCode($code);
-
-        $this->sectionRepository->add($section);
+        $this->saveSection($section);
     }
 
     /**
+     * @param string|null $code
+     *
      * @return SectionInterface
      */
-    private function createSection(): SectionInterface
+    private function createSection(?string $code = null, string $name = null): SectionInterface
     {
         /** @var SectionInterface $section */
         $section = $this->sectionFactory->createNew();
 
-        $section->setCode($this->randomStringGenerator->generate());
+        if (null === $code) {
+            $code = $this->randomStringGenerator->generate();
+        }
+
+        if (null === $name) {
+            $name = $this->randomStringGenerator->generate();
+        }
+
+        $section->setCode($code);
+        $section->setCurrentLocale('en_US');
+        $section->setName($name);
 
         return $section;
+    }
+
+    /**
+     * @param SectionInterface $section
+     */
+    private function saveSection(SectionInterface $section): void
+    {
+        $this->sectionRepository->add($section);
+        $this->sharedStorage->set('section', $section);
     }
 }

@@ -18,5 +18,11 @@ namespace Tests\BitBag\CmsPlugin\Behat\Behaviour;
  */
 interface ContainsErrorInterface
 {
+    /**
+     * @param string $message
+     * @param bool $strict
+     *
+     * @return bool
+     */
     public function containsErrorWithMessage(string $message, bool $strict = true): bool;
 }
