@@ -26,3 +26,12 @@ services:
             - "@bitbag.repository.frequently_asked_question"
         tags:
             - { name: sylius_fixtures.fixture }
+
+    bitbag.fixture.section:
+        class: BitBag\CmsPlugin\Fixture\SectionFixture
+        arguments:
+            - "@bitbag.factory.section"
+            - "@bitbag.factory.section_translation"
+            - "@bitbag.repository.section"
+        tags:
+            - { name: sylius_fixtures.fixture }
