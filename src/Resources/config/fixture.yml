@@ -1,2 +1,0 @@
-imports:
-    - { resource: "@BitBagCmsPlugin/Resources/config/fixture/block.yml" }
