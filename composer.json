@@ -24,7 +24,8 @@
         "lakion/mink-debug-extension": "^1.2.3",
         "se/selenium-server-standalone": "^2.52",
         "symplify/easy-coding-standard": "^2.4",
-        "sylius-labs/coding-standard": "^1.0"
+        "sylius-labs/coding-standard": "^1.0",
+        "matthiasnoback/symfony-config-test": "^2.1.0"
     },
     "prefer-stable": true,
     "minimum-stability": "alpha",

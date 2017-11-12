@@ -109,7 +109,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                 ->arrayNode('pages')
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('enabled')->defaultTrue()->end()
+                            ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()
