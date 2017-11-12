@@ -24,7 +24,7 @@ interface PageInterface extends
     ResourceInterface,
     TranslatableInterface,
     ToggleableInterface,
-    ProductableInterface,
+    ProductsAwareInterface,
     SectionableInterface
 {
     /**

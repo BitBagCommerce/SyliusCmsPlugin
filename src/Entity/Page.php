@@ -24,7 +24,7 @@ class Page implements PageInterface
 {
     use SectionableTrait;
     use ToggleableTrait;
-    use ProductableTrait;
+    use ProductsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

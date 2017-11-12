@@ -25,7 +25,7 @@ class Section implements SectionInterface
     }
 
     /**
-     * @var int
+     * @var null|int
      */
     protected $id;
 
