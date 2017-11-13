@@ -51,40 +51,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCodeAndContent(string $code, string $content): ?BlockInterface
-    {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('o.code = :code')
-            ->andWhere('o.enabled = true')
-            ->andWhere('translation.content = :content')
-            ->setParameter('code', $code)
-            ->setParameter('content', $content)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface
-    {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('o.type = :type')
-            ->andWhere('o.enabled = true')
-            ->andWhere('translation.content = :content')
-            ->setParameter('type', $type)
-            ->setParameter('content', $content)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findBySectionCode(string $sectionCode, string $localeCode): ?array
     {
         return $this->createQueryBuilder('o')

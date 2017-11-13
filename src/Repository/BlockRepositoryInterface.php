@@ -36,22 +36,6 @@ interface BlockRepositoryInterface extends RepositoryInterface
     public function findEnabledByCode(string $code): ?BlockInterface;
 
     /**
-     * @param string $code
-     * @param string $content
-     *
-     * @return null|BlockInterface
-     */
-    public function findEnabledByCodeAndContent(string $code, string $content): ?BlockInterface;
-
-    /**
-     * @param string $type
-     * @param string $content
-     *
-     * @return null|BlockInterface
-     */
-    public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface;
-
-    /**
      * @param string $sectionCode
      * @param string $localeCode
      *
