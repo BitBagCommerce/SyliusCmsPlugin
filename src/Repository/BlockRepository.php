@@ -25,12 +25,12 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(string $locale): QueryBuilder
+    public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation')
-            ->where('translation.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->where('translation.locale = :localeCode')
+            ->setParameter('localeCode', $localeCode)
         ;
     }
 
@@ -85,13 +85,36 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder
+    public function findBySectionCode(string $sectionCode, string $localeCode): ?array
     {
         return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
+            ->andWhere('translation.locale = :localeCode')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
+            ->setParameter('localeCode', $localeCode)
             ->setParameter('sectionCode', $sectionCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByProductCode(string $productCode, string $localeCode): ?array
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.products', 'products')
+            ->andWhere('translation.locale = :localeCode')
+            ->andWhere('product.code = :productCode')
+            ->andWhere('o.enabled = true')
+            ->setParameter('localeCode', $localeCode)
+            ->setParameter('productCode', $productCode)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

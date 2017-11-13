@@ -22,11 +22,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 interface BlockRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @param string $locale
+     * @param string $localeCode
      *
      * @return QueryBuilder
      */
-    public function createListQueryBuilder(string $locale): QueryBuilder;
+    public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
     /**
      * @param string $code
@@ -53,8 +53,17 @@ interface BlockRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $sectionCode
+     * @param string $localeCode
      *
-     * @return QueryBuilder
+     * @return null|BlockInterface[]
      */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
+    public function findBySectionCode(string $sectionCode, string $localeCode): ?array;
+
+    /**
+     * @param string $productCode
+     * @param string $localeCode
+     *
+     * @return null|BlockInterface[]
+     */
+    public function findByProductCode(string $productCode, string $localeCode): ?array;
 }

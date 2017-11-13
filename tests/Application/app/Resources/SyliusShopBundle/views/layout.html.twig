@@ -43,6 +43,20 @@
                 width: 100%;
                 color: #ffffff;
             }
+
+            .bitbag-page-item, .bitbag-frequently-asked-question-item {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid rgba(34, 36, 38, .15);
+            }
+
+            .bitbag-page-item:hover {
+                background: rgba(0,0,0,.03);
+            }
+
+            .italic {
+                font-style: italic;
+            }
         </style>
 
         {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
@@ -80,7 +94,9 @@
 
                 <div class="ui large stackable menu">
                     {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
-                    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}" class="item">
+                    {{ render(path('bitbag_shop_page_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+                    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}"
+                       class="item">
                         Blog
                         <span class="ui teal label">NEW</span>
                     </a>

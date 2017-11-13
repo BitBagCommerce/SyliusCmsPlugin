@@ -6,9 +6,22 @@ bitbag_shop_page_show:
         _sylius:
             template: "@BitBagCmsPlugin/Shop/Page/show.html.twig"
             repository:
-                method: findEnabledBySlug
+                method: findOneEnabledBySlug
                 arguments:
                     - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+
+bitbag_shop_page_link_by_code:
+    path: /page/link/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.page:showAction
+        _sylius:
+            template: $template
+            repository:
+                method: findOneEnabledByCode
+                arguments:
+                    - $code
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_shop_page_index_by_section_code:
