@@ -25,19 +25,19 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(string $locale): QueryBuilder
+    public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation')
-            ->where('translation.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->where('translation.locale = :localeCode')
+            ->setParameter('localeCode', $localeCode)
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCode(string $code): ?BlockInterface
+    public function findOneEnabledByCode(string $code): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')
@@ -51,47 +51,36 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCodeAndContent(string $code, string $content): ?BlockInterface
+    public function findBySectionCode(string $sectionCode, string $localeCode): ?array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->where('o.code = :code')
-            ->andWhere('o.enabled = true')
-            ->andWhere('translation.content = :content')
-            ->setParameter('code', $code)
-            ->setParameter('content', $content)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findOneByTypeAndContent(string $type, string $content): ?BlockInterface
-    {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('o.type = :type')
-            ->andWhere('o.enabled = true')
-            ->andWhere('translation.content = :content')
-            ->setParameter('type', $type)
-            ->setParameter('content', $content)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder
-    {
-        return $this->createQueryBuilder('o')
             ->innerJoin('o.sections', 'section')
+            ->andWhere('translation.locale = :localeCode')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
+            ->setParameter('localeCode', $localeCode)
             ->setParameter('sectionCode', $sectionCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByProductCode(string $productCode, string $localeCode): ?array
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.products', 'products')
+            ->andWhere('translation.locale = :localeCode')
+            ->andWhere('product.code = :productCode')
+            ->andWhere('o.enabled = true')
+            ->setParameter('localeCode', $localeCode)
+            ->setParameter('productCode', $productCode)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

@@ -68,10 +68,10 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
 
             if (null !== $fields['number']) {
                 for ($i = 0; $i < $fields['number']; $i++) {
-                    $this->createFrequentlyAskedQuestion(md5(uniqid()), $fields);
+                    $this->createFrequentlyAskedQuestion(md5(uniqid()), $fields, ++$i);
                 }
             } else {
-                $this->createFrequentlyAskedQuestion($code, $fields);
+                $this->createFrequentlyAskedQuestion($code, $fields, $fields['position']);
             }
         }
     }
@@ -80,18 +80,18 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
      * @param string $code
      * @param array $frequentlyAskedQuestionData
      */
-    private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData): void
+    private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData, int $position): void
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setEnabled($frequentlyAskedQuestionData['enabled']);
-        $frequentlyAskedQuestion->setPosition($frequentlyAskedQuestionData['position']);
+        $frequentlyAskedQuestion->setPosition($position);
 
         foreach ($frequentlyAskedQuestionData['translations'] as $localeCode => $translation) {
             /** @var FrequentlyAskedQuestionTranslationInterface $frequentlyAskedQuestionTranslation */
-            $frequentlyAskedQuestionTranslation = $this->frequentlyAskedQuestionFactory->createNew();
+            $frequentlyAskedQuestionTranslation = $this->frequentlyAskedQuestionTranslationFactory->createNew();
 
             $frequentlyAskedQuestionTranslation->setLocale($localeCode);
             $frequentlyAskedQuestionTranslation->setQuestion($translation['question']);

@@ -7,6 +7,25 @@ sylius_fixtures:
             listeners:
                 logger: ~
             fixtures:
+                section:
+                    options:
+                        custom:
+                            blog:
+                                translations:
+                                    en_US:
+                                        name: "Blog"
+                            general:
+                                translations:
+                                    en_US:
+                                        name: "General"
+                            store:
+                                translations:
+                                    en_US:
+                                        name: "Store"
+                            homepage:
+                                translations:
+                                    en_US:
+                                        name: "Homepage"
                 block:
                     options:
                         custom:
@@ -16,7 +35,7 @@ sylius_fixtures:
                                     en_US:
                                         image_path: "%fixtures_dir%/homepage_header.jpeg"
                                         name: |
-                                            Here's my name <i class="em em-sunglasses"></i>
+                                            Some block name
                             homepage_banner_image_1:
                                 type: image
                                 translations:
@@ -24,12 +43,18 @@ sylius_fixtures:
                                         image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
                                         link: "/en_US/page/about"
                                         name: |
-                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
+                                            <a href="/en_US/page/about" class="italic">Click me! <i class="em em-kiss"></i></a>
                             homepage_banner_image_2:
                                 type: image
                                 translations:
                                     en_US:
                                         image_path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                            size_table:
+                                type: image
+                                products: 5
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/size_table.jpeg"
                             homepage_intro:
                                 type: html
                                 translations:
@@ -59,21 +84,21 @@ sylius_fixtures:
                                                 <p>
                                                     The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
                                                 </p>
-                section:
-                    options:
-                        custom:
-                            blog:
+                            lorem_ipsum:
+                                type: text
+                                sections:
+                                    - "homepage"
                                 translations:
                                     en_US:
-                                        name: "Blog"
-                            general:
-                                translations:
-                                    en_US:
-                                        name: "General"
-                            store:
-                                translations:
-                                    en_US:
-                                        name: "Store"
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                                <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                                <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                                <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene</p>
                 page:
                     options:
                         custom:
@@ -107,7 +132,7 @@ sylius_fixtures:
                                     - "store"
                                 translations:
                                     en_US:
-                                        name: "See? No pornography!"
+                                        name: "About us"
                                         slug: "about"
                                         content: |
                                             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
@@ -117,12 +142,15 @@ sylius_fixtures:
                                                <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                                             </ul>
-                                            <p>Pellentesque habitant morbi tristique sene
+                                            <p>Pellentesque habitant morbi tristique sene</p>
                 frequently_asked_question:
                     options:
                         custom:
                             lorem_ipsum:
+                                number: 10
                                 translations:
                                     en_US:
-                                        question: "Blog"
-                                        answer: "Blog"
+                                        question: |
+                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
+                                        answer: |
+                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.

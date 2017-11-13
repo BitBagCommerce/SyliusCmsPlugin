@@ -6,9 +6,9 @@
     <div class="ui stackable grid segment">
         <div class="ui sixteen wide column">
             {% if resources|length > 0 %}
-                <div class="ui one column stackable grid celled list" id="frequently-asked-questions">
-                    {% for page in resources.data %}
-                        <div class="bitbag-frequently-asked-question item">
+                <div class="ui one column stackable grid" id="frequently-asked-questions">
+                    {% for frequentlyAskedQuestion in resources %}
+                        <div class="bitbag-frequently-asked-question-item">
                             {% include '@BitBagCmsPlugin/Shop/FrequentlyAskedQuestion/Index/_show.html.twig' %}
                         </div>
                     {% endfor %}

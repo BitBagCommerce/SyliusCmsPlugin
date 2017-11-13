@@ -3,12 +3,12 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
 {% block content %}
+    {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
     <div class="ui stackable grid segment">
         <div class="ui sixteen wide column">
-            {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
 
             {% if resources.data|length > 0 %}
-                <div class="ui one column stackable grid celled list" id="pages">
+                <div class="ui one column stackable grid" id="pages">
                     {% for page in resources.data %}
                         <div class="item bitbag-page-item">
                             <a href="{{ path('bitbag_shop_page_show', {'slug' : page.slug}) }}">

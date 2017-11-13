@@ -34,6 +34,8 @@ services:
             - "@bitbag.factory.block_translation"
             - "@bitbag.repository.block"
             - "@sylius.image_uploader"
+            - "@sylius.repository.product"
+            - "@bitbag.repository.section"
 
     bitbag.fixture.factory.page:
         class: BitBag\CmsPlugin\Fixture\Factory\PageFixtureFactory

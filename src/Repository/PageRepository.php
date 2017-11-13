@@ -36,12 +36,15 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCode(string $code): ?PageInterface
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
-            ->where('o.code = :code')
+            ->leftJoin('o.translations', 'translation')
+            ->where('translation.locale = :localeCode')
+            ->andWhere('o.code = :code')
             ->andWhere('o.enabled = true')
             ->setParameter('code', $code)
+            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;
@@ -50,14 +53,14 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface
+    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->leftJoin('o.translations', 'translation')
+            ->where('translation.locale = :localeCode')
             ->andWhere('translation.slug = :slug')
             ->andWhere('o.enabled = true')
-            ->setParameter('locale', $localeCode)
+            ->setParameter('localeCode', $localeCode)
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult()
@@ -71,7 +74,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.sections', 'section')
-            ->andWhere('section.code = :sectionCode')
+            ->where('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
             ->setParameter('sectionCode', $sectionCode)
         ;

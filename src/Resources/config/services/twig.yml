@@ -8,12 +8,3 @@ services:
             - "@bitbag.resolver.block_resource"
         tags:
             - { name: twig.extension }
-
-    bitbag.twig.extension.page_link_by_code:
-        class: BitBag\CmsPlugin\Twig\Extension\RenderPageLinkByCodeExtension
-        public: false
-        arguments:
-            - "@bitbag.repository.page"
-            - "@logger"
-        tags:
-            - { name: twig.extension }
