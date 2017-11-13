@@ -21,7 +21,7 @@ use Doctrine\Common\Collections\Collection;
 trait SectionableTrait
 {
     /**
-     * @var Collection|SectionInterface[]
+     * @var Collection
      */
     protected $sections;
 
