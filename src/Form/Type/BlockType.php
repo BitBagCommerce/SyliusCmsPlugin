@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace BitBag\CmsPlugin\Form\Type;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
 use BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
 use BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType;
