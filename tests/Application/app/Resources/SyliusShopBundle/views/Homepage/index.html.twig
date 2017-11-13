@@ -1,0 +1,37 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="top one">
+        <div class="ui center aligned segment">
+            <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png" alt="SyliusCmsPlugin"/>
+        </div>
+        <div class="ui two column grid">
+            <div class="column">
+                <div class="ui segment">
+                    {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui segment">
+                    {{ bitbag_render_block('homepage_intro') }}
+                </div>
+            </div>
+        </div>
+        <div class="ui two column grid">
+            <div class="column">
+                <div class="ui segment">
+                    {{ bitbag_render_block('homepage_banner_image_1') }}
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui segment">
+                    {{ bitbag_render_block('homepage_banner_image_2') }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="ui horizontal section divider header">
+        {{ 'sylius.ui.latest_products'|trans }}
+    </h2>
+    {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
+{% endblock %}

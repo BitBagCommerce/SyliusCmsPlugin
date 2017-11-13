@@ -18,7 +18,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface ProductableInterface
+interface ProductsAwareInterface
 {
     public function initializeProductsCollection(): void;
 

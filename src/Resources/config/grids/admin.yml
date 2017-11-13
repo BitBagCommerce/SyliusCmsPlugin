@@ -1,0 +1,5 @@
+imports:
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/admin/block.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/admin/page.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/admin/frequently_asked_question.yml" }
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/admin/section.yml" }

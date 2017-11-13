@@ -67,15 +67,13 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findEnabledBySectionCode(string $code): array
+    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.sections', 'section')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('sectionCode', $code)
-            ->getQuery()
-            ->getResult()
+            ->setParameter('sectionCode', $sectionCode)
         ;
     }
 }

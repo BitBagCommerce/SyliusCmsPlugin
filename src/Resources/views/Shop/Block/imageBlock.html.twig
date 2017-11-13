@@ -1,19 +1,21 @@
 {% set path = '/media/image/'~block.image.path %}
 
-{% if null == block.name and null == block.link %}
-    <img src="{{ path }}" alt="{{ block.name }}"/>
-{% elseif null == block.name and null != block.link %}
-    <a href="{{ block.link }}">
-        <img src="{{ path }}" alt="{{ block.name }}"/>
-    </a>
-{% elseif null != block.name and null == block.link %}
-    <h4>
-        {{ block.name }}
-    </h4>
-    <img src="{{ path }}" alt="{{ block.name }}"/>
-{% else %}
-    <h4>{{ block.name }}</h4>
-    <a href="{{ block.link }}">
-        <img src="{{ path }}" alt="{{ block.name }}"/>
-    </a>
-{% endif %}
+<div class="bitbag-image-block">
+    {% if null == block.name and null == block.link %}
+        {% include '@BitBagCmsPlugin/Shop/Block/_image.html.twig' %}
+    {% elseif null == block.name and null != block.link %}
+        <a href="{{ block.link }}">
+            {% include '@BitBagCmsPlugin/Shop/Block/_image.html.twig' %}
+        </a>
+    {% elseif null != block.name and null == block.link %}
+        <span>
+            {{ block.name|raw }}
+        </span>
+        {% include '@BitBagCmsPlugin/Shop/Block/_image.html.twig' %}
+    {% else %}
+        <span>{{ block.name|raw }}</span>
+        <a href="{{ block.link }}">
+            {% include '@BitBagCmsPlugin/Shop/Block/_image.html.twig' %}
+        </a>
+    {% endif %}
+</div>

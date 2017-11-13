@@ -2,36 +2,58 @@ services:
     bitbag.fixture.block:
         class: BitBag\CmsPlugin\Fixture\BlockFixture
         arguments:
-            - "@bitbag.factory.block"
-            - "@bitbag.factory.block_translation"
-            - "@bitbag.repository.block"
-            - "@sylius.image_uploader"
+            - "@bitbag.fixture.factory.block"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.page:
         class: BitBag\CmsPlugin\Fixture\PageFixture
         arguments:
-            - "@bitbag.factory.page"
-            - "@bitbag.factory.page_translation"
-            - "@bitbag.repository.page"
+            - "@bitbag.fixture.factory.page"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.frequently_asked_question:
         class: BitBag\CmsPlugin\Fixture\FrequentlyAskedQuestionFixture
         arguments:
-            - "@bitbag.factory.frequently_asked_question"
-            - "@bitbag.factory.frequently_asked_question_translation"
-            - "@bitbag.repository.frequently_asked_question"
+            - "@bitbag.fixture.factory.frequently_asked_question"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.section:
         class: BitBag\CmsPlugin\Fixture\SectionFixture
         arguments:
+            - "@bitbag.fixture.factory.section"
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag.fixture.factory.block:
+        class: BitBag\CmsPlugin\Fixture\Factory\BlockFixtureFactory
+        arguments:
+            - "@bitbag.factory.block"
+            - "@bitbag.factory.block_translation"
+            - "@bitbag.repository.block"
+            - "@sylius.image_uploader"
+
+    bitbag.fixture.factory.page:
+        class: BitBag\CmsPlugin\Fixture\Factory\PageFixtureFactory
+        arguments:
+            - "@bitbag.factory.page"
+            - "@bitbag.factory.page_translation"
+            - "@bitbag.repository.page"
+            - "@sylius.repository.product"
+            - "@bitbag.repository.section"
+
+    bitbag.fixture.factory.frequently_asked_question:
+        class: BitBag\CmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory
+        arguments:
+            - "@bitbag.factory.frequently_asked_question"
+            - "@bitbag.factory.frequently_asked_question_translation"
+            - "@bitbag.repository.frequently_asked_question"
+
+    bitbag.fixture.factory.section:
+        class: BitBag\CmsPlugin\Fixture\Factory\SectionFixtureFactory
+        arguments:
             - "@bitbag.factory.section"
             - "@bitbag.factory.section_translation"
             - "@bitbag.repository.section"
-        tags:
-            - { name: sylius_fixtures.fixture }

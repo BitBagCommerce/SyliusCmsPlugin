@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@BitBagCmsPlugin/Resources/config/grids/shop/page.yml" }

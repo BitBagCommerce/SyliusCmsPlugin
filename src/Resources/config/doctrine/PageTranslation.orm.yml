@@ -9,19 +9,24 @@ BitBag\CmsPlugin\Entity\PageTranslation:
                 strategy: AUTO
     fields:
         slug:
+            column: slug
             type: string
             nullable: true
         name:
+            column: name
             type: string
             nullable: true
         metaKeywords:
+            column: meta_keywords
             type: string
             nullable: true
             length: 1000
         metaDescription:
+            column: meta_description
             type: string
             nullable: true
             length: 2000
         content:
+            column: content
             type: text
             nullable: true

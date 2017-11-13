@@ -1,0 +1,9 @@
+bitbag_shop_section_frequently_asked_question_index:
+    path: /section/faq
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.section:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findAllWithFrequentlyAskedQuestions

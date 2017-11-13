@@ -9,6 +9,7 @@ BitBag\CmsPlugin\Entity\Section:
                 strategy: AUTO
     fields:
         code:
+            column: code
             type: string
             length: 250
             unique: true

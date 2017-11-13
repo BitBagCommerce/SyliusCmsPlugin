@@ -17,7 +17,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-trait ProductableTrait
+trait ProductsAwareTrait
 {
     /**
      * @var Collection|ProductInterface[]

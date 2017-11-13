@@ -15,6 +15,7 @@ bitbag:
         pages_header: Pages
         pages_subheader: Manage your pages
         products: Products
+        page_related_products: Page related products
         name: Name
         slug: Slug
         meta_keywords: Meta keywords
