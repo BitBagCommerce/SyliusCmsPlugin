@@ -1,0 +1,17 @@
+sylius_grid:
+    grids:
+        bitbag_shop_page:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag.model.page.class%"
+                    repository:
+                        method: createShopListQueryBuilder
+                        arguments:
+                            sectionCode: $sectionCode
+            sorting:
+                createdAt: desc
+            fields:
+                createdAt:
+                    type: datetime
+            limits: [10]

@@ -9,9 +9,11 @@ BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
                 strategy: AUTO
     fields:
         question:
+            column: question
             type: string
             length: 1500
             nullable: false
         answer:
+            column: answer
             type: text
             nullable: false

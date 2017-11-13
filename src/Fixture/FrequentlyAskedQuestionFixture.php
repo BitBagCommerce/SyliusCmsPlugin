@@ -12,12 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\CmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
-use BitBag\CmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
@@ -26,34 +23,16 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 final class FrequentlyAskedQuestionFixture extends AbstractFixture implements FixtureInterface
 {
     /**
-     * @var FactoryInterface
+     * @var FixtureFactoryInterface
      */
-    private $frequentlyAskedQuestionFactory;
+    private $frequentlyAskedQuestionFixtureFactory;
 
     /**
-     * @var FactoryInterface
+     * @param FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory
      */
-    private $frequentlyAskedQuestionTranslationFactory;
-
-    /**
-     * @var FrequentlyAskedQuestionRepositoryInterface
-     */
-    private $frequentlyAskedQuestionRepository;
-
-    /**
-     * @param FactoryInterface $frequentlyAskedQuestionFactory
-     * @param FactoryInterface $frequentlyAskedQuestionTranslationFactory
-     * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-     */
-    public function __construct(
-        FactoryInterface $frequentlyAskedQuestionFactory,
-        FactoryInterface $frequentlyAskedQuestionTranslationFactory,
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-    )
+    public function __construct(FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory)
     {
-        $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
-        $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
+        $this->frequentlyAskedQuestionFixtureFactory = $frequentlyAskedQuestionFixtureFactory;
     }
 
     /**
@@ -61,34 +40,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture implements Fi
      */
     public function load(array $options): void
     {
-        foreach ($options['frequently_asked_questions'] as $code => $fields) {
-            if (
-                true === $fields['remove_existing'] &&
-                null !== $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code])
-            ) {
-                $this->frequentlyAskedQuestionRepository->remove($frequentlyAskedQuestion);
-            }
-
-            /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
-            $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
-
-            $frequentlyAskedQuestion->setCode($code);
-            $frequentlyAskedQuestion->setEnabled($fields['enabled']);
-            $frequentlyAskedQuestion->setPosition($fields['position']);
-
-            foreach ($fields['translations'] as $localeCode => $translation) {
-                /** @var FrequentlyAskedQuestionTranslationInterface $frequentlyAskedQuestionTranslation */
-                $frequentlyAskedQuestionTranslation = $this->frequentlyAskedQuestionFactory->createNew();
-
-                $frequentlyAskedQuestionTranslation->setLocale($localeCode);
-                $frequentlyAskedQuestionTranslation->setQuestion($translation['question']);
-                $frequentlyAskedQuestionTranslation->setAnswer($translation['answer']);
-
-                $frequentlyAskedQuestion->addTranslation($frequentlyAskedQuestionTranslation);
-            }
-
-            $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);
-        }
+        $this->frequentlyAskedQuestionFixtureFactory->load($options['custom']);
     }
 
     /**
@@ -96,7 +48,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture implements Fi
      */
     public function getName(): string
     {
-        return 'bitbag_cms_frequently_asked_question';
+        return 'frequently_asked_question';
     }
 
     /**
@@ -106,10 +58,11 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture implements Fi
     {
         $optionsNode
             ->children()
-                ->arrayNode('frequently_asked_questions')
+                ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
+                            ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('position')->defaultNull()->end()
                             ->arrayNode('translations')

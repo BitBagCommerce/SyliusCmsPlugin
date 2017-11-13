@@ -1,23 +1,10 @@
 bitbag_shop_frequently_asked_question_index:
     path: /faq
-    methods: [GET]
     defaults:
         _controller: bitbag.controller.frequently_asked_question:indexAction
         _sylius:
-            template: BitBagCmsPlugin:Shop/FrequentlyAskedQuestion:index.html.twig
+            template: "@BitBagCmsPlugin/Shop/FrequentlyAskedQuestion/index.html.twig"
             repository:
                 method: findEnabledOrderedByPosition
                 arguments:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
-
-bitbag_render_frequently_asked_questions_by_section_code:
-    path: /faq/section/{code}
-    methods: [GET]
-    defaults:
-        _controller: bitbag.controller.frequently_asked_question:indexAction
-        _sylius:
-            template: $template
-            repository:
-                method: createEnabledBySectionCodeListQueryBuilder
-                arguments:
-                    - $code

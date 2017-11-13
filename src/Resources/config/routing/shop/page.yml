@@ -11,14 +11,11 @@ bitbag_shop_page_show:
                     - $slug
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_render_pages_by_section_code:
-    path: /page/section/{code}
+bitbag_shop_page_index_by_section_code:
+    path: /pages/{sectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag.controller.page:indexAction
         _sylius:
             template: "@BitBagCmsPlugin/Shop/Page/index.html.twig"
-            repository:
-                method: createEnabledBySectionCodeListQueryBuilder
-                arguments:
-                    - $code
+            grid: bitbag_shop_page

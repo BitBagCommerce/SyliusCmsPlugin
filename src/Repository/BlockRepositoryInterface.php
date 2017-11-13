@@ -56,5 +56,5 @@ interface BlockRepositoryInterface extends RepositoryInterface
      *
      * @return QueryBuilder
      */
-    public function createEnabledBySectionCodeListQueryBuilder(string $sectionCode): QueryBuilder;
+    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
 }

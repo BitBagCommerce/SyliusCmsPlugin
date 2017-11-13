@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\CmsPlugin\Entity;
 
+use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -22,9 +23,10 @@ use Sylius\Component\Resource\Model\TranslationInterface;
  */
 class Page implements PageInterface
 {
-    use SectionableTrait;
     use ToggleableTrait;
     use ProductsAwareTrait;
+    use SectionableTrait;
+    use TimestampableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -41,9 +43,11 @@ class Page implements PageInterface
 
     public function __construct()
     {
-        $this->initializeTranslationsCollection();
         $this->initializeProductsCollection();
         $this->initializeSectionsCollection();
+        $this->initializeTranslationsCollection();
+
+        $this->createdAt = new \DateTime();
     }
 
     /**

@@ -32,7 +32,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      *
      * @return array|FrequentlyAskedQuestionInterface[]
      */
-    public function findEnabledOrderedByPosition(string $localeCode): array;
+    public function findEnabledOrderedByPosition(string $localeCode): ?array;
 
     /**
      * @param string $code
@@ -40,11 +40,4 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      * @return null|FrequentlyAskedQuestionInterface
      */
     public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
-
-    /**
-     * @param string $sectionCode
-     *
-     * @return QueryBuilder
-     */
-    public function createEnabledBySectionCodeListQueryBuilder(string $sectionCode): QueryBuilder;
 }

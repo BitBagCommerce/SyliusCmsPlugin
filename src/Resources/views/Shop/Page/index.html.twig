@@ -1,14 +1,33 @@
-{% if resources.data|length > 0 %}
-    <div class="ui three column stackable grid" id="products">
-        {% for page in resources.data %}
-            <a href="{{ path('bitbag_shop_page_show', {'slug' : page.slug}) }}">
-                {{ page.name }}
-            </a>
-        {% endfor %}
-    </div>
-    <div class="ui hidden divider"></div>
+{% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
 
-    {{ pagination.simple(resources.data) }}
-{% else %}
-    {{ messages.info('sylius.ui.no_results_to_display') }}
-{% endif %}
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="ui stackable grid segment">
+        <div class="ui sixteen wide column">
+            {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
+
+            {% if resources.data|length > 0 %}
+                <div class="ui one column stackable grid celled list" id="pages">
+                    {% for page in resources.data %}
+                        <div class="item bitbag-page-item">
+                            <a href="{{ path('bitbag_shop_page_show', {'slug' : page.slug}) }}">
+                                <div class="content">
+                                    <h3>{{ page.name }}</h3>
+                                    <p>
+                                        {{ page.content|striptags|length > 200 ? page.content|striptags|slice(0, 200) ~ '...' : page.content|striptags }}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="ui hidden divider"></div>
+
+                {{ pagination.simple(resources.data) }}
+            {% else %}
+                {{ messages.info('sylius.ui.no_results_to_display') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

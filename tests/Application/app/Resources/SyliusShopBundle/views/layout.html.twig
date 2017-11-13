@@ -15,6 +15,10 @@
     {% block stylesheets %}
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <style>
+            .bitbag-page-item a, .bitbag-page-item a:hover {
+                color: rgba(0, 0, 0, .87);
+            }
+
             .bitbag-image-block img {
                 position: relative;
             }
@@ -76,7 +80,14 @@
 
                 <div class="ui large stackable menu">
                     {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
-                    <a href="{{ path('bitbag_render_pages_by_section_code', {'code' : 'blog'}) }}" class="item">Blog</a>
+                    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}" class="item">
+                        Blog
+                        <span class="ui teal label">NEW</span>
+                    </a>
+                    <a href="{{ path('bitbag_shop_frequently_asked_question_index') }}" class="item">
+                        FAQ
+                        <span class="ui teal label">NEW</span>
+                    </a>
                 </div>
             </header>
         {% endblock %}

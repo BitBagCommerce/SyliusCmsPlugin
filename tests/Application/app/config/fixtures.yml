@@ -7,7 +7,7 @@ sylius_fixtures:
             listeners:
                 logger: ~
             fixtures:
-                bitbag_cms_block:
+                block:
                     options:
                         custom:
                             homepage_header_image:
@@ -59,7 +59,7 @@ sylius_fixtures:
                                                 <p>
                                                     The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
                                                 </p>
-                bitbag_cms_section:
+                section:
                     options:
                         custom:
                             blog:
@@ -70,14 +70,41 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         name: "General"
-                bitbag_cms_page:
+                            store:
+                                translations:
+                                    en_US:
+                                        name: "Store"
+                page:
                     options:
                         custom:
+                            lorem_ipsum:
+                                number: 15
+                                products: 5
+                                sections:
+                                    - "blog"
+                                translations:
+                                    en_US:
+                                        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias?"
+                                        content: |
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
                             about:
                                 products: 5
                                 sections:
                                     - "general"
-                                    - "blog"
+                                    - "store"
                                 translations:
                                     en_US:
                                         name: "See? No pornography!"
@@ -91,3 +118,11 @@ sylius_fixtures:
                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                                             </ul>
                                             <p>Pellentesque habitant morbi tristique sene
+                frequently_asked_question:
+                    options:
+                        custom:
+                            lorem_ipsum:
+                                translations:
+                                    en_US:
+                                        question: "Blog"
+                                        answer: "Blog"

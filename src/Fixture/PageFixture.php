@@ -12,16 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\CmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Entity\PageTranslationInterface;
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
@@ -30,50 +23,16 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 final class PageFixture extends AbstractFixture implements FixtureInterface
 {
     /**
-     * @var FactoryInterface
+     * @var FixtureFactoryInterface
      */
-    private $pageFactory;
+    private $pageFixtureFactory;
 
     /**
-     * @var FactoryInterface
+     * @param FixtureFactoryInterface $pageFixtureFactory
      */
-    private $pageTranslationFactory;
-
-    /**
-     * @var PageRepositoryInterface
-     */
-    private $pageRepository;
-
-    /**
-     * @var ProductRepositoryInterface
-     */
-    private $productRepository;
-
-    /**
-     * @var SectionRepositoryInterface
-     */
-    private $sectionRepository;
-
-    /**
-     * @param FactoryInterface $pageFactory
-     * @param FactoryInterface $pageTranslationFactory
-     * @param PageRepositoryInterface $pageRepository
-     * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     */
-    public function __construct(
-        FactoryInterface $pageFactory,
-        FactoryInterface $pageTranslationFactory,
-        PageRepositoryInterface $pageRepository,
-        ProductRepositoryInterface $productRepository,
-        SectionRepositoryInterface $sectionRepository
-    )
+    public function __construct(FixtureFactoryInterface $pageFixtureFactory)
     {
-        $this->pageFactory = $pageFactory;
-        $this->pageTranslationFactory = $pageTranslationFactory;
-        $this->pageRepository = $pageRepository;
-        $this->productRepository = $productRepository;
-        $this->sectionRepository = $sectionRepository;
+        $this->pageFixtureFactory = $pageFixtureFactory;
     }
 
     /**
@@ -81,43 +40,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        foreach ($options['custom'] as $code => $fields) {
-            if (
-                true === $fields['remove_existing'] &&
-                null !== $page = $this->pageRepository->findOneBy(['code' => $code])
-            ) {
-                $this->pageRepository->remove($page);
-            }
-
-            /** @var PageInterface $page */
-            $page = $this->pageFactory->createNew();
-            $products = $fields['products'];
-
-            if (null !== $products) {
-                $this->resolveProducts($page, $products);
-            }
-
-            $this->resolveSections($page, $fields['sections']);
-
-            $page->setCode($code);
-            $page->setEnabled($fields['enabled']);
-
-            foreach ($fields['translations'] as $localeCode => $translation) {
-                /** @var PageTranslationInterface $pageTranslation */
-                $pageTranslation = $this->pageTranslationFactory->createNew();
-
-                $pageTranslation->setLocale($localeCode);
-                $pageTranslation->setSlug($translation['slug']);
-                $pageTranslation->setName($translation['name']);
-                $pageTranslation->setMetaKeywords($translation['meta_keywords']);
-                $pageTranslation->setMetaDescription($translation['meta_description']);
-                $pageTranslation->setContent($translation['content']);
-
-                $page->addTranslation($pageTranslation);
-            }
-
-            $this->pageRepository->add($page);
-        }
+        $this->pageFixtureFactory->load($options['custom']);
     }
 
     /**
@@ -125,7 +48,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
      */
     public function getName(): string
     {
-        return 'bitbag_cms_page';
+        return 'page';
     }
 
     /**
@@ -139,6 +62,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                     ->prototype('array')
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
+                            ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('sections')
@@ -160,32 +84,5 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                 ->end()
             ->end()
         ;
-    }
-
-    /**
-     * @param int $limit
-     * @param PageInterface $page
-     */
-    private function resolveProducts(PageInterface $page, int $limit): void
-    {
-        $products = $this->productRepository->findBy([], null, $limit);
-
-        foreach ($products as $product) {
-            $page->addProduct($product);
-        }
-    }
-
-    /**
-     * @param PageInterface $page
-     * @param array $sections
-     */
-    private function resolveSections(PageInterface $page, array $sections): void
-    {
-        foreach ($sections as $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            $page->addSection($section);
-        }
     }
 }

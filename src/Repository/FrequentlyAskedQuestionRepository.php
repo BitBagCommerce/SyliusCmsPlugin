@@ -34,7 +34,7 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
-    public function findEnabledOrderedByPosition(string $localeCode): array
+    public function findEnabledOrderedByPosition(string $localeCode): ?array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -58,19 +58,6 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function createEnabledBySectionCodeListQueryBuilder(string $code): QueryBuilder
-    {
-        return $this->createQueryBuilder('o')
-            ->innerJoin('o.sections', 'section')
-            ->andWhere('section.code = :sectionCode')
-            ->andWhere('o.enabled = true')
-            ->setParameter('sectionCode', $code)
         ;
     }
 }

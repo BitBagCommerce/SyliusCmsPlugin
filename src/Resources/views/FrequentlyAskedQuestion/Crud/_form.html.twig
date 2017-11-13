@@ -1,4 +1,3 @@
-{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
 {% form_theme form '@BitBagCmsPlugin/Form/theme.html.twig' %}
 
 {{ form_errors(form) }}
@@ -11,5 +10,3 @@
     {{ form_row(form.enabled) }}
     {{ form_row(form.sections) }}
 </div>
-
-{{ translationForm(form.translations) }}
