@@ -62,7 +62,7 @@ final class BlockFixture extends AbstractFixture implements FixtureInterface
                     ->prototype('array')
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
-                            ->integerNode('number')->defaultTrue()->end()
+                            ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('last_four_products')->defaultFalse()->end()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()

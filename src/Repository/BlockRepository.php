@@ -37,7 +37,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCode(string $code): ?BlockInterface
+    public function findOneEnabledByCode(string $code): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')

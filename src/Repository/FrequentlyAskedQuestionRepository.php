@@ -50,7 +50,7 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
-    public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface
+    public function findOneEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface
     {
         return $this->createQueryBuilder('o')
             ->where('o.code = :code')

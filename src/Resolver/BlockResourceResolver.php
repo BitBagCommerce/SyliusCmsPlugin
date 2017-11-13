@@ -44,7 +44,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
      */
     public function findOrLog(string $code): ?BlockInterface
     {
-        $block = $this->blockRepository->findEnabledByCode($code);
+        $block = $this->blockRepository->findOneEnabledByCode($code);
 
         if (false === $block instanceof BlockInterface) {
             $this->logger->warning(sprintf(

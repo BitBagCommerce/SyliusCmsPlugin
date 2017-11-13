@@ -57,7 +57,7 @@ final class RenderPageLinkByCodeExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     ): void
     {
-        $pageRepository->findEnabledByCode('bitbag')->willReturn($page);
+        $pageRepository->findOneEnabledByCode('bitbag')->willReturn($page);
         $twigEnvironment->render('BitBagCmsPlugin:Shop:Page:_link.html.twig', ['page' => $page])->shouldBeCalled();
 
         $this->renderPageLinkByCode($twigEnvironment, 'bitbag');
@@ -69,7 +69,7 @@ final class RenderPageLinkByCodeExtensionSpec extends ObjectBehavior
         \Twig_Environment $twigEnvironment
     ): void
     {
-        $pageRepository->findEnabledByCode('bitbag')->willReturn(null);
+        $pageRepository->findOneEnabledByCode('bitbag')->willReturn(null);
         $logger->warning('Page with "bitbag" code was not found in the database.')->shouldBeCalled();
 
         $this->renderPageLinkByCode($twigEnvironment, 'bitbag')->shouldReturn(null);

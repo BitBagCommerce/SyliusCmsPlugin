@@ -39,5 +39,5 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      *
      * @return null|FrequentlyAskedQuestionInterface
      */
-    public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
+    public function findOneEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
 }
