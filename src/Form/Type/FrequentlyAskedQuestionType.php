@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -31,12 +31,18 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', TextType::class)
+            ->add('code', TextType::class, [
+                'disabled' => null !== $builder->getData()->getCode(),
+            ])
             ->add('position', IntegerType::class)
             ->add('enabled', CheckboxType::class)
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
+            ])
+            ->add('sections', SectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.sections',
+                'multiple' => true,
             ])
         ;
     }

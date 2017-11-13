@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -15,8 +15,8 @@ namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
@@ -34,7 +34,7 @@ final class PageContext implements Context
      * @var RandomStringGeneratorInterface
      */
     private $randomStringGenerator;
-    
+
     /**
      * @var FactoryInterface
      */
@@ -46,109 +46,86 @@ final class PageContext implements Context
     private $pageRepository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param FactoryInterface $pageFactory
      * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $pageFactory,
-        PageRepositoryInterface $pageRepository,
-        EntityManagerInterface $entityManager
+        PageRepositoryInterface $pageRepository
     )
     {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageFactory = $pageFactory;
         $this->pageRepository = $pageRepository;
-        $this->entityManager = $entityManager;
     }
 
     /**
-     * @Given there are :number pages
+     * @Given there is a page in the store
      */
-    public function thereArePages(int $number)
+    public function thereIsAPageInTheStore(): void
     {
-        for ($i = 0; $i < $number; $i++) {
-            $this->createPage();
-        }
+        $page = $this->createPage();
+
+        $this->savePage($page);
     }
 
     /**
-     * @Given there is a cms page with :name name
+     * @Given there is an existing page with :name name
      */
     public function thereIsACmsPageWithName(string $name): void
     {
-        $page = $this->createPage();
+        $page = $this->createPage(strtolower(StringInflector::nameToCode($name)), $name);
 
-        $page->setName($name);
-        $page->setCode(strtolower(str_replace(' ', '_', $name)));
-
-        $this->entityManager->flush();
+        $this->savePage($page);
     }
 
     /**
-     * @Given it has :metaKeywords meta keywords
+     * @Given there is an existing page with :code code
      */
-    public function itHasMetaKeywords(string $metaKeywords): void
+    public function thereIsAnExistingPageWithCode(string $code): void
     {
-        $page = $this->createPage();
+        $page = $this->createPage($code);
 
-        $page->setMetaKeywords($metaKeywords);
-
-        $this->entityManager->flush();
+        $this->savePage($page);
     }
 
-    /**
-     * @Given it has :metaDescription meta description
-     */
-    public function itHasMetaDescription(string $metaDescription): void
-    {
-        $page = $this->createPage();
-        
-        $page->setMetaDescription($metaDescription);
-
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @Given it has :content content
-     */
-    public function itHasContent(string $content)
-    {
-        $page = $this->createPage();
-        
-        $page->setMetaKeywords($content);
-
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @return PageInterface
-     */
-    private function createPage(): PageInterface
+    private function createPage(?string $code = null, ?string $name = null, ?string $content = null): PageInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
-        $channel = $this->sharedStorage->get('channel');
 
-        $page->setCode($this->randomStringGenerator->generate());
-        $page->setCurrentLocale($channel->getLocales()->first()->getCode());
-        $page->setName($this->randomStringGenerator->generate());
+        if (null === $code) {
+            $code = $this->randomStringGenerator->generate();
+        }
+
+        if (null === $name) {
+            $name = $this->randomStringGenerator->generate();
+        }
+
+        if (null === $content) {
+            $content = $this->randomStringGenerator->generate();
+        }
+
+        $page->setCode($code);
+        $page->setCurrentLocale('en_US');
+        $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
-        $page->setContent($this->randomStringGenerator->generate());
+        $page->setContent($content);
 
+        return $page;
+    }
+
+    /**
+     * @param PageInterface $page
+     */
+    private function savePage(PageInterface $page): void
+    {
         $this->pageRepository->add($page);
         $this->sharedStorage->set('page', $page);
-        
-        return $page;
     }
 }

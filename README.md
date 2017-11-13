@@ -1,13 +1,28 @@
-![BitBag](https://lh4.googleusercontent.com/8GSA4SfQTr8KqjOxv_SRmwJx5bWHuaScBTktH4dMngeOymDTBPbObunuMn9yykS4PcCoXrBEvx9xT1Q=w1440-h729-rw)
-
-# SyliusCmsPlugin [![Build Status](https://travis-ci.org/BitBagCommerce/SyliusCmsPlugin.svg?branch=master)](https://travis-ci.org/bitbag-commerce/CmsPlugin)
+<h1 align="center">
+    <a href="http://bitbag.shop" target="_blank">
+        <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png" />
+    </a>
+    <br />
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/bitbag/cms-plugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/bitbag/cms-plugin.svg" />
+    </a>
+    <a href="http://travis-ci.org/BitBagCommerce/SyliusCmsPlugin" title="Build status" target="_blank">
+        <img src="https://img.shields.io/travis/BitBagCommerce/SyliusCmsPlugin/master.svg" />
+    </a>
+    <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/" title="Scrutinizer" target="_blank">
+        <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCmsPlugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
+    </a>
+</h1>
 
 ## Overview
 
-Many of Sylius community folks asked about the right CMS plugin for their Sylius instances.  Because the original Lakion CMS plugin does not work as expected, it uses deprecated bundles and in general is not finished and EZ Platform is often too much for basic CMS usage, we decided to start the development of CMS plugin from scratch. 
-So far it supports dynamic images and text blocks as well as pages with custom content. 
-This plugin was developed with BDD rules in mind, so it's probably the most stable CMS for Sylius available for now. 
-It is still a little bit basic, but we are planning to make it more advanced in incoming future. Contributors, ideas as well as any feedback warmly welcomed!
+Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQ section.
 
 ## Installation
 ```bash
@@ -91,6 +106,9 @@ To see which forms you may want to extend, run `$ bin/console debug:container | 
 ## Testing
 ```bash
 $ composer install
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
 $ bin/console assets:install web -e test
 $ bin/console doctrine:schema:create -e test
 $ bin/console server:run 127.0.0.1:8080 -d web -e test

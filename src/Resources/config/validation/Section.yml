@@ -1,0 +1,19 @@
+BitBag\CmsPlugin\Entity\Section:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [code]
+            message: 'bitbag.section.code.unique'
+            groups: ['bitbag']
+    properties:
+        code:
+            - NotBlank:
+                message: 'bitbag.section.code.not_blank'
+                groups: ['bitbag']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'bitbag.section.code.min_length'
+                maxMessage: 'bitbag.section.code.max_length'
+                groups: ['bitbag']
+        translations:
+            - Valid: ~

@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -56,6 +56,13 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.faq')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'help')->shouldBeCalled();
+
+        $cmsRootMenuItem
+            ->addChild('sections', ['route' => 'bitbag_admin_section_index'])
+            ->willReturn($cmsRootMenuItem)
+        ;
+        $cmsRootMenuItem->setLabel('bitbag.ui.sections')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
 
         $this->buildMenu($menuBuilderEvent);
     }

@@ -18,12 +18,23 @@ BitBag\CmsPlugin\Entity\Block:
         enabled:
             type: boolean
     manyToMany:
+        sections:
+            targetEntity: BitBag\CmsPlugin\Entity\Section
+            joinTable:
+                name: bitbag_block_sections
+                joinColumns:
+                    block_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    section_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
         products:
             targetEntity: Sylius\Component\Product\Model\ProductInterface
             joinTable:
                 name: bitbag_block_products
                 joinColumns:
-                    block_id:
+                    page_id:
                         referencedColumnName: id
                 inverseJoinColumns:
                     product_id:

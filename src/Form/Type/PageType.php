@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -30,12 +30,10 @@ final class PageType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $page = $builder->getData();
-
         $builder
             ->add('code', TextType::class, [
                 'label' => 'bitbag.ui.code',
-                'disabled' => null !== $page->getCode(),
+                'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag.ui.enabled',
@@ -48,6 +46,10 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
+            ->add('sections', SectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag.ui.sections',
+                'multiple' => true,
+            ])
         ;
     }
 
@@ -56,6 +58,6 @@ final class PageType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_plugin_page';
+        return 'bitbag_page';
     }
 }

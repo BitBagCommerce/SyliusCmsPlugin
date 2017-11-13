@@ -24,6 +24,12 @@ sylius_grid:
                     type: string
                     label: bitbag.ui.slug
                     sortable: translation.slug
+                sections:
+                    type: twig
+                    label: bitbag.ui.sections
+                    path: .
+                    options:
+                        template: "@BitBagCmsPlugin/Grid/Field/sections.html.twig"
             filters:
                 search:
                     type: string

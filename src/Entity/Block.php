@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -24,7 +24,8 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-    use ProductAssociationTrait;
+    use SectionableTrait;
+    use ProductableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -32,6 +33,7 @@ class Block implements BlockInterface
     public function __construct()
     {
         $this->initializeTranslationsCollection();
+        $this->initializeSectionsCollection();
         $this->initializeProductsCollection();
     }
 

@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -18,6 +18,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
@@ -29,7 +30,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
     /**
      * @param string $localeCode
      *
-     * @return QueryBuilder
+     * @return array|FrequentlyAskedQuestionInterface[]
      */
     public function findEnabledOrderedByPosition(string $localeCode): array;
 
@@ -39,4 +40,11 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      * @return null|FrequentlyAskedQuestionInterface
      */
     public function findEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
+
+    /**
+     * @param string $sectionCode
+     *
+     * @return FrequentlyAskedQuestionInterface[]
+     */
+    public function findEnabledBySectionCode(string $sectionCode): array;
 }

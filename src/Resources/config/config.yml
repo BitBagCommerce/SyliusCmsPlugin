@@ -2,3 +2,10 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/sylius_resource.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/services.yml" }
+
+jms_serializer:
+    metadata:
+        directories:
+            bitbag-section:
+                namespace_prefix: "BitBag\\CmsPlugin"
+                path: "@BitBagCmsPlugin/Resources/config/serializer"

@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -13,11 +13,12 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface IndexPageInterface extends BaseIndexPageInterface
+interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListInterface
 {
     /**
      * @param string $type
@@ -29,7 +30,7 @@ interface IndexPageInterface extends BaseIndexPageInterface
     /**
      * @param string $code
      */
-    public function removeBlock(string $code): void;
+    public function deleteBlock(string $code): void;
 
     /**
      * @return array

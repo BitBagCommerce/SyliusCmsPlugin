@@ -1,0 +1,14 @@
+BitBag\CmsPlugin\Entity\Section:
+    type: entity
+    table: bitbag_section
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: 250
+            unique: true

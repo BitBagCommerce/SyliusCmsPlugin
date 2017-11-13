@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -14,12 +14,15 @@ namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListTrait;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 final class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
+    use ContainsEmptyListTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +37,7 @@ final class IndexPage extends BaseIndexPage implements IndexPageInterface
     /**
      * {@inheritdoc}
      */
-    public function removeBlock(string $code): void
+    public function deleteBlock(string $code): void
     {
         $this->deleteResourceOnPage(['code' => $code]);
     }

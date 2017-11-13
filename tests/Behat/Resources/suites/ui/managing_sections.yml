@@ -1,0 +1,13 @@
+default:
+    suites:
+        ui_managing_sections:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - bitbag.behat.context.setup.section
+
+                - bitbag.behat.context.ui.admin.section
+            filters:
+                tags: "@managing_sections && @ui"

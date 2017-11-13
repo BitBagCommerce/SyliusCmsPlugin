@@ -5,15 +5,16 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
+use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsError;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
 
 /**
@@ -21,7 +22,16 @@ use Webmozart\Assert\Assert;
  */
 final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
-    use ContainsError;
+    use ContainsErrorTrait;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -74,5 +84,41 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function associateSections(array $sectionsNames): void
+    {
+        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+
+        $dropdown = $this->getElement('association_dropdown_section');
+        $dropdown->click();
+
+        foreach ($sectionsNames as $sectionName) {
+            $dropdown->waitFor(5, function () use ($sectionName) {
+                return $this->hasElement('association_dropdown_section_item', [
+                    '%item%' => $sectionName,
+                ]);
+            });
+
+            $item = $this->getElement('association_dropdown_section_item', [
+                '%item%' => $sectionName,
+            ]);
+
+            $item->click();
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefinedElements(): array
+    {
+        return array_merge(parent::getDefinedElements(), [
+            'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
+            'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+        ]);
     }
 }

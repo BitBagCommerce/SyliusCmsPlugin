@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -20,7 +20,12 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-interface PageInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
+interface PageInterface extends
+    ResourceInterface,
+    TranslatableInterface,
+    ToggleableInterface,
+    ProductableInterface,
+    SectionableInterface
 {
     /**
      * @return null|string

@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -109,7 +109,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                 ->arrayNode('pages')
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('enabled')->defaultTrue()->end()
+                            ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()

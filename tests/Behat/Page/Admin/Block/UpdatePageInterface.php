@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -13,12 +13,19 @@ declare(strict_types=1);
 namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
+use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-interface UpdatePageInterface extends BaseUpdatePageInterface
+interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {
+    /**
+     * @param string $field
+     * @param string $value
+     */
+    public function fillField(string $field, string $value): void;
+
     /**
      * @param string $image
      */
@@ -40,4 +47,9 @@ interface UpdatePageInterface extends BaseUpdatePageInterface
     public function fillContent(string $content): void;
 
     public function disable(): void;
+
+    /**
+     * @return bool
+     */
+    public function isBlockDisabled(): bool;
 }

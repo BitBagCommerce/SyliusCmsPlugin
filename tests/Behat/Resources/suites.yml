@@ -1,4 +1,5 @@
 imports:
     - suites/ui/managing_blocks.yml
     - suites/ui/managing_pages.yml
-    - suites/ui/managing_faq.yml
+    - suites/ui/managing_frequently_asked_questions.yml
+    - suites/ui/managing_sections.yml

@@ -5,7 +5,7 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -58,6 +58,21 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
             ->setParameter('code', $code)
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findEnabledBySectionCode(string $code): array
+    {
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.sections', 'section')
+            ->andWhere('section.code = :sectionCode')
+            ->andWhere('o.enabled = true')
+            ->setParameter('sectionCode', $code)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }
