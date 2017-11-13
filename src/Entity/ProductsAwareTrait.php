@@ -20,7 +20,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 trait ProductsAwareTrait
 {
     /**
-     * @var Collection
+     * @var Collection|ProductInterface[]
      */
     protected $products;
 
