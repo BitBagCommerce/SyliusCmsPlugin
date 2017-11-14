@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Fixture;
 
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\CmsPlugin\Fixture\SectionFixture;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -27,45 +26,45 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function sections_are_optional(): void
+    public function custom_are_optional(): void
     {
-        $this->assertConfigurationIsValid([[]], 'sections');
+        $this->assertConfigurationIsValid([[]], 'custom');
     }
 
     /**
      * @test
      */
-    public function sections_translations_is_optional_but_must_be_array(): void
+    public function custom_translations_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'sections' => [
+                'custom' => [
                     'blog' => [
                         'translations' => []
                     ]
                 ]
             ]
-        ], 'sections.*.translations');
+        ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'sections' => [
+                'custom' => [
                     'blog' => [
                         'translations' => 'array'
                     ]
                 ]
             ]
-        ], 'sections.*.translations');
+        ], 'custom.*.translations');
     }
 
     /**
      * @test
      */
-    public function sections_may_contain_name(): void
+    public function custom_may_contain_name(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'sections' => [
+                'custom' => [
                     'blog' => [
                         'translations' => [
                             'en_US' => [
@@ -75,11 +74,11 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'sections.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
 
         $this->assertConfigurationIsValid([
             [
-                'sections' => [
+                'custom' => [
                     'blog' => [
                         'translations' => [
                             'en_US' => [
@@ -89,7 +88,33 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'sections.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_remove_existing_is_optional_but_must_be_boolean(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => true
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => 'boolean'
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
     }
 
     /**
@@ -97,17 +122,9 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
      */
     protected function getConfiguration(): SectionFixture
     {
-        /** @var FactoryInterface $sectionFactory */
-        $sectionFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var FactoryInterface $sectionTranslationFactory */
-        $sectionTranslationFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var SectionRepositoryInterface $sectionRepository */
-        $sectionRepository = $this->getMockBuilder(SectionRepositoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $blockFixtureFactory */
+        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new SectionFixture(
-            $sectionFactory,
-            $sectionTranslationFactory,
-            $sectionRepository
-        );
+        return new SectionFixture($blockFixtureFactory);
     }
 }

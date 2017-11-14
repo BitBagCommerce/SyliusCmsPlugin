@@ -60,6 +60,84 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function custom_remove_existing_is_optional_but_must_be_boolean(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => true
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => 'boolean'
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_number_is_optional_but_must_be_integer(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => 1
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => '1'
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_last_four_products_is_optional_but_must_be_boolean(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'last_four_products' => true
+                    ]
+                ]
+            ]
+        ], 'custom.*.last_four_products');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'last_four_products' => 'boolean'
+                    ]
+                ]
+            ]
+        ], 'custom.*.last_four_products');
+    }
+
+    /**
+     * @test
+     */
     public function custom_products_is_optional_but_must_be_integer(): void
     {
         $this->assertConfigurationIsValid([
@@ -70,7 +148,7 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'custom.*.enabled');
+        ], 'custom.*.products');
 
         $this->assertPartialConfigurationIsInvalid([
             [
@@ -150,6 +228,52 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                 ]
             ]
         ], 'custom.*.translations');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_sections_is_optional_but_must_be_scalar_array(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'sections' => ['blog', 'homepage']
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'sections' => []
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'custom_1' => [
+                        'sections' => ''
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'custom_1' => [
+                        'section_name' => 'blog',
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
     }
 
     /**
@@ -293,6 +417,7 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
      */
     protected function getConfiguration(): BlockFixture
     {
+        /** @var FixtureFactoryInterface $blockFixtureFactory */
         $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
         return new BlockFixture($blockFixtureFactory);
