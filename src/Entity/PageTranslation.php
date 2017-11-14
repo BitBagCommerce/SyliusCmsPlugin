@@ -51,11 +51,6 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     protected $metaDescription;
 
     /**
-     * @var null|string
-     */
-    protected $link;
-
-    /**
      * {@inheritdoc}
      */
     public function getId(): ?int
