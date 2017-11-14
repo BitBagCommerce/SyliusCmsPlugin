@@ -32,7 +32,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
      *
      * @return array|FrequentlyAskedQuestionInterface[]
      */
-    public function findEnabledOrderedByPosition(string $localeCode): ?array;
+    public function findEnabledOrderedByPosition(string $localeCode): array;
 
     /**
      * @param string $code

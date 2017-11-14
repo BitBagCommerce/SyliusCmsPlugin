@@ -33,7 +33,7 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
     /**
      * {@inheritdoc}
      */
-    public function findByNamePart(string $phrase, ?string $locale = null): ?array
+    public function findByNamePart(string $phrase, ?string $locale = null): array
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')

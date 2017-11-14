@@ -51,7 +51,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findBySectionCode(string $sectionCode, string $localeCode): ?array
+    public function findBySectionCode(string $sectionCode, string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -69,11 +69,11 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function findByProductCode(string $productCode, string $localeCode): ?array
+    public function findByProductCode(string $productCode, string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.products', 'products')
+            ->innerJoin('o.products', 'product')
             ->andWhere('translation.locale = :localeCode')
             ->andWhere('product.code = :productCode')
             ->andWhere('o.enabled = true')

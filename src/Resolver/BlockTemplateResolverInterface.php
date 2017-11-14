@@ -19,9 +19,9 @@ use BitBag\CmsPlugin\Entity\BlockInterface;
  */
 interface BlockTemplateResolverInterface
 {
-    const TEXT_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/textBlock.html.twig';
-    const HTML_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig';
-    const IMAGE_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/imageBlock.html.twig';
+    const TEXT_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/textBlock.html.twig';
+    const HTML_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/htmlBlock.html.twig';
+    const IMAGE_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/imageBlock.html.twig';
 
     /**
      * @param BlockInterface $block
