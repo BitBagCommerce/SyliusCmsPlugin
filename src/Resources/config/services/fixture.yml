@@ -36,6 +36,8 @@ services:
             - "@sylius.image_uploader"
             - "@sylius.repository.product"
             - "@bitbag.repository.section"
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
 
     bitbag.fixture.factory.page:
         class: BitBag\CmsPlugin\Fixture\Factory\PageFixtureFactory
@@ -45,6 +47,8 @@ services:
             - "@bitbag.repository.page"
             - "@sylius.repository.product"
             - "@bitbag.repository.section"
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
 
     bitbag.fixture.factory.frequently_asked_question:
         class: BitBag\CmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory

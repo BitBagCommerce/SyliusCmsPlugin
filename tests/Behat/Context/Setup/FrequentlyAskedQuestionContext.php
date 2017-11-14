@@ -93,6 +93,12 @@ final class FrequentlyAskedQuestionContext implements Context
         $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
     }
 
+    /**
+     * @param null|string $code
+     * @param int|null $position
+     *
+     * @return FrequentlyAskedQuestionInterface
+     */
     private function createFrequentlyAskedQuestion(?string $code = null, int $position = null): FrequentlyAskedQuestionInterface
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
@@ -108,6 +114,9 @@ final class FrequentlyAskedQuestionContext implements Context
 
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setPosition($position);
+        $frequentlyAskedQuestion->setCurrentLocale('en_US');
+        $frequentlyAskedQuestion->setQuestion($this->randomStringGenerator->generate());
+        $frequentlyAskedQuestion->setAnswer($this->randomStringGenerator->generate());
 
         return $frequentlyAskedQuestion;
     }

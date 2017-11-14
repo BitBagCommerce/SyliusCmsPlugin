@@ -12,12 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\CmsPlugin\Fixture\BlockFixture;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -29,115 +26,141 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function blocks_are_optional(): void
+    public function custom_are_optional(): void
     {
-        $this->assertConfigurationIsValid([[]], 'blocks');
+        $this->assertConfigurationIsValid([[]], 'custom');
     }
 
     /**
      * @test
      */
-    public function blocks_enabled_is_optional_but_must_be_boolean(): void
+    public function custom_enabled_is_optional_but_must_be_boolean(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                        'enabled' => true
                     ]
                 ]
             ]
-        ], 'blocks.*.enabled');
+        ], 'custom.*.enabled');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'blocks' => [
-                    'blocks_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'enabled' => 'boolean'
                     ]
                 ]
             ]
-        ], 'blocks.*.enabled');
+        ], 'custom.*.enabled');
     }
 
     /**
      * @test
      */
-    public function blocks_type_is_required_and_cannot_be_empty(): void
+    public function custom_products_is_optional_but_must_be_integer(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
+                       'products' => 5
+                    ]
+                ]
+            ]
+        ], 'custom.*.enabled');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'enabled' => 'integer'
+                    ]
+                ]
+            ]
+        ], 'custom.*.products');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_type_is_required_and_cannot_be_empty(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
                         'type' => true
                     ]
                 ]
             ]
-        ], 'blocks.*.type');
+        ], 'custom.*.type');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'blocks' => [
-                    'blocks_1' => [
+                'custom' => [
+                    'custom_1' => [
                         'type' => ''
                     ]
                 ]
             ]
-        ], 'blocks.*.type');
+        ], 'custom.*.type');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'blocks' => [
-                    'blocks_1' => []
+                'custom' => [
+                    'custom_1' => []
                 ]
             ]
-        ], 'blocks.*.type');
+        ], 'custom.*.type');
     }
 
 
     /**
      * @test
      */
-    public function blocks_translations_is_optional_but_must_be_array(): void
+    public function custom_translations_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => []
                     ]
                 ]
             ]
-        ], 'blocks.*.translations');
+        ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'blocks' => [
-                    'blocks_1' => [
+                'custom' => [
+                    'custom_1' => [
                         'translations' => ''
                     ]
                 ]
             ]
-        ], 'blocks.*.translations');
+        ], 'custom.*.translations');
 
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'blocks_1' => []
+                'custom' => [
+                    'custom_1' => []
                 ]
             ]
-        ], 'blocks.*.translations');
+        ], 'custom.*.translations');
     }
 
     /**
      * @test
      */
-    public function blocks_may_contain_name(): void
+    public function custom_may_contain_name(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'name' => 'block'
@@ -146,12 +169,12 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
 
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'name' => ''
@@ -160,18 +183,18 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
     }
 
     /**
      * @test
      */
-    public function blocks_may_contain_content(): void
+    public function custom_may_contain_content(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'content' => 'block'
@@ -180,12 +203,12 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.content');
+        ], 'custom.*.translations.*.content');
 
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'content' => ''
@@ -194,18 +217,18 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.content');
+        ], 'custom.*.translations.*.content');
     }
 
     /**
      * @test
      */
-    public function blocks_may_contain_link(): void
+    public function custom_may_contain_link(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'link' => 'block'
@@ -214,12 +237,12 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.link');
+        ], 'custom.*.translations.*.link');
 
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'link' => ''
@@ -228,18 +251,18 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.link');
+        ], 'custom.*.translations.*.link');
     }
 
     /**
      * @test
      */
-    public function blocks_may_contain_image_path(): void
+    public function custom_may_contain_image_path(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'image_path' => '/path/to/img'
@@ -248,12 +271,12 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.image_path');
+        ], 'custom.*.translations.*.image_path');
 
         $this->assertConfigurationIsValid([
             [
-                'blocks' => [
-                    'block_1' => [
+                'custom' => [
+                    'homepage_banner' => [
                         'translations' => [
                             'en_US' => [
                                 'image_path' => ''
@@ -262,7 +285,7 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'blocks.*.translations.*.image_path');
+        ], 'custom.*.translations.*.image_path');
     }
 
     /**
@@ -270,20 +293,8 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
      */
     protected function getConfiguration(): BlockFixture
     {
-        /** @var BlockFactoryInterface $blockFactory */
-        $blockFactory = $this->getMockBuilder(BlockFactoryInterface::class)->getMock();
-        /** @var FactoryInterface $blockTranslationFactory */
-        $blockTranslationFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var BlockRepositoryInterface $blockRepository */
-        $blockRepository = $this->getMockBuilder(BlockRepositoryInterface::class)->getMock();
-        /** @var ImageUploaderInterface $imageUploader */
-        $imageUploader = $this->getMockBuilder(ImageUploaderInterface::class)->getMock();
+        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new BlockFixture(
-            $blockFactory,
-            $blockTranslationFactory,
-            $blockRepository,
-            $imageUploader
-        );
+        return new BlockFixture($blockFixtureFactory);
     }
 }

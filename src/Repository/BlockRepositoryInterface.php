@@ -39,15 +39,15 @@ interface BlockRepositoryInterface extends RepositoryInterface
      * @param string $sectionCode
      * @param string $localeCode
      *
-     * @return null|BlockInterface[]
+     * @return BlockInterface[]
      */
-    public function findBySectionCode(string $sectionCode, string $localeCode): ?array;
+    public function findBySectionCode(string $sectionCode, string $localeCode): array;
 
     /**
      * @param string $productCode
      * @param string $localeCode
      *
-     * @return null|BlockInterface[]
+     * @return BlockInterface[]
      */
-    public function findByProductCode(string $productCode, string $localeCode): ?array;
+    public function findByProductCode(string $productCode, string $localeCode): array;
 }

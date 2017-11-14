@@ -67,8 +67,8 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
             }
 
             if (null !== $fields['number']) {
-                for ($i = 0; $i < $fields['number']; $i++) {
-                    $this->createFrequentlyAskedQuestion(md5(uniqid()), $fields, ++$i);
+                for ($i = 1; $i <= $fields['number']; $i++) {
+                    $this->createFrequentlyAskedQuestion(md5(uniqid()), $fields, $i);
                 }
             } else {
                 $this->createFrequentlyAskedQuestion($code, $fields, $fields['position']);
@@ -79,6 +79,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     /**
      * @param string $code
      * @param array $frequentlyAskedQuestionData
+     * @param int $position
      */
     private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData, int $position): void
     {

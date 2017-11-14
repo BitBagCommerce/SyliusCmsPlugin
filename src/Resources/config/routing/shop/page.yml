@@ -11,7 +11,7 @@ bitbag_shop_page_show:
                     - $slug
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_shop_page_link_by_code:
+bitbag_shop_page_show_link_by_code:
     path: /page/link/{code}
     methods: [GET]
     defaults:

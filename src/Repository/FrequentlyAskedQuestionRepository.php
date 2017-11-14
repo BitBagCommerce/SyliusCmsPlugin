@@ -24,23 +24,25 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.translations', 'translation')
+            ->where('translation.locale = :locale')
+            ->setParameter('locale', $locale)
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findEnabledOrderedByPosition(string $localeCode): ?array
+    public function findEnabledOrderedByPosition(string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->where('translation.locale = :localeCode')
             ->andWhere('o.enabled = true')
-            ->orderBy('o.position', 'DESC')
+            ->orderBy('o.position', 'ASC')
             ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()

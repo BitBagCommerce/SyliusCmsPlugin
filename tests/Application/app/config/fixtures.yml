@@ -26,6 +26,10 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         name: "Homepage"
+                            products:
+                                translations:
+                                    en_US:
+                                        name: "Products"
                 block:
                     options:
                         custom:
@@ -49,6 +53,42 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         image_path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                            homepage_products_info:
+                                type: html
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ignored info ui message">
+                                                <i class="em em-arrow_down"></i> Click one of the below products to see what you can do with the blocks in your product view! <i class="em em-arrow_down"></i>
+                                            </div>
+                            sale:
+                                type: image
+                                sections:
+                                    - "products"
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/sale.jpeg"
+                            section_info_block:
+                                type: html
+                                sections:
+                                    - "products"
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ignored info ui message">The block you can see on the left is just a block associated with a section named <code>Products</code></div>
+                                            <p>With this feature, you can render any block you want on the product page, like size table, delivery information, or even promotion banner.</p>
+                                            <p>It's done with a simple controller render:</p>
+                                            <pre>{{ render(path('bitbag_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
+                            product_info_block:
+                                type: html
+                                products: 5
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ignored info ui message">On the other hand, the block on the right is a block associated with specific products.</div>
+                                            <p>This approach can be helpful with displaying some content dedicated to specific products, like size table or product story</p>
+                                            <p>The way you render it is similar to the one from above example:</p>
+                                            <pre>{{ render(path('bitbag_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
                             size_table:
                                 type: image
                                 products: 5
