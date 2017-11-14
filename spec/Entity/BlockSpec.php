@@ -60,7 +60,7 @@ final class BlockSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(false);
     }
 
-    function it_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
+    function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
     {
         $this->addProduct($firstProduct);
         $this->hasProduct($firstProduct)->shouldReturn(true);
@@ -72,7 +72,7 @@ final class BlockSpec extends ObjectBehavior
         $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
-    function it_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
+    function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
     {
         $this->addSection($firstSection);
         $this->hasSection($firstSection)->shouldReturn(true);
