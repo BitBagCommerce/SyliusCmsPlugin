@@ -12,21 +12,21 @@ declare(strict_types=1);
 
 namespace spec\BitBag\CmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\Block;
-use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Entity\Page;
+use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class BlockSpec extends ObjectBehavior
+final class PageSpec extends ObjectBehavior
 {
     function it_is_initializable(): void
     {
-        $this->shouldHaveType(Block::class);
+        $this->shouldHaveType(Page::class);
     }
 
     function it_is_a_resource(): void
@@ -34,21 +34,15 @@ final class BlockSpec extends ObjectBehavior
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_block_interface(): void
+    function it_implements_page_interface(): void
     {
-        $this->shouldHaveType(BlockInterface::class);
+        $this->shouldHaveType(PageInterface::class);
     }
 
     function it_allows_access_via_properties(): void
     {
-        $this->setType('image');
-        $this->getType()->shouldReturn('image');
-
-        $this->setType('new_focus_rs');
-        $this->getType()->shouldReturn('new_focus_rs');
-
-        $this->setEnabled(true);
-        $this->isEnabled()->shouldReturn(true);
+        $this->setCode('homepage');
+        $this->getCode()->shouldReturn('homepage');
     }
 
     function it_toggles(): void
@@ -82,5 +76,16 @@ final class BlockSpec extends ObjectBehavior
         $this->removeSection($firstSection);
 
         $this->hasSection($firstSection)->shouldReturn(false);
+    }
+
+    function it_timestampable(): void
+    {
+        $dateTime = new \DateTime();
+
+        $this->setCreatedAt($dateTime);
+        $this->getCreatedAt()->shouldReturn($dateTime);
+
+        $this->setUpdatedAt($dateTime);
+        $this->getUpdatedAt()->shouldReturn($dateTime);
     }
 }
