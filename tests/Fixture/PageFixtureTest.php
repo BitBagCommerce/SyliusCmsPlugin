@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Fixture;
 
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\CmsPlugin\Fixture\PageFixture;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -27,71 +26,71 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function pages_are_optional(): void
+    public function custom_are_optional(): void
     {
-        $this->assertConfigurationIsValid([[]], 'pages');
+        $this->assertConfigurationIsValid([[]], 'custom');
     }
 
     /**
      * @test
      */
-    public function pages_enabled_is_optional_but_must_be_boolean(): void
+    public function custom_enabled_is_optional_but_must_be_boolean(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'enabled' => true
                     ]
                 ]
             ]
-        ], 'pages.*.enabled');
+        ], 'custom.*.enabled');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'enabled' => 'boolean'
                     ]
                 ]
             ]
-        ], 'pages.*.enabled');
+        ], 'custom.*.enabled');
     }
 
     /**
      * @test
      */
-    public function pages_translations_is_optional_but_must_be_array(): void
+    public function custom_translations_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => []
                     ]
                 ]
             ]
-        ], 'pages.*.translations');
+        ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => 'array'
                     ]
                 ]
             ]
-        ], 'pages.*.translations');
+        ], 'custom.*.translations');
     }
 
     /**
      * @test
      */
-    public function pages_may_contain_slug(): void
+    public function custom_may_contain_slug(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -101,11 +100,11 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.slug');
+        ], 'custom.*.translations.*.slug');
 
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -115,17 +114,17 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.slug');
+        ], 'custom.*.translations.*.slug');
     }
 
     /**
      * @test
      */
-    public function pages_may_contain_name(): void
+    public function custom_may_contain_name(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -135,11 +134,11 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
 
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -149,17 +148,17 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.name');
+        ], 'custom.*.translations.*.name');
     }
 
     /**
      * @test
      */
-    public function pages_may_contain_meta_keywords(): void
+    public function custom_may_contain_meta_keywords(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -169,11 +168,11 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.meta_keywords');
+        ], 'custom.*.translations.*.meta_keywords');
 
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -183,17 +182,17 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.meta_keywords');
+        ], 'custom.*.translations.*.meta_keywords');
     }
 
     /**
      * @test
      */
-    public function pages_may_contain_meta_description(): void
+    public function custom_may_contain_meta_description(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -203,11 +202,11 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.meta_description');
+        ], 'custom.*.translations.*.meta_description');
 
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -217,17 +216,17 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.meta_description');
+        ], 'custom.*.translations.*.meta_description');
     }
 
     /**
      * @test
      */
-    public function pages_may_contain_content(): void
+    public function custom_may_contain_content(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -237,11 +236,11 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.content');
+        ], 'custom.*.translations.*.content');
 
         $this->assertConfigurationIsValid([
             [
-                'pages' => [
+                'custom' => [
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
@@ -251,7 +250,131 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ]
-        ], 'pages.*.translations.*.content');
+        ], 'custom.*.translations.*.content');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_number_is_optional_but_must_be_integer(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => 1
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => '1'
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_remove_existing_is_optional_but_must_be_boolean(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => true
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'remove_existing' => 'boolean'
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_sections_is_optional_but_must_be_scalar_array(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'sections' => ['blog', 'homepage']
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'sections' => []
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'custom_1' => [
+                        'sections' => ''
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'custom_1' => [
+                        'section_name' => 'blog',
+                    ]
+                ]
+            ]
+        ], 'custom.*.sections');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_products_is_optional_but_must_be_integer(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'products' => 5
+                    ]
+                ]
+            ]
+        ], 'custom.*.products');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'enabled' => 'integer'
+                    ]
+                ]
+            ]
+        ], 'custom.*.products');
     }
 
     /**
@@ -259,17 +382,9 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
      */
     protected function getConfiguration(): PageFixture
     {
-        /** @var FactoryInterface $pageFactory */
-        $pageFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var FactoryInterface $pageTranslationFactory */
-        $pageTranslationFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getMockBuilder(PageRepositoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $blockFixtureFactory */
+        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new PageFixture(
-            $pageFactory,
-            $pageTranslationFactory,
-            $pageRepository
-        );
+        return new PageFixture($blockFixtureFactory);
     }
 }

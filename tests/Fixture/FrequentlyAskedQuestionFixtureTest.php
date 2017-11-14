@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\CmsPlugin\Fixture;
 
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\CmsPlugin\Fixture\FrequentlyAskedQuestionFixture;
-use BitBag\CmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
@@ -27,97 +26,149 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
     /**
      * @test
      */
-    public function frequently_asked_questions_are_optional(): void
+    public function custom_are_optional(): void
     {
-        $this->assertConfigurationIsValid([[]], 'frequently_asked_questions');
+        $this->assertConfigurationIsValid([[]], 'custom');
     }
 
     /**
      * @test
      */
-    public function frequently_asked_questions_enabled_is_optional_but_must_be_boolean(): void
+    public function custom_enabled_is_optional_but_must_be_boolean(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'enabled' => true
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.enabled');
+        ], 'custom.*.enabled');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'enabled' => 'boolean'
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.enabled');
+        ], 'custom.*.enabled');
     }
 
     /**
      * @test
      */
-    public function frequently_asked_questions_position_is_optional_but_must_be_integer(): void
+    public function custom_remove_existing_is_optional_but_must_be_boolean(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
+                    'faq_1' => [
+                        'remove_existing' => true
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'faq_1' => [
+                        'remove_existing' => 'boolean'
+                    ]
+                ]
+            ]
+        ], 'custom.*.remove_existing');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_number_is_optional_but_must_be_integer(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => 1
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'number' => '1'
+                    ]
+                ]
+            ]
+        ], 'custom.*.number');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_position_is_optional_but_must_be_integer(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
                     'faq_1' => [
                         'position' => 1
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.position');
+        ], 'custom.*.position');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'position' => '1'
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.position');
+        ], 'custom.*.position');
     }
 
     /**
      * @test
      */
-    public function frequently_asked_questions_translations_is_optional_but_must_be_array(): void
+    public function custom_translations_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => []
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations');
+        ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => 'array'
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations');
+        ], 'custom.*.translations');
     }
 
     /**
      * @test
      */
-    public function frequently_asked_questions_may_contain_question(): void
+    public function custom_may_contain_question(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
@@ -127,11 +178,11 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations.*.question');
+        ], 'custom.*.translations.*.question');
 
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
@@ -141,17 +192,17 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations.*.question');
+        ], 'custom.*.translations.*.question');
     }
 
     /**
      * @test
      */
-    public function frequently_asked_questions_may_contain_answer(): void
+    public function custom_may_contain_answer(): void
     {
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
@@ -161,11 +212,11 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations.*.answer');
+        ], 'custom.*.translations.*.answer');
 
         $this->assertConfigurationIsValid([
             [
-                'frequently_asked_questions' => [
+                'custom' => [
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
@@ -175,7 +226,7 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     ]
                 ]
             ]
-        ], 'frequently_asked_questions.*.translations.*.answer');
+        ], 'custom.*.translations.*.answer');
     }
 
     /**
@@ -183,17 +234,9 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
      */
     protected function getConfiguration(): FrequentlyAskedQuestionFixture
     {
-        /** @var FactoryInterface $frequentlyAskedQuestionFactory */
-        $frequentlyAskedQuestionFactory = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var FactoryInterface $frequentlyAskedQuestionFactoryTranslation */
-        $frequentlyAskedQuestionFactoryTranslation = $this->getMockBuilder(FactoryInterface::class)->getMock();
-        /** @var FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository */
-        $frequentlyAskedQuestionRepository = $this->getMockBuilder(FrequentlyAskedQuestionRepositoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $blockFixtureFactory */
+        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new FrequentlyAskedQuestionFixture(
-            $frequentlyAskedQuestionFactory,
-            $frequentlyAskedQuestionFactoryTranslation,
-            $frequentlyAskedQuestionRepository
-        );
+        return new FrequentlyAskedQuestionFixture($blockFixtureFactory);
     }
 }
