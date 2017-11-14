@@ -2,14 +2,11 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
-Debug::enable();
-
-$kernel = new AppKernel('prod', true);
+$kernel = new AppKernel('prod', false);
 
 $request = Request::createFromGlobals();
 
