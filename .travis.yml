@@ -73,6 +73,8 @@ before_script:
 script:
     - composer validate --strict
 
+    - bin/phpunit
+    - bin/phpspec run
     - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun
 
 after_failure:
