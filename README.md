@@ -146,6 +146,10 @@ For now you can install CKEditor, create proper form extension and replace `Text
 For more - take a look at [FriendsOfSylius WYSIWYG step by step guide](https://github.com/FriendsOfSylius/SyliusGoose/blob/master/StepByStep/WYSIWYG_EDITOR_IN_ANY_FORM.md).
 To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag.cms_plugin.form` command.
 
+### Use-case
+
+Go to the `tests/Application/app/Resources` or visit [cms.bitbag.shop](https://cms.bitbag.shop) demo page.
+
 ## Testing
 ```bash
 $ composer install
