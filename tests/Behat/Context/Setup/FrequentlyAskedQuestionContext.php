@@ -94,12 +94,29 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
+     * @Given there are :number FAQs in the store
+     */
+    public function thereAreFaqsInTheStore(int $number): void
+    {
+        for ($i = 1; $i <= $number; $i++) {
+            $frequentlyAskedQuestion = $this->createFrequentlyAskedQuestion(null, $i, true);
+
+            $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
+        }
+    }
+
+    /**
      * @param null|string $code
      * @param int|null $position
+     * @param bool $prefixQuestionWithPosition
      *
      * @return FrequentlyAskedQuestionInterface
      */
-    private function createFrequentlyAskedQuestion(?string $code = null, int $position = null): FrequentlyAskedQuestionInterface
+    private function createFrequentlyAskedQuestion(
+        ?string $code = null,
+        int $position = null,
+        bool $prefixQuestionWithPosition = false
+    ): FrequentlyAskedQuestionInterface
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
@@ -112,10 +129,16 @@ final class FrequentlyAskedQuestionContext implements Context
             $position = 1;
         }
 
+        $question = $this->randomStringGenerator->generate();
+
+        if (true === $prefixQuestionWithPosition) {
+            $question = $position . '. ' . $question;
+        }
+
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setPosition($position);
         $frequentlyAskedQuestion->setCurrentLocale('en_US');
-        $frequentlyAskedQuestion->setQuestion($this->randomStringGenerator->generate());
+        $frequentlyAskedQuestion->setQuestion($question);
         $frequentlyAskedQuestion->setAnswer($this->randomStringGenerator->generate());
 
         return $frequentlyAskedQuestion;

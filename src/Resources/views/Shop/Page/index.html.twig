@@ -1,16 +1,19 @@
 {% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
+{% import 'SyliusUiBundle:Macro:messages.html.twig' as messages %}
 
 {% extends '@SyliusShop/layout.html.twig' %}
 
 {% block content %}
-    {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
+    {% if resources.data|length > 0 %}
+        {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
+    {% endif %}
     <div class="ui stackable grid segment">
         <div class="ui sixteen wide column">
 
             {% if resources.data|length > 0 %}
-                <div class="ui one column stackable grid" id="pages">
+                <div class="ui one column stackable grid" id="bitbag-pages">
                     {% for page in resources.data %}
-                        <div class="item bitbag-page-item">
+                        <div class="item bitbag-page">
                             <a href="{{ path('bitbag_shop_page_show', {'slug' : page.slug}) }}">
                                 <div class="content">
                                     <h3>{{ page.name }}</h3>

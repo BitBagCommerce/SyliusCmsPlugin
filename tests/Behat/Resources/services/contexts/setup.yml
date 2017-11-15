@@ -17,6 +17,9 @@ services:
             - "@bitbag.behat.random_string_generator"
             - "@__symfony__.bitbag.factory.page"
             - "@__symfony__.bitbag.repository.page"
+            - "@__symfony__.doctrine.orm.entity_manager"
+            - "@__symfony__.sylius.repository.product"
+            - "@__symfony__.bitbag.repository.section"
         tags:
             - { name: fob.context_service }
 

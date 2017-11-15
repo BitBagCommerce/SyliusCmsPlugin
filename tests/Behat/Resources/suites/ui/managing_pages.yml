@@ -10,6 +10,6 @@ default:
                 - bitbag.behat.context.setup.page
                 - bitbag.behat.context.setup.section
 
-                - bitbag.behat.context.ui.admin.managing_pages
+                - bitbag.behat.context.ui.admin.page
             filters:
                 tags: "@managing_pages && @ui"

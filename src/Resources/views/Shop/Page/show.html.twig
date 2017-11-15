@@ -1,11 +1,11 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
 {% block metatags %}
-    {% if resource.metaKeywords is not empty %}
-        <meta name="keywords" content="{{ resource.metaKeywords }}"/>
+    {% if page.metaKeywords is not empty %}
+        <meta name="keywords" content="{{ page.metaKeywords }}"/>
     {% endif %}
-    {% if resource.metaDescription is not empty %}
-        <meta name="description" content="{{ resource.metaDescription }}"/>
+    {% if page.metaDescription is not empty %}
+        <meta name="description" content="{{ page.metaDescription }}"/>
     {% endif %}
 {% endblock %}
 
@@ -13,22 +13,26 @@
     <div class="ui breadcrumb">
         <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
         <div class="divider"> /</div>
-        <div class="active section">{{ resource.name }}</div>
+        <div class="active section">{{ page.name }}</div>
     </div>
     <div class="ui segment">
-        <h1 class="ui dividing header">{{ resource.name }}</h1>
+        <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
 
-        <div>{{ resource.content|raw }}</div>
+        <div class="bitbag-page-content">{{ page.content|raw }}</div>
         <div class="ui dividing header"></div>
         <strong>
             {{ 'bitbag.ui.sections'|trans }}:
         </strong>
-        {% include '@BitBagCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
+        <div class="bitbag-page-sections">
+            {% include '@BitBagCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
+        </div>
     </div>
-    {% if null != resource.products %}
+    {% if null != page.products %}
         <h2>
             {{ 'bitbag.ui.page_related_products'|trans }}
         </h2>
-        {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': resource.products} %}
+        <div class="bitbag-page-products">
+            {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
+        </div>
     {% endif %}
 {% endblock %}

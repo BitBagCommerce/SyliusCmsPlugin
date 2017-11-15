@@ -15,7 +15,7 @@ bitbag_shop_page_show_link_by_code:
     path: /page/link/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.page:showAction
+        _controller: bitbag.controller.page:renderLinkAction
         _sylius:
             template: $template
             repository:

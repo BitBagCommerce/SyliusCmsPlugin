@@ -19,7 +19,7 @@ use Webmozart\Assert\Assert;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
+class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ChecksCodeImmutabilityTrait;
 

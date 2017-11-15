@@ -1,5 +1,3 @@
 imports:
-    - { resource: "pages/block.yml" }
-    - { resource: "pages/page.yml" }
-    - { resource: "pages/frequently_asked_question.yml" }
-    - { resource: "pages/section.yml" }
+    - { resource: "pages/admin.yml" }
+    - { resource: "pages/shop.yml" }

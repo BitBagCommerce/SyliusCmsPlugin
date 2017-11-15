@@ -16,6 +16,7 @@ use Behat\Behat\Context\Context;
 use BitBag\CmsPlugin\Entity\SectionInterface;
 use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
@@ -76,9 +77,9 @@ final class SectionContext implements Context
     /**
      * @Given there are existing sections named :firstNameSection and :secondNameSection
      */
-    public function thereAreExistingSections(string ...$sectionNames): void
+    public function thereAreExistingSections(string ...$sectionsNames): void
     {
-        foreach ($sectionNames as $sectionName) {
+        foreach ($sectionsNames as $sectionName) {
             $section = $this->createSection(null, $sectionName);
 
             $this->saveSection($section);
@@ -91,6 +92,16 @@ final class SectionContext implements Context
     public function thereIsAnExistingSectionWithCode(string $code): void
     {
         $section = $this->createSection($code);
+
+        $this->saveSection($section);
+    }
+
+    /**
+     * @Given there is a :sectionName section in the store
+     */
+    public function thereIsASectionInTheStore(string $sectionName): void
+    {
+        $section = $this->createSection(strtolower(StringInflector::nameToCode($sectionName)), $sectionName);
 
         $this->saveSection($section);
     }

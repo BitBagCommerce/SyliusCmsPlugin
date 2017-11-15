@@ -18,7 +18,7 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
+class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ChecksCodeImmutabilityTrait;
 }
