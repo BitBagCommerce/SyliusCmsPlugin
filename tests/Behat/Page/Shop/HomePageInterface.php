@@ -23,12 +23,12 @@ interface HomePageInterface extends BaseHomePageInterface
     /**
      * @return bool
      */
-    public function containsImageBlock(): bool;
+    public function hasImageBlock(): bool;
 
     /**
      * @param string $content
      *
      * @return bool
      */
-    public function containsBlockWithContent(string $content): bool;
+    public function hasBlockWithContent(string $content): bool;
 }

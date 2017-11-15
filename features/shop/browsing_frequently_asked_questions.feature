@@ -10,5 +10,5 @@ Feature: Browsing FAQs
     @ui
     Scenario: Browsing FAQs
         Given there are 10 FAQs in the store
-        When I go frequently asked questions list page
+        When I go to the frequently asked questions list page
         Then I should see 10 FAQs ordered by position

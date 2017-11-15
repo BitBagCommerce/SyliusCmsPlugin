@@ -40,7 +40,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
     /**
      * {@inheritdoc}
      */
-    public function hasQuestionWithPositionPrefixValidIndex(int $position): bool
+    public function hasQuestionWithPositionPrefixAtValidIndex(int $position): bool
     {
         $frequentlyAskedQuestionsOnPage = $this->getElement('faqs')->findAll('css', '.bitbag-question');
         $index = $position - 1;
