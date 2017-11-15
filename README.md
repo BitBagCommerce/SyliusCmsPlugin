@@ -91,6 +91,12 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 {% endblock %}
 ```
 
+To render a block by the product code, you can use `route`.
+
+```twig
+{{ render(path('bitbag_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
+```
+
 ### Pages
 
 You can render page in two ways:
