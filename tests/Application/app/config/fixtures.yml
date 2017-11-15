@@ -75,7 +75,9 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         content: |
-                                            <div class="ignored info ui message">The block you can see on the left is just a block associated with a section named <code>Products</code></div>
+                                            <div class="ignored info ui message">
+                                                The block you can see on the left is just a block associated with a section named <code>Products</code>
+                                            </div>
                                             <p>With this feature, you can render any block you want on the product page, like size table, delivery information, or even promotion banner.</p>
                                             <p>It's done with a simple controller render:</p>
                                             <pre>{{ render(path('bitbag_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
@@ -102,15 +104,14 @@ sylius_fixtures:
                                         content: |
                                                 <h3>Blocks</h3>
                                                 <p>
-                                                    The left block is being rendered with the usage of the special controller like this:
+                                                    The left block is rendered with the usage of the particular controller like this:
                                                 </p>
                                                 <pre>
                                                 {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
                                                 </pre>
                                                 <p>
-                                                    It also can take template as a parameter, but it's optional. In this case, it works exactly the same as below Twig functions.
-                                                    Sometimes you might want the block to be rendered in a different template, that's where the controller is useful <i class="em em-rocket"></i>
-                                                </p>
+                                                   It also can take template as a parameter, but it's optional. In this case, it works the same as below Twig functions. Sometimes you might want the block to render in a different template, that's where the controller is useful.
+                                                 </p>
                                                 <p>
                                                     The other three blocks, including this one you are reading right now, are using Twig helper method.
                                                 </p>
