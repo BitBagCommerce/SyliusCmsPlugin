@@ -26,14 +26,6 @@ final class AppKernel extends Kernel
     /**
      * {@inheritdoc}
      */
-    public function registerContainerConfiguration(LoaderInterface $loader): void
-    {
-        $loader->load($this->getRootDir() . '/config/config.yml');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getCacheDir(): string
     {
         return sprintf('%s/%s/cache', sys_get_temp_dir(), md5(__DIR__));
