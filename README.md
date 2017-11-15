@@ -22,7 +22,7 @@
 
 # Demo
 
-We created a demo app with some useful use-cases of the plugin! Visit [cms.bitbag.shop](https://cms.bitbag.shop) to take a look at it.
+We created a demo app with some useful use-cases of the plugin! Visit [cms.bitbag.shop](https://cms.bitbag.shop) to take a look at it. The admin as always can be accessed under [cms.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
 
 ## Overview
 
