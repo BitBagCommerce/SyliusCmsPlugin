@@ -124,7 +124,11 @@ For instance, you can create a Blog section and display pages and blocks under i
 
 ### FAQs
 
-<a href="{{ path('bitbag_shop_frequently_asked_question_index') }}" class="item">{{ 'app.ui.faqs'|trans }}</a>
+To render FAQs list, use the `bitbag_shop_frequently_asked_question_index` route.
+
+```twig
+<a href="{{ path('bitbag_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
+```
 
 ### Fixtures
 
