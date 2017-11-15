@@ -41,3 +41,9 @@
 .italic {
     font-style: italic;
 }
+
+.intro {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+}

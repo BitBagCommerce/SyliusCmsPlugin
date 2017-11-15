@@ -58,7 +58,7 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         content: |
-                                            <div class="ignored info ui message">
+                                            <div class="ui info message">
                                                 <i class="em em-arrow_down"></i> Click one of the below products to see what you can do with the blocks in your product view! <i class="em em-arrow_down"></i>
                                             </div>
                             sale:
