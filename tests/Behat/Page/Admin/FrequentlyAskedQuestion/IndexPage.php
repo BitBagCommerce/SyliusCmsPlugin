@@ -18,7 +18,7 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListTrait;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class IndexPage extends BaseIndexPage implements IndexPageInterface
+class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
     use ContainsEmptyListTrait;
 

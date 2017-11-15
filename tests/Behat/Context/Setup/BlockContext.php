@@ -112,7 +112,7 @@ final class BlockContext implements Context
      */
     public function thereIsATextBlockWithCodeAndContent(string $code, string $content): void
     {
-        $block = $this->createBlock(BlockInterface::HTML_BLOCK_TYPE, $code, $content);
+        $block = $this->createBlock(BlockInterface::TEXT_BLOCK_TYPE, $code, $content);
 
         $this->saveBlock($block);
     }
@@ -132,7 +132,7 @@ final class BlockContext implements Context
      */
     public function thereIsAnExistingBlockWithCodeAndImage(string $code, string $image): void
     {
-        $block = $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $code, $image);
+        $block = $this->createBlock(BlockInterface::IMAGE_BLOCK_TYPE, $code, null, $image);
 
         $this->saveBlock($block);
     }
@@ -145,7 +145,12 @@ final class BlockContext implements Context
      *
      * @return BlockInterface
      */
-    private function createBlock(string $type, ?string $code = null, ?string $content = null, string $image = null): BlockInterface
+    private function createBlock(
+        string $type,
+        ?string $code = null,
+        ?string $content = null,
+        string $image = null
+    ): BlockInterface
     {
         $block = $this->blockFactory->createWithType($type);
 

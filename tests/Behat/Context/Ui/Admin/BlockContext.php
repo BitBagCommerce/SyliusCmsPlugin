@@ -243,9 +243,9 @@ final class BlockContext implements Context
     /**
      * @When I add :firstSection and :secondSection sections to it
      */
-    public function iAddAndSectionsToIt(string ...$sectionNames): void
+    public function iAddAndSectionsToIt(string ...$sectionsNames): void
     {
-        $this->resolveCurrentPage()->associateSections($sectionNames);
+        $this->resolveCurrentPage()->associateSections($sectionsNames);
     }
 
     /**

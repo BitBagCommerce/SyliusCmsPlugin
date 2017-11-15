@@ -18,7 +18,7 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class CreatePage extends BaseCreatePage implements CreatePageInterface
+class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
 

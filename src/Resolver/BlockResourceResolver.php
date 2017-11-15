@@ -10,13 +10,15 @@
 
 declare(strict_types=1);
 
-
 namespace BitBag\CmsPlugin\Resolver;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
+ */
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
     /**

@@ -13,5 +13,12 @@ services:
             - "@bitbag.repository.block"
             - "@logger"
 
+    bitbag.resolver.page_resource:
+        class: BitBag\CmsPlugin\Resolver\PageResourceResolver
+        arguments:
+            - "@bitbag.repository.page"
+            - "@sylius.context.locale"
+            - "@logger"
+
     bitbag.resolver.block_template:
         class: BitBag\CmsPlugin\Resolver\BlockTemplateResolver

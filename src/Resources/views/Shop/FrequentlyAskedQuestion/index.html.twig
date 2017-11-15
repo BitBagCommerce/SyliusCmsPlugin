@@ -4,11 +4,11 @@
 
 {% block content %}
     <div class="ui stackable grid segment">
-        <div class="ui sixteen wide column">
+        <div id="bitbag-faqs" class="ui sixteen wide column">
             {% if resources|length > 0 %}
-                <div class="ui one column stackable grid" id="frequently-asked-questions">
+                <div class="ui one column stackable grid">
                     {% for frequentlyAskedQuestion in resources %}
-                        <div class="bitbag-frequently-asked-question-item">
+                        <div class="bitbag-frequently-asked-question">
                             {% include '@BitBagCmsPlugin/Shop/FrequentlyAskedQuestion/Index/_show.html.twig' %}
                         </div>
                     {% endfor %}
