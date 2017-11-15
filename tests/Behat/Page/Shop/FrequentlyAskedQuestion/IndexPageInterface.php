@@ -31,5 +31,5 @@ interface IndexPageInterface extends SymfonyPageInterface
      *
      * @return bool
      */
-    public function hasQuestionWithPositionPrefixValidIndex(int $position): bool;
+    public function hasQuestionWithPositionPrefixAtValidIndex(int $position): bool;
 }

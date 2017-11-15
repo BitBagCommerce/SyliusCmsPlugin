@@ -22,7 +22,7 @@ class HomePage extends BaseHomePage implements HomePageInterface
     /**
      * {@inheritdoc}
      */
-    public function containsImageBlock(): bool
+    public function hasImageBlock(): bool
     {
         return $this->getElement('image_block')->has('css','img');
     }
@@ -30,7 +30,7 @@ class HomePage extends BaseHomePage implements HomePageInterface
     /**
      * {@inheritdoc}
      */
-    public function containsBlockWithContent(string $content): bool
+    public function hasBlockWithContent(string $content): bool
     {
         return $content === $this->getElement('content')->getText();
     }

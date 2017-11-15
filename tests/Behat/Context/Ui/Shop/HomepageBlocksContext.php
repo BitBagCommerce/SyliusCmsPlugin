@@ -47,7 +47,7 @@ final class HomepageBlocksContext implements Context
      */
     public function iWantToSeeAnImageBlock(): void
     {
-        Assert::true($this->blockHomePage->containsImageBlock());
+        Assert::true($this->blockHomePage->hasImageBlock());
     }
 
     /**
@@ -55,6 +55,6 @@ final class HomepageBlocksContext implements Context
      */
     public function iWantToSeeATextBlockWithContent(string $content): void
     {
-        Assert::true($this->blockHomePage->containsBlockWithContent($content));
+        Assert::true($this->blockHomePage->hasBlockWithContent($content));
     }
 }

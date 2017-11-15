@@ -35,9 +35,9 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @When I go frequently asked questions list page
+     * @When I go to the frequently asked questions list page
      */
-    public function iGoFrequentlyAskedQuestionsListPage(): void
+    public function iGoToTheFrequentlyAskedQuestionsListPage(): void
     {
         $this->indexPage->open();
     }
@@ -50,7 +50,7 @@ final class FrequentlyAskedQuestionContext implements Context
         Assert::true($this->indexPage->hasFrequentlyAskedQuestionsNumber($number));
 
         for ($i = 1; $i < $number; $i++) {
-            Assert::true($this->indexPage->hasQuestionWithPositionPrefixValidIndex($i));
+            Assert::true($this->indexPage->hasQuestionWithPositionPrefixAtValidIndex($i));
         }
     }
 }
