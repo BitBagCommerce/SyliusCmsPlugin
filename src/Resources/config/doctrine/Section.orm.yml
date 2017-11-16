@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\Section:
+BitBag\SyliusCmsPlugin\Entity\Section:
     type: entity
     table: bitbag_section
     id:

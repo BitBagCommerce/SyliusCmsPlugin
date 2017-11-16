@@ -1,2 +1,2 @@
 imports:
-    - { resource: "@BitBagCmsPlugin/Resources/config/grids/shop/page.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/shop/page.yml" }

@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Entity;
+namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion;
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 

@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\Block:
+BitBag\SyliusCmsPlugin\Entity\Block:
     type: entity
     table: bitbag_block
     id:
@@ -22,7 +22,7 @@ BitBag\CmsPlugin\Entity\Block:
             type: boolean
     manyToMany:
         sections:
-            targetEntity: BitBag\CmsPlugin\Entity\Section
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
             joinTable:
                 name: bitbag_block_sections
                 joinColumns:

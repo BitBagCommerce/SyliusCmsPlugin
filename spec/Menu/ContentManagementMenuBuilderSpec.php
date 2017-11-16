@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Menu;
+namespace spec\BitBag\SyliusCmsPlugin\Menu;
 
-use BitBag\CmsPlugin\Menu\ContentManagementMenuBuilder;
+use BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;

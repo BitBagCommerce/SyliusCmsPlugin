@@ -3,10 +3,10 @@ sylius_resource:
         bitbag.page:
             driver: doctrine/orm
             classes:
-                model: BitBag\CmsPlugin\Entity\Page
-                form: BitBag\CmsPlugin\Form\Type\PageType
-                repository: BitBag\CmsPlugin\Repository\PageRepository
-                controller: BitBag\CmsPlugin\Controller\PageController
+                model: BitBag\SyliusCmsPlugin\Entity\Page
+                form: BitBag\SyliusCmsPlugin\Form\Type\PageType
+                repository: BitBag\SyliusCmsPlugin\Repository\PageRepository
+                controller: BitBag\SyliusCmsPlugin\Controller\PageController
             translation:
                 classes:
-                    model: BitBag\CmsPlugin\Entity\PageTranslation
+                    model: BitBag\SyliusCmsPlugin\Entity\PageTranslation

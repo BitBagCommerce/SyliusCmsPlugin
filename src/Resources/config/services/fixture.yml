@@ -1,34 +1,34 @@
 services:
     bitbag.fixture.block:
-        class: BitBag\CmsPlugin\Fixture\BlockFixture
+        class: BitBag\SyliusCmsPlugin\Fixture\BlockFixture
         arguments:
             - "@bitbag.fixture.factory.block"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.page:
-        class: BitBag\CmsPlugin\Fixture\PageFixture
+        class: BitBag\SyliusCmsPlugin\Fixture\PageFixture
         arguments:
             - "@bitbag.fixture.factory.page"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.frequently_asked_question:
-        class: BitBag\CmsPlugin\Fixture\FrequentlyAskedQuestionFixture
+        class: BitBag\SyliusCmsPlugin\Fixture\FrequentlyAskedQuestionFixture
         arguments:
             - "@bitbag.fixture.factory.frequently_asked_question"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.section:
-        class: BitBag\CmsPlugin\Fixture\SectionFixture
+        class: BitBag\SyliusCmsPlugin\Fixture\SectionFixture
         arguments:
             - "@bitbag.fixture.factory.section"
         tags:
             - { name: sylius_fixtures.fixture }
 
     bitbag.fixture.factory.block:
-        class: BitBag\CmsPlugin\Fixture\Factory\BlockFixtureFactory
+        class: BitBag\SyliusCmsPlugin\Fixture\Factory\BlockFixtureFactory
         arguments:
             - "@bitbag.factory.block"
             - "@bitbag.factory.block_translation"
@@ -40,7 +40,7 @@ services:
             - "@sylius.context.locale"
 
     bitbag.fixture.factory.page:
-        class: BitBag\CmsPlugin\Fixture\Factory\PageFixtureFactory
+        class: BitBag\SyliusCmsPlugin\Fixture\Factory\PageFixtureFactory
         arguments:
             - "@bitbag.factory.page"
             - "@bitbag.factory.page_translation"
@@ -51,14 +51,14 @@ services:
             - "@sylius.context.locale"
 
     bitbag.fixture.factory.frequently_asked_question:
-        class: BitBag\CmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory
+        class: BitBag\SyliusCmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory
         arguments:
             - "@bitbag.factory.frequently_asked_question"
             - "@bitbag.factory.frequently_asked_question_translation"
             - "@bitbag.repository.frequently_asked_question"
 
     bitbag.fixture.factory.section:
-        class: BitBag\CmsPlugin\Fixture\Factory\SectionFixtureFactory
+        class: BitBag\SyliusCmsPlugin\Fixture\Factory\SectionFixtureFactory
         arguments:
             - "@bitbag.factory.section"
             - "@bitbag.factory.section_translation"

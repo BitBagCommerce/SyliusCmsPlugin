@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
-use BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
-use BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;

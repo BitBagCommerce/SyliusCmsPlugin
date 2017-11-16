@@ -5,7 +5,7 @@
 
 {% block content %}
     {% if resources.data|length > 0 %}
-        {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
+        {{ render(path('bitbag_shop_section_show', {'code' : app.request.get('sectionCode'), 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Index/_section.html.twig'})) }}
     {% endif %}
     <div class="ui stackable grid segment">
         <div class="ui sixteen wide column">

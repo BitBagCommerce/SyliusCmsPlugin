@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Entity;
+namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;

@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\BlockImage:
+BitBag\SyliusCmsPlugin\Entity\BlockImage:
     properties:
         file:
             - NotBlank:

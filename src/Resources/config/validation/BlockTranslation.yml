@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\BlockTranslation:
+BitBag\SyliusCmsPlugin\Entity\BlockTranslation:
     properties:
         image:
             - Valid: ~

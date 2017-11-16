@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

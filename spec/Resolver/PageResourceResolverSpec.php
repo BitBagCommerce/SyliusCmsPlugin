@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Resolver;
+namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\CmsPlugin\Resolver\PageResourceResolver;
-use BitBag\CmsPlugin\Resolver\PageResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver;
+use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;

@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Fixture\Factory;
+namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Entity\SectionTranslationInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 /**

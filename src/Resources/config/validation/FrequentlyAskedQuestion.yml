@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
+BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [position]

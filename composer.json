@@ -1,5 +1,5 @@
 {
-    "name": "bitbag/cms-plugin",
+    "name": "bitbag/sylius-cms-plugin",
     "type": "sylius-plugin",
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
@@ -31,8 +31,8 @@
     "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
-            "BitBag\\CmsPlugin\\": "src/",
-            "Tests\\BitBag\\CmsPlugin\\": "tests/"
+            "BitBag\\SyliusCmsPlugin\\": "src/",
+            "Tests\\BitBag\\SyliusCmsPlugin\\": "tests/"
         }
     },
     "autoload-dev": {

@@ -1,22 +1,22 @@
 services:
     bitbag.behat.page.shop.home:
-        class: Tests\BitBag\CmsPlugin\Behat\Page\Shop\HomePage
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePage
         parent: sylius.behat.page.shop.home
         public: false
         arguments:
             - 'sylius_shop_homepage'
 
     bitbag.behat.page.shop.page.show:
-        class: Tests\BitBag\CmsPlugin\Behat\Page\Shop\Page\ShowPage
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPage
         parent: sylius.behat.symfony_page
         public: false
 
     bitbag.behat.page.shop.page.index:
-        class: Tests\BitBag\CmsPlugin\Behat\Page\Shop\Page\IndexPage
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPage
         parent: sylius.behat.symfony_page
         public: false
 
     bitbag.behat.page.shop.frequently_asked_question.index:
-        class: Tests\BitBag\CmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion\IndexPage
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion\IndexPage
         parent: sylius.behat.symfony_page
         public: false

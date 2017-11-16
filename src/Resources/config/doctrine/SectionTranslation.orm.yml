@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\SectionTranslation:
+BitBag\SyliusCmsPlugin\Entity\SectionTranslation:
     type: entity
     table: bitbag_section_translation
     id:

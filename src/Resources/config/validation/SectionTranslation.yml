@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\SectionTranslation:
+BitBag\SyliusCmsPlugin\Entity\SectionTranslation:
     properties:
         name:
             - NotBlank:

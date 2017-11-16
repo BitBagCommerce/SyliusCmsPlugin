@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
+BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
     type: entity
     table: bitbag_frequently_asked_question
     id:

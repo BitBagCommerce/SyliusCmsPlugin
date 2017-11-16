@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Exception;
+namespace spec\BitBag\SyliusCmsPlugin\Exception;
 
-use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
+use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 use PhpSpec\ObjectBehavior;
 
 /**

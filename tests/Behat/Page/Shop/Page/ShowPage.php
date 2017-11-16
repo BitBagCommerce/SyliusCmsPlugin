@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop\Page;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page;
 
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\SymfonyPage;

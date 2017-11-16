@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Entity;
+namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Core\Model\Image as BaseImage;
 use Sylius\Component\Core\Model\ImageInterface;

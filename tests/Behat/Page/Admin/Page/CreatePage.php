@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
 
 /**

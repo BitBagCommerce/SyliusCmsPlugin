@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Entity;
+namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\BlockImage;
+use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use Sylius\Component\Core\Model\Image as SyliusImage;
 use PhpSpec\ObjectBehavior;
 

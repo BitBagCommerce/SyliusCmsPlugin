@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

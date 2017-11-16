@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\SymfonyPage;
 

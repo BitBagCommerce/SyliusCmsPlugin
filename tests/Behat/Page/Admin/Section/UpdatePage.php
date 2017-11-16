@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Section;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>

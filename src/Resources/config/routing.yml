@@ -1,7 +1,7 @@
 bitbag_admin:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin.yml"
     prefix: /admin
 
 bitbag_shop:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/shop.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
     prefix: /{_locale}

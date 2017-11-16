@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Fixture\Factory;
+namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

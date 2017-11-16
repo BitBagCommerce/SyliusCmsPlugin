@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

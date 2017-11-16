@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type\Translation;
+namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

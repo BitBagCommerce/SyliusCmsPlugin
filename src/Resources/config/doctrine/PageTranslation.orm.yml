@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\PageTranslation:
+BitBag\SyliusCmsPlugin\Entity\PageTranslation:
     type: entity
     table: bitbag_page_translation
     id:

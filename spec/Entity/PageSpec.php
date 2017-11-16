@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Entity;
+namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\Page;
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\Page;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;

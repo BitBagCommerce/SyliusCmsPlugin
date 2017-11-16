@@ -1,6 +1,6 @@
 services:
     bitbag.behat.context.setup.block:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\BlockContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\BlockContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
@@ -11,7 +11,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.setup.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\PageContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\PageContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
@@ -24,7 +24,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.setup.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"
@@ -34,7 +34,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.setup.section:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Setup\SectionContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\SectionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@bitbag.behat.random_string_generator"

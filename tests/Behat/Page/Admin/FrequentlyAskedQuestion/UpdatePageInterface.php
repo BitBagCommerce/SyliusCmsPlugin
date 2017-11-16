@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

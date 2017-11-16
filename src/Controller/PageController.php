@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Controller;
+namespace BitBag\SyliusCmsPlugin\Controller;
 
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;

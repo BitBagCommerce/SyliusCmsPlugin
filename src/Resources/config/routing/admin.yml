@@ -1,14 +1,14 @@
 bitbag_admin_block:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/block.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/block.yml"
 
 bitbag_admin_page:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/page.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/page.yml"
 
 bitbag_admin_frequently_asked_question:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
 
 bitbag_admin_section:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/section.yml"
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/section.yml"
 
 bitbag_admin_ajax_generate_page_slug:
     path: /page/generate-slug

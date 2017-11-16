@@ -10,21 +10,21 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 /**

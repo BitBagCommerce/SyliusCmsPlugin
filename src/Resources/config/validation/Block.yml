@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\Block:
+BitBag\SyliusCmsPlugin\Entity\Block:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]

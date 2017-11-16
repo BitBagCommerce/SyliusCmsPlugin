@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;

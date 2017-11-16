@@ -4,4 +4,4 @@ imports:
 
 services:
     bitbag.behat.random_string_generator:
-        class: Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGenerator
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGenerator

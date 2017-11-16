@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Twig\Extension;
+namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\CmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\CmsPlugin\Resolver\BlockTemplateResolverInterface;
-use BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
+use BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -62,8 +62,8 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     ): void
     {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
-        $blockTemplateResolver->resolveTemplate($block)->willReturn('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig');
-        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
+        $blockTemplateResolver->resolveTemplate($block)->willReturn('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock.html.twig');
+        $twigEnvironment->render('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }

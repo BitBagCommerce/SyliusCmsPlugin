@@ -1,24 +1,24 @@
 imports:
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/twig.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/form.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/factory.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/event_listener.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/controller.yml" }
-    - { resource: "@BitBagCmsPlugin/Resources/config/services/fixture.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/twig.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/form.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/factory.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/event_listener.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/controller.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/fixture.yml" }
 
 services:
     bitbag.resolver.block_resource:
-        class: BitBag\CmsPlugin\Resolver\BlockResourceResolver
+        class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
         arguments:
             - "@bitbag.repository.block"
             - "@logger"
 
     bitbag.resolver.page_resource:
-        class: BitBag\CmsPlugin\Resolver\PageResourceResolver
+        class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
         arguments:
             - "@bitbag.repository.page"
             - "@sylius.context.locale"
             - "@logger"
 
     bitbag.resolver.block_template:
-        class: BitBag\CmsPlugin\Resolver\BlockTemplateResolver
+        class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver

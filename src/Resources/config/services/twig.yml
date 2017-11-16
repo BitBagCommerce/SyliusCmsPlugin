@@ -1,6 +1,6 @@
 services:
     bitbag.twig.extension.block:
-        class: BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension
         public: false
         arguments:
             - "@bitbag.repository.block"

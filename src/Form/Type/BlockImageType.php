@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 

@@ -1,6 +1,6 @@
 services:
     bitbag.behat.context.ui.admin.block:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\BlockContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
@@ -14,7 +14,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.admin.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\PageContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\PageContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
@@ -28,7 +28,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.admin.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
@@ -41,7 +41,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.admin.section:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\SectionContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\SectionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
@@ -54,14 +54,14 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.shop.homepage_blocks:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
         arguments:
             - "@bitbag.behat.page.shop.home"
         tags:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.shop.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\PageContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\PageContext
         arguments:
             - "@bitbag.behat.page.shop.page.show"
             - "@bitbag.behat.page.shop.page.index"
@@ -70,7 +70,7 @@ services:
             - { name: fob.context_service }
 
     bitbag.behat.context.ui.shop.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
         arguments:
             - "@bitbag.behat.page.shop.frequently_asked_question.index"
         tags:

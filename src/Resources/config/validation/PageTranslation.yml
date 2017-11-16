@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\PageTranslation:
+BitBag\SyliusCmsPlugin\Entity\PageTranslation:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [slug, locale]

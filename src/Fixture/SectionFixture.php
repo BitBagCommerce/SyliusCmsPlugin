@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Fixture;
+namespace BitBag\SyliusCmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
+use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

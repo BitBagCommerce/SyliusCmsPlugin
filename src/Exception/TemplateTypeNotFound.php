@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Exception;
+namespace BitBag\SyliusCmsPlugin\Exception;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>

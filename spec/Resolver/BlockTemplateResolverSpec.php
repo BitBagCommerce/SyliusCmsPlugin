@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Resolver;
+namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Resolver\BlockTemplateResolver;
-use BitBag\CmsPlugin\Resolver\BlockTemplateResolverInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver;
+use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -36,20 +36,20 @@ final class BlockTemplateResolverSpec extends ObjectBehavior
     {
         $block->getType()->willReturn('text');
 
-        $this->resolveTemplate($block)->shouldReturn('@BitBagCmsPlugin/Shop/Block/Show/textBlock.html.twig');
+        $this->resolveTemplate($block)->shouldReturn('@BitBagSyliusCmsPlugin/Shop/Block/Show/textBlock.html.twig');
     }
 
     function it_returns_html_block_template(BlockInterface $block)
     {
         $block->getType()->willReturn('html');
 
-        $this->resolveTemplate($block)->shouldReturn('@BitBagCmsPlugin/Shop/Block/Show/htmlBlock.html.twig');
+        $this->resolveTemplate($block)->shouldReturn('@BitBagSyliusCmsPlugin/Shop/Block/Show/htmlBlock.html.twig');
     }
 
     function it_returns_image_block_template(BlockInterface $block)
     {
         $block->getType()->willReturn('image');
 
-        $this->resolveTemplate($block)->shouldReturn('@BitBagCmsPlugin/Shop/Block/Show/imageBlock.html.twig');
+        $this->resolveTemplate($block)->shouldReturn('@BitBagSyliusCmsPlugin/Shop/Block/Show/imageBlock.html.twig');
     }
 }

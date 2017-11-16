@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Repository;
+namespace BitBag\SyliusCmsPlugin\Repository;
 
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionInterface;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 

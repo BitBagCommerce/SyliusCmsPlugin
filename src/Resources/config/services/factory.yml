@@ -1,6 +1,6 @@
 services:
     bitbag.custom_factory.block:
-        class: BitBag\CmsPlugin\Factory\BlockFactory
+        class: BitBag\SyliusCmsPlugin\Factory\BlockFactory
         decorates: "bitbag.factory.block"
         public: false
         decoration_priority: 1

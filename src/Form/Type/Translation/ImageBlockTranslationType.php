@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type\Translation;
+namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
-use BitBag\CmsPlugin\Form\Type\BlockImageType;
+use BitBag\SyliusCmsPlugin\Form\Type\BlockImageType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
