@@ -7,8 +7,10 @@ sylius_grid:
                     class: "%bitbag.model.frequently_asked_question.class%"
                     repository:
                         method: createListQueryBuilder
+                        arguments: ["%locale%"]
             sorting:
-                position: desc
+                position: asc
+            limits: [10, 25, 50]
             fields:
                 position:
                     type: string
@@ -26,12 +28,6 @@ sylius_grid:
                     type: string
                     label: bitbag.ui.answer
                     sortable: translation.answer
-                sections:
-                    type: twig
-                    label: bitbag.ui.sections
-                    path: .
-                    options:
-                        template: "@BitBagCmsPlugin/Grid/Field/sections.html.twig"
             filters:
                 search:
                     type: string

@@ -25,7 +25,7 @@ class Block implements BlockInterface
 {
     use ToggleableTrait;
     use SectionableTrait;
-    use ProductableTrait;
+    use ProductsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

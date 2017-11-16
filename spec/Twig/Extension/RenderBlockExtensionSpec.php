@@ -14,9 +14,10 @@ namespace spec\BitBag\CmsPlugin\Twig\Extension;
 
 use BitBag\CmsPlugin\Entity\BlockInterface;
 use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\CmsPlugin\Resolver\BlockResourceResolverInterface;
+use BitBag\CmsPlugin\Resolver\BlockTemplateResolverInterface;
 use BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension;
 use PhpSpec\ObjectBehavior;
-use Psr\Log\LoggerInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -25,10 +26,11 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
 {
     function let(
         BlockRepositoryInterface $blockRepository,
-        LoggerInterface $logger
+        BlockTemplateResolverInterface $blockTemplateResolver,
+        BlockResourceResolverInterface $blockResourceResolver
     ): void
     {
-        $this->beConstructedWith($blockRepository, $logger);
+        $this->beConstructedWith($blockRepository, $blockTemplateResolver, $blockResourceResolver);
     }
 
     function it_is_initializable(): void
@@ -44,6 +46,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
     function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
+
         $functions->shouldHaveCount(1);
 
         foreach ($functions as $function) {
@@ -51,54 +54,18 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         }
     }
 
-    function it_adds_warning_for_not_found_block(
-        BlockRepositoryInterface $blockRepository,
-        LoggerInterface $logger,
-        \Twig_Environment $twigEnvironment
-    ): void
-    {
-        $blockRepository->findEnabledByCode('bitbag')->willReturn(null);
-        $logger->warning('Block with "bitbag" code was not found in the database.')->shouldBeCalled();
-
-        $this->renderBlock($twigEnvironment, 'bitbag')->shouldReturn(null);
-    }
-
-    function it_renders_text_template_for_text_type(
-        BlockRepositoryInterface $blockRepository,
+    function it_renders_block(
+        BlockResourceResolverInterface $blockResourceResolver,
+        BlockTemplateResolverInterface $blockTemplateResolver,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
     ): void
     {
-        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
-        $block->getType()->willReturn('text');
-        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/textBlock.html.twig', ['block' => $block])->shouldBeCalled();
-
-        $this->renderBlock($twigEnvironment, 'bitbag');
-    }
-
-    function it_renders_html_template_for_html_type(
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block,
-        \Twig_Environment $twigEnvironment
-    ): void
-    {
-        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
-        $block->getType()->willReturn('html');
-        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->shouldBeCalled();
-
-        $this->renderBlock($twigEnvironment, 'bitbag');
-    }
-
-    function it_renders_image_template_for_image_type(
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block,
-        \Twig_Environment $twigEnvironment
-    ): void
-    {
-        $blockRepository->findEnabledByCode('bitbag')->willReturn($block);
-        $block->getType()->willReturn('image');
-        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/imageBlock.html.twig', ['block' => $block])->shouldBeCalled();
+        $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
+        $blockTemplateResolver->resolveTemplate($block)->willReturn('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig');
+        $twigEnvironment->render('@BitBagCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
 }
+

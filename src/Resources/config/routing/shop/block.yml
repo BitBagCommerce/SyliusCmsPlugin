@@ -1,22 +1,36 @@
-bitbag_shop_block_show:
+bitbag_shop_block_render:
     path: /block/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.block:showAction
+        _controller: bitbag.controller.block:renderBlockAction
         _sylius:
             repository:
                 method: findOneByCode
                 arguments:
                     - $code
 
-bitbag_render_blocks_by_section_code:
-    path: /block/section/{code}
+bitbag_shop_block_index_by_section_code:
+    path: /blocks/section/{sectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag.controller.block:indexAction
         _sylius:
             template: $template
             repository:
-                method: findEnabledBySectionCode
+                method: findBySectionCode
                 arguments:
-                    - $code
+                    - $sectionCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+
+bitbag_shop_block_index_by_product_code:
+    path: /blocks/product/{productCode}
+    methods: [GET]
+    defaults:
+        _controller: bitbag.controller.block:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findByProductCode
+                arguments:
+                    - $productCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"

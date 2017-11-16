@@ -3,14 +3,19 @@
 {% import '@SyliusUi/Macro/messages.html.twig' as messages %}
 
 {% block content %}
-    {% for faq in resources %}
-        <h3>
-            {{ faq.question }}
-        </h3>
-        <p>
-            {{ faq.answer }}
-        </p>
-    {% else %}
-        {{ messages.info('sylius.ui.no_results_to_display') }}
-    {% endfor %}
+    <div class="ui stackable grid segment">
+        <div id="bitbag-faqs" class="ui sixteen wide column">
+            {% if resources|length > 0 %}
+                <div class="ui one column stackable grid">
+                    {% for frequentlyAskedQuestion in resources %}
+                        <div class="bitbag-frequently-asked-question">
+                            {% include '@BitBagCmsPlugin/Shop/FrequentlyAskedQuestion/Index/_show.html.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ messages.info('sylius.ui.no_results_to_display') }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

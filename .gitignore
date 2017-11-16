@@ -14,5 +14,8 @@ tests/Application/var/
 !tests/Application/var/.gitkeep
 
 tests/Application/web/*
+!tests/Application/web/favicon.ico
+!tests/Application/web/app.php
 !tests/Application/web/app_dev.php
 !tests/Application/web/app_test.php
+!tests/Application/web/assets/shop/css/bitbag.css

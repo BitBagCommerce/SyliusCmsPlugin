@@ -12,12 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\CmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Entity\PageTranslationInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
@@ -26,34 +23,16 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 final class PageFixture extends AbstractFixture implements FixtureInterface
 {
     /**
-     * @var FactoryInterface
+     * @var FixtureFactoryInterface
      */
-    private $pageFactory;
+    private $pageFixtureFactory;
 
     /**
-     * @var FactoryInterface
+     * @param FixtureFactoryInterface $pageFixtureFactory
      */
-    private $pageTranslationFactory;
-
-    /**
-     * @var PageRepositoryInterface
-     */
-    private $pageRepository;
-
-    /**
-     * @param FactoryInterface $pageFactory
-     * @param FactoryInterface $pageTranslationFactory
-     * @param PageRepositoryInterface $pageRepository
-     */
-    public function __construct(
-        FactoryInterface $pageFactory,
-        FactoryInterface $pageTranslationFactory,
-        PageRepositoryInterface $pageRepository
-    )
+    public function __construct(FixtureFactoryInterface $pageFixtureFactory)
     {
-        $this->pageFactory = $pageFactory;
-        $this->pageTranslationFactory = $pageTranslationFactory;
-        $this->pageRepository = $pageRepository;
+        $this->pageFixtureFactory = $pageFixtureFactory;
     }
 
     /**
@@ -61,34 +40,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        foreach ($options['pages'] as $code => $fields) {
-
-            if (null !== $this->pageRepository->findOneBy(['code' => $code])) {
-                continue;
-            }
-
-            /** @var PageInterface $page */
-            $page = $this->pageFactory->createNew();
-
-            $page->setCode($code);
-            $page->setEnabled($fields['enabled']);
-
-            foreach ($fields['translations'] as $localeCode => $translation) {
-                /** @var PageTranslationInterface $pageTranslation */
-                $pageTranslation = $this->pageTranslationFactory->createNew();
-
-                $pageTranslation->setLocale($localeCode);
-                $pageTranslation->setSlug($translation['slug']);
-                $pageTranslation->setName($translation['name']);
-                $pageTranslation->setMetaKeywords($translation['meta_keywords']);
-                $pageTranslation->setMetaDescription($translation['meta_description']);
-                $pageTranslation->setContent($translation['content']);
-
-                $page->addTranslation($pageTranslation);
-            }
-
-            $this->pageRepository->add($page);
-        }
+        $this->pageFixtureFactory->load($options['custom']);
     }
 
     /**
@@ -96,7 +48,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
      */
     public function getName(): string
     {
-        return 'bitbag_cms_page';
+        return 'page';
     }
 
     /**
@@ -106,10 +58,16 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->arrayNode('pages')
+                ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
+                            ->booleanNode('remove_existing')->defaultTrue()->end()
+                            ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
+                            ->integerNode('products')->defaultNull()->end()
+                            ->arrayNode('sections')
+                                ->prototype('scalar')->end()
+                            ->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()
@@ -124,6 +82,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
     }
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="{{ app.request.locale|slice(0, 2) }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %}Sylius{% endblock %}</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {% block metatags %}
+    {% endblock %}
+
+    {% block stylesheets %}
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <link href="{{ asset('assets/shop/css/bitbag.css') }}" rel="stylesheet">
+
+        {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
+
+        {{ sonata_block_render_event('sylius.shop.layout.stylesheets') }}
+    {% endblock %}
+
+    {{ sonata_block_render_event('sylius.shop.layout.head') }}
+</head>
+
+<body class="pushable">
+{{ sonata_block_render_event('sylius.shop.layout.before_body') }}
+<div class="pusher">
+    {% block top %}
+        <div id="menu" class="ui large sticky inverted stackable menu">
+            {{ sonata_block_render_event('sylius.shop.layout.before_currency_switcher') }}
+
+            {{ render(controller('sylius.controller.shop.currency_switch:renderAction')) }}
+            {{ render(controller('sylius.controller.shop.locale_switch:renderAction')) }}
+
+            {{ sonata_block_render_event('sylius.shop.layout.before_security_widget') }}
+
+            {{ render(controller('sylius.controller.shop.security_widget:renderAction')) }}
+
+            {{ sonata_block_render_event('sylius.shop.layout.after_security_widget') }}
+        </div>
+    {% endblock %}
+
+    <div class="ui container">
+        {% block header %}
+            <header>
+                {% include '@SyliusShop/_header.html.twig' %}
+
+                {{ sonata_block_render_event('sylius.shop.layout.after_header') }}
+
+                <div class="ui large stackable menu">
+                    {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+                    {{ render(path('bitbag_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+                    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}"
+                       class="item">
+                        Blog
+                        <span class="ui teal label">NEW</span>
+                    </a>
+                    <a href="{{ path('bitbag_shop_frequently_asked_question_index') }}" class="item">
+                        FAQs
+                        <span class="ui teal label">NEW</span>
+                    </a>
+                </div>
+            </header>
+        {% endblock %}
+
+        {% include '@SyliusUi/_flashes.html.twig' %}
+
+        {{ sonata_block_render_event('sylius.shop.layout.before_content') }}
+
+        {% block content %}
+        {% endblock %}
+
+        {{ sonata_block_render_event('sylius.shop.layout.after_content') }}
+    </div>
+
+    {% block footer %}
+        {% include '@SyliusShop/_footer.html.twig' %}
+    {% endblock %}
+</div>
+
+{% block javascripts %}
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'assets/shop/js/app.js'} %}
+
+    {{ sonata_block_render_event('sylius.shop.layout.javascripts') }}
+{% endblock %}
+
+{% include '@SyliusUi/Modal/_confirmation.html.twig' %}
+{{ sonata_block_render_event('sylius.shop.layout.after_body') }}
+</body>
+</html>

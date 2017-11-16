@@ -1,5 +1,5 @@
 services:
-    bitbag.behat.context.ui.admin.managing_blocks:
+    bitbag.behat.context.ui.admin.block:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
             - "@sylius.behat.shared_storage"
@@ -13,7 +13,7 @@ services:
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.admin.managing_pages:
+    bitbag.behat.context.ui.admin.page:
         class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\PageContext
         arguments:
             - "@sylius.behat.shared_storage"
@@ -50,5 +50,28 @@ services:
             - "@bitbag.behat.page.admin.section.create"
             - "@bitbag.behat.page.admin.section.update"
             - "@bitbag.behat.random_string_generator"
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.ui.shop.homepage_blocks:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
+        arguments:
+            - "@bitbag.behat.page.shop.home"
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.ui.shop.page:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\PageContext
+        arguments:
+            - "@bitbag.behat.page.shop.page.show"
+            - "@bitbag.behat.page.shop.page.index"
+            - "@sylius.behat.shared_storage"
+        tags:
+            - { name: fob.context_service }
+
+    bitbag.behat.context.ui.shop.frequently_asked_question:
+        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
+        arguments:
+            - "@bitbag.behat.page.shop.frequently_asked_question.index"
         tags:
             - { name: fob.context_service }

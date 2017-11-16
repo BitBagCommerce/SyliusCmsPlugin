@@ -25,7 +25,7 @@ interface BlockInterface extends
     ResourceInterface,
     TranslatableInterface,
     ToggleableInterface,
-    ProductableInterface,
+    ProductsAwareInterface,
     SectionableInterface
 {
     const TEXT_BLOCK_TYPE = 'text';

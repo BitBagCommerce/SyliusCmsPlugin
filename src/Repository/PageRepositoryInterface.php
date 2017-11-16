@@ -30,10 +30,11 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $code
+     * @param null|string $localeCode
      *
-     * @return null|PageInterface
+     * @return PageInterface|null
      */
-    public function findEnabledByCode(string $code): ?PageInterface;
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
 
     /**
      * @param string $slug
@@ -41,12 +42,12 @@ interface PageRepositoryInterface extends RepositoryInterface
      *
      * @return null|PageInterface
      */
-    public function findEnabledBySlug(string $slug, string $localeCode): ?PageInterface;
+    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface;
 
     /**
      * @param string $sectionCode
      *
-     * @return PageInterface[]
+     * @return QueryBuilder
      */
-    public function findEnabledBySectionCode(string $sectionCode): array;
+    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
 }

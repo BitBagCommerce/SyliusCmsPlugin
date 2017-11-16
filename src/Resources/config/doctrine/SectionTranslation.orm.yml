@@ -9,5 +9,6 @@ BitBag\CmsPlugin\Entity\SectionTranslation:
                 strategy: AUTO
     fields:
         name:
+            column: name
             type: string
             nullable: true

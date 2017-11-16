@@ -9,12 +9,15 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
                 strategy: AUTO
     fields:
         name:
+            column: name
             type: string
             nullable: true
         content:
+            column: content
             type: text
             nullable: true
         link:
+            column: link
             type: text
             nullable: true
     oneToOne:

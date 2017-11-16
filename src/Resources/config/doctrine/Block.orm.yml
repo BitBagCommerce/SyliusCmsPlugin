@@ -9,13 +9,16 @@ BitBag\CmsPlugin\Entity\Block:
                 strategy: AUTO
     fields:
         code:
+            column: code
             type: string
             length: 64
             unique: true
         type:
+            column: type
             type: string
             length: 64
         enabled:
+            column: enabled
             type: boolean
     manyToMany:
         sections:

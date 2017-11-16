@@ -1,0 +1,5 @@
+imports:
+    - { resource: "admin/block.yml" }
+    - { resource: "admin/page.yml" }
+    - { resource: "admin/frequently_asked_question.yml" }
+    - { resource: "admin/section.yml" }

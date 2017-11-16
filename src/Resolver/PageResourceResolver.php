@@ -5,26 +5,32 @@
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on mikolaj.krol@bitbag.pl.
+ * an email on kontakt@bitbag.pl.
  */
 
-namespace BitBag\CmsPlugin\Twig\Extension;
+declare(strict_types=1);
+
+namespace BitBag\CmsPlugin\Resolver;
 
 use BitBag\CmsPlugin\Entity\PageInterface;
 use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class RenderPageLinkByCodeExtension extends \Twig_Extension
+final class PageResourceResolver implements PageResourceResolverInterface
 {
-    const PAGE_LINK_TEMPLATE = 'BitBagCmsPlugin:Shop:Page:_link.html.twig';
-
     /**
      * @var PageRepositoryInterface
      */
     private $pageRepository;
+
+    /**
+     * @var LocaleContextInterface
+     */
+    private $localeContext;
 
     /**
      * @var LoggerInterface
@@ -33,39 +39,28 @@ final class RenderPageLinkByCodeExtension extends \Twig_Extension
 
     /**
      * @param PageRepositoryInterface $pageRepository
+     * @param LocaleContextInterface $localeContext
      * @param LoggerInterface $logger
      */
     public function __construct(
         PageRepositoryInterface $pageRepository,
+        LocaleContextInterface $localeContext,
         LoggerInterface $logger
     )
     {
         $this->pageRepository = $pageRepository;
+        $this->localeContext = $localeContext;
         $this->logger = $logger;
     }
 
     /**
-     * @return \Twig_SimpleFunction[]
+     * {@inheritdoc}
      */
-    public function getFunctions()
+    public function findOrLog(string $code): ?PageInterface
     {
-        return [
-            new \Twig_SimpleFunction('bitbag_render_page_link_by_code', [$this, 'renderPageLinkByCode'], ['needs_environment' => true, 'is_safe' => ['html'],]),
-        ];
-    }
-
-    /**
-     * @param \Twig_Environment $twigEnvironment
-     * @param string $code
-     *
-     * @return null|string
-     */
-    public function renderPageLinkByCode(\Twig_Environment $twigEnvironment, $code)
-    {
-        $page = $this->pageRepository->findEnabledByCode($code);
+        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
 
         if (false === $page instanceof PageInterface) {
-
             $this->logger->warning(sprintf(
                 'Page with "%s" code was not found in the database.',
                 $code
@@ -74,6 +69,6 @@ final class RenderPageLinkByCodeExtension extends \Twig_Extension
             return null;
         }
 
-        return $twigEnvironment->render(self::PAGE_LINK_TEMPLATE, ['page' => $page]);
+        return $page;
     }
 }

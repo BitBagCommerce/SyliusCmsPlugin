@@ -1,0 +1,197 @@
+parameters:
+    fixtures_dir: "%kernel.root_dir%/../app/Resources/fixtures"
+
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                logger: ~
+            fixtures:
+                section:
+                    options:
+                        custom:
+                            blog:
+                                translations:
+                                    en_US:
+                                        name: "Blog"
+                            general:
+                                translations:
+                                    en_US:
+                                        name: "General"
+                            store:
+                                translations:
+                                    en_US:
+                                        name: "Store"
+                            homepage:
+                                translations:
+                                    en_US:
+                                        name: "Homepage"
+                            products:
+                                translations:
+                                    en_US:
+                                        name: "Products"
+                block:
+                    options:
+                        custom:
+                            homepage_header_image:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_header.jpeg"
+                                        name: |
+                                            Some block name
+                            homepage_banner_image_1:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
+                                        link: "/en_US/page/about"
+                                        name: |
+                                            <a href="/en_US/page/about" class="italic">Click me! <i class="em em-kiss"></i></a>
+                            homepage_banner_image_2:
+                                type: image
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                            homepage_products_info:
+                                type: html
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ui info message">
+                                                <i class="em em-arrow_down"></i> Click one of the below products to see what you can do with the blocks in your product view! <i class="em em-arrow_down"></i>
+                                            </div>
+                            sale:
+                                type: image
+                                sections:
+                                    - "products"
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/sale.jpeg"
+                            section_info_block:
+                                type: html
+                                sections:
+                                    - "products"
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ignored info ui message">
+                                                The block you can see on the left is just a block associated with a section named <code>Products</code>
+                                            </div>
+                                            <p>With this feature, you can render any block you want on the product page, like size table, delivery information, or even promotion banner.</p>
+                                            <p>It's done with a simple controller render:</p>
+                                            <pre>{{ render(path('bitbag_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
+                            product_info_block:
+                                type: html
+                                products: 5
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <div class="ignored info ui message">On the other hand, the block on the right is a block associated with specific products.</div>
+                                            <p>This approach can be helpful with displaying some content dedicated to specific products, like size table or product story</p>
+                                            <p>The way you render it is similar to the one from above example:</p>
+                                            <pre>{{ render(path('bitbag_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
+                            size_table:
+                                type: image
+                                products: 5
+                                translations:
+                                    en_US:
+                                        image_path: "%fixtures_dir%/size_table.jpeg"
+                            homepage_intro:
+                                type: html
+                                translations:
+                                    en_US:
+                                        content: |
+                                                <h3>Blocks</h3>
+                                                <p>
+                                                    The left block is rendered with the usage of the particular controller like this:
+                                                </p>
+                                                <pre>
+                                                {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
+                                                </pre>
+                                                <p>
+                                                   It also can take template as a parameter, but it's optional. In this case, it works the same as below Twig functions. Sometimes you might want the block to render in a different template, that's where the controller is useful.
+                                                 </p>
+                                                <p>
+                                                    The other three blocks, including this one you are reading right now, are using Twig helper method.
+                                                </p>
+
+                                                <pre>
+                                                {{ bitbag_render_block('homepage_intro') }}
+                                                {{ bitbag_render_block('homepage_banner_image_1') }}
+                                                {{ bitbag_render_block('homepage_banner_image_2') }}
+                                                </pre>
+
+                                                <p>
+                                                    The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
+                                                </p>
+                            lorem_ipsum:
+                                type: text
+                                sections:
+                                    - "homepage"
+                                translations:
+                                    en_US:
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                                <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                                <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                                <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene</p>
+                page:
+                    options:
+                        custom:
+                            lorem_ipsum:
+                                number: 15
+                                products: 5
+                                sections:
+                                    - "blog"
+                                translations:
+                                    en_US:
+                                        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias?"
+                                        content: |
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
+
+                                            <p>Estne, quaeso, inquam, sitienti in bibendo voluptas? Duo Reges: constructio interrete. Quam si explicavisset, non tam haesitaret. Non enim ipsa genuit hominem, sed accepit a natura inchoatum. Conclusum est enim contra Cyrenaicos satis acute, nihil ad Epicurum. Quis istud, quaeso, nesciebat? Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; </p>
+
+                                            <p>Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Ex quo intellegitur officium medium quiddam esse, quod neque in bonis ponatur neque in contrariis. Quid ergo hoc loco intellegit honestum? Ergo, si semel tristior effectus est, hilara vita amissa est? </p>
+
+                                            <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
+                            about:
+                                products: 5
+                                sections:
+                                    - "general"
+                                    - "store"
+                                translations:
+                                    en_US:
+                                        name: "About us"
+                                        slug: "about"
+                                        content: |
+                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                            <ul>
+                                               <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                                               <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                                               <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                                               <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                                            </ul>
+                                            <p>Pellentesque habitant morbi tristique sene</p>
+                frequently_asked_question:
+                    options:
+                        custom:
+                            lorem_ipsum:
+                                number: 10
+                                translations:
+                                    en_US:
+                                        question: |
+                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
+                                        answer: |
+                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.

@@ -5,3 +5,20 @@ imports:
     - { resource: "@BitBagCmsPlugin/Resources/config/services/event_listener.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/services/controller.yml" }
     - { resource: "@BitBagCmsPlugin/Resources/config/services/fixture.yml" }
+
+services:
+    bitbag.resolver.block_resource:
+        class: BitBag\CmsPlugin\Resolver\BlockResourceResolver
+        arguments:
+            - "@bitbag.repository.block"
+            - "@logger"
+
+    bitbag.resolver.page_resource:
+        class: BitBag\CmsPlugin\Resolver\PageResourceResolver
+        arguments:
+            - "@bitbag.repository.page"
+            - "@sylius.context.locale"
+            - "@logger"
+
+    bitbag.resolver.block_template:
+        class: BitBag\CmsPlugin\Resolver\BlockTemplateResolver

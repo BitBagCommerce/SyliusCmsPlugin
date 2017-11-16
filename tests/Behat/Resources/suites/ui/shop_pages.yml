@@ -1,0 +1,14 @@
+default:
+    suites:
+        ui_shop_pages:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.product
+                - bitbag.behat.context.setup.page
+                - bitbag.behat.context.setup.section
+
+                - bitbag.behat.context.ui.shop.page
+            filters:
+                tags: "@shop_pages && @ui"

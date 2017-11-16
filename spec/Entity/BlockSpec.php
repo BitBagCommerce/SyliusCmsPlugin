@@ -14,7 +14,9 @@ namespace spec\BitBag\CmsPlugin\Entity;
 
 use BitBag\CmsPlugin\Entity\Block;
 use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\CmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
@@ -56,5 +58,29 @@ final class BlockSpec extends ObjectBehavior
 
         $this->disable();
         $this->isEnabled()->shouldReturn(false);
+    }
+
+    function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
+    {
+        $this->addProduct($firstProduct);
+        $this->hasProduct($firstProduct)->shouldReturn(true);
+
+        $this->hasProduct($secondProduct)->shouldReturn(false);
+
+        $this->removeProduct($firstProduct);
+
+        $this->hasProduct($firstProduct)->shouldReturn(false);
+    }
+
+    function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
+    {
+        $this->addSection($firstSection);
+        $this->hasSection($firstSection)->shouldReturn(true);
+
+        $this->hasSection($secondSection)->shouldReturn(false);
+
+        $this->removeSection($firstSection);
+
+        $this->hasSection($firstSection)->shouldReturn(false);
     }
 }

@@ -12,12 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\CmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Entity\SectionTranslationInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
@@ -26,34 +23,16 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 final class SectionFixture extends AbstractFixture implements FixtureInterface
 {
     /**
-     * @var FactoryInterface
+     * @var FixtureFactoryInterface
      */
-    private $sectionFactory;
+    private $sectionFixtureFactory;
 
     /**
-     * @var FactoryInterface
+     * @param FixtureFactoryInterface $sectionFixtureFactory
      */
-    private $sectionTranslationFactory;
-
-    /**
-     * @var SectionRepositoryInterface
-     */
-    private $sectionRepository;
-
-    /**
-     * @param FactoryInterface $sectionFactory
-     * @param FactoryInterface $sectionTranslationFactory
-     * @param SectionRepositoryInterface $sectionRepository
-     */
-    public function __construct(
-        FactoryInterface $sectionFactory,
-        FactoryInterface $sectionTranslationFactory,
-        SectionRepositoryInterface $sectionRepository
-    )
+    public function __construct(FixtureFactoryInterface $sectionFixtureFactory)
     {
-        $this->sectionFactory = $sectionFactory;
-        $this->sectionTranslationFactory = $sectionTranslationFactory;
-        $this->sectionRepository = $sectionRepository;
+        $this->sectionFixtureFactory = $sectionFixtureFactory;
     }
 
     /**
@@ -61,28 +40,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
      */
     public function load(array $options): void
     {
-        foreach ($options['sections'] as $code => $fields) {
-
-            if (null !== $this->sectionRepository->findOneBy(['code' => $code])) {
-                continue;
-            }
-
-            /** @var SectionInterface $section */
-            $section = $this->sectionFactory->createNew();
-
-            $section->setCode($code);
-
-            foreach ($fields['translations'] as $localeCode => $translation) {
-                /** @var SectionTranslationInterface $sectionTranslation */
-                $sectionTranslation = $this->sectionTranslationFactory->createNew();
-
-                $sectionTranslation->setName($translation['name']);
-
-                $section->addTranslation($sectionTranslation);
-            }
-
-            $this->sectionRepository->add($section);
-        }
+        $this->sectionFixtureFactory->load($options['custom']);
     }
 
     /**
@@ -90,7 +48,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
      */
     public function getName(): string
     {
-        return 'bitbag_cms_section';
+        return 'section';
     }
 
     /**
@@ -100,9 +58,10 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
     {
         $optionsNode
             ->children()
-                ->arrayNode('sections')
+                ->arrayNode('custom')
                     ->prototype('array')
                         ->children()
+                            ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()
@@ -113,6 +72,7 @@ final class SectionFixture extends AbstractFixture implements FixtureInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
     }
 }

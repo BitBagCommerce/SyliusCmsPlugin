@@ -19,7 +19,7 @@ use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
-final class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
+class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ChecksCodeImmutabilityTrait;
 }
