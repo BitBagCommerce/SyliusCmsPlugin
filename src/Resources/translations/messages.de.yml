@@ -5,8 +5,6 @@ bitbag:
         content_management: Content Management
         cms: Content Management
         enabled: Aktiviert
-        blocks: Blöcke
-        pages: Seiten
         blocks_header: Blöcke
         blocks_subheader: Blöcke verwalten
         text_block: Text Block
@@ -21,9 +19,6 @@ bitbag:
         meta_description: Meta Beschreibung
         content: Inhalt
         code: Code
-        enabled: Aktiviert
-        name: Name
         contents: Inhalte
-        content: Inhalt
         images: Bilder
         link: Link

@@ -5,8 +5,6 @@ bitbag:
         content_management: Zarządzanie treścią
         cms: Zarządzanie treścią
         enabled: Włączone
-        blocks: Bloki
-        pages: Strony
         blocks_header: Bloki
         blocks_subheader: Zarządzaj blokami
         text_block: Blok tekstowy
@@ -22,10 +20,7 @@ bitbag:
         content: Treść
         form:
         code: Kod
-        enabled: Włączone
-        name: Nazwa
         contents: Treści
-        content: Treść
         images: Zdjęcia
         link: Link
         sections: Sekcje

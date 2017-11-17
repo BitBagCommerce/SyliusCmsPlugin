@@ -5,8 +5,6 @@ bitbag:
         content_management: Gestion de contenu
         cms: Gestion de contenu
         enabled: Activée
-        blocks: Blocs
-        pages: Pages
         blocks_header: Blocs
         blocks_subheader: Gère vos blocs
         text_block: Bloc de texte
@@ -20,11 +18,7 @@ bitbag:
         meta_keywords: Meta Mots-clés
         meta_description: Meta Description
         content: Contenu
-        form:
         code: Code
-        enabled: Activée
-        name: Prénom
         contents: Contenu
-        content: Content
         images: Images
         link: Link
