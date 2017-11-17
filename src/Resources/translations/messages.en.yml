@@ -5,8 +5,6 @@ bitbag:
         content_management: Content management
         cms: Content management
         enabled: Enabled
-        blocks: Blocks
-        pages: Pages
         blocks_header: Blocks
         blocks_subheader: Manage your blocks
         text_block: Text block
@@ -23,10 +21,7 @@ bitbag:
         content: Content
         faq: FAQ
         code: Code
-        enabled: Enabled
-        name: Name
         contents: Contents
-        content: Content
         images: Images
         link: Link
         faq_header: FAQ
