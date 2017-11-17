@@ -1,5 +1,5 @@
 services:
-    bitbag.controller.page_slug:
+    bitbag_sylius_cms_plugin.controller.page_slug:
         class: BitBag\SyliusCmsPlugin\Controller\PageSlugController
         arguments:
             - "@sylius.generator.slug"

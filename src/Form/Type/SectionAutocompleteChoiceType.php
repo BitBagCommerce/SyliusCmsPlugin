@@ -29,7 +29,7 @@ final class SectionAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag.section',
+            'resource' => 'bitbag_sylius_cms_plugin.section',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);

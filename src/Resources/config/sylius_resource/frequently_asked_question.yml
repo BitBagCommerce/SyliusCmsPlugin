@@ -1,6 +1,6 @@
 sylius_resource:
     resources:
-        bitbag.frequently_asked_question:
+        bitbag_sylius_cms_plugin.frequently_asked_question:
             driver: doctrine/orm
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion

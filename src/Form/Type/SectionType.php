@@ -44,6 +44,6 @@ final class SectionType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_section';
+        return 'bitbag_sylius_cms_plugin_section';
     }
 }

@@ -35,7 +35,7 @@ final class PageController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        $pageResourceResolver = $this->get('bitbag.resolver.page_resource');
+        $pageResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.page_resource');
 
         $page = $pageResourceResolver->findOrLog($code);
 

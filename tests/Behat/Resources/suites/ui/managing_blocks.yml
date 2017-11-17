@@ -6,9 +6,9 @@ default:
 
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
-                - bitbag.behat.context.setup.block
-                - bitbag.behat.context.setup.section
+                - bitbag_sylius_cms_plugin.behat.context.setup.block
+                - bitbag_sylius_cms_plugin.behat.context.setup.section
 
-                - bitbag.behat.context.ui.admin.block
+                - bitbag_sylius_cms_plugin.behat.context.ui.admin.block
             filters:
                 tags: "@managing_blocks && @ui"

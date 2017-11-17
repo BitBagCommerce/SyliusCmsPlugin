@@ -1,21 +1,21 @@
 services:
-    bitbag.behat.page.admin.page.index:
+    bitbag_sylius_cms_plugin.behat.page.admin.page.index:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\IndexPage
         parent: sylius.behat.page.admin.crud.index
         public: false
         arguments:
-            - 'bitbag_admin_page_index'
+            - 'bitbag_sylius_cms_plugin_admin_page_index'
 
-    bitbag.behat.page.admin.page.create:
+    bitbag_sylius_cms_plugin.behat.page.admin.page.create:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\CreatePage
         parent: sylius.behat.page.admin.crud.create
         public: false
         arguments:
-            - 'bitbag_admin_page_create'
+            - 'bitbag_sylius_cms_plugin_admin_page_create'
 
-    bitbag.behat.page.admin.page.update:
+    bitbag_sylius_cms_plugin.behat.page.admin.page.update:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePage
         parent: sylius.behat.page.admin.crud.update
         public: false
         arguments:
-            - 'bitbag_admin_page_update'
+            - 'bitbag_sylius_cms_plugin_admin_page_update'

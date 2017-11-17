@@ -1,65 +1,65 @@
 services:
-    bitbag.fixture.block:
+    bitbag_sylius_cms_plugin.fixture.block:
         class: BitBag\SyliusCmsPlugin\Fixture\BlockFixture
         arguments:
-            - "@bitbag.fixture.factory.block"
+            - "@bitbag_sylius_cms_plugin.fixture.factory.block"
         tags:
             - { name: sylius_fixtures.fixture }
 
-    bitbag.fixture.page:
+    bitbag_sylius_cms_plugin.fixture.page:
         class: BitBag\SyliusCmsPlugin\Fixture\PageFixture
         arguments:
-            - "@bitbag.fixture.factory.page"
+            - "@bitbag_sylius_cms_plugin.fixture.factory.page"
         tags:
             - { name: sylius_fixtures.fixture }
 
-    bitbag.fixture.frequently_asked_question:
+    bitbag_sylius_cms_plugin.fixture.frequently_asked_question:
         class: BitBag\SyliusCmsPlugin\Fixture\FrequentlyAskedQuestionFixture
         arguments:
-            - "@bitbag.fixture.factory.frequently_asked_question"
+            - "@bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question"
         tags:
             - { name: sylius_fixtures.fixture }
 
-    bitbag.fixture.section:
+    bitbag_sylius_cms_plugin.fixture.section:
         class: BitBag\SyliusCmsPlugin\Fixture\SectionFixture
         arguments:
-            - "@bitbag.fixture.factory.section"
+            - "@bitbag_sylius_cms_plugin.fixture.factory.section"
         tags:
             - { name: sylius_fixtures.fixture }
 
-    bitbag.fixture.factory.block:
+    bitbag_sylius_cms_plugin.fixture.factory.block:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\BlockFixtureFactory
         arguments:
-            - "@bitbag.factory.block"
-            - "@bitbag.factory.block_translation"
-            - "@bitbag.repository.block"
+            - "@bitbag_sylius_cms_plugin.factory.block"
+            - "@bitbag_sylius_cms_plugin.factory.block_translation"
+            - "@bitbag_sylius_cms_plugin.repository.block"
             - "@sylius.image_uploader"
             - "@sylius.repository.product"
-            - "@bitbag.repository.section"
+            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
 
-    bitbag.fixture.factory.page:
+    bitbag_sylius_cms_plugin.fixture.factory.page:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\PageFixtureFactory
         arguments:
-            - "@bitbag.factory.page"
-            - "@bitbag.factory.page_translation"
-            - "@bitbag.repository.page"
+            - "@bitbag_sylius_cms_plugin.factory.page"
+            - "@bitbag_sylius_cms_plugin.factory.page_translation"
+            - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.repository.product"
-            - "@bitbag.repository.section"
+            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
 
-    bitbag.fixture.factory.frequently_asked_question:
+    bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory
         arguments:
-            - "@bitbag.factory.frequently_asked_question"
-            - "@bitbag.factory.frequently_asked_question_translation"
-            - "@bitbag.repository.frequently_asked_question"
+            - "@bitbag_sylius_cms_plugin.factory.frequently_asked_question"
+            - "@bitbag_sylius_cms_plugin.factory.frequently_asked_question_translation"
+            - "@bitbag_sylius_cms_plugin.repository.frequently_asked_question"
 
-    bitbag.fixture.factory.section:
+    bitbag_sylius_cms_plugin.fixture.factory.section:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\SectionFixtureFactory
         arguments:
-            - "@bitbag.factory.section"
-            - "@bitbag.factory.section_translation"
-            - "@bitbag.repository.section"
+            - "@bitbag_sylius_cms_plugin.factory.section"
+            - "@bitbag_sylius_cms_plugin.factory.section_translation"
+            - "@bitbag_sylius_cms_plugin.repository.section"

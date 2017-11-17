@@ -53,6 +53,6 @@ final class PageTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_page_translation';
+        return 'bitbag_sylius_cms_plugin_page_translation';
     }
 }

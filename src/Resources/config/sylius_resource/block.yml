@@ -1,6 +1,6 @@
 sylius_resource:
     resources:
-        bitbag.block:
+        bitbag_sylius_cms_plugin.block:
             driver: doctrine/orm
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\Block

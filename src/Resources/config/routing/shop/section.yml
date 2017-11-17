@@ -1,8 +1,8 @@
-bitbag_shop_section_show:
+bitbag_sylius_cms_plugin_shop_section_show:
     path: /section/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.section:showAction
+        _controller: bitbag_sylius_cms_plugin.controller.section:showAction
         _sylius:
             template: $template
             repository:

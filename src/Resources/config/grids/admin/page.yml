@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        bitbag_admin_page:
+        bitbag_sylius_cms_plugin_admin_page:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag.model.page.class%"
+                    class: "%bitbag_sylius_cms_plugin.model.page.class%"
                     repository:
                         method: createListQueryBuilder
                         arguments: ["%locale%"]

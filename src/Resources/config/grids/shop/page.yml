@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        bitbag_shop_page:
+        bitbag_sylius_cms_plugin_shop_page:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag.model.page.class%"
+                    class: "%bitbag_sylius_cms_plugin.model.page.class%"
                     repository:
                         method: createShopListQueryBuilder
                         arguments:

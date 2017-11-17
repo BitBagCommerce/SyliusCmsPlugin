@@ -35,7 +35,7 @@ final class BlockController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        $blockResourceResolver = $this->get('bitbag.resolver.block_resource');
+        $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
 
         $block = $blockResourceResolver->findOrLog($code);
 
@@ -46,7 +46,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         $view = View::create($block);
-        $blockTemplateResolver = $this->get('bitbag.resolver.block_template');
+        $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
         $template = $blockTemplateResolver->resolveTemplate($block);
 
         if ($configuration->isHtmlRequest()) {

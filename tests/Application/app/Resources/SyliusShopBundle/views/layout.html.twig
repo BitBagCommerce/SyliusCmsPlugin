@@ -51,13 +51,13 @@
 
                 <div class="ui large stackable menu">
                     {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
-                    {{ render(path('bitbag_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
-                    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}"
+                    {{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}"
                        class="item">
                         Blog
                         <span class="ui teal label">NEW</span>
                     </a>
-                    <a href="{{ path('bitbag_shop_frequently_asked_question_index') }}" class="item">
+                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_frequently_asked_question_index') }}" class="item">
                         FAQs
                         <span class="ui teal label">NEW</span>
                     </a>

@@ -37,28 +37,28 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabel('bitbag.ui.cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem
-            ->addChild('blocks', ['route' => 'bitbag_admin_block_index'])
+            ->addChild('blocks', ['route' => 'bitbag_sylius_cms_plugin_admin_block_index'])
             ->willReturn($cmsRootMenuItem)
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.blocks')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'block layout')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('pages', ['route' => 'bitbag_admin_page_index'])
+            ->addChild('pages', ['route' => 'bitbag_sylius_cms_plugin_admin_page_index'])
             ->willReturn($cmsRootMenuItem)
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.pages')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'sticky note')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('faq', ['route' => 'bitbag_admin_frequently_asked_question_index'])
+            ->addChild('faq', ['route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index'])
             ->willReturn($cmsRootMenuItem)
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.faq')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'help')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('sections', ['route' => 'bitbag_admin_section_index'])
+            ->addChild('sections', ['route' => 'bitbag_sylius_cms_plugin_admin_section_index'])
             ->willReturn($cmsRootMenuItem)
         ;
         $cmsRootMenuItem->setLabel('bitbag.ui.sections')->willReturn($cmsRootMenuItem);

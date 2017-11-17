@@ -1,11 +1,11 @@
-bitbag_admin_block:
+bitbag_sylius_cms_plugin_admin_block:
     resource: |
-        alias: bitbag.block
+        alias: bitbag_sylius_cms_plugin.block
         section: admin
         templates: BitBagSyliusCmsPlugin:Block
         except: ['show']
         redirect: update
-        grid: bitbag_admin_block
+        grid: bitbag_sylius_cms_plugin_admin_block
         permission: true
         vars:
             all:
@@ -20,16 +20,16 @@ bitbag_admin_block:
                     code: $type
     type: sylius.resource
 
-bitbag_admin_block_create:
+bitbag_sylius_cms_plugin_admin_block_create:
     path: /blocks/new/{type}
     methods: [GET, POST]
     defaults:
-        _controller: bitbag.controller.block:createAction
+        _controller: bitbag_sylius_cms_plugin.controller.block:createAction
         _sylius:
             section: admin
             template: BitBagSyliusCmsPlugin:Block:create.html.twig
             redirect:
-                route: bitbag_admin_block_update
+                route: bitbag_sylius_cms_plugin_admin_block_update
                 parameters: ~
             permission: true
             factory:

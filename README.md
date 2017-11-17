@@ -42,7 +42,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
-        new BitBag\CmsPlugin\BitBagCmsPlugin(),
+        new BitBag\SyliusCmsPlugin\BitBagCmsPlugin(),
     ]);
 }
 ```
@@ -84,7 +84,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 {% block content %}
 
-{{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
 
 {{ bitbag_render_block('homepage_text_block') }}
 
@@ -94,7 +94,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 To render a block by the product code, you can use `route`.
 
 ```twig
-{{ render(path('bitbag_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
 ```
 
 ### Pages
@@ -104,13 +104,13 @@ You can render page in two ways:
 By rendering a page link template:
 
 ```twig
-{{ render(path('bitbag_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
 ```
 
 Or rendering a page link directly:
 
 ```twig
-{{ render(path('bitbag_shop_page_show', {'slug' : 'about'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
 ```
 
 ### Sections
@@ -119,21 +119,21 @@ With sections, you can organize your blocks and pages under some specific catego
 For instance, you can create a Blog section and display pages and blocks under it. You also have a set of routes to do it:
 
 ```twig
-<a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}">
+<a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}">
     {{ 'app.ui.blog'|trans }}
 </a>
 ```
 
 ```twig
-{{ render(path('bitbag_shop_block_index_by_section_code', {'sectionCode' : 'blog', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'blog', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
 ```
 
 ### FAQs
 
-To render FAQs list, use the `bitbag_shop_frequently_asked_question_index` route.
+To render FAQs list, use the `bitbag_sylius_cms_plugin_shop_frequently_asked_question_index` route.
 
 ```twig
-<a href="{{ path('bitbag_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
+<a href="{{ path('bitbag_sylius_cms_plugin_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
 ```
 
 ### Fixtures
@@ -160,8 +160,8 @@ $ bin/console assets:install web -e test
 $ bin/console doctrine:schema:create -e test
 $ bin/console server:run 127.0.0.1:8080 -d web -e test
 $ open http://localhost:8080
-$ vendor/bin/behat
-$ vendor/bin/phpspec run
+$ bin/behat
+$ bin/phpspec run
 ```
 
 ## Contribution

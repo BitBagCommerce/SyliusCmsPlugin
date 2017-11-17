@@ -1,44 +1,44 @@
 services:
-    bitbag.behat.context.setup.block:
+    bitbag_sylius_cms_plugin.behat.context.setup.block:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\BlockContext
         arguments:
             - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.block"
-            - "@__symfony__.bitbag.repository.block"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.factory.block"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
             - "@__symfony__.sylius.image_uploader"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.setup.page:
+    bitbag_sylius_cms_plugin.behat.context.setup.page:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\PageContext
         arguments:
             - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.page"
-            - "@__symfony__.bitbag.repository.page"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.factory.page"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.page"
             - "@__symfony__.doctrine.orm.entity_manager"
             - "@__symfony__.sylius.repository.product"
-            - "@__symfony__.bitbag.repository.section"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.section"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.setup.frequently_asked_question:
+    bitbag_sylius_cms_plugin.behat.context.setup.frequently_asked_question:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext
         arguments:
             - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.frequently_asked_question"
-            - "@__symfony__.bitbag.repository.frequently_asked_question"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.factory.frequently_asked_question"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.frequently_asked_question"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.setup.section:
+    bitbag_sylius_cms_plugin.behat.context.setup.section:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\SectionContext
         arguments:
             - "@sylius.behat.shared_storage"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.factory.section"
-            - "@__symfony__.bitbag.repository.section"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.factory.section"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.section"
         tags:
             - { name: fob.context_service }

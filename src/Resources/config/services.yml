@@ -7,18 +7,18 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/fixture.yml" }
 
 services:
-    bitbag.resolver.block_resource:
+    bitbag_sylius_cms_plugin.resolver.block_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
         arguments:
-            - "@bitbag.repository.block"
+            - "@bitbag_sylius_cms_plugin.repository.block"
             - "@logger"
 
-    bitbag.resolver.page_resource:
+    bitbag_sylius_cms_plugin.resolver.page_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
         arguments:
-            - "@bitbag.repository.page"
+            - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.context.locale"
             - "@logger"
 
-    bitbag.resolver.block_template:
+    bitbag_sylius_cms_plugin.resolver.block_template:
         class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver

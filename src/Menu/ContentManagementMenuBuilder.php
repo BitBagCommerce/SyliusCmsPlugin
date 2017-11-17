@@ -33,7 +33,7 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem
             ->addChild('blocks', [
-                'route' => 'bitbag_admin_block_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_block_index'
             ])
             ->setLabel('bitbag.ui.blocks')
             ->setLabelAttribute('icon', 'block layout')
@@ -41,7 +41,7 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem
             ->addChild('pages', [
-                'route' => 'bitbag_admin_page_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_page_index'
             ])
             ->setLabel('bitbag.ui.pages')
             ->setLabelAttribute('icon', 'sticky note')
@@ -49,7 +49,7 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem
             ->addChild('faq', [
-                'route' => 'bitbag_admin_frequently_asked_question_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index'
             ])
             ->setLabel('bitbag.ui.faq')
             ->setLabelAttribute('icon', 'help')
@@ -57,7 +57,7 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem
             ->addChild('sections', [
-                'route' => 'bitbag_admin_section_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_section_index'
             ])
             ->setLabel('bitbag.ui.sections')
             ->setLabelAttribute('icon', 'grid layout')

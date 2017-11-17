@@ -38,6 +38,6 @@ final class SectionTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_section_translation';
+        return 'bitbag_sylius_cms_plugin_section_translation';
     }
 }

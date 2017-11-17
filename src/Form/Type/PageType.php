@@ -58,6 +58,6 @@ final class PageType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_page';
+        return 'bitbag_sylius_cms_plugin_page';
     }
 }

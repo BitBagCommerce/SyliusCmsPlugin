@@ -24,7 +24,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
      */
     public function getRouteName(): string
     {
-        return 'bitbag_shop_page_index_by_section_code';
+        return 'bitbag_sylius_cms_plugin_shop_page_index_by_section_code';
     }
 
     /**

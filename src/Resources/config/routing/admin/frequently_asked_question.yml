@@ -1,10 +1,10 @@
-bitbag_admin_frequently_asked_question:
+bitbag_sylius_cms_plugin_admin_frequently_asked_question:
     resource: |
-        alias: bitbag.frequently_asked_question
+        alias: bitbag_sylius_cms_plugin.frequently_asked_question
         section: admin
         templates: SyliusAdminBundle:Crud
         redirect: update
-        grid: bitbag_admin_frequently_asked_question
+        grid: bitbag_sylius_cms_plugin_admin_frequently_asked_question
         except: ['show']
         permission: true
         vars:

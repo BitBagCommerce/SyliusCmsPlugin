@@ -11,31 +11,31 @@
         <div class="ui stackable two column grid">
             <div class="column">
                 <div class="ui fluid segment column">
-                    {{ render(path('bitbag_shop_block_render', {'code' : 'homepage_header_image'})) }}
+                    {{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image'})) }}
                 </div>
             </div>
             <div class="column">
                 <div class="ui fluid segment">
-                    {{ bitbag_render_block('homepage_intro') }}
+                    {{ bitbag_sylius_cms_plugin_render_block('homepage_intro') }}
                 </div>
             </div>
         </div>
         <div class="ui stackable two column grid">
             <div class="column">
                 <div class="ui fluid segment">
-                    {{ bitbag_render_block('homepage_banner_image_1') }}
+                    {{ bitbag_sylius_cms_plugin_render_block('homepage_banner_image_1') }}
                 </div>
             </div>
             <div class="column">
                 <div class="ui fluid segment">
-                    {{ bitbag_render_block('homepage_banner_image_2') }}
+                    {{ bitbag_sylius_cms_plugin_render_block('homepage_banner_image_2') }}
                 </div>
             </div>
         </div>
     </div>
     <div class="ui stackable one column grid">
         <div class="column intro">
-            {{ bitbag_render_block('homepage_products_info') }}
+            {{ bitbag_sylius_cms_plugin_render_block('homepage_products_info') }}
         </div>
     </div>
 

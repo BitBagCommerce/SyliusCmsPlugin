@@ -7,5 +7,5 @@ jms_serializer:
     metadata:
         directories:
             bitbag-section:
-                namespace_prefix: "BitBag\\CmsPlugin"
+                namespace_prefix: "BitBag\\SyliusCmsPlugin"
                 path: "@BitBagSyliusCmsPlugin/Resources/config/serializer"

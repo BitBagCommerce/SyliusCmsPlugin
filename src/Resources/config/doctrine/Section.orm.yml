@@ -1,6 +1,6 @@
 BitBag\SyliusCmsPlugin\Entity\Section:
     type: entity
-    table: bitbag_section
+    table: bitbag_sylius_cms_plugin_section
     id:
         id:
             type: integer
