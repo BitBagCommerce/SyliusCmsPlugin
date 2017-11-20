@@ -13,7 +13,7 @@ bitbag:
         pages_header: Page
         pages_subheader: Gérez vos pages
         products: Des produits
-        name: Prénom
+        name: Nom
         slug: Slug
         meta_keywords: Meta Mots-clés
         meta_description: Meta Description
@@ -22,3 +22,10 @@ bitbag:
         contents: Contenu
         images: Images
         link: Link
+        faq: FAQ
+        faq_header: FAQ
+        faq_subheader: Gérer votre FAQ
+        frequently_asked_questions: FAQ
+        sections: Sections
+        sections_header: Sections
+        sections_subheader: Gérer vos sections
