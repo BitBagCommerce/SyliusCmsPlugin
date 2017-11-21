@@ -9,5 +9,5 @@ services:
         arguments:
             - "@sylius.image_uploader"
         tags:
-            - { name: kernel.event_listener, event: bitbag.block.pre_create, method: uploadImage }
-            - { name: kernel.event_listener, event: bitbag.block.pre_update, method: uploadImage }
+            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_update, method: uploadImage }

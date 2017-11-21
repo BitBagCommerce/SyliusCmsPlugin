@@ -43,8 +43,5 @@ bitbag_sylius_cms_plugin_admin_block_create:
                 route:
                     parameters:
                         type: $type
-            form:
-                options:
-                    validation_groups: ['bitbag','bitbag_image_not_blank']
     requirements:
         type: text|html|image

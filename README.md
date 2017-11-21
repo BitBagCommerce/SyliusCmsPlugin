@@ -42,7 +42,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
-        new BitBag\SyliusCmsPlugin\BitBagCmsPlugin(),
+        new BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
 ```
@@ -55,7 +55,7 @@ Import required config in your `app/config/config.yml` file:
 imports:
     ...
     
-    - { resource: '@BitBagCmsPlugin/Resources/config/config.yml' }
+    - { resource: '@BitBagSyliusCmsPlugin/Resources/config/config.yml' }
 ```
 
 Import routing in your `app/config/routing.yml` file:
@@ -65,7 +65,7 @@ Import routing in your `app/config/routing.yml` file:
 # app/config/routing.yml
 ...
 
-bitbag_cms_plugin:
+bitbag_sylius_cms_plugin:
     resource: '@BitBagSyliusCmsPlugin/Resources/config/routing.yml'
 ```
 
