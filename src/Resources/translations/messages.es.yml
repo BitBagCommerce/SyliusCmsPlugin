@@ -1,4 +1,4 @@
-bitbag:
+bitbag_sylius_cms_plugin:
     ui:
         blocks: Bloques
         pages: Páginas

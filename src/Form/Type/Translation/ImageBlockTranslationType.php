@@ -29,11 +29,11 @@ final class ImageBlockTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.ui.name',
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
             ->add('link', TextType::class, [
-                'label' => 'bitbag.ui.link',
+                'label' => 'bitbag_sylius_cms_plugin.ui.link',
                 'required' => false,
             ])
             ->add('image', BlockImageType::class, [

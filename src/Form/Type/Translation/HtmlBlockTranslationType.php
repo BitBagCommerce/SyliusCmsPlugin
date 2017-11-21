@@ -29,11 +29,11 @@ final class HtmlBlockTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.ui.name',
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.ui.content',
+                'label' => 'bitbag_sylius_cms_plugin.ui.content',
             ])
         ;
     }

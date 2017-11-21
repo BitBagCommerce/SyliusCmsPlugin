@@ -2,17 +2,17 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
     properties:
         question:
             - NotBlank:
-                message: 'bitbag.frequently_asked_question.question.not_blank'
+                message: 'bitbag_sylius_cms_plugin.frequently_asked_question.question.not_blank'
                 groups: ['bitbag']
             - Length:
                 min: 2
-                minMessage: 'bitbag.frequently_asked_question.question.min_length'
+                minMessage: 'bitbag_sylius_cms_plugin.frequently_asked_question.question.min_length'
                 groups: ['bitbag']
         answer:
             - NotBlank:
-                message: 'bitbag.frequently_asked_question.answer.not_blank'
+                message: 'bitbag_sylius_cms_plugin.frequently_asked_question.answer.not_blank'
                 groups: ['bitbag']
             - Length:
                 min: 2
-                minMessage: 'bitbag.frequently_asked_question.answer.min_length'
+                minMessage: 'bitbag_sylius_cms_plugin.frequently_asked_question.answer.min_length'
                 groups: ['bitbag']

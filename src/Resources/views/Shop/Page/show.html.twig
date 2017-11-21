@@ -21,7 +21,7 @@
         <div class="bitbag-page-content">{{ page.content|raw }}</div>
         <div class="ui dividing header"></div>
         <strong>
-            {{ 'bitbag.ui.sections'|trans }}:
+            {{ 'bitbag_sylius_cms_plugin.ui.sections'|trans }}:
         </strong>
         <div class="bitbag-page-sections">
             {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
@@ -29,7 +29,7 @@
     </div>
     {% if null != page.products %}
         <h2>
-            {{ 'bitbag.ui.page_related_products'|trans }}
+            {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
         </h2>
         <div class="bitbag-page-products">
             {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}

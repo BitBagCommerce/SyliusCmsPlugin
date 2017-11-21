@@ -9,8 +9,8 @@ bitbag_sylius_cms_plugin_admin_block:
         permission: true
         vars:
             all:
-                header: bitbag.ui.blocks_header
-                subheader: bitbag.ui.blocks_subheader
+                header: bitbag_sylius_cms_plugin.ui.blocks_header
+                subheader: bitbag_sylius_cms_plugin.ui.blocks_subheader
                 templates:
                     form: BitBagSyliusCmsPlugin:Block:Crud/_form.html.twig
             index:
@@ -36,8 +36,8 @@ bitbag_sylius_cms_plugin_admin_block_create:
                 method: createWithType
                 arguments: [$type]
             vars:
-                header: bitbag.ui.blocks_header
-                subheader: bitbag.ui.blocks_subheader
+                header: bitbag_sylius_cms_plugin.ui.blocks_header
+                subheader: bitbag_sylius_cms_plugin.ui.blocks_subheader
                 templates:
                     form: BitBagSyliusCmsPlugin:Block:Crud/_form.html.twig
                 route:

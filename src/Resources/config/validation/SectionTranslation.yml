@@ -2,11 +2,11 @@ BitBag\SyliusCmsPlugin\Entity\SectionTranslation:
     properties:
         name:
             - NotBlank:
-                message: bitbag.section.name.not_blank
+                message: bitbag_sylius_cms_plugin.section.name.not_blank
                 groups: [bitbag]
             - Length:
                 min: 2
                 max: 250
-                minMessage: bitbag.section.name.min_length
-                maxMessage: bitbag.section.name.max_length
+                minMessage: bitbag_sylius_cms_plugin.section.name.min_length
+                maxMessage: bitbag_sylius_cms_plugin.section.name.max_length
                 groups: [bitbag]

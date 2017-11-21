@@ -4,47 +4,47 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             fields: [slug, locale]
             errorPath: slug
             groups: [bitbag]
-            message: bitbag.page.slug.unique
+            message: bitbag_sylius_cms_plugin.page.slug.unique
     properties:
         name:
             - NotBlank:
-                message: bitbag.page.name.not_blank
+                message: bitbag_sylius_cms_plugin.page.name.not_blank
                 groups: [bitbag]
             - Length:
                 min: 2
                 max: 250
-                minMessage: bitbag.page.name.min_length
-                maxMessage: bitbag.page.name.max_length
+                minMessage: bitbag_sylius_cms_plugin.page.name.min_length
+                maxMessage: bitbag_sylius_cms_plugin.page.name.max_length
                 groups: [bitbag]
         slug:
             - NotBlank:
-                message: bitbag.page.slug.not_blank
+                message: bitbag_sylius_cms_plugin.page.slug.not_blank
                 groups: [bitbag]
             - Length:
                 min: 2
                 max: 250
-                minMessage: bitbag.page.slug.min_length
-                maxMessage: bitbag.page.slug.max_length
+                minMessage: bitbag_sylius_cms_plugin.page.slug.min_length
+                maxMessage: bitbag_sylius_cms_plugin.page.slug.max_length
                 groups: [bitbag]
         metaKeywords:
             - Length:
                 min: 2
                 max: 1000
-                minMessage: bitbag.page.meta_keywords.min_length
-                maxMessage: bitbag.page.meta_keywords.max_length
+                minMessage: bitbag_sylius_cms_plugin.page.meta_keywords.min_length
+                maxMessage: bitbag_sylius_cms_plugin.page.meta_keywords.max_length
                 groups: [bitbag]
         metaDescription:
             - Length:
                 min: 2
                 max: 5000
-                minMessage: bitbag.page.meta_description.min_length
-                maxMessage: bitbag.page.meta_description.max_length
+                minMessage: bitbag_sylius_cms_plugin.page.meta_description.min_length
+                maxMessage: bitbag_sylius_cms_plugin.page.meta_description.max_length
                 groups: [bitbag]
         content:
             - NotBlank:
-                message: bitbag.page.content.not_blank
+                message: bitbag_sylius_cms_plugin.page.content.not_blank
                 groups: [bitbag]
             - Length:
                 min: 2
-                minMessage: bitbag.page.content.min_length
+                minMessage: bitbag_sylius_cms_plugin.page.content.min_length
                 groups: [bitbag]

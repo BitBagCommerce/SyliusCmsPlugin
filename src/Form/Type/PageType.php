@@ -32,22 +32,22 @@ final class PageType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.ui.enabled',
+                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.products',
+                'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.ui.images',
+                'label' => 'bitbag_sylius_cms_plugin.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
             ->add('sections', SectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.sections',
+                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
                 'multiple' => true,
             ])
         ;

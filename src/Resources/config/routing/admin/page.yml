@@ -9,8 +9,8 @@ bitbag_sylius_cms_plugin_admin_page:
         permission: true
         vars:
             all:
-                header: bitbag.ui.pages_header
-                subheader: bitbag.ui.pages_subheader
+                header: bitbag_sylius_cms_plugin.ui.pages_header
+                subheader: bitbag_sylius_cms_plugin.ui.pages_subheader
                 templates:
                     form: BitBagSyliusCmsPlugin:Page:Crud/_form.html.twig
             index:

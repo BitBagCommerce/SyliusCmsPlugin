@@ -22,11 +22,11 @@ sylius_grid:
                     sortable: ~
                 question:
                     type: string
-                    label: bitbag.ui.question
+                    label: bitbag_sylius_cms_plugin.ui.question
                     sortable: translation.question
                 answer:
                     type: string
-                    label: bitbag.ui.answer
+                    label: bitbag_sylius_cms_plugin.ui.answer
                     sortable: translation.answer
             filters:
                 search:

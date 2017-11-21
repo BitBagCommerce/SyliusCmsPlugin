@@ -14,11 +14,11 @@ sylius_grid:
             fields:
                 code:
                     type: string
-                    label: bitbag.ui.code
+                    label: bitbag_sylius_cms_plugin.ui.code
                     sortable: ~
                 name:
                     type: string
-                    label: bitbag.ui.name
+                    label: bitbag_sylius_cms_plugin.ui.name
                     sortable: translation.name
             filters:
                 search:

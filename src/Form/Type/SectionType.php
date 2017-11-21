@@ -30,7 +30,7 @@ final class SectionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('translations', ResourceTranslationsType::class, [

@@ -9,8 +9,8 @@ bitbag_sylius_cms_plugin_admin_frequently_asked_question:
         permission: true
         vars:
             all:
-                header: bitbag.ui.faq_header
-                subheader: bitbag.ui.faq_subheader
+                header: bitbag_sylius_cms_plugin.ui.faq_header
+                subheader: bitbag_sylius_cms_plugin.ui.faq_subheader
                 templates:
                     form: BitBagSyliusCmsPlugin:FrequentlyAskedQuestion:Crud/_form.html.twig
             index:
