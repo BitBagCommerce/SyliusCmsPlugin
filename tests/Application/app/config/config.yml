@@ -26,6 +26,16 @@ framework:
         storage_id: session.storage.mock_file
     test: ~
 
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        firephp:
+            type: firephp
+            level: info
+
 swiftmailer:
     disable_delivery: true
     logging: true
