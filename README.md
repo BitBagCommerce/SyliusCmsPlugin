@@ -66,7 +66,7 @@ Import routing in your `app/config/routing.yml` file:
 ...
 
 bitbag_cms_plugin:
-    resource: '@BitBagCmsPlugin/Resources/config/routing.yml'
+    resource: '@BitBagSyliusCmsPlugin/Resources/config/routing.yml'
 ```
 
 ## Usage
@@ -94,7 +94,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 To render a block by the product code, you can use `route`.
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
 ```
 
 ### Pages
@@ -104,7 +104,7 @@ You can render page in two ways:
 By rendering a page link template:
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
 ```
 
 Or rendering a page link directly:
@@ -125,7 +125,7 @@ For instance, you can create a Blog section and display pages and blocks under i
 ```
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'blog', 'template' : '@BitBagCmsPlugin/Shop/Block/index.html.twig'})) }}
+{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'blog', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
 ```
 
 ### FAQs
