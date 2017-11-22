@@ -47,5 +47,3 @@
         $(document).previewUploadedImage('#bitbag-block-image')
     });
 })(jQuery);
-
-
