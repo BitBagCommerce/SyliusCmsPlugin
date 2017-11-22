@@ -85,4 +85,3 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
         }
     }
 }
-

@@ -259,4 +259,3 @@ final class PageContext implements Context
         $this->sharedStorage->set('page', $page);
     }
 }
-

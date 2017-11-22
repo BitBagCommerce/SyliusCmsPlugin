@@ -68,4 +68,3 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
 }
-
