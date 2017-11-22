@@ -1,5 +1,5 @@
 {
-    "name": "bitbag/sylius-cms-plugin",
+    "name": "bitbag/cms-plugin",
     "type": "sylius-plugin",
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
