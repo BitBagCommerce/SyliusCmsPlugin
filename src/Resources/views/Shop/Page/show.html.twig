@@ -20,14 +20,11 @@
 
         <div class="bitbag-page-content">{{ page.content|raw }}</div>
         <div class="ui dividing header"></div>
-        <strong>
-            {{ 'bitbag.ui.sections'|trans }}:
-        </strong>
         <div class="bitbag-page-sections">
             {% include '@BitBagCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
         </div>
     </div>
-    {% if null != page.products %}
+    {% if page.products|length > 0 %}
         <h2>
             {{ 'bitbag.ui.page_related_products'|trans }}
         </h2>
