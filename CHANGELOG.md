@@ -1,6 +1,6 @@
 ## Change Log
 
-### upcoming (2017/11/23 06:49 +00:00)
+### upcoming
 - [#98](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/98) Update messages.fr.yml (@gabriel-cardoso)
 - [#96](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/96) Fixed/removed duplicated translation keys (@sweoggy)
 - [#94](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/94) Add the CSS (@bitbager)
