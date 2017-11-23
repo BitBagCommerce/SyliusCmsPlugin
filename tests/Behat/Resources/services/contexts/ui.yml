@@ -5,11 +5,11 @@ services:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.block.index"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.block.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.block.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-            - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
         tags:
             - { name: fob.context_service }
 
@@ -19,11 +19,11 @@ services:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.page"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.page.index"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.page.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.page.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-            - "@__symfony__.bitbag_sylius_cms_plugin.repository.page"
         tags:
             - { name: fob.context_service }
 

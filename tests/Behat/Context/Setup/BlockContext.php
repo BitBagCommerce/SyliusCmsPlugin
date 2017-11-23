@@ -70,11 +70,11 @@ final class BlockContext implements Context
         ImageUploaderInterface $imageUploader
     )
     {
+        $this->sharedStorage = $sharedStorage;
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->blockFactory = $blockFactory;
         $this->blockRepository = $blockRepository;
-        $this->sharedStorage = $sharedStorage;
         $this->imageUploader = $imageUploader;
-        $this->randomStringGenerator = $randomStringGenerator;
     }
 
     /**
