@@ -1,5 +1,15 @@
 ## CHANGELOG
 
+### v1.1.1 2017/11/23
+- [#95](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/95) Upgrading to standards for creating Sylius plugin (@shinoks)
+- [#100](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/100) fix page sections layout (@victordit)
+- [#101](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/101) correct order of installation steps (@geecu)
+- [#98](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/98) Update messages.fr.yml (@gabriel-cardoso)
+- [#96](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/96) Fixed/removed duplicated translation keys (@sweoggy)
+- [#94](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/94) Add the CSS (@bitbager)
+- [#93](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/93) [Demo] Make the demo responsive (@bitbager)
+- [#92](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/92) Add the CSS (@bitbager)
+
 ### v1.1.0 2017/11/15
 - [#91](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/91) [Demo] Update fixtures (@bitbager)
 - [#90](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/90) [General] Prepare for the v1.1.0 (@bitbager)
@@ -21,6 +31,7 @@
 - [#75](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/75) [Behat] Cleanup contexts (@bitbager)
 - [#73](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/73) [Section] Add the section resource (@patrick477)
 - [#71](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/71) [Section] Implement basic Section Behat scenarios (@bitbager)
+- [#1](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/1) Merge new master (@bitbager, @shinoks, @patrick477, @damonsson, @pjedrzejewski, @pamil, @lchrusciel, @stefandoorn, @Zales0123, @mheki)
 - [#69](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/69) [Shop] Add _locale prefix to shop route (@bitbager, @shinoks, @patrick477, @damonsson, @pjedrzejewski, @pamil, @lchrusciel, @stefandoorn, @Zales0123, @mheki)
 - [#68](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/68) [General] Prepare for plugin update (@bitbager, @shinoks, @patrick477, @damonsson, @pjedrzejewski, @pamil, @lchrusciel, @stefandoorn, @Zales0123, @mheki)
 - [#65](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/65) Fix Travis build (@shinoks)
