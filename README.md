@@ -31,8 +31,6 @@ Almost each eCommerce app has to present some content. Managing it is often done
 ## Installation
 ```bash
 $ composer require bitbag/cms-plugin
-$ bin/console doctrine:schema:update --force
-$ bin/console assets:install
 ```
     
 Add plugin dependencies to your AppKernel.php file:
@@ -67,6 +65,12 @@ Import routing in your `app/config/routing.yml` file:
 
 bitbag_sylius_cms_plugin:
     resource: '@BitBagSyliusCmsPlugin/Resources/config/routing.yml'
+```
+
+Finish the installation by updating the database schema and installing assets:
+```
+$ bin/console doctrine:schema:update --force
+$ bin/console assets:install
 ```
 
 ## Usage
