@@ -91,7 +91,6 @@ final class PageContext implements Context
         RandomStringGeneratorInterface $randomStringGenerator
     )
     {
-
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
