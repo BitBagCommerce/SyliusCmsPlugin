@@ -1,21 +1,21 @@
-bitbag_shop_page_show:
+bitbag_sylius_cms_plugin_shop_page_show:
     path: /page/{slug}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.page:showAction
+        _controller: bitbag_sylius_cms_plugin.controller.page:showAction
         _sylius:
-            template: "@BitBagCmsPlugin/Shop/Page/show.html.twig"
+            template: "@BitBagSyliusCmsPlugin/Shop/Page/show.html.twig"
             repository:
                 method: findOneEnabledBySlug
                 arguments:
                     - $slug
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_shop_page_show_link_by_code:
+bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
     path: /page/link/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.page:renderLinkAction
+        _controller: bitbag_sylius_cms_plugin.controller.page:renderLinkAction
         _sylius:
             template: $template
             repository:
@@ -24,11 +24,11 @@ bitbag_shop_page_show_link_by_code:
                     - $code
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_shop_page_index_by_section_code:
+bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
     path: /pages/{sectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.page:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
         _sylius:
-            template: "@BitBagCmsPlugin/Shop/Page/index.html.twig"
-            grid: bitbag_shop_page
+            template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
+            grid: bitbag_sylius_cms_plugin_shop_page

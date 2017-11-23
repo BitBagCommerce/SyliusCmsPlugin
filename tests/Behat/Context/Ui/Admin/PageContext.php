@@ -10,19 +10,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
-use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\CreatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\IndexPageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 /**
@@ -46,6 +46,11 @@ final class PageContext implements Context
     private $notificationChecker;
 
     /**
+     * @var PageRepositoryInterface
+     */
+    private $pageRepository;
+
+    /**
      * @var IndexPageInterface
      */
     private $indexPage;
@@ -66,40 +71,34 @@ final class PageContext implements Context
     private $randomStringGenerator;
 
     /**
-     * @var PageRepositoryInterface
-     */
-    private $pageRepository;
-
-    /**
      * @param SharedStorageInterface $sharedStorage
      * @param CurrentPageResolverInterface $currentPageResolver
      * @param NotificationCheckerInterface $notificationChecker
+     * @param PageRepositoryInterface $pageRepository
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
      * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param PageRepositoryInterface $pageRepository
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
+        PageRepositoryInterface $pageRepository,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        PageRepositoryInterface $pageRepository
+        RandomStringGeneratorInterface $randomStringGenerator
     )
     {
-
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
+        $this->pageRepository = $pageRepository;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
         $this->randomStringGenerator = $randomStringGenerator;
-        $this->pageRepository = $pageRepository;
     }
 
     /**

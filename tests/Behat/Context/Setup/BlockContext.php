@@ -10,18 +10,18 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\BlockImage;
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockImage;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Factory\BlockFactoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -70,11 +70,11 @@ final class BlockContext implements Context
         ImageUploaderInterface $imageUploader
     )
     {
+        $this->sharedStorage = $sharedStorage;
+        $this->randomStringGenerator = $randomStringGenerator;
         $this->blockFactory = $blockFactory;
         $this->blockRepository = $blockRepository;
-        $this->sharedStorage = $sharedStorage;
         $this->imageUploader = $imageUploader;
-        $this->randomStringGenerator = $randomStringGenerator;
     }
 
     /**

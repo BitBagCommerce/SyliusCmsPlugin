@@ -1,85 +1,85 @@
 services:
-    bitbag.form.type.block:
-        class: BitBag\CmsPlugin\Form\Type\BlockType
+    bitbag_sylius_cms_plugin.form.type.block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\BlockType
         arguments:
-            - "%bitbag.model.block.class%"
+            - "%bitbag_sylius_cms_plugin.model.block.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.text_block:
-        class: BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.text_block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType
         arguments:
-            - "%bitbag.model.block_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.html_block:
-        class: BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.html_block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
         arguments:
-            - "%bitbag.model.block_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.image_block:
-        class: BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.image_block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType
         arguments:
-            - "%bitbag.model.block_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
         tags:
             - { name: form.type }
 
-    bitbag.form.type.block_image:
-        class: BitBag\CmsPlugin\Form\Type\BlockImageType
+    bitbag_sylius_cms_plugin.form.type.block_image:
+        class: BitBag\SyliusCmsPlugin\Form\Type\BlockImageType
         arguments:
-            - BitBag\CmsPlugin\Entity\BlockImage
+            - BitBag\SyliusCmsPlugin\Entity\BlockImage
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.page:
-        class: BitBag\CmsPlugin\Form\Type\PageType
+    bitbag_sylius_cms_plugin.form.type.page:
+        class: BitBag\SyliusCmsPlugin\Form\Type\PageType
         arguments:
-            - "%bitbag.model.page.class%"
+            - "%bitbag_sylius_cms_plugin.model.page.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.page:
-        class: BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.page:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType
         arguments:
-            - "%bitbag.model.page_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.page_translation.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.frequently_asked_question:
-        class: BitBag\CmsPlugin\Form\Type\FrequentlyAskedQuestionType
+    bitbag_sylius_cms_plugin.form.type.frequently_asked_question:
+        class: BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType
         arguments:
-            - "%bitbag.model.frequently_asked_question.class%"
+            - "%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.frequently_asked_question:
-        class: BitBag\CmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType
         arguments:
-            - "%bitbag.model.frequently_asked_question_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.frequently_asked_question_translation.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.section:
-        class: BitBag\CmsPlugin\Form\Type\SectionType
+    bitbag_sylius_cms_plugin.form.type.section:
+        class: BitBag\SyliusCmsPlugin\Form\Type\SectionType
         arguments:
-            - "%bitbag.model.section.class%"
+            - "%bitbag_sylius_cms_plugin.model.section.class%"
             - ['bitbag']
         tags:
             - { name: form.type }
 
-    bitbag.form.type.translation.section:
-        class: BitBag\CmsPlugin\Form\Type\Translation\SectionTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.section:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\SectionTranslationType
         arguments:
-            - "%bitbag.model.section_translation.class%"
+            - "%bitbag_sylius_cms_plugin.model.section_translation.class%"
             - ['bitbag']
         tags:
             - { name: form.type }

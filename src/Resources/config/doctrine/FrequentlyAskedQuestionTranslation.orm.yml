@@ -1,6 +1,6 @@
-BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
+BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
     type: entity
-    table: bitbag_frequently_asked_question_translation
+    table: bitbag_sylius_cms_plugin_frequently_asked_question_translation
     id:
         id:
             type: integer

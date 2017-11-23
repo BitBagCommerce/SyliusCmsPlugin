@@ -6,9 +6,9 @@ default:
 
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.product
-                - bitbag.behat.context.setup.page
-                - bitbag.behat.context.setup.section
+                - bitbag_sylius_cms_plugin.behat.context.setup.page
+                - bitbag_sylius_cms_plugin.behat.context.setup.section
 
-                - bitbag.behat.context.ui.shop.page
+                - bitbag_sylius_cms_plugin.behat.context.ui.shop.page
             filters:
                 tags: "@shop_pages && @ui"

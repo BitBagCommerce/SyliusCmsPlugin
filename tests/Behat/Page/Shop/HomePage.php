@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\Shop\HomePage as BaseHomePage;
 

@@ -10,7 +10,7 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace BitBag\CmsPlugin\DependencyInjection;
+namespace BitBag\SyliusCmsPlugin\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BitBagCmsExtension extends Extension
+final class BitBagSyliusCmsExtension extends Extension
 {
     /**
      * {@inheritdoc}

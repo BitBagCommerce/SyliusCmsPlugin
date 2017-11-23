@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Admin\Page;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
 
 /**
@@ -116,7 +116,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'slug' => '#bitbag_page_translations_en_US_slug',
+            'slug' => '#bitbag_sylius_cms_plugin_page_translations_en_US_slug',
             'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
             'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);

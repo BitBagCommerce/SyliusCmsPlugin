@@ -10,18 +10,18 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -259,4 +259,3 @@ final class PageContext implements Context
         $this->sharedStorage->set('page', $page);
     }
 }
-

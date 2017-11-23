@@ -1,11 +1,11 @@
 sylius_resource:
     resources:
-        bitbag.frequently_asked_question:
+        bitbag_sylius_cms_plugin.frequently_asked_question:
             driver: doctrine/orm
             classes:
-                model: BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion
-                form: BitBag\CmsPlugin\Form\Type\FrequentlyAskedQuestionType
-                repository: BitBag\CmsPlugin\Repository\FrequentlyAskedQuestionRepository
+                model: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion
+                form: BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType
+                repository: BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepository
             translation:
                 classes:
-                    model: BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation
+                    model: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation

@@ -10,15 +10,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Context\Setup;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>

@@ -1,5 +1,5 @@
 {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationFormWithSlug %}
-{% form_theme form '@BitBagCmsPlugin/Form/theme.html.twig' %}
+{% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
 
 <div class="ui two column stackable grid">
     <div class="column">
@@ -17,6 +17,6 @@
 
 <div class="ui one column stackable grid">
     <div class="column">
-        {{ translationFormWithSlug(form.translations, '@BitBagCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
+        {{ translationFormWithSlug(form.translations, '@BitBagSyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
     </div>
 </div>

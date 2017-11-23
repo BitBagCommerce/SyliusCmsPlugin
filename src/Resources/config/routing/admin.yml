@@ -1,17 +1,17 @@
-bitbag_admin_block:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/block.yml"
+bitbag_sylius_cms_plugin_admin_block:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/block.yml"
 
-bitbag_admin_page:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/page.yml"
+bitbag_sylius_cms_plugin_admin_page:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/page.yml"
 
-bitbag_admin_frequently_asked_question:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
+bitbag_sylius_cms_plugin_admin_frequently_asked_question:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
 
-bitbag_admin_section:
-    resource: "@BitBagCmsPlugin/Resources/config/routing/admin/section.yml"
+bitbag_sylius_cms_plugin_admin_section:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/section.yml"
 
-bitbag_admin_ajax_generate_page_slug:
+bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     path: /page/generate-slug
     methods: [GET]
     defaults:
-        _controller: bitbag.controller.page_slug:generateAction
+        _controller: bitbag_sylius_cms_plugin.controller.page_slug:generateAction

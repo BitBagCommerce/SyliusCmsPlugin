@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Entity;
+namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\CmsPlugin\Entity\SectionTranslation;
-use BitBag\CmsPlugin\Entity\SectionTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionTranslation;
+use BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;

@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
@@ -29,7 +29,7 @@ final class SectionAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag.section',
+            'resource' => 'bitbag_sylius_cms_plugin.section',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);

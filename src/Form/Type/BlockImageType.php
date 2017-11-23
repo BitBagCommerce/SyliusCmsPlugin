@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 
@@ -24,6 +24,6 @@ final class BlockImageType extends BaseImageType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_block_image';
+        return 'bitbag_sylius_cms_plugin_block_image';
     }
 }

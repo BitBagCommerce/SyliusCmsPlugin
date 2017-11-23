@@ -1,4 +1,4 @@
-BitBag\CmsPlugin\Entity\Section:
+BitBag\SyliusCmsPlugin\Entity\Section:
     exclusion_policy: ALL
     xml_root_name: section
     properties:

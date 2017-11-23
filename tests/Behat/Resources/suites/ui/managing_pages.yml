@@ -7,9 +7,9 @@ default:
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.product
-                - bitbag.behat.context.setup.page
-                - bitbag.behat.context.setup.section
+                - bitbag_sylius_cms_plugin.behat.context.setup.page
+                - bitbag_sylius_cms_plugin.behat.context.setup.section
 
-                - bitbag.behat.context.ui.admin.page
+                - bitbag_sylius_cms_plugin.behat.context.ui.admin.page
             filters:
                 tags: "@managing_pages && @ui"

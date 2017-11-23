@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        bitbag_admin_block:
+        bitbag_sylius_cms_plugin_admin_block:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag.model.block.class%"
+                    class: "%bitbag_sylius_cms_plugin.model.block.class%"
                     repository:
                         method: createListQueryBuilder
                         arguments: ["%locale%"]
@@ -22,7 +22,7 @@ sylius_grid:
                     path: .
                     sortable: translation.content
                     options:
-                        template: "@BitBagCmsPlugin/Grid/Field/content.html.twig"
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/content.html.twig"
                 type:
                     type: string
                     label: sylius.ui.type
@@ -36,10 +36,10 @@ sylius_grid:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 sections:
                     type: twig
-                    label: bitbag.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.sections
                     path: .
                     options:
-                        template: "@BitBagCmsPlugin/Grid/Field/sections.html.twig"
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/sections.html.twig"
             filters:
                 search:
                     type: string

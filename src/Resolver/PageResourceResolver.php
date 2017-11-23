@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 

@@ -8,7 +8,7 @@
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace Tests\BitBag\CmsPlugin\Behat\Service;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>

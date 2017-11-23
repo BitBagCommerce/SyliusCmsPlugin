@@ -10,15 +10,15 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Fixture\Factory;
+namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\CmsPlugin\Entity\BlockImage;
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Factory\BlockFactoryInterface;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockImage;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Factory\BlockFactoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;

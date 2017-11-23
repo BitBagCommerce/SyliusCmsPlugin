@@ -5,8 +5,8 @@ default:
                 - sylius.behat.context.hook.doctrine_orm
 
                 - sylius.behat.context.setup.channel
-                - bitbag.behat.context.setup.frequently_asked_question
+                - bitbag_sylius_cms_plugin.behat.context.setup.frequently_asked_question
 
-                - bitbag.behat.context.ui.shop.frequently_asked_question
+                - bitbag_sylius_cms_plugin.behat.context.ui.shop.frequently_asked_question
             filters:
                 tags: "@shop_frequently_asked_questions && @ui"

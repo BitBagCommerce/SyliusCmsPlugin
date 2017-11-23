@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Resolver;
+namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\CmsPlugin\Resolver\BlockResourceResolver;
-use BitBag\CmsPlugin\Resolver\BlockResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
 

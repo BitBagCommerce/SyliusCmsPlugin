@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\CmsPlugin\Form\Type\Translation\SectionTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\SectionTranslationType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,7 +30,7 @@ final class SectionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('translations', ResourceTranslationsType::class, [
@@ -44,6 +44,6 @@ final class SectionType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_section';
+        return 'bitbag_sylius_cms_plugin_section';
     }
 }

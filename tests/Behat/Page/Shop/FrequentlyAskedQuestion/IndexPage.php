@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\SymfonyPage;
 
@@ -24,7 +24,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
      */
     public function getRouteName(): string
     {
-        return 'bitbag_shop_frequently_asked_question_index';
+        return 'bitbag_sylius_cms_plugin_shop_frequently_asked_question_index';
     }
 
     /**

@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Fixture\Factory;
+namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\CmsPlugin\Entity\PageInterface;
-use BitBag\CmsPlugin\Entity\PageTranslationInterface;
-use BitBag\CmsPlugin\Entity\SectionInterface;
-use BitBag\CmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\CmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;

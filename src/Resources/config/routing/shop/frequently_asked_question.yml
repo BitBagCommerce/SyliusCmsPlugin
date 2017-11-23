@@ -1,9 +1,9 @@
-bitbag_shop_frequently_asked_question_index:
+bitbag_sylius_cms_plugin_shop_frequently_asked_question_index:
     path: /faq
     defaults:
-        _controller: bitbag.controller.frequently_asked_question:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.frequently_asked_question:indexAction
         _sylius:
-            template: "@BitBagCmsPlugin/Shop/FrequentlyAskedQuestion/index.html.twig"
+            template: "@BitBagSyliusCmsPlugin/Shop/FrequentlyAskedQuestion/index.html.twig"
             repository:
                 method: findEnabledOrderedByPosition
                 arguments:

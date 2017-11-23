@@ -12,6 +12,7 @@ Feature: Adding new page
     Scenario: Adding page
         When I go to the create page page
         And I fill the code with "top_5_outfits_for_this_summer"
+        And I fill the slug with "top_5_outfits_for_this_summer"
         And I fill the name with "Top 5 outfits for this summer"
         And I fill the meta keywords with "TOP 5 summer outfit trends, outfits, Ralph Lauren"
         And I fill the meta description with "This summer is going to be hot like a pizza."
@@ -52,6 +53,7 @@ Feature: Adding new page
         Given there are existing sections named "Blog" and "Homepage"
         When I go to the create page page
         And I fill the code with "best_day_ever"
+        And I fill the slug with "best_day_ever"
         And I fill the name with "Best day ever"
         And I add "Blog" and "Homepage" sections to it
         And I fill the content with "This was the best day of my life"

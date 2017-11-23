@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\CmsPlugin\Form\Type\Translation\PageTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -32,22 +32,22 @@ final class PageType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.ui.enabled',
+                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.products',
+                'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.ui.images',
+                'label' => 'bitbag_sylius_cms_plugin.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
             ->add('sections', SectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.sections',
+                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
                 'multiple' => true,
             ])
         ;
@@ -58,6 +58,6 @@ final class PageType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_page';
+        return 'bitbag_sylius_cms_plugin_page';
     }
 }

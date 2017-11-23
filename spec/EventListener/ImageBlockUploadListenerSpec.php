@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\EventListener;
+namespace spec\BitBag\SyliusCmsPlugin\EventListener;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\CmsPlugin\EventListener\ImageBlockUploadListener;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
+use BitBag\SyliusCmsPlugin\EventListener\ImageBlockUploadListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

@@ -1,10 +1,10 @@
 services:
-    bitbag.twig.extension.block:
-        class: BitBag\CmsPlugin\Twig\Extension\RenderBlockExtension
+    bitbag_sylius_cms_plugin.twig.extension.block:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension
         public: false
         arguments:
-            - "@bitbag.repository.block"
-            - "@bitbag.resolver.block_template"
-            - "@bitbag.resolver.block_resource"
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@bitbag_sylius_cms_plugin.resolver.block_template"
+            - "@bitbag_sylius_cms_plugin.resolver.block_resource"
         tags:
             - { name: twig.extension }

@@ -10,18 +10,18 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
 interface BlockTemplateResolverInterface
 {
-    const TEXT_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/textBlock.html.twig';
-    const HTML_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/htmlBlock.html.twig';
-    const IMAGE_BLOCK_TEMPLATE = '@BitBagCmsPlugin/Shop/Block/Show/imageBlock.html.twig';
+    const TEXT_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/textBlock.html.twig';
+    const HTML_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/htmlBlock.html.twig';
+    const IMAGE_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/imageBlock.html.twig';
 
     /**
      * @param BlockInterface $block

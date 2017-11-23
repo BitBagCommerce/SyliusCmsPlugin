@@ -1,7 +1,6 @@
 {% if page.sections|length > 0 %}
-
-	<strong> {{ 'bitbag.ui.sections'|trans }}: </strong>
+	<strong> {{ 'bitbag_sylius_cms_plugin.ui.sections'|trans }}: </strong>
 	{% for section in page.sections %}
-	    <a href="{{ path('bitbag_shop_page_index_by_section_code', {'sectionCode' : section.code}) }}" class="ui label">{{ section.name }}</a>
+	    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_section_code', {'sectionCode' : section.code}) }}" class="ui label">{{ section.name }}</a>
 	{% endfor %}
 {% endif %}

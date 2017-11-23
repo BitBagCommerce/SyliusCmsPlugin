@@ -1,9 +1,9 @@
-BitBag\CmsPlugin\Entity\BlockImage:
+BitBag\SyliusCmsPlugin\Entity\BlockImage:
     type: entity
-    table: bitbag_block_image
+    table: bitbag_sylius_cms_plugin_block_image
     oneToOne:
         owner:
-            targetEntity: BitBag\CmsPlugin\Entity\BlockTranslation
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\BlockTranslation
             inversedBy: image
             cascade: [ALL]
             joinColumn:

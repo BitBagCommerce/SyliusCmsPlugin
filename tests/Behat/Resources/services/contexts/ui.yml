@@ -1,77 +1,77 @@
 services:
-    bitbag.behat.context.ui.admin.block:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\BlockContext
+    bitbag_sylius_cms_plugin.behat.context.ui.admin.block:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
-            - "@bitbag.behat.page.admin.block.index"
-            - "@bitbag.behat.page.admin.block.create"
-            - "@bitbag.behat.page.admin.block.update"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.repository.block"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.block.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.block.create"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.block.update"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.admin.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\PageContext
+    bitbag_sylius_cms_plugin.behat.context.ui.admin.page:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\PageContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
-            - "@bitbag.behat.page.admin.page.index"
-            - "@bitbag.behat.page.admin.page.create"
-            - "@bitbag.behat.page.admin.page.update"
-            - "@bitbag.behat.random_string_generator"
-            - "@__symfony__.bitbag.repository.page"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.page"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.page.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.page.create"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.page.update"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.admin.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
+    bitbag_sylius_cms_plugin.behat.context.ui.admin.frequently_asked_question:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
-            - "@bitbag.behat.page.admin.frequently_asked_question.index"
-            - "@bitbag.behat.page.admin.frequently_asked_question.create"
-            - "@bitbag.behat.page.admin.frequently_asked_question.update"
-            - "@bitbag.behat.random_string_generator"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.create"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.update"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.admin.section:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Admin\SectionContext
+    bitbag_sylius_cms_plugin.behat.context.ui.admin.section:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\SectionContext
         arguments:
             - "@sylius.behat.shared_storage"
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
-            - "@bitbag.behat.page.admin.section.index"
-            - "@bitbag.behat.page.admin.section.create"
-            - "@bitbag.behat.page.admin.section.update"
-            - "@bitbag.behat.random_string_generator"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.section.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.section.create"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.section.update"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.shop.homepage_blocks:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
+    bitbag_sylius_cms_plugin.behat.context.ui.shop.homepage_blocks:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
         arguments:
-            - "@bitbag.behat.page.shop.home"
+            - "@bitbag_sylius_cms_plugin.behat.page.shop.home"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.shop.page:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\PageContext
+    bitbag_sylius_cms_plugin.behat.context.ui.shop.page:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\PageContext
         arguments:
-            - "@bitbag.behat.page.shop.page.show"
-            - "@bitbag.behat.page.shop.page.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.shop.page.show"
+            - "@bitbag_sylius_cms_plugin.behat.page.shop.page.index"
             - "@sylius.behat.shared_storage"
         tags:
             - { name: fob.context_service }
 
-    bitbag.behat.context.ui.shop.frequently_asked_question:
-        class: Tests\BitBag\CmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
+    bitbag_sylius_cms_plugin.behat.context.ui.shop.frequently_asked_question:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
         arguments:
-            - "@bitbag.behat.page.shop.frequently_asked_question.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index"
         tags:
             - { name: fob.context_service }

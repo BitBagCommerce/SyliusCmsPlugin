@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type;
+namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
-use BitBag\CmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
-use BitBag\CmsPlugin\Form\Type\Translation\TextBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -40,18 +40,18 @@ final class BlockType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag.ui.code',
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
             ->add('sections', SectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.sections',
+                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag.ui.enabled',
+                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag.ui.products',
+                'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
             ])
         ;
@@ -67,7 +67,7 @@ final class BlockType extends AbstractResourceType
     {
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.ui.contents',
+                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
                 'entry_type' => TextBlockTranslationType::class,
                 'validation_groups' => ['bitbag_content'],
                 'constraints' => [
@@ -80,7 +80,7 @@ final class BlockType extends AbstractResourceType
 
         if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.ui.contents',
+                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
                 'entry_type' => HtmlBlockTranslationType::class,
                 'validation_groups' => ['bitbag_content'],
                 'constraints' => [
@@ -93,7 +93,7 @@ final class BlockType extends AbstractResourceType
 
         if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
             $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag.ui.images',
+                'label' => 'bitbag_sylius_cms_plugin.ui.images',
                 'entry_type' => ImageBlockTranslationType::class,
                 'validation_groups' => null === $block->getId() ? ['bitbag_image'] : [],
                 'constraints' => [
@@ -110,6 +110,6 @@ final class BlockType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_cms_block';
+        return 'bitbag_sylius_cms_plugin_block';
     }
 }

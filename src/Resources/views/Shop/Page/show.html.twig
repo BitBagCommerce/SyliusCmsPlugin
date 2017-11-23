@@ -21,12 +21,12 @@
         <div class="bitbag-page-content">{{ page.content|raw }}</div>
         <div class="ui dividing header"></div>
         <div class="bitbag-page-sections">
-            {% include '@BitBagCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
+            {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
         </div>
     </div>
     {% if page.products|length > 0 %}
         <h2>
-            {{ 'bitbag.ui.page_related_products'|trans }}
+            {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
         </h2>
         <div class="bitbag-page-products">
             {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}

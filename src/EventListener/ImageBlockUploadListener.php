@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\EventListener;
+namespace BitBag\SyliusCmsPlugin\EventListener;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Entity\BlockTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 

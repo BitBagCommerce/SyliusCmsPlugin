@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Entity;
+namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslation;
-use BitBag\CmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>

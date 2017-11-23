@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Twig\Extension;
+namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\CmsPlugin\Exception\TemplateTypeNotFound;
-use BitBag\CmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\CmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\CmsPlugin\Resolver\BlockTemplateResolverInterface;
+use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
@@ -60,7 +60,7 @@ final class RenderBlockExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('bitbag_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_SimpleFunction('bitbag_sylius_cms_plugin_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 

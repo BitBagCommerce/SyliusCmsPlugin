@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        bitbag_admin_frequently_asked_question:
+        bitbag_sylius_cms_plugin_admin_frequently_asked_question:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag.model.frequently_asked_question.class%"
+                    class: "%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%"
                     repository:
                         method: createListQueryBuilder
                         arguments: ["%locale%"]
@@ -22,11 +22,11 @@ sylius_grid:
                     sortable: ~
                 question:
                     type: string
-                    label: bitbag.ui.question
+                    label: bitbag_sylius_cms_plugin.ui.question
                     sortable: translation.question
                 answer:
                     type: string
-                    label: bitbag.ui.answer
+                    label: bitbag_sylius_cms_plugin.ui.answer
                     sortable: translation.answer
             filters:
                 search:

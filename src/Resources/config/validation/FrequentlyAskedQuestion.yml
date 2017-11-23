@@ -1,25 +1,25 @@
-BitBag\CmsPlugin\Entity\FrequentlyAskedQuestion:
+BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [position]
-            message: 'bitbag.frequently_asked_question.position.unique'
+            message: 'bitbag_sylius_cms_plugin.frequently_asked_question.position.unique'
             groups: ['bitbag']
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]
-            message: 'bitbag.frequently_asked_question.code.unique'
+            message: 'bitbag_sylius_cms_plugin.frequently_asked_question.code.unique'
             groups: ['bitbag']
     properties:
         code:
             - NotBlank:
-                message: 'bitbag.frequently_asked_question.code.not_blank'
+                message: 'bitbag_sylius_cms_plugin.frequently_asked_question.code.not_blank'
                 groups: ['bitbag']
             - Length:
                 min: 2
-                minMessage: 'bitbag.frequently_asked_question.code.min_length'
+                minMessage: 'bitbag_sylius_cms_plugin.frequently_asked_question.code.min_length'
                 groups: ['bitbag']
         position:
             - NotBlank:
-                message: 'bitbag.frequently_asked_question.position.not_blank'
+                message: 'bitbag_sylius_cms_plugin.frequently_asked_question.position.not_blank'
                 groups: ['bitbag']
         translations:
             - Valid: ~

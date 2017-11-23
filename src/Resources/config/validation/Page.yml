@@ -1,19 +1,19 @@
-BitBag\CmsPlugin\Entity\Page:
+BitBag\SyliusCmsPlugin\Entity\Page:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [code]
-            message: 'bitbag.page.code.unique'
+            message: 'bitbag_sylius_cms_plugin.page.code.unique'
             groups: ['bitbag']
     properties:
         code:
             - NotBlank:
-                message: 'bitbag.page.code.not_blank'
+                message: 'bitbag_sylius_cms_plugin.page.code.not_blank'
                 groups: ['bitbag']
             - Length:
                 min: 2
                 max: 250
-                minMessage: 'bitbag.page.code.min_length'
-                maxMessage: 'bitbag.page.code.max_length'
+                minMessage: 'bitbag_sylius_cms_plugin.page.code.min_length'
+                maxMessage: 'bitbag_sylius_cms_plugin.page.code.max_length'
                 groups: ['bitbag']
         translations:
             - Valid: ~

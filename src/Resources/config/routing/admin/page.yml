@@ -1,18 +1,18 @@
-bitbag_admin_page:
+bitbag_sylius_cms_plugin_admin_page:
     resource: |
-        alias: bitbag.page
+        alias: bitbag_sylius_cms_plugin.page
         section: admin
-        templates: BitBagCmsPlugin:Page
+        templates: BitBagSyliusCmsPlugin:Page
         redirect: update
-        grid: bitbag_admin_page
+        grid: bitbag_sylius_cms_plugin_admin_page
         except: ['show']
         permission: true
         vars:
             all:
-                header: bitbag.ui.pages_header
-                subheader: bitbag.ui.pages_subheader
+                header: bitbag_sylius_cms_plugin.ui.pages_header
+                subheader: bitbag_sylius_cms_plugin.ui.pages_subheader
                 templates:
-                    form: BitBagCmsPlugin:Page:Crud/_form.html.twig
+                    form: BitBagSyliusCmsPlugin:Page:Crud/_form.html.twig
             index:
                 icon: sticky note
     type: sylius.resource

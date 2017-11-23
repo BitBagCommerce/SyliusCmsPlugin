@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Behat\Page\Shop\Page;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page;
 
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\SymfonyPage;
@@ -25,7 +25,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
      */
     public function getRouteName(): string
     {
-        return 'bitbag_shop_page_show';
+        return 'bitbag_sylius_cms_plugin_shop_page_show';
     }
 
     /**

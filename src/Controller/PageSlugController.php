@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Controller;
+namespace BitBag\SyliusCmsPlugin\Controller;
 
 use Sylius\Component\Product\Generator\SlugGeneratorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

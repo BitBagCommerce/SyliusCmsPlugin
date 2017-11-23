@@ -1,12 +1,12 @@
 sylius_resource:
     resources:
-        bitbag.block:
+        bitbag_sylius_cms_plugin.block:
             driver: doctrine/orm
             classes:
-                model: BitBag\CmsPlugin\Entity\Block
-                form: BitBag\CmsPlugin\Form\Type\BlockType
-                repository: BitBag\CmsPlugin\Repository\BlockRepository
-                controller: BitBag\CmsPlugin\Controller\BlockController
+                model: BitBag\SyliusCmsPlugin\Entity\Block
+                form: BitBag\SyliusCmsPlugin\Form\Type\BlockType
+                repository: BitBag\SyliusCmsPlugin\Repository\BlockRepository
+                controller: BitBag\SyliusCmsPlugin\Controller\BlockController
             translation:
                 classes:
-                    model: BitBag\CmsPlugin\Entity\BlockTranslation
+                    model: BitBag\SyliusCmsPlugin\Entity\BlockTranslation

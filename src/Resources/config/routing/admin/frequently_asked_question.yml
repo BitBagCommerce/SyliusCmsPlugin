@@ -1,18 +1,18 @@
-bitbag_admin_frequently_asked_question:
+bitbag_sylius_cms_plugin_admin_frequently_asked_question:
     resource: |
-        alias: bitbag.frequently_asked_question
+        alias: bitbag_sylius_cms_plugin.frequently_asked_question
         section: admin
         templates: SyliusAdminBundle:Crud
         redirect: update
-        grid: bitbag_admin_frequently_asked_question
+        grid: bitbag_sylius_cms_plugin_admin_frequently_asked_question
         except: ['show']
         permission: true
         vars:
             all:
-                header: bitbag.ui.faq_header
-                subheader: bitbag.ui.faq_subheader
+                header: bitbag_sylius_cms_plugin.ui.faq_header
+                subheader: bitbag_sylius_cms_plugin.ui.faq_subheader
                 templates:
-                    form: BitBagCmsPlugin:FrequentlyAskedQuestion:Crud/_form.html.twig
+                    form: BitBagSyliusCmsPlugin:FrequentlyAskedQuestion:Crud/_form.html.twig
             index:
                 icon: help
     type: sylius.resource

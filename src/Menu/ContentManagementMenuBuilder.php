@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Menu;
+namespace BitBag\SyliusCmsPlugin\Menu;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
@@ -28,38 +28,38 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem = $menu
             ->addChild('bitbag_cms')
-            ->setLabel('bitbag.ui.cms')
+            ->setLabel('bitbag_sylius_cms_plugin.ui.cms')
         ;
 
         $cmsRootMenuItem
             ->addChild('blocks', [
-                'route' => 'bitbag_admin_block_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_block_index'
             ])
-            ->setLabel('bitbag.ui.blocks')
+            ->setLabel('bitbag_sylius_cms_plugin.ui.blocks')
             ->setLabelAttribute('icon', 'block layout')
         ;
 
         $cmsRootMenuItem
             ->addChild('pages', [
-                'route' => 'bitbag_admin_page_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_page_index'
             ])
-            ->setLabel('bitbag.ui.pages')
+            ->setLabel('bitbag_sylius_cms_plugin.ui.pages')
             ->setLabelAttribute('icon', 'sticky note')
         ;
 
         $cmsRootMenuItem
             ->addChild('faq', [
-                'route' => 'bitbag_admin_frequently_asked_question_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index'
             ])
-            ->setLabel('bitbag.ui.faq')
+            ->setLabel('bitbag_sylius_cms_plugin.ui.faq')
             ->setLabelAttribute('icon', 'help')
         ;
 
         $cmsRootMenuItem
             ->addChild('sections', [
-                'route' => 'bitbag_admin_section_index'
+                'route' => 'bitbag_sylius_cms_plugin_admin_section_index'
             ])
-            ->setLabel('bitbag.ui.sections')
+            ->setLabel('bitbag_sylius_cms_plugin.ui.sections')
             ->setLabelAttribute('icon', 'grid layout')
         ;
     }

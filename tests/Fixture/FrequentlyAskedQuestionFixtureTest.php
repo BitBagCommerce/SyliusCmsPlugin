@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\CmsPlugin\Fixture;
+namespace Tests\BitBag\SyliusCmsPlugin\Fixture;
 
-use BitBag\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
-use BitBag\CmsPlugin\Fixture\FrequentlyAskedQuestionFixture;
+use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
+use BitBag\SyliusCmsPlugin\Fixture\FrequentlyAskedQuestionFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
 /**

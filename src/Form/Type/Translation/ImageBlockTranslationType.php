@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type\Translation;
+namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
-use BitBag\CmsPlugin\Form\Type\BlockImageType;
+use BitBag\SyliusCmsPlugin\Form\Type\BlockImageType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,11 +29,11 @@ final class ImageBlockTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.ui.name',
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
             ->add('link', TextType::class, [
-                'label' => 'bitbag.ui.link',
+                'label' => 'bitbag_sylius_cms_plugin.ui.link',
                 'required' => false,
             ])
             ->add('image', BlockImageType::class, [
@@ -48,6 +48,6 @@ final class ImageBlockTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_image_translation';
+        return 'bitbag_sylius_cms_plugin_image_translation';
     }
 }

@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin\Form\Type\Translation;
+namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,21 +29,21 @@ final class PageTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.ui.name',
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
             ])
             ->add('slug', TextType::class, [
-                'label' => 'bitbag.ui.slug',
+                'label' => 'bitbag_sylius_cms_plugin.ui.slug',
             ])
             ->add('metaKeywords', TextareaType::class, [
-                'label' => 'bitbag.ui.meta_keywords',
+                'label' => 'bitbag_sylius_cms_plugin.ui.meta_keywords',
                 'required' => false,
             ])
             ->add('metaDescription', TextareaType::class, [
-                'label' => 'bitbag.ui.meta_description',
+                'label' => 'bitbag_sylius_cms_plugin.ui.meta_description',
                 'required' => false,
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'bitbag.ui.content',
+                'label' => 'bitbag_sylius_cms_plugin.ui.content',
             ])
         ;
     }
@@ -53,6 +53,6 @@ final class PageTranslationType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'bitbag_page_translation';
+        return 'bitbag_sylius_cms_plugin_page_translation';
     }
 }

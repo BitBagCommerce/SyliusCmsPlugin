@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\CmsPlugin;
+namespace BitBag\SyliusCmsPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
  */
-final class BitBagCmsPlugin extends Bundle
+final class BitBagSyliusCmsPlugin extends Bundle
 {
     use SyliusPluginTrait;
 }

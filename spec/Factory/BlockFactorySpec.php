@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\CmsPlugin\Factory;
+namespace spec\BitBag\SyliusCmsPlugin\Factory;
 
-use BitBag\CmsPlugin\Entity\BlockInterface;
-use BitBag\CmsPlugin\Factory\BlockFactory;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Factory\BlockFactory;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 

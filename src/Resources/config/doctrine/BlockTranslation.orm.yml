@@ -1,6 +1,6 @@
-BitBag\CmsPlugin\Entity\BlockTranslation:
+BitBag\SyliusCmsPlugin\Entity\BlockTranslation:
     type: entity
-    table: bitbag_block_translation
+    table: bitbag_sylius_cms_plugin_block_translation
     id:
         id:
             type: integer
@@ -22,7 +22,7 @@ BitBag\CmsPlugin\Entity\BlockTranslation:
             nullable: true
     oneToOne:
         image:
-            targetEntity: BitBag\CmsPlugin\Entity\BlockImage
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\BlockImage
             mappedBy: owner
             cascade: [ALL]
             joinColumn:

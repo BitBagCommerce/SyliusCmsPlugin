@@ -8,7 +8,7 @@
  * an email on mikolaj.krol@bitbag.pl.
  */
 
-namespace BitBag\CmsPlugin\Entity;
+namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
