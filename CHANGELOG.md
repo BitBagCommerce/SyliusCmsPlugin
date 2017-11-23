@@ -1,13 +1,6 @@
-## Change Log
+## CHANGELOG
 
-### upcoming
-- [#98](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/98) Update messages.fr.yml (@gabriel-cardoso)
-- [#96](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/96) Fixed/removed duplicated translation keys (@sweoggy)
-- [#94](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/94) Add the CSS (@bitbager)
-- [#93](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/93) [Demo] Make the demo responsive (@bitbager)
-- [#92](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/92) Add the CSS (@bitbager)
-
-### v1.1.0 (2017/11/15 11:13 +00:00)
+### v1.1.0 2017/11/15
 - [#91](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/91) [Demo] Update fixtures (@bitbager)
 - [#90](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/90) [General] Prepare for the v1.1.0 (@bitbager)
 - [#89](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/89) [General] Add missing tests and cleanup the code (@bitbager)
@@ -72,32 +65,32 @@
 - [#38](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/38) Treat `dev-master` as 1.1 (@pamil)
 - [#36](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/36) Use stable Sylius (@pamil)
 
-### v1.0.0 (2017/09/13 12:07 +00:00)
+### v1.0.0 2017/09/13
 - [#25](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/25) Update Sylius to 1.0.0 and PHP to 7.1+ (@bitbager, @shinoks, @patrick477)
 - [#24](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/24) [Block][Page] Switch to strict types (@shinoks, @bitbager, @patrick477)
 - [#2](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/2) Sync with master dev (@bitbager, @patrick477, @h3llr4iser, @Mipme, @chaenu)
 - [#1](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/1) Sync from master (@bitbager, @patrick477, @shinoks, @h3llr4iser, @Mipme, @chaenu)
 
-### v0.2.2 (2017/09/12 15:32 +00:00)
+### v0.2.2 2017/09/12
 - [#34](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/34) Use PHP 7.1 (@Zales0123)
 - [#19](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/19) [General] Fix readme apostrophe typo (@chaenu)
 - [#21](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/21) [Twig] Change blocks HTML structure (@chaenu)
 - [#16](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/16) [Translations] German Messages Language Version (@Mipme)
 - [#17](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/17) [Translations] German Validation Strings (@Mipme)
 
-### v0.2.1 (2017/08/31 09:40 +00:00)
+### v0.2.1 2017/08/31
 - [#15](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/15) [Block][Page] Add name and link fields and Twig RenderPageLinkByCodeExtension. (@bitbager)
 - [#14](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/14) [Translations] Add Spanish translations (@h3llr4iser)
 - [#13](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/13) Change Page.yml.orm and routing.yml (@h3llr4iser)
 - [#1](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/1) Update Page.yml.orm (@h3llr4iser)
 
-### v0.2.0 (2017/08/27 22:54 +00:00)
+### v0.2.0 2017/08/27
 - [#10](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/10) [Translations] Add missing Page translations (@shinoks)
 
-### v0.1.1 (2017/08/24 21:16 +00:00)
+### v0.1.1 2017/08/24
 - [#8](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/8) [Translations] Add missing messages (@shinoks)
 
-### v0.1.0 (2017/08/24 13:13 +00:00)
+### v0.1.0 2017/08/24
 - [#7](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/7) [Behat] Tests coverage (@bitbager)
 - [#6](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/6) [Translations] Add fr, en and pl messages (@shinoks)
 - [#5](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/5) [PHPspec] Entities tests coverage (@shinoks)
