@@ -48,6 +48,11 @@ final class BlockContext implements Context
     private $notificationChecker;
 
     /**
+     * @var BlockRepositoryInterface
+     */
+    private $blockRepository;
+
+    /**
      * @var IndexPageInterface
      */
     private $indexPage;
@@ -68,39 +73,34 @@ final class BlockContext implements Context
     private $randomStringGenerator;
 
     /**
-     * @var BlockRepositoryInterface
-     */
-    private $blockRepository;
-
-    /**
      * @param SharedStorageInterface $sharedStorage
      * @param CurrentPageResolverInterface $currentPageResolver
      * @param NotificationCheckerInterface $notificationChecker
+     * @param BlockRepositoryInterface $blockRepository
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
      * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param BlockRepositoryInterface $blockRepository
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
+        BlockRepositoryInterface $blockRepository,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        BlockRepositoryInterface $blockRepository
+        RandomStringGeneratorInterface $randomStringGenerator
     )
     {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
+        $this->blockRepository = $blockRepository;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
         $this->randomStringGenerator = $randomStringGenerator;
-        $this->blockRepository = $blockRepository;
     }
 
     /**
