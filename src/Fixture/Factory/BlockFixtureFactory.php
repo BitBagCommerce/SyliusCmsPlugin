@@ -44,6 +44,11 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     private $blockRepository;
 
     /**
+     * @var SectionRepositoryInterface
+     */
+    private $sectionRepository;
+
+    /**
      * @var ImageUploaderInterface
      */
     private $imageUploader;
@@ -52,11 +57,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
      * @var ProductRepositoryInterface
      */
     private $productRepository;
-
-    /**
-     * @var SectionRepositoryInterface
-     */
-    private $sectionRepository;
 
     /**
      * @var ChannelContextInterface
@@ -72,9 +72,9 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
      * @param BlockFactoryInterface $blockFactory
      * @param FactoryInterface $blockTranslationFactory
      * @param BlockRepositoryInterface $blockRepository
+     * @param SectionRepositoryInterface $sectionRepository
      * @param ImageUploaderInterface $imageUploader
      * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
      * @param ChannelContextInterface $channelContext
      * @param LocaleContextInterface $localeContext
      */
@@ -82,9 +82,9 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         BlockFactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
+        SectionRepositoryInterface $sectionRepository,
         ImageUploaderInterface $imageUploader,
         ProductRepositoryInterface $productRepository,
-        SectionRepositoryInterface $sectionRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
     )
@@ -92,9 +92,9 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->blockFactory = $blockFactory;
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
+        $this->sectionRepository = $sectionRepository;
         $this->imageUploader = $imageUploader;
         $this->productRepository = $productRepository;
-        $this->sectionRepository = $sectionRepository;
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
     }

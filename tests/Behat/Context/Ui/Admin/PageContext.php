@@ -71,31 +71,31 @@ final class PageContext implements Context
      * @param SharedStorageInterface $sharedStorage
      * @param CurrentPageResolverInterface $currentPageResolver
      * @param NotificationCheckerInterface $notificationChecker
-     * @param PageRepositoryInterface $pageRepository
      * @param IndexPageInterface $indexPage
      * @param CreatePageInterface $createPage
      * @param UpdatePageInterface $updatePage
      * @param RandomStringGeneratorInterface $randomStringGenerator
+     * @param PageRepositoryInterface $pageRepository
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
-        PageRepositoryInterface $pageRepository,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator
+        RandomStringGeneratorInterface $randomStringGenerator,
+        PageRepositoryInterface $pageRepository
     )
     {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
-        $this->pageRepository = $pageRepository;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;
         $this->randomStringGenerator = $randomStringGenerator;
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -129,9 +129,9 @@ final class PageContext implements Context
      */
     public function iWantToEditThisPage(): void
     {
-       $page = $this->sharedStorage->get('page');
+        $page = $this->sharedStorage->get('page');
 
-       $this->updatePage->open(['id' => $page->getId()]);
+        $this->updatePage->open(['id' => $page->getId()]);
     }
 
     /**
