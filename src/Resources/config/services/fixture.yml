@@ -33,9 +33,9 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.block"
             - "@bitbag_sylius_cms_plugin.factory.block_translation"
             - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.image_uploader"
             - "@sylius.repository.product"
-            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
 
@@ -45,8 +45,8 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.page"
             - "@bitbag_sylius_cms_plugin.factory.page_translation"
             - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@sylius.repository.product"
             - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@sylius.repository.product"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
 

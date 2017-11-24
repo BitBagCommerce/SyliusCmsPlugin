@@ -40,14 +40,14 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private $pageRepository;
 
     /**
-     * @var ProductRepositoryInterface
-     */
-    private $productRepository;
-
-    /**
      * @var SectionRepositoryInterface
      */
     private $sectionRepository;
+
+    /**
+     * @var ProductRepositoryInterface
+     */
+    private $productRepository;
 
     /**
      * @var ChannelContextInterface
@@ -72,8 +72,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
         PageRepositoryInterface $pageRepository,
-        ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
+        ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
     )
@@ -81,8 +81,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
         $this->pageRepository = $pageRepository;
-        $this->productRepository = $productRepository;
         $this->sectionRepository = $sectionRepository;
+        $this->productRepository = $productRepository;
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
     }
