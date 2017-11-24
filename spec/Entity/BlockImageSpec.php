@@ -16,9 +16,6 @@ use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use Sylius\Component\Core\Model\Image as SyliusImage;
 use PhpSpec\ObjectBehavior;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockImageSpec extends ObjectBehavior
 {
     function it_is_initializable(): void

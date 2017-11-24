@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface BlockTemplateResolverInterface
 {
     const TEXT_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/textBlock.html.twig';

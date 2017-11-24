@@ -14,9 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page;
 
 use Sylius\Behat\Page\SymfonyPageInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface ShowPageInterface extends SymfonyPageInterface
 {
     /**

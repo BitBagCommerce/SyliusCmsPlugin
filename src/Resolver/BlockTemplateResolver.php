@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockTemplateResolver implements BlockTemplateResolverInterface
 {
     /**

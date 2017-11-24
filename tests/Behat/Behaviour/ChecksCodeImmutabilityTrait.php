@@ -14,9 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour;
 
 use Sylius\Behat\Behaviour\DocumentAccessor;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 trait ChecksCodeImmutabilityTrait
 {
     use DocumentAccessor;

@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Factory;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class BlockFactory implements BlockFactoryInterface
 {
     /**

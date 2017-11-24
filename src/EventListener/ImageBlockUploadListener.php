@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class ImageBlockUploadListener
 {
     /**

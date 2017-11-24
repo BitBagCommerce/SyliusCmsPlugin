@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Sylius\Component\Core\Model\Image as BaseImage;
 use Sylius\Component\Core\Model\ImageInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class BlockImage extends BaseImage implements ImageInterface
 {
 }

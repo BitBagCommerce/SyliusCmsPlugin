@@ -14,9 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\Shop\HomePage as BaseHomePage;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class HomePage extends BaseHomePage implements HomePageInterface
 {
     /**

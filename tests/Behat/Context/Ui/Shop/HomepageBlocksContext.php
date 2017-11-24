@@ -16,9 +16,6 @@ use Behat\Behat\Context\Context;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePageInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class HomepageBlocksContext implements Context
 {
     /**

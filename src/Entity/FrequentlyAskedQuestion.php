@@ -16,9 +16,6 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
 {
     use ToggleableTrait,

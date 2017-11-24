@@ -16,9 +16,6 @@ use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**

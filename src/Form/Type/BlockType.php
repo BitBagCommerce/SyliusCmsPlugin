@@ -24,10 +24,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Valid;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockType extends AbstractResourceType
 {
     /**

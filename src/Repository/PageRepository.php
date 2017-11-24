@@ -16,9 +16,6 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
     /**

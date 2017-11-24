@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class FrequentlyAskedQuestionSpec extends ObjectBehavior
 {
     function it_is_initializable(): void

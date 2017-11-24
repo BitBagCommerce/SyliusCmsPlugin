@@ -15,9 +15,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section;
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
     /**

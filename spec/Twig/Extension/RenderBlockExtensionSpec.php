@@ -19,9 +19,6 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension;
 use PhpSpec\ObjectBehavior;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class RenderBlockExtensionSpec extends ObjectBehavior
 {
     function let(

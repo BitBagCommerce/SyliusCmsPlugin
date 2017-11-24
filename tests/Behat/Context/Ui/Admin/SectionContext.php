@@ -24,9 +24,6 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section\UpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class SectionContext implements Context
 {
     /**

@@ -12,9 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Exception;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class TemplateTypeNotFound extends \Exception
 {
     /**

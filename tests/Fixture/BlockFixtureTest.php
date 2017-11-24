@@ -16,9 +16,6 @@ use BitBag\SyliusCmsPlugin\Fixture\BlockFixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
 {
     use ConfigurationTestCaseTrait;

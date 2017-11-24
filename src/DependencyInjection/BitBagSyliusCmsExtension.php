@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BitBagSyliusCmsExtension extends Extension
 {
     /**

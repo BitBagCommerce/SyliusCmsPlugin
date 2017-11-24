@@ -18,9 +18,6 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPageInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class PageContext implements Context
 {
     /**

@@ -20,9 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class PageType extends AbstractResourceType
 {
     /**

@@ -17,9 +17,6 @@ use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class SectionFixture extends AbstractFixture implements FixtureInterface
 {
     /**

@@ -16,9 +16,6 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface BlockRepositoryInterface extends RepositoryInterface
 {
     /**

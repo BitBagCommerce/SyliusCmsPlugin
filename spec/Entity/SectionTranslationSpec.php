@@ -18,9 +18,6 @@ use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class SectionTranslationSpec extends ObjectBehavior
 {
     function it_is_initializable()

@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class BlockTranslation extends AbstractTranslation implements BlockTranslationInterface
 {
     /**

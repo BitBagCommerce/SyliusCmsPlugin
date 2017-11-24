@@ -19,9 +19,6 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockResourceResolverSpec extends ObjectBehavior
 {
     function let(BlockRepositoryInterface $blockRepository, LoggerInterface $logger)

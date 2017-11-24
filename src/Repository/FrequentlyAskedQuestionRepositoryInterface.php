@@ -16,10 +16,6 @@ use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
     /**

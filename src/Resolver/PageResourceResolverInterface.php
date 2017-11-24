@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface PageResourceResolverInterface
 {
     /**

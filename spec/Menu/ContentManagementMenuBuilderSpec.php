@@ -17,9 +17,6 @@ use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
     function it_is_initializable(): void

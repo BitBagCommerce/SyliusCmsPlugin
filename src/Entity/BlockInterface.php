@@ -17,10 +17,6 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface BlockInterface extends
     ResourceInterface,
     TranslatableInterface,

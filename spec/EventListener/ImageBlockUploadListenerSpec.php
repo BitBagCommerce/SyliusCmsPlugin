@@ -22,9 +22,6 @@ use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class ImageBlockUploadListenerSpec extends ObjectBehavior
 {
     public function let(ImageUploaderInterface $imageUploader): void

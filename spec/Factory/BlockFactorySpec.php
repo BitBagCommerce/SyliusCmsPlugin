@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Factory\BlockFactory;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockFactorySpec extends ObjectBehavior
 {
     function let(FactoryInterface $resourceFactory): void

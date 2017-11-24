@@ -14,9 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page;
 
 use Sylius\Behat\Page\SymfonyPage;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
     /**

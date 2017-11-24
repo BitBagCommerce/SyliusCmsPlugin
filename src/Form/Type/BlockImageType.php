@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class BlockImageType extends BaseImageType
 {
     /**

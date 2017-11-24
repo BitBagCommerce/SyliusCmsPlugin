@@ -17,10 +17,6 @@ use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class RenderBlockExtension extends \Twig_Extension
 {
     /**

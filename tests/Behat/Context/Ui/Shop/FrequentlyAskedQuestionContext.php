@@ -16,9 +16,6 @@ use Behat\Behat\Context\Context;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion\IndexPageInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class FrequentlyAskedQuestionContext implements Context
 {
     /**

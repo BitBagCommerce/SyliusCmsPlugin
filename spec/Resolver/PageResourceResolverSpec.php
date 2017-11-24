@@ -20,9 +20,6 @@ use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class PageResourceResolverSpec extends ObjectBehavior
 {
     function let(PageRepositoryInterface $pageRepository, LocaleContextInterface $localeContext, LoggerInterface $logger)

@@ -15,9 +15,6 @@ namespace spec\BitBag\SyliusCmsPlugin\Exception;
 use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 use PhpSpec\ObjectBehavior;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class TemplateTypeNotFoundSpec extends ObjectBehavior
 {
     function let(): void

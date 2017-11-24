@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver;
 use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 use PhpSpec\ObjectBehavior;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BlockTemplateResolverSpec extends ObjectBehavior
 {
     function it_is_initializable(): void

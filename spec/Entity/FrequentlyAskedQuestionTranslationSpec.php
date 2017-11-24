@@ -18,9 +18,6 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class FrequentlyAskedQuestionTranslationSpec extends ObjectBehavior
 {
     function it_is_initializable()

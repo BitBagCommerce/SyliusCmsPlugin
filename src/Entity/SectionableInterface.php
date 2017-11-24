@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface SectionableInterface
 {
     public function initializeSectionsCollection(): void;

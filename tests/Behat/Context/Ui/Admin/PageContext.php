@@ -25,9 +25,6 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class PageContext implements Context
 {
     /**

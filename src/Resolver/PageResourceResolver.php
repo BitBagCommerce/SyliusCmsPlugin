@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class PageResourceResolver implements PageResourceResolverInterface
 {
     /**

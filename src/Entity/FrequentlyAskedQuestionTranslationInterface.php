@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 interface FrequentlyAskedQuestionTranslationInterface extends TranslationInterface, ResourceInterface
 {
     /**

@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements FrequentlyAskedQuestionTranslationInterface
 {
     /**

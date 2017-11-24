@@ -16,9 +16,6 @@ use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\SyliusCmsPlugin\Fixture\FrequentlyAskedQuestionFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCase
 {
     use ConfigurationTestCaseTrait;

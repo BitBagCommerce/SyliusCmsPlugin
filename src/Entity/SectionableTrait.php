@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 trait SectionableTrait
 {
     /**

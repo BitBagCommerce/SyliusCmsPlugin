@@ -17,10 +17,6 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class Block implements BlockInterface
 {
     use ToggleableTrait;

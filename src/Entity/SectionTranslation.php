@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class SectionTranslation extends AbstractTranslation implements SectionTranslationInterface
 {
     /**

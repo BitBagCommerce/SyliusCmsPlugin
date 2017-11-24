@@ -15,9 +15,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour;
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Behaviour\DocumentAccessor;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 trait ContainsErrorTrait
 {
     use DocumentAccessor;

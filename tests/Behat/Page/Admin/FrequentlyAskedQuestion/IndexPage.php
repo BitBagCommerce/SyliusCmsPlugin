@@ -15,9 +15,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 use Sylius\Behat\Page\Admin\Crud\IndexPage as BaseIndexPage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsEmptyListTrait;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
     use ContainsEmptyListTrait;
