@@ -1,6 +1,13 @@
 ## CHANGELOG
 
-### v1.1.1 2017/11/23
+### v1.2.1 2017/11/24
+- [#107](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/107) [Fixture][Behat] Change the arguments order to follow CS (@bitbager)
+- [#106](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/106) Fix too long FAQ name (@bitbager)
+- [#104](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/104) Fix wrong argument order (@wobokas)
+- [#103](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/103) Files header fix (@shinoks)
+- [#102](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/102) CHANGELOG 1.1.1 (@shinoks)
+
+### v1.2.0 2017/11/23
 - [#95](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/95) Upgrading to standards for creating Sylius plugin (@shinoks)
 - [#100](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/100) fix page sections layout (@victordit)
 - [#101](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/101) correct order of installation steps (@geecu)
