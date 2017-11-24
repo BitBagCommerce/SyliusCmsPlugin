@@ -345,8 +345,7 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under
-     *     Create button
+     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
      */
     public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(string ...$blockTypes): void
     {
