@@ -1,11 +1,11 @@
 <?php
 
-/**
- * This file was created by the developers from BitBag.
+/*
+ * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on kontakt@bitbag.pl.
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class SectionRepository extends EntityRepository implements SectionRepositoryInterface
 {
     /**

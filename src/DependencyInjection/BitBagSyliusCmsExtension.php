@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-/**
- * This file was created by the developers from BitBag.
+/*
+ * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
@@ -15,9 +15,6 @@ namespace BitBag\SyliusCmsPlugin\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class BitBagSyliusCmsExtension extends Extension
 {
     /**
