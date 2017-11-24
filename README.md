@@ -40,7 +40,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
-        new BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
+        new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
 ```
