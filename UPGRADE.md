@@ -1,3 +1,8 @@
+# UPGRADE FROM 1.2.1 to 1.2.2
+
+* `bitbag_render_block` has been renamed to `bitbag_cms_render_block`.
+* Database tables has been prefixed with `bitbag_cms` instead of `bitbag_sylius_cms_plugin` for backward compatibility and simplicity.
+
 # UPGRADE FROM 1.0.0 to 1.1.0 and from 1.1.0 to 1.2.1
 
 * Generate Doctrine diff with `bin/console doctrine:migrations:diff` command, add a simple SQL insert that moves 
