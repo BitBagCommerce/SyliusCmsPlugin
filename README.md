@@ -79,7 +79,7 @@ $ bin/console assets:install
 
 If you don't know how to override templates yet, read  [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-In the admin panel, you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_render_block([block_code])` helper extension.
+In the admin panel, you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_cms_render_block([block_code])` helper extension.
 For instance, let's assume you have created a block with `homepage_text_block` code and want to render it on store homepage.
 In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add the twig filter like this:
 
@@ -90,7 +90,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 {{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
 
-{{ bitbag_render_block('homepage_text_block') }}
+{{ bitbag_cms_render_block('homepage_text_block') }}
 
 {% endblock %}
 ```
