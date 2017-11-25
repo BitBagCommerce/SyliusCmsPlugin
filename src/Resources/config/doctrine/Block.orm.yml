@@ -1,6 +1,6 @@
 BitBag\SyliusCmsPlugin\Entity\Block:
     type: entity
-    table: bitbag_sylius_cms_plugin_block
+    table: bitbag_cms_block
     id:
         id:
             type: integer
@@ -24,7 +24,7 @@ BitBag\SyliusCmsPlugin\Entity\Block:
         sections:
             targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
             joinTable:
-                name: bitbag_sylius_cms_plugin_block_sections
+                name: bitbag_cms_block_sections
                 joinColumns:
                     block_id:
                         referencedColumnName: id
@@ -35,7 +35,7 @@ BitBag\SyliusCmsPlugin\Entity\Block:
         products:
             targetEntity: Sylius\Component\Product\Model\ProductInterface
             joinTable:
-                name: bitbag_sylius_cms_plugin_block_products
+                name: bitbag_cms_block_products
                 joinColumns:
                     page_id:
                         referencedColumnName: id

@@ -1,6 +1,6 @@
 BitBag\SyliusCmsPlugin\Entity\PageTranslation:
     type: entity
-    table: bitbag_sylius_cms_plugin_page_translation
+    table: bitbag_cms_page_translation
     id:
         id:
             type: integer

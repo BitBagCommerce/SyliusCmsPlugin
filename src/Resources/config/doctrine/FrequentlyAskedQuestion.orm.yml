@@ -1,6 +1,6 @@
 BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
     type: entity
-    table: bitbag_sylius_cms_plugin_faq
+    table: bitbag_cms_faq
     id:
         id:
             type: integer
