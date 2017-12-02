@@ -40,7 +40,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
-        new BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
+        new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
 ```
@@ -79,7 +79,7 @@ $ bin/console assets:install
 
 If you don't know how to override templates yet, read  [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-In the admin panel, you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_render_block([block_code])` helper extension.
+In the admin panel, you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_cms_render_block([block_code])` helper extension.
 For instance, let's assume you have created a block with `homepage_text_block` code and want to render it on store homepage.
 In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add the twig filter like this:
 
@@ -90,7 +90,7 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 {{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
 
-{{ bitbag_render_block('homepage_text_block') }}
+{{ bitbag_cms_render_block('homepage_text_block') }}
 
 {% endblock %}
 ```
@@ -148,7 +148,7 @@ Sometimes you'll need to set up your environment quickly or even load some prima
 
 For now you can install CKEditor, create proper form extension and replace `Textarea[Text]Type::class` with `CKEditorType::class`.
 For more - take a look at [FriendsOfSylius WYSIWYG step by step guide](https://github.com/FriendsOfSylius/SyliusGoose/blob/master/StepByStep/WYSIWYG_EDITOR_IN_ANY_FORM.md).
-To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag.cms_plugin.form` command.
+To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag_sylius_cms_plugin.form` command.
 
 ### Use-case
 
