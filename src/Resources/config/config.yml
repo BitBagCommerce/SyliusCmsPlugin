@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/sylius_resource.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services.yml" }
 

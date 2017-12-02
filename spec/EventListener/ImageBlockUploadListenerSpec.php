@@ -14,7 +14,7 @@ namespace spec\BitBag\SyliusCmsPlugin\EventListener;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\SyliusCmsPlugin\EventListener\ImageBlockUploadListener;
+use BitBag\SyliusCmsPlugin\EventListener\BlockImageUploadListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -31,7 +31,7 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
 
     function it_is_initializable(): void
     {
-        $this->shouldHaveType(ImageBlockUploadListener::class);
+        $this->shouldHaveType(BlockImageUploadListener::class);
     }
 
     function it_does_not_upload_if_not_block_instance(

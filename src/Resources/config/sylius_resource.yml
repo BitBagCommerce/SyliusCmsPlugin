@@ -1,5 +1,0 @@
-imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/sylius_resource/block.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/sylius_resource/page.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/sylius_resource/frequently_asked_question.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/sylius_resource/section.yml" }

@@ -16,8 +16,9 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
+use Webmozart\Assert\Assert;
 
-final class ImageBlockUploadListener
+final class BlockImageUploadListener
 {
     /**
      * @var ImageUploaderInterface
@@ -39,9 +40,7 @@ final class ImageBlockUploadListener
     {
         $block = $event->getSubject();
 
-        if (false === $block instanceof BlockInterface) {
-            return;
-        }
+        Assert::isInstanceOf($block,BlockInterface::class);
 
         if (BlockInterface::IMAGE_BLOCK_TYPE !== $block->getType()) {
             return;

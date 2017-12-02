@@ -38,6 +38,11 @@
     "autoload-dev": {
         "classmap": ["tests/Application/app/AppKernel.php"]
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.2-dev"
+        }
+    },
     "config": {
         "bin-dir": "bin"
     }
