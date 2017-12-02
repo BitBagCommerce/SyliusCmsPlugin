@@ -1,5 +1,5 @@
 BitBag\SyliusCmsPlugin\Entity\Page:
-    type: entity
+    type: mappedSuperclass
     table: bitbag_cms_page
     id:
         id:

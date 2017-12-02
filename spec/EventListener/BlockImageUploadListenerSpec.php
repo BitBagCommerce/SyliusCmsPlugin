@@ -12,26 +12,26 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\EventListener;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\SyliusCmsPlugin\EventListener\ImageBlockUploadListener;
+use BitBag\SyliusCmsPlugin\EventListener\BlockImageUploadListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 
-final class ImageBlockUploadListenerSpec extends ObjectBehavior
+final class BlockImageUploadListenerSpec extends ObjectBehavior
 {
-    public function let(ImageUploaderInterface $imageUploader): void
+    public function let(ImageUploaderInterface $blockImageUploader): void
     {
-        $this->beConstructedWith($imageUploader);
+        $this->beConstructedWith($blockImageUploader);
     }
 
     function it_is_initializable(): void
     {
-        $this->shouldHaveType(ImageBlockUploadListener::class);
+        $this->shouldHaveType(BlockImageUploadListener::class);
     }
 
     function it_does_not_upload_if_not_block_instance(
@@ -59,17 +59,17 @@ final class ImageBlockUploadListenerSpec extends ObjectBehavior
         ResourceControllerEvent $event,
         BlockInterface $block,
         BlockTranslationInterface $blockTranslation,
-        ImageInterface $image,
-        ImageUploaderInterface $imageUploader
+        BlockImageInterface $blockImage,
+        ImageUploaderInterface $blockImageUploader
     ): void
     {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn('image');
         $block->getTranslations()->willReturn(new ArrayCollection([$blockTranslation->getWrappedObject()]));
-        $blockTranslation->getImage()->willReturn($image);
-        $image->hasFile()->willReturn(true);
+        $blockTranslation->getImage()->willReturn($blockImage);
+        $blockImage->hasFile()->willReturn(true);
 
-        $imageUploader->upload($image)->shouldBeCalled();
+        $blockImageUploader->upload($blockImage)->shouldBeCalled();
         $this->uploadImage($event);
     }
 }

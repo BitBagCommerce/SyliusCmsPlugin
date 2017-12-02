@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
@@ -39,14 +38,14 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
     public function setContent(?string $content): void;
 
     /**
-     * @return ImageInterface|null
+     * @return BlockImageInterface|null
      */
-    public function getImage(): ?ImageInterface;
+    public function getImage(): ?BlockImageInterface;
 
     /**
-     * @param ImageInterface $image
+     * @param BlockImageInterface $image
      */
-    public function setImage(?ImageInterface $image): void;
+    public function setImage(?BlockImageInterface $image): void;
 
     /**
      * @return null|string

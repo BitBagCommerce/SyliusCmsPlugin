@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
@@ -36,7 +36,7 @@ final class BlockTranslationSpec extends ObjectBehavior
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(ImageInterface $image): void
+    function it_allows_access_via_properties(BlockImageInterface $blockImage): void
     {
         $this->setName('Escobar favorite quote');
         $this->getName()->shouldReturn('Escobar favorite quote');
@@ -44,7 +44,7 @@ final class BlockTranslationSpec extends ObjectBehavior
         $this->setContent('Plata o plomo');
         $this->getContent()->shouldReturn('Plata o plomo');
 
-        $this->setImage($image);
-        $this->getImage()->shouldReturn($image);
+        $this->setImage($blockImage);
+        $this->getImage()->shouldReturn($blockImage);
     }
 }

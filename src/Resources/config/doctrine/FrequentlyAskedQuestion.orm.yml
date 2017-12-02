@@ -1,5 +1,5 @@
 BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
-    type: entity
+    type: mappedSuperclass
     table: bitbag_cms_faq
     id:
         id:

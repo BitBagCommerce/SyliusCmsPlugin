@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-### upcoming 2017/11/25
+### v1.2.2 2017/11/25
 - [#108](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/108) Update CHANGELOG.md (@bitbager)
 
 ### v1.1.2 2017/11/24

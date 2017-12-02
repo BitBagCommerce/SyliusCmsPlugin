@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class BlockTranslation extends AbstractTranslation implements BlockTranslationInterface
@@ -33,7 +32,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $content;
 
     /**
-     * @var null|ImageInterface
+     * @var null|BlockImageInterface
      */
     protected $image;
 
@@ -85,7 +84,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function getImage(): ?ImageInterface
+    public function getImage(): ?BlockImageInterface
     {
         return $this->image;
     }
@@ -93,7 +92,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /**
      * {@inheritdoc}
      */
-    public function setImage(?ImageInterface $image): void
+    public function setImage(?BlockImageInterface $image): void
     {
         $image->setOwner($this);
 
