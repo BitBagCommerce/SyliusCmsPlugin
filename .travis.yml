@@ -48,7 +48,7 @@ before_script:
     # Download and configure ChromeDriver
     - |
         if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ]; then
-            curl http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip > chromedriver.zip
+            curl http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip > chromedriver.zip
             unzip chromedriver.zip
             chmod +x chromedriver
             mv chromedriver $SYLIUS_CACHE_DIR
