@@ -65,6 +65,7 @@ before_script:
 
 script:
     - composer validate --strict
+    - bin/phpstan.phar analyse -c phpstan.neon -l max src/
 
     - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun
 
