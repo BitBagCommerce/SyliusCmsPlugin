@@ -22,27 +22,27 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $slug;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $name;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $content;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $metaKeywords;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $metaDescription;
 

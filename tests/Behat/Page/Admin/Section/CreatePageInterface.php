@@ -27,6 +27,7 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
      * @param string $code
      */
     public function fillCode(string $code): void;
+
     /**
      * @param string $name
      */

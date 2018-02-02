@@ -35,7 +35,7 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         return $this->createQueryBuilder('o')
             ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->andWhere('translation.name LIKE :name')
-            ->setParameter('name', '%'.$phrase.'%')
+            ->setParameter('name', '%' . $phrase . '%')
             ->setParameter('locale', $locale)
             ->getQuery()
             ->getResult()

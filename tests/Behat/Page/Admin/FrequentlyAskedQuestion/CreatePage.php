@@ -20,7 +20,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     use ContainsErrorTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillField(string $field, string $value): void
     {
@@ -34,6 +34,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         $this->getDocument()->fillField('Code', $code);
     }
+
     /**
      * {@inheritdoc}
      */

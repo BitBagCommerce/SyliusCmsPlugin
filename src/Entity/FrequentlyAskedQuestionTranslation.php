@@ -22,12 +22,12 @@ class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements 
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $question;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $answer;
 

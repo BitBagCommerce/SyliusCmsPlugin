@@ -77,8 +77,7 @@ final class PageContext implements Context
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageFactory = $pageFactory;
@@ -113,7 +112,7 @@ final class PageContext implements Context
      */
     public function thereArePagesInTheStore(int $number): void
     {
-        for ($i = 0; $i < $number; $i++) {
+        for ($i = 0; $i < $number; ++$i) {
             $page = $this->createPage();
 
             $this->savePage($page);
@@ -215,9 +214,9 @@ final class PageContext implements Context
     }
 
     /**
-     * @param null|string $code
-     * @param null|string $name
-     * @param null|string $content
+     * @param string|null $code
+     * @param string|null $name
+     * @param string|null $content
      *
      * @return PageInterface
      */

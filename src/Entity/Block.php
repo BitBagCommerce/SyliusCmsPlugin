@@ -34,17 +34,17 @@ class Block implements BlockInterface
     }
 
     /**
-     * @var null|int
+     * @var int|null
      */
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $code;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $type;
 

@@ -14,7 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {

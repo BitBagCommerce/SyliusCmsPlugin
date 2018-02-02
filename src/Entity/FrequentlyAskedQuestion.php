@@ -29,12 +29,12 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $code;
 
     /**
-     * @var null|int
+     * @var int|null
      */
     protected $position;
 

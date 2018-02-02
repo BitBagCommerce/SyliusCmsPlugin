@@ -20,7 +20,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     use ContainsErrorTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillField(string $field, string $value): void
     {
@@ -28,7 +28,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillCode(string $code): void
     {
@@ -36,7 +36,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillName(string $name): void
     {

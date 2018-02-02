@@ -22,7 +22,7 @@ class SectionTranslation extends AbstractTranslation implements SectionTranslati
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $name;
 

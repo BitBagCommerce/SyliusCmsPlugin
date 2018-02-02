@@ -22,12 +22,12 @@ class Section implements SectionInterface
     }
 
     /**
-     * @var null|int
+     * @var int|null
      */
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $code;
 

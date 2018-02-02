@@ -43,8 +43,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->pageRepository = $pageRepository;
         $this->localeContext = $localeContext;
         $this->logger = $logger;

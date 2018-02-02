@@ -47,8 +47,7 @@ final class FrequentlyAskedQuestionContext implements Context
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $frequentlyAskedQuestionFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
@@ -95,7 +94,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function thereAreFaqsInTheStore(int $number): void
     {
-        for ($i = 1; $i <= $number; $i++) {
+        for ($i = 1; $i <= $number; ++$i) {
             $frequentlyAskedQuestion = $this->createFrequentlyAskedQuestion(null, $i, true);
 
             $this->saveFrequentlyAskedQuestion($frequentlyAskedQuestion);
@@ -103,7 +102,7 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @param null|string $code
+     * @param string|null $code
      * @param int|null $position
      * @param bool $prefixQuestionWithPosition
      *
@@ -113,8 +112,7 @@ final class FrequentlyAskedQuestionContext implements Context
         ?string $code = null,
         int $position = null,
         bool $prefixQuestionWithPosition = false
-    ): FrequentlyAskedQuestionInterface
-    {
+    ): FrequentlyAskedQuestionInterface {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 

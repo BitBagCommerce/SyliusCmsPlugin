@@ -88,8 +88,7 @@ final class BlockContext implements Context
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         BlockRepositoryInterface $blockRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
@@ -113,7 +112,6 @@ final class BlockContext implements Context
      */
     public function iGoToTheCreateImageBlockPage(string $blockType): void
     {
-
         if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
             $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
 
@@ -268,7 +266,7 @@ final class BlockContext implements Context
     public function iShouldBeNotifiedThatNewImageBlockHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
-            "Block has been successfully created.",
+            'Block has been successfully created.',
             NotificationType::success()
         );
     }
@@ -279,7 +277,7 @@ final class BlockContext implements Context
     public function iShouldBeNotifiedThatTheBlockHasBeenSuccessfullyUpdated(): void
     {
         $this->notificationChecker->checkNotification(
-            "Block has been successfully updated.",
+            'Block has been successfully updated.',
             NotificationType::success()
         );
     }
@@ -290,7 +288,7 @@ final class BlockContext implements Context
     public function iShouldBeNotifiedThatTheBlockHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
-            "Block has been successfully deleted.",
+            'Block has been successfully deleted.',
             NotificationType::success()
         );
     }
@@ -312,7 +310,7 @@ final class BlockContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s cannot be blank.",
+                '%s cannot be blank.',
                 trim($field)
             )));
         }
@@ -324,7 +322,7 @@ final class BlockContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingBlockWithCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing block with this code.",
+            'There is an existing block with this code.',
             false
         ));
     }
@@ -338,7 +336,7 @@ final class BlockContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s can not be longer than",
+                '%s can not be longer than',
                 trim($field)
             ), false));
         }

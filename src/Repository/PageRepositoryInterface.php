@@ -27,7 +27,7 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $code
-     * @param null|string $localeCode
+     * @param string|null $localeCode
      *
      * @return PageInterface|null
      */
@@ -37,7 +37,7 @@ interface PageRepositoryInterface extends RepositoryInterface
      * @param string $slug
      * @param string $localeCode
      *
-     * @return null|PageInterface
+     * @return PageInterface|null
      */
     public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface;
 

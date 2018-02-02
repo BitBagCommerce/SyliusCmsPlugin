@@ -47,6 +47,7 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
      * @param string $metaDescription
      */
     public function fillMetaDescription(string $metaDescription): void;
+
     /**
      * @param string $content
      */

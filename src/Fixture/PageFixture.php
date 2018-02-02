@@ -33,7 +33,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $options): void
     {
@@ -41,7 +41,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -49,7 +49,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {

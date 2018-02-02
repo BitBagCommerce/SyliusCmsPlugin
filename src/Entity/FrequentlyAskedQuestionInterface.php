@@ -19,42 +19,42 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 interface FrequentlyAskedQuestionInterface extends ResourceInterface, TranslatableInterface, ToggleableInterface
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getCode(): ?string;
 
     /**
-     * @param null|string $code
+     * @param string|null $code
      */
     public function setCode(?string $code): void;
 
     /**
-     * @return null|int
+     * @return int|null
      */
     public function getPosition(): ?int;
 
     /**
-     * @param null|int $position
+     * @param int|null $position
      */
     public function setPosition(?int $position): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getQuestion(): ?string;
 
     /**
-     * @param null|string $question
+     * @param string|null $question
      */
     public function setQuestion(?string $question): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getAnswer(): ?string;
 
     /**
-     * @param null|string $answer
+     * @param string|null $answer
      */
     public function setAnswer(?string $answer): void;
 }

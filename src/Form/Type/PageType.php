@@ -14,11 +14,11 @@ namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
+use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 
 final class PageType extends AbstractResourceType
 {

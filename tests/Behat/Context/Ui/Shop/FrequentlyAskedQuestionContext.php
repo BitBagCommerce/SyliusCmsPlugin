@@ -46,7 +46,7 @@ final class FrequentlyAskedQuestionContext implements Context
     {
         Assert::true($this->indexPage->hasFrequentlyAskedQuestionsNumber($number));
 
-        for ($i = 1; $i < $number; $i++) {
+        for ($i = 1; $i < $number; ++$i) {
             Assert::true($this->indexPage->hasQuestionWithPositionPrefixAtValidIndex($i));
         }
     }

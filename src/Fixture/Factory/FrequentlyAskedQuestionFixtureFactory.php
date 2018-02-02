@@ -43,8 +43,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         FactoryInterface $frequentlyAskedQuestionFactory,
         FactoryInterface $frequentlyAskedQuestionTranslationFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-    )
-    {
+    ) {
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
@@ -64,7 +63,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
             }
 
             if (null !== $fields['number']) {
-                for ($i = 1; $i <= $fields['number']; $i++) {
+                for ($i = 1; $i <= $fields['number']; ++$i) {
                     $this->createFrequentlyAskedQuestion(md5(uniqid()), $fields, $i);
                 }
             } else {

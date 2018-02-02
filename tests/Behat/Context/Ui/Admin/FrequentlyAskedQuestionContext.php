@@ -78,9 +78,7 @@ final class FrequentlyAskedQuestionContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator
-    )
-    {
-
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
@@ -196,7 +194,7 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iShouldBeNotifiedThatTheFrequentlyAskedQuestionHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
-            "Frequently asked question has been successfully deleted.",
+            'Frequently asked question has been successfully deleted.',
             NotificationType::success()
         );
     }
@@ -210,7 +208,7 @@ final class FrequentlyAskedQuestionContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s cannot be blank.",
+                '%s cannot be blank.',
                 trim($field)
             )));
         }
@@ -225,7 +223,7 @@ final class FrequentlyAskedQuestionContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s must be at least %d characters long.",
+                '%s must be at least %d characters long.',
                 trim($field), 2
             )));
         }
@@ -237,7 +235,7 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFrequentlyAskedQuestionWithProvidedCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing FAQ with this code.",
+            'There is an existing FAQ with this code.',
             false
         ));
     }
@@ -248,7 +246,7 @@ final class FrequentlyAskedQuestionContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingFrequentlyAskedQuestionWithSelectedPosition(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing FAQ with this position.",
+            'There is an existing FAQ with this position.',
             false
         ));
     }

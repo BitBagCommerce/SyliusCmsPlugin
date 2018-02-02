@@ -86,8 +86,7 @@ final class PageContext implements Context
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         PageRepositoryInterface $pageRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
@@ -253,7 +252,7 @@ final class PageContext implements Context
     public function iShouldBeNotifiedThatNewPageWasCreated(): void
     {
         $this->notificationChecker->checkNotification(
-            "Page has been successfully created.",
+            'Page has been successfully created.',
             NotificationType::success()
         );
     }
@@ -264,7 +263,7 @@ final class PageContext implements Context
     public function iShouldBeNotifiedThatThePageWasUpdated(): void
     {
         $this->notificationChecker->checkNotification(
-            "Page has been successfully updated.",
+            'Page has been successfully updated.',
             NotificationType::success()
         );
     }
@@ -275,7 +274,7 @@ final class PageContext implements Context
     public function iShouldBeNotifiedThatThePageHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
-            "Page has been successfully deleted.",
+            'Page has been successfully deleted.',
             NotificationType::success()
         );
     }
@@ -286,7 +285,7 @@ final class PageContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingPageWithCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing page with this code.",
+            'There is an existing page with this code.',
             false
         ));
     }
@@ -300,7 +299,7 @@ final class PageContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s cannot be blank.",
+                '%s cannot be blank.',
                 trim($field)
             )));
         }
@@ -315,7 +314,7 @@ final class PageContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s must be at least %d characters long.",
+                '%s must be at least %d characters long.',
                 trim($field), 2
             )));
         }
@@ -330,7 +329,7 @@ final class PageContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s can not be longer than",
+                '%s can not be longer than',
                 trim($field)
             ), false));
         }

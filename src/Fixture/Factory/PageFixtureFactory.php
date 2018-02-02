@@ -76,8 +76,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
-    )
-    {
+    ) {
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
         $this->pageRepository = $pageRepository;
@@ -101,8 +100,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             }
 
             if (null !== $fields['number']) {
-                for ($i = 0; $i < $fields['number']; $i++) {
-                    $this->createPage(md5(uniqid()), $fields,true);
+                for ($i = 0; $i < $fields['number']; ++$i) {
+                    $this->createPage(md5(uniqid()), $fields, true);
                 }
             } else {
                 $this->createPage($code, $fields);

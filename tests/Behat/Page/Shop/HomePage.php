@@ -21,7 +21,7 @@ class HomePage extends BaseHomePage implements HomePageInterface
      */
     public function hasImageBlock(): bool
     {
-        return $this->getElement('image_block')->has('css','img');
+        return $this->getElement('image_block')->has('css', 'img');
     }
 
     /**
