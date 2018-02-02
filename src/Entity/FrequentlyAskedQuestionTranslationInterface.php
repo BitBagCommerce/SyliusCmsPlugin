@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface FrequentlyAskedQuestionTranslationInterface extends TranslationInterface, ResourceInterface
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getQuestion(): ?string;
 
@@ -28,7 +28,7 @@ interface FrequentlyAskedQuestionTranslationInterface extends TranslationInterfa
     public function setQuestion(string $question): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getAnswer(): ?string;
 

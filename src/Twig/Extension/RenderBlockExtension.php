@@ -43,8 +43,7 @@ final class RenderBlockExtension extends \Twig_Extension
         BlockRepositoryInterface $blockRepository,
         BlockTemplateResolverInterface $blockTemplateResolver,
         BlockResourceResolverInterface $blockResourceResolver
-    )
-    {
+    ) {
         $this->blockRepository = $blockRepository;
         $this->blockTemplateResolver = $blockTemplateResolver;
         $this->blockResourceResolver = $blockResourceResolver;

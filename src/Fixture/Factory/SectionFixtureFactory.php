@@ -43,8 +43,7 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
         FactoryInterface $sectionFactory,
         FactoryInterface $sectionTranslationFactory,
         SectionRepositoryInterface $sectionRepository
-    )
-    {
+    ) {
         $this->sectionFactory = $sectionFactory;
         $this->sectionTranslationFactory = $sectionTranslationFactory;
         $this->sectionRepository = $sectionRepository;

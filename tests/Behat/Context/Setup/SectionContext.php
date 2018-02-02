@@ -48,8 +48,7 @@ final class SectionContext implements Context
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $sectionFactory,
         SectionRepositoryInterface $sectionRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->sectionFactory = $sectionFactory;

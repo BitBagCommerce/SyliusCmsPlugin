@@ -78,8 +78,7 @@ final class SectionContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
@@ -171,7 +170,7 @@ final class SectionContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s cannot be blank.",
+                '%s cannot be blank.',
                 trim($field)
             )));
         }
@@ -186,7 +185,7 @@ final class SectionContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s must be at least %d characters long.",
+                '%s must be at least %d characters long.',
                 trim($field), 2
             )));
         }
@@ -201,7 +200,7 @@ final class SectionContext implements Context
 
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
-                "%s can not be longer than",
+                '%s can not be longer than',
                 trim($field)
             ), false));
         }
@@ -213,7 +212,7 @@ final class SectionContext implements Context
     public function iShouldBeNotifiedThatThereIsAlreadyAnExistingSectionWithCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            "There is an existing section with this code.",
+            'There is an existing section with this code.',
             false
         ));
     }

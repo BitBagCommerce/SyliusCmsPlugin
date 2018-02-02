@@ -28,7 +28,7 @@ interface BlockRepositoryInterface extends RepositoryInterface
     /**
      * @param string $code
      *
-     * @return null|BlockInterface
+     * @return BlockInterface|null
      */
     public function findOneEnabledByCode(string $code): ?BlockInterface;
 

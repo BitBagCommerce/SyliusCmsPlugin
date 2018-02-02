@@ -14,8 +14,8 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPageInterface;
 use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
@@ -41,11 +41,10 @@ final class PageContext implements Context
      * @param SharedStorageInterface $sharedStorage
      */
     public function __construct(
-        ShowPageInterface $showPage, 
+        ShowPageInterface $showPage,
         IndexPageInterface $indexPage,
         SharedStorageInterface $sharedStorage
-    )
-    {
+    ) {
         $this->showPage = $showPage;
         $this->indexPage = $indexPage;
         $this->sharedStorage = $sharedStorage;
@@ -58,17 +57,17 @@ final class PageContext implements Context
     {
         $this->showPage->open(['slug' => $slug]);
     }
-    
+
     /**
      * @When I go to this page
      */
     public function iGoToThisPage(): void
     {
         $slug = $this->sharedStorage->get('page')->getSlug();
-        
+
         $this->showPage->open(['slug' => $slug]);
     }
-    
+
     /**
      * @When I go to the section pages list for the :sectionCode section
      */

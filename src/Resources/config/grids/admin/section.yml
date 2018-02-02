@@ -7,7 +7,6 @@ sylius_grid:
                     class: "%bitbag_sylius_cms_plugin.model.section.class%"
                     repository:
                         method: createListQueryBuilder
-                        arguments: ["%locale%"]
             sorting:
                 code: asc
             limits: [10, 25, 50]

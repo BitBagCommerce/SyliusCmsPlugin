@@ -18,17 +18,17 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName(): ?string;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      */
     public function setName(?string $name): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getContent(): ?string;
 
@@ -48,12 +48,12 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
     public function setImage(?BlockImageInterface $image): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getLink(): ?string;
 
     /**
-     * @param null|string $link
+     * @param string|null $link
      */
     public function setLink(?string $link): void;
 }

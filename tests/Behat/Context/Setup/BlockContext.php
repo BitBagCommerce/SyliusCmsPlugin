@@ -65,8 +65,7 @@ final class BlockContext implements Context
         BlockFactoryInterface $blockFactory,
         BlockRepositoryInterface $blockRepository,
         ImageUploaderInterface $imageUploader
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->blockFactory = $blockFactory;
@@ -136,8 +135,8 @@ final class BlockContext implements Context
 
     /**
      * @param string $type
-     * @param null|string $code
-     * @param null|string $content
+     * @param string|null $code
+     * @param string|null $content
      * @param string|null $image
      *
      * @return BlockInterface
@@ -147,8 +146,7 @@ final class BlockContext implements Context
         ?string $code = null,
         ?string $content = null,
         string $image = null
-    ): BlockInterface
-    {
+    ): BlockInterface {
         $block = $this->blockFactory->createWithType($type);
 
         $block->setCurrentLocale('en_US');

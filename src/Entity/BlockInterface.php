@@ -34,32 +34,32 @@ interface BlockInterface extends
     public function getType(): ?string;
 
     /**
-     * @param null|string $type
+     * @param string|null $type
      */
     public function setType(?string $type): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getCode(): ?string;
 
     /**
-     * @param null|string $code
+     * @param string|null $code
      */
     public function setCode(?string $code): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName(): ?string;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      */
     public function setName(?string $name): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getContent(): ?string;
 
@@ -69,22 +69,22 @@ interface BlockInterface extends
     public function setContent(?string $content): void;
 
     /**
-     * @return null|ImageInterface
+     * @return ImageInterface|null
      */
     public function getImage(): ?ImageInterface;
 
     /**
-     * @param null|ImageInterface $image
+     * @param ImageInterface|null $image
      */
     public function setImage(?ImageInterface $image): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getLink(): ?string;
 
     /**
-     * @param null|string $link
+     * @param string|null $link
      */
     public function setLink(?string $link): void;
 }

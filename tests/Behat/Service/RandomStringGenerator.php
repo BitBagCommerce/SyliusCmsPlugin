@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -21,7 +22,7 @@ final class RandomStringGenerator implements RandomStringGeneratorInterface
         $charactersLength = strlen($characters);
         $randomString = '';
 
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
 

@@ -22,22 +22,22 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $id;
 
     /**
-     * @var null|string
+     * @var string|null
      */
-    protected $name = null;
+    protected $name;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $content;
 
     /**
-     * @var null|BlockImageInterface
+     * @var BlockImageInterface|null
      */
     protected $image;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $link;
 

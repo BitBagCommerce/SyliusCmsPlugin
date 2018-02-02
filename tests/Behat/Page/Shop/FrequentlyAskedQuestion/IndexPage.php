@@ -50,7 +50,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
         $question = $frequentlyAskedQuestionOnPage->getText();
 
         $questionParts = explode('. ', $question);
-        $positionInQuestion = (int)str_replace('. ', '', $questionParts[0]);
+        $positionInQuestion = (int) str_replace('. ', '', $questionParts[0]);
 
         if ($position === $positionInQuestion) {
             return true;

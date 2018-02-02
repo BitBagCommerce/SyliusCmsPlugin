@@ -21,7 +21,7 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     use ChecksCodeImmutabilityTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillField(string $field, string $value): void
     {

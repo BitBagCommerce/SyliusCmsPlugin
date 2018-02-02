@@ -87,8 +87,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
-    )
-    {
+    ) {
         $this->blockFactory = $blockFactory;
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
@@ -113,7 +112,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
             }
 
             if (null !== $fields['number']) {
-                for ($i = 0; $i < $fields['number']; $i++) {
+                for ($i = 0; $i < $fields['number']; ++$i) {
                     $this->createBlock(md5(uniqid()), $fields);
                 }
             } else {
@@ -162,7 +161,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $this->blockRepository->add($block);
     }
-
 
     /**
      * @param BlockInterface $block

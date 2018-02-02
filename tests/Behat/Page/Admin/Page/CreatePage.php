@@ -23,7 +23,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     use ContainsErrorTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillField(string $field, string $value): void
     {
@@ -31,7 +31,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillCode(string $code): void
     {
@@ -39,7 +39,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillName(string $name): void
     {
@@ -51,7 +51,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillSlug(string $slug): void
     {
@@ -59,7 +59,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillMetaKeywords(string $metaKeywords): void
     {
@@ -67,7 +67,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillMetaDescription(string $metaDescription): void
     {
@@ -75,7 +75,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function fillContent(string $content): void
     {
@@ -83,7 +83,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function associateSections(array $sectionsNames): void
     {

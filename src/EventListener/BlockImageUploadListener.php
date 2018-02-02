@@ -40,7 +40,7 @@ final class BlockImageUploadListener
     {
         $block = $event->getSubject();
 
-        Assert::isInstanceOf($block,BlockInterface::class);
+        Assert::isInstanceOf($block, BlockInterface::class);
 
         if (BlockInterface::IMAGE_BLOCK_TYPE !== $block->getType()) {
             return;
