@@ -7,3 +7,5 @@
 
 /etc/build/*
 !/etc/build/.gitkeep
+
+/tests/Application/yarn.lock
