@@ -1,4 +1,4 @@
-/bin/
+/bin/*
 !/bin/.gitkeep
 
 /vendor/
@@ -8,6 +8,7 @@
 /etc/build/*
 !/etc/build/.gitkeep
 
+<<<<<<< HEAD
 tests/Application/node_modules/
 
 tests/Application/var/
@@ -19,3 +20,6 @@ tests/Application/web/*
 !tests/Application/web/app_dev.php
 !tests/Application/web/app_test.php
 !tests/Application/web/assets/shop/css/bitbag.css
+=======
+/tests/Application/yarn.lock
+>>>>>>> 6e78a83e890b4e43c796013cb0c3becb89138b6f
