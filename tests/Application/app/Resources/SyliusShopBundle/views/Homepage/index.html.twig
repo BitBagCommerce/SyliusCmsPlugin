@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="top one">
-        <div class="ui center aligned segment stackable grid">
-            <img class="ui image"
-                 src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png"
-                 alt="SyliusCmsPlugin"/>
+        <div class="ui center aligned segment stackable grid cms-logo">
+            <a href="https://github.com/BitBagCommerce/SyliusCmsPlugin">
+                <img class="ui image cms-logo"
+                     src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png"
+                     alt="SyliusCmsPlugin"/>
+            </a>
         </div>
 
         <div class="ui stackable two column grid">
@@ -40,4 +42,13 @@
     </div>
 
     {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
+
+    <div class="ui stackable one column grid">
+        <div class="column intro promo">
+            <div class="ui info message">
+                Like it? We do a lot of Sylius projects & plugins. <br/>
+                Perhaps there is something we can do for you. Visit <a href="https://bitbag.shop/">our website</a> for more information.
+            </div>
+        </div>
+    </div>
 {% endblock %}
