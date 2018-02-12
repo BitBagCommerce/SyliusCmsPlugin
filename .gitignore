@@ -19,3 +19,5 @@ tests/Application/web/*
 !tests/Application/web/app_test.php
 
 /tests/Application/yarn.lock
+
+/composer.lock
