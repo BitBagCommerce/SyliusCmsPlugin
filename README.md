@@ -53,7 +53,7 @@ Import required config in your `app/config/config.yml` file:
 imports:
     ...
     
-    - { resource: '@BitBagSyliusCmsPlugin/Resources/config/config.yml' }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
 Import routing in your `app/config/routing.yml` file:
@@ -64,7 +64,7 @@ Import routing in your `app/config/routing.yml` file:
 ...
 
 bitbag_sylius_cms_plugin:
-    resource: '@BitBagSyliusCmsPlugin/Resources/config/routing.yml'
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
 Finish the installation by updating the database schema and installing assets:
