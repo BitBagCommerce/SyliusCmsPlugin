@@ -24,9 +24,11 @@
 
 We created a demo app with some useful use-cases of the plugin! Visit [cms.bitbag.shop](https://cms.bitbag.shop) to take a look at it. The admin as always can be accessed under [cms.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
 
-There is also a recorded webinar which presents most of the CMS features including how they have been implemented.
+<div align="center">
+    We also recorded a webinar which presents most of the plugin features, including how they have been implemented and           specific use-cases.
 
-[![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
+    [![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
+</div>
 
 ## Overview
 
