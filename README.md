@@ -27,7 +27,7 @@ We created a demo app with some useful use-cases of the plugin! Visit [cms.bitba
 <div align="center">
     We also recorded a webinar which presents most of the plugin features, including how they have been implemented and           specific use-cases.
 
-    [![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
+[![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
 </div>
 
 ## Overview
