@@ -24,6 +24,10 @@
 
 We created a demo app with some useful use-cases of the plugin! Visit [cms.bitbag.shop](https://cms.bitbag.shop) to take a look at it. The admin as always can be accessed under [cms.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
 
+There is also a recorded webinar which presents most of the CMS features including how they have been implemented.
+
+[![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
+
 ## Overview
 
 Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQs section.
