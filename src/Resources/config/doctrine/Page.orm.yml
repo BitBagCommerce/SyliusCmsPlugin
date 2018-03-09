@@ -47,8 +47,9 @@ BitBag\SyliusCmsPlugin\Entity\Page:
             joinTable:
                 name: bitbag_cms_page_sections
                 joinColumns:
-                    block_id:
+                    page_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     section_id:
                         referencedColumnName: id
