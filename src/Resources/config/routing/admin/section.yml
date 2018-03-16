@@ -30,7 +30,7 @@ bitbag_sylius_cms_plugin_admin_ajax_section_by_name_phrase:
                 method: findByNamePart
                 arguments:
                     phrase: $phrase
-                    locale: expr:service('sylius.context.locale').getLocaleCode()
+                    locale: null
 
 bitbag_sylius_cms_plugin_admin_ajax_section_by_code:
     path: /ajax/sections/code
