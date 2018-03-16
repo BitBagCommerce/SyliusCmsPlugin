@@ -5,34 +5,60 @@ bitbag_sylius_cms_plugin:
             not_blank: Afbeelding kan niet leeg zijn.
         code:
             unique: Code moet uniek zijn.
-            not_blank: Gelieve een code in te vullen.
+            not_blank: Code is verplicht en mag niet leeg zijn.
             min_length: Code moet minstens {{ limit }} tekens lang zijn.
-            max_length: Code mag niet langer zijn dan {{ limit }} characters.
+            max_length: Code mag niet langer zijn dan {{ limit }} tekens.
         name:
-            min_length: Name moet minstens {{ limit }} tekens lang zijn.
-            max_length: Name mag niet langer zijn dan {{ limit }} characters.
+            min_length: Naam moet minstens {{ limit }} tekens lang zijn.
+            max_length: Naam mag niet langer zijn dan {{ limit }} tekens.
         content:
-            min_length: Content moet minstens {{ limit }} tekens lang zijn.
+            not_blank: Inhoud is verplicht en mag niet leeg zijn.
+            min_length: Inhoud moet minstens {{ limit }} tekens lang zijn.
     page:
         code:
             unique: Code moet uniek zijn.
-            not_blank: Gelieve een code in te vullen.
+            not_blank: Code is verplicht en mag niet leeg zijn.
             min_length: Code moet minstens {{ limit }} tekens lang zijn.
-            max_length: Code mag niet langer zijn dan {{ limit }} characters.
+            max_length: Code mag niet langer zijn dan {{ limit }} tekens.
         name:
-            not_blank: Voer een paginanaam in.
-            min_length: Name moet minstens {{ limit }} tekens lang zijn.
-            max_length: Name mag niet langer zijn dan {{ limit }} characters.
+            not_blank: Naam is verplicht en mag niet leeg zijn.
+            min_length: Naam moet minstens {{ limit }} tekens lang zijn.
+            max_length: Naam mag niet langer zijn dan {{ limit }} tekens.
         slug:
-            not_blank: Voer een slug in.
+            not_blank: Slug is verplicht en mag niet leeg zijn.
             min_length: Slug moet minstens {{ limit }} tekens lang zijn.
-            max_length: Slug mag niet langer zijn dan {{ limit }} characters.
+            max_length: Slug mag niet langer zijn dan {{ limit }} tekens.
         meta_keywords:
-            min_length: Meta keywords moet minstens {{ limit }} tekens lang zijn.
-            max_length: Meta keywords mag niet langer zijn dan {{ limit }} characters.
+            min_length: Meta sleutelwoorden moeten minstens {{ limit }} tekens lang zijn.
+            max_length: Meta sleutelwoorden mogen niet langer zijn dan {{ limit }} tekens.
         meta_description:
-            min_length: Meta description moet minstens {{ limit }} tekens lang zijn.
-            max_length: Meta description mag niet langer zijn dan {{ limit }} characters.
+            min_length: Meta omschrijving moet minstens {{ limit }} tekens lang zijn.
+            max_length: Meta omschrijving mag niet langer zijn dan {{ limit }} tekens.
         content:
-            not_blank: Voer inhoud in.
+            not_blank: Inhoud is verplicht en mag niet leeg zijn.
             min_length: Inhoud moet minstens {{ limit }} tekens lang zijn.
+    frequently_asked_question:
+        code:
+            unique: Er bestaat al een veelgestelde vraag met deze code.
+            not_blank: Code is verplicht en mag niet leeg zijn.
+            min_length: Code moet minstens {{ limit }} tekens lang zijn.
+            max_length: Code mag niet langer zijn dan {{ limit }} tekens.
+        position:
+            unique: Er bestaat al een veelgestelde vraag met deze positie.
+            not_blank: Positie is verplicht en mag niet leeg zijn.
+        question:
+            not_blank: Vraag is verplicht en mag niet leeg zijn.
+            min_length: Vraag oet minstens {{ limit }} tekens lang zijn.
+        answer:
+            not_blank: Antwoord is verplicht en mag niet leeg zijn.
+            min_length: Antwoord moet minstens {{ limit }} tekens lang zijn.
+    section:
+        code:
+            unique: Er bestaat al een sectie met deze code.
+            not_blank: Code is verplicht en mag niet leeg zijn.
+            min_length: Code moet minstens {{ limit }} tekens lang zijn.
+            max_length: Code mag niet langer zijn dan {{ limit }} tekens.
+        name:
+            not_blank: Naam is verplicht en mag niet leeg zijn.
+            min_length: Naam moet minstens {{ limit }} tekens lang zijn.
+            max_length: Naam mag niet langer zijn dan {{ limit }} tekens.
