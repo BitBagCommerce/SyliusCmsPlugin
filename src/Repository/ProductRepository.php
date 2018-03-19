@@ -13,20 +13,10 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Repository;
 
 use Doctrine\ORM\QueryBuilder;
-use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Bundle\ProductBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
 
-class SectionRepository extends EntityRepository implements SectionRepositoryInterface
+class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function createListQueryBuilder(): QueryBuilder
-    {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-        ;
-    }
-
     /**
      * {@inheritdoc}
      */

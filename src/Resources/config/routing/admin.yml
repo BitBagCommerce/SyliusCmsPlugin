@@ -10,6 +10,9 @@ bitbag_sylius_cms_plugin_admin_frequently_asked_question:
 bitbag_sylius_cms_plugin_admin_section:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/section.yml"
 
+bitbag_sylius_cms_plugin_admin_product:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/product.yml"
+
 bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     path: /page/generate-slug
     methods: [GET]

@@ -3,3 +3,9 @@ services:
         class: BitBag\SyliusCmsPlugin\Controller\PageSlugController
         arguments:
             - "@sylius.generator.slug"
+
+    bitbag_sylius_cms_plugin.controller.action.admin.product_search:
+        class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.product"
+            - "@fos_rest.view_handler.default"
