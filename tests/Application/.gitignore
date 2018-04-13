@@ -3,11 +3,7 @@
 /var/*
 !/var/.gitkeep
 
-<<<<<<< HEAD
-/web/
-=======
 /web/*
->>>>>>> 1.0
 !/web/app.php
 !/web/app_dev.php
 !/web/app_test.php
