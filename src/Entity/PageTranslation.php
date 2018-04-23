@@ -27,6 +27,11 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     protected $slug;
 
     /**
+     * @var PageImageInterface|null
+     */
+    protected $image;
+
+    /**
      * @var string|null
      */
     protected $name;
@@ -84,6 +89,24 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getImage(): ?PageImageInterface
+    {
+        return $this->image;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setImage(?PageImageInterface $image): void
+    {
+        $image->setOwner($this);
+
+        $this->image = $image;
     }
 
     /**

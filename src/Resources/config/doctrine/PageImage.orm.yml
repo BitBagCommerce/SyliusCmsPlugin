@@ -1,0 +1,11 @@
+BitBag\SyliusCmsPlugin\Entity\PageImage:
+    type: entity
+    table: bitbag_cms_page_image
+    oneToOne:
+        owner:
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageTranslation
+            inversedBy: image
+            cascade: [ALL]
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id
