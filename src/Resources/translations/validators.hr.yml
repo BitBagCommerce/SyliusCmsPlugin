@@ -1,0 +1,64 @@
+bitbag_sylius_cms_plugin:
+    block:
+        image:
+            mime_types: Samo su PNG ili JPG formati dopušteni.
+            not_blank: Slika ne može biti prazna.
+        code:
+            unique: Postoji blok sa istim kodom.
+            not_blank: Kod ne može biti prazan.
+            min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
+            max_length: Kod ne može biti duži od {{ limit }} znakova.
+        name:
+            min_length: Naziv mora sadržavait minimalno {{ limit }} znaka.
+            max_length: Naziv ne može biti duži od {{ limit }} znakova.
+        content:
+            not_blank: Sadržaj ne može biti prazan.
+            min_length: Sadržaj mora imati minimalno {{ limit }} znaka.
+    page:
+        code:
+            unique: Postoji stranica sa istim kodom..
+            not_blank: Kod ne može biti prazan.
+            min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
+            max_length:  Kod ne može biti duži od {{ limit }} znakova.
+        name:
+            not_blank: Naziv ne može biti prazan.
+            min_length: Naziv mora sadržavait minimalno {{ limit }} znaka.
+            max_length: Naziv ne može biti duži od {{ limit }} znakova.
+        slug:
+            not_blank:  Slug ne može biti prazan.
+            min_length: Slug mora biti duži od {{ limit }} znaka.
+            max_length: Slug ne može biti duži od {{ limit }} znakova.
+        meta_keywords:
+            min_length: Meta ključne riječi moraju biti duže od {{ limit }} znaka.
+            max_length: Meta ključne riječi ne mogu biti duže od {{ limit }} znakova.
+        meta_description:
+            min_length: Meta opis moraju biti duže od {{ limit }} znaka.
+            max_length: Meta opis ne mogu biti duže od {{ limit }} znakova.
+        content:
+            not_blank: Sadržaj ne može biti prazan.
+            min_length: Sadržaj mora sadržavati minimlano {{ limit }} znakova.
+    frequently_asked_question:
+        code:
+            unique: Postoji FAQ sa istim kodom.
+            not_blank: Kod ne može biti prazan.
+            min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
+            max_length: Kod ne može biti duži od {{ limit }} znakova.
+        position:
+            unique: Postoji FAQ sa istom pozicijom.
+            not_blank: Pozicija ne može biti prazna.
+        question:
+            not_blank: Pitanje ne može biti prazno.
+            min_length: Pitanje mora sadržavati minimalno {{ limit }} znaka.
+        answer:
+            not_blank: Odgovor ne može biti prazan.
+            min_length: Odgovor mora sadržavati minimalno {{ limit }} znaka.
+    section:
+        code:
+            unique: Postoji kategorija sa istim kodom.
+            not_blank: Kod ne može biti prazan.
+            min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
+            max_length: Kod ne može biti duži od {{ limit }} znakova.
+        name:
+            not_blank: Naziv ne može biti prazan.
+            min_length: Naziv mora sadržavati minimalno {{ limit }} znaka.
+            max_length: Naziv mora biti duži od {{ limit }} znakova.
