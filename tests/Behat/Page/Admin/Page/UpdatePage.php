@@ -14,8 +14,21 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
+use Webmozart\Assert\Assert;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ChecksCodeImmutabilityTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function uploadImage(string $image): void
+    {
+        $path = __DIR__ . '/../../../Resources/images/' . $image;
+
+        Assert::fileExists($path);
+
+        $this->getDocument()->attachFileToField('Choose file', $path);
+    }
 }

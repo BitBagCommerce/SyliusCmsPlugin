@@ -33,6 +33,19 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * {@inheritdoc}
      */
+    public function uploadImage(string $image): void
+    {
+        $path = __DIR__ . '/../../../Resources/images/' . $image;
+
+        Assert::fileExists($path);
+
+        $this->getDocument()
+            ->attachFileToField('Choose file', $path);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
