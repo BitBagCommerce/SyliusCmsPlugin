@@ -23,6 +23,14 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     /**
      * {@inheritdoc}
      */
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function uploadImage(string $image): void
     {
         $path = __DIR__ . '/../../../Resources/images/' . $image;

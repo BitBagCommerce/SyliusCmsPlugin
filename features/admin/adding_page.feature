@@ -8,7 +8,7 @@ Feature: Adding new page
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @ui @javascript
+    @ui
     Scenario: Adding page
         When I go to the create page page
         And I fill the code with "top_5_outfits_for_this_summer"
@@ -20,7 +20,7 @@ Feature: Adding new page
         And I add it
         Then I should be notified that the page has been created
 
-    @ui @javascript
+    @ui
     Scenario: Adding page with page image
         When I go to the create page page
         And I fill the code with "aston_martin_is_amazing_car"
