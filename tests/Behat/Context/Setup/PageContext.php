@@ -13,14 +13,18 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
+use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class PageContext implements Context
@@ -61,6 +65,11 @@ final class PageContext implements Context
     private $sectionRepository;
 
     /**
+     * @var ImageUploaderInterface
+     */
+    private $imageUploader;
+
+    /**
      * @param SharedStorageInterface $sharedStorage
      * @param RandomStringGeneratorInterface $randomStringGenerator
      * @param FactoryInterface $pageFactory
@@ -76,7 +85,8 @@ final class PageContext implements Context
         PageRepositoryInterface $pageRepository,
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
-        SectionRepositoryInterface $sectionRepository
+        SectionRepositoryInterface $sectionRepository,
+        ImageUploaderInterface $imageUploader
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
@@ -85,6 +95,7 @@ final class PageContext implements Context
         $this->entityManager = $entityManager;
         $this->productRepository = $productRepository;
         $this->sectionRepository = $sectionRepository;
+        $this->imageUploader = $imageUploader;
     }
 
     /**
@@ -170,6 +181,18 @@ final class PageContext implements Context
     }
 
     /**
+     * @Given this page also has :content image
+     */
+    public function thisPageAlsoHasImage(string $image): void
+    {
+        $image = $this->uploadImage($image);
+
+        $this->sharedStorage->get('page')->setImage($image);
+
+        $this->entityManager->flush();
+    }
+
+    /**
      * @Given this page has these products associated with it
      */
     public function thisPageHasTheseProductsAssociatedWithIt(): void
@@ -244,6 +267,23 @@ final class PageContext implements Context
         $page->setContent($content);
 
         return $page;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return ImageInterface
+     */
+    private function uploadImage(string $name): ImageInterface
+    {
+        $image = new PageImage();
+        $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
+
+        $image->setFile($uploadedImage);
+
+        $this->imageUploader->upload($image);
+
+        return $image;
     }
 
     /**
