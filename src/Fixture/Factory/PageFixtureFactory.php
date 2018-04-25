@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
@@ -19,8 +20,10 @@ use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
 {
@@ -45,6 +48,11 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private $sectionRepository;
 
     /**
+     * @var ImageUploaderInterface
+     */
+    private $imageUploader;
+
+    /**
      * @var ProductRepositoryInterface
      */
     private $productRepository;
@@ -65,6 +73,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
      * @param PageRepositoryInterface $pageRepository
      * @param ProductRepositoryInterface $productRepository
      * @param SectionRepositoryInterface $sectionRepository
+     * @param ImageUploaderInterface $imageUploader
      * @param ChannelContextInterface $channelContext
      * @param LocaleContextInterface $localeContext
      */
@@ -73,6 +82,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         FactoryInterface $pageTranslationFactory,
         PageRepositoryInterface $pageRepository,
         SectionRepositoryInterface $sectionRepository,
+        ImageUploaderInterface $imageUploader,
         ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
@@ -81,6 +91,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageTranslationFactory = $pageTranslationFactory;
         $this->pageRepository = $pageRepository;
         $this->sectionRepository = $sectionRepository;
+        $this->imageUploader = $imageUploader;
         $this->productRepository = $productRepository;
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
@@ -140,6 +151,17 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $pageTranslation->setMetaKeywords($translation['meta_keywords']);
             $pageTranslation->setMetaDescription($translation['meta_description']);
             $pageTranslation->setContent($translation['content']);
+
+            if ($translation['image_path']) {
+                $image = new PageImage();
+                $path = $translation['image_path'];
+                $uploadedImage = new UploadedFile($path, md5($path).'.jpg');
+
+                $image->setFile($uploadedImage);
+                $pageTranslation->setImage($image);
+
+                $this->imageUploader->upload($image);
+            }
 
             $page->addTranslation($pageTranslation);
         }
