@@ -22,7 +22,8 @@ bitbag_sylius_cms_plugin:
         faq: FAQ
         code: Kod
         contents: Sadržaj
-        images: Slika
+        images: Slike
+        image: Slika
         link: Poveznica (link)
         faq_header: FAQ
         faq_subheader: Uredi često postavljena pitanja
