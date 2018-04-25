@@ -20,6 +20,7 @@ services:
             - "@__symfony__.doctrine.orm.entity_manager"
             - "@__symfony__.sylius.repository.product"
             - "@__symfony__.bitbag_sylius_cms_plugin.repository.section"
+            - "@__symfony__.sylius.image_uploader"
         tags:
             - { name: fob.context_service }
 

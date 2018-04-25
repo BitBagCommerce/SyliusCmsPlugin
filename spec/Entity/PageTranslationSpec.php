@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\PageImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslation;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use PhpSpec\ObjectBehavior;
@@ -36,7 +37,7 @@ final class PageTranslationSpec extends ObjectBehavior
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
+    function it_allows_access_via_properties(PageImageInterface $pageImage): void
     {
         $this->setName('Homepage');
         $this->getName()->shouldReturn('Homepage');
@@ -52,5 +53,8 @@ final class PageTranslationSpec extends ObjectBehavior
 
         $this->setMetaDescription('Description');
         $this->getMetaDescription()->shouldReturn('Description');
+
+        $this->setImage($pageImage);
+        $this->getImage()->shouldReturn($pageImage);
     }
 }

@@ -8,7 +8,7 @@ Feature: Adding new page
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @ui @javascript
+    @ui
     Scenario: Adding page
         When I go to the create page page
         And I fill the code with "top_5_outfits_for_this_summer"
@@ -17,6 +17,19 @@ Feature: Adding new page
         And I fill the meta keywords with "TOP 5 summer outfit trends, outfits, Ralph Lauren"
         And I fill the meta description with "This summer is going to be hot like a pizza."
         And I fill the content with "The best looks, trends, inspiration, and shopping picks for summer style."
+        And I add it
+        Then I should be notified that the page has been created
+
+    @ui
+    Scenario: Adding page with page image
+        When I go to the create page page
+        And I fill the code with "aston_martin_is_amazing_car"
+        And I fill the slug with "aston_martin_is_amazing_car"
+        And I fill the name with "Aston Martin is amazing car"
+        And I fill the meta keywords with "Aston Martin is amazing car"
+        And I fill the meta description with "Aston Martin is amazing car for this summer."
+        And I fill the content with "Aston Martin is amazing car for this summer. Buy it."
+        And I upload the "aston_martin_db_11.jpg" image
         And I add it
         Then I should be notified that the page has been created
 

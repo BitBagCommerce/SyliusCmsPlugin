@@ -11,3 +11,11 @@ services:
         tags:
             - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_create, method: uploadImage }
             - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_update, method: uploadImage }
+
+    bitbag_sylius_cms_plugin.event_listener.page_image_upload:
+        class: BitBag\SyliusCmsPlugin\EventListener\PageImageUploadListener
+        arguments:
+            - "@sylius.image_uploader"
+        tags:
+            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.page.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.page.pre_update, method: uploadImage }

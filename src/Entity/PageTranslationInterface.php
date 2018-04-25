@@ -66,4 +66,14 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
      * @param string|null $metaDescription
      */
     public function setMetaDescription(?string $metaDescription): void;
+
+    /**
+     * @return PageImageInterface|null
+     */
+    public function getImage(): ?PageImageInterface;
+
+    /**
+     * @param PageImageInterface $image
+     */
+    public function setImage(?PageImageInterface $image): void;
 }

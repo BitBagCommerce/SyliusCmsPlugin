@@ -50,4 +50,9 @@ interface ShowPageInterface extends SymfonyPageInterface
      * @return bool
      */
     public function hasPageLink(string $linkName): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasPageImage(): bool;
 }

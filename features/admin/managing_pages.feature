@@ -21,3 +21,20 @@ Feature: Managing cms pages
         Given there is a page in the store
         When I want to edit this page
         Then the code field should be disabled
+
+    @ui
+    Scenario: Updating page
+        Given there is a page in the store
+        When I want to edit this page
+        And I fill "Code, Content" fields
+        And I update it
+        Then I should be notified that the page was updated
+
+    @ui
+    Scenario: Updating page with image
+        Given there is a page in the store
+        When I want to edit this page
+        And I fill "Code, Content" fields
+        And I upload the "aston_martin_db_11.jpg" image
+        And I update it
+        Then I should be notified that the page was updated

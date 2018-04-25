@@ -23,6 +23,7 @@ bitbag_sylius_cms_plugin:
         code: Code
         contents: Contents
         images: Images
+        image: Image
         link: Link
         faq_header: FAQ
         faq_subheader: Manage frequently asked questions

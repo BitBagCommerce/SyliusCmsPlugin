@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
+use BitBag\SyliusCmsPlugin\Form\Type\PageImageType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,6 +42,10 @@ final class PageTranslationType extends AbstractResourceType
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content',
+            ])
+            ->add('image', PageImageType::class, [
+                'label' => false,
+                'required' => false,
             ])
         ;
     }

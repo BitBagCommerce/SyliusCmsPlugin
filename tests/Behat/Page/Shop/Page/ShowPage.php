@@ -86,6 +86,14 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
     /**
      * {@inheritdoc}
      */
+    public function hasPageImage(): bool
+    {
+        return $this->getElement('page-image')->isVisible();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -94,6 +102,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
             'products' => '.bitbag-page-products',
             'sections' => '.bitbag-page-sections',
             'link' => '.bitbag-page-link',
+            'page-image' => '.page-image',
         ]);
     }
 }
