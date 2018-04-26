@@ -25,8 +25,12 @@ final class FrequentlyAskedQuestionTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('question', TextType::class)
-            ->add('answer', TextareaType::class)
+            ->add('question', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.question',
+            ])
+            ->add('answer', TextareaType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.answer',
+            ])
         ;
     }
 }
