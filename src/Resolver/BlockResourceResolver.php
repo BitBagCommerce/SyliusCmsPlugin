@@ -18,14 +18,10 @@ use Psr\Log\LoggerInterface;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var LoggerInterface
-     */
+    /** @var LoggerInterface */
     private $logger;
 
     /**
@@ -38,9 +34,6 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOrLog(string $code): ?BlockInterface
     {
         $block = $this->blockRepository->findOneEnabledByCode($code);

@@ -28,44 +28,28 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var BlockFactoryInterface
-     */
+    /** @var BlockFactoryInterface */
     private $blockFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $blockTranslationFactory;
 
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $imageUploader;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
     /**
@@ -98,9 +82,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->localeContext = $localeContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {

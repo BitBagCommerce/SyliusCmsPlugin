@@ -17,9 +17,6 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 
 final class BitBagSyliusCmsExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
     }

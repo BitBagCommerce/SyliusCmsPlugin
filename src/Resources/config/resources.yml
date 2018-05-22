@@ -3,3 +3,4 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/page.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/frequently_asked_question.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/section.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/media.yml" }

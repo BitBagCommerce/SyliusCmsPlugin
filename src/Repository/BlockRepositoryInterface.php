@@ -18,18 +18,8 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface BlockRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param string $localeCode
-     *
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    /**
-     * @param string $code
-     *
-     * @return BlockInterface|null
-     */
     public function findOneEnabledByCode(string $code): ?BlockInterface;
 
     /**

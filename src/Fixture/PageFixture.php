@@ -19,38 +19,24 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class PageFixture extends AbstractFixture implements FixtureInterface
 {
-    /**
-     * @var FixtureFactoryInterface
-     */
+    /** @var FixtureFactoryInterface */
     private $pageFixtureFactory;
 
-    /**
-     * @param FixtureFactoryInterface $pageFixtureFactory
-     */
     public function __construct(FixtureFactoryInterface $pageFixtureFactory)
     {
         $this->pageFixtureFactory = $pageFixtureFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $options): void
     {
         $this->pageFixtureFactory->load($options['custom']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'page';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

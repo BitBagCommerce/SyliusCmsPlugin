@@ -1,0 +1,27 @@
+BitBag\SyliusCmsPlugin\Entity\Media:
+    type: mappedSuperclass
+    table: bitbag_cms_media
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fileType:
+            column: file_type
+            type: string
+            length: 250
+            unique: false
+
+        code:
+            column: type
+            type: string
+            length: 250
+            unique: true
+
+        path:
+            column: type
+            type: string
+            length: 250
+            unique: true

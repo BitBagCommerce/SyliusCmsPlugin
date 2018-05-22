@@ -17,9 +17,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 
 trait ProductsAwareTrait
 {
-    /**
-     * @var Collection|ProductInterface[]
-     */
+    /** @var Collection|ProductInterface[] */
     protected $products;
 
     public function initializeProductsCollection(): void
@@ -35,27 +33,16 @@ trait ProductsAwareTrait
         return $this->products;
     }
 
-    /**
-     * @param ProductInterface $product
-     *
-     * @return bool
-     */
     public function hasProduct(ProductInterface $product): bool
     {
         return $this->products->contains($product);
     }
 
-    /**
-     * @param ProductInterface $product
-     */
     public function addProduct(ProductInterface $product): void
     {
         $this->products->add($product);
     }
 
-    /**
-     * @param ProductInterface $product
-     */
     public function removeProduct(ProductInterface $product): void
     {
         if (true === $this->hasProduct($product)) {

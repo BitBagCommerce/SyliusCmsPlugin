@@ -17,9 +17,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class SectionRepository extends EntityRepository implements SectionRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -27,9 +24,6 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findByNamePart(string $phrase, ?string $locale = null): array
     {
         return $this->createQueryBuilder('o')

@@ -23,19 +23,13 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
         __construct as private initializeTranslationsCollection;
     }
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $code;
 
-    /**
-     * @var int|null
-     */
+    /** @var int */
     protected $position;
 
     public function __construct()
@@ -43,73 +37,46 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
         $this->initializeTranslationsCollection();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPosition(): ?int
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setPosition(?int $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getQuestion(): ?string
     {
         return $this->getFrequentlyAskedQuestionTranslation()->getQuestion();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setQuestion(?string $question): void
     {
         $this->getFrequentlyAskedQuestionTranslation()->setQuestion($question);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAnswer(): ?string
     {
         return $this->getFrequentlyAskedQuestionTranslation()->getAnswer();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setAnswer(?string $answer): void
     {
         $this->getFrequentlyAskedQuestionTranslation()->setAnswer($answer);
@@ -123,9 +90,6 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
         return $this->getTranslation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): TranslationInterface
     {
         return new FrequentlyAskedQuestionTranslation();

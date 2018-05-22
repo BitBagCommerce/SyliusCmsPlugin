@@ -27,14 +27,10 @@ class Page implements PageInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     protected $code;
 
     public function __construct()
@@ -46,113 +42,71 @@ class Page implements PageInterface
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setId(?int $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSlug(): ?string
     {
         return $this->getPageTranslation()->getSlug();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSlug(?string $slug): void
     {
         $this->getPageTranslation()->setSlug($slug);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMetaKeywords(): ?string
     {
         return $this->getPageTranslation()->getMetaKeywords();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMetaKeywords(?string $metaKeywords): void
     {
         $this->getPageTranslation()->setMetaKeywords($metaKeywords);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMetaDescription(): ?string
     {
         return $this->getPageTranslation()->getMetaDescription();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMetaDescription(?string $metaDescription): void
     {
         $this->getPageTranslation()->setMetaDescription($metaDescription);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getContent(): ?string
     {
         return $this->getPageTranslation()->getContent();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setContent(?string $content): void
     {
         $this->getPageTranslation()->setContent($content);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->getPageTranslation()->getName();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->getPageTranslation()->setName($name);
@@ -166,9 +120,6 @@ class Page implements PageInterface
         return $this->getTranslation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): ?PageTranslationInterface
     {
         return new PageTranslation();

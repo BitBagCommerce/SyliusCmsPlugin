@@ -16,56 +16,35 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements FrequentlyAskedQuestionTranslationInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     protected $question;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     protected $answer;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getQuestion(): ?string
     {
         return $this->question;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setQuestion(string $question): void
     {
         $this->question = $question;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAnswer(): ?string
     {
         return $this->answer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setAnswer(string $answer): void
     {
         $this->answer = $answer;

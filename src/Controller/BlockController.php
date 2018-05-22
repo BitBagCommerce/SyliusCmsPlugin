@@ -20,11 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class BlockController extends ResourceController
 {
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     public function renderBlockAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);

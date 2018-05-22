@@ -19,38 +19,24 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class SectionFixture extends AbstractFixture implements FixtureInterface
 {
-    /**
-     * @var FixtureFactoryInterface
-     */
+    /** @var FixtureFactoryInterface */
     private $sectionFixtureFactory;
 
-    /**
-     * @param FixtureFactoryInterface $sectionFixtureFactory
-     */
     public function __construct(FixtureFactoryInterface $sectionFixtureFactory)
     {
         $this->sectionFixtureFactory = $sectionFixtureFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $options): void
     {
         $this->sectionFixtureFactory->load($options['custom']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'section';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

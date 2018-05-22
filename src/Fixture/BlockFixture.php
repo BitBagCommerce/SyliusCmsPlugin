@@ -19,38 +19,24 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class BlockFixture extends AbstractFixture implements FixtureInterface
 {
-    /**
-     * @var FixtureFactoryInterface
-     */
+    /** @var FixtureFactoryInterface */
     private $blockFixtureFactory;
 
-    /**
-     * @param FixtureFactoryInterface $blockFixtureFactory
-     */
     public function __construct(FixtureFactoryInterface $blockFixtureFactory)
     {
         $this->blockFixtureFactory = $blockFixtureFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $options): void
     {
         $this->blockFixtureFactory->load($options['custom']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'block';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

@@ -18,9 +18,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class TextBlockTranslationType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -34,9 +31,6 @@ final class TextBlockTranslationType extends AbstractResourceType
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_text_translation';
