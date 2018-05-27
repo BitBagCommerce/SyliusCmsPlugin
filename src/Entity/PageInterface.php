@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
@@ -23,7 +24,8 @@ interface PageInterface extends
     ToggleableInterface,
     ProductsAwareInterface,
     SectionableInterface,
-    TimestampableInterface
+    TimestampableInterface,
+    ChannelsAwareInterface
 {
     /**
      * @return string|null

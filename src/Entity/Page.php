@@ -24,6 +24,7 @@ class Page implements PageInterface
     use ProductsAwareTrait;
     use SectionableTrait;
     use TimestampableTrait;
+    use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -43,6 +44,8 @@ class Page implements PageInterface
         $this->initializeProductsCollection();
         $this->initializeSectionsCollection();
         $this->initializeTranslationsCollection();
+        $this->initializeChannelsCollection();
+        $this->initializeChannelsCollection();
 
         $this->createdAt = new \DateTime();
     }
