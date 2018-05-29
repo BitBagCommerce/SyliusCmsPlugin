@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
 use BitBag\SyliusCmsPlugin\Form\Type\PageImageType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +30,10 @@ final class PageTranslationType extends AbstractResourceType
             ->add('slug', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.slug',
             ])
+            ->add('image', PageImageType::class, [
+                'label' => false,
+                'required' => false,
+            ])
             ->add('metaKeywords', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.meta_keywords',
                 'required' => false,
@@ -37,12 +42,8 @@ final class PageTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.meta_description',
                 'required' => false,
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content',
-            ])
-            ->add('image', PageImageType::class, [
-                'label' => false,
-                'required' => false,
             ])
         ;
     }

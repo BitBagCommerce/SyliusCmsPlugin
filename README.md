@@ -46,16 +46,30 @@ We also recorded a webinar which presents most of the plugin features, including
 $ composer require bitbag/cms-plugin
 ```
     
-Add plugin dependencies to your AppKernel.php file:
+Add plugin dependencies to your AppKernel.php file (note the new compiler pass):
 ```php
 public function registerBundles()
 {
     return array_merge(parent::registerBundles(), [
         ...
         
+        new \FOS\CKEditorBundle\FOSCKEditorBundle(), // WYSIWYG editor
         new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
+
+protected function build(ContainerBuilder $container)
+{
+    ...
+
+    $container->addCompilerPass(new \BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass());
+}
+```
+
+Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+
+```bash
+$ bin/console ckeditor:install
 ```
 
 Import required config in your `app/config/config.yml` file:

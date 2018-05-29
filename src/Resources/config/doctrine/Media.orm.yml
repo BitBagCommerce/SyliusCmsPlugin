@@ -8,17 +8,17 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             generator:
                 strategy: AUTO
     fields:
+        code:
+            column: code
+            type: string
+            length: 250
+            unique: true
+
         fileType:
             column: file_type
             type: string
             length: 250
             unique: false
-
-        code:
-            column: type
-            type: string
-            length: 250
-            unique: true
 
         path:
             column: type

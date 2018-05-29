@@ -1,6 +1,6 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/block.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/page.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/frequently_asked_question.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/section.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources/media.yml" }
+    - { resource: resources/block.yml }
+    - { resource: resources/page.yml }
+    - { resource: resources/frequently_asked_question.yml }
+    - { resource: resources/section.yml }
+    - { resource: resources/media.yml }

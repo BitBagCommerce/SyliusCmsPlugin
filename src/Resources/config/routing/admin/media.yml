@@ -1,7 +1,7 @@
 bitbag_sylius_cms_plugin_admin_media:
     resource: |
         alias: bitbag_sylius_cms_plugin.media
-        media: admin
+        section: admin
         templates: SyliusAdminBundle:Crud
         redirect: update
         grid: bitbag_sylius_cms_plugin_admin_media
