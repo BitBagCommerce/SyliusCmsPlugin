@@ -46,6 +46,7 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.page_translation"
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@sylius.image_uploader"
             - "@sylius.repository.product"
             - "@sylius.context.channel"
             - "@sylius.context.locale"

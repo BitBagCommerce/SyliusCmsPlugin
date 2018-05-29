@@ -20,13 +20,26 @@
     </a>
 </h1>
 
-# Demo
-
-We created a demo app with some useful use-cases of the plugin! Visit [cms.bitbag.shop](https://cms.bitbag.shop) to take a look at it. The admin as always can be accessed under [cms.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
-
 ## Overview
 
 Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQs section.
+
+## Support
+
+We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
+Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
+
+# Demo
+
+We created a demo app with some useful use-cases of the plugin! Visit [demo.bitbag.shop](https://demo.bitbag.shop) to take a look at it. The admin as always can be accessed under [demo.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
+
+We also recorded a webinar which presents most of the plugin features, including how they have been implemented and           specific use-cases.
+
+<div align="center">
+    
+[![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
+
+</div>
 
 ## Installation
 ```bash
@@ -53,7 +66,7 @@ Import required config in your `app/config/config.yml` file:
 imports:
     ...
     
-    - { resource: '@BitBagSyliusCmsPlugin/Resources/config/config.yml' }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
 Import routing in your `app/config/routing.yml` file:
@@ -64,7 +77,7 @@ Import routing in your `app/config/routing.yml` file:
 ...
 
 bitbag_sylius_cms_plugin:
-    resource: '@BitBagSyliusCmsPlugin/Resources/config/routing.yml'
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
 Finish the installation by updating the database schema and installing assets:
@@ -171,7 +184,3 @@ $ bin/phpspec run
 ## Contribution
 
 Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
-
-## Support
-
-Want us to help you with this plugin or any Sylius project? Write us an email on mikolaj.krol@bitbag.pl :computer:

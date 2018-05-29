@@ -2,30 +2,34 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Blokken
         pages: Pagina's
-    cms:
-        content_management: Beheer content
-        cms: Beheer content
+        content_management: Beheer inhoud
+        cms: Beheer inhoud
         enabled: Ingeschakeld
-        blocks: Blokken
-        pages: Pagina's
         blocks_header: Blokken
         blocks_subheader: Blokken beheren
-        text_block: Text blok
+        text_block: Tekst blok
         html_block: HTML blok
         image_block: Afbeelding blok
-        pages_header: Pagina
+        pages_header: Pagina's
         pages_subheader: Pagina's beheren
         products: Producten
+        page_related_products: Pagina gerelateerde producten
         name: Naam
         slug: Slug
-        meta_keywords: Meta keywords
-        meta_description: Meta description
+        meta_keywords: Meta sleutelwoorden
+        meta_description: Meta omschrijving
         content: Inhoud
-        form:
-            code: Code
-            enabled: Ingeschakeld
-            name: Naam
-            contents: Inhoud
-            content: Inhoud
-            images: Afbeeldingen
-            link: Link
+        faq: Veelgestelde vragen
+        code: Code
+        contents: Inhoud
+        images: Afbeeldingen
+        link: Link
+        faq_header: Veelgestelde vragen
+        faq_subheader: Beheer veelgestelde vragen
+        frequently_asked_questions: Veelgestelde vragen
+        question: Vraag
+        answer: Antwoord
+        sections: Secties
+        sections_header: Secties
+        sections_subheader: Beheer secties
+        position: Positie

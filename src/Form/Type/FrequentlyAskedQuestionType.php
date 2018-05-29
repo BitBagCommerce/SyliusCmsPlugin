@@ -26,10 +26,15 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
-            ->add('position', IntegerType::class)
-            ->add('enabled', CheckboxType::class)
+            ->add('position', IntegerType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.position',
+            ])
+            ->add('enabled', CheckboxType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
+            ])
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,

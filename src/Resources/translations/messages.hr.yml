@@ -1,0 +1,36 @@
+bitbag_sylius_cms_plugin:
+    ui:
+        blocks: Blokovi
+        pages: Stranice
+        content_management: Uređivanje sadržaja
+        cms: Uređivanje sadržaja
+        enabled: Omogućeno
+        blocks_header: Blokovi
+        blocks_subheader: Uredi blokove
+        text_block: Tekstualni blok
+        html_block: HTML blok
+        image_block: Slikovni blok
+        pages_header: Stranice
+        pages_subheader: Uredi stranice
+        products: Proizvodi
+        page_related_products: Vezani proizvodi
+        name: Naslov
+        slug: Slug
+        meta_keywords: Meta ključne riječi
+        meta_description: Meta opis
+        content: Sadržaj
+        faq: FAQ
+        code: Kod
+        contents: Sadržaj
+        images: Slike
+        image: Slika
+        link: Poveznica (link)
+        faq_header: FAQ
+        faq_subheader: Uredi često postavljena pitanja
+        frequently_asked_questions: Često postavljena pitanja
+        question: Pitanje
+        answer: Odgovor
+        sections: Kategorije
+        sections_header: Kategorije
+        sections_subheader: Uredi kategorije
+        position: Pozicija (redosljed)

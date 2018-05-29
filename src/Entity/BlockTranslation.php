@@ -19,16 +19,16 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $name;
 
-    /** @var string|null */
+    /** @var string */
     protected $content;
 
-    /** @var BlockImageInterface|null */
+    /** @var BlockImageInterface */
     protected $image;
 
-    /** @var string|null */
+    /** @var string */
     protected $link;
 
     public function getName(): ?string

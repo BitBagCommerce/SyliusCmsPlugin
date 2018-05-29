@@ -19,10 +19,10 @@ class FrequentlyAskedQuestionTranslation extends AbstractTranslation implements 
     /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $question;
 
-    /** @var string|null */
+    /** @var string */
     protected $answer;
 
     public function getId(): ?int

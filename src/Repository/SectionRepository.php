@@ -26,13 +26,33 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
 
     public function findByNamePart(string $phrase, ?string $locale = null): array
     {
-        return $this->createQueryBuilder('o')
-            ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+        return $this->createTranslationBasedQueryBuilder($locale)
             ->andWhere('translation.name LIKE :name')
             ->setParameter('name', '%' . $phrase . '%')
-            ->setParameter('locale', $locale)
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @param $locale
+     *
+     * @return QueryBuilder
+     */
+    private function createTranslationBasedQueryBuilder($locale): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder('o')
+            ->addSelect('translation')
+            ->leftJoin('o.translations', 'translation')
+        ;
+
+        if (null !== $locale) {
+            $queryBuilder
+                ->andWhere('translation.locale = :locale')
+                ->setParameter('locale', $locale)
+            ;
+        }
+
+        return $queryBuilder;
     }
 }

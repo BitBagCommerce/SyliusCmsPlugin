@@ -30,3 +30,8 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: content
             type: text
             nullable: true
+    oneToOne:
+        image:
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageImage
+            mappedBy: owner
+            cascade: [ALL]

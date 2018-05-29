@@ -360,6 +360,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I upload the :image image
+     */
+    public function iUploadTheImage(string $image): void
+    {
+        $this->resolveCurrentPage()->uploadImage($image);
+    }
+
+    /**
      * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
      */
     private function resolveCurrentPage(): SymfonyPageInterface

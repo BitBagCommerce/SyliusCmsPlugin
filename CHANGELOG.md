@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+### v1.3.0 2017/11/25
+- [#128](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/128) Added option for addint Page image to Page (@antonioperic)
+
+### v1.2.3 2018/04/23
+- [#127] (https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/127) Added Croatian Translation (@antonioperic)
+
 ### v1.2.2 2017/11/25
 - [#108](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/108) Update CHANGELOG.md (@bitbager)
 

@@ -21,10 +21,10 @@ class Section implements SectionInterface
         __construct as private initializeTranslationsCollection;
     }
 
-    /** @var int|null */
+    /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $code;
 
     public function __construct()

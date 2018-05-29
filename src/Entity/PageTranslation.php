@@ -19,19 +19,22 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $slug;
 
-    /** @var string|null */
+    /** @var PageImageInterface */
+    protected $image;
+
+    /** @var string */
     protected $name;
 
-    /** @var string|null */
+    /** @var string */
     protected $content;
 
-    /** @var string|null */
+    /** @var string */
     protected $metaKeywords;
 
-    /** @var string|null */
+    /** @var string */
     protected $metaDescription;
 
     public function getId(): ?int
@@ -57,6 +60,18 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
+    }
+
+    public function getImage(): ?PageImageInterface
+    {
+        return $this->image;
+    }
+
+    public function setImage(?PageImageInterface $image): void
+    {
+        $image->setOwner($this);
+
+        $this->image = $image;
     }
 
     public function getName(): ?string

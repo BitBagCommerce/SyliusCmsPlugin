@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -27,10 +28,10 @@ class Page implements PageInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    /** @var int|null */
+    /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $code;
 
     public function __construct()
@@ -110,6 +111,22 @@ class Page implements PageInterface
     public function setName(?string $name): void
     {
         $this->getPageTranslation()->setName($name);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getImage(): ?ImageInterface
+    {
+        return $this->getPageTranslation()->getImage();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setImage(?ImageInterface $image): void
+    {
+        $this->getPageTranslation()->setImage($image);
     }
 
     /**

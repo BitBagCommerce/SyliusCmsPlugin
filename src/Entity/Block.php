@@ -33,13 +33,13 @@ class Block implements BlockInterface
         $this->initializeProductsCollection();
     }
 
-    /** @var int|null */
+    /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $code;
 
-    /** @var string|null */
+    /** @var string */
     protected $type;
 
     public function getId(): ?int

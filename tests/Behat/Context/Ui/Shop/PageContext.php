@@ -93,6 +93,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @Then I should also see page image
+     */
+    public function iShouldAlsoSeeImage(): void
+    {
+        Assert::true($this->showPage->hasPageImage());
+    }
+
+    /**
      * @Then I should also see :firstProductName and :secondProductName products associated with this page
      */
     public function iShouldAlsoSeeProductsAssociatedWithThisPage(string ...$productsNames): void

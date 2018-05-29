@@ -24,6 +24,11 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
     public function fillField(string $field, string $value): void;
 
     /**
+     * @param string $image
+     */
+    public function uploadImage(string $image): void;
+
+    /**
      * @param string $code
      */
     public function fillCode(string $code): void;

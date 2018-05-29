@@ -19,7 +19,7 @@ class SectionTranslation extends AbstractTranslation implements SectionTranslati
     /** @var int */
     protected $id;
 
-    /** @var string|null */
+    /** @var string */
     protected $name;
 
     public function getId(): ?int

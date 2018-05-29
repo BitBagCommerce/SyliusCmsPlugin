@@ -90,7 +90,7 @@ sylius_fixtures:
                                             <div class="ignored info ui message">On the other hand, the block on the right is a block associated with specific products.</div>
                                             <p>This approach can be helpful with displaying some content dedicated to specific products, like size table or product story</p>
                                             <p>The way you render it is similar to the one from above example:</p>
-                                            <pre>{{ render(path('bitbag_syius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
+                                            <pre>{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
                             size_table:
                                 type: image
                                 products: 5
@@ -151,6 +151,7 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias?"
+                                        image_path: "%fixtures_dir%/homepage_header.jpeg"
                                         content: |
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
 

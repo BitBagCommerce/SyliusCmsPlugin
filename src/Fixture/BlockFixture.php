@@ -14,10 +14,9 @@ namespace BitBag\SyliusCmsPlugin\Fixture;
 
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
-use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-final class BlockFixture extends AbstractFixture implements FixtureInterface
+final class BlockFixture extends AbstractFixture
 {
     /** @var FixtureFactoryInterface */
     private $blockFixtureFactory;

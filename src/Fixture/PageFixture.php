@@ -14,10 +14,9 @@ namespace BitBag\SyliusCmsPlugin\Fixture;
 
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
-use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-final class PageFixture extends AbstractFixture implements FixtureInterface
+final class PageFixture extends AbstractFixture
 {
     /** @var FixtureFactoryInterface */
     private $pageFixtureFactory;
@@ -56,6 +55,7 @@ final class PageFixture extends AbstractFixture implements FixtureInterface
                                     ->children()
                                         ->scalarNode('slug')->defaultNull()->end()
                                         ->scalarNode('name')->defaultNull()->end()
+                                        ->scalarNode('image_path')->defaultNull()->end()
                                         ->scalarNode('meta_keywords')->defaultNull()->end()
                                         ->scalarNode('meta_description')->defaultNull()->end()
                                         ->scalarNode('content')->defaultNull()->end()

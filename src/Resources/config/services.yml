@@ -5,6 +5,7 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/event_listener.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/controller.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/fixture.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/repository.yml" }
 
 services:
     bitbag_sylius_cms_plugin.resolver.block_resource:

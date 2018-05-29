@@ -12,6 +12,12 @@ sylius_grid:
                 code: asc
             limits: [10, 25, 50]
             fields:
+                page_image:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.image
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/page_image.html.twig"
                 code:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.code
@@ -35,7 +41,7 @@ sylius_grid:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, type]
+                        fields: [code]
             actions:
                 main:
                     create:
@@ -43,5 +49,8 @@ sylius_grid:
                 item:
                     update:
                         type: update
+                    delete:
+                        type: delete
+                bulk:
                     delete:
                         type: delete
