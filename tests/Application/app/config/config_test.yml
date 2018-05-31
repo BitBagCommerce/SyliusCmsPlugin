@@ -3,4 +3,4 @@ imports:
 
 doctrine:
     dbal:
-        path: "%kernel.root_dir%/../var/db_test.sql"
+        path: "%kernel.project_dir%/var/db_test.sql"
