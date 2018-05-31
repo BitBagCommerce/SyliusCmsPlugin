@@ -12,7 +12,7 @@ imports:
 
 framework:
     translator: { fallbacks: ["%locale%", "en"] }
-    secret: "%secret"
+    secret: "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: "%kernel.debug%"
