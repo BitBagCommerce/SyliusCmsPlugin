@@ -26,6 +26,8 @@ Almost each eCommerce app has to present some content. Managing it is often done
 
 ## Support
 
+You can order our support on [this page](https://bitbag.shop/products/sylius-content-management-system).
+
 We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
 Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
 
