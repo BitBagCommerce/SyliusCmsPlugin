@@ -2,21 +2,35 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Bloques
         pages: Páginas
-        content_management: Gestión de contenidos
-        cms: Gestión de contenidos
+        content_management: Gestión de contenido
+        cms: Gestión de contenido
         enabled: Activo
         blocks_header: Bloques
         blocks_subheader: Gestiona tus bloques
         text_block: Bloque de texto
+        html_block: Bloque HTML
         image_block: Bloque de imagen
         pages_header: Página
         pages_subheader: Gestiona tus páginas
         products: Productos
+        page_related_products: Productos relacionados
         name: Nombre
         slug: Slug
         meta_keywords: Meta keywords
-        meta_description: Meta description
+        meta_description: Meta descripción
         content: Contenido
+        faq: Preguntas frecuentes
         code: Código
-        contents: Contenidos
+        contents: Contenido
         images: Imágenes
+        image: Imagen
+        link: Enlace
+        faq_header: Preguntas frecuentes
+        faq_subheader: Gestiona tus preguntas frecuentes
+        frequently_asked_questions: Preguntas frecuentes
+        question: Pregunta
+        answer: Respuesta
+        sections: Secciones
+        sections_header: Secciones
+        sections_subheader: Gestiona tus secciones
+        position: Posición
