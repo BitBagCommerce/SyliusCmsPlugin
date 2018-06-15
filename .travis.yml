@@ -18,6 +18,10 @@ env:
     global:
         - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
         - SYLIUS_BUILD_DIR=etc/build
+    matrix:
+        - DEPENDENCY_VERSIONS="sylius/sylius:1.1.* symfony/symfony:3.4.*"
+        - DEPENDENCY_VERSIONS="sylius/sylius:1.2.* symfony/symfony:3.4.*"
+        - DEPENDENCY_VERSIONS="sylius/sylius:1.2.* symfony/symfony:4.1.*"
 
 before_install:
     - phpenv config-rm xdebug.ini
@@ -25,6 +29,7 @@ before_install:
     - mkdir -p "${SYLIUS_CACHE_DIR}"
 
 install:
+    - composer require ${DEPENDENCY_VERSIONS} --no-update
     - composer install --no-interaction --prefer-dist
     - (cd tests/Application && yarn install)
 
