@@ -33,8 +33,11 @@ class AppKernel extends Kernel
         $loader->load($this->getRootDir() . '/config/config.yml');
     }
 
-    protected function build(ContainerBuilder $container)
+    /**
+     * {@inheritdoc}
+     */
+    public function getProjectDir(): string
     {
-        $container->addCompilerPass(new \BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass());
+        return dirname(__DIR__);
     }
 }

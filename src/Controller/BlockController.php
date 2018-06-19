@@ -39,7 +39,7 @@ final class BlockController extends ResourceController
 
         $view = View::create($block);
         $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
-        $template = $blockTemplateResolver->resolveTemplate($block);
+        $template = $request->get('template') ?? $blockTemplateResolver->resolveTemplate($block);
 
         if ($configuration->isHtmlRequest()) {
             $view
