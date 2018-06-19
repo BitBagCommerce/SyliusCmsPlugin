@@ -26,12 +26,14 @@ Almost each eCommerce app has to present some content. Managing it is often done
 
 ## Support
 
+You can order our support on [this page](https://bitbag.shop/products/sylius-content-management-system).
+
 We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
 Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
 
 # Demo
 
-We created a demo app with some useful use-cases of the plugin! Visit [demo.bitbag.shop](https://demo.bitbag.shop) to take a look at it. The admin as always can be accessed under [demo.bitbag.shop/admin](https://cms.bitbag.shop/admin) link and `sylius: sylius` credentials.
+We created a demo app with some useful use-cases of the plugin! Visit [demo.bitbag.shop](https://demo.bitbag.shop) to take a look at it. The admin as always can be accessed under [demo.bitbag.shop/admin](https://demo.bitbag.shop/admin) link and `sylius: sylius` credentials.
 
 We also recorded a webinar which presents most of the plugin features, including how they have been implemented and           specific use-cases.
 

@@ -31,11 +31,11 @@ class ProductRepository extends BaseProductRepository implements ProductReposito
     }
 
     /**
-     * @param $locale
+     * @param string|null $locale
      *
      * @return QueryBuilder
      */
-    private function createTranslationBasedQueryBuilder($locale): QueryBuilder
+    private function createTranslationBasedQueryBuilder(?string $locale = null): QueryBuilder
     {
         $queryBuilder = $this->createQueryBuilder('o')
             ->addSelect('translation')

@@ -30,4 +30,12 @@ class AppKernel extends Kernel
     {
         $loader->load($this->getRootDir() . '/config/config.yml');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProjectDir(): string
+    {
+        return dirname(__DIR__);
+    }
 }

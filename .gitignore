@@ -21,3 +21,6 @@ tests/Application/web/*
 /tests/Application/yarn.lock
 
 /composer.lock
+
+/etc/build/*
+!/etc/build/.gitkeep
