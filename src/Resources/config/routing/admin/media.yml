@@ -1,0 +1,18 @@
+bitbag_sylius_cms_plugin_admin_media:
+    resource: |
+        alias: bitbag_sylius_cms_plugin.media
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: bitbag_sylius_cms_plugin_admin_media
+        except: ['show']
+        permission: true
+        vars:
+            all:
+                header: bitbag_sylius_cms_plugin.ui.media_header
+                subheader: bitbag_sylius_cms_plugin.ui.media_subheader
+                templates:
+                    form: BitBagSyliusCmsPlugin:Media:Crud/_form.html.twig
+            index:
+                icon: grid layout
+    type: sylius.resource

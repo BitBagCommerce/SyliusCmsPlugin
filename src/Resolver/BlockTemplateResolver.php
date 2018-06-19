@@ -17,9 +17,6 @@ use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 
 final class BlockTemplateResolver implements BlockTemplateResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveTemplate(BlockInterface $block): string
     {
         if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {

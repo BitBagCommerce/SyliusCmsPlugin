@@ -18,9 +18,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 final class FrequentlyAskedQuestionRepository extends EntityRepository implements FrequentlyAskedQuestionRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -30,9 +27,6 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findEnabledOrderedByPosition(string $localeCode): array
     {
         return $this->createQueryBuilder('o')
@@ -46,9 +40,6 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface
     {
         return $this->createQueryBuilder('o')

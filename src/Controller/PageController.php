@@ -20,11 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class PageController extends ResourceController
 {
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     public function renderLinkAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);

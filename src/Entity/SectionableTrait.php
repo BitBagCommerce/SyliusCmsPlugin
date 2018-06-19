@@ -17,9 +17,7 @@ use Doctrine\Common\Collections\Collection;
 
 trait SectionableTrait
 {
-    /**
-     * @var Collection|SectionInterface[]
-     */
+    /** @var Collection|SectionInterface[] */
     protected $sections;
 
     public function initializeSectionsCollection(): void
@@ -35,27 +33,16 @@ trait SectionableTrait
         return $this->sections;
     }
 
-    /**
-     * @param SectionInterface $section
-     *
-     * @return bool
-     */
     public function hasSection(SectionInterface $section): bool
     {
         return $this->sections->contains($section);
     }
 
-    /**
-     * @param SectionInterface $section
-     */
     public function addSection(SectionInterface $section): void
     {
         $this->sections->add($section);
     }
 
-    /**
-     * @param SectionInterface $section
-     */
     public function removeSection(SectionInterface $section): void
     {
         if (true === $this->hasSection($section)) {

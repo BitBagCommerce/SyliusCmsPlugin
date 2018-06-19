@@ -19,19 +19,13 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $frequentlyAskedQuestionFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $frequentlyAskedQuestionTranslationFactory;
 
-    /**
-     * @var FrequentlyAskedQuestionRepositoryInterface
-     */
+    /** @var FrequentlyAskedQuestionRepositoryInterface */
     private $frequentlyAskedQuestionRepository;
 
     /**
@@ -49,9 +43,6 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {

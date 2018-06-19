@@ -19,19 +19,13 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolver implements PageResourceResolverInterface
 {
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @var LoggerInterface
-     */
+    /** @var LoggerInterface */
     private $logger;
 
     /**
@@ -49,9 +43,6 @@ final class PageResourceResolver implements PageResourceResolverInterface
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOrLog(string $code): ?PageInterface
     {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());

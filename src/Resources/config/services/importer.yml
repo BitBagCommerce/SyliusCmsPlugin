@@ -1,0 +1,15 @@
+services:
+    bitbag_sylius_cms_plugin.importer.chain:
+        class: BitBag\SyliusCmsPlugin\Importer\ImporterChain
+
+    bitbag_sylius_cms_plugin.importer.page:
+        class: BitBag\SyliusCmsPlugin\Importer\PageImporter
+        arguments:
+            - "@bitbag_sylius_cms_plugin.resolver.resource.page"
+            - "@bitbag_sylius_cms_plugin.resolver.resource.section"
+            - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.downloader.image"
+            - "@sylius.image_uploader"
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: bitbag.importer }

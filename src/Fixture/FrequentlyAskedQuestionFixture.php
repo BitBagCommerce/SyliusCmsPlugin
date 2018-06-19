@@ -18,38 +18,24 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class FrequentlyAskedQuestionFixture extends AbstractFixture
 {
-    /**
-     * @var FixtureFactoryInterface
-     */
+    /** @var FixtureFactoryInterface */
     private $frequentlyAskedQuestionFixtureFactory;
 
-    /**
-     * @param FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory
-     */
     public function __construct(FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory)
     {
         $this->frequentlyAskedQuestionFixtureFactory = $frequentlyAskedQuestionFixtureFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $options): void
     {
         $this->frequentlyAskedQuestionFixtureFactory->load($options['custom']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'frequently_asked_question';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

@@ -16,10 +16,5 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
 interface PageResourceResolverInterface
 {
-    /**
-     * @param string $code
-     *
-     * @return PageInterface|null
-     */
     public function findOrLog(string $code): ?PageInterface;
 }

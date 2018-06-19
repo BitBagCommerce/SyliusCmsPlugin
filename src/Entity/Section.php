@@ -21,14 +21,10 @@ class Section implements SectionInterface
         __construct as private initializeTranslationsCollection;
     }
 
-    /**
-     * @var int|null
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $code;
 
     public function __construct()
@@ -36,41 +32,26 @@ class Section implements SectionInterface
         $this->initializeTranslationsCollection();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->getSectionTranslation()->getName();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->getSectionTranslation()->setName($name);
@@ -84,9 +65,6 @@ class Section implements SectionInterface
         return $this->getTranslation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): TranslationInterface
     {
         return new SectionTranslation();

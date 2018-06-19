@@ -18,9 +18,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -30,9 +27,6 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
@@ -47,9 +41,6 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
@@ -64,9 +55,6 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createShopListQueryBuilder(string $sectionCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')

@@ -16,9 +16,6 @@ use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 
 final class BlockImageType extends BaseImageType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_block_image';

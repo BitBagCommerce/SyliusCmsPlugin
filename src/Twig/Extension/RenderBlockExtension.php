@@ -19,19 +19,13 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
 
 final class RenderBlockExtension extends \Twig_Extension
 {
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var BlockTemplateResolverInterface
-     */
+    /** @var BlockTemplateResolverInterface */
     private $blockTemplateResolver;
 
-    /**
-     * @var BlockResourceResolverInterface
-     */
+    /** @var BlockResourceResolverInterface */
     private $blockResourceResolver;
 
     /**

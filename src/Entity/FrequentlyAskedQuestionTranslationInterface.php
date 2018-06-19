@@ -17,23 +17,11 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 interface FrequentlyAskedQuestionTranslationInterface extends TranslationInterface, ResourceInterface
 {
-    /**
-     * @return string|null
-     */
     public function getQuestion(): ?string;
 
-    /**
-     * @param string $question
-     */
     public function setQuestion(string $question): void;
 
-    /**
-     * @return string|null
-     */
     public function getAnswer(): ?string;
 
-    /**
-     * @param string $answer
-     */
     public function setAnswer(string $answer): void;
 }

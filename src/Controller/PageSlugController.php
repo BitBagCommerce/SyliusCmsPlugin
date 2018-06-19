@@ -18,24 +18,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class PageSlugController
 {
-    /**
-     * @var SlugGeneratorInterface
-     */
+    /** @var SlugGeneratorInterface */
     private $slugGenerator;
 
-    /**
-     * @param SlugGeneratorInterface $slugGenerator
-     */
     public function __construct(SlugGeneratorInterface $slugGenerator)
     {
         $this->slugGenerator = $slugGenerator;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
     public function generateAction(Request $request): JsonResponse
     {
         $name = $request->query->get('name');

@@ -17,23 +17,11 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 
 interface SectionInterface extends ResourceInterface, TranslatableInterface
 {
-    /**
-     * @return string|null
-     */
     public function getCode(): ?string;
 
-    /**
-     * @param string|null $code
-     */
     public function setCode(?string $code): void;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void;
 }

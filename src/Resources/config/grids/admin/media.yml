@@ -1,0 +1,35 @@
+sylius_grid:
+    grids:
+        bitbag_sylius_cms_plugin_admin_media:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag_sylius_cms_plugin.model.media.class%"
+                    repository:
+                        method: createListQueryBuilder
+            sorting:
+                code: asc
+            limits: [10, 25, 50]
+            fields:
+                code:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.code
+                    sortable: ~
+                path:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.name
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, type]
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
