@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
@@ -29,13 +30,23 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     private $logger;
 
     /**
+     * @var ChannelContextInterface
+     */
+    private $channelContext;
+
+    /**
      * @param BlockRepositoryInterface $blockRepository
      * @param LoggerInterface $logger
+     * @param ChannelContextInterface $channelContext
      */
-    public function __construct(BlockRepositoryInterface $blockRepository, LoggerInterface $logger)
-    {
+    public function __construct(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger,
+        ChannelContextInterface $channelContext
+    ) {
         $this->blockRepository = $blockRepository;
         $this->logger = $logger;
+        $this->channelContext = $channelContext;
     }
 
     /**
@@ -43,7 +54,9 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
      */
     public function findOrLog(string $code): ?BlockInterface
     {
-        $block = $this->blockRepository->findOneEnabledByCode($code);
+        $channel = $this->channelContext->getChannel();
+
+        $block = $this->blockRepository->findOneEnabledByCodeAndChannelCode($code, $channel->getCode());
 
         if (false === $block instanceof BlockInterface) {
             $this->logger->warning(sprintf(

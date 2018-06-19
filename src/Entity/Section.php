@@ -12,11 +12,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-class Section implements SectionInterface, ChannelsAwareInterface
+class Section implements SectionInterface
 {
     use ChannelsAwareTrait;
     use TranslatableTrait {

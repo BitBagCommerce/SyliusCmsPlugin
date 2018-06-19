@@ -34,3 +34,4 @@ bitbag_sylius_cms_plugin:
         sections_header: Sections
         sections_subheader: Manage your sections
         position: Position
+        channels: Channels

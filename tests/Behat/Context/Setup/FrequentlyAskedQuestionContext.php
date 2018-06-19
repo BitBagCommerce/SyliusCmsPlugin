@@ -16,6 +16,7 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
@@ -102,19 +103,25 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @param string|null $code
+     * @param null|string $code
      * @param int|null $position
      * @param bool $prefixQuestionWithPosition
+     * @param ChannelInterface $channel
      *
      * @return FrequentlyAskedQuestionInterface
      */
     private function createFrequentlyAskedQuestion(
         ?string $code = null,
         int $position = null,
-        bool $prefixQuestionWithPosition = false
+        bool $prefixQuestionWithPosition = false,
+        ChannelInterface $channel = null
     ): FrequentlyAskedQuestionInterface {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -135,6 +142,7 @@ final class FrequentlyAskedQuestionContext implements Context
         $frequentlyAskedQuestion->setCurrentLocale('en_US');
         $frequentlyAskedQuestion->setQuestion($question);
         $frequentlyAskedQuestion->setAnswer($this->randomStringGenerator->generate());
+        $frequentlyAskedQuestion->addChannel($channel);
 
         return $frequentlyAskedQuestion;
     }

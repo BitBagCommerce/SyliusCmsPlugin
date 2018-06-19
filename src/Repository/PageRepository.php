@@ -50,15 +50,18 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface
+    public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.channels', 'channels')
             ->where('translation.locale = :localeCode')
             ->andWhere('translation.slug = :slug')
+            ->andWhere('channels.code = :channelCode')
             ->andWhere('o.enabled = true')
             ->setParameter('localeCode', $localeCode)
             ->setParameter('slug', $slug)
+            ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;
@@ -67,13 +70,16 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder
+    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.channels', 'channels')
             ->where('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
+            ->andWhere('channels.code = :channelCode')
             ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('channelCode', $channelCode)
         ;
     }
 }

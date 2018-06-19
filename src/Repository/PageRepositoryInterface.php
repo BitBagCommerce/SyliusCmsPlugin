@@ -35,16 +35,18 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $slug
-     * @param string $localeCode
+     * @param null|string $localeCode
+     * @param string $channelCode
      *
      * @return PageInterface|null
      */
-    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface;
+    public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface;
 
     /**
      * @param string $sectionCode
+     * @param string $channelCode
      *
      * @return QueryBuilder
      */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
+    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 }

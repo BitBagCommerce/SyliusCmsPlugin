@@ -20,3 +20,15 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
             column: enabled
             type: boolean
             nullable: false
+    manyToMany:
+        channels:
+            targetEntity: Sylius\Component\Channel\Model\ChannelInterface
+            joinTable:
+                name: bitbag_cms_faq_channels
+                joinColumns:
+                    faq_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    channel_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE

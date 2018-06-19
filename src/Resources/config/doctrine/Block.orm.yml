@@ -37,9 +37,21 @@ BitBag\SyliusCmsPlugin\Entity\Block:
             joinTable:
                 name: bitbag_cms_block_products
                 joinColumns:
-                    page_id:
+                    block_id:
                         referencedColumnName: id
                 inverseJoinColumns:
                     product_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+
+        channels:
+            targetEntity: Sylius\Component\Channel\Model\ChannelInterface
+            joinTable:
+                name: bitbag_cms_block_channels
+                joinColumns:
+                    block_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    channel_id:
                         referencedColumnName: id
                         onDelete: CASCADE

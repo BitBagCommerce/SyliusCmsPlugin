@@ -27,24 +27,35 @@ interface BlockRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $code
+     * @param string $channelCode
      *
      * @return BlockInterface|null
      */
-    public function findOneEnabledByCode(string $code): ?BlockInterface;
+    public function findOneEnabledByCodeAndChannelCode(string $code, string $channelCode): ?BlockInterface;
 
     /**
      * @param string $sectionCode
      * @param string $localeCode
+     * @param string $channelCode
      *
      * @return BlockInterface[]
      */
-    public function findBySectionCode(string $sectionCode, string $localeCode): array;
+    public function findBySectionCodeAndChannelCode(
+        string $sectionCode,
+        string $localeCode,
+        string $channelCode
+    ): array;
 
     /**
      * @param string $productCode
      * @param string $localeCode
+     * @param string $channelCode
      *
-     * @return BlockInterface[]
+     * @return array
      */
-    public function findByProductCode(string $productCode, string $localeCode): array;
+    public function findByProductCodeAndChannelCode(
+        string $productCode,
+        string $localeCode,
+        string $channelCode
+    ): array;
 }

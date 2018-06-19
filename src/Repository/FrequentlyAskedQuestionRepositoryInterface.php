@@ -27,10 +27,11 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $localeCode
+     * @param string $channelCode
      *
      * @return array|FrequentlyAskedQuestionInterface[]
      */
-    public function findEnabledOrderedByPosition(string $localeCode): array;
+    public function findEnabledOrderedByPositionAndChannelCode(string $localeCode, string $channelCode): array;
 
     /**
      * @param string $code

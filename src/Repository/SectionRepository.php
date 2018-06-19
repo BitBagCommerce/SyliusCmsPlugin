@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
@@ -60,5 +61,24 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneByCodeAndChannelCode(string $code, ?string $localeCode, string $channelCode): ?SectionInterface
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.channels', 'channels')
+            ->where('translation.locale = :localeCode')
+            ->andWhere('o.code = :code')
+            ->andWhere('channels.code = :channelCode')
+            ->setParameter('code', $code)
+            ->setParameter('localeCode', $localeCode)
+            ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 }
