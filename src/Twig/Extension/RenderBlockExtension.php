@@ -62,17 +62,18 @@ final class RenderBlockExtension extends \Twig_Extension
     /**
      * @param \Twig_Environment $twigEnvironment
      * @param string $code
+     * @param string|null $template
      *
      * @return string
      *
      * @throws TemplateTypeNotFound
      */
-    public function renderBlock(\Twig_Environment $twigEnvironment, string $code): string
+    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, ?string $template = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
-            $template = $this->blockTemplateResolver->resolveTemplate($block);
+            $template = $template ?? $this->blockTemplateResolver->resolveTemplate($block);
 
             return $twigEnvironment->render($template, ['block' => $block]);
         }
