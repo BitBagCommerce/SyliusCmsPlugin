@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BitBag\SyliusCmsPlugin\Sitemap\Provider;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
@@ -20,7 +22,6 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PageUrlProvider implements UrlProviderInterface
 {
-
     /**
      * @var PageRepositoryInterface|EntityRepository
      */
@@ -76,6 +77,7 @@ class PageUrlProvider implements UrlProviderInterface
         $this->localeContext = $localeContext;
         $this->channelContext = $channelContext;
     }
+
     /**
      * @return string
      */
@@ -90,8 +92,9 @@ class PageUrlProvider implements UrlProviderInterface
     public function generate(): iterable
     {
         foreach ($this->getPages() as $product) {
-            $this->urls[] = $this->createProductUrl($product);
+            $this->urls[] = $this->createPageUrl($product);
         }
+
         return $this->urls;
     }
 
@@ -118,17 +121,11 @@ class PageUrlProvider implements UrlProviderInterface
     }
 
     /**
-     * @return array|Collection|PageInterface[]
+     * @return array|PageInterface[]
      */
     private function getPages(): iterable
     {
-        return $this->pageRepository->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->innerJoin('o.translations', 'translation')
-            ->andWhere('o.enabled = :enabled')
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getResult();
+        return $this->pageRepository->findByEnabled(true);
     }
 
     /**
@@ -136,13 +133,14 @@ class PageUrlProvider implements UrlProviderInterface
      */
     private function getLocaleCodes(): array
     {
-        if ($this->channelLocaleCodes === null) {
+        if (null === $this->channelLocaleCodes) {
             /** @var ChannelInterface $channel */
             $channel = $this->channelContext->getChannel();
             $this->channelLocaleCodes = $channel->getLocales()->map(function (LocaleInterface $locale) {
                 return $locale->getCode();
             })->toArray();
         }
+
         return $this->channelLocaleCodes;
     }
 
@@ -151,13 +149,15 @@ class PageUrlProvider implements UrlProviderInterface
      *
      * @return SitemapUrlInterface
      */
-    private function createProductUrl(PageInterface $page): SitemapUrlInterface
+    private function createPageUrl(PageInterface $page): SitemapUrlInterface
     {
         $pageUrl = $this->sitemapUrlFactory->createNew();
         $pageUrl->setChangeFrequency(ChangeFrequency::daily());
         $pageUrl->setPriority(0.7);
         if ($page->getUpdatedAt()) {
             $pageUrl->setLastModification($page->getUpdatedAt());
+        } elseif ($page->getCreatedAt()) {
+            $pageUrl->setLastModification($page->getCreatedAt());
         }
         /** @var PageTranslationInterface $translation */
         foreach ($this->getTranslations($page) as $translation) {
@@ -173,11 +173,12 @@ class PageUrlProvider implements UrlProviderInterface
             ]);
             if ($translation->getLocale() === $this->localeContext->getLocaleCode()) {
                 $pageUrl->setLocalization($location);
+
                 continue;
             }
             $pageUrl->addAlternative($location, $translation->getLocale());
         }
+
         return $pageUrl;
     }
-
 }

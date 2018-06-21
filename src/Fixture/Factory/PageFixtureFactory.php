@@ -155,7 +155,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             if ($translation['image_path']) {
                 $image = new PageImage();
                 $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path).'.jpg');
+                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 
                 $image->setFile($uploadedImage);
                 $pageTranslation->setImage($image);

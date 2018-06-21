@@ -26,7 +26,7 @@ abstract class AbstractTestController extends XmlApiTestCase
     /**
      * @var LocaleInterface
      */
-    protected $locale2;
+    protected $secondLocale;
 
     /**
      * @var CurrencyInterface
@@ -45,10 +45,10 @@ abstract class AbstractTestController extends XmlApiTestCase
 
         $this->getEntityManager()->persist($this->locale);
 
-        $this->locale2 = new Locale();
-        $this->locale2->setCode('nl_NL');
+        $this->secondLocale = new Locale();
+        $this->secondLocale->setCode('nl_NL');
 
-        $this->getEntityManager()->persist($this->locale2);
+        $this->getEntityManager()->persist($this->secondLocale);
 
         $this->currency = new Currency();
         $this->currency->setCode('USD');
@@ -63,7 +63,7 @@ abstract class AbstractTestController extends XmlApiTestCase
         $this->channel->setTaxCalculationStrategy('order_items_based');
 
         $this->channel->addLocale($this->locale);
-        $this->channel->addLocale($this->locale2);
+        $this->channel->addLocale($this->secondLocale);
 
         $this->getEntityManager()->persist($this->channel);
         $this->getEntityManager()->flush();
