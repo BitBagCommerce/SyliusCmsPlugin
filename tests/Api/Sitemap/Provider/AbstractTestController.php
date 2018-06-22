@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on mikolaj.krol@bitbag.pl.
+ */
+
+declare(strict_types=1);
+
 namespace Tests\BitBag\SyliusCmsPlugin\Api\Sitemap\Provider;
 
 use Lakion\ApiTestCase\XmlApiTestCase;
@@ -12,7 +22,6 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 
 abstract class AbstractTestController extends XmlApiTestCase
 {
-
     /**
      * @var ChannelInterface
      */
@@ -35,8 +44,10 @@ abstract class AbstractTestController extends XmlApiTestCase
 
     /**
      * @before
+     *
+     * {@inheritdoc}
      */
-    public function setupDatabase()
+    public function setupDatabase(): void
     {
         parent::setUpDatabase();
 
@@ -68,5 +79,4 @@ abstract class AbstractTestController extends XmlApiTestCase
         $this->getEntityManager()->persist($this->channel);
         $this->getEntityManager()->flush();
     }
-
 }

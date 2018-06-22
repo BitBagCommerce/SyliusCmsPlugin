@@ -1,16 +1,27 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://bitbag.shop and write us
+ * an email on mikolaj.krol@bitbag.pl.
+ */
+
+declare(strict_types=1);
+
 namespace Tests\BitBag\SyliusCmsPlugin\Api\Sitemap\Provider;
 
 use BitBag\SyliusCmsPlugin\Entity\Page;
 
 class SitemapPageControllerApiLocalesTest extends AbstractTestController
 {
-
     /**
      * @before
+     *
+     * {@inheritdoc}
      */
-    public function setUpDatabase()
+    public function setUpDatabase(): void
     {
         parent::setUpDatabase();
 
@@ -63,11 +74,10 @@ class SitemapPageControllerApiLocalesTest extends AbstractTestController
         $this->getEntityManager()->flush();
     }
 
-    public function testShowActionResponse()
+    public function testShowActionResponse(): void
     {
         $this->client->request('GET', '/sitemap/cms_pages.xml');
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'show_sitemap_pages_locale');
     }
-
 }
