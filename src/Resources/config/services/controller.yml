@@ -9,3 +9,11 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.product"
             - "@fos_rest.view_handler.default"
+
+    bitbag_sylius_cms_plugin.controller.action.admin.import:
+        class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction
+        arguments:
+            - "@bitbag_sylius_cms_plugin.processor.import"
+            - "@session"
+            - "@form.factory"
+            - "@fos_rest.view_handler.default"

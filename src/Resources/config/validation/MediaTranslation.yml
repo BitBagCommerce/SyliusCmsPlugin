@@ -1,0 +1,29 @@
+BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
+    properties:
+        name:
+            - NotBlank:
+                message: bitbag_sylius_cms_plugin.media.name.not_blank
+                groups: [bitbag]
+            - Length:
+                min: 2
+                max: 250
+                minMessage: bitbag_sylius_cms_plugin.media.name.min_length
+                maxMessage: bitbag_sylius_cms_plugin.media.name.max_length
+                groups: [bitbag]
+        alt:
+            - NotBlank:
+                message: bitbag_sylius_cms_plugin.media.alt.not_blank
+                groups: [bitbag]
+            - Length:
+                min: 2
+                max: 250
+                minMessage: bitbag_sylius_cms_plugin.media.alt.min_length
+                maxMessage: bitbag_sylius_cms_plugin.media.alt.max_length
+                groups: [bitbag]
+        description:
+            - Length:
+                min: 2
+                max: 2000
+                minMessage: bitbag_sylius_cms_plugin.media.description.min_length
+                maxMessage: bitbag_sylius_cms_plugin.media.description.max_length
+                groups: [bitbag]

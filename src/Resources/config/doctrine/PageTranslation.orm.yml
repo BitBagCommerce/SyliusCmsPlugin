@@ -25,7 +25,7 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: meta_description
             type: string
             nullable: true
-            length: 2000
+            length: 5000
         content:
             column: content
             type: text

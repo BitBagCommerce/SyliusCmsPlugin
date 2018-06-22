@@ -91,3 +91,15 @@ services:
             - ['bitbag']
         tags:
             - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.import:
+        class: BitBag\SyliusCmsPlugin\Form\Type\ImportType
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.translation.media:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType
+        arguments:
+            - "%bitbag_sylius_cms_plugin.model.media_translation.class%"
+        tags:
+            - { name: form.type }

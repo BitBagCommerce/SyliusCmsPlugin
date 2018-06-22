@@ -5,3 +5,6 @@ sylius_resource:
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\Media
                 form: BitBag\SyliusCmsPlugin\Form\Type\MediaType
+            translation:
+                classes:
+                    model: BitBag\SyliusCmsPlugin\Entity\MediaTranslation

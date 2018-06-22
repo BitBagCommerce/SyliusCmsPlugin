@@ -12,10 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Resource\Model\TranslatableTrait;
+use Sylius\Component\Resource\Model\TranslationInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
 class Media implements MediaInterface
 {
+    use TranslatableTrait {
+        __construct as protected initializeTranslationsCollection;
+    }
+
     /** @var int */
     private $id;
 
@@ -30,6 +36,11 @@ class Media implements MediaInterface
 
     /** @var File */
     private $file;
+
+    public function __construct()
+    {
+        $this->initializeTranslationsCollection();
+    }
 
     public function getId(): ?int
     {
@@ -78,5 +89,18 @@ class Media implements MediaInterface
     public function setFile(?File $file): void
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return MediaTranslationInterface|TranslationInterface
+     */
+    protected function getBlockTranslation(): TranslationInterface
+    {
+        return $this->getTranslation();
+    }
+
+    protected function createTranslation(): MediaTranslationInterface
+    {
+        return new MediaTranslation();
     }
 }

@@ -12,3 +12,10 @@ services:
             - "@bitbag_sylius_cms_plugin.repository.section"
             - "@bitbag_sylius_cms_plugin.factory.section"
             - "code"
+
+    bitbag_sylius_cms_plugin.resolver.resource.block:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@bitbag_sylius_cms_plugin.factory.block"
+            - "code"
