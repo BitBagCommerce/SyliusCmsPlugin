@@ -26,6 +26,13 @@ interface PageRepositoryInterface extends RepositoryInterface
     public function createListQueryBuilder(string $locale): QueryBuilder;
 
     /**
+     * @param bool $enabled
+     *
+     * @return array|PageInterface[]
+     */
+    public function findByEnabled(bool $enabled): array;
+
+    /**
      * @param string $code
      * @param string|null $localeCode
      *

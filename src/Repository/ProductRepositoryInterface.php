@@ -19,7 +19,7 @@ interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
     /**
      * @param string $phrase
-     * @param null|string $locale
+     * @param string|null $locale
      *
      * @return array|ProductInterface[]
      */
