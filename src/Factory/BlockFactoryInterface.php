@@ -17,10 +17,5 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 interface BlockFactoryInterface extends FactoryInterface
 {
-    /**
-     * @param string $type
-     *
-     * @return BlockInterface
-     */
     public function createWithType(string $type): BlockInterface;
 }

@@ -18,35 +18,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface PageRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param string $locale
-     *
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(string $locale): QueryBuilder;
 
-    /**
-     * @param string $code
-     * @param string|null $localeCode
-     *
-     * @return PageInterface|null
-     */
     public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
 
-    /**
-     * @param string $slug
-     * @param null|string $localeCode
-     * @param string $channelCode
-     *
-     * @return PageInterface|null
-     */
     public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface;
 
-    /**
-     * @param string $sectionCode
-     * @param string $channelCode
-     *
-     * @return QueryBuilder
-     */
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 }

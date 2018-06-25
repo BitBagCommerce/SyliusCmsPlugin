@@ -27,63 +27,27 @@ interface PageInterface extends
     TimestampableInterface,
     ChannelsAwareInterface
 {
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string;
 
-    /**
-     * @param string|null $slug
-     */
     public function setSlug(?string $slug): void;
 
-    /**
-     * @return string|null
-     */
     public function getCode(): ?string;
 
-    /**
-     * @param string|null $code
-     */
     public function setCode(?string $code): void;
 
-    /**
-     * @return string|null
-     */
     public function getMetaKeywords(): ?string;
 
-    /**
-     * @param string|null $metaKeywords
-     */
     public function setMetaKeywords(?string $metaKeywords): void;
 
-    /**
-     * @return string|null
-     */
     public function getMetaDescription(): ?string;
 
-    /**
-     * @param string|null $metaDescription
-     */
     public function setMetaDescription(?string $metaDescription): void;
 
-    /**
-     * @return string|null
-     */
     public function getContent(): ?string;
 
-    /**
-     * @param string $content |string
-     */
     public function setContent(?string $content): void;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void;
 }

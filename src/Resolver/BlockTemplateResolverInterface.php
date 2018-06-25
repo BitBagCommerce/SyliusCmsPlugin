@@ -20,10 +20,5 @@ interface BlockTemplateResolverInterface
     const HTML_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/htmlBlock.html.twig';
     const IMAGE_BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/Show/imageBlock.html.twig';
 
-    /**
-     * @param BlockInterface $block
-     *
-     * @return string
-     */
     public function resolveTemplate(BlockInterface $block): string;
 }

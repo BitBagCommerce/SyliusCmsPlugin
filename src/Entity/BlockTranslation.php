@@ -16,82 +16,51 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class BlockTranslation extends AbstractTranslation implements BlockTranslationInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $name;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $content;
 
-    /**
-     * @var BlockImageInterface|null
-     */
+    /** @var BlockImageInterface */
     protected $image;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $link;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getContent(): ?string
     {
         return $this->content;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setContent(?string $content): void
     {
         $this->content = $content;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getImage(): ?BlockImageInterface
     {
         return $this->image;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setImage(?BlockImageInterface $image): void
     {
         $image->setOwner($this);
@@ -99,17 +68,11 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
         $this->image = $image;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLink(): ?string
     {
         return $this->link;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLink(?string $link): void
     {
         $this->link = $link;

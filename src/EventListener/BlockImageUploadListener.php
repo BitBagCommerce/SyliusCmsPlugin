@@ -20,22 +20,14 @@ use Webmozart\Assert\Assert;
 
 final class BlockImageUploadListener
 {
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $uploader;
 
-    /**
-     * @param ImageUploaderInterface $uploader
-     */
     public function __construct(ImageUploaderInterface $uploader)
     {
         $this->uploader = $uploader;
     }
 
-    /**
-     * @param ResourceControllerEvent $event
-     */
     public function uploadImage(ResourceControllerEvent $event): void
     {
         $block = $event->getSubject();

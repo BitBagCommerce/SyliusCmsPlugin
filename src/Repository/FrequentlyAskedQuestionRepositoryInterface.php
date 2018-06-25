@@ -18,25 +18,9 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param string $localeCode
-     *
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    /**
-     * @param string $localeCode
-     * @param string $channelCode
-     *
-     * @return array|FrequentlyAskedQuestionInterface[]
-     */
     public function findEnabledOrderedByPositionAndChannelCode(string $localeCode, string $channelCode): array;
 
-    /**
-     * @param string $code
-     *
-     * @return FrequentlyAskedQuestionInterface|null
-     */
     public function findOneEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
 }

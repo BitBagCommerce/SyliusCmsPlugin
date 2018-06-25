@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class AppKernel extends Kernel
 {
@@ -19,6 +20,7 @@ class AppKernel extends Kernel
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
 
+            new \FOS\CKEditorBundle\FOSCKEditorBundle(),
             new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
         ]);
     }

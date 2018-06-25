@@ -14,9 +14,6 @@ namespace BitBag\SyliusCmsPlugin\Exception;
 
 final class TemplateTypeNotFound extends \Exception
 {
-    /**
-     * @param string $type
-     */
     public function __construct(string $type)
     {
         parent::__construct(sprintf('Template type "%s" was not found.', $type));

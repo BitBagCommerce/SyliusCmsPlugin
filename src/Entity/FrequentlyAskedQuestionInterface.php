@@ -23,14 +23,8 @@ interface FrequentlyAskedQuestionInterface extends
     ToggleableInterface,
     ChannelsAwareInterface
 {
-    /**
-     * @return string|null
-     */
     public function getCode(): ?string;
 
-    /**
-     * @param string|null $code
-     */
     public function setCode(?string $code): void;
 
     /**
@@ -38,28 +32,13 @@ interface FrequentlyAskedQuestionInterface extends
      */
     public function getPosition(): ?int;
 
-    /**
-     * @param int|null $position
-     */
     public function setPosition(?int $position): void;
 
-    /**
-     * @return string|null
-     */
     public function getQuestion(): ?string;
 
-    /**
-     * @param string|null $question
-     */
     public function setQuestion(?string $question): void;
 
-    /**
-     * @return string|null
-     */
     public function getAnswer(): ?string;
 
-    /**
-     * @param string|null $answer
-     */
     public function setAnswer(?string $answer): void;
 }

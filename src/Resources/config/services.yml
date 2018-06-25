@@ -1,11 +1,13 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/twig.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/form.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/factory.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/event_listener.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/controller.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/fixture.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/repository.yml" }
+    - { resource: services/twig.yml }
+    - { resource: services/form.yml }
+    - { resource: services/factory.yml }
+    - { resource: services/event_listener.yml }
+    - { resource: services/controller.yml }
+    - { resource: services/fixture.yml }
+    - { resource: services/repository.yml }
+    - { resource: services/importer.yml }
+    - { resource: services/resolver.yml }
 
 services:
     bitbag_sylius_cms_plugin.resolver.block_resource:
@@ -24,3 +26,25 @@ services:
 
     bitbag_sylius_cms_plugin.resolver.block_template:
         class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver
+
+    bitbag_sylius_cms_plugin.reader.csv:
+        class: BitBag\SyliusCmsPlugin\Reader\CsvReader
+
+    bitbag_sylius_cms_plugin.processor.import:
+        class: BitBag\SyliusCmsPlugin\Processor\ImportProcessor
+        arguments:
+            - "@bitbag_sylius_cms_plugin.importer.chain"
+            - "@bitbag_sylius_cms_plugin.reader.csv"
+            - "@doctrine.orm.entity_manager"
+
+    bitbag_sylius_cms_plugin.command.import_from_csv:
+        class: BitBag\SyliusCmsPlugin\Command\ImportFromCsvCommand
+        arguments:
+            - "@bitbag_sylius_cms_plugin.processor.import"
+        tags:
+            - { name: console.command }
+
+    bitbag_sylius_cms_plugin.downloader.image:
+        class: BitBag\SyliusCmsPlugin\Downloader\ImageDownloader
+        arguments:
+            - "@filesystem"

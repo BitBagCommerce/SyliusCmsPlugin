@@ -27,9 +27,6 @@ use Symfony\Component\Validator\Constraints\Valid;
 
 final class BlockType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /** @var BlockInterface $block */
@@ -107,9 +104,6 @@ final class BlockType extends AbstractResourceType
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_block';

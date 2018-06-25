@@ -35,120 +35,75 @@ class Block implements BlockInterface
         $this->initializeChannelsCollection();
     }
 
-    /**
-     * @var int|null
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $code;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $type;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->getBlockTranslation()->getName();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->getBlockTranslation()->setName($name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getContent(): ?string
     {
         return $this->getBlockTranslation()->getContent();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setContent(?string $content): void
     {
         $this->getBlockTranslation()->setContent($content);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getImage(): ?ImageInterface
     {
         return $this->getBlockTranslation()->getImage();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setImage(?ImageInterface $image): void
     {
         $this->getBlockTranslation()->setImage($image);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLink(): ?string
     {
         return $this->getBlockTranslation()->getLink();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLink(?string $link): void
     {
         $this->getBlockTranslation()->setLink($link);
@@ -162,9 +117,6 @@ class Block implements BlockInterface
         return $this->getTranslation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): BlockTranslation
     {
         return new BlockTranslation();

@@ -19,6 +19,8 @@
 
 {% include '@SyliusAdmin/Crud/Index/_content.html.twig' %}
 
+{% include '@BitBagSyliusCmsPlugin/Import/import.html.twig' with {'resourceName': metadata.name} %}
+
 {{ sonata_block_render_event(event_prefix ~ '.after_content', {'resources': resources}) }}
 {% endblock %}
 

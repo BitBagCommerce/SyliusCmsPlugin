@@ -18,9 +18,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -30,9 +27,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneEnabledByCodeAndChannelCode(string $code, string $channelCode): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
@@ -47,9 +41,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findBySectionCodeAndChannelCode(
         string $sectionCode,
         string $localeCode,
@@ -71,9 +62,6 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findByProductCodeAndChannelCode(
         string $productCode,
         string $localeCode,

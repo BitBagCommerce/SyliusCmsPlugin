@@ -12,15 +12,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class TextBlockTranslationType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -28,15 +26,12 @@ final class TextBlockTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
-            ->add('content', TextType::class, [
+            ->add('content', CKEditorType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content',
             ])
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_text_translation';

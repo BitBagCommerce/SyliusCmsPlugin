@@ -19,14 +19,10 @@ use Sylius\Component\Channel\Context\ChannelContextInterface;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var LoggerInterface
-     */
+    /** @var LoggerInterface */
     private $logger;
 
     /**
@@ -49,9 +45,6 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         $this->channelContext = $channelContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOrLog(string $code): ?BlockInterface
     {
         $channel = $this->channelContext->getChannel();

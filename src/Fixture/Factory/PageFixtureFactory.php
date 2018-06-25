@@ -27,56 +27,30 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageTranslationFactory;
 
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $imageUploader;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @param FactoryInterface $pageFactory
-     * @param FactoryInterface $pageTranslationFactory
-     * @param PageRepositoryInterface $pageRepository
-     * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     * @param ImageUploaderInterface $imageUploader
-     * @param ChannelContextInterface $channelContext
-     * @param LocaleContextInterface $localeContext
-     */
     public function __construct(
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
@@ -97,9 +71,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->localeContext = $localeContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {

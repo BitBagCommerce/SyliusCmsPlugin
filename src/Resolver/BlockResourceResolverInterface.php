@@ -16,10 +16,5 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
 interface BlockResourceResolverInterface
 {
-    /**
-     * @param string $code
-     *
-     * @return BlockInterface|null
-     */
     public function findOrLog(string $code): ?BlockInterface;
 }

@@ -17,22 +17,14 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFactory implements BlockFactoryInterface
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $factory;
 
-    /**
-     * @param FactoryInterface $factory
-     */
     public function __construct(FactoryInterface $factory)
     {
         $this->factory = $factory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createWithType(string $type): BlockInterface
     {
         /** @var BlockInterface $block */
@@ -42,9 +34,6 @@ final class BlockFactory implements BlockFactoryInterface
         return $block;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createNew(): BlockInterface
     {
         /** @var BlockInterface $block */
