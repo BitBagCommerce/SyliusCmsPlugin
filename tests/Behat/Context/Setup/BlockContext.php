@@ -18,6 +18,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -138,6 +139,7 @@ final class BlockContext implements Context
      * @param string|null $code
      * @param string|null $content
      * @param string|null $image
+     * @param ChannelInterface $channel
      *
      * @return BlockInterface
      */
@@ -145,11 +147,16 @@ final class BlockContext implements Context
         string $type,
         ?string $code = null,
         ?string $content = null,
-        string $image = null
+        string $image = null,
+        ChannelInterface $channel = null
     ): BlockInterface {
         $block = $this->blockFactory->createWithType($type);
 
         $block->setCurrentLocale('en_US');
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -170,6 +177,7 @@ final class BlockContext implements Context
         }
 
         $block->setCode($code);
+        $block->addChannel($channel);
 
         return $block;
     }

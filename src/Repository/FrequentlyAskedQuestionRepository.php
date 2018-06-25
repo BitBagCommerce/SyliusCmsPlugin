@@ -27,14 +27,17 @@ final class FrequentlyAskedQuestionRepository extends EntityRepository implement
         ;
     }
 
-    public function findEnabledOrderedByPosition(string $localeCode): array
+    public function findEnabledOrderedByPositionAndChannelCode(string $localeCode, string $channelCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.channels', 'channels')
             ->where('translation.locale = :localeCode')
             ->andWhere('o.enabled = true')
+            ->andWhere('channels.code = :channelCode')
             ->orderBy('o.position', 'ASC')
             ->setParameter('localeCode', $localeCode)
+            ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()
         ;

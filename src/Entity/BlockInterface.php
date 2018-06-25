@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
@@ -22,7 +23,8 @@ interface BlockInterface extends
     TranslatableInterface,
     ToggleableInterface,
     ProductsAwareInterface,
-    SectionableInterface
+    SectionableInterface,
+    ChannelsAwareInterface
 {
     const TEXT_BLOCK_TYPE = 'text';
     const IMAGE_BLOCK_TYPE = 'image';

@@ -22,6 +22,7 @@ class Block implements BlockInterface
     use ToggleableTrait;
     use SectionableTrait;
     use ProductsAwareTrait;
+    use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -31,6 +32,7 @@ class Block implements BlockInterface
         $this->initializeTranslationsCollection();
         $this->initializeSectionsCollection();
         $this->initializeProductsCollection();
+        $this->initializeChannelsCollection();
     }
 
     /** @var int */

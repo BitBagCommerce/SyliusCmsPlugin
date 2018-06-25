@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType;
+use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -38,6 +39,11 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => false,
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
+            ])
+            ->add('channels', ChannelChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
             ])
         ;
     }

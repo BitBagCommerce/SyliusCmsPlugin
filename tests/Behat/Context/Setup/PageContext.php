@@ -20,6 +20,7 @@ use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
@@ -237,16 +238,21 @@ final class PageContext implements Context
     }
 
     /**
-     * @param string|null $code
-     * @param string|null $name
-     * @param string|null $content
+     * @param null|string $code
+     * @param null|string $name
+     * @param null|string $content
+     * @param ChannelInterface|null $channel
      *
      * @return PageInterface
      */
-    private function createPage(?string $code = null, ?string $name = null, ?string $content = null): PageInterface
+    private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -265,6 +271,7 @@ final class PageContext implements Context
         $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
         $page->setContent($content);
+        $page->addChannel($channel);
 
         return $page;
     }

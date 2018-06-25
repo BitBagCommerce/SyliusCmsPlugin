@@ -20,21 +20,9 @@ interface PageRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(string $locale): QueryBuilder;
 
-    /**
-     * @param string $code
-     * @param string|null $localeCode
-     *
-     * @return PageInterface|null
-     */
     public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
 
-    /**
-     * @param string $slug
-     * @param string $localeCode
-     *
-     * @return PageInterface|null
-     */
-    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface;
+    public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface;
 
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
+    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 }

@@ -16,6 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType;
+use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -46,6 +47,11 @@ final class BlockType extends AbstractResourceType
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
+            ])
+            ->add('channels', ChannelChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
             ])
         ;
 

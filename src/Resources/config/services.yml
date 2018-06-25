@@ -15,6 +15,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@logger"
+            - "@sylius.context.channel"
 
     bitbag_sylius_cms_plugin.resolver.page_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
