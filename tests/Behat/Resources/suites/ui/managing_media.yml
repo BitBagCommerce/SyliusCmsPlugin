@@ -1,0 +1,15 @@
+default:
+    suites:
+        ui_managing_media:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - sylius.behat.context.setup.product
+                - bitbag_sylius_cms_plugin.behat.context.setup.media
+                - bitbag_sylius_cms_plugin.behat.context.setup.section
+
+                - bitbag_sylius_cms_plugin.behat.context.ui.admin.media
+            filters:
+                tags: "@managing_media && @ui"

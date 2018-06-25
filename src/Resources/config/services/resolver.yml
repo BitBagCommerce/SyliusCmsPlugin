@@ -19,3 +19,33 @@ services:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.factory.block"
             - "code"
+
+    bitbag_sylius_cms_plugin.resolver.block_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@logger"
+
+    bitbag_sylius_cms_plugin.resolver.page_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@sylius.context.locale"
+            - "@logger"
+
+    bitbag_sylius_cms_plugin.resolver.block_template:
+        class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver
+
+    bitbag_sylius_cms_plugin.resolver.media_type:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaTypeResolver
+
+    bitbag_sylius_cms_plugin.resolver.media_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@logger"
+
+    bitbag_sylius_cms_plugin.resolver.media_provider:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.registry.media_provider"

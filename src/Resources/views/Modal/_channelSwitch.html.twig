@@ -1,0 +1,17 @@
+{% if channels|length > 0 %}
+    {% set selected = channels|first %}
+    {% set code = app.request.query.get('channel', selected.code) %}
+
+    <div class="field">
+        <label for="bitbag_sylius_cms_plugin_channel_switch" class="required">
+            {{ 'sylius.ui.channel'|trans }}
+        </label>
+        <select id="bitbag_sylius_cms_plugin_channel_switch" class=" ui dropdown">
+            {% for channel in channels %}
+                <option value="{{ channel.code }}" {{ channel.code is same as(code) ? 'selected' : '' }}>
+                    {{ channel.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+{% endif %}

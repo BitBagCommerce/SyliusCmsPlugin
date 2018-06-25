@@ -45,3 +45,11 @@ bitbag_sylius_cms_plugin_admin_block_create:
                         type: $type
     requirements:
         type: text|html|image
+
+bitbag_sylius_cms_plugin_admin_block_preview:
+    path: /block/preview/{type}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.block:previewAction
+        _sylius:
+            template: "@BitBagSyliusCmsPlugin/Block/preview.html.twig"

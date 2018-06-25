@@ -16,6 +16,9 @@ bitbag_sylius_cms_plugin_admin_media:
 bitbag_sylius_cms_plugin_admin_product:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/product.yml"
 
+bitbag_sylius_cms_plugin_admin_locale:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/locale.yml"
+
 bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     path: /page/generate-slug
     methods: [GET]
@@ -27,3 +30,8 @@ bitbag_sylius_cms_plugin_admin_import:
     methods: [GET, POST]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.action.admin.import
+
+bitbag_sylius_cms_plugin_admin_upload_editor_image:
+    path: /editor/upload-image
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image

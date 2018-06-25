@@ -13,3 +13,15 @@ services:
             - "@doctrine.orm.entity_manager"
         tags:
             - { name: bitbag.importer }
+
+    bitbag_sylius_cms_plugin.importer.block:
+        class: BitBag\SyliusCmsPlugin\Importer\BlockImporter
+        arguments:
+            - "@bitbag_sylius_cms_plugin.resolver.resource.block"
+            - "@bitbag_sylius_cms_plugin.resolver.resource.section"
+            - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.downloader.image"
+            - "@sylius.image_uploader"
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: bitbag.importer }

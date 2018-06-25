@@ -17,3 +17,10 @@ services:
             - "@session"
             - "@form.factory"
             - "@fos_rest.view_handler.default"
+
+    bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image:
+        class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction
+        arguments:
+            - "@bitbag_sylius_cms_plugin.resolver.media_provider"
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@bitbag_sylius_cms_plugin.factory.media"

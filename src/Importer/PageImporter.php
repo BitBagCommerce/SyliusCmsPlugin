@@ -61,29 +61,18 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
     public function import(array $row): void
     {
-        $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?: StringInflector::nameToCode($this->getColumnValue(self::NAME_COLUMN, $row));
+        $localeCode = $this->localeContext->getLocaleCode();
+
+        $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
+            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row))
+        ;
 
         /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);
 
-        $sectionName = $this->getColumnValue(self::SECTION_COLUMN, $row);
-        $sectionCode = StringInflector::nameToCode($sectionName);
-
-        /** @var SectionInterface $section */
-        $section = $this->sectionResolver->getResource($sectionCode);
-
-        $section->setCode($sectionCode);
-
-        $page->setCode($code);
-
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
             $page->setCurrentLocale($locale);
             $page->setFallbackLocale($locale);
-
-            $section->setCurrentLocale($locale);
-            $section->setFallbackLocale($locale);
-
-            $section->setName($this->getTranslatableColumnValue(self::SECTION_COLUMN, $locale, $row));
 
             $page->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
             $page->setSlug($this->getTranslatableColumnValue(self::SLUG_COLUMN, $locale, $row));
@@ -91,15 +80,23 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             $page->setMetaDescription($this->getTranslatableColumnValue(self::META_DESCRIPTION_COLUMN, $locale, $row));
             $page->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
 
-            $this->resolveImage($page, $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row), $locale);
+            $url = $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row);
+
+            if (null !== $url) {
+                $this->resolveImage($page, $url, $locale);
+            }
         }
 
         $page->setCreatedAt(new \DateTime($this->getColumnValue(self::CREATED_AT_COLUMN, $row)));
 
-        $section->getId() ?: $this->entityManager->persist($section);
+        if (null !== $this->getColumnValue(self::SECTION_COLUMN, $row)) {
+            $section = $this->createSection($row);
 
-        if (!$page->hasSection($section)) {
-            $page->addSection($section);
+            $section->getId() ?: $this->entityManager->persist($section);
+
+            if (!$page->hasSection($section)) {
+                $page->addSection($section);
+            }
         }
 
         $page->getId() ?: $this->entityManager->persist($page);
@@ -134,6 +131,29 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
         $this->imageUploader->upload($pageImage);
         $this->entityManager->persist($pageImage);
+    }
+
+    private function createSection(array $row): SectionInterface
+    {
+        $localeCode = $this->localeContext->getLocaleCode();
+
+        $sectionName = $this->getTranslatableColumnValue(self::SECTION_COLUMN, $localeCode, $row);
+
+        $sectionCode = StringInflector::nameToCode($sectionName);
+
+        /** @var SectionInterface $section */
+        $section = $this->sectionResolver->getResource($sectionCode);
+
+        $section->setCode($sectionCode);
+
+        foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
+            $section->setCurrentLocale($locale);
+            $section->setFallbackLocale($locale);
+
+            $section->setName($this->getTranslatableColumnValue(self::SECTION_COLUMN, $locale, $row));
+        }
+
+        return $section;
     }
 
     private function getTranslatableColumns(): array

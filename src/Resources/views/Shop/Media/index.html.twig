@@ -1,0 +1,7 @@
+{% for item in media %}
+    <div class="column">
+        <div class="ui segment">
+            {{ bitbag_cms_render_media(item.code) }}
+        </div>
+    </div>
+{% endfor %}

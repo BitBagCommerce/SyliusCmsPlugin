@@ -24,9 +24,11 @@ final class MediaTranslationType extends AbstractResourceType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'required' => false,
             ])
             ->add('alt', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.alt',
+                'required' => false,
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.description',

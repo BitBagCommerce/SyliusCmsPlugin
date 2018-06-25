@@ -18,9 +18,20 @@ use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Routing\Router;
 
 final class PageTranslationType extends AbstractResourceType
 {
+    /** @var Router */
+    private $router;
+
+    public function __construct(string $dataClass, $validationGroups = [], Router $router)
+    {
+        parent::__construct($dataClass, $validationGroups);
+
+        $this->router = $router;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -44,6 +55,9 @@ final class PageTranslationType extends AbstractResourceType
             ])
             ->add('content', CKEditorType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content',
+                'config' => [
+                    'filebrowserUploadUrl' => $this->router->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
+                ],
             ])
         ;
     }

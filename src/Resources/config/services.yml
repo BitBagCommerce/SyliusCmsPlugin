@@ -8,25 +8,12 @@ imports:
     - { resource: services/repository.yml }
     - { resource: services/importer.yml }
     - { resource: services/resolver.yml }
+    - { resource: services/provider.yml }
+
+parameters:
+    bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface
 
 services:
-    bitbag_sylius_cms_plugin.resolver.block_resource:
-        class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
-        arguments:
-            - "@bitbag_sylius_cms_plugin.repository.block"
-            - "@logger"
-            - "@sylius.context.channel"
-
-    bitbag_sylius_cms_plugin.resolver.page_resource:
-        class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
-        arguments:
-            - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@sylius.context.locale"
-            - "@logger"
-
-    bitbag_sylius_cms_plugin.resolver.block_template:
-        class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver
-
     bitbag_sylius_cms_plugin.reader.csv:
         class: BitBag\SyliusCmsPlugin\Reader\CsvReader
 
@@ -48,3 +35,21 @@ services:
         class: BitBag\SyliusCmsPlugin\Downloader\ImageDownloader
         arguments:
             - "@filesystem"
+
+    bitbag_sylius_cms_plugin.registry.media_provider:
+        class: Sylius\Component\Registry\ServiceRegistry
+        arguments:
+            - "%bitbag_sylius_cms_plugin.media_provider.interface%"
+            - "Media provider"
+
+    bitbag_sylius_cms_plugin.media_uploader:
+        class: BitBag\SyliusCmsPlugin\Uploader\MediaUploader
+        arguments:
+            - "@bitbag_sylius_cms_plugin.media.filesystem"
+            - "%kernel.project_dir%"
+
+    bitbag_sylius_cms_plugin.media.filesystem:
+        class: Gaufrette\Filesystem
+        factory: ['@knp_gaufrette.filesystem_map', get]
+        arguments:
+            - "%bitbag_sylius_cms_plugin.uploader.filesystem%"

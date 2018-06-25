@@ -11,6 +11,7 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
         name:
             column: name
             type: string
+            nullable: true
         description:
             column: description
             type: text

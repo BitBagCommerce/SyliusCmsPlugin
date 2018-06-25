@@ -26,9 +26,9 @@ interface BlockInterface extends
     SectionableInterface,
     ChannelsAwareInterface
 {
-    const TEXT_BLOCK_TYPE = 'text';
-    const IMAGE_BLOCK_TYPE = 'image';
-    const HTML_BLOCK_TYPE = 'html';
+    public const TEXT_BLOCK_TYPE = 'text';
+    public const IMAGE_BLOCK_TYPE = 'image';
+    public const HTML_BLOCK_TYPE = 'html';
 
     /**
      * @return string

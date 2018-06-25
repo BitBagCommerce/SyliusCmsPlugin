@@ -13,21 +13,52 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
-interface MediaInterface extends ResourceInterface, TranslatableInterface
+interface MediaInterface extends
+    ResourceInterface,
+    TranslatableInterface,
+    ToggleableInterface,
+    ProductsAwareInterface,
+    SectionableInterface
 {
-    const IMAGE_TYPE = 'image';
+    public const IMAGE_TYPE = 'image';
+    public const VIDEO_TYPE = 'video';
+    public const FILE_TYPE = 'file';
 
     public function getCode(): ?string;
 
     public function setCode(?string $code): void;
 
-    public function getPath(): string;
+    public function getPath(): ?string;
 
-    public function setPath(string $path): void;
+    public function setPath(?string $path): void;
+
+    public function getOriginalPath(): ?string;
+
+    public function setOriginalPath(?string $originalPath): void;
+
+    public function getFile(): ?File;
+
+    public function setFile(?File $file): void;
+
+    public function hasFile(): bool;
 
     public function getFileType(): ?string;
 
-    public function setFileType(string $fileType): void;
+    public function setFileType(?string $fileType): void;
+
+    public function getMimeTyp(): ?string;
+
+    public function setMimeTyp(?string $mimeTyp): void;
+
+    public function getDescription(): ?string;
+
+    public function setDescription(?string $description): void;
+
+    public function getName(): ?string;
+
+    public function setName(?string $name): void;
 }

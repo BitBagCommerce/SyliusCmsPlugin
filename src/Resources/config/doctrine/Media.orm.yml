@@ -13,15 +13,48 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             type: string
             length: 250
             unique: true
-
         fileType:
             column: file_type
             type: string
             length: 250
-            unique: false
-
         path:
-            column: type
+            column: path
             type: string
             length: 250
             unique: true
+        originalPath:
+            column: original_path
+            type: string
+            length: 250
+            unique: true
+        mimeTyp:
+            column: mime_typ
+            type: string
+            length: 250
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+    manyToMany:
+        sections:
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
+            joinTable:
+                name: bitbag_cms_media_sections
+                joinColumns:
+                    media_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    section_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+        products:
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
+            joinTable:
+                name: bitbag_cms_media_products
+                joinColumns:
+                    media_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE

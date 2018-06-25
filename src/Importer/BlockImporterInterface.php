@@ -16,9 +16,9 @@ interface BlockImporterInterface extends ImporterInterface
 {
     const CODE_COLUMN = 'code';
     const TYPE_COLUMN = 'type';
-    const NAME_COLUMN = 'name';
-    const IMAGE_COLUMN = 'image';
-    const SECTION_COLUMN = 'section';
-    const LINK_COLUMN = 'link';
-    const CONTENT_COLUMN = 'content';
+    const NAME_COLUMN = 'name__locale__';
+    const IMAGE_COLUMN = 'image__locale__';
+    const SECTION_COLUMN = 'section__locale__';
+    const LINK_COLUMN = 'link__locale__';
+    const CONTENT_COLUMN = 'content__locale__';
 }

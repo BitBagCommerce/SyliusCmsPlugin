@@ -15,12 +15,12 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 interface PageImporterInterface extends ImporterInterface
 {
     const CODE_COLUMN = 'code';
-    const SLUG_COLUMN = 'slug';
-    const NAME_COLUMN = 'name';
-    const IMAGE_COLUMN = 'image';
-    const SECTION_COLUMN = 'section';
-    const META_KEYWORDS_COLUMN = 'meta_keywords';
-    const META_DESCRIPTION_COLUMN = 'meta_description';
-    const CONTENT_COLUMN = 'content';
+    const SLUG_COLUMN = 'slug__locale__';
+    const NAME_COLUMN = 'name__locale__';
+    const IMAGE_COLUMN = 'image__locale__';
+    const SECTION_COLUMN = 'section__locale__';
+    const META_KEYWORDS_COLUMN = 'meta_keywords__locale__';
+    const META_DESCRIPTION_COLUMN = 'meta_description__locale__';
+    const CONTENT_COLUMN = 'content__locale__';
     const CREATED_AT_COLUMN = 'created_at';
 }

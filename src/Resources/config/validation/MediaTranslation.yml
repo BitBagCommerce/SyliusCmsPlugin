@@ -1,9 +1,6 @@
 BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
     properties:
         name:
-            - NotBlank:
-                message: bitbag_sylius_cms_plugin.media.name.not_blank
-                groups: [bitbag]
             - Length:
                 min: 2
                 max: 250
@@ -11,9 +8,6 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
                 maxMessage: bitbag_sylius_cms_plugin.media.name.max_length
                 groups: [bitbag]
         alt:
-            - NotBlank:
-                message: bitbag_sylius_cms_plugin.media.alt.not_blank
-                groups: [bitbag]
             - Length:
                 min: 2
                 max: 250

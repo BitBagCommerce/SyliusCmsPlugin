@@ -8,3 +8,12 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.block_resource"
         tags:
             - { name: twig.extension }
+
+    bitbag_sylius_cms_plugin.twig.extension.media:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension
+        public: false
+        arguments:
+            - "@bitbag_sylius_cms_plugin.resolver.media_provider"
+            - "@bitbag_sylius_cms_plugin.resolver.media_resource"
+        tags:
+            - { name: twig.extension }

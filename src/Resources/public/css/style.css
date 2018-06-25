@@ -1,0 +1,12 @@
+#bitbag-cms-resource-preview-modal {
+    height: 90%;
+}
+
+#bitbag-cms-resource-preview-modal iframe {
+    width: 100%;
+    height: 600px;
+}
+
+#bitbag-cms-resource-preview-modal .ui.header {
+    padding-bottom: 0;
+}

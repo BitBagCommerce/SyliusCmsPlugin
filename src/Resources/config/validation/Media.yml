@@ -15,5 +15,10 @@ BitBag\SyliusCmsPlugin\Entity\Media:
                 minMessage: 'bitbag_sylius_cms_plugin.media.code.min_length'
                 maxMessage: 'bitbag_sylius_cms_plugin.media.code.max_length'
                 groups: ['bitbag']
+        file:
+            - Expression:
+                expression: '!(this.getPath() == null and this.getFile() == null)'
+                message: 'bitbag_sylius_cms_plugin.media.file.not_blank'
+                groups: ['bitbag']
         translations:
             - Valid: ~

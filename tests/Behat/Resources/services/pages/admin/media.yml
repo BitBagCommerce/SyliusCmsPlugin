@@ -1,0 +1,21 @@
+services:
+    bitbag_sylius_cms_plugin.behat.media.admin.media.index:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\IndexPage
+        parent: sylius.behat.media.admin.crud.index
+        public: false
+        arguments:
+            - 'bitbag_sylius_cms_plugin_admin_media_index'
+
+    bitbag_sylius_cms_plugin.behat.media.admin.media.create:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\CreatePage
+        parent: sylius.behat.media.admin.crud.create
+        public: false
+        arguments:
+            - 'bitbag_sylius_cms_plugin_admin_media_create'
+
+    bitbag_sylius_cms_plugin.behat.media.admin.media.update:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\UpdatePage
+        parent: sylius.behat.media.admin.crud.update
+        public: false
+        arguments:
+            - 'bitbag_sylius_cms_plugin_admin_media_update'

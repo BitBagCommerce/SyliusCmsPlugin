@@ -61,38 +61,42 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
     public function import(array $row): void
     {
-        $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?: StringInflector::nameToCode($this->getColumnValue(self::NAME_COLUMN, $row));
+        $localeCode = $this->localeContext->getLocaleCode();
+
+        $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
+            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row))
+        ;
         
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
 
-        $sectionName = $this->getColumnValue(self::SECTION_COLUMN, $row);
-        $sectionCode = StringInflector::nameToCode($sectionName);
-
-        /** @var SectionInterface $section */
-        $section = $this->sectionResolver->getResource($sectionCode);
-        $localeCode = $this->localeContext->getLocaleCode();
-
-        $section->setCode($sectionCode);
-        $section->setCurrentLocale($localeCode);
-        $section->setFallbackLocale($localeCode);
-        $section->setName($sectionName);
-
-        $section->getId() ?: $this->entityManager->persist($section);
-
         $block->setCode($code);
-        $block->setCurrentLocale($localeCode);
-        $block->setFallbackLocale($localeCode);
-        $block->setName($this->getColumnValue(self::NAME_COLUMN, $row));
-        $block->setLink($this->getColumnValue(self::LINK_COLUMN, $row));
         $block->setType($this->getColumnValue(self::TYPE_COLUMN, $row));
-        $block->setContent($this->getColumnValue(self::CONTENT_COLUMN, $row));
 
-        if (!$block->hasSection($section)) {
-            $block->addSection($section);
+        foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
+            $block->setCurrentLocale($localeCode);
+            $block->setFallbackLocale($localeCode);
+
+            $block->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
+            $block->setLink($this->getTranslatableColumnValue(self::LINK_COLUMN, $locale, $row));
+            $block->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
+
+            $url = $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row);
+
+            if (null !== $url) {
+                $this->resolveImage($block, $url, $locale);
+            }
         }
 
-        $this->resolveImage($block, $row);
+        if (null !== $this->getColumnValue(self::SECTION_COLUMN, $row)) {
+            $section = $this->createSection($row);
+
+            $section->getId() ?: $this->entityManager->persist($section);
+
+            if (!$block->hasSection($section)) {
+                $block->addSection($section);
+            }
+        }
 
         $block->getId() ?: $this->entityManager->persist($block);
         $this->entityManager->flush();
@@ -103,10 +107,8 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         return 'block';
     }
 
-    private function resolveImage(BlockInterface $block, array $row): void
+    private function resolveImage(BlockInterface $block, string $url, string $locale): void
     {
-        $url = $this->getColumnValue(self::IMAGE_COLUMN, $row);
-
         if (strlen($url) === 0) {
             return;
         }
@@ -114,7 +116,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $downloadedImage = $this->imageDownloader->download($url);
 
         /** @var BlockTranslationInterface $blockTranslation */
-        $blockTranslation = $block->getTranslation($this->localeContext->getLocaleCode());
+        $blockTranslation = $block->getTranslation($locale);
 
         if (null !== $blockImage = $blockTranslation->getImage()) {
             $this->imageUploader->remove($blockTranslation->getImage()->getPath());
@@ -127,5 +129,39 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $this->imageUploader->upload($blockImage);
         $this->entityManager->persist($blockImage);
+    }
+
+    private function createSection(array $row): SectionInterface
+    {
+        $localeCode = $this->localeContext->getLocaleCode();
+
+        $sectionName = $this->getTranslatableColumnValue(self::SECTION_COLUMN, $localeCode, $row);
+
+        $sectionCode = StringInflector::nameToCode($sectionName);
+
+        /** @var SectionInterface $section */
+        $section = $this->sectionResolver->getResource($sectionCode);
+
+        $section->setCode($sectionCode);
+
+        foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
+            $section->setCurrentLocale($locale);
+            $section->setFallbackLocale($locale);
+
+            $section->setName($this->getTranslatableColumnValue(self::SECTION_COLUMN, $locale, $row));
+        }
+
+        return $section;
+    }
+
+    private function getTranslatableColumns(): array
+    {
+        return [
+            self::NAME_COLUMN,
+            self::CONTENT_COLUMN,
+            self::IMAGE_COLUMN,
+            self::SECTION_COLUMN,
+            self::LINK_COLUMN
+        ];
     }
 }

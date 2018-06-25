@@ -24,6 +24,8 @@
 {% block stylesheets %}
     {{ parent() }}
 
+    <link rel="stylesheet" href="{{ asset('bundles/bitbagsyliuscmsplugin/css/style.css') }}">
+
     {{ sonata_block_render_event(event_prefix ~ '.stylesheets') }}
 {% endblock %}
 
@@ -33,4 +35,5 @@
     {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
 
     <script src="{{ asset('bundles/bitbagsyliuscmsplugin/js/bitbag-block-image-preview.js') }}"></script>
+    <script src="{{ asset('bundles/bitbagsyliuscmsplugin/js/bitbag-cms-resource-preview.js') }}"></script>
 {% endblock %}

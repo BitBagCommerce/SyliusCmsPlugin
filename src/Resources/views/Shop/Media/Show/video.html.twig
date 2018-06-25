@@ -1,0 +1,9 @@
+{% set path = '/media/image/'~media.path %}
+
+<div>
+    {% if null != media.name %}
+        <h2>{{ media.name }}</h2>
+    {% endif %}
+
+    <video controls width="100%" src="{{ path }}"></video>
+</div>

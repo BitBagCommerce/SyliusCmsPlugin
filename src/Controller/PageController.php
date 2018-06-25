@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -51,6 +52,36 @@ final class PageController extends ResourceController
                 ])
             ;
         }
+
+        return $this->viewHandler->handle($configuration, $view);
+    }
+
+    public function previewAction(Request $request): Response
+    {
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
+        $newResource = $this->newResourceFactory->create($configuration, $this->factory);
+
+        $form = $this->resourceFormFactory->create($configuration, $newResource);
+
+        $form->handleRequest($request);
+
+        /** @var PageInterface $newResource */
+        $newResource = $form->getData();
+
+        $defaultLocale = $this->getParameter('locale');
+
+        $newResource->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $newResource->setCurrentLocale($request->get('_locale', $defaultLocale));
+
+        $view = View::create()
+            ->setData([
+                'resource' => $newResource,
+                $this->metadata->getName() => $newResource,
+            ])
+            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
+        ;
 
         return $this->viewHandler->handle($configuration, $view);
     }
