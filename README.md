@@ -86,6 +86,7 @@ Finish the installation by updating the database schema and installing assets:
 ```
 $ bin/console doctrine:schema:update --force
 $ bin/console assets:install
+$ bin/console sylius:theme:assets:install
 ```
 
 ### Optional, Sitemap integration
