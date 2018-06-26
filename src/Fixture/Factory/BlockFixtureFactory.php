@@ -52,16 +52,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @param BlockFactoryInterface $blockFactory
-     * @param FactoryInterface $blockTranslationFactory
-     * @param BlockRepositoryInterface $blockRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     * @param ImageUploaderInterface $imageUploader
-     * @param ProductRepositoryInterface $productRepository
-     * @param ChannelContextInterface $channelContext
-     * @param LocaleContextInterface $localeContext
-     */
     public function __construct(
         BlockFactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,

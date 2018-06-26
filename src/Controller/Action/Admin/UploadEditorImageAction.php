@@ -71,7 +71,6 @@ final class UploadEditorImageAction
     {
         /** @var MediaInterface $media */
         $media = $this->mediaFactory->createNew();
-
         $code = $this->createMediaCode(pathinfo($image->getClientOriginalName())['filename']);
 
         $media->setFile($image);

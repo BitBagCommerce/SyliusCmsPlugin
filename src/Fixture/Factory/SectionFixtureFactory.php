@@ -28,11 +28,6 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @param FactoryInterface $sectionFactory
-     * @param FactoryInterface $sectionTranslationFactory
-     * @param SectionRepositoryInterface $sectionRepository
-     */
     public function __construct(
         FactoryInterface $sectionFactory,
         FactoryInterface $sectionTranslationFactory,

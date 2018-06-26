@@ -29,9 +29,7 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-
         $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
-
         $media = $mediaResourceResolver->findOrLog($code);
 
         if (null === $media) {
@@ -52,7 +50,6 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-
         $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
 
         /** @var MediaInterface $media */
@@ -64,12 +61,10 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
-        $this->getParameter('kernel.project_dir');
-
         $response = new BinaryFileResponse($media->getOriginalPath());
 
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
-        $response->headers->set('Content-Type', $media->getMimeTyp());
+        $response->headers->set('Content-Type', $media->getMimeType());
 
         return $response;
     }

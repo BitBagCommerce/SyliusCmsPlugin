@@ -28,11 +28,6 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     /** @var FrequentlyAskedQuestionRepositoryInterface */
     private $frequentlyAskedQuestionRepository;
 
-    /**
-     * @param FactoryInterface $frequentlyAskedQuestionFactory
-     * @param FactoryInterface $frequentlyAskedQuestionTranslationFactory
-     * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-     */
     public function __construct(
         FactoryInterface $frequentlyAskedQuestionFactory,
         FactoryInterface $frequentlyAskedQuestionTranslationFactory,
@@ -63,11 +58,6 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         }
     }
 
-    /**
-     * @param string $code
-     * @param array $frequentlyAskedQuestionData
-     * @param int $position
-     */
     private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData, int $position): void
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */

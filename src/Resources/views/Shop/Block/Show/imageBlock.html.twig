@@ -8,12 +8,12 @@
             {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
         </a>
     {% elseif null != block.name and null == block.link %}
-        <span>
+        <div>
             {{ block.name|raw }}
-        </span>
+        </div>
         {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
     {% else %}
-        <span>{{ block.name|raw }}</span>
+        <div>{{ block.name|raw }}</div>
         <a href="{{ block.link }}">
             {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
         </a>

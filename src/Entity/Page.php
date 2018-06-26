@@ -116,6 +116,26 @@ class Page implements PageInterface
         $this->getPageTranslation()->setName($name);
     }
 
+    public function getNameWhenLinked(): ?string
+    {
+        return $this->getPageTranslation()->getNameWhenLinked();
+    }
+
+    public function setNameWhenLinked(?string $nameWhenLinked): void
+    {
+        $this->getPageTranslation()->setNameWhenLinked($nameWhenLinked);
+    }
+
+    public function getDescriptionWhenLinked(): ?string
+    {
+        return $this->getPageTranslation()->getDescriptionWhenLinked();
+    }
+
+    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void
+    {
+        $this->getPageTranslation()->setDescriptionWhenLinked($descriptionWhenLinked);
+    }
+
     /**
      * {@inheritdoc}
      */

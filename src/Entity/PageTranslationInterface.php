@@ -29,6 +29,14 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
 
     public function setName(?string $name): void;
 
+    public function getNameWhenLinked(): ?string;
+
+    public function setNameWhenLinked(?string $nameWhenLinked): void;
+
+    public function getDescriptionWhenLinked(): ?string;
+
+    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void;
+
     public function getMetaKeywords(): ?string;
 
     public function setMetaKeywords(?string $metaKeywords): void;

@@ -16,6 +16,14 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: name
             type: string
             nullable: true
+        nameWhenLinked:
+            column: name_when_linked
+            type: string
+            nullable: true
+        descriptionWhenLinked:
+            column: description_when_linked
+            type: string
+            nullable: true
         metaKeywords:
             column: meta_keywords
             type: string

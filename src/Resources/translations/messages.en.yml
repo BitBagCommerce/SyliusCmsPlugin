@@ -37,3 +37,16 @@ bitbag_sylius_cms_plugin:
         channels: Channels
         preview: Preview
         download: Download
+        name_when_linked: Name when linked
+        description_when_linked: Description when linked
+        media: Media
+        media_header: Media header
+        media_subheader: Media subheader
+        file_type: File type
+        file: File
+        alt: Alt
+        description: Description
+        file_type: File type
+        file_provider: File
+        image_provider: Image
+        video_provider: Video

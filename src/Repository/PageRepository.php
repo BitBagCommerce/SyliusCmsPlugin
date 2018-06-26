@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Core\Model\ProductInterface;
 
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
@@ -72,6 +73,39 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->andWhere('channels.code = :channelCode')
             ->setParameter('sectionCode', $sectionCode)
             ->setParameter('channelCode', $channelCode)
+        ;
+    }
+
+    public function findByProduct(ProductInterface $product, string $channelCode): array
+    {
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.products', 'product')
+            ->innerJoin('o.channels', 'channel')
+            ->where('o.enabled = true')
+            ->andWhere('product = :product')
+            ->andWhere('channel.code = :channelCode')
+            ->setParameter('product', $product)
+            ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array
+    {
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.products', 'product')
+            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.channels', 'channel')
+            ->where('o.enabled = true')
+            ->andWhere('product = :product')
+            ->andWhere('section.code = :sectionCode')
+            ->andWhere('channel.code = :channelCode')
+            ->setParameter('product', $product)
+            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

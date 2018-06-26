@@ -37,6 +37,12 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var string */
     protected $metaDescription;
 
+    /** @var string */
+    protected $nameWhenLinked;
+
+    /** @var string */
+    protected $descriptionWhenLinked;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,6 +88,26 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getNameWhenLinked(): ?string
+    {
+        return $this->nameWhenLinked;
+    }
+
+    public function setNameWhenLinked(?string $nameWhenLinked): void
+    {
+        $this->nameWhenLinked = $nameWhenLinked;
+    }
+
+    public function getDescriptionWhenLinked(): ?string
+    {
+        return $this->descriptionWhenLinked;
+    }
+
+    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void
+    {
+        $this->descriptionWhenLinked = $descriptionWhenLinked;
     }
 
     public function getMetaKeywords(): ?string

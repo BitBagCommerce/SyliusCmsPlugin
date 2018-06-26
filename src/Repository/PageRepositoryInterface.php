@@ -14,6 +14,7 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface PageRepositoryInterface extends RepositoryInterface
@@ -29,4 +30,8 @@ interface PageRepositoryInterface extends RepositoryInterface
     ): ?PageInterface;
 
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
+
+    public function findByProduct(ProductInterface $product, string $channelCode): array;
+
+    public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array;
 }

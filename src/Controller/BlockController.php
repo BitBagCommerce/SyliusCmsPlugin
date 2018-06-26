@@ -39,9 +39,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         $view = View::create($block);
-
         $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
-
         $template = $request->get('template') ?? $blockTemplateResolver->resolveTemplate($block);
 
         if ($configuration->isHtmlRequest()) {
@@ -65,29 +63,29 @@ final class BlockController extends ResourceController
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
-        $newResource = $this->newResourceFactory->create($configuration, $this->factory);
+        /** @var BlockInterface $block */
+        $block = $this->newResourceFactory->create($configuration, $this->factory);
 
-        $newResource->setType($request->get('type'));
+        $block->setType($request->get('type'));
 
-        $form = $this->resourceFormFactory->create($configuration, $newResource);
+        $form = $this->resourceFormFactory->create($configuration, $block);
 
         $form->handleRequest($request);
 
-        /** @var BlockInterface $newResource */
-        $newResource = $form->getData();
-
+        /** @var BlockInterface $block */
+        $block = $form->getData();
         $defaultLocale = $this->getParameter('locale');
 
-        $newResource->setFallbackLocale($request->get('_locale', $defaultLocale));
-        $newResource->setCurrentLocale($request->get('_locale', $defaultLocale));
+        $block->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
 
         $view = View::create()
             ->setData([
-                'resource' => $newResource,
-                $this->metadata->getName() => $newResource,
-                'blockTemplate' => $blockTemplateResolver->resolveTemplate($newResource),
+                'resource' => $block,
+                $this->metadata->getName() => $block,
+                'blockTemplate' => $blockTemplateResolver->resolveTemplate($block),
             ])
             ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
         ;

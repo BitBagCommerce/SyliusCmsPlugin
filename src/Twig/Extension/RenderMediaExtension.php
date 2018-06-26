@@ -34,11 +34,11 @@ final class RenderMediaExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('bitbag_cms_render_media', [$this, 'renderMedia'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_SimpleFunction('bitbag_cms_render_media', [$this, 'renderMedia'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function renderMedia(\Twig_Environment $twigEnvironment, string $code): string
+    public function renderMedia(string $code): string
     {
         $media = $this->mediaResourceResolver->findOrLog($code);
 

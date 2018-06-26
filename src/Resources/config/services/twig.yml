@@ -17,3 +17,13 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.media_resource"
         tags:
             - { name: twig.extension }
+
+    bitbag_sylius_cms_plugin.twig.extension.product_pages:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension
+        public: false
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@sylius.context.channel"
+            - "@templating"
+        tags:
+            - { name: twig.extension }
