@@ -7,13 +7,14 @@
          bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="BitBagSyliusCmsPlugin Test Suite">
-
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <php>
         <server name="KERNEL_CLASS_PATH" value="/tests/Application/AppKernel.php"/>
+        <server name="KERNEL_DIR" value="tests/Application/app/" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true"/>
+        <server name="EXPECTED_RESPONSE_DIR" value="../../Responses/Expected"/>
     </php>
 </phpunit>

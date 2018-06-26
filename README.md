@@ -100,6 +100,18 @@ Finish the installation by updating the database schema and installing assets:
 ```
 $ bin/console doctrine:schema:update --force
 $ bin/console assets:install
+$ bin/console sylius:theme:assets:install
+```
+
+### Optional, Sitemap integration
+This plugin has a ready to go integration with [Sylius Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
+
+To enable the integration you need to add the following to your `app/config/config.yml` file:
+```yaml
+# app/config/config.yml
+imports:
+    ...
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
 ```
 
 ## Usage

@@ -44,12 +44,12 @@ final class RenderBlockExtension extends \Twig_Extension
         ];
     }
 
-    public function renderBlock(\Twig_Environment $twigEnvironment, string $code): string
+    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, ?string $template = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
-            $template = $this->blockTemplateResolver->resolveTemplate($block);
+            $template = $template ?? $this->blockTemplateResolver->resolveTemplate($block);
 
             return $twigEnvironment->render($template, ['block' => $block]);
         }

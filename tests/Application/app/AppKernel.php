@@ -13,7 +13,7 @@ class AppKernel extends Kernel
      */
     public function registerBundles(): array
     {
-        return array_merge(parent::registerBundles(), [
+        $bundles = array_merge(parent::registerBundles(), [
             new \Sylius\Bundle\AdminBundle\SyliusAdminBundle(),
             new \Sylius\Bundle\ShopBundle\SyliusShopBundle(),
 
@@ -23,6 +23,12 @@ class AppKernel extends Kernel
             new \FOS\CKEditorBundle\FOSCKEditorBundle(),
             new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
         ]);
+
+        if (\in_array($this->getEnvironment(), ['dev', 'test'], true)) {
+            $bundles[] = new \SitemapPlugin\SitemapPlugin();
+        }
+
+        return $bundles;
     }
 
     /**
@@ -30,7 +36,7 @@ class AppKernel extends Kernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load($this->getRootDir() . '/config/config.yml');
+        $loader->load($this->getRootDir() . '/config/config_'  . $this->getEnvironment() . '.yml');
     }
 
     /**

@@ -28,6 +28,18 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
+    public function findByEnabled(bool $enabled): array
+    {
+        return $this->createQueryBuilder('o')
+            ->addSelect('translation')
+            ->innerJoin('o.translations', 'translation')
+            ->andWhere('o.enabled = :enabled')
+            ->setParameter('enabled', $enabled)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')

@@ -64,4 +64,18 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
 
         $this->renderBlock($twigEnvironment, 'bitbag');
     }
+
+    function it_renders_block_with_template(
+        BlockResourceResolverInterface $blockResourceResolver,
+        BlockTemplateResolverInterface $blockTemplateResolver,
+        BlockInterface $block,
+        \Twig_Environment $twigEnvironment
+    ): void
+    {
+        $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
+        $blockTemplateResolver->resolveTemplate($block)->shouldNotBeCalled();
+        $twigEnvironment->render('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock_other_template.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');
+
+        $this->renderBlock($twigEnvironment, 'bitbag', '@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock_other_template.html.twig');
+    }
 }
