@@ -91,11 +91,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param string $code
-     * @param array $pageData
-     * @param bool $generateSlug
-     */
     private function createPage(string $code, array $pageData, bool $generateSlug = false): void
     {
         /** @var PageInterface $page */
@@ -126,7 +121,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             if ($translation['image_path']) {
                 $image = new PageImage();
                 $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path).'.jpg');
+                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 
                 $image->setFile($uploadedImage);
                 $pageTranslation->setImage($image);
@@ -140,10 +135,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageRepository->add($page);
     }
 
-    /**
-     * @param int $limit
-     * @param PageInterface $page
-     */
     private function resolveProducts(PageInterface $page, int $limit): void
     {
         $products = $this->productRepository->findLatestByChannel(
@@ -157,10 +148,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param PageInterface $page
-     * @param array $sections
-     */
     private function resolveSections(PageInterface $page, array $sections): void
     {
         foreach ($sections as $sectionCode) {

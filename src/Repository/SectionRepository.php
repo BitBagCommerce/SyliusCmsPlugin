@@ -35,11 +35,6 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         ;
     }
 
-    /**
-     * @param string|null $locale
-     *
-     * @return QueryBuilder
-     */
     private function createTranslationBasedQueryBuilder(?string $locale = null): QueryBuilder
     {
         $queryBuilder = $this->createQueryBuilder('o')
@@ -57,9 +52,6 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         return $queryBuilder;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneByCodeAndChannelCode(string $code, ?string $localeCode, string $channelCode): ?SectionInterface
     {
         return $this->createQueryBuilder('o')

@@ -16,8 +16,8 @@ use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Uploader\ImageUploader;
@@ -66,7 +66,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
             StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row))
         ;
-        
+
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
 
@@ -161,7 +161,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
             self::CONTENT_COLUMN,
             self::IMAGE_COLUMN,
             self::SECTION_COLUMN,
-            self::LINK_COLUMN
+            self::LINK_COLUMN,
         ];
     }
 }

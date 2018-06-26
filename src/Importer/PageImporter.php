@@ -13,11 +13,11 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Uploader\ImageUploader;
@@ -165,7 +165,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             self::META_DESCRIPTION_COLUMN,
             self::CONTENT_COLUMN,
             self::IMAGE_COLUMN,
-            self::SECTION_COLUMN
+            self::SECTION_COLUMN,
         ];
     }
 }

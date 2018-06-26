@@ -22,7 +22,11 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
 
-    public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface;
+    public function findOneEnabledBySlugAndChannelCode(
+        string $slug,
+        ?string $localeCode,
+        string $channelCode
+    ): ?PageInterface;
 
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 }

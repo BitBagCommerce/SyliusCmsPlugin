@@ -20,31 +20,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class ProductSearchAction
 {
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var ViewHandler
-     */
+    /** @var ViewHandler */
     private $viewHandler;
 
-    /**
-     * @param ProductRepositoryInterface $productRepository
-     * @param ViewHandler $viewHandler
-     */
     public function __construct(ProductRepositoryInterface $productRepository, ViewHandler $viewHandler)
     {
         $this->productRepository = $productRepository;
         $this->viewHandler = $viewHandler;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     public function __invoke(Request $request): Response
     {
         $resource = $this->productRepository->findByNamePart($request->get('phrase', ''));

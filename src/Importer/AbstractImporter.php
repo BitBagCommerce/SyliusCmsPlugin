@@ -18,12 +18,6 @@ abstract class AbstractImporter implements ImporterInterface
     {
     }
 
-    /**
-     * @param string $column
-     * @param array $row
-     *
-     * @return string|mixed|null
-     */
     protected function getColumnValue(string $column, array $row)
     {
         if (array_key_exists($column, $row)) {
@@ -33,13 +27,6 @@ abstract class AbstractImporter implements ImporterInterface
         return null;
     }
 
-    /**
-     * @param string $column
-     * @param $locale
-     * @param array $row
-     *
-     * @return string|mixed|null
-     */
     protected function getTranslatableColumnValue(string $column, $locale, array $row)
     {
         $column = str_replace('__locale__', '_' . $locale, $column);

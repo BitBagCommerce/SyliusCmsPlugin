@@ -34,14 +34,14 @@ final class MediaProviderPass implements CompilerPassInterface
 
             $name = $attributes[0]['label'];
             $type = $attributes[0]['type'];
-            
+
             $providers[$name] = $type;
 
             $providerRegistry->addMethodCall('register', [$type, new Reference($id)]);
         }
 
         ksort($providers);
-        
+
         $container->setParameter('bitbag_sylius_cms_plugin.media_providers', $providers);
     }
 }

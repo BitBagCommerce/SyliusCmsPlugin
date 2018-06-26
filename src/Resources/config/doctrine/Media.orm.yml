@@ -27,7 +27,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             type: string
             length: 250
             unique: true
-        mimeTyp:
+        mimeType:
             column: mime_typ
             type: string
             length: 250

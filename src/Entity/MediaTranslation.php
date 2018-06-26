@@ -60,6 +60,6 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
 
     public function setAlt(?string $alt): void
     {
-       $this->alt = $alt;
+        $this->alt = $alt;
     }
 }

@@ -16,14 +16,14 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 final class HtmlBlockTranslationType extends AbstractResourceType
 {
-    /** @var Router */
+    /** @var RouterInterface */
     private $router;
 
-    public function __construct(string $dataClass, $validationGroups = [], Router $router)
+    public function __construct(string $dataClass, $validationGroups = [], RouterInterface $router)
     {
         parent::__construct($dataClass, $validationGroups);
 

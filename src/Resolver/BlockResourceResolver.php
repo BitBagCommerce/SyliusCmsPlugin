@@ -25,16 +25,9 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     /** @var LoggerInterface */
     private $logger;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @param BlockRepositoryInterface $blockRepository
-     * @param LoggerInterface $logger
-     * @param ChannelContextInterface $channelContext
-     */
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger,

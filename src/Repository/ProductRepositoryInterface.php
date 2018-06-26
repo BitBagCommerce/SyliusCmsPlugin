@@ -17,11 +17,5 @@ use Sylius\Component\Product\Repository\ProductRepositoryInterface as BaseProduc
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
-    /**
-     * @param string $phrase
-     * @param null|string $locale
-     *
-     * @return array|ProductInterface[]
-     */
     public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

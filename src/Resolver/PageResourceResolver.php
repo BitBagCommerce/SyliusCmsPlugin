@@ -28,11 +28,6 @@ final class PageResourceResolver implements PageResourceResolverInterface
     /** @var LoggerInterface */
     private $logger;
 
-    /**
-     * @param PageRepositoryInterface $pageRepository
-     * @param LocaleContextInterface $localeContext
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,

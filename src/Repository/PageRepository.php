@@ -41,7 +41,11 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findOneEnabledBySlugAndChannelCode(string $slug, ?string $localeCode, string $channelCode): ?PageInterface
+    public function findOneEnabledBySlugAndChannelCode(
+        string $slug,
+        ?string $localeCode,
+        string $channelCode
+    ): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')

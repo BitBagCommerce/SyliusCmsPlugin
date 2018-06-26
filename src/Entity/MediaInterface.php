@@ -50,9 +50,9 @@ interface MediaInterface extends
 
     public function setFileType(?string $fileType): void;
 
-    public function getMimeTyp(): ?string;
+    public function getMimeType(): ?string;
 
-    public function setMimeTyp(?string $mimeTyp): void;
+    public function setMimeType(?string $mimeType): void;
 
     public function getDescription(): ?string;
 

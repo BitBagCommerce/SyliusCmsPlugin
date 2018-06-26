@@ -42,7 +42,7 @@ class Media implements MediaInterface
     private $file;
 
     /** @var string */
-    private $mimeTyp;
+    private $mimeType;
 
     /** @var string */
     private $originalPath;
@@ -118,15 +118,14 @@ class Media implements MediaInterface
         return null !== $this->file;
     }
 
-
-    public function getMimeTyp(): ?string
+    public function getMimeType(): ?string
     {
-        return $this->mimeTyp;
+        return $this->mimeType;
     }
 
-    public function setMimeTyp(?string $mimeTyp): void
+    public function setMimeType(?string $mimeType): void
     {
-        $this->mimeTyp = $mimeTyp;
+        $this->mimeType = $mimeType;
     }
 
     public function getDescription(): ?string

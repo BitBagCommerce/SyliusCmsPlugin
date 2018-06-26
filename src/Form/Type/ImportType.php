@@ -20,8 +20,6 @@ class ImportType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('file', FileType::class, ['required' => true])
-        ;
+        $builder->add('file', FileType::class, ['required' => true]);
     }
 }

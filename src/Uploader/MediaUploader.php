@@ -17,20 +17,20 @@ use Gaufrette\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 use Webmozart\Assert\Assert;
 
-class MediaUploader implements MediaUploaderInterface
+final class MediaUploader implements MediaUploaderInterface
 {
     /** @var Filesystem */
     protected $filesystem;
 
     /** @var string */
     protected $projectDir;
-    
+
     public function __construct(Filesystem $filesystem, string $projectDir)
     {
         $this->filesystem = $filesystem;
         $this->projectDir = $projectDir;
     }
-    
+
     public function upload(MediaInterface $media, string $pathPrefix): void
     {
         if (!$media->hasFile()) {

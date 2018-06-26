@@ -79,7 +79,6 @@ final class UploadEditorImageAction
         $media->setFileType(MediaInterface::IMAGE_TYPE);
 
         $this->mediaProviderResolver->resolveProvider($media)->upload($media);
-
         $this->mediaRepository->add($media);
 
         return $media;
@@ -87,13 +86,12 @@ final class UploadEditorImageAction
 
     private function createMediaCode(string $name): string
     {
-        $name = $code = StringInflector::nameToCode($name);
-
+        $code = StringInflector::nameToCode($name);
         $i = 0;
 
         do {
             if ($i > 0) {
-                $code = $name . '_' . (string)$i;
+                $code = $code . '_' . (string) $i;
             }
 
             $i++;

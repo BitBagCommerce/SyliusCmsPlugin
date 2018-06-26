@@ -16,9 +16,6 @@ use Sylius\Bundle\CoreBundle\Form\Type\ImageType as BaseImageType;
 
 final class PageImageType extends BaseImageType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_page_image';

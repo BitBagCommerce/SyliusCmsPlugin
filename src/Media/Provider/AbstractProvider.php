@@ -14,14 +14,14 @@ namespace BitBag\SyliusCmsPlugin\Media\Provider;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
-use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\Templating\EngineInterface;
 
 abstract class AbstractProvider implements ProviderInterface
 {
     /** @var MediaUploaderInterface */
     private $uploader;
 
-    /** @var TwigEngine */
+    /** @var EngineInterface */
     private $twigEngine;
 
     /** @var string */
@@ -30,7 +30,12 @@ abstract class AbstractProvider implements ProviderInterface
     /** @var string */
     private $pathPrefix;
 
-    public function __construct(MediaUploaderInterface $uploader, TwigEngine $twigEngine, string $template, string $pathPrefix)
+    public function __construct(
+        MediaUploaderInterface $uploader,
+        EngineInterface $twigEngine,
+        string $template,
+        string $pathPrefix
+    )
     {
         $this->uploader = $uploader;
         $this->twigEngine = $twigEngine;
