@@ -50,3 +50,5 @@ bitbag_sylius_cms_plugin:
         file_provider: File
         image_provider: Image
         video_provider: Video
+        read_more: Read more
+        name_breadcrumb: Name breadcrumb

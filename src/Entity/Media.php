@@ -27,25 +27,25 @@ class Media implements MediaInterface
     }
 
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $fileType;
+    protected $fileType;
 
     /** @var string */
-    private $code;
+    protected $code;
 
     /** @var string */
-    private $path;
+    protected $path;
 
     /** @var File */
-    private $file;
+    protected $file;
 
     /** @var string */
-    private $mimeType;
+    protected $mimeType;
 
     /** @var string */
-    private $originalPath;
+    protected $originalPath;
 
     public function __construct()
     {

@@ -30,48 +30,27 @@ use Symfony\Component\Routing\RouterInterface;
 
 class PageUrlProvider implements UrlProviderInterface
 {
-    /**
-     * @var PageRepositoryInterface|EntityRepository
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var RouterInterface
-     */
+    /** @var RouterInterface */
     private $router;
 
-    /**
-     * @var SitemapUrlFactoryInterface
-     */
+    /** @var SitemapUrlFactoryInterface */
     private $sitemapUrlFactory;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $urls = [];
 
-    /**
-     * @var array
-     */
+    /** @var */
     private $channelLocaleCodes;
 
-    /**
-     * @param PageRepositoryInterface $pageRepository
-     * @param RouterInterface $router
-     * @param SitemapUrlFactoryInterface $sitemapUrlFactory
-     * @param LocaleContextInterface $localeContext
-     * @param ChannelContextInterface $channelContext
-     */
     public function __construct(
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
@@ -86,17 +65,11 @@ class PageUrlProvider implements UrlProviderInterface
         $this->channelContext = $channelContext;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return 'cms_pages';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function generate(): iterable
     {
         foreach ($this->getPages() as $product) {
@@ -106,11 +79,6 @@ class PageUrlProvider implements UrlProviderInterface
         return $this->urls;
     }
 
-    /**
-     * @param PageInterface $page
-     *
-     * @return Collection|PageTranslationInterface[]
-     */
     private function getTranslations(PageInterface $page): Collection
     {
         return $page->getTranslations()->filter(function (TranslationInterface $translation) {
@@ -118,27 +86,16 @@ class PageUrlProvider implements UrlProviderInterface
         });
     }
 
-    /**
-     * @param TranslationInterface $translation
-     *
-     * @return bool
-     */
     private function localeInLocaleCodes(TranslationInterface $translation): bool
     {
         return in_array($translation->getLocale(), $this->getLocaleCodes());
     }
 
-    /**
-     * @return array|PageInterface[]
-     */
     private function getPages(): iterable
     {
         return $this->pageRepository->findByEnabled(true);
     }
 
-    /**
-     * @return array
-     */
     private function getLocaleCodes(): array
     {
         if (null === $this->channelLocaleCodes) {
@@ -153,11 +110,6 @@ class PageUrlProvider implements UrlProviderInterface
         return $this->channelLocaleCodes;
     }
 
-    /**
-     * @param PageInterface $page
-     *
-     * @return SitemapUrlInterface
-     */
     private function createPageUrl(PageInterface $page): SitemapUrlInterface
     {
         $pageUrl = $this->sitemapUrlFactory->createNew();

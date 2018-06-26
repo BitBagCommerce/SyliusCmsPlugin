@@ -16,6 +16,10 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: name
             type: string
             nullable: true
+        nameBreadcrumb:
+            column: name_breadcrumb
+            type: string
+            nullable: true
         nameWhenLinked:
             column: name_when_linked
             type: string
@@ -24,6 +28,7 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: description_when_linked
             type: string
             nullable: true
+            length: 1000
         metaKeywords:
             column: meta_keywords
             type: string

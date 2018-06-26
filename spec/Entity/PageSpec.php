@@ -16,6 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\Page;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -73,6 +74,18 @@ final class PageSpec extends ObjectBehavior
         $this->removeSection($firstSection);
 
         $this->hasSection($firstSection)->shouldReturn(false);
+    }
+
+    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    {
+        $this->addChannel($firstChannel);
+        $this->hasChannel($firstChannel)->shouldReturn(true);
+
+        $this->hasChannel($secondChannel)->shouldReturn(false);
+
+        $this->removeChannel($firstChannel);
+
+        $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 
     function it_is_timestampable(): void

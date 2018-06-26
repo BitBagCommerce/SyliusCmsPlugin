@@ -33,8 +33,7 @@ final class RenderProductPagesExtension extends \Twig_Extension
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         EngineInterface $templatingEngine
-    )
-    {
+    ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;
         $this->templatingEngine = $templatingEngine;

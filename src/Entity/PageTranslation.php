@@ -43,6 +43,9 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var string */
     protected $descriptionWhenLinked;
 
+    /** @var string */
+    protected $nameBreadcrumb;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +91,16 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getNameBreadcrumb(): ?string
+    {
+        return $this->nameBreadcrumb;
+    }
+
+    public function setNameBreadcrumb(?string $nameBreadcrumb): void
+    {
+        $this->nameBreadcrumb = $nameBreadcrumb;
     }
 
     public function getNameWhenLinked(): ?string

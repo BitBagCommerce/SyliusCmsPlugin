@@ -15,6 +15,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Entity;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class FrequentlyAskedQuestionSpec extends ObjectBehavior
@@ -53,5 +54,17 @@ final class FrequentlyAskedQuestionSpec extends ObjectBehavior
 
         $this->disable();
         $this->isEnabled()->shouldReturn(false);
+    }
+
+    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    {
+        $this->addChannel($firstChannel);
+        $this->hasChannel($firstChannel)->shouldReturn(true);
+
+        $this->hasChannel($secondChannel)->shouldReturn(false);
+
+        $this->removeChannel($firstChannel);
+
+        $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 }
