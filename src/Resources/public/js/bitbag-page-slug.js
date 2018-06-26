@@ -3,11 +3,11 @@
 
     $.fn.extend({
         pageSlugGenerator: function () {
-            var timeout;
+            let timeout;
 
-            $('[name*="bitbag_page[translations]"][name*="[name]"]').on('input', function() {
+            $('[name*="bitbag_sylius_cms_plugin_page[translations]"][name*="[name]"]').on('input', function() {
                 clearTimeout(timeout);
-                var element = $(this);
+                let element = $(this);
 
                 timeout = setTimeout(function() {
                     updateSlug(element);
@@ -20,10 +20,10 @@
             });
 
             function updateSlug(element) {
-                var slugInput = element.parents('.content').find('[name*="[slug]"]');
-                var loadableParent = slugInput.parents('.field.loadable');
+                let slugInput = element.parents('.content').find('[name*="[slug]"]');
+                let loadableParent = slugInput.parents('.field.loadable');
 
-                if ('readonly' == slugInput.attr('readonly')) {
+                if ('readonly' === slugInput.attr('readonly')) {
                     return;
                 }
 
