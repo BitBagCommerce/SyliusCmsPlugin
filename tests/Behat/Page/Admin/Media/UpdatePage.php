@@ -27,7 +27,7 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 
     public function uploadFile(string $file): void
     {
-        $path = __DIR__ . '/../../../Resources/images/' . $file;
+        $path = __DIR__ . '/../../../Resources/media/' . $file;
 
         Assert::fileExists($path);
 

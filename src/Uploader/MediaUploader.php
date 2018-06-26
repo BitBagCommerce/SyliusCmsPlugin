@@ -53,7 +53,7 @@ final class MediaUploader implements MediaUploaderInterface
 
         $media->setPath($path);
         $media->setOriginalPath(sprintf('%s/%s', $this->projectDir, $path));
-        $media->setMimeTyp($file->getMimeType());
+        $media->setMimeType($file->getMimeType());
 
         $this->filesystem->write(
             $media->getPath(),

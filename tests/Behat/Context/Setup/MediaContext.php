@@ -86,6 +86,18 @@ final class MediaContext implements Context
         $this->mediaProviderResolver = $mediaProviderResolver;
     }
 
+    /**
+     * @Given there is an existing media with :code code
+     */
+    public function thereIsAnExistingMediaWithCode(string $code): void
+    {
+        $media = $this->createMedia($code);
+
+        $this->uploadFile($media, 'aston_martin_db_11.jpg');
+
+        $this->saveMedia($media);
+    }
+
     private function createMedia(
         ?string $code = null,
         ?string $name = null,
@@ -122,7 +134,7 @@ final class MediaContext implements Context
 
     private function uploadFile(MediaInterface $media, string $name): MediaInterface
     {
-        $uploadedFile = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
+        $uploadedFile = new UploadedFile(__DIR__ . '/../../Resources/media/' . $name, $name);
 
         $media->setFile($uploadedFile);
 

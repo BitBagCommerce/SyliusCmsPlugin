@@ -2,7 +2,7 @@
 Feature: Adding new media
     In order to present more sophisticated content
     As an Administrator
-    I want to be able to add new CMS sections to the store
+    I want to be able to add new CMS media to the store
 
     Background:
         Given the store operates on a single channel in "United States"
@@ -30,7 +30,7 @@ Feature: Adding new media
     Scenario: Trying to add media with blank data
         When I go to the create media page
         And I try to add it
-        Then I should be notified that "Code, Name, File" fields cannot be blank
+        Then I should be notified that "Code, File" fields cannot be blank
 
     @ui
     Scenario: Trying to add media with too short data
