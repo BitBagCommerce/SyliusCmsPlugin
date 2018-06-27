@@ -7,7 +7,7 @@
         "php": "^7.1",
 
         "sylius/sylius": "^1.1",
-        "league/csv": "v8.0",
+        "league/csv": "^9.0",
         "friendsofsymfony/ckeditor-bundle": "^1.1"
     },
     "require-dev": {
