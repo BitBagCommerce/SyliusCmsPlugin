@@ -58,7 +58,7 @@ final class UploadEditorImageAction
         return new JsonResponse([
             'uploaded' => 1,
             'fileName' => $image->getFilename(),
-            'url' => '/media/image/' . $media->getPath(),
+            'url' => '/'. $media->getPath(),
         ]);
     }
 

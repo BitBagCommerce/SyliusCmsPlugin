@@ -17,7 +17,7 @@ knp_gaufrette:
     adapters:
         bitbag_sylius_cms_plugin_media:
             local:
-                directory: "%kernel.project_dir%"
+                directory: "%kernel.project_dir%/web"
                 create: true
     filesystems:
         bitbag_sylius_cms_plugin_media:
