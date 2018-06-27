@@ -158,6 +158,14 @@ Or rendering a page link directly:
 {{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
 ```
 
+### Pages for product grouped by section
+
+You can render page by function Twig:
+
+```twig
+{{ bitbag_cms_render_product_pages(product) }}
+```
+
 ### Sections
 
 With sections, you can organize your blocks and pages under some specific categories.
@@ -179,6 +187,38 @@ To render FAQs list, use the `bitbag_sylius_cms_plugin_shop_frequently_asked_que
 
 ```twig
 <a href="{{ path('bitbag_sylius_cms_plugin_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
+```
+
+### Media
+
+You can render media in two ways:
+
+By rendering a media code template:
+
+```twig
+{{ bitbag_cms_render_media('media_code') }}
+```
+
+Or rendering a media code directly:
+
+```twig
+{{ render(path('bitbag_sylius_cms_plugin_shop_media_render', {'code' : 'file', 'template' : '@App/Some/Template/_path.html.twig'})) }}
+```
+
+### Media provider
+
+You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
+
+```php
+app.media_provider.media.mp3:
+    class: BitBag\SyliusCmsPlugin\Media\Provider\Mp3Provider
+    arguments:
+        - "@bitbag_sylius_cms_plugin.media_uploader"
+        - "@templating.engine.twig"
+        - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/mp3.html.twig"
+        - "media/mp3"
+    tags:
+        - { name: bitbag_sylius_cms_plugin.media_provider, type: mp3, label: bitbag_sylius_cms_plugin.ui.mp3_provider }
 ```
 
 ### Fixtures
