@@ -8,7 +8,7 @@ imports:
     - { resource: services/repository.yml }
     - { resource: services/importer.yml }
     - { resource: services/resolver.yml }
-    - { resource: services/provider.yml }
+    - { resource: services/media_provider.yml }
 
 parameters:
     bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface

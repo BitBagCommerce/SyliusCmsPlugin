@@ -55,6 +55,10 @@ interface PageInterface extends
 
     public function setNameWhenLinked(?string $nameWhenLinked): void;
 
+    public function getNameBreadcrumb(): ?string;
+
+    public function setNameBreadcrumb(?string $nameBreadcrumb): void;
+
     public function getDescriptionWhenLinked(): ?string;
 
     public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void;

@@ -136,17 +136,21 @@ class Page implements PageInterface
         $this->getPageTranslation()->setDescriptionWhenLinked($descriptionWhenLinked);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function getNameBreadcrumb(): ?string
+    {
+        return $this->getPageTranslation()->getNameBreadcrumb();
+    }
+
+    public function setNameBreadcrumb(?string $nameBreadcrumb): void
+    {
+        $this->getPageTranslation()->setNameBreadcrumb($nameBreadcrumb);
+    }
+
     public function getImage(): ?ImageInterface
     {
         return $this->getPageTranslation()->getImage();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setImage(?ImageInterface $image): void
     {
         $this->getPageTranslation()->setImage($image);
