@@ -104,7 +104,7 @@ final class SectionContext implements Context
     }
 
     /**
-     * @param null|string $code
+     * @param string|null $code
      * @param string|null $name
      * @param ChannelInterface|null $channel
      *

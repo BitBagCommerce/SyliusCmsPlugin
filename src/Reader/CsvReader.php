@@ -20,6 +20,6 @@ final class CsvReader implements ReaderInterface
     {
         $header = Reader::createFromPath($filePath, 'r')->fetchOne();
 
-        return Reader::createFromPath($filePath, 'r')->setOffset(1)->fetchAssoc($header);
+        return Reader::createFromPath($filePath, 'r')->setHeaderOffset(0)->getIterator();
     }
 }

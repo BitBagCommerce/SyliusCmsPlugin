@@ -35,8 +35,7 @@ abstract class AbstractProvider implements ProviderInterface
         EngineInterface $twigEngine,
         string $template,
         string $pathPrefix
-    )
-    {
+    ) {
         $this->uploader = $uploader;
         $this->twigEngine = $twigEngine;
         $this->template = $template;

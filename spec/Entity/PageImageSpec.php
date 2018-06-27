@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
-use Sylius\Component\Core\Model\Image as SyliusImage;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\Image as SyliusImage;
 
 final class PageImageSpec extends ObjectBehavior
 {

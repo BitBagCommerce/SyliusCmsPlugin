@@ -42,7 +42,6 @@ final class MediaTranslationSpec extends ObjectBehavior
         $this->setName('Video');
         $this->getName()->shouldReturn('Video');
 
-
         $this->setDescription('Description');
         $this->getDescription()->shouldReturn('Description');
 

@@ -103,7 +103,7 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @param null|string $code
+     * @param string|null $code
      * @param int|null $position
      * @param bool $prefixQuestionWithPosition
      * @param ChannelInterface $channel

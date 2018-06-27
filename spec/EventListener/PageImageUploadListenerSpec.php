@@ -37,8 +37,7 @@ final class PageImageUploadListenerSpec extends ObjectBehavior
     function it_does_not_upload_if_not_page_instance(
         ResourceControllerEvent $event,
         PageInterface $page
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn(Argument::any());
 
         $page->getTranslations()->shouldNotBeCalled();
@@ -50,8 +49,7 @@ final class PageImageUploadListenerSpec extends ObjectBehavior
         PageTranslationInterface $pageTranslation,
         PageImageInterface $pageImage,
         ImageUploaderInterface $pageImageUploader
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn($page);
         $page->getTranslations()->willReturn(new ArrayCollection([$pageTranslation->getWrappedObject()]));
         $pageTranslation->getImage()->willReturn($pageImage);

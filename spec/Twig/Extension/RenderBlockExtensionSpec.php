@@ -25,8 +25,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         BlockTemplateResolverInterface $blockTemplateResolver,
         BlockResourceResolverInterface $blockResourceResolver
-    ): void
-    {
+    ): void {
         $this->beConstructedWith($blockRepository, $blockTemplateResolver, $blockResourceResolver);
     }
 
@@ -56,8 +55,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockTemplateResolverInterface $blockTemplateResolver,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
-    ): void
-    {
+    ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
         $blockTemplateResolver->resolveTemplate($block)->willReturn('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock.html.twig');
         $twigEnvironment->render('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
@@ -70,8 +68,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
         BlockTemplateResolverInterface $blockTemplateResolver,
         BlockInterface $block,
         \Twig_Environment $twigEnvironment
-    ): void
-    {
+    ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
         $blockTemplateResolver->resolveTemplate($block)->shouldNotBeCalled();
         $twigEnvironment->render('@BitBagSyliusCmsPlugin/Shop/Block/htmlBlock_other_template.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');

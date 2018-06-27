@@ -15,7 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Sylius\Component\Core\Model\ProductInterface;
 
 class SectionRepository extends EntityRepository implements SectionRepositoryInterface
 {

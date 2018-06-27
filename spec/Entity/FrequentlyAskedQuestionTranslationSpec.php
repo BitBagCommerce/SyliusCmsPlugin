@@ -12,11 +12,11 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation;
+use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation;
-use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 
 final class FrequentlyAskedQuestionTranslationSpec extends ObjectBehavior
 {

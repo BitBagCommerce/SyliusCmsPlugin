@@ -41,8 +41,7 @@ final class PageResourceResolverSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $localeContext->getLocaleCode()->willReturn('en_US');
         $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn(null);
 
@@ -61,8 +60,7 @@ final class PageResourceResolverSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         PageInterface $page
-    )
-    {
+    ) {
         $localeContext->getLocaleCode()->willReturn('en_US');
         $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn($page);
 

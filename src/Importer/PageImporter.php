@@ -64,11 +64,13 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $localeCode = $this->localeContext->getLocaleCode();
 
         $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
-            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row))
+            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row) ?? uniqid())
         ;
 
         /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);
+
+        $page->setCode($code);
 
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
             $page->setCurrentLocale($locale);
@@ -83,7 +85,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             $url = $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row);
 
             if (null !== $url) {
-                $this->resolveImage($page, $url, $locale);
+                $this->resolveImage($page, $url ?? '', $locale);
             }
         }
 
@@ -139,7 +141,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
         $sectionName = $this->getTranslatableColumnValue(self::SECTION_COLUMN, $localeCode, $row);
 
-        $sectionCode = StringInflector::nameToCode($sectionName);
+        $sectionCode = StringInflector::nameToCode($sectionName ?? uniqid());
 
         /** @var SectionInterface $section */
         $section = $this->sectionResolver->getResource($sectionCode);

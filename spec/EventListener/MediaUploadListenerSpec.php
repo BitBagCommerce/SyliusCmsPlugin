@@ -36,8 +36,7 @@ final class MediaUploadListenerSpec extends ObjectBehavior
         ResourceControllerEvent $event,
         MediaInterface $media,
         MediaProviderResolverInterface $mediaProviderResolver
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn(Argument::any());
 
         $mediaProviderResolver->resolveProvider($media)->shouldNotBeCalled();
@@ -48,8 +47,7 @@ final class MediaUploadListenerSpec extends ObjectBehavior
         MediaInterface $media,
         MediaProviderResolverInterface $mediaProviderResolver,
         ProviderInterface $provider
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn($media);
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
     }

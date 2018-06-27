@@ -20,10 +20,10 @@ use Webmozart\Assert\Assert;
 final class MediaUploader implements MediaUploaderInterface
 {
     /** @var Filesystem */
-    protected $filesystem;
+    private $filesystem;
 
     /** @var string */
-    protected $projectDir;
+    private $projectDir;
 
     public function __construct(Filesystem $filesystem, string $projectDir)
     {

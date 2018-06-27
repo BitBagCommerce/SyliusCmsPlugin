@@ -64,7 +64,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $localeCode = $this->localeContext->getLocaleCode();
 
         $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
-            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row))
+            StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row) ?? uniqid())
         ;
 
         /** @var BlockInterface $block */
@@ -84,7 +84,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
             $url = $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row);
 
             if (null !== $url) {
-                $this->resolveImage($block, $url, $locale);
+                $this->resolveImage($block, $url ?? '', $locale);
             }
         }
 
@@ -137,7 +137,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $sectionName = $this->getTranslatableColumnValue(self::SECTION_COLUMN, $localeCode, $row);
 
-        $sectionCode = StringInflector::nameToCode($sectionName);
+        $sectionCode = StringInflector::nameToCode($sectionName ?? uniqid());
 
         /** @var SectionInterface $section */
         $section = $this->sectionResolver->getResource($sectionCode);

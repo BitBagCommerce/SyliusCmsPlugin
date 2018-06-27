@@ -238,9 +238,9 @@ final class PageContext implements Context
     }
 
     /**
-     * @param null|string $code
-     * @param null|string $name
-     * @param null|string $content
+     * @param string|null $code
+     * @param string|null $name
+     * @param string|null $content
      * @param ChannelInterface|null $channel
      *
      * @return PageInterface

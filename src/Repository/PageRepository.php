@@ -58,8 +58,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         string $slug,
         ?string $localeCode,
         string $channelCode
-    ): ?PageInterface
-    {
+    ): ?PageInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.channels', 'channels')

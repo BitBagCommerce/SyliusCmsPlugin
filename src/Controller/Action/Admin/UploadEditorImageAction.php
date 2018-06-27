@@ -93,7 +93,7 @@ final class UploadEditorImageAction
                 $code = $code . '_' . (string) $i;
             }
 
-            $i++;
+            ++$i;
         } while (count($this->mediaRepository->findBy(['code' => $code])) > 0);
 
         return $code;

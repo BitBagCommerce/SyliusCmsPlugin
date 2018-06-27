@@ -37,8 +37,7 @@ final class BlockImageUploadListenerSpec extends ObjectBehavior
     function it_does_not_upload_if_not_block_instance(
         ResourceControllerEvent $event,
         BlockInterface $block
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn(Argument::any());
 
         $block->getType()->shouldNotBeCalled();
@@ -47,8 +46,7 @@ final class BlockImageUploadListenerSpec extends ObjectBehavior
     function it_does_not_upload_if_not_image_Block(
         ResourceControllerEvent $event,
         BlockInterface $block
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn(Argument::any());
 
@@ -61,8 +59,7 @@ final class BlockImageUploadListenerSpec extends ObjectBehavior
         BlockTranslationInterface $blockTranslation,
         BlockImageInterface $blockImage,
         ImageUploaderInterface $blockImageUploader
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn($block);
         $block->getType()->willReturn('image');
         $block->getTranslations()->willReturn(new ArrayCollection([$blockTranslation->getWrappedObject()]));

@@ -32,8 +32,7 @@ final class BlockFactorySpec extends ObjectBehavior
     function it_creates_new_block(
         FactoryInterface $resourceFactory,
         BlockInterface $block
-    ): void
-    {
+    ): void {
         $resourceFactory->createNew()->willReturn($block);
 
         $this->createNew()->shouldBeEqualTo($block);
@@ -42,8 +41,7 @@ final class BlockFactorySpec extends ObjectBehavior
     function it_creates_new_block_with_type(
         FactoryInterface $resourceFactory,
         BlockInterface $block
-    ): void
-    {
+    ): void {
         $resourceFactory->createNew()->willReturn($block);
         $block->setType('image')->shouldBeCalled();
 

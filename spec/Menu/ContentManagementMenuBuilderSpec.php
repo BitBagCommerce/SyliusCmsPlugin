@@ -28,8 +28,7 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         MenuBuilderEvent $menuBuilderEvent,
         ItemInterface $menu,
         ItemInterface $cmsRootMenuItem
-    ): void
-    {
+    ): void {
         $menuBuilderEvent->getMenu()->willReturn($menu);
         $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.cms')->willReturn($cmsRootMenuItem);
