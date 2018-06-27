@@ -44,7 +44,8 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
         MediaInterface $media,
         FileBag $fileBag,
         MediaProviderResolverInterface $mediaProviderResolver,
-        ProviderInterface $provider
+        ProviderInterface $provider,
+        MediaRepositoryInterface $mediaRepository
     ): void {
         $uploadedFile = new UploadedFile(__DIR__ . '/../../../../tests/Behat/Resources/media/aston_martin_db_11.jpg', 'aston_martin_db_11.jpg');
 
@@ -53,6 +54,8 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
         $fileBag->get('upload')->willReturn($uploadedFile);
         $mediaFactory->createNew()->willReturn($media);
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
+        $mediaRepository->findBy(['code' => 'aston_martin_db_11'])->willReturn([]);
+        $mediaRepository->add($media)->shouldBeCalled();
 
         $this->__invoke($request);
     }
