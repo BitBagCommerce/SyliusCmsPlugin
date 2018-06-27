@@ -38,6 +38,9 @@ final class PageTranslationType extends AbstractResourceType
             ->add('name', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
             ])
+            ->add('slug', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.slug',
+            ])
             ->add('nameBreadcrumb', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.name_breadcrumb',
                 'required' => false,
@@ -49,9 +52,6 @@ final class PageTranslationType extends AbstractResourceType
             ->add('descriptionWhenLinked', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.description_when_linked',
                 'required' => false,
-            ])
-            ->add('slug', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.slug',
             ])
             ->add('image', PageImageType::class, [
                 'label' => false,
