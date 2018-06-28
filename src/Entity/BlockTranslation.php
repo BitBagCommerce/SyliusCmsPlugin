@@ -94,7 +94,9 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
      */
     public function setImage(?BlockImageInterface $image): void
     {
-        $image->setOwner($this);
+        if ($image !== null) {
+            $image->setOwner($this);
+        }
 
         $this->image = $image;
     }
