@@ -1,7 +1,5 @@
 imports:
     - { resource: "config.yml" }
-    - { resource: "@SitemapPlugin/Resources/config/config.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
 
 doctrine:
     dbal:

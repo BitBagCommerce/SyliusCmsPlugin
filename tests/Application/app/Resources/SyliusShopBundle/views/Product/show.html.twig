@@ -57,7 +57,7 @@
     </div>
 
     {{ bitbag_cms_render_product_pages(product) }}
-    
+
     {{ sonata_block_render_event('sylius.shop.product.show.before_tabs', {'product': product}) }}
 
     {% include '@SyliusShop/Product/Show/_tabs.html.twig' %}

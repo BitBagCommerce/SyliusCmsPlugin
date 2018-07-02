@@ -6,3 +6,4 @@ sylius_grid:
     templates:
         action:
             create_block: "@BitBagSyliusCmsPlugin/Block/Action/_create.html.twig"
+            import: "@BitBagSyliusCmsPlugin/"

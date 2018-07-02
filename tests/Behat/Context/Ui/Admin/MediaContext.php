@@ -73,6 +73,7 @@ final class MediaContext implements Context
         NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
+
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         MediaRepositoryInterface $mediaRepository

@@ -8,7 +8,8 @@
 
         "sylius/sylius": "^1.1",
         "league/csv": "^9.0",
-        "friendsofsymfony/ckeditor-bundle": "^1.1"
+        "friendsofsymfony/ckeditor-bundle": "^1.1",
+        "stefandoorn/sitemap-plugin": "^1.0"
     },
     "require-dev": {
         "behat/behat": "^3.3",
@@ -27,7 +28,6 @@
         "phpstan/phpstan-shim": "^0.9.2",
         "phpunit/phpunit": "^5.6",
         "se/selenium-server-standalone": "^2.52",
-        "stefandoorn/sitemap-plugin": "^1.0.8",
         "symplify/easy-coding-standard": "^2.4",
         "sylius-labs/coding-standard": "^1.0",
         "matthiasnoback/symfony-config-test": "^2.1.0"

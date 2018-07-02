@@ -46,6 +46,8 @@ sylius_grid:
                 main:
                     create:
                         type: create
+                    import:
+                        type: import
                 item:
                     update:
                         type: update

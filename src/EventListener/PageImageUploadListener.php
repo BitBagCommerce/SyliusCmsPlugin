@@ -20,22 +20,14 @@ use Webmozart\Assert\Assert;
 
 final class PageImageUploadListener
 {
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $uploader;
 
-    /**
-     * @param ImageUploaderInterface $uploader
-     */
     public function __construct(ImageUploaderInterface $uploader)
     {
         $this->uploader = $uploader;
     }
 
-    /**
-     * @param ResourceControllerEvent $event
-     */
     public function uploadImage(ResourceControllerEvent $event): void
     {
         $page = $event->getSubject();

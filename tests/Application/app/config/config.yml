@@ -8,6 +8,7 @@ imports:
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
 
+    - { resource: "@SitemapPlugin/Resources/config/config.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }

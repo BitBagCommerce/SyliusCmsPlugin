@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class AppKernel extends Kernel
 {
-    /**
-     * {@inheritdoc}
-     */
     public function registerBundles(): array
     {
         $bundles = array_merge(parent::registerBundles(), [
@@ -21,27 +17,18 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
 
             new \FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new \SitemapPlugin\SitemapPlugin(),
             new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
         ]);
-
-        if (\in_array($this->getEnvironment(), ['dev', 'test'], true)) {
-            $bundles[] = new \SitemapPlugin\SitemapPlugin();
-        }
 
         return $bundles;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load($this->getRootDir() . '/config/config_'  . $this->getEnvironment() . '.yml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getProjectDir(): string
     {
         return dirname(__DIR__);
