@@ -42,7 +42,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     {
         $channel = $this->channelContext->getChannel();
 
-        $block = $this->blockRepository->findOneEnabledByCodeAndChannelCode($code, $channel->getCode());
+        $block = $this->blockRepository->findEnabledByCode($code, $channel->getCode());
 
         if (false === $block instanceof BlockInterface) {
             $this->logger->warning(sprintf(

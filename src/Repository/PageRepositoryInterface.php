@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -21,15 +21,15 @@ interface PageRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(string $locale): QueryBuilder;
 
-    public function findByEnabled(bool $enabled): array;
+    public function findEnabled(bool $enabled): array;
 
-    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageContentInterface;
 
     public function findOneEnabledBySlugAndChannelCode(
         string $slug,
         ?string $localeCode,
         string $channelCode
-    ): ?PageInterface;
+    ): ?PageContentInterface;
 
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 

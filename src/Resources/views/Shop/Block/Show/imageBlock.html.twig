@@ -14,8 +14,14 @@
         {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
     {% else %}
         <div>{{ block.name|raw }}</div>
+
         <a href="{{ block.link }}">
             {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
         </a>
     {% endif %}
 </div>
+
+{#{% if block.content %}#}
+    {#<div class="ui divider"></div>#}
+    {#<p>{{ bitbag_cms_render_content(block) }}</p>#}
+{#{% endif %}#}

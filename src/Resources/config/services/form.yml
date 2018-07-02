@@ -29,6 +29,8 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
+            - ['bitbag']
+            - "@router.default"
         tags:
             - { name: form.type }
 

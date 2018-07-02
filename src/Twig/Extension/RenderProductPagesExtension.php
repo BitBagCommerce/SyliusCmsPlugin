@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -42,7 +42,7 @@ final class RenderProductPagesExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('bitbag_cms_render_product_pages', [$this, 'renderProductPages'], ['is_safe' => ['html']]),
+            new \Twig_Function('bitbag_cms_render_product_pages', [$this, 'renderProductPages'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -67,7 +67,7 @@ final class RenderProductPagesExtension extends \Twig_Extension
     {
         $result = [];
 
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         foreach ($pages as $page) {
             foreach ($page->getSections() as $section) {
                 $sectionCode = $section->getCode();

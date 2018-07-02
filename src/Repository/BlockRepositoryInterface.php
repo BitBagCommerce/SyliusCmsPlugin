@@ -20,15 +20,15 @@ interface BlockRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    public function findOneEnabledByCodeAndChannelCode(string $code, string $channelCode): ?BlockInterface;
+    public function findEnabledByCode(string $code, string $channelCode): ?BlockInterface;
 
-    public function findBySectionCodeAndChannelCode(
+    public function findBySectionCode(
         string $sectionCode,
         string $localeCode,
         string $channelCode
     ): array;
 
-    public function findByProductCodeAndChannelCode(
+    public function findByProductCode(
         string $productCode,
         string $localeCode,
         string $channelCode

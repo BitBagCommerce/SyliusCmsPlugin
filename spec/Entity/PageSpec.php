@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Page;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -34,7 +34,7 @@ final class PageSpec extends ObjectBehavior
 
     function it_implements_page_interface(): void
     {
-        $this->shouldHaveType(PageInterface::class);
+        $this->shouldHaveType(PageContentInterface::class);
     }
 
     function it_allows_access_via_properties(): void

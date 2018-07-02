@@ -20,7 +20,7 @@ interface FrequentlyAskedQuestionRepositoryInterface extends RepositoryInterface
 {
     public function createListQueryBuilder(string $localeCode): QueryBuilder;
 
-    public function findEnabledOrderedByPositionAndChannelCode(string $localeCode, string $channelCode): array;
+    public function findEnabledOrderedByPosition(string $localeCode, string $channelCode): array;
 
     public function findOneEnabledByCode(string $code): ?FrequentlyAskedQuestionInterface;
 }

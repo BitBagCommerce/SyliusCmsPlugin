@@ -23,6 +23,7 @@ class Block implements BlockInterface
     use SectionableTrait;
     use ProductsAwareTrait;
     use ChannelsAwareTrait;
+    use CompilableContentTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

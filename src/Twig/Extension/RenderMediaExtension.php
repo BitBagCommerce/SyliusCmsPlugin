@@ -34,7 +34,7 @@ final class RenderMediaExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('bitbag_cms_render_media', [$this, 'renderMedia'], ['is_safe' => ['html']]),
+            new \Twig_Function('bitbag_cms_render_media', [$this, 'renderMedia'], ['is_safe' => ['html']]),
         ];
     }
 

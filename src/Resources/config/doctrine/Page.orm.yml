@@ -30,6 +30,10 @@ BitBag\SyliusCmsPlugin\Entity\Page:
             gedmo:
                 timestampable:
                     on: update
+        compilable:
+            column: compilable
+            type: boolean
+            nullable: true
     manyToMany:
         products:
             targetEntity: Sylius\Component\Product\Model\ProductInterface

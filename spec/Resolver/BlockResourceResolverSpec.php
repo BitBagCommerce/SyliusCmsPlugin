@@ -46,7 +46,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
     ) {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
-        $blockRepository->findOneEnabledByCodeAndChannelCode('homepage_banner', 'WEB')->willReturn(null);
+        $blockRepository->findEnabledByCode('homepage_banner', 'WEB')->willReturn(null);
 
         $logger
             ->warning(sprintf(
@@ -67,7 +67,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
     ) {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
-        $blockRepository->findOneEnabledByCodeAndChannelCode('homepage_banner', 'WEB')->willReturn($block);
+        $blockRepository->findEnabledByCode('homepage_banner', 'WEB')->willReturn($block);
 
         $this->findOrLog('homepage_banner')->shouldReturn($block);
     }

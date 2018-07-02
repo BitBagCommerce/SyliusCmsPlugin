@@ -18,13 +18,14 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-class Page implements PageInterface
+class Page implements PageContentInterface
 {
     use ToggleableTrait;
     use ProductsAwareTrait;
     use SectionableTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
+    use CompilableContentTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

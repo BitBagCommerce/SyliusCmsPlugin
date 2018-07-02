@@ -24,15 +24,13 @@ interface BlockInterface extends
     ToggleableInterface,
     ProductsAwareInterface,
     SectionableInterface,
-    ChannelsAwareInterface
+    ChannelsAwareInterface,
+    CompilableContentInterface
 {
     public const TEXT_BLOCK_TYPE = 'text';
     public const IMAGE_BLOCK_TYPE = 'image';
     public const HTML_BLOCK_TYPE = 'html';
 
-    /**
-     * @return string
-     */
     public function getType(): ?string;
 
     public function setType(?string $type): void;

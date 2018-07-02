@@ -27,13 +27,13 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findOneEnabledByCodeAndChannelCode(string $code, string $channelCode): ?BlockInterface
+    public function findEnabledByCode(string $code, string $channelCode): ?BlockInterface
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.channels', 'channels')
+            ->leftJoin('o.channels', 'channel')
             ->where('o.code = :code')
             ->andWhere('o.enabled = true')
-            ->andWhere('channels.code = :channelCode')
+            ->andWhere('channel.code = :channelCode')
             ->setParameter('code', $code)
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
@@ -41,11 +41,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findBySectionCodeAndChannelCode(
-        string $sectionCode,
-        string $localeCode,
-        string $channelCode
-    ): array {
+    public function findBySectionCode(string $sectionCode, string $localeCode, string $channelCode): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
@@ -62,11 +58,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findByProductCodeAndChannelCode(
-        string $productCode,
-        string $localeCode,
-        string $channelCode
-    ): array {
+    public function findByProductCode(string $productCode, string $localeCode, string $channelCode): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.products', 'product')

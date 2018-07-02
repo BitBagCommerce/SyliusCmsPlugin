@@ -52,3 +52,4 @@ bitbag_sylius_cms_plugin:
         video_provider: Video
         read_more: Read more
         name_breadcrumb: Name breadcrumb
+        compilable: Compilable

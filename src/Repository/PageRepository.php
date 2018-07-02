@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -28,7 +28,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByEnabled(bool $enabled): array
+    public function findEnabled(bool $enabled): array
     {
         return $this->createQueryBuilder('o')
             ->addSelect('translation')
@@ -40,7 +40,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageContentInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -58,7 +58,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         string $slug,
         ?string $localeCode,
         string $channelCode
-    ): ?PageInterface {
+    ): ?PageContentInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.channels', 'channels')
@@ -102,7 +102,11 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array
+    public function findByProductAndSectionCode(
+        ProductInterface $product,
+        string $sectionCode,
+        string $channelCode
+    ): array
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')

@@ -14,7 +14,7 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
@@ -67,7 +67,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row) ?? uniqid())
         ;
 
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         $page = $this->pageResourceResolver->getResource($code);
 
         $page->setCode($code);
@@ -111,7 +111,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         return 'page';
     }
 
-    private function resolveImage(PageInterface $page, string $url, string $locale): void
+    private function resolveImage(PageContentInterface $page, string $url, string $locale): void
     {
         if (strlen($url) === 0) {
             return;

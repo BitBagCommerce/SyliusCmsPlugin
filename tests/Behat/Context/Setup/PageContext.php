@@ -14,7 +14,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -229,7 +229,7 @@ final class PageContext implements Context
         $section = $this->sharedStorage->get('section');
         $pages = $this->pageRepository->findAll();
 
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         foreach ($pages as $page) {
             $page->addSection($section);
         }
@@ -243,11 +243,11 @@ final class PageContext implements Context
      * @param string|null $content
      * @param ChannelInterface|null $channel
      *
-     * @return PageInterface
+     * @return PageContentInterface
      */
-    private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageInterface
+    private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageContentInterface
     {
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         $page = $this->pageFactory->createNew();
 
         if (null === $channel && $this->sharedStorage->has('channel')) {
@@ -294,9 +294,9 @@ final class PageContext implements Context
     }
 
     /**
-     * @param PageInterface $page
+     * @param PageContentInterface $page
      */
-    private function savePage(PageInterface $page): void
+    private function savePage(PageContentInterface $page): void
     {
         $this->pageRepository->add($page);
         $this->sharedStorage->set('page', $page);

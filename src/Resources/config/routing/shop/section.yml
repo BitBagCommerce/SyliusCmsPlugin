@@ -6,7 +6,7 @@ bitbag_sylius_cms_plugin_shop_section_show:
         _sylius:
             template: $template
             repository:
-                method: findOneByCodeAndChannelCode
+                method: findOneByCode
                 arguments:
                     - $code
                     - "expr:service('sylius.context.locale').getLocaleCode()"

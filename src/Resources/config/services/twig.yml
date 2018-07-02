@@ -1,7 +1,6 @@
 services:
     bitbag_sylius_cms_plugin.twig.extension.block:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension
-        public: false
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.resolver.block_template"
@@ -11,7 +10,6 @@ services:
 
     bitbag_sylius_cms_plugin.twig.extension.media:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension
-        public: false
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.resolver.media_resource"
@@ -20,10 +18,14 @@ services:
 
     bitbag_sylius_cms_plugin.twig.extension.product_pages:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension
-        public: false
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.context.channel"
             - "@templating"
+        tags:
+            - { name: twig.extension }
+
+    bitbag_sylius_cms_plugin.twig.extension.render_content:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderContentExtension
         tags:
             - { name: twig.extension }

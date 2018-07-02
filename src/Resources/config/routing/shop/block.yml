@@ -5,7 +5,7 @@ bitbag_sylius_cms_plugin_shop_block_render:
         _controller: bitbag_sylius_cms_plugin.controller.block:renderBlockAction
         _sylius:
             repository:
-                method: findOneByCodeAndChannelCode
+                method: findOneByCode
                 arguments:
                     - $code
 
@@ -17,7 +17,7 @@ bitbag_sylius_cms_plugin_shop_block_index_by_section_code:
         _sylius:
             template: $template
             repository:
-                method: findBySectionCodeAndChannelCode
+                method: findBySectionCode
                 arguments:
                     - $sectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
@@ -31,7 +31,7 @@ bitbag_sylius_cms_plugin_shop_block_index_by_product_code:
         _sylius:
             template: $template
             repository:
-                method: findByProductCodeAndChannelCode
+                method: findByProductCode
                 arguments:
                     - $productCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"

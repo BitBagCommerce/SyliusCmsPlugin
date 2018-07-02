@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -67,7 +67,7 @@ final class PageController extends ResourceController
 
         $form->handleRequest($request);
 
-        /** @var PageInterface $newResource */
+        /** @var PageContentInterface $newResource */
         $newResource = $form->getData();
 
         $defaultLocale = $this->getParameter('locale');

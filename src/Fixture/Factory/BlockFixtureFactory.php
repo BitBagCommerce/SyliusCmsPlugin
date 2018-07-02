@@ -133,10 +133,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->blockRepository->add($block);
     }
 
-    /**
-     * @param BlockInterface $block
-     * @param int $limit
-     */
     private function resolveProducts(BlockInterface $block, int $limit): void
     {
         $products = $this->productRepository->findLatestByChannel(
@@ -150,10 +146,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param BlockInterface $block
-     * @param array $sections
-     */
     private function resolveSections(BlockInterface $block, array $sections): void
     {
         foreach ($sections as $sectionCode) {

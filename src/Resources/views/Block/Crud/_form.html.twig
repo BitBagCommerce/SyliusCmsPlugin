@@ -11,11 +11,12 @@
             {{ form_errors(form) }}
             {{ form_row(form.code) }}
             {{ form_row(form.enabled) }}
+            {{ form_row(form.compilable) }}
             {{ form_row(form.products) }}
             {{ form_row(form.sections) }}
             {{ form_row(form.channels) }}
 
-            {% if imageBlock != resource.type %}
+            {% if 'image' != resource.type %}
                 <a href="#" class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview', {'type': resource.type}) }}">
                     <i class="eye icon"></i>
                     {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
