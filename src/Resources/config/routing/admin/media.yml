@@ -14,5 +14,5 @@ bitbag_sylius_cms_plugin_admin_media:
                 templates:
                     form: BitBagSyliusCmsPlugin:Media:Crud/_form.html.twig
             index:
-                icon: grid layout
+                icon: file
     type: sylius.resource

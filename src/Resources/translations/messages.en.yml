@@ -40,8 +40,8 @@ bitbag_sylius_cms_plugin:
         name_when_linked: Name when linked
         description_when_linked: Description when linked
         media: Media
-        media_header: Media header
-        media_subheader: Media subheader
+        media_header: Media
+        media_subheader: Manage digital assets
         file_type: File type
         file: File
         alt: Alt

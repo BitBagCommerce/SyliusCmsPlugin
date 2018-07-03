@@ -44,10 +44,12 @@ sylius_grid:
                         fields: [code]
             actions:
                 main:
-                    create:
-                        type: create
                     import:
                         type: import
+                        options:
+                            resourceCode: page
+                    create:
+                        type: create
                 item:
                     update:
                         type: update
