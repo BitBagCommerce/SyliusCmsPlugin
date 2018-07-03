@@ -1,0 +1,21 @@
+{% extends 'SyliusAdminBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% include 'SyliusUiBundle::_stylesheets.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/css/style.css'} %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-upload-csv.js'} %}
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-page-slug.js'} %}
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-block-image-preview.js'} %}
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-cms-resource-preview.js'} %}
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-block-image-preview.js'} %}
+    {% include 'SyliusUiBundle::_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-cms-resource-preview.js'} %}
+
+    {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
+{% endblock %}

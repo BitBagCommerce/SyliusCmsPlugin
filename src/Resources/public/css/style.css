@@ -10,3 +10,11 @@
 #bitbag-cms-resource-preview-modal .ui.header {
     padding-bottom: 0;
 }
+
+.bitbag-cms-import .ui.action.input input[type="file"] {
+    display: none;
+}
+
+.bitbag-cms-import .ui.action.input input[type="text"] {
+    width: auto;
+}

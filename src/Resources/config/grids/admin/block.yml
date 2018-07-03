@@ -50,6 +50,10 @@ sylius_grid:
                     type: boolean
             actions:
                 main:
+                    import:
+                        type: import
+                        options:
+                            resourceCode: block
                     create:
                         type: create_block
                 item:

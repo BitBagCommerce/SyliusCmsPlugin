@@ -80,3 +80,6 @@ bitbag_sylius_cms_plugin:
         alt:
             min_length: Alt must be at least {{ limit }} characters long.
             max_length: Alt can not be longer than {{ limit }} characters.
+    import:
+        not_blank: Import file cannot be blank.
+        invalid_format: Upload a valid CSV import file.

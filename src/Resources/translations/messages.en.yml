@@ -53,3 +53,6 @@ bitbag_sylius_cms_plugin:
         read_more: Read more
         name_breadcrumb: Name breadcrumb
         compilable: Compilable
+        import: Import
+        csv_file: CSV file
+        import: Import

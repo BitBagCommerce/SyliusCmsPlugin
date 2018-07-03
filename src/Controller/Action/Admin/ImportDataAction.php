@@ -18,6 +18,7 @@ use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,7 +44,8 @@ final class ImportDataAction
         Session $session,
         FormFactoryInterface $formFactory,
         ViewHandler $viewHandler
-    ) {
+    )
+    {
         $this->importProcessor = $importProcessor;
         $this->session = $session;
         $this->formFactory = $formFactory;
@@ -53,17 +55,17 @@ final class ImportDataAction
     public function __invoke(Request $request): Response
     {
         $form = $this->formFactory->create(ImportType::class);
+        $referer = (string)$request->headers->get('referer');
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
+        if ($request->isMethod('POST') && $form->isSubmitted()) {
+            $flashBag = $this->session->getFlashBag();
+
+            if ($form->isValid()) {
                 /** @var UploadedFile $file */
-                $file = $form->getData()['file'];
-
+                $file = $form->get('file')->getData();
                 $resourceName = $request->get('resourceName');
-
-                $flashBag = $this->session->getFlashBag();
 
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
@@ -72,20 +74,31 @@ final class ImportDataAction
                 } catch (ImportFailedException $exception) {
                     $flashBag->set('error', $exception->getMessage());
                 }
-
-                $referer = (string) $request->headers->get('referer');
-
-                return new RedirectResponse($referer);
+            } else {
+                $flashBag->set('error', rtrim(implode($this->getFormErrors($form), ", "), ", "));
             }
+
+            return new RedirectResponse($referer);
         }
 
         $view = View::create()
             ->setData([
                 'form' => $form->createView(),
             ])
-            ->setTemplate('@BitBagSyliusCmsPlugin/Import/_form.html.twig')
+            ->setTemplate('@BitBagSyliusCmsPlugin/Grid/Form/_importForm.html.twig')
         ;
 
-        return $this->viewHandler->handle($view, $request);
+        return $this->viewHandler->handle($view);
+    }
+
+    private function getFormErrors(FormInterface $form): array
+    {
+        $errors = [];
+
+        foreach ($form->getErrors(true) as $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        return $errors;
     }
 }

@@ -62,7 +62,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     public function import(array $row): void
     {
         $localeCode = $this->localeContext->getLocaleCode();
-
         $code = $this->getColumnValue(self::CODE_COLUMN, $row) ?:
             StringInflector::nameToCode($this->getTranslatableColumnValue(self::NAME_COLUMN, $localeCode, $row) ?? uniqid())
         ;
@@ -76,7 +75,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
             $block->setCurrentLocale($localeCode);
             $block->setFallbackLocale($localeCode);
-
             $block->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
             $block->setLink($this->getTranslatableColumnValue(self::LINK_COLUMN, $locale, $row));
             $block->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
@@ -134,11 +132,8 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     private function createSection(array $row): SectionInterface
     {
         $localeCode = $this->localeContext->getLocaleCode();
-
         $sectionName = $this->getTranslatableColumnValue(self::SECTION_COLUMN, $localeCode, $row);
-
         $sectionCode = StringInflector::nameToCode($sectionName ?? uniqid());
-
         /** @var SectionInterface $section */
         $section = $this->sectionResolver->getResource($sectionCode);
 

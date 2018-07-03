@@ -1,4 +1,4 @@
-{% extends 'SyliusAdminBundle::layout.html.twig' %}
+{% extends 'BitBagSyliusCmsPlugin::layout.html.twig' %}
 
 {% import 'SyliusUiBundle:Macro:headers.html.twig' as headers %}
 
@@ -26,10 +26,4 @@
     {{ parent() }}
 
     {{ sonata_block_render_event(event_prefix ~ '.stylesheets') }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
 {% endblock %}

@@ -25,11 +25,11 @@ bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page_slug:generateAction
 
-bitbag_sylius_cms_plugin_admin_import:
+bitbag_sylius_cms_plugin_admin_import_data:
     path: /import/{resourceName}
     methods: [GET, POST]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.action.admin.import
+        _controller: bitbag_sylius_cms_plugin.controller.action.admin.import_data
 
 bitbag_sylius_cms_plugin_admin_upload_editor_image:
     path: /editor/upload-image

@@ -29,7 +29,7 @@ final class RenderContentExtension extends \Twig_Extension
     ): string
     {
         if (true === $compilableContent->getCompilable()) {
-            $content = html_entity_decode($compilableContent->getContent(), ENT_QUOTES);
+            $content = html_entity_decode((string) $compilableContent->getContent(), ENT_QUOTES);
 
             try {
                 return $twigEnvironment->createTemplate($content)->render([]);
