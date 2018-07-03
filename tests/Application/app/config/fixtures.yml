@@ -5,6 +5,7 @@ sylius_fixtures:
     suites:
         default:
             listeners:
+                orm_purger: ~
                 logger: ~
             fixtures:
                 section:
@@ -47,7 +48,7 @@ sylius_fixtures:
                                         image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
                                         link: "/en_US/page/about"
                                         name: |
-                                            <a href="/en_US/page/about" class="italic">Click me! <i class="em em-kiss"></i></a>
+                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
                             homepage_banner_image_2:
                                 type: image
                                 translations:
@@ -99,6 +100,7 @@ sylius_fixtures:
                                         image_path: "%fixtures_dir%/size_table.jpeg"
                             homepage_intro:
                                 type: html
+                                compilable: false
                                 translations:
                                     en_US:
                                         content: |

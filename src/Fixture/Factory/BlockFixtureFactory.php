@@ -106,6 +106,8 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $block->setCode($code);
         $block->setEnabled($blockData['enabled']);
+        $block->setCompilable($blockData['compilable']);
+        $block->addChannel($this->channelContext->getChannel());
 
         foreach ($blockData['translations'] as $localeCode => $translation) {
             /** @var BlockTranslationInterface $blockTranslation */

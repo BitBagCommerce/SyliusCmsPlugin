@@ -105,6 +105,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
         $page->setCode($code);
         $page->setEnabled($pageData['enabled']);
+        $page->addChannel($this->channelContext->getChannel());
 
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */

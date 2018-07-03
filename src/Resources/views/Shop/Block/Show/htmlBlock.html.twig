@@ -2,5 +2,6 @@
     {% if null != block.name %}
         <h2>{{ block.name }}</h2>
     {% endif %}
-    {{ block.content|raw }}
+
+    <p>{{ bitbag_cms_render_content(block) }}</p>
 </div>

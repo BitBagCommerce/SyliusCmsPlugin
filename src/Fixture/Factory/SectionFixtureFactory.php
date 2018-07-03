@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class SectionFixtureFactory implements FixtureFactoryInterface
@@ -28,14 +29,19 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
     public function __construct(
         FactoryInterface $sectionFactory,
         FactoryInterface $sectionTranslationFactory,
-        SectionRepositoryInterface $sectionRepository
+        SectionRepositoryInterface $sectionRepository,
+        ChannelContextInterface $channelContext
     ) {
         $this->sectionFactory = $sectionFactory;
         $this->sectionTranslationFactory = $sectionTranslationFactory;
         $this->sectionRepository = $sectionRepository;
+        $this->channelContext = $channelContext;
     }
 
     public function load(array $data): void
@@ -52,6 +58,7 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
             $section = $this->sectionFactory->createNew();
 
             $section->setCode($code);
+            $section->addChannel($this->channelContext->getChannel());
 
             foreach ($fields['translations'] as $localeCode => $translation) {
                 /** @var SectionTranslationInterface $sectionTranslation */

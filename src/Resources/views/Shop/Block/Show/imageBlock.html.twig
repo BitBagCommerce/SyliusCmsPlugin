@@ -8,20 +8,23 @@
             {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
         </a>
     {% elseif null != block.name and null == block.link %}
-        <div>
-            {{ block.name|raw }}
-        </div>
+        <h2>{{ block.name|raw }}</h2>
+
+        <div class="ui divider"></div>
+
         {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
     {% else %}
-        <div>{{ block.name|raw }}</div>
+        <h2>{{ block.name|raw }}</h2>
+
+        <div class="ui divider"></div>
 
         <a href="{{ block.link }}">
             {% include '@BitBagSyliusCmsPlugin/Shop/Block/Show/_image.html.twig' %}
         </a>
     {% endif %}
-</div>
 
-{#{% if block.content %}#}
-    {#<div class="ui divider"></div>#}
-    {#<p>{{ bitbag_cms_render_content(block) }}</p>#}
-{#{% endif %}#}
+    {% if block.content %}
+        <div class="ui divider"></div>
+        <p>{{ bitbag_cms_render_content(block) }}</p>
+    {% endif %}
+</div>
