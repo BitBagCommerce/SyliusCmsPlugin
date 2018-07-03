@@ -22,7 +22,10 @@
         "friends-of-behat/variadic-extension": "^1.1",
         "lakion/mink-debug-extension": "^1.2.3",
         "phpspec/phpspec": "^4.0",
-        "phpstan/phpstan-shim": "^0.9.2",
+        "phpstan/phpstan-doctrine": "^0.10",
+        "phpstan/phpstan-shim": "^0.10",
+        "phpstan/phpstan-symfony": "^0.10",
+        "phpstan/phpstan-webmozart-assert": "^0.10",
         "phpunit/phpunit": "^6.5",
         "sylius-labs/coding-standard": "^2.0"
     },
