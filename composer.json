@@ -4,7 +4,7 @@
     "description": "Acme example plugin for Sylius.",
     "license": "MIT",
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
 
         "sylius/sylius": "~1.3.0@dev",
         "symfony/symfony": "^3.4|^4.1"
