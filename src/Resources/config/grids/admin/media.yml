@@ -18,6 +18,9 @@ sylius_grid:
                 path:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.name
+                type:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.type
             filters:
                 search:
                     type: string

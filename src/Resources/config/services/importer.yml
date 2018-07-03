@@ -18,7 +18,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Importer\BlockImporter
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.resource.block"
-            - "@bitbag_sylius_cms_plugin.resolver.resource.section"
+            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.downloader.image"
             - "@sylius.image_uploader"

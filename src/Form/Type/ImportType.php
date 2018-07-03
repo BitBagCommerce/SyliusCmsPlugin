@@ -29,7 +29,7 @@ final class ImportType extends AbstractType
                     'message' => 'bitbag_sylius_cms_plugin.import.not_blank',
                 ]),
                 new File([
-                    'mimeTypes' => ['text/csv'],
+                    'mimeTypes' => ['text/csv', 'application/csv'],
                     'mimeTypesMessage' => 'bitbag_sylius_cms_plugin.import.invalid_format',
                 ]),
             ]
