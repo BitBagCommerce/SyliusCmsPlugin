@@ -20,10 +20,6 @@ BitBag\SyliusCmsPlugin\Entity\Block:
         enabled:
             column: enabled
             type: boolean
-        compilable:
-            column: compilable
-            type: boolean
-            nullable: true
     manyToMany:
         sections:
             targetEntity: BitBag\SyliusCmsPlugin\Entity\Section

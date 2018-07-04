@@ -26,7 +26,7 @@ interface PageContentInterface extends
     SectionableInterface,
     TimestampableInterface,
     ChannelsAwareInterface,
-    CompilableContentInterface
+    ContentableInterface
 {
     public function getSlug(): ?string;
 

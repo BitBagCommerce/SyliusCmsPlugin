@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
+use Symfony\Component\Templating\EngineInterface;
 
 final class RenderBlockExtension extends \Twig_Extension
 {
@@ -27,31 +28,36 @@ final class RenderBlockExtension extends \Twig_Extension
     /** @var BlockResourceResolverInterface */
     private $blockResourceResolver;
 
+    /** @var EngineInterface */
+    private $templatingEngine;
+
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockTemplateResolverInterface $blockTemplateResolver,
-        BlockResourceResolverInterface $blockResourceResolver
+        BlockResourceResolverInterface $blockResourceResolver,
+        EngineInterface $templatingEngine
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockTemplateResolver = $blockTemplateResolver;
         $this->blockResourceResolver = $blockResourceResolver;
+        $this->templatingEngine = $templatingEngine;
     }
 
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_Function('bitbag_cms_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, ?string $template = null): string
+    public function renderBlock(string $code, ?string $template = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
             $template = $template ?? $this->blockTemplateResolver->resolveTemplate($block);
 
-            return $twigEnvironment->render($template, ['block' => $block]);
+            return $this->templatingEngine->render($template, ['block' => $block]);
         }
 
         return '';

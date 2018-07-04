@@ -44,9 +44,6 @@ final class BlockType extends AbstractResourceType
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
-            ->add('compilable', CheckboxType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.compilable',
-            ])
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,

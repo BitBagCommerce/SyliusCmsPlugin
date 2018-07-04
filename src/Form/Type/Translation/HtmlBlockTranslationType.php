@@ -14,6 +14,7 @@ namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -37,11 +38,9 @@ final class HtmlBlockTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
-            ->add('content', CKEditorType::class, [
+            ->add('content', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content',
-                'config' => [
-                    'filebrowserUploadUrl' => $this->router->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
-                ],
+                'required' => false,
             ])
         ;
     }

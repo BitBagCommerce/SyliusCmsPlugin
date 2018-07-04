@@ -48,7 +48,6 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('last_four_products')->defaultFalse()->end()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
-                            ->booleanNode('compilable')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('sections')
                                 ->prototype('scalar')->end()

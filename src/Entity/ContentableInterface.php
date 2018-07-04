@@ -12,11 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-interface CompilableContentInterface
+interface ContentableInterface
 {
-    public function getCompilable(): ?bool;
-
-    public function setCompilable(?bool $compilable): void;
-
     public function getContent(): ?string;
 }

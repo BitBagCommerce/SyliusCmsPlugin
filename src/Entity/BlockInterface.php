@@ -25,7 +25,7 @@ interface BlockInterface extends
     ProductsAwareInterface,
     SectionableInterface,
     ChannelsAwareInterface,
-    CompilableContentInterface
+    ContentableInterface
 {
     public const TEXT_BLOCK_TYPE = 'text';
     public const IMAGE_BLOCK_TYPE = 'image';

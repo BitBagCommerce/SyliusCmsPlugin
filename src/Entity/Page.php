@@ -25,7 +25,6 @@ class Page implements PageContentInterface
     use SectionableTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
-    use CompilableContentTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
