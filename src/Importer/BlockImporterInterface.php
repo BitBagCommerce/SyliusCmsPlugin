@@ -16,10 +16,11 @@ interface BlockImporterInterface extends ImporterInterface
 {
     const CODE_COLUMN = 'code';
     const TYPE_COLUMN = 'type';
-    const SECTION_COLUMN = 'section';
-    const CHANNEL_COLUMN = 'channel';
+    const SECTIONS_COLUMN = 'sections';
+    const CHANNELS_COLUMN = 'channels';
+    const PRODUCTS_COLUMN = 'products';
     const NAME_COLUMN = 'name__locale__';
-    const IMAGE_COLUMN = 'image__locale__';
-    const LINK_COLUMN = 'link__locale__';
     const CONTENT_COLUMN = 'content__locale__';
+    const LINK_COLUMN = 'link__locale__';
+    const IMAGE_COLUMN = 'image__locale__';
 }

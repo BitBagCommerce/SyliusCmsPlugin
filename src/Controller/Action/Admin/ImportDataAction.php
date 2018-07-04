@@ -24,38 +24,43 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Translation\TranslatorInterface;
 
 final class ImportDataAction
 {
     /** @var ImportProcessorInterface */
     private $importProcessor;
 
+    /** @var FormFactoryInterface */
+    private $formFactory;
+
     /** @var Session */
     private $session;
 
-    /** @var FormFactoryInterface */
-    private $formFactory;
+    /** @var TranslatorInterface */
+    private $translator;
 
     /** @var ViewHandler */
     private $viewHandler;
 
     public function __construct(
         ImportProcessorInterface $importProcessor,
-        Session $session,
         FormFactoryInterface $formFactory,
+        Session $session,
+        TranslatorInterface $translator,
         ViewHandler $viewHandler
-    )
-    {
+    ) {
         $this->importProcessor = $importProcessor;
-        $this->session = $session;
         $this->formFactory = $formFactory;
+        $this->session = $session;
+        $this->translator = $translator;
         $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
     {
         $form = $this->formFactory->create(ImportType::class);
-        $referer = (string)$request->headers->get('referer');
+        $referer = (string) $request->headers->get('referer');
 
         $form->handleRequest($request);
 
@@ -70,12 +75,12 @@ final class ImportDataAction
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $flashBag->set('success', 'bitbag_sylius_cms_plugin.ui.successfully_imported');
+                    $flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
                     $flashBag->set('error', $exception->getMessage());
                 }
             } else {
-                $flashBag->set('error', rtrim(implode($this->getFormErrors($form), ", "), ", "));
+                $flashBag->set('error', rtrim(implode($this->getFormErrors($form), ', '), ', '));
             }
 
             return new RedirectResponse($referer);

@@ -16,8 +16,9 @@ use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
@@ -29,9 +30,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     /** @var ResourceResolverInterface */
     private $blockResourceResolver;
 
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
     /** @var LocaleContextInterface */
     private $localeContext;
 
@@ -41,23 +39,35 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     /** @var ImageUploaderInterface */
     private $imageUploader;
 
+    /** @var ImporterSectionsResolverInterface */
+    private $importerSectionsResolver;
+
+    /** @var ImporterChannelsResolverInterface */
+    private $importerChannelsResolver;
+
+    /** @var ImporterProductsResolverInterface */
+    private $importerProductsResolver;
+
     /** @var EntityManagerInterface */
     private $entityManager;
 
     public function __construct(
         ResourceResolverInterface $blockResourceResolver,
-        SectionRepositoryInterface $sectionRepository,
         LocaleContextInterface $localeContext,
         ImageDownloaderInterface $imageDownloader,
         ImageUploaderInterface $imageUploader,
+        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterChannelsResolverInterface $importerChannelsResolver,
+        ImporterProductsResolverInterface $importerProductsResolver,
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->blockResourceResolver = $blockResourceResolver;
-        $this->sectionRepository = $sectionRepository;
         $this->localeContext = $localeContext;
         $this->imageDownloader = $imageDownloader;
         $this->imageUploader = $imageUploader;
+        $this->importerSectionsResolver = $importerSectionsResolver;
+        $this->importerChannelsResolver = $importerChannelsResolver;
+        $this->importerProductsResolver = $importerProductsResolver;
         $this->entityManager = $entityManager;
     }
 
@@ -68,7 +78,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
         Assert::notNull($code);
         $type = $this->getColumnValue(self::TYPE_COLUMN, $row);
-        $sectionCode = $this->getColumnValue(self::SECTION_COLUMN, $row);
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
 
@@ -89,14 +98,9 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
             }
         }
 
-        if (null !== $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            if (!$block->hasSection($section)) {
-                $block->addSection($section);
-            }
-        }
+        $this->importerSectionsResolver->resolve($block, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
+        $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
+        $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 
         $block->getId() ?: $this->entityManager->persist($block);
         $this->entityManager->flush();
@@ -132,7 +136,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
             self::NAME_COLUMN,
             self::CONTENT_COLUMN,
             self::IMAGE_COLUMN,
-            self::SECTION_COLUMN,
             self::LINK_COLUMN,
         ];
     }

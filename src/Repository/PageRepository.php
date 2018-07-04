@@ -106,8 +106,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ProductInterface $product,
         string $sectionCode,
         string $channelCode
-    ): array
-    {
+    ): array {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.sections', 'section')

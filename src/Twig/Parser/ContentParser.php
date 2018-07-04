@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file has been created by developers from BitBag. 
+ * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
- * another great project. 
+ * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on mikolaj.krol@bitbag.pl. 
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -60,7 +60,7 @@ final class ContentParser implements ContentParserInterface
             $arguments = explode(',', $functionParts[0]);
 
             return array_map(function (string $element): string {
-                return trim((string)$element, '\'');
+                return trim((string) $element, '\'');
             }, $arguments);
         }
 
@@ -69,7 +69,7 @@ final class ContentParser implements ContentParserInterface
 
     private function callFunction(array $functions, string $functionName, array $arguments): string
     {
-        Assert::keyExists($functions, $functionName, sprintf("Function %s does not exist!", $functionName));
+        Assert::keyExists($functions, $functionName, sprintf('Function %s does not exist!', $functionName));
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];
         $callable = $function->getCallable();

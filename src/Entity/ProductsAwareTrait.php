@@ -33,9 +33,6 @@ trait ProductsAwareTrait
         $this->products = new ArrayCollection();
     }
 
-    /**
-     * @return Collection|ProductInterface[]
-     */
     public function getProducts(): Collection
     {
         return $this->products;
@@ -48,7 +45,9 @@ trait ProductsAwareTrait
 
     public function addProduct(ProductInterface $product): void
     {
-        $this->products->add($product);
+        if (false === $this->hasProduct($product)) {
+            $this->products->add($product);
+        }
     }
 
     public function removeProduct(ProductInterface $product): void

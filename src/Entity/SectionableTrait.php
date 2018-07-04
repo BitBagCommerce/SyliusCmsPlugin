@@ -25,9 +25,6 @@ trait SectionableTrait
         $this->sections = new ArrayCollection();
     }
 
-    /**
-     * @return Collection|SectionInterface[]
-     */
     public function getSections(): ?Collection
     {
         return $this->sections;
@@ -40,7 +37,9 @@ trait SectionableTrait
 
     public function addSection(SectionInterface $section): void
     {
-        $this->sections->add($section);
+        if (false === $this->hasSection($section)) {
+            $this->sections->add($section);
+        }
     }
 
     public function removeSection(SectionInterface $section): void

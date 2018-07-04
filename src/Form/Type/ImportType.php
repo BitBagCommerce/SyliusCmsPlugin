@@ -29,10 +29,10 @@ final class ImportType extends AbstractType
                     'message' => 'bitbag_sylius_cms_plugin.import.not_blank',
                 ]),
                 new File([
-                    'mimeTypes' => ['text/csv', 'application/csv'],
+                    'mimeTypes' => ['text/csv', 'text/plain'],
                     'mimeTypesMessage' => 'bitbag_sylius_cms_plugin.import.invalid_format',
                 ]),
-            ]
+            ],
         ]);
     }
 }

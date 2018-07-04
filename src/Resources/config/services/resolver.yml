@@ -50,3 +50,18 @@ services:
         class: BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver
         arguments:
             - "@bitbag_sylius_cms_plugin.registry.media_provider"
+
+    bitbag_sylius_cms_plugin.resolver.importer_sections:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.section"
+
+    bitbag_sylius_cms_plugin.resolver.importer_channels:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver
+        arguments:
+            - "@sylius.repository.channel"
+
+    bitbag_sylius_cms_plugin.resolver.importer_products:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver
+        arguments:
+            - "@sylius.repository.product"

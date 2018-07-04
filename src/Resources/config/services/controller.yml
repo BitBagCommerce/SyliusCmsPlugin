@@ -14,8 +14,9 @@ services:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction
         arguments:
             - "@bitbag_sylius_cms_plugin.processor.import"
-            - "@session"
             - "@form.factory"
+            - "@session"
+            - "@translator"
             - "@fos_rest.view_handler.default"
 
     bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image:

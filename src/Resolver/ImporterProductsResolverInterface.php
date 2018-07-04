@@ -10,9 +10,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Parser;
+namespace BitBag\SyliusCmsPlugin\Resolver;
 
-interface ContentParserInterface
+use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
+
+interface ImporterProductsResolverInterface
 {
-    public function parse(string $input): string;
+    public function resolve(ProductsAwareInterface $productsAware, ?string $productsRow): void;
 }
