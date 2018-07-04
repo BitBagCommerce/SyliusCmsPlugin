@@ -41,12 +41,12 @@ final class MediaType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
-            ->add('fileType', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.file_type',
+            ->add('type', ChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.type',
                 'choices' => $this->providers,
             ])
             ->add('file', FileType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.file',
+                'label' => 'bitbag_sylius_cms_plugin.ui.type',
             ])
             ->add('sections', SectionAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.sections',

@@ -13,8 +13,8 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             type: string
             length: 250
             unique: true
-        fileType:
-            column: file_type
+        type:
+            column: type
             type: string
             length: 250
         path:

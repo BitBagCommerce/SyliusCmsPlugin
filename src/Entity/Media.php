@@ -30,7 +30,7 @@ class Media implements MediaInterface
     protected $id;
 
     /** @var string */
-    protected $fileType;
+    protected $type;
 
     /** @var string */
     protected $code;
@@ -59,14 +59,14 @@ class Media implements MediaInterface
         return $this->id;
     }
 
-    public function getFileType(): ?string
+    public function getType(): ?string
     {
-        return $this->fileType;
+        return $this->type;
     }
 
-    public function setFileType(?string $fileType): void
+    public function setType(?string $type): void
     {
-        $this->fileType = $fileType;
+        $this->type = $type;
     }
 
     public function getCode(): ?string
@@ -101,7 +101,7 @@ class Media implements MediaInterface
 
     public function getFile(): ?File
     {
-        if (null === $this->fileType && null !== $this->path) {
+        if (null === $this->type && null !== $this->path) {
             $this->file = new File($this->path);
         }
 

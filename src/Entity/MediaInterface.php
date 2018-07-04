@@ -46,9 +46,9 @@ interface MediaInterface extends
 
     public function hasFile(): bool;
 
-    public function getFileType(): ?string;
+    public function getType(): ?string;
 
-    public function setFileType(?string $fileType): void;
+    public function setType(?string $type): void;
 
     public function getMimeType(): ?string;
 

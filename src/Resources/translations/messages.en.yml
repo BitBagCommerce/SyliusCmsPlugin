@@ -42,11 +42,10 @@ bitbag_sylius_cms_plugin:
         media: Media
         media_header: Media
         media_subheader: Manage digital assets
-        file_type: File type
+        type: Type
         file: File
         alt: Alt
         description: Description
-        file_type: File type
         file_provider: File
         image_provider: Image
         video_provider: Video

@@ -60,7 +60,7 @@ final class ContentParser implements ContentParserInterface
             $arguments = explode(',', $functionParts[0]);
 
             return array_map(function (string $element): string {
-                return trim($element);
+                return trim($element, '\'');
             }, $arguments);
         }
 
