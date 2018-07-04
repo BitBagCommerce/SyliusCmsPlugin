@@ -136,14 +136,14 @@ class Page implements PageContentInterface
         $this->getPageTranslation()->setDescriptionWhenLinked($descriptionWhenLinked);
     }
 
-    public function getNameBreadcrumb(): ?string
+    public function getBreadcrumb(): ?string
     {
-        return $this->getPageTranslation()->getNameBreadcrumb();
+        return $this->getPageTranslation()->getBreadcrumb();
     }
 
-    public function setNameBreadcrumb(?string $nameBreadcrumb): void
+    public function setBreadcrumb(?string $breadcrumb): void
     {
-        $this->getPageTranslation()->setNameBreadcrumb($nameBreadcrumb);
+        $this->getPageTranslation()->setBreadcrumb($breadcrumb);
     }
 
     public function getImage(): ?ImageInterface

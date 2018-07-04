@@ -73,7 +73,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
     public function import(array $row): void
     {
-        $localeCode = $this->localeContext->getLocaleCode();
         /** @var string $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
         Assert::notNull($code);
@@ -83,10 +82,10 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $block->setCode($code);
         $block->setType($type);
+        $block->setFallbackLocale($this->localeContext->getLocaleCode());
 
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
-            $block->setCurrentLocale($localeCode);
-            $block->setFallbackLocale($localeCode);
+            $block->setCurrentLocale($locale);
             $block->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
             $block->setLink($this->getTranslatableColumnValue(self::LINK_COLUMN, $locale, $row));
             $block->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));

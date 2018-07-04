@@ -100,7 +100,6 @@ sylius_fixtures:
                                         image_path: "%fixtures_dir%/size_table.jpeg"
                             homepage_intro:
                                 type: html
-                                compilable: false
                                 translations:
                                     en_US:
                                         content: |

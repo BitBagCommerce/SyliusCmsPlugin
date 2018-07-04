@@ -16,8 +16,8 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: name
             type: string
             nullable: true
-        nameBreadcrumb:
-            column: name_breadcrumb
+        breadcrumb:
+            column: breadcrumb
             type: string
             nullable: true
         nameWhenLinked:

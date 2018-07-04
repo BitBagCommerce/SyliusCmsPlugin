@@ -51,7 +51,7 @@ bitbag_sylius_cms_plugin:
         image_provider: Image
         video_provider: Video
         read_more: Read more
-        name_breadcrumb: Name breadcrumb
+        breadcrumb: Breadcrumb
         import: Import
         csv_file: CSV file
         import: Import

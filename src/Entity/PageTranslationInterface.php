@@ -29,9 +29,9 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
 
     public function setName(?string $name): void;
 
-    public function getNameBreadcrumb(): ?string;
+    public function getBreadcrumb(): ?string;
 
-    public function setNameBreadcrumb(?string $nameBreadcrumb): void;
+    public function setBreadcrumb(?string $breadcrumb): void;
 
     public function getNameWhenLinked(): ?string;
 

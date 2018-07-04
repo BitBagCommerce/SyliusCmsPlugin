@@ -24,4 +24,7 @@ interface PageImporterInterface extends ImporterInterface
     const META_KEYWORDS_COLUMN = 'meta_keywords__locale__';
     const META_DESCRIPTION_COLUMN = 'meta_description__locale__';
     const CONTENT_COLUMN = 'content__locale__';
+    const BREADCRUMB_COLUMN = 'breadcrumb__locale__';
+    const NAME_WHEN_LINKED_COLUMN = 'name_when_linked__locale__';
+    const DESCRIPTION_WHEN_LINKED_COLUMN = 'description_when_linked__locale__';
 }

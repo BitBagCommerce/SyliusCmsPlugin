@@ -56,9 +56,9 @@ interface PageContentInterface extends
 
     public function setNameWhenLinked(?string $nameWhenLinked): void;
 
-    public function getNameBreadcrumb(): ?string;
+    public function getBreadcrumb(): ?string;
 
-    public function setNameBreadcrumb(?string $nameBreadcrumb): void;
+    public function setBreadcrumb(?string $breadcrumb): void;
 
     public function getDescriptionWhenLinked(): ?string;
 
