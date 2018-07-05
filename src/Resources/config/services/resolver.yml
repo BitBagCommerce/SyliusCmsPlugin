@@ -54,14 +54,14 @@ services:
     bitbag_sylius_cms_plugin.resolver.importer_sections:
         class: BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolver
         arguments:
-            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@bitbag_sylius_cms_plugin.assigner.sections"
 
     bitbag_sylius_cms_plugin.resolver.importer_channels:
         class: BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver
         arguments:
-            - "@sylius.repository.channel"
+            - "@bitbag_sylius_cms_plugin.assigner.channels"
 
     bitbag_sylius_cms_plugin.resolver.importer_products:
         class: BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver
         arguments:
-            - "@sylius.repository.product"
+            - "@bitbag_sylius_cms_plugin.assigner.products"

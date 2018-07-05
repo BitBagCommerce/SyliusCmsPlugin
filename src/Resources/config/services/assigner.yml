@@ -1,0 +1,16 @@
+services:
+    bitbag_sylius_cms_plugin.assigner.channels:
+        class: BitBag\SyliusCmsPlugin\Assigner\ChannelsAssigner
+        arguments:
+            - "@sylius.repository.channel"
+
+    bitbag_sylius_cms_plugin.assigner.products:
+        class: BitBag\SyliusCmsPlugin\Assigner\ProductsAssigner
+        arguments:
+            - "@sylius.repository.product"
+
+
+    bitbag_sylius_cms_plugin.assigner.sections:
+        class: BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.section"

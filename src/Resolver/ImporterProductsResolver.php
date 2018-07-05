@@ -12,38 +12,30 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 final class ImporterProductsResolver implements ImporterProductsResolverInterface
 {
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    /** @var ProductsAssignerInterface */
+    private $productsAssigner;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(ProductsAssignerInterface $productsAssigner)
     {
-        $this->productRepository = $productRepository;
+        $this->productsAssigner = $productsAssigner;
     }
 
-    public function resolve(ProductsAwareInterface $productable, ?string $productsRow): void
+    public function resolve(ProductsAwareInterface $productsAware, ?string $productsRow): void
     {
         if (null === $productsRow) {
             return;
         }
 
-        $productCodes = explode(',', $productsRow);
-        $productCodes = array_map(function (string $element): string {
+        $productsCodes = explode(',', $productsRow);
+        $productsCodes = array_map(function (string $element): string {
             return trim($element);
-        }, $productCodes);
+        }, $productsCodes);
 
-        foreach ($productCodes as $productCode) {
-            /** @var ProductInterface $product */
-            $product = $this->productRepository->findOneBy(['code' => $productCode]);
-
-            if (null !== $product) {
-                $productable->addProduct($product);
-            }
-        }
+        $this->productsAssigner->assign($productsAware, $productsCodes);
     }
 }

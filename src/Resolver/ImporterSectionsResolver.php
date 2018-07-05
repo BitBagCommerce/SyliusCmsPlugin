@@ -12,18 +12,17 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
+use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 
 final class ImporterSectionsResolver implements ImporterSectionsResolverInterface
 {
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
+    /** @var SectionsAssignerInterface */
+    private $sectionsAssigner;
 
-    public function __construct(SectionRepositoryInterface $sectionRepository)
+    public function __construct(SectionsAssignerInterface $sectionsAssigner)
     {
-        $this->sectionRepository = $sectionRepository;
+        $this->sectionsAssigner = $sectionsAssigner;
     }
 
     public function resolve(SectionableInterface $sectionable, ?string $sectionsRow): void
@@ -37,13 +36,6 @@ final class ImporterSectionsResolver implements ImporterSectionsResolverInterfac
             return trim($element);
         }, $sectionCodes);
 
-        foreach ($sectionCodes as $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            if (null !== $section) {
-                $sectionable->addSection($section);
-            }
-        }
+        $this->sectionsAssigner->assign($sectionable, $sectionCodes);
     }
 }

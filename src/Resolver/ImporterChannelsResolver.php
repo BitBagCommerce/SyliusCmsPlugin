@@ -12,18 +12,17 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
+use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
-use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
 
 final class ImporterChannelsResolver implements ImporterChannelsResolverInterface
 {
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
+    /** @var ChannelsAssignerInterface */
+    private $channelsAssigner;
 
-    public function __construct(ChannelRepositoryInterface $channelRepository)
+    public function __construct(ChannelsAssignerInterface $channelsAssigner)
     {
-        $this->channelRepository = $channelRepository;
+        $this->channelsAssigner = $channelsAssigner;
     }
 
     public function resolve(ChannelsAwareInterface $channelsAware, ?string $channelsRow): void
@@ -32,18 +31,11 @@ final class ImporterChannelsResolver implements ImporterChannelsResolverInterfac
             return;
         }
 
-        $channelCodes = explode(',', $channelsRow);
-        $channelCodes = array_map(function (string $element): string {
+        $channelsCodes = explode(',', $channelsRow);
+        $channelsCodes = array_map(function (string $element): string {
             return trim($element);
-        }, $channelCodes);
+        }, $channelsCodes);
 
-        foreach ($channelCodes as $channelCode) {
-            /** @var ChannelInterface $channel */
-            $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
-
-            if (null !== $channel) {
-                $channelsAware->addChannel($channel);
-            }
-        }
+        $this->channelsAssigner->assign($channelsAware, $channelsCodes);
     }
 }
