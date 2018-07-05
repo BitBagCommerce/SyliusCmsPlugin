@@ -1,3 +1,5 @@
+# Delete these routes and define your own shop routes here
+
 acme_sylius_example_static_welcome:
     path: /static-welcome/{name}
     defaults:
