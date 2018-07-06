@@ -75,7 +75,7 @@ final class UploadEditorImageAction
 
         $media->setFile($image);
         $media->setCode($code);
-        $media->setFileType(MediaInterface::IMAGE_TYPE);
+        $media->setType(MediaInterface::IMAGE_TYPE);
 
         $this->mediaProviderResolver->resolveProvider($media)->upload($media);
         $this->mediaRepository->add($media);
