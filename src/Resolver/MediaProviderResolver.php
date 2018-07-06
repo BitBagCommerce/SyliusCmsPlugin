@@ -29,7 +29,7 @@ final class MediaProviderResolver implements MediaProviderResolverInterface
     public function resolveProvider(MediaInterface $media): ProviderInterface
     {
         /** @var ProviderInterface $provider */
-        $provider = $this->providerRegistry->get($media->getFileType());
+        $provider = $this->providerRegistry->get($media->getType());
 
         return $provider;
     }

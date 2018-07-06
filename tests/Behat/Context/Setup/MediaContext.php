@@ -127,7 +127,7 @@ final class MediaContext implements Context
         $media->setCurrentLocale('en_US');
         $media->setName($name);
         $media->setDescription($description);
-        $media->setFileType($fileType);
+        $media->setType($fileType);
 
         return $media;
     }
