@@ -75,7 +75,7 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Given there is a "Krzysztof Krawczyk" block in the store3
+     * @Given there is a block in the store
      */
     public function thereIsABlockInTheStore(): void
     {

@@ -46,7 +46,7 @@ final class MediaType extends AbstractResourceType
                 'choices' => $this->providers,
             ])
             ->add('file', FileType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'bitbag_sylius_cms_plugin.ui.file',
             ])
             ->add('sections', SectionAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.sections',
