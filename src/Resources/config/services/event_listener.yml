@@ -4,14 +4,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }
 
-    bitbag_sylius_cms_plugin.event_listener.block_image_upload:
-        class: BitBag\SyliusCmsPlugin\EventListener\BlockImageUploadListener
-        arguments:
-            - "@sylius.image_uploader"
-        tags:
-            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_create, method: uploadImage }
-            - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.block.pre_update, method: uploadImage }
-
     bitbag_sylius_cms_plugin.event_listener.page_image_upload:
         class: BitBag\SyliusCmsPlugin\EventListener\PageImageUploadListener
         arguments:

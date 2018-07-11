@@ -1,7 +1,6 @@
 imports:
     - { resource: services/twig.yml }
     - { resource: services/form.yml }
-    - { resource: services/factory.yml }
     - { resource: services/event_listener.yml }
     - { resource: services/controller.yml }
     - { resource: services/fixture.yml }

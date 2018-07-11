@@ -20,8 +20,3 @@ BitBag\SyliusCmsPlugin\Entity\BlockTranslation:
             column: link
             type: text
             nullable: true
-    oneToOne:
-        image:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\BlockImage
-            mappedBy: owner
-            cascade: [ALL]

@@ -74,9 +74,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
-    /**
-     * @return array
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

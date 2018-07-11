@@ -226,9 +226,6 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
         ], 'custom.*.translations.*.answer');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): FrequentlyAskedQuestionFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

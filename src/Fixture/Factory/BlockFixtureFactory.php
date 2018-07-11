@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
@@ -21,10 +20,8 @@ use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
@@ -40,9 +37,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
-
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
@@ -57,7 +51,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
         SectionRepositoryInterface $sectionRepository,
-        ImageUploaderInterface $imageUploader,
         ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
@@ -66,7 +59,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
         $this->sectionRepository = $sectionRepository;
-        $this->imageUploader = $imageUploader;
         $this->productRepository = $productRepository;
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
@@ -94,8 +86,8 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
     private function createBlock(string $code, array $blockData): void
     {
-        $type = $blockData['type'];
-        $block = $this->blockFactory->createWithType($type);
+        /** @var BlockInterface $block */
+        $block = $this->blockFactory->createNew();
         $products = $blockData['products'];
 
         if (null !== $products) {
@@ -116,18 +108,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
             $blockTranslation->setName($translation['name']);
             $blockTranslation->setContent($translation['content']);
             $blockTranslation->setLink($translation['link']);
-
-            if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                $image = new BlockImage();
-                $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
-
-                $image->setFile($uploadedImage);
-                $blockTranslation->setImage($image);
-
-                $this->imageUploader->upload($image);
-            }
-
             $block->addTranslation($blockTranslation);
         }
 

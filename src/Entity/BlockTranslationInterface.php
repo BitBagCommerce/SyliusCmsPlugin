@@ -25,13 +25,6 @@ interface BlockTranslationInterface extends ResourceInterface, TranslationInterf
 
     public function setContent(?string $content): void;
 
-    /**
-     * @return BlockImageInterface|null
-     */
-    public function getImage(): ?BlockImageInterface;
-
-    public function setImage(?BlockImageInterface $image): void;
-
     public function getLink(): ?string;
 
     public function setLink(?string $link): void;

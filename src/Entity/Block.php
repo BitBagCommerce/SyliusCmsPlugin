@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -41,9 +40,6 @@ class Block implements BlockInterface
     /** @var string */
     protected $code;
 
-    /** @var string */
-    protected $type;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -57,16 +53,6 @@ class Block implements BlockInterface
     public function setCode(?string $code): void
     {
         $this->code = $code;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): void
-    {
-        $this->type = $type;
     }
 
     public function getName(): ?string
@@ -87,16 +73,6 @@ class Block implements BlockInterface
     public function setContent(?string $content): void
     {
         $this->getBlockTranslation()->setContent($content);
-    }
-
-    public function getImage(): ?ImageInterface
-    {
-        return $this->getBlockTranslation()->getImage();
-    }
-
-    public function setImage(?ImageInterface $image): void
-    {
-        $this->getBlockTranslation()->setImage($image);
     }
 
     public function getLink(): ?string

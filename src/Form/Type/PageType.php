@@ -46,9 +46,10 @@ final class PageType extends AbstractResourceType
                 'multiple' => true,
             ])
             ->add('channels', ChannelChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'required' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
             ])
         ;
     }

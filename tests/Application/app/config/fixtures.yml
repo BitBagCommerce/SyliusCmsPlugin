@@ -197,3 +197,13 @@ sylius_fixtures:
                                             Estne, quaeso, inquam, sitienti in bibendo voluptas?
                                         answer: |
                                             Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.
+                media:
+                    options:
+                        custom:
+                            test_image:
+                                translations:
+                                    en_US:
+                                        question: |
+                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
+                                        answer: |
+                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.

@@ -26,44 +26,28 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class MediaContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $mediaFactory;
 
-    /**
-     * @var MediaRepositoryInterface
-     */
+    /** @var MediaRepositoryInterface */
     private $mediaRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $entityManager;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var MediaProviderResolverInterface
-     */
+    /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
 
     public function __construct(

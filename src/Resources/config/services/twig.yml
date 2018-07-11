@@ -8,7 +8,6 @@ services:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.block"
-            - "@bitbag_sylius_cms_plugin.resolver.block_template"
             - "@bitbag_sylius_cms_plugin.resolver.block_resource"
             - "@templating"
         tags:

@@ -16,15 +16,7 @@ use Sylius\Behat\Page\Shop\HomePageInterface as BaseHomePageInterface;
 
 interface HomePageInterface extends BaseHomePageInterface
 {
-    /**
-     * @return bool
-     */
     public function hasImageBlock(): bool;
 
-    /**
-     * @param string $content
-     *
-     * @return bool
-     */
     public function hasBlockWithContent(string $content): bool;
 }

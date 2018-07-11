@@ -17,29 +17,13 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
-    /**
-     * @param string $label
-     * @param string $value
-     */
     public function fillField(string $label, string $value): void;
 
-    /**
-     * @param string $code
-     */
     public function fillCode(string $code): void;
 
-    /**
-     * @param int $position
-     */
     public function setPosition(int $position): void;
 
-    /**
-     * @param string $question
-     */
     public function fillQuestion(string $question): void;
 
-    /**
-     * @param string $answer
-     */
     public function fillAnswer(string $answer): void;
 }

@@ -37,18 +37,6 @@ final class BlockSpec extends ObjectBehavior
         $this->shouldHaveType(BlockInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
-    {
-        $this->setType('image');
-        $this->getType()->shouldReturn('image');
-
-        $this->setType('new_focus_rs');
-        $this->getType()->shouldReturn('new_focus_rs');
-
-        $this->setEnabled(true);
-        $this->isEnabled()->shouldReturn(true);
-    }
-
     function it_toggles(): void
     {
         $this->enable();

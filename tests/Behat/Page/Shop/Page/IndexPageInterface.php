@@ -16,17 +16,7 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 
 interface IndexPageInterface extends SymfonyPageInterface
 {
-    /**
-     * @param string $sectionName
-     *
-     * @return bool
-     */
     public function hasSectionName(string $sectionName): bool;
 
-    /**
-     * @param int $pagesNumber
-     *
-     * @return bool
-     */
     public function hasPagesNumber(int $pagesNumber): bool;
 }

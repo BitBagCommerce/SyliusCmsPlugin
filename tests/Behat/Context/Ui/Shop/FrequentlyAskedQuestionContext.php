@@ -18,14 +18,9 @@ use Webmozart\Assert\Assert;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @param IndexPageInterface $indexPage
-     */
     public function __construct(IndexPageInterface $indexPage)
     {
         $this->indexPage = $indexPage;

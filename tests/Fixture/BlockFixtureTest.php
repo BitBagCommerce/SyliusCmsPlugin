@@ -408,9 +408,6 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
         ], 'custom.*.translations.*.image_path');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): BlockFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

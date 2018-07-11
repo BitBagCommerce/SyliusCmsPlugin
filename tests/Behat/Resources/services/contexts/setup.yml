@@ -6,7 +6,6 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
             - "@__symfony__.bitbag_sylius_cms_plugin.factory.block"
             - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
-            - "@__symfony__.sylius.image_uploader"
         tags:
             - { name: fob.context_service }
 

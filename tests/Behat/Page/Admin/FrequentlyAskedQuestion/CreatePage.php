@@ -13,49 +13,39 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\JQueryHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillField(string $field, string $value): void
     {
+        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
+
         $this->getDocument()->fillField($field, $value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setPosition(int $position): void
     {
         $this->getDocument()->fillField('Position', $position);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillQuestion(string $question): void
     {
         $this->getDocument()->fillField('Question', $question);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillAnswer(string $answer): void
     {
+        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
+
         $this->getDocument()->fillField('Answer', $answer);
     }
 }

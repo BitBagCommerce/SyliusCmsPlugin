@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class BlockController extends ResourceController
 {
+    const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+
     public function renderBlockAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
@@ -29,7 +31,6 @@ final class BlockController extends ResourceController
 
         $code = $request->get('code');
         $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
-
         $block = $blockResourceResolver->findOrLog($code);
 
         if (null === $block) {
@@ -39,8 +40,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         $view = View::create($block);
-        $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
-        $template = $request->get('template') ?? $blockTemplateResolver->resolveTemplate($block);
+        $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
 
         if ($configuration->isHtmlRequest()) {
             $view
@@ -65,9 +65,6 @@ final class BlockController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
         /** @var BlockInterface $block */
         $block = $this->newResourceFactory->create($configuration, $this->factory);
-
-        $block->setType($request->get('type'));
-
         $form = $this->resourceFormFactory->create($configuration, $block);
 
         $form->handleRequest($request);
@@ -79,13 +76,11 @@ final class BlockController extends ResourceController
         $block->setFallbackLocale($request->get('_locale', $defaultLocale));
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
-        $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
-
         $view = View::create()
             ->setData([
                 'resource' => $block,
                 $this->metadata->getName() => $block,
-                'blockTemplate' => $blockTemplateResolver->resolveTemplate($block),
+                'blockTemplate' => self::BLOCK_TEMPLATE,
             ])
             ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
         ;

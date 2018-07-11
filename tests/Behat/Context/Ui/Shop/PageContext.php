@@ -20,26 +20,15 @@ use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
 {
-    /**
-     * @var ShowPageInterface
-     */
+    /** @var ShowPageInterface */
     private $showPage;
 
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @param ShowPageInterface $showPage
-     * @param IndexPageInterface $indexPage
-     * @param SharedStorageInterface $sharedStorage
-     */
     public function __construct(
         ShowPageInterface $showPage,
         IndexPageInterface $indexPage,

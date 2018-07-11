@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file has been created by developers from BitBag. 
+ * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
- * another great project. 
+ * another great project.
  * You can find more information about us on https://bitbag.shop and write us
- * an email on mikolaj.krol@bitbag.pl. 
+ * an email on mikolaj.krol@bitbag.pl.
  */
 
 declare(strict_types=1);
@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-final class MediaFixture
+final class MediaFixture extends AbstractFixture
 {
     /** @var FixtureFactoryInterface */
     private $mediaFixtureFactory;
@@ -49,8 +49,10 @@ final class MediaFixture
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->scalarNode('path')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
-                            ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('sections')
+                                ->prototype('scalar')->end()
+                            ->end()
+                            ->arrayNode('products')
                                 ->prototype('scalar')->end()
                             ->end()
                             ->arrayNode('translations')

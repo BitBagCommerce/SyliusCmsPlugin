@@ -64,8 +64,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->pageResourceResolver = $pageResourceResolver;
         $this->sectionResolver = $sectionResolver;
         $this->localeContext = $localeContext;

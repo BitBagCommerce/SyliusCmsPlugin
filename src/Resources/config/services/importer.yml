@@ -22,8 +22,6 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.resource.block"
             - "@sylius.context.locale"
-            - "@bitbag_sylius_cms_plugin.downloader.image"
-            - "@sylius.image_uploader"
             - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
             - "@bitbag_sylius_cms_plugin.resolver.importer_channels"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"

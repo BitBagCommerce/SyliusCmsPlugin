@@ -46,7 +46,6 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('last_four_products')->defaultFalse()->end()
-                            ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('sections')

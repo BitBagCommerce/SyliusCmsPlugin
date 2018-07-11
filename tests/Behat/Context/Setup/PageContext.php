@@ -30,55 +30,30 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class PageContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageFactory;
 
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $entityManager;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $imageUploader;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param FactoryInterface $pageFactory
-     * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
-     * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
@@ -237,14 +212,6 @@ final class PageContext implements Context
         $this->entityManager->flush();
     }
 
-    /**
-     * @param string|null $code
-     * @param string|null $name
-     * @param string|null $content
-     * @param ChannelInterface|null $channel
-     *
-     * @return PageContentInterface
-     */
     private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageContentInterface
     {
         /** @var PageContentInterface $page */
@@ -276,11 +243,6 @@ final class PageContext implements Context
         return $page;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return ImageInterface
-     */
     private function uploadImage(string $name): ImageInterface
     {
         $image = new PageImage();
@@ -293,9 +255,6 @@ final class PageContext implements Context
         return $image;
     }
 
-    /**
-     * @param PageContentInterface $page
-     */
     private function savePage(PageContentInterface $page): void
     {
         $this->pageRepository->add($page);

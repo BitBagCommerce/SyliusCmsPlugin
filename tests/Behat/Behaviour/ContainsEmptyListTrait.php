@@ -18,9 +18,6 @@ trait ContainsEmptyListTrait
 {
     use DocumentAccessor;
 
-    /**
-     * {@inheritdoc}
-     */
     public function isEmpty(): bool
     {
         return false !== strpos($this->getDocument()->find('css', '.message')->getText(), 'There are no results to display');

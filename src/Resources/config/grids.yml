@@ -5,5 +5,4 @@ imports:
 sylius_grid:
     templates:
         action:
-            create_block: "@BitBagSyliusCmsPlugin/Grid/Action/createBlock.html.twig"
             import: "@BitBagSyliusCmsPlugin/Grid/Action/import.html.twig"

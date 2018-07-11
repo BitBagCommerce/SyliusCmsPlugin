@@ -374,9 +374,6 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
         ], 'custom.*.products');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): PageFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

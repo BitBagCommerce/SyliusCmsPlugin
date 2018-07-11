@@ -1,7 +1,5 @@
 BitBag\SyliusCmsPlugin\Entity\BlockTranslation:
     properties:
-        image:
-            - Valid: ~
         name:
             - Length:
                 min: 2

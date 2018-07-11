@@ -41,9 +41,10 @@ final class FrequentlyAskedQuestionType extends AbstractResourceType
                 'entry_type' => FrequentlyAskedQuestionTranslationType::class,
             ])
             ->add('channels', ChannelChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'required' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
             ])
         ;
     }

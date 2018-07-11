@@ -27,56 +27,30 @@ use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var CurrentPageResolverInterface
-     */
+    /** @var CurrentPageResolverInterface */
     private $currentPageResolver;
 
-    /**
-     * @var NotificationCheckerInterface
-     */
+    /** @var NotificationCheckerInterface */
     private $notificationChecker;
 
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @var CreatePageInterface
-     */
+    /** @var CreatePageInterface */
     private $createPage;
 
-    /**
-     * @var UpdatePageInterface
-     */
+    /** @var UpdatePageInterface */
     private $updatePage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param IndexPageInterface $indexPage
-     * @param CreatePageInterface $createPage
-     * @param UpdatePageInterface $updatePage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param PageRepositoryInterface $pageRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         CurrentPageResolverInterface $currentPageResolver,

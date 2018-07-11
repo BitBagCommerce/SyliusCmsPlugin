@@ -16,17 +16,7 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 
 interface IndexPageInterface extends SymfonyPageInterface
 {
-    /**
-     * @param int $number
-     *
-     * @return bool
-     */
     public function hasFrequentlyAskedQuestionsNumber(int $number): bool;
 
-    /**
-     * @param int $position
-     *
-     * @return bool
-     */
     public function hasQuestionWithPositionPrefixAtValidIndex(int $position): bool;
 }

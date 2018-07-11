@@ -13,8 +13,6 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Page\SymfonyPageInterface;
@@ -29,56 +27,30 @@ use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var CurrentPageResolverInterface
-     */
+    /** @var CurrentPageResolverInterface */
     private $currentPageResolver;
 
-    /**
-     * @var NotificationCheckerInterface
-     */
+    /** @var NotificationCheckerInterface */
     private $notificationChecker;
 
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @var CreatePageInterface
-     */
+    /** @var CreatePageInterface */
     private $createPage;
 
-    /**
-     * @var UpdatePageInterface
-     */
+    /** @var UpdatePageInterface */
     private $updatePage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param IndexPageInterface $indexPage
-     * @param CreatePageInterface $createPage
-     * @param UpdatePageInterface $updatePage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param BlockRepositoryInterface $blockRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         CurrentPageResolverInterface $currentPageResolver,
@@ -108,29 +80,11 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I go to the create :blockType block page
+     * @When I go to the create block page
      */
-    public function iGoToTheCreateImageBlockPage(string $blockType): void
+    public function iGoToTheCreateImageBlockPage(): void
     {
-        if (BlockInterface::TEXT_BLOCK_TYPE === $blockType) {
-            $this->createPage->open(['type' => BlockInterface::TEXT_BLOCK_TYPE]);
-
-            return;
-        }
-
-        if (BlockInterface::HTML_BLOCK_TYPE === $blockType) {
-            $this->createPage->open(['type' => BlockInterface::HTML_BLOCK_TYPE]);
-
-            return;
-        }
-
-        if (BlockInterface::IMAGE_BLOCK_TYPE === $blockType) {
-            $this->createPage->open(['type' => BlockInterface::IMAGE_BLOCK_TYPE]);
-
-            return;
-        }
-
-        throw new TemplateTypeNotFound($blockType);
+        $this->createPage->open();
     }
 
     /**
@@ -339,20 +293,6 @@ final class BlockContext implements Context
                 '%s can not be longer than',
                 trim($field)
             ), false));
-        }
-    }
-
-    /**
-     * @Then I should be able to select between :firstBlockType, :secondBlockType and :thirdBlockType block types under Create button
-     */
-    public function iShouldBeAbleToSelectBetweenAndBlockTypesUnderCreateButton(string ...$blockTypes): void
-    {
-        $blockTypesOnPage = $this->indexPage->getBlockTypes();
-
-        Assert::eq(count($blockTypesOnPage), count($blockTypes));
-
-        foreach ($blockTypes as $blockType) {
-            Assert::oneOf($blockType, $blockTypesOnPage);
         }
     }
 

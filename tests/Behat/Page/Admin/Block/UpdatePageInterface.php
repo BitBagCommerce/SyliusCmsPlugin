@@ -17,36 +17,15 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface
 
 interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {
-    /**
-     * @param string $field
-     * @param string $value
-     */
-    public function fillField(string $field, string $value): void;
-
-    /**
-     * @param string $image
-     */
     public function uploadImage(string $image): void;
 
-    /**
-     * @param string $name
-     */
     public function fillName(string $name): void;
 
-    /**
-     * @param string $link
-     */
     public function fillLink(string $link): void;
 
-    /**
-     * @param string $content
-     */
     public function fillContent(string $content): void;
 
     public function disable(): void;
 
-    /**
-     * @return bool
-     */
     public function isBlockDisabled(): bool;
 }

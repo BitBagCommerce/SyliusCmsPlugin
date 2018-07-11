@@ -16,17 +16,11 @@ use Sylius\Behat\Page\SymfonyPage;
 
 final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getRouteName(): string
     {
         return 'bitbag_sylius_cms_plugin_shop_frequently_asked_question_index';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasFrequentlyAskedQuestionsNumber(int $number): bool
     {
         $frequentlyAskedQuestionsOnPage = $this->getElement('faqs')->findAll('css', '.bitbag-question');
@@ -34,9 +28,6 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
         return $number === count($frequentlyAskedQuestionsOnPage);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasQuestionWithPositionPrefixAtValidIndex(int $position): bool
     {
         $frequentlyAskedQuestionsOnPage = $this->getElement('faqs')->findAll('css', '.bitbag-question');
@@ -59,9 +50,6 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

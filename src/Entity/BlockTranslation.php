@@ -25,9 +25,6 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /** @var string */
     protected $content;
 
-    /** @var BlockImageInterface */
-    protected $image;
-
     /** @var string */
     protected $link;
 
@@ -54,18 +51,6 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getImage(): ?BlockImageInterface
-    {
-        return $this->image;
-    }
-
-    public function setImage(?BlockImageInterface $image): void
-    {
-        $image->setOwner($this);
-
-        $this->image = $image;
     }
 
     public function getLink(): ?string

@@ -14,8 +14,5 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour;
 
 interface ContainsEmptyListInterface
 {
-    /**
-     * @return bool
-     */
     public function isEmpty(): bool;
 }

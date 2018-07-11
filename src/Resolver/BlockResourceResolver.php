@@ -41,7 +41,6 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     public function findOrLog(string $code): ?BlockInterface
     {
         $channel = $this->channelContext->getChannel();
-
         $block = $this->blockRepository->findEnabledByCode($code, $channel->getCode());
 
         if (false === $block instanceof BlockInterface) {

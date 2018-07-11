@@ -27,44 +27,28 @@ use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var CurrentPageResolverInterface
-     */
+    /** @var CurrentPageResolverInterface */
     private $currentPageResolver;
 
-    /**
-     * @var NotificationCheckerInterface
-     */
+    /** @var NotificationCheckerInterface */
     private $notificationChecker;
 
-    /**
-     * @var MediaRepositoryInterface
-     */
+    /** @var MediaRepositoryInterface */
     private $mediaRepository;
 
-    /**
-     * @var IndexPageInterface
-     */
+    /** @var IndexPageInterface */
     private $indexPage;
 
-    /**
-     * @var CreatePageInterface
-     */
+    /** @var CreatePageInterface */
     private $createPage;
 
-    /**
-     * @var UpdatePageInterface
-     */
+    /** @var UpdatePageInterface */
     private $updatePage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
     public function __construct(

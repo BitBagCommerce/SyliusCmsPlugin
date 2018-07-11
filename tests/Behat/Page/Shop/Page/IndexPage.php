@@ -16,25 +16,16 @@ use Sylius\Behat\Page\SymfonyPage;
 
 final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getRouteName(): string
     {
         return 'bitbag_sylius_cms_plugin_shop_page_index_by_section_code';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasSectionName(string $sectionName): bool
     {
         return $sectionName === $this->getElement('section')->getText();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasPagesNumber(int $pagesNumber): bool
     {
         $pagesNumberOnPage = count($this->getElement('pages')->findAll('css', '.bitbag-page'));
@@ -42,9 +33,6 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
         return $pagesNumber === $pagesNumberOnPage;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

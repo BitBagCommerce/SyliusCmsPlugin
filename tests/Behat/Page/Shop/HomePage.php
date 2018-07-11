@@ -16,25 +16,16 @@ use Sylius\Behat\Page\Shop\HomePage as BaseHomePage;
 
 class HomePage extends BaseHomePage implements HomePageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function hasImageBlock(): bool
     {
         return $this->getElement('image_block')->has('css', 'img');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasBlockWithContent(string $content): bool
     {
         return $content === $this->getElement('content')->getText();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

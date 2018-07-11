@@ -1,8 +1,0 @@
-services:
-    bitbag_sylius_cms_plugin.custom_factory.block:
-        class: BitBag\SyliusCmsPlugin\Factory\BlockFactory
-        decorates: "bitbag_sylius_cms_plugin.factory.block"
-        public: false
-        decoration_priority: 1
-        arguments:
-            - "@bitbag_sylius_cms_plugin.custom_factory.block.inner"

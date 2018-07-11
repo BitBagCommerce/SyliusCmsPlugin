@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
@@ -27,14 +26,6 @@ interface BlockInterface extends
     ChannelsAwareInterface,
     ContentableInterface
 {
-    public const TEXT_BLOCK_TYPE = 'text';
-    public const IMAGE_BLOCK_TYPE = 'image';
-    public const HTML_BLOCK_TYPE = 'html';
-
-    public function getType(): ?string;
-
-    public function setType(?string $type): void;
-
     public function getCode(): ?string;
 
     public function setCode(?string $code): void;
@@ -46,10 +37,6 @@ interface BlockInterface extends
     public function getContent(): ?string;
 
     public function setContent(?string $content): void;
-
-    public function getImage(): ?ImageInterface;
-
-    public function setImage(?ImageInterface $image): void;
 
     public function getLink(): ?string;
 

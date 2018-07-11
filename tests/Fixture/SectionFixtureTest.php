@@ -114,9 +114,6 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
         ], 'custom.*.remove_existing');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): SectionFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

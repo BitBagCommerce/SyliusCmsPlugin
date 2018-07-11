@@ -12,17 +12,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
@@ -35,39 +30,24 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     /** @var MediaRepositoryInterface */
     private $mediaRepository;
 
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
+    /** @var ProductsAssignerInterface */
+    private $productsAssigner;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
+    /** @var SectionsAssignerInterface */
+    private $sectionsAssigner;
 
     public function __construct(
         FactoryInterface $mediaFactory,
         FactoryInterface $mediaTranslationFactory,
         MediaRepositoryInterface $mediaRepository,
-        SectionRepositoryInterface $sectionRepository,
-        ImageUploaderInterface $imageUploader,
-        ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext
+        ProductsAssignerInterface $productsAssigner,
+        SectionsAssignerInterface $sectionsAssigner
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;
         $this->mediaRepository = $mediaRepository;
-        $this->sectionRepository = $sectionRepository;
-        $this->imageUploader = $imageUploader;
-        $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
+        $this->productsAssigner = $productsAssigner;
+        $this->sectionsAssigner = $sectionsAssigner;
     }
 
     public function load(array $data): void
@@ -94,18 +74,9 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     {
         /** @var MediaInterface $media */
         $media = $this->mediaFactory->createNew();
-        $products = $mediaData['products'];
-
-        if (null !== $products) {
-            $this->resolveProducts($media, $products);
-        }
-
-        $this->resolveSections($media, $mediaData['sections']);
-
         $media->setType($mediaData['type']);
         $media->setCode($code);
         $media->setEnabled($mediaData['enabled']);
-        $media->addChannel($this->channelContext->getChannel());
 
         foreach ($mediaData['translations'] as $localeCode => $translation) {
             /** @var MediaTranslationInterface $mediaTranslation */
@@ -113,46 +84,14 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
 
             $mediaTranslation->setLocale($localeCode);
             $mediaTranslation->setName($translation['name']);
-            $mediaTranslation->setContent($translation['content']);
-            $mediaTranslation->setLink($translation['link']);
-
-            if (MediaInterface::IMAGE_MEDIA_TYPE === $type) {
-                $image = new MediaImage();
-                $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
-
-                $image->setFile($uploadedImage);
-                $mediaTranslation->setImage($image);
-
-                $this->imageUploader->upload($image);
-            }
-
+            $mediaTranslation->setDescription($translation['description']);
+            $mediaTranslation->setAlt($translation['alt']);
             $media->addTranslation($mediaTranslation);
         }
 
+        $this->sectionsAssigner->assign($media, $mediaData['sections']);
+        $this->productsAssigner->assign($media, $mediaData['products']);
+
         $this->mediaRepository->add($media);
-    }
-
-    private function resolveProducts(MediaInterface $media, int $limit): void
-    {
-        $products = $this->productRepository->findLatestByChannel(
-            $this->channelContext->getChannel(),
-            $this->localeContext->getLocaleCode(),
-            $limit
-        );
-
-        foreach ($products as $product) {
-            $media->addProduct($product);
-        }
-    }
-
-    private function resolveSections(MediaInterface $media, array $sections): void
-    {
-        foreach ($sections as $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            $media->addSection($section);
-        }
     }
 }

@@ -17,33 +17,21 @@ use Sylius\Behat\Page\SymfonyPage;
 
 final class ShowPage extends SymfonyPage implements ShowPageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getRouteName(): string
     {
         return 'bitbag_sylius_cms_plugin_shop_page_show';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasName(string $name): bool
     {
         return $name === $this->getElement('name')->getText();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasContent(string $content): bool
     {
         return $content === $this->getElement('content')->getText();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasProducts(array $productsNames): bool
     {
         $productsOnPage = $this->getElement('products')->findAll('css', '.sylius-product-name');
@@ -58,9 +46,6 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasSections(array $sectionNames): bool
     {
         $sectionsOnPage = $this->getElement('sections')->findAll('css', 'a');
@@ -75,25 +60,16 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasPageLink(string $linkName): bool
     {
         return $linkName === $this->getElement('link')->getText();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasPageImage(): bool
     {
         return $this->getElement('page-image')->isVisible();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

@@ -7,26 +7,8 @@ services:
         tags:
             - { name: form.type }
 
-    bitbag_sylius_cms_plugin.form.type.translation.text_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType
-        arguments:
-            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
-            - ['bitbag']
-            - "@router.default"
-        tags:
-            - { name: form.type }
-
-    bitbag_sylius_cms_plugin.form.type.translation.html_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
-        arguments:
-            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
-            - ['bitbag']
-            - "@router.default"
-        tags:
-            - { name: form.type }
-
-    bitbag_sylius_cms_plugin.form.type.translation.image_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
             - ['bitbag']
