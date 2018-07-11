@@ -23,6 +23,7 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context

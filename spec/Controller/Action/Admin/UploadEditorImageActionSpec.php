@@ -47,7 +47,7 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
         ProviderInterface $provider,
         MediaRepositoryInterface $mediaRepository
     ): void {
-        $uploadedFile = new UploadedFile(__DIR__ . '/../../../../tests/Behat/Resources/media/aston_martin_db_11.jpg', 'aston_martin_db_11.jpg');
+        $uploadedFile = new UploadedFile(__DIR__ . '/../../../../tests/Behat/Resources/images/aston_martin_db_11.jpg', 'aston_martin_db_11.jpg');
 
         $request->files = $fileBag;
 
