@@ -12,24 +12,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class BlockTranslationType extends AbstractResourceType
 {
-    /** @var UrlGeneratorInterface */
-    private $urlGenerator;
-
-    public function __construct(string $dataClass, $validationGroups = [], UrlGeneratorInterface $urlGenerator)
-    {
-        parent::__construct($dataClass, $validationGroups);
-
-        $this->urlGenerator = $urlGenerator;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -37,12 +26,7 @@ final class BlockTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
-            ->add('content', CKEditorType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content',
-                'config' => [
-                    'filebrowserUploadUrl' => $this->urlGenerator->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
-                ],
-            ])
+            ->add('content', WysiwygType::class)
         ;
     }
 

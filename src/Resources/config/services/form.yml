@@ -12,7 +12,6 @@ services:
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
             - ['bitbag']
-            - "@router.default"
         tags:
             - { name: form.type }
 
@@ -45,7 +44,6 @@ services:
         arguments:
             - "%bitbag_sylius_cms_plugin.model.page_translation.class%"
             - ['bitbag']
-            - "@router.default"
         tags:
             - { name: form.type }
 
@@ -100,5 +98,12 @@ services:
             - "%bitbag_sylius_cms_plugin.model.media.class%"
             - ['bitbag']
             - "%bitbag_sylius_cms_plugin.media_providers%"
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.wysiwyg:
+        class: BitBag\SyliusCmsPlugin\Form\Type\WysiwygType
+        arguments:
+            - "@router.default"
         tags:
             - { name: form.type }

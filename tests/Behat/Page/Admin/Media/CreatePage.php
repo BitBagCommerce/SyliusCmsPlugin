@@ -28,13 +28,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function uploadFile(string $file): void
     {
-        $path = __DIR__ . '/../../../Resources/media/' . $file;
+        $path = __DIR__ . '/../../../Resources/images/' . $file;
 
         Assert::fileExists($path);
 
-        $this->getDocument()
-            ->attachFileToField('File', $path)
-        ;
+        $this->getDocument()->attachFileToField('File', $path);
     }
 
     public function fillCode(string $code): void

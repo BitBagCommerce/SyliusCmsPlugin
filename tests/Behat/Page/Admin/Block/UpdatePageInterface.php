@@ -17,8 +17,6 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface
 
 interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {
-    public function uploadImage(string $image): void;
-
     public function fillName(string $name): void;
 
     public function fillLink(string $link): void;

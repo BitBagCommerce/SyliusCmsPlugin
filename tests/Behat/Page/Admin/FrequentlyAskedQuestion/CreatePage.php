@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\JQueryHelper;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -22,8 +22,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillField(string $field, string $value): void
     {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-
         $this->getDocument()->fillField($field, $value);
     }
 
@@ -44,8 +42,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillAnswer(string $answer): void
     {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-
         $this->getDocument()->fillField('Answer', $answer);
     }
 }

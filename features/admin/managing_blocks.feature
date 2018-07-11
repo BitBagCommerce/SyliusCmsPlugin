@@ -16,19 +16,11 @@ Feature: Managing cms blocks
         Then I should be notified that the block has been deleted
         And I should see empty list of blocks
 
-    @ui
+    @ui @javascript
     Scenario: Updating block
         Given there is a block with "store_phone_number" code and "123456789" content
         When I go to the update "store_phone_number" block page
         And I fill the content with "987654321"
-        And I update it
-        Then I should be notified that the block has been successfully updated
-
-    @ui
-    Scenario: Updating html block
-        Given there is a block with "store_email" code and "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>" content
-        When I go to the update "store_email" block page
-        And I fill the content with "<a href='mailto:mikolaj.krol@bitbag.pl'>mikolaj.krol@bitbag.pl</a>"
         And I update it
         Then I should be notified that the block has been successfully updated
 

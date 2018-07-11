@@ -17,9 +17,9 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
-    public function fillCode(string $code): void;
+    public function fillField(string $field, string $value): void;
 
-    public function uploadImage(string $image): void;
+    public function fillCode(string $code): void;
 
     public function fillName(string $name): void;
 

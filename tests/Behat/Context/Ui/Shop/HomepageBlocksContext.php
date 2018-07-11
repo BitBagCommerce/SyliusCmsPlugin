@@ -35,14 +35,6 @@ final class HomepageBlocksContext implements Context
     }
 
     /**
-     * @Then I want to see an image block
-     */
-    public function iWantToSeeAnImageBlock(): void
-    {
-        Assert::true($this->blockHomePage->hasImageBlock());
-    }
-
-    /**
      * @Then I want to see a text block with :content content
      */
     public function iWantToSeeATextBlockWithContent(string $content): void

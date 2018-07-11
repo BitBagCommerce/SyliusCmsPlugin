@@ -14,7 +14,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\JQueryHelper;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
@@ -25,8 +25,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillField(string $field, string $value): void
     {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-
         $this->getDocument()->fillField($field, $value);
     }
 
@@ -36,8 +34,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         Assert::fileExists($path);
 
-        $this->getDocument()
-            ->attachFileToField('Choose file', $path);
+        $this->getDocument()->attachFileToField('Choose file', realpath($path));
     }
 
     public function fillCode(string $code): void
@@ -71,9 +68,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-
-        $this->getDocument()->fillField('Content', $content);
+        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
     }
 
     public function associateSections(array $sectionsNames): void

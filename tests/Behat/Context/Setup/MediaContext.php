@@ -118,7 +118,7 @@ final class MediaContext implements Context
 
     private function uploadFile(MediaInterface $media, string $name): MediaInterface
     {
-        $uploadedFile = new UploadedFile(__DIR__ . '/../../Resources/media/' . $name, $name);
+        $uploadedFile = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
 
         $media->setFile($uploadedFile);
 

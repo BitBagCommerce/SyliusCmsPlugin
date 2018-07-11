@@ -9,8 +9,6 @@ Feature: Displaying blocks
 
     @ui
     Scenario: Displaying homepage blocks
-        Given there is a text block with "homepage_intro" code and "Hello world!" content
-        And there is an existing block with "homepage_header_image" code and "homepage_main.jpeg" image
+        Given there is a block with "homepage_intro" code and "Hello world!" content
         When I go to the homepage
-        Then I want to see an image block
         And I want to see a text block with "Hello world!" content

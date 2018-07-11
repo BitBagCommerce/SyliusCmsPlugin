@@ -166,14 +166,6 @@ final class BlockContext implements Context
     }
 
     /**
-     * @When I upload the :image image
-     */
-    public function iUploadTheImage(string $image): void
-    {
-        $this->resolveCurrentPage()->uploadImage($image);
-    }
-
-    /**
      * @When I disable it
      */
     public function iDisableIt(): void

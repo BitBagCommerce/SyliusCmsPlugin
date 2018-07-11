@@ -31,8 +31,6 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 
         Assert::fileExists($path);
 
-        $this->getDocument()
-            ->attachFileToField('Choose file', $path)
-        ;
+        $this->getDocument()->attachFileToField('Choose file', $path);
     }
 }

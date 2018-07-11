@@ -14,26 +14,22 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\JQueryHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
 
+    public function fillField(string $field, string $value): void
+    {
+        $this->getDocument()->fillField($field, $value);
+    }
+
     public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
-    }
-
-    public function uploadImage(string $image): void
-    {
-        $path = __DIR__ . '/../../../Resources/images/' . $image;
-
-        Assert::fileExists($path);
-
-        $this->getDocument()->attachFileToField('Choose file', $path);
     }
 
     public function fillName(string $name): void
@@ -48,9 +44,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-
-        $this->getDocument()->find('.css','.ck_editable')->setValue($content);
+        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
     }
 
     public function disable(): void
