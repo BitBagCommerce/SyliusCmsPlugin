@@ -78,7 +78,9 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
 
     public function setImage(?PageImageInterface $image): void
     {
-        $image->setOwner($this);
+        if ($image !== null) {
+            $image->setOwner($this);
+        }
 
         $this->image = $image;
     }
