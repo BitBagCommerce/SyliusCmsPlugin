@@ -34,3 +34,24 @@ bitbag_sylius_cms_plugin:
         sections_header: Sections
         sections_subheader: Manage your sections
         position: Position
+        channels: Channels
+        preview: Preview
+        download: Download
+        name_when_linked: Name when linked
+        description_when_linked: Description when linked
+        media: Media
+        media_header: Media
+        media_subheader: Manage digital assets
+        type: Type
+        file: File
+        alt: Alt
+        description: Description
+        file_provider: File
+        image_provider: Image
+        video_provider: Video
+        read_more: Read more
+        breadcrumb: Breadcrumb
+        import: Import
+        csv_file: CSV file
+        import: Import
+        successfully_imported: Data has been imported.

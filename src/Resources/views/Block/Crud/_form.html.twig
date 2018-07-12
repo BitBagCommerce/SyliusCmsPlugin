@@ -1,6 +1,8 @@
 {% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
 {% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
 
+{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
+
 <div class="ui two column stackable grid">
     <div class="column">
         <div class="ui segment">
@@ -9,6 +11,7 @@
             {{ form_row(form.enabled) }}
             {{ form_row(form.products) }}
             {{ form_row(form.sections) }}
+            {{ form_row(form.channels) }}
         </div>
     </div>
 </div>

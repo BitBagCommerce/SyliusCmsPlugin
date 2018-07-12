@@ -37,20 +37,20 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'blog' => [
-                        'translations' => []
-                    ]
-                ]
-            ]
+                        'translations' => [],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'blog' => [
-                        'translations' => 'array'
-                    ]
-                ]
-            ]
+                        'translations' => 'array',
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
     }
 
@@ -65,12 +65,12 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
                     'blog' => [
                         'translations' => [
                             'en_US' => [
-                                'name' => 'Blog'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'name' => 'Blog',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.name');
 
         $this->assertConfigurationIsValid([
@@ -79,12 +79,12 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
                     'blog' => [
                         'translations' => [
                             'en_US' => [
-                                'name' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'name' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.name');
     }
 
@@ -97,26 +97,23 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'remove_existing' => true
-                    ]
-                ]
-            ]
+                        'remove_existing' => true,
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'remove_existing' => 'boolean'
-                    ]
-                ]
-            ]
+                        'remove_existing' => 'boolean',
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): SectionFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

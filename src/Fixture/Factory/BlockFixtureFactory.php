@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockImage;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
@@ -21,69 +20,37 @@ use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var BlockFactoryInterface
-     */
+    /** @var BlockFactoryInterface */
     private $blockFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $blockTranslationFactory;
 
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
-    private $imageUploader;
-
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @param BlockFactoryInterface $blockFactory
-     * @param FactoryInterface $blockTranslationFactory
-     * @param BlockRepositoryInterface $blockRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     * @param ImageUploaderInterface $imageUploader
-     * @param ProductRepositoryInterface $productRepository
-     * @param ChannelContextInterface $channelContext
-     * @param LocaleContextInterface $localeContext
-     */
     public function __construct(
         BlockFactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
         SectionRepositoryInterface $sectionRepository,
-        ImageUploaderInterface $imageUploader,
         ProductRepositoryInterface $productRepository,
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext
@@ -92,15 +59,11 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
         $this->sectionRepository = $sectionRepository;
-        $this->imageUploader = $imageUploader;
         $this->productRepository = $productRepository;
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
@@ -123,8 +86,8 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
     private function createBlock(string $code, array $blockData): void
     {
-        $type = $blockData['type'];
-        $block = $this->blockFactory->createWithType($type);
+        /** @var BlockInterface $block */
+        $block = $this->blockFactory->createNew();
         $products = $blockData['products'];
 
         if (null !== $products) {
@@ -135,6 +98,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $block->setCode($code);
         $block->setEnabled($blockData['enabled']);
+        $block->addChannel($this->channelContext->getChannel());
 
         foreach ($blockData['translations'] as $localeCode => $translation) {
             /** @var BlockTranslationInterface $blockTranslation */
@@ -144,28 +108,12 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
             $blockTranslation->setName($translation['name']);
             $blockTranslation->setContent($translation['content']);
             $blockTranslation->setLink($translation['link']);
-
-            if (BlockInterface::IMAGE_BLOCK_TYPE === $type) {
-                $image = new BlockImage();
-                $path = $translation['image_path'];
-                $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
-
-                $image->setFile($uploadedImage);
-                $blockTranslation->setImage($image);
-
-                $this->imageUploader->upload($image);
-            }
-
             $block->addTranslation($blockTranslation);
         }
 
         $this->blockRepository->add($block);
     }
 
-    /**
-     * @param BlockInterface $block
-     * @param int $limit
-     */
     private function resolveProducts(BlockInterface $block, int $limit): void
     {
         $products = $this->productRepository->findLatestByChannel(
@@ -179,10 +127,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param BlockInterface $block
-     * @param array $sections
-     */
     private function resolveSections(BlockInterface $block, array $sections): void
     {
         foreach ($sections as $sectionCode) {

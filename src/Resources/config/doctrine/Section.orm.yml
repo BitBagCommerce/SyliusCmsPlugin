@@ -13,3 +13,15 @@ BitBag\SyliusCmsPlugin\Entity\Section:
             type: string
             length: 250
             unique: true
+    manyToMany:
+        channels:
+            targetEntity: Sylius\Component\Channel\Model\ChannelInterface
+            joinTable:
+                name: bitbag_cms_section_channels
+                joinColumns:
+                    faq_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    channel_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE

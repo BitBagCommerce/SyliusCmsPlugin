@@ -14,12 +14,13 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
@@ -29,55 +30,30 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class PageContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageFactory;
 
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $entityManager;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $imageUploader;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param FactoryInterface $pageFactory
-     * @param PageRepositoryInterface $pageRepository
-     * @param EntityManagerInterface $entityManager
-     * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
@@ -228,7 +204,7 @@ final class PageContext implements Context
         $section = $this->sharedStorage->get('section');
         $pages = $this->pageRepository->findAll();
 
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         foreach ($pages as $page) {
             $page->addSection($section);
         }
@@ -236,17 +212,14 @@ final class PageContext implements Context
         $this->entityManager->flush();
     }
 
-    /**
-     * @param string|null $code
-     * @param string|null $name
-     * @param string|null $content
-     *
-     * @return PageInterface
-     */
-    private function createPage(?string $code = null, ?string $name = null, ?string $content = null): PageInterface
+    private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageContentInterface
     {
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         $page = $this->pageFactory->createNew();
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -265,15 +238,11 @@ final class PageContext implements Context
         $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
         $page->setContent($content);
+        $page->addChannel($channel);
 
         return $page;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return ImageInterface
-     */
     private function uploadImage(string $name): ImageInterface
     {
         $image = new PageImage();
@@ -286,10 +255,7 @@ final class PageContext implements Context
         return $image;
     }
 
-    /**
-     * @param PageInterface $page
-     */
-    private function savePage(PageInterface $page): void
+    private function savePage(PageContentInterface $page): void
     {
         $this->pageRepository->add($page);
         $this->sharedStorage->set('page', $page);

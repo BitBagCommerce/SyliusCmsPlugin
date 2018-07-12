@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
@@ -27,56 +27,30 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $pageTranslationFactory;
 
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $imageUploader;
 
-    /**
-     * @var ProductRepositoryInterface
-     */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /**
-     * @var ChannelContextInterface
-     */
+    /** @var ChannelContextInterface */
     private $channelContext;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @param FactoryInterface $pageFactory
-     * @param FactoryInterface $pageTranslationFactory
-     * @param PageRepositoryInterface $pageRepository
-     * @param ProductRepositoryInterface $productRepository
-     * @param SectionRepositoryInterface $sectionRepository
-     * @param ImageUploaderInterface $imageUploader
-     * @param ChannelContextInterface $channelContext
-     * @param LocaleContextInterface $localeContext
-     */
     public function __construct(
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
@@ -97,9 +71,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->localeContext = $localeContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
@@ -120,14 +91,9 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param string $code
-     * @param array $pageData
-     * @param bool $generateSlug
-     */
     private function createPage(string $code, array $pageData, bool $generateSlug = false): void
     {
-        /** @var PageInterface $page */
+        /** @var PageContentInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
 
@@ -139,6 +105,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
         $page->setCode($code);
         $page->setEnabled($pageData['enabled']);
+        $page->addChannel($this->channelContext->getChannel());
 
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */
@@ -169,11 +136,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageRepository->add($page);
     }
 
-    /**
-     * @param int $limit
-     * @param PageInterface $page
-     */
-    private function resolveProducts(PageInterface $page, int $limit): void
+    private function resolveProducts(PageContentInterface $page, int $limit): void
     {
         $products = $this->productRepository->findLatestByChannel(
             $this->channelContext->getChannel(),
@@ -186,11 +149,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    /**
-     * @param PageInterface $page
-     * @param array $sections
-     */
-    private function resolveSections(PageInterface $page, array $sections): void
+    private function resolveSections(PageContentInterface $page, array $sections): void
     {
         foreach ($sections as $sectionCode) {
             /** @var SectionInterface $section */

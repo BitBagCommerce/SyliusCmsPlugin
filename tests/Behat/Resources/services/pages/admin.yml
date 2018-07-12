@@ -3,3 +3,4 @@ imports:
     - { resource: "admin/page.yml" }
     - { resource: "admin/frequently_asked_question.yml" }
     - { resource: "admin/section.yml" }
+    - { resource: "admin/media.yml" }

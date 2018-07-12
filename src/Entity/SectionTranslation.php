@@ -16,35 +16,22 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class SectionTranslation extends AbstractTranslation implements SectionTranslationInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $name;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;

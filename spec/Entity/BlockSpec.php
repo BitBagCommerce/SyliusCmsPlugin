@@ -16,6 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\Block;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -34,18 +35,6 @@ final class BlockSpec extends ObjectBehavior
     function it_implements_block_interface(): void
     {
         $this->shouldHaveType(BlockInterface::class);
-    }
-
-    function it_allows_access_via_properties(): void
-    {
-        $this->setType('image');
-        $this->getType()->shouldReturn('image');
-
-        $this->setType('new_focus_rs');
-        $this->getType()->shouldReturn('new_focus_rs');
-
-        $this->setEnabled(true);
-        $this->isEnabled()->shouldReturn(true);
     }
 
     function it_toggles(): void
@@ -79,5 +68,17 @@ final class BlockSpec extends ObjectBehavior
         $this->removeSection($firstSection);
 
         $this->hasSection($firstSection)->shouldReturn(false);
+    }
+
+    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    {
+        $this->addChannel($firstChannel);
+        $this->hasChannel($firstChannel)->shouldReturn(true);
+
+        $this->hasChannel($secondChannel)->shouldReturn(false);
+
+        $this->removeChannel($firstChannel);
+
+        $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 }

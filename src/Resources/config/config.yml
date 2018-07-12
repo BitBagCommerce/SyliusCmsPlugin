@@ -3,9 +3,22 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services.yml" }
 
+parameters:
+    bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
+
 jms_serializer:
     metadata:
         directories:
             bitbag-section:
                 namespace_prefix: "BitBag\\SyliusCmsPlugin"
                 path: "@BitBagSyliusCmsPlugin/Resources/config/serializer"
+
+knp_gaufrette:
+    adapters:
+        bitbag_sylius_cms_plugin_media:
+            local:
+                directory: "%kernel.project_dir%/web"
+                create: true
+    filesystems:
+        bitbag_sylius_cms_plugin_media:
+            adapter: "%bitbag_sylius_cms_plugin.uploader.filesystem%"

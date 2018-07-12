@@ -37,20 +37,20 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
             [
                 'custom' => [
                     'faq_1' => [
-                        'enabled' => true
-                    ]
-                ]
-            ]
+                        'enabled' => true,
+                    ],
+                ],
+            ],
         ], 'custom.*.enabled');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'faq_1' => [
-                        'enabled' => 'boolean'
-                    ]
-                ]
-            ]
+                        'enabled' => 'boolean',
+                    ],
+                ],
+            ],
         ], 'custom.*.enabled');
     }
 
@@ -63,20 +63,20 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
             [
                 'custom' => [
                     'faq_1' => [
-                        'remove_existing' => true
-                    ]
-                ]
-            ]
+                        'remove_existing' => true,
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'faq_1' => [
-                        'remove_existing' => 'boolean'
-                    ]
-                ]
-            ]
+                        'remove_existing' => 'boolean',
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
     }
 
@@ -89,20 +89,20 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'number' => 1
-                    ]
-                ]
-            ]
+                        'number' => 1,
+                    ],
+                ],
+            ],
         ], 'custom.*.number');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'number' => '1'
-                    ]
-                ]
-            ]
+                        'number' => '1',
+                    ],
+                ],
+            ],
         ], 'custom.*.number');
     }
 
@@ -115,20 +115,20 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
             [
                 'custom' => [
                     'faq_1' => [
-                        'position' => 1
-                    ]
-                ]
-            ]
+                        'position' => 1,
+                    ],
+                ],
+            ],
         ], 'custom.*.position');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'faq_1' => [
-                        'position' => '1'
-                    ]
-                ]
-            ]
+                        'position' => '1',
+                    ],
+                ],
+            ],
         ], 'custom.*.position');
     }
 
@@ -141,20 +141,20 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
             [
                 'custom' => [
                     'faq_1' => [
-                        'translations' => []
-                    ]
-                ]
-            ]
+                        'translations' => [],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'faq_1' => [
-                        'translations' => 'array'
-                    ]
-                ]
-            ]
+                        'translations' => 'array',
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
     }
 
@@ -169,12 +169,12 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
-                                'question' => 'Example question ?'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'question' => 'Example question ?',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.question');
 
         $this->assertConfigurationIsValid([
@@ -183,12 +183,12 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
-                                'question' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'question' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.question');
     }
 
@@ -203,12 +203,12 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
-                                'answer' => 'Example answer'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'answer' => 'Example answer',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.answer');
 
         $this->assertConfigurationIsValid([
@@ -217,18 +217,15 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
                     'faq_1' => [
                         'translations' => [
                             'en_US' => [
-                                'answer' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'answer' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.answer');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): FrequentlyAskedQuestionFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

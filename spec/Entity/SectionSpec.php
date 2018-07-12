@@ -15,6 +15,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Entity;
 use BitBag\SyliusCmsPlugin\Entity\Section;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class SectionSpec extends ObjectBehavior
@@ -38,5 +39,17 @@ final class SectionSpec extends ObjectBehavior
     {
         $this->setCode('blog');
         $this->getCode()->shouldReturn('blog');
+    }
+
+    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    {
+        $this->addChannel($firstChannel);
+        $this->hasChannel($firstChannel)->shouldReturn(true);
+
+        $this->hasChannel($secondChannel)->shouldReturn(false);
+
+        $this->removeChannel($firstChannel);
+
+        $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 }

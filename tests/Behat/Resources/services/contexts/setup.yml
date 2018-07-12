@@ -6,7 +6,6 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
             - "@__symfony__.bitbag_sylius_cms_plugin.factory.block"
             - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
-            - "@__symfony__.sylius.image_uploader"
         tags:
             - { name: fob.context_service }
 
@@ -41,5 +40,19 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
             - "@__symfony__.bitbag_sylius_cms_plugin.factory.section"
             - "@__symfony__.bitbag_sylius_cms_plugin.repository.section"
+        tags:
+            - { name: fob.context_service }
+
+    bitbag_sylius_cms_plugin.behat.context.setup.media:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\MediaContext
+        arguments:
+            - "@sylius.behat.shared_storage"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.factory.media"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.media"
+            - "@__symfony__.doctrine.orm.entity_manager"
+            - "@__symfony__.sylius.repository.product"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.section"
+            - "@__symfony__.bitbag_sylius_cms_plugin.resolver.media_provider"
         tags:
             - { name: fob.context_service }

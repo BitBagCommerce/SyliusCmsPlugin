@@ -1,0 +1,10 @@
+bitbag_sylius_cms_plugin_admin_partial_locale_index:
+    path: /_partial/locales
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.locale:indexAction
+        _sylius:
+            repository:
+                method: findAll
+            template: $template
+            permission: true

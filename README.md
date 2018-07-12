@@ -48,16 +48,30 @@ We also recorded a webinar which presents most of the plugin features, including
 $ composer require bitbag/cms-plugin
 ```
     
-Add plugin dependencies to your AppKernel.php file:
+Add plugin dependencies to your AppKernel.php file (note the new compiler pass):
 ```php
 public function registerBundles()
 {
     return array_merge(parent::registerBundles(), [
         ...
         
+        new \FOS\CKEditorBundle\FOSCKEditorBundle(), // WYSIWYG editor
         new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
+
+protected function build(ContainerBuilder $container)
+{
+    ...
+
+    $container->addCompilerPass(new \BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass());
+}
+```
+
+Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+
+```bash
+$ bin/console ckeditor:install
 ```
 
 Import required config in your `app/config/config.yml` file:
@@ -89,7 +103,7 @@ $ bin/console assets:install
 $ bin/console sylius:theme:assets:install
 ```
 
-### Optional, Sitemap integration
+### Sitemap integration
 This plugin has a ready to go integration with [Sylius Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
 
 To enable the integration you need to add the following to your `app/config/config.yml` file:
@@ -144,6 +158,14 @@ Or rendering a page link directly:
 {{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
 ```
 
+### Pages for product grouped by section
+
+You can render page by function Twig:
+
+```twig
+{{ bitbag_cms_render_product_pages(product) }}
+```
+
 ### Sections
 
 With sections, you can organize your blocks and pages under some specific categories.
@@ -165,6 +187,38 @@ To render FAQs list, use the `bitbag_sylius_cms_plugin_shop_frequently_asked_que
 
 ```twig
 <a href="{{ path('bitbag_sylius_cms_plugin_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
+```
+
+### Media
+
+You can render media in two ways:
+
+By rendering a media code template:
+
+```twig
+{{ bitbag_cms_render_media('media_code') }}
+```
+
+Or rendering a media code directly:
+
+```twig
+{{ render(path('bitbag_sylius_cms_plugin_shop_media_render', {'code' : 'file', 'template' : '@App/Some/Template/_path.html.twig'})) }}
+```
+
+### Media provider
+
+You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
+
+```php
+app.media_provider.audio:
+    class: BitBag\SyliusCmsPlugin\MediaProvider\AudioProvider
+    arguments:
+        - "@bitbag_sylius_cms_plugin.media_uploader"
+        - "@templating.engine.twig"
+        - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/audio.html.twig"
+        - "media/audio"
+    tags:
+        - { name: bitbag_sylius_cms_plugin.media_provider, type: audio, label: bitbag_sylius_cms_plugin.ui.audio_provider }
 ```
 
 ### Fixtures

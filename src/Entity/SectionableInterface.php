@@ -23,20 +23,9 @@ interface SectionableInterface
      */
     public function getSections(): ?Collection;
 
-    /**
-     * @param SectionInterface $section
-     *
-     * @return bool
-     */
     public function hasSection(SectionInterface $section): bool;
 
-    /**
-     * @param SectionInterface $section
-     */
     public function addSection(SectionInterface $section): void;
 
-    /**
-     * @param SectionInterface $section
-     */
     public function removeSection(SectionInterface $section): void;
 }

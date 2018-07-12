@@ -1,25 +1,67 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/twig.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/form.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/factory.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/event_listener.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/controller.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/fixture.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/repository.yml" }
+    - { resource: services/twig.yml }
+    - { resource: services/form.yml }
+    - { resource: services/event_listener.yml }
+    - { resource: services/controller.yml }
+    - { resource: services/fixture.yml }
+    - { resource: services/repository.yml }
+    - { resource: services/importer.yml }
+    - { resource: services/resolver.yml }
+    - { resource: services/media_provider.yml }
+    - { resource: services/assigner.yml }
+
+parameters:
+    bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface
 
 services:
-    bitbag_sylius_cms_plugin.resolver.block_resource:
-        class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
-        arguments:
-            - "@bitbag_sylius_cms_plugin.repository.block"
-            - "@logger"
+    bitbag_sylius_cms_plugin.reader.csv:
+        class: BitBag\SyliusCmsPlugin\Reader\CsvReader
 
-    bitbag_sylius_cms_plugin.resolver.page_resource:
-        class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
+    bitbag_sylius_cms_plugin.processor.import:
+        class: BitBag\SyliusCmsPlugin\Processor\ImportProcessor
+        arguments:
+            - "@bitbag_sylius_cms_plugin.importer.chain"
+            - "@bitbag_sylius_cms_plugin.reader.csv"
+            - "@doctrine.orm.entity_manager"
+
+    bitbag_sylius_cms_plugin.command.import_from_csv:
+        class: BitBag\SyliusCmsPlugin\Command\ImportFromCsvCommand
+        arguments:
+            - "@bitbag_sylius_cms_plugin.processor.import"
+        tags:
+            - { name: console.command }
+
+    bitbag_sylius_cms_plugin.downloader.image:
+        class: BitBag\SyliusCmsPlugin\Downloader\ImageDownloader
+        arguments:
+            - "@filesystem"
+
+    bitbag_sylius_cms_plugin.registry.media_provider:
+        class: Sylius\Component\Registry\ServiceRegistry
+        arguments:
+            - "%bitbag_sylius_cms_plugin.media_provider.interface%"
+            - "Media provider"
+
+    bitbag_sylius_cms_plugin.media_uploader:
+        class: BitBag\SyliusCmsPlugin\Uploader\MediaUploader
+        arguments:
+            - "@bitbag_sylius_cms_plugin.media.filesystem"
+            - "%kernel.project_dir%"
+
+    bitbag_sylius_cms_plugin.media.filesystem:
+        class: Gaufrette\Filesystem
+        factory: ['@knp_gaufrette.filesystem_map', get]
+        arguments:
+            - "%bitbag_sylius_cms_plugin.uploader.filesystem%"
+
+
+    bitbag_sylius_cms_plugin.sitemap_provider.page:
+        class: BitBag\SyliusCmsPlugin\SitemapProvider\PageUrlProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@router"
+            - "@sylius.sitemap_url_factory"
             - "@sylius.context.locale"
-            - "@logger"
-
-    bitbag_sylius_cms_plugin.resolver.block_template:
-        class: BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolver
+            - "@sylius.context.channel"
+        tags:
+            { name: sylius.sitemap_provider }

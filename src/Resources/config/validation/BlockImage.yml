@@ -1,6 +1,0 @@
-BitBag\SyliusCmsPlugin\Entity\BlockImage:
-    properties:
-        file:
-            - NotBlank:
-                message: 'bitbag_sylius_cms_plugin.block.image.not_blank'
-                groups: ['bitbag_image']

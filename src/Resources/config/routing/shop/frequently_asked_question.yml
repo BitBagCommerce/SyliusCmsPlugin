@@ -8,3 +8,4 @@ bitbag_sylius_cms_plugin_shop_frequently_asked_question_index:
                 method: findEnabledOrderedByPosition
                 arguments:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"

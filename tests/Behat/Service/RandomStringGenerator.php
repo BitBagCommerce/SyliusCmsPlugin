@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 /*
  * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -9,13 +8,12 @@ declare(strict_types=1);
  * an email on mikolaj.krol@bitbag.pl.
  */
 
+declare(strict_types=1);
+
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
 final class RandomStringGenerator implements RandomStringGeneratorInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function generate(int $length = 10): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

@@ -13,9 +13,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType;
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType;
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType;
+use BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType;
+use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -26,9 +25,6 @@ use Symfony\Component\Validator\Constraints\Valid;
 
 final class BlockType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /** @var BlockInterface $block */
@@ -50,60 +46,21 @@ final class BlockType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
             ])
+            ->add('channels', ChannelChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('translations', ResourceTranslationsType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
+                'entry_type' => BlockTranslationType::class,
+                'validation_groups' => ['bitbag_content'],
+                'constraints' => [new Valid()],
+            ])
         ;
-
-        $this->resolveBlockType($block, $builder);
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param BlockInterface $block
-     */
-    private function resolveBlockType(BlockInterface $block, FormBuilderInterface $builder): void
-    {
-        if (BlockInterface::TEXT_BLOCK_TYPE === $block->getType()) {
-            $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
-                'entry_type' => TextBlockTranslationType::class,
-                'validation_groups' => ['bitbag_content'],
-                'constraints' => [
-                    new Valid(),
-                ],
-            ]);
-
-            return;
-        }
-
-        if (BlockInterface::HTML_BLOCK_TYPE === $block->getType()) {
-            $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
-                'entry_type' => HtmlBlockTranslationType::class,
-                'validation_groups' => ['bitbag_content'],
-                'constraints' => [
-                    new Valid(),
-                ],
-            ]);
-
-            return;
-        }
-
-        if (BlockInterface::IMAGE_BLOCK_TYPE === $block->getType()) {
-            $builder->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.images',
-                'entry_type' => ImageBlockTranslationType::class,
-                'validation_groups' => null === $block->getId() ? ['bitbag_image'] : [],
-                'constraints' => [
-                    new Valid(),
-                ],
-            ]);
-
-            return;
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_block';

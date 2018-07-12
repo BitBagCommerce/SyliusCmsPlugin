@@ -75,3 +75,17 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index"
         tags:
             - { name: fob.context_service }
+
+    bitbag_sylius_cms_plugin.behat.context.ui.admin.media:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\MediaContext
+        arguments:
+            - "@sylius.behat.shared_storage"
+            - "@sylius.behat.current_page_resolver"
+            - "@sylius.behat.notification_checker"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.media.index"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.media.create"
+            - "@bitbag_sylius_cms_plugin.behat.page.admin.media.update"
+            - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
+            - "@__symfony__.bitbag_sylius_cms_plugin.repository.media"
+        tags:
+            - { name: fob.context_service }

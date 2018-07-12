@@ -17,8 +17,5 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListInterface
 {
-    /**
-     * @param string $code
-     */
     public function deletePage(string $code): void;
 }

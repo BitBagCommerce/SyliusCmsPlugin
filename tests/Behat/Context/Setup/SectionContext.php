@@ -17,32 +17,21 @@ use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class SectionContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $sectionFactory;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param FactoryInterface $sectionFactory
-     * @param SectionRepositoryInterface $sectionRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
@@ -55,9 +44,7 @@ final class SectionContext implements Context
         $this->sectionRepository = $sectionRepository;
     }
 
-    /**
-     * @var SectionRepositoryInterface
-     */
+    /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
     /**
@@ -102,15 +89,14 @@ final class SectionContext implements Context
         $this->saveSection($section);
     }
 
-    /**
-     * @param string|null $code
-     *
-     * @return SectionInterface
-     */
-    private function createSection(?string $code = null, string $name = null): SectionInterface
+    private function createSection(?string $code = null, string $name = null, ChannelInterface $channel = null): SectionInterface
     {
         /** @var SectionInterface $section */
         $section = $this->sectionFactory->createNew();
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -123,13 +109,11 @@ final class SectionContext implements Context
         $section->setCode($code);
         $section->setCurrentLocale('en_US');
         $section->setName($name);
+        $section->addChannel($channel);
 
         return $section;
     }
 
-    /**
-     * @param SectionInterface $section
-     */
     private function saveSection(SectionInterface $section): void
     {
         $this->sectionRepository->add($section);

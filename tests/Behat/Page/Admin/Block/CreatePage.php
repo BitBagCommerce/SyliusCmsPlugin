@@ -15,76 +15,43 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillField(string $field, string $value): void
     {
         $this->getDocument()->fillField($field, $value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillCode(string $code): void
     {
         $this->getDocument()->fillField('Code', $code);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function uploadImage(string $image): void
-    {
-        $path = __DIR__ . '/../../../Resources/images/' . $image;
-
-        Assert::fileExists($path);
-
-        $this->getDocument()
-            ->attachFileToField('Choose file', $path);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function fillName(string $name): void
     {
         $this->getDocument()->fillField('Name', $name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillLink(string $link): void
     {
         $this->getDocument()->fillField('Link', $link);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function fillContent(string $content): void
     {
-        $this->getDocument()->fillField('Content', $content);
+        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function disable(): void
     {
         $this->getDocument()->uncheckField('Enabled');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function associateSections(array $sectionsNames): void
     {
         Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
@@ -93,7 +60,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown->click();
 
         foreach ($sectionsNames as $sectionName) {
-            $dropdown->waitFor(5, function () use ($sectionName) {
+            $dropdown->waitFor(10, function () use ($sectionName) {
                 return $this->hasElement('association_dropdown_section_item', [
                     '%item%' => $sectionName,
                 ]);
@@ -107,9 +74,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

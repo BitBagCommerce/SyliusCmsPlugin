@@ -1,0 +1,17 @@
+{% if locales|length > 0 %}
+    {% set selected = locales|first %}
+    {% set code = app.request.query.get('locale', selected.code) %}
+
+    <div class="field">
+        <label for="bitbag_sylius_cms_plugin_locale_switch" class="required">
+            {{ 'sylius.ui.locale'|trans }}
+        </label>
+        <select id="bitbag_sylius_cms_plugin_locale_switch" class=" ui dropdown">
+            {% for locale in locales %}
+                <option value="{{ locale.code }}" {{ locale.code is same as(code) ? 'selected' : '' }}>
+                    {{ locale.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+{% endif %}

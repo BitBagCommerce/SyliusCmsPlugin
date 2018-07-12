@@ -1,0 +1,71 @@
+services:
+    bitbag_sylius_cms_plugin.resolver.resource.page:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@bitbag_sylius_cms_plugin.factory.page"
+            - "code"
+
+    bitbag_sylius_cms_plugin.resolver.resource.section:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@bitbag_sylius_cms_plugin.factory.section"
+            - "code"
+
+    bitbag_sylius_cms_plugin.resolver.resource.block:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@bitbag_sylius_cms_plugin.factory.block"
+            - "code"
+
+    bitbag_sylius_cms_plugin.resolver.resource.media:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@bitbag_sylius_cms_plugin.factory.media"
+            - "code"
+
+    bitbag_sylius_cms_plugin.resolver.block_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@logger"
+            - "@sylius.context.channel"
+
+    bitbag_sylius_cms_plugin.resolver.page_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@sylius.context.locale"
+            - "@logger"
+
+    bitbag_sylius_cms_plugin.resolver.media_type:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaTypeResolver
+
+    bitbag_sylius_cms_plugin.resolver.media_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@logger"
+
+    bitbag_sylius_cms_plugin.resolver.media_provider:
+        class: BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.registry.media_provider"
+
+    bitbag_sylius_cms_plugin.resolver.importer_sections:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.assigner.sections"
+
+    bitbag_sylius_cms_plugin.resolver.importer_channels:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.assigner.channels"
+
+    bitbag_sylius_cms_plugin.resolver.importer_products:
+        class: BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.assigner.products"

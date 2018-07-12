@@ -14,8 +14,5 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour;
 
 interface ChecksCodeImmutabilityInterface
 {
-    /**
-     * @return bool
-     */
     public function isCodeDisabled(): bool;
 }

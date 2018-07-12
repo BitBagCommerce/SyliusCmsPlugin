@@ -17,9 +17,6 @@ use Sylius\Bundle\ProductBundle\Doctrine\ORM\ProductRepository as BaseProductRep
 
 class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function findByNamePart(string $phrase, ?string $locale = null): array
     {
         return $this->createTranslationBasedQueryBuilder($locale)
@@ -30,11 +27,6 @@ class ProductRepository extends BaseProductRepository implements ProductReposito
         ;
     }
 
-    /**
-     * @param string|null $locale
-     *
-     * @return QueryBuilder
-     */
     private function createTranslationBasedQueryBuilder(?string $locale = null): QueryBuilder
     {
         $queryBuilder = $this->createQueryBuilder('o')

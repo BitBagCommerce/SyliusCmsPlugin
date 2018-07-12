@@ -20,9 +20,6 @@ class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
     use ContainsEmptyListTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlocksWithTypeCount(string $type): int
     {
         $tableAccessor = $this->getTableAccessor();
@@ -31,27 +28,8 @@ class IndexPage extends BaseIndexPage implements IndexPageInterface
         return count($tableAccessor->getRowsWithFields($table, ['type' => $type]));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function deleteBlock(string $code): void
     {
         $this->deleteResourceOnPage(['code' => $code]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockTypes(): array
-    {
-        $blockTypes = $this->getDocument()->findAll('css', '#create-block-dropdown a');
-        $result = [];
-
-        /** @var NodeElement $blockType */
-        foreach ($blockTypes as $blockType) {
-            $result[] = $blockType->getText();
-        }
-
-        return $result;
     }
 }

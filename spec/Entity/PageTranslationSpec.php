@@ -56,5 +56,14 @@ final class PageTranslationSpec extends ObjectBehavior
 
         $this->setImage($pageImage);
         $this->getImage()->shouldReturn($pageImage);
+
+        $this->setNameWhenLinked('name linked');
+        $this->getNameWhenLinked()->shouldReturn('name linked');
+
+        $this->setBreadcrumb('name breadcrumb');
+        $this->getBreadcrumb()->shouldReturn('name breadcrumb');
+
+        $this->setDescriptionWhenLinked('description linked');
+        $this->getDescriptionWhenLinked()->shouldReturn('description linked');
     }
 }

@@ -12,70 +12,46 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Exception\TemplateTypeNotFound;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockTemplateResolverInterface;
+use Symfony\Component\Templating\EngineInterface;
 
 final class RenderBlockExtension extends \Twig_Extension
 {
-    /**
-     * @var BlockRepositoryInterface
-     */
+    /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /**
-     * @var BlockTemplateResolverInterface
-     */
-    private $blockTemplateResolver;
-
-    /**
-     * @var BlockResourceResolverInterface
-     */
+    /** @var BlockResourceResolverInterface */
     private $blockResourceResolver;
 
-    /**
-     * @param BlockRepositoryInterface $blockRepository
-     * @param BlockTemplateResolverInterface $blockTemplateResolver
-     * @param BlockResourceResolverInterface $blockResourceResolver
-     */
+    /** @var EngineInterface */
+    private $templatingEngine;
+
     public function __construct(
         BlockRepositoryInterface $blockRepository,
-        BlockTemplateResolverInterface $blockTemplateResolver,
-        BlockResourceResolverInterface $blockResourceResolver
+        BlockResourceResolverInterface $blockResourceResolver,
+        EngineInterface $templatingEngine
     ) {
         $this->blockRepository = $blockRepository;
-        $this->blockTemplateResolver = $blockTemplateResolver;
         $this->blockResourceResolver = $blockResourceResolver;
+        $this->templatingEngine = $templatingEngine;
     }
 
-    /**
-     * @return \Twig_SimpleFunction[]
-     */
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('bitbag_cms_render_block', [$this, 'renderBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_Function('bitbag_cms_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
         ];
     }
 
-    /**
-     * @param \Twig_Environment $twigEnvironment
-     * @param string $code
-     * @param string|null $template
-     *
-     * @return string
-     *
-     * @throws TemplateTypeNotFound
-     */
-    public function renderBlock(\Twig_Environment $twigEnvironment, string $code, ?string $template = null): string
+    public function renderBlock(string $code, ?string $template = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
-            $template = $template ?? $this->blockTemplateResolver->resolveTemplate($block);
+            $template = $template ?? '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
-            return $twigEnvironment->render($template, ['block' => $block]);
+            return $this->templatingEngine->render($template, ['block' => $block]);
         }
 
         return '';

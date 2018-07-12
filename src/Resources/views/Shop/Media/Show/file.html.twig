@@ -1,0 +1,8 @@
+{% if null != media.name %}
+    <h2>{{ media.name }}</h2>
+{% endif %}
+
+<a class="ui labeled icon button primary" href="{{ path('bitbag_sylius_cms_plugin_shop_media_download', {'code': media.code}) }}">
+     <i class="download icon"></i>
+    {{ 'bitbag_sylius_cms_plugin.ui.download'|trans }}
+</a>

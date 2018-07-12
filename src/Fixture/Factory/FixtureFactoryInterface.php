@@ -14,8 +14,5 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 interface FixtureFactoryInterface
 {
-    /**
-     * @param array $data
-     */
     public function load(array $data): void;
 }

@@ -37,20 +37,20 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'page_1' => [
-                        'enabled' => true
-                    ]
-                ]
-            ]
+                        'enabled' => true,
+                    ],
+                ],
+            ],
         ], 'custom.*.enabled');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'page_1' => [
-                        'enabled' => 'boolean'
-                    ]
-                ]
-            ]
+                        'enabled' => 'boolean',
+                    ],
+                ],
+            ],
         ], 'custom.*.enabled');
     }
 
@@ -63,20 +63,20 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'page_1' => [
-                        'translations' => []
-                    ]
-                ]
-            ]
+                        'translations' => [],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'page_1' => [
-                        'translations' => 'array'
-                    ]
-                ]
-            ]
+                        'translations' => 'array',
+                    ],
+                ],
+            ],
         ], 'custom.*.translations');
     }
 
@@ -91,12 +91,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'slug' => 'my-page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'slug' => 'my-page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.slug');
 
         $this->assertConfigurationIsValid([
@@ -105,12 +105,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'slug' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'slug' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.slug');
     }
 
@@ -125,12 +125,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'name' => 'My page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'name' => 'My page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.name');
 
         $this->assertConfigurationIsValid([
@@ -139,12 +139,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'name' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'name' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.name');
     }
 
@@ -159,12 +159,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'meta_keywords' => 'page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'meta_keywords' => 'page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.meta_keywords');
 
         $this->assertConfigurationIsValid([
@@ -173,12 +173,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'meta_keywords' => ''
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'meta_keywords' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.meta_keywords');
     }
 
@@ -193,12 +193,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'meta_description' => 'My page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'meta_description' => 'My page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.meta_description');
 
         $this->assertConfigurationIsValid([
@@ -207,12 +207,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'meta_description' => 'My page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'meta_description' => 'My page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.meta_description');
     }
 
@@ -227,12 +227,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'content' => 'My page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'content' => 'My page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.content');
 
         $this->assertConfigurationIsValid([
@@ -241,12 +241,12 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                     'page_1' => [
                         'translations' => [
                             'en_US' => [
-                                'content' => 'My page'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'content' => 'My page',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ], 'custom.*.translations.*.content');
     }
 
@@ -259,20 +259,20 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'number' => 1
-                    ]
-                ]
-            ]
+                        'number' => 1,
+                    ],
+                ],
+            ],
         ], 'custom.*.number');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'number' => '1'
-                    ]
-                ]
-            ]
+                        'number' => '1',
+                    ],
+                ],
+            ],
         ], 'custom.*.number');
     }
 
@@ -285,20 +285,20 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'remove_existing' => true
-                    ]
-                ]
-            ]
+                        'remove_existing' => true,
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'remove_existing' => 'boolean'
-                    ]
-                ]
-            ]
+                        'remove_existing' => 'boolean',
+                    ],
+                ],
+            ],
         ], 'custom.*.remove_existing');
     }
 
@@ -311,30 +311,30 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'sections' => ['blog', 'homepage']
-                    ]
-                ]
-            ]
+                        'sections' => ['blog', 'homepage'],
+                    ],
+                ],
+            ],
         ], 'custom.*.sections');
 
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'sections' => []
-                    ]
-                ]
-            ]
+                        'sections' => [],
+                    ],
+                ],
+            ],
         ], 'custom.*.sections');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'custom_1' => [
-                        'sections' => ''
-                    ]
-                ]
-            ]
+                        'sections' => '',
+                    ],
+                ],
+            ],
         ], 'custom.*.sections');
 
         $this->assertPartialConfigurationIsInvalid([
@@ -342,9 +342,9 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
                 'custom' => [
                     'custom_1' => [
                         'section_name' => 'blog',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ], 'custom.*.sections');
     }
 
@@ -357,26 +357,23 @@ final class PageFixtureTest extends \PHPUnit_Framework_TestCase
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'products' => 5
-                    ]
-                ]
-            ]
+                        'products' => 5,
+                    ],
+                ],
+            ],
         ], 'custom.*.products');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'enabled' => 'integer'
-                    ]
-                ]
-            ]
+                        'enabled' => 'integer',
+                    ],
+                ],
+            ],
         ], 'custom.*.products');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): PageFixture
     {
         /** @var FixtureFactoryInterface $blockFixtureFactory */

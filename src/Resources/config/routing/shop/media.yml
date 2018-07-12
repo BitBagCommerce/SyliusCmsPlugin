@@ -1,0 +1,42 @@
+bitbag_sylius_cms_plugin_shop_media_render:
+    path: /media/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:renderMediaAction
+        _sylius:
+            repository:
+                method: findOneByCode
+                arguments:
+                    - $code
+
+bitbag_sylius_cms_plugin_shop_media_download:
+    path: /media/download/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:downloadMediaAction
+
+bitbag_sylius_cms_plugin_shop_media_index_by_section_code:
+    path: /media/section/{sectionCode}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findBySectionCode
+                arguments:
+                    - $sectionCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+
+bitbag_sylius_cms_plugin_shop_media_index_by_product_code:
+    path: /media/product/{productCode}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findByProductCode
+                arguments:
+                    - $productCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"

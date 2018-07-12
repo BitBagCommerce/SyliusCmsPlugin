@@ -18,14 +18,9 @@ use Webmozart\Assert\Assert;
 
 final class HomepageBlocksContext implements Context
 {
-    /**
-     * @var HomePageInterface
-     */
+    /** @var HomePageInterface */
     private $blockHomePage;
 
-    /**
-     * @param HomePageInterface $blockHomePage
-     */
     public function __construct(HomePageInterface $blockHomePage)
     {
         $this->blockHomePage = $blockHomePage;
@@ -37,14 +32,6 @@ final class HomepageBlocksContext implements Context
     public function iGoToTheHomepage(): void
     {
         $this->blockHomePage->open();
-    }
-
-    /**
-     * @Then I want to see an image block
-     */
-    public function iWantToSeeAnImageBlock(): void
-    {
-        Assert::true($this->blockHomePage->hasImageBlock());
     }
 
     /**

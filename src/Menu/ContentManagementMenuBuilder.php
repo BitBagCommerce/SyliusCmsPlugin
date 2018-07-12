@@ -16,9 +16,6 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ContentManagementMenuBuilder
 {
-    /**
-     * @param MenuBuilderEvent $menuBuilderEvent
-     */
     public function buildMenu(MenuBuilderEvent $menuBuilderEvent): void
     {
         $menu = $menuBuilderEvent->getMenu();
@@ -58,6 +55,14 @@ final class ContentManagementMenuBuilder
             ])
             ->setLabel('bitbag_sylius_cms_plugin.ui.sections')
             ->setLabelAttribute('icon', 'grid layout')
+        ;
+
+        $cmsRootMenuItem
+            ->addChild('media', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_media_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.media')
+            ->setLabelAttribute('icon', 'file')
         ;
     }
 }

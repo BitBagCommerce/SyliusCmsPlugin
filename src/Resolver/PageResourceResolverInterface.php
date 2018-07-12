@@ -12,14 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 
 interface PageResourceResolverInterface
 {
-    /**
-     * @param string $code
-     *
-     * @return PageInterface|null
-     */
-    public function findOrLog(string $code): ?PageInterface;
+    public function findOrLog(string $code): ?PageContentInterface;
 }

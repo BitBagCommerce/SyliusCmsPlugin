@@ -12,33 +12,22 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolver implements PageResourceResolverInterface
 {
-    /**
-     * @var PageRepositoryInterface
-     */
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /**
-     * @var LocaleContextInterface
-     */
+    /** @var LocaleContextInterface */
     private $localeContext;
 
-    /**
-     * @var LoggerInterface
-     */
+    /** @var LoggerInterface */
     private $logger;
 
-    /**
-     * @param PageRepositoryInterface $pageRepository
-     * @param LocaleContextInterface $localeContext
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
@@ -49,14 +38,11 @@ final class PageResourceResolver implements PageResourceResolverInterface
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function findOrLog(string $code): ?PageInterface
+    public function findOrLog(string $code): ?PageContentInterface
     {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
 
-        if (false === $page instanceof PageInterface) {
+        if (false === $page instanceof PageContentInterface) {
             $this->logger->warning(sprintf(
                 'Page with "%s" code was not found in the database.',
                 $code

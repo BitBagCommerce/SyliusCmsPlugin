@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\EventListener;
 
 use BitBag\SyliusCmsPlugin\Entity\PageImageInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\EventListener\PageImageUploadListener;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -36,9 +36,8 @@ final class PageImageUploadListenerSpec extends ObjectBehavior
 
     function it_does_not_upload_if_not_page_instance(
         ResourceControllerEvent $event,
-        PageInterface $page
-    ): void
-    {
+        PageContentInterface $page
+    ): void {
         $event->getSubject()->willReturn(Argument::any());
 
         $page->getTranslations()->shouldNotBeCalled();
@@ -46,12 +45,11 @@ final class PageImageUploadListenerSpec extends ObjectBehavior
 
     function it_upload_image_for_each_translations(
         ResourceControllerEvent $event,
-        PageInterface $page,
+        PageContentInterface $page,
         PageTranslationInterface $pageTranslation,
         PageImageInterface $pageImage,
         ImageUploaderInterface $pageImageUploader
-    ): void
-    {
+    ): void {
         $event->getSubject()->willReturn($page);
         $page->getTranslations()->willReturn(new ArrayCollection([$pageTranslation->getWrappedObject()]));
         $pageTranslation->getImage()->willReturn($pageImage);

@@ -23,10 +23,6 @@ sylius_grid:
                     sortable: translation.content
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/content.html.twig"
-                type:
-                    type: string
-                    label: sylius.ui.type
-                    sortable: ~
                 enabled:
                     type: twig
                     label: sylius.ui.enabled
@@ -50,8 +46,12 @@ sylius_grid:
                     type: boolean
             actions:
                 main:
+                    import:
+                        type: import
+                        options:
+                            resourceCode: block
                     create:
-                        type: create_block
+                        type: create
                 item:
                     update:
                         type: update

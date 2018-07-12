@@ -1,5 +1,5 @@
 _main:
     resource: routing.yml
-
-sylius_sitemap:
-     resource: "@SitemapPlugin/Resources/config/routing.yml"
+#
+#sylius_sitemap:
+#     resource: "@SitemapPlugin/Resources/config/routing.yml"

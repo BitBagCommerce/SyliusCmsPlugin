@@ -1,0 +1,30 @@
+services:
+    bitbag_sylius_cms_plugin.media_provider.image:
+        class: BitBag\SyliusCmsPlugin\MediaProvider\ImageProvider
+        arguments:
+            - "@bitbag_sylius_cms_plugin.media_uploader"
+            - "@templating.engine.twig"
+            - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/image.html.twig"
+            - "media/image"
+        tags:
+            - { name: bitbag_sylius_cms_plugin.media_provider, type: image, label: bitbag_sylius_cms_plugin.ui.image_provider }
+
+    bitbag_sylius_cms_plugin.media_provider.video:
+        class: BitBag\SyliusCmsPlugin\MediaProvider\VideoProvider
+        arguments:
+            - "@bitbag_sylius_cms_plugin.media_uploader"
+            - "@templating.engine.twig"
+            - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/video.html.twig"
+            - "media/video"
+        tags:
+            - { name: bitbag_sylius_cms_plugin.media_provider, type: video, label: bitbag_sylius_cms_plugin.ui.video_provider }
+
+    bitbag_sylius_cms_plugin.media_provider.file:
+        class: BitBag\SyliusCmsPlugin\MediaProvider\FileProvider
+        arguments:
+            - "@bitbag_sylius_cms_plugin.media_uploader"
+            - "@templating.engine.twig"
+            - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/file.html.twig"
+            - "media/file"
+        tags:
+            - { name: bitbag_sylius_cms_plugin.media_provider, type: file, label: bitbag_sylius_cms_plugin.ui.file_provider }

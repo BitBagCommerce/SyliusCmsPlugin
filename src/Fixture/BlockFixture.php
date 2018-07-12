@@ -18,38 +18,24 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class BlockFixture extends AbstractFixture
 {
-    /**
-     * @var FixtureFactoryInterface
-     */
+    /** @var FixtureFactoryInterface */
     private $blockFixtureFactory;
 
-    /**
-     * @param FixtureFactoryInterface $blockFixtureFactory
-     */
     public function __construct(FixtureFactoryInterface $blockFixtureFactory)
     {
         $this->blockFixtureFactory = $blockFixtureFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $options): void
     {
         $this->blockFixtureFactory->load($options['custom']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'block';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode
@@ -60,7 +46,6 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('last_four_products')->defaultFalse()->end()
-                            ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('sections')

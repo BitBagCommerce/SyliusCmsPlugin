@@ -9,6 +9,7 @@ sylius_grid:
                         method: createShopListQueryBuilder
                         arguments:
                             sectionCode: $sectionCode
+                            channelCode: expr:service('sylius.context.channel').getChannel().getCode()
             sorting:
                 createdAt: desc
             fields:

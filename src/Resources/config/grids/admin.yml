@@ -3,3 +3,4 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/page.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/frequently_asked_question.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/section.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/media.yml" }

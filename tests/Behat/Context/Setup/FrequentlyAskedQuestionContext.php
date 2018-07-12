@@ -16,32 +16,21 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
-    /**
-     * @var SharedStorageInterface
-     */
+    /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @var RandomStringGeneratorInterface
-     */
+    /** @var RandomStringGeneratorInterface */
     private $randomStringGenerator;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $frequentlyAskedQuestionFactory;
 
-    /**
-     * @param SharedStorageInterface $sharedStorage
-     * @param RandomStringGeneratorInterface $randomStringGenerator
-     * @param FactoryInterface $frequentlyAskedQuestionFactory
-     * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         RandomStringGeneratorInterface $randomStringGenerator,
@@ -54,9 +43,7 @@ final class FrequentlyAskedQuestionContext implements Context
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
 
-    /**
-     * @var FrequentlyAskedQuestionRepositoryInterface
-     */
+    /** @var FrequentlyAskedQuestionRepositoryInterface */
     private $frequentlyAskedQuestionRepository;
 
     /**
@@ -105,16 +92,22 @@ final class FrequentlyAskedQuestionContext implements Context
      * @param string|null $code
      * @param int|null $position
      * @param bool $prefixQuestionWithPosition
+     * @param ChannelInterface $channel
      *
      * @return FrequentlyAskedQuestionInterface
      */
     private function createFrequentlyAskedQuestion(
         ?string $code = null,
         int $position = null,
-        bool $prefixQuestionWithPosition = false
+        bool $prefixQuestionWithPosition = false,
+        ChannelInterface $channel = null
     ): FrequentlyAskedQuestionInterface {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
+
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         if (null === $code) {
             $code = $this->randomStringGenerator->generate();
@@ -135,13 +128,11 @@ final class FrequentlyAskedQuestionContext implements Context
         $frequentlyAskedQuestion->setCurrentLocale('en_US');
         $frequentlyAskedQuestion->setQuestion($question);
         $frequentlyAskedQuestion->setAnswer($this->randomStringGenerator->generate());
+        $frequentlyAskedQuestion->addChannel($channel);
 
         return $frequentlyAskedQuestion;
     }
 
-    /**
-     * @param FrequentlyAskedQuestionInterface $frequentlyAskedQuestion
-     */
     private function saveFrequentlyAskedQuestion(FrequentlyAskedQuestionInterface $frequentlyAskedQuestion): void
     {
         $this->frequentlyAskedQuestionRepository->add($frequentlyAskedQuestion);

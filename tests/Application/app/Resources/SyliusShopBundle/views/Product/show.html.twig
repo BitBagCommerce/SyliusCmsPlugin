@@ -56,6 +56,8 @@
         {{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
     </div>
 
+    {{ bitbag_cms_render_product_pages(product) }}
+
     {{ sonata_block_render_event('sylius.shop.product.show.before_tabs', {'product': product}) }}
 
     {% include '@SyliusShop/Product/Show/_tabs.html.twig' %}

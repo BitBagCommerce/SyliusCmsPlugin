@@ -12,16 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
-use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
-    /**
-     * @param string $phrase
-     * @param string|null $locale
-     *
-     * @return array|ProductInterface[]
-     */
     public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

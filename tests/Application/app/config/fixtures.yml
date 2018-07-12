@@ -5,6 +5,7 @@ sylius_fixtures:
     suites:
         default:
             listeners:
+                orm_purger: ~
                 logger: ~
             fixtures:
                 section:
@@ -47,7 +48,7 @@ sylius_fixtures:
                                         image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
                                         link: "/en_US/page/about"
                                         name: |
-                                            <a href="/en_US/page/about" class="italic">Click me! <i class="em em-kiss"></i></a>
+                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
                             homepage_banner_image_2:
                                 type: image
                                 translations:
@@ -190,6 +191,16 @@ sylius_fixtures:
                         custom:
                             lorem_ipsum:
                                 number: 10
+                                translations:
+                                    en_US:
+                                        question: |
+                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
+                                        answer: |
+                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.
+                media:
+                    options:
+                        custom:
+                            test_image:
                                 translations:
                                     en_US:
                                         question: |

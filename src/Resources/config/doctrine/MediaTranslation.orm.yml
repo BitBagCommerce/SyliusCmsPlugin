@@ -1,0 +1,23 @@
+BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
+    type: mappedSuperclass
+    table: bitbag_cms_media_translation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            nullable: true
+        description:
+            column: description
+            type: text
+            nullable: true
+            length: 2000
+        alt:
+            column: alt
+            type: text
+            nullable: true

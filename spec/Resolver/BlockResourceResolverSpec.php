@@ -18,12 +18,14 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 
 final class BlockResourceResolverSpec extends ObjectBehavior
 {
-    function let(BlockRepositoryInterface $blockRepository, LoggerInterface $logger)
+    function let(BlockRepositoryInterface $blockRepository, LoggerInterface $logger, ChannelContextInterface $channelContext)
     {
-        $this->beConstructedWith($blockRepository, $logger);
+        $this->beConstructedWith($blockRepository, $logger, $channelContext);
     }
 
     function it_is_initializable(): void
@@ -36,9 +38,15 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         $this->shouldHaveType(BlockResourceResolverInterface::class);
     }
 
-    function it_logs_warning_if_block_was_not_found(BlockRepositoryInterface $blockRepository, LoggerInterface $logger)
-    {
-        $blockRepository->findOneEnabledByCode('homepage_banner')->willReturn(null);
+    function it_logs_warning_if_block_was_not_found(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger,
+        ChannelContextInterface $channelContext,
+        ChannelInterface $channel
+    ) {
+        $channel->getCode()->willReturn('WEB');
+        $channelContext->getChannel()->willReturn($channel);
+        $blockRepository->findEnabledByCode('homepage_banner', 'WEB')->willReturn(null);
 
         $logger
             ->warning(sprintf(
@@ -51,9 +59,15 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         $this->findOrLog('homepage_banner');
     }
 
-    function it_returns_block_if_found_in_database(BlockRepositoryInterface $blockRepository, BlockInterface $block)
-    {
-        $blockRepository->findOneEnabledByCode('homepage_banner')->willReturn($block);
+    function it_returns_block_if_found_in_database(
+        BlockRepositoryInterface $blockRepository,
+        BlockInterface $block,
+        ChannelContextInterface $channelContext,
+        ChannelInterface $channel
+    ) {
+        $channel->getCode()->willReturn('WEB');
+        $channelContext->getChannel()->willReturn($channel);
+        $blockRepository->findEnabledByCode('homepage_banner', 'WEB')->willReturn($block);
 
         $this->findOrLog('homepage_banner')->shouldReturn($block);
     }

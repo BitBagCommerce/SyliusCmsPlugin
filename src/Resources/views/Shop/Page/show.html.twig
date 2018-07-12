@@ -13,7 +13,7 @@
     <div class="ui breadcrumb">
         <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
         <div class="divider"> /</div>
-        <div class="active section">{{ page.name }}</div>
+        <div class="active section">{{ page.breadcrumb }}</div>
     </div>
     <div class="ui segment">
         <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
@@ -23,7 +23,7 @@
             <img class="page-image ui fluid image" src="{{ path }}" alt="">
         {% endif %}
 
-        <div class="bitbag-page-content">{{ page.content|raw }}</div>
+        <div class="bitbag-page-content">{{ bitbag_cms_render_content(page) }}</div>
         <div class="ui dividing header"></div>
         <div class="bitbag-page-sections">
             {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}

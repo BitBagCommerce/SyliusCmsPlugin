@@ -30,6 +30,7 @@ install:
 
 before_script:
     - (cd tests/Application && bin/console doctrine:schema:drop --force --env=test && bin/console doctrine:schema:create --env=test)
+    - (cd tests/Application && bin/console ckeditor:install --clear=drop)
     - (cd tests/Application && bin/console assets:install web --env=test)
     - (cd tests/Application && yarn run gulp)
 
@@ -40,7 +41,7 @@ before_script:
     # Download and configure ChromeDriver
     - |
         if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ] || [ "$($SYLIUS_CACHE_DIR/chromedriver --version | grep -c 2.34)" = "0" ]; then
-            curl http://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip > chromedriver.zip
+            curl http://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip > chromedriver.zip
             unzip chromedriver.zip
             chmod +x chromedriver
             mv chromedriver $SYLIUS_CACHE_DIR
@@ -52,7 +53,7 @@ before_script:
     # Download and configure Selenium
     - |
         if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.4.0)" = "0" ]; then
-            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
+            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.11.0.jar > selenium.jar
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
 

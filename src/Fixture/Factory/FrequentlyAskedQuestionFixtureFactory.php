@@ -15,43 +15,35 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInterface
 {
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $frequentlyAskedQuestionFactory;
 
-    /**
-     * @var FactoryInterface
-     */
+    /** @var FactoryInterface */
     private $frequentlyAskedQuestionTranslationFactory;
 
-    /**
-     * @var FrequentlyAskedQuestionRepositoryInterface
-     */
+    /** @var FrequentlyAskedQuestionRepositoryInterface */
     private $frequentlyAskedQuestionRepository;
 
-    /**
-     * @param FactoryInterface $frequentlyAskedQuestionFactory
-     * @param FactoryInterface $frequentlyAskedQuestionTranslationFactory
-     * @param FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
-     */
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
     public function __construct(
         FactoryInterface $frequentlyAskedQuestionFactory,
         FactoryInterface $frequentlyAskedQuestionTranslationFactory,
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
+        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        ChannelContextInterface $channelContext
     ) {
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
+        $this->channelContext = $channelContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
@@ -72,11 +64,6 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         }
     }
 
-    /**
-     * @param string $code
-     * @param array $frequentlyAskedQuestionData
-     * @param int $position
-     */
     private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData, int $position): void
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
@@ -85,6 +72,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setEnabled($frequentlyAskedQuestionData['enabled']);
         $frequentlyAskedQuestion->setPosition($position);
+        $frequentlyAskedQuestion->addChannel($this->channelContext->getChannel());
 
         foreach ($frequentlyAskedQuestionData['translations'] as $localeCode => $translation) {
             /** @var FrequentlyAskedQuestionTranslationInterface $frequentlyAskedQuestionTranslation */

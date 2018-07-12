@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType;
+use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -22,9 +23,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class PageType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -47,12 +45,15 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.sections',
                 'multiple' => true,
             ])
+            ->add('channels', ChannelChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+            ])
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'bitbag_sylius_cms_plugin_page';

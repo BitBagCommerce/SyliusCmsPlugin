@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\EventListener;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
@@ -20,27 +20,19 @@ use Webmozart\Assert\Assert;
 
 final class PageImageUploadListener
 {
-    /**
-     * @var ImageUploaderInterface
-     */
+    /** @var ImageUploaderInterface */
     private $uploader;
 
-    /**
-     * @param ImageUploaderInterface $uploader
-     */
     public function __construct(ImageUploaderInterface $uploader)
     {
         $this->uploader = $uploader;
     }
 
-    /**
-     * @param ResourceControllerEvent $event
-     */
     public function uploadImage(ResourceControllerEvent $event): void
     {
         $page = $event->getSubject();
 
-        Assert::isInstanceOf($page, PageInterface::class);
+        Assert::isInstanceOf($page, PageContentInterface::class);
 
         /** @var PageTranslationInterface $translation */
         foreach ($page->getTranslations() as $translation) {

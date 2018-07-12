@@ -18,24 +18,21 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-class Page implements PageInterface
+class Page implements PageContentInterface
 {
     use ToggleableTrait;
     use ProductsAwareTrait;
     use SectionableTrait;
     use TimestampableTrait;
+    use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
 
-    /**
-     * @var int|null
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string|null
-     */
+    /** @var string */
     protected $code;
 
     public function __construct()
@@ -43,133 +40,117 @@ class Page implements PageInterface
         $this->initializeProductsCollection();
         $this->initializeSectionsCollection();
         $this->initializeTranslationsCollection();
+        $this->initializeChannelsCollection();
+        $this->initializeChannelsCollection();
 
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setId(?int $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCode(): ?string
     {
         return $this->code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSlug(): ?string
     {
         return $this->getPageTranslation()->getSlug();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSlug(?string $slug): void
     {
         $this->getPageTranslation()->setSlug($slug);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMetaKeywords(): ?string
     {
         return $this->getPageTranslation()->getMetaKeywords();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMetaKeywords(?string $metaKeywords): void
     {
         $this->getPageTranslation()->setMetaKeywords($metaKeywords);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMetaDescription(): ?string
     {
         return $this->getPageTranslation()->getMetaDescription();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMetaDescription(?string $metaDescription): void
     {
         $this->getPageTranslation()->setMetaDescription($metaDescription);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getContent(): ?string
     {
         return $this->getPageTranslation()->getContent();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setContent(?string $content): void
     {
         $this->getPageTranslation()->setContent($content);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->getPageTranslation()->getName();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->getPageTranslation()->setName($name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function getNameWhenLinked(): ?string
+    {
+        return $this->getPageTranslation()->getNameWhenLinked();
+    }
+
+    public function setNameWhenLinked(?string $nameWhenLinked): void
+    {
+        $this->getPageTranslation()->setNameWhenLinked($nameWhenLinked);
+    }
+
+    public function getDescriptionWhenLinked(): ?string
+    {
+        return $this->getPageTranslation()->getDescriptionWhenLinked();
+    }
+
+    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void
+    {
+        $this->getPageTranslation()->setDescriptionWhenLinked($descriptionWhenLinked);
+    }
+
+    public function getBreadcrumb(): ?string
+    {
+        return $this->getPageTranslation()->getBreadcrumb();
+    }
+
+    public function setBreadcrumb(?string $breadcrumb): void
+    {
+        $this->getPageTranslation()->setBreadcrumb($breadcrumb);
+    }
+
     public function getImage(): ?ImageInterface
     {
         return $this->getPageTranslation()->getImage();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setImage(?ImageInterface $image): void
     {
         $this->getPageTranslation()->setImage($image);
@@ -183,9 +164,6 @@ class Page implements PageInterface
         return $this->getTranslation();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): ?PageTranslationInterface
     {
         return new PageTranslation();

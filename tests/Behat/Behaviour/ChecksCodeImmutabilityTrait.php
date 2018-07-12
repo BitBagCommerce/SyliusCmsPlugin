@@ -18,9 +18,6 @@ trait ChecksCodeImmutabilityTrait
 {
     use DocumentAccessor;
 
-    /**
-     * @return bool
-     */
     public function isCodeDisabled(): bool
     {
         return 'disabled' === $this->getDocument()->findField('Code')->getAttribute('disabled');

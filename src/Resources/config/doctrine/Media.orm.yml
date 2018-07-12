@@ -1,0 +1,60 @@
+BitBag\SyliusCmsPlugin\Entity\Media:
+    type: mappedSuperclass
+    table: bitbag_cms_media
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            column: code
+            type: string
+            length: 250
+            unique: true
+        type:
+            column: type
+            type: string
+            length: 250
+        path:
+            column: path
+            type: string
+            length: 250
+            unique: true
+        originalPath:
+            column: original_path
+            type: string
+            length: 250
+            unique: true
+        mimeType:
+            column: mime_typ
+            type: string
+            length: 250
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+    manyToMany:
+        sections:
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
+            joinTable:
+                name: bitbag_cms_media_sections
+                joinColumns:
+                    media_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    section_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+        products:
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
+            joinTable:
+                name: bitbag_cms_media_products
+                joinColumns:
+                    media_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    product_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE

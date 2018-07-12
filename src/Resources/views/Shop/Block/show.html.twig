@@ -1,0 +1,8 @@
+<div class="bitbag-block">
+    {% if null != block.name %}
+        <h2>{{ block.name }}</h2>
+    {% endif %}
+    <p>
+        {{ bitbag_cms_render_content(block) }}
+    </p>
+</div>

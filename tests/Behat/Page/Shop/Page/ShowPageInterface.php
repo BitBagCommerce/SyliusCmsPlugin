@@ -16,43 +16,15 @@ use Sylius\Behat\Page\SymfonyPageInterface;
 
 interface ShowPageInterface extends SymfonyPageInterface
 {
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function hasName(string $name): bool;
 
-    /**
-     * @param string $content
-     *
-     * @return bool
-     */
     public function hasContent(string $content): bool;
 
-    /**
-     * @param array $productsNames
-     *
-     * @return bool
-     */
     public function hasProducts(array $productsNames): bool;
 
-    /**
-     * @param array $sectionNames
-     *
-     * @return bool
-     */
     public function hasSections(array $sectionNames): bool;
 
-    /**
-     * @param string $linkName
-     *
-     * @return bool
-     */
     public function hasPageLink(string $linkName): bool;
 
-    /**
-     * @return bool
-     */
     public function hasPageImage(): bool;
 }

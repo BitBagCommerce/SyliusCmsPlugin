@@ -19,9 +19,6 @@ class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
     use ContainsEmptyListTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function deletePage(string $code): void
     {
         $this->deleteResourceOnPage(['code' => $code]);

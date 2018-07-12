@@ -28,8 +28,7 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         MenuBuilderEvent $menuBuilderEvent,
         ItemInterface $menu,
         ItemInterface $cmsRootMenuItem
-    ): void
-    {
+    ): void {
         $menuBuilderEvent->getMenu()->willReturn($menu);
         $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.cms')->willReturn($cmsRootMenuItem);
@@ -60,6 +59,13 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         ;
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.sections')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
+
+        $cmsRootMenuItem
+            ->addChild('media', ['route' => 'bitbag_sylius_cms_plugin_admin_media_index'])
+            ->willReturn($cmsRootMenuItem)
+        ;
+        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.media')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'file')->shouldBeCalled();
 
         $this->buildMenu($menuBuilderEvent);
     }

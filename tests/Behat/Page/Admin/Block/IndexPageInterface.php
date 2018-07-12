@@ -17,20 +17,7 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListInterface
 {
-    /**
-     * @param string $type
-     *
-     * @return int
-     */
     public function getBlocksWithTypeCount(string $type): int;
 
-    /**
-     * @param string $code
-     */
     public function deleteBlock(string $code): void;
-
-    /**
-     * @return array
-     */
-    public function getBlockTypes(): array;
 }

@@ -1,7 +1,5 @@
 imports:
     - { resource: "config.yml" }
-    - { resource: "@SitemapPlugin/Resources/config/config.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
 
 doctrine:
     dbal:
@@ -10,3 +8,16 @@ doctrine:
 framework:
     router:
         resource: "%kernel.root_dir%/config/routing_dev.yml"
+    profiler:
+        enabled: true
+
+monolog:
+    handlers:
+        main:
+            type: fingers_crossed
+            action_level: error
+            handler: nested
+        nested:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug

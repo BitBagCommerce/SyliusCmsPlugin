@@ -9,3 +9,5 @@ bitbag_sylius_cms_plugin_shop_section_show:
                 method: findOneByCode
                 arguments:
                     - $code
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"

@@ -12,46 +12,28 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use Doctrine\ORM\QueryBuilder;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface PageRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param string $locale
-     *
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(string $locale): QueryBuilder;
 
-    /**
-     * @param bool $enabled
-     *
-     * @return array|PageInterface[]
-     */
-    public function findByEnabled(bool $enabled): array;
+    public function findEnabled(bool $enabled): array;
 
-    /**
-     * @param string $code
-     * @param string|null $localeCode
-     *
-     * @return PageInterface|null
-     */
-    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface;
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageContentInterface;
 
-    /**
-     * @param string $slug
-     * @param string $localeCode
-     *
-     * @return PageInterface|null
-     */
-    public function findOneEnabledBySlug(string $slug, ?string $localeCode): ?PageInterface;
+    public function findOneEnabledBySlugAndChannelCode(
+        string $slug,
+        ?string $localeCode,
+        string $channelCode
+    ): ?PageContentInterface;
 
-    /**
-     * @param string $sectionCode
-     *
-     * @return QueryBuilder
-     */
-    public function createShopListQueryBuilder(string $sectionCode): QueryBuilder;
+    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
+
+    public function findByProduct(ProductInterface $product, string $channelCode): array;
+
+    public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array;
 }

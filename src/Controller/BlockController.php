@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -20,11 +21,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class BlockController extends ResourceController
 {
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
+    const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+
     public function renderBlockAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
@@ -33,7 +31,6 @@ final class BlockController extends ResourceController
 
         $code = $request->get('code');
         $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
-
         $block = $blockResourceResolver->findOrLog($code);
 
         if (null === $block) {
@@ -43,8 +40,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         $view = View::create($block);
-        $blockTemplateResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_template');
-        $template = $request->get('template') ?? $blockTemplateResolver->resolveTemplate($block);
+        $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
 
         if ($configuration->isHtmlRequest()) {
             $view
@@ -58,6 +54,36 @@ final class BlockController extends ResourceController
                 ])
             ;
         }
+
+        return $this->viewHandler->handle($configuration, $view);
+    }
+
+    public function previewAction(Request $request): Response
+    {
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
+        /** @var BlockInterface $block */
+        $block = $this->newResourceFactory->create($configuration, $this->factory);
+        $form = $this->resourceFormFactory->create($configuration, $block);
+
+        $form->handleRequest($request);
+
+        /** @var BlockInterface $block */
+        $block = $form->getData();
+        $defaultLocale = $this->getParameter('locale');
+
+        $block->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $block->setCurrentLocale($request->get('_locale', $defaultLocale));
+
+        $view = View::create()
+            ->setData([
+                'resource' => $block,
+                $this->metadata->getName() => $block,
+                'blockTemplate' => self::BLOCK_TEMPLATE,
+            ])
+            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
+        ;
 
         return $this->viewHandler->handle($configuration, $view);
     }

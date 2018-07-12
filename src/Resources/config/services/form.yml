@@ -7,24 +7,11 @@ services:
         tags:
             - { name: form.type }
 
-    bitbag_sylius_cms_plugin.form.type.translation.text_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\TextBlockTranslationType
+    bitbag_sylius_cms_plugin.form.type.translation.block:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
-        tags:
-            - { name: form.type }
-
-    bitbag_sylius_cms_plugin.form.type.translation.html_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\HtmlBlockTranslationType
-        arguments:
-            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
-        tags:
-            - { name: form.type }
-
-    bitbag_sylius_cms_plugin.form.type.translation.image_block:
-        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\ImageBlockTranslationType
-        arguments:
-            - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
+            - ['bitbag']
         tags:
             - { name: form.type }
 
@@ -89,5 +76,34 @@ services:
         arguments:
             - "%bitbag_sylius_cms_plugin.model.section_translation.class%"
             - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.import:
+        class: BitBag\SyliusCmsPlugin\Form\Type\ImportType
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.translation.media:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType
+        arguments:
+            - "%bitbag_sylius_cms_plugin.model.media_translation.class%"
+            - ['bitbag']
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.media:
+        class: BitBag\SyliusCmsPlugin\Form\Type\MediaType
+        arguments:
+            - "%bitbag_sylius_cms_plugin.model.media.class%"
+            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.media_providers%"
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.wysiwyg:
+        class: BitBag\SyliusCmsPlugin\Form\Type\WysiwygType
+        arguments:
+            - "@router.default"
         tags:
             - { name: form.type }

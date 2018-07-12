@@ -12,28 +12,17 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
-interface SectionInterface extends ResourceInterface, TranslatableInterface
+interface SectionInterface extends ResourceInterface, TranslatableInterface, ChannelsAwareInterface
 {
-    /**
-     * @return string|null
-     */
     public function getCode(): ?string;
 
-    /**
-     * @param string|null $code
-     */
     public function setCode(?string $code): void;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void;
 }

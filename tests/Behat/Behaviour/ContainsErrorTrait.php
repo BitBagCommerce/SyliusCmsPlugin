@@ -19,12 +19,6 @@ trait ContainsErrorTrait
 {
     use DocumentAccessor;
 
-    /**
-     * @param string $message
-     * @param bool $strict
-     *
-     * @return bool
-     */
     public function containsErrorWithMessage(string $message, bool $strict = true): bool
     {
         $validationMessageElements = $this->getDocument()->findAll('css', '.sylius-validation-error');

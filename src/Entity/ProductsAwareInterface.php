@@ -24,20 +24,9 @@ interface ProductsAwareInterface
      */
     public function getProducts(): Collection;
 
-    /**
-     * @param ProductInterface $product
-     *
-     * @return bool
-     */
     public function hasProduct(ProductInterface $product): bool;
 
-    /**
-     * @param ProductInterface $product
-     */
     public function addProduct(ProductInterface $product): void;
 
-    /**
-     * @param ProductInterface $product
-     */
     public function removeProduct(ProductInterface $product): void;
 }

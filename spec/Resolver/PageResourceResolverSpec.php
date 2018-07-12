@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
@@ -41,8 +41,7 @@ final class PageResourceResolverSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $localeContext->getLocaleCode()->willReturn('en_US');
         $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn(null);
 
@@ -60,9 +59,8 @@ final class PageResourceResolverSpec extends ObjectBehavior
     function it_returns_page_if_found_in_database(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
-        PageInterface $page
-    )
-    {
+        PageContentInterface $page
+    ) {
         $localeContext->getLocaleCode()->willReturn('en_US');
         $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn($page);
 
