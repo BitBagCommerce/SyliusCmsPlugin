@@ -161,40 +161,6 @@ final class BlockFixtureTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function custom_type_is_required_and_cannot_be_empty(): void
-    {
-        $this->assertConfigurationIsValid([
-            [
-                'custom' => [
-                    'homepage_banner' => [
-                        'type' => true,
-                    ],
-                ],
-            ],
-        ], 'custom.*.type');
-
-        $this->assertPartialConfigurationIsInvalid([
-            [
-                'custom' => [
-                    'custom_1' => [
-                        'type' => '',
-                    ],
-                ],
-            ],
-        ], 'custom.*.type');
-
-        $this->assertPartialConfigurationIsInvalid([
-            [
-                'custom' => [
-                    'custom_1' => [],
-                ],
-            ],
-        ], 'custom.*.type');
-    }
-
-    /**
-     * @test
-     */
     public function custom_translations_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([

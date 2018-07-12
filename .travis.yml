@@ -31,6 +31,7 @@ install:
 before_script:
     - (cd tests/Application && bin/console doctrine:schema:drop --force --env=test && bin/console doctrine:schema:create --env=test)
     - (cd tests/Application && bin/console assets:install web --env=test)
+    - (cd tests/Application && bin/console ckeditor:install)
     - (cd tests/Application && yarn run gulp)
 
     # Configure display
