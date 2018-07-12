@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="http://bitbag.shop" target="_blank">
-        <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png" />
+        <img src="doc/logo.png" />
     </a>
     <br />
     <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
