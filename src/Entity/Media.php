@@ -128,6 +128,16 @@ class Media implements MediaInterface
         $this->mimeType = $mimeType;
     }
 
+    public function getName(): ?string
+    {
+        return $this->getMediaTranslation()->getName();
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->getMediaTranslation()->setName($name);
+    }
+
     public function getDescription(): ?string
     {
         return $this->getMediaTranslation()->getDescription();
@@ -138,14 +148,14 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setDescription($description);
     }
 
-    public function getName(): ?string
+    public function getAlt(): ?string
     {
-        return $this->getMediaTranslation()->getName();
+        return $this->getMediaTranslation()->getAlt();
     }
 
-    public function setName(?string $name): void
+    public function setAlt(?string $alt): void
     {
-        $this->getMediaTranslation()->setName($name);
+        $this->getMediaTranslation()->setAlt($alt);
     }
 
     /**

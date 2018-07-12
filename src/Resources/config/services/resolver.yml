@@ -20,6 +20,13 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.block"
             - "code"
 
+    bitbag_sylius_cms_plugin.resolver.resource.media:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@bitbag_sylius_cms_plugin.factory.media"
+            - "code"
+
     bitbag_sylius_cms_plugin.resolver.block_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
         arguments:

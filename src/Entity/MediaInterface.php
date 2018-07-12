@@ -54,11 +54,15 @@ interface MediaInterface extends
 
     public function setMimeType(?string $mimeType): void;
 
+    public function getName(): ?string;
+
+    public function setName(?string $name): void;
+
     public function getDescription(): ?string;
 
     public function setDescription(?string $description): void;
 
-    public function getName(): ?string;
+    public function getAlt(): ?string;
 
-    public function setName(?string $name): void;
+    public function setAlt(?string $alt): void;
 }

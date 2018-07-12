@@ -28,3 +28,14 @@ services:
             - "@doctrine.orm.entity_manager"
         tags:
             - { name: bitbag.importer }
+
+    bitbag_sylius_cms_plugin.importer.media:
+        class: BitBag\SyliusCmsPlugin\Importer\MediaImporter
+        arguments:
+            - "@bitbag_sylius_cms_plugin.resolver.resource.media"
+            - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
+            - "@bitbag_sylius_cms_plugin.resolver.importer_products"
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: bitbag.importer }

@@ -29,6 +29,10 @@ sylius_grid:
                         fields: [code, type]
             actions:
                 main:
+                    import:
+                        type: import
+                        options:
+                            resourceCode: media
                     create:
                         type: create
                 item:
