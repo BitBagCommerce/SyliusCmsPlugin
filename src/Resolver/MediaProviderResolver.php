@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 
 final class MediaProviderResolver implements MediaProviderResolverInterface

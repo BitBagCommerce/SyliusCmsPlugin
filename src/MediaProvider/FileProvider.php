@@ -10,8 +10,8 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Media\Provider;
+namespace BitBag\SyliusCmsPlugin\MediaProvider;
 
-final class VideoProvider extends AbstractProvider implements ProviderInterface
+final class FileProvider extends AbstractProvider implements ProviderInterface
 {
 }

@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Media\Provider;
+namespace spec\BitBag\SyliusCmsPlugin\MediaProvider;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Media\Provider\VideoProvider;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\VideoProvider;
 use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

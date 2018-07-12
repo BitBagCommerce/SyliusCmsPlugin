@@ -10,8 +10,13 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Media\Provider;
+namespace BitBag\SyliusCmsPlugin\MediaProvider;
 
-final class ImageProvider extends AbstractProvider implements ProviderInterface
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+
+interface ProviderInterface
 {
+    public function render(MediaInterface $media, array $options = []): string;
+
+    public function upload(MediaInterface $media): void;
 }

@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Media\Provider;
+namespace BitBag\SyliusCmsPlugin\MediaProvider;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;

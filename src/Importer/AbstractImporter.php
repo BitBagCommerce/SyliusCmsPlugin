@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Importer;
 
+use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 abstract class AbstractImporter implements ImporterInterface
 {
     public function cleanup(): void
@@ -53,5 +56,10 @@ abstract class AbstractImporter implements ImporterInterface
         }
 
         return array_unique($locales);
+    }
+
+    protected function validateResource(ResourceInterface $resource, ValidatorInterface $validator, array $groups): void
+    {
+        $validator->validate($resource, null, $groups);
     }
 }

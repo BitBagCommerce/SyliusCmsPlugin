@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension;

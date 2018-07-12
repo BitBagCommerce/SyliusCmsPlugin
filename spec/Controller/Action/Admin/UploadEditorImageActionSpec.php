@@ -14,7 +14,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Controller\Action\Admin;
 
 use BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use PhpSpec\ObjectBehavior;

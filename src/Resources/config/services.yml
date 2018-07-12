@@ -11,7 +11,7 @@ imports:
     - { resource: services/assigner.yml }
 
 parameters:
-    bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface
+    bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface
 
 services:
     bitbag_sylius_cms_plugin.reader.csv:

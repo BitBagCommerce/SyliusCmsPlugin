@@ -210,8 +210,8 @@ Or rendering a media code directly:
 You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
 
 ```php
-app.media_provider.media.audio:
-    class: BitBag\SyliusCmsPlugin\Media\Provider\AudioProvider
+app.media_provider.audio:
+    class: BitBag\SyliusCmsPlugin\MediaProvider\AudioProvider
     arguments:
         - "@bitbag_sylius_cms_plugin.media_uploader"
         - "@templating.engine.twig"

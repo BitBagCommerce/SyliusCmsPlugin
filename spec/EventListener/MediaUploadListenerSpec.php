@@ -14,7 +14,7 @@ namespace spec\BitBag\SyliusCmsPlugin\EventListener;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\EventListener\MediaUploadListener;
-use BitBag\SyliusCmsPlugin\Media\Provider\ProviderInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
