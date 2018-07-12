@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 interface MediaImporterInterface extends ImporterInterface
 {
     const CODE_COLUMN = 'code';
+    const TYPE_COLUMN = 'type';
     const SECTIONS_COLUMN = 'sections';
     const CHANNELS_COLUMN = 'channels';
     const PRODUCTS_COLUMN = 'products';

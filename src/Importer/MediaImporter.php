@@ -64,6 +64,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         $media = $this->mediaResourceResolver->getResource($code);
 
         $media->setCode($code);
+        $media->setType($this->getColumnValue(self::TYPE_COLUMN, $row));
         $media->setFallbackLocale($this->localeContext->getLocaleCode());
 
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
