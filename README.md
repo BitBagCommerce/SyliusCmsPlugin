@@ -103,7 +103,7 @@ $ bin/console assets:install
 $ bin/console sylius:theme:assets:install
 ```
 
-### Optional, Sitemap integration
+### Sitemap integration
 This plugin has a ready to go integration with [Sylius Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
 
 To enable the integration you need to add the following to your `app/config/config.yml` file:
@@ -210,15 +210,15 @@ Or rendering a media code directly:
 You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
 
 ```php
-app.media_provider.media.mp3:
-    class: BitBag\SyliusCmsPlugin\Media\Provider\Mp3Provider
+app.media_provider.media.audio:
+    class: BitBag\SyliusCmsPlugin\Media\Provider\AudioProvider
     arguments:
         - "@bitbag_sylius_cms_plugin.media_uploader"
         - "@templating.engine.twig"
-        - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/mp3.html.twig"
-        - "media/mp3"
+        - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/audio.html.twig"
+        - "media/audio"
     tags:
-        - { name: bitbag_sylius_cms_plugin.media_provider, type: mp3, label: bitbag_sylius_cms_plugin.ui.mp3_provider }
+        - { name: bitbag_sylius_cms_plugin.media_provider, type: audio, label: bitbag_sylius_cms_plugin.ui.audio_provider }
 ```
 
 ### Fixtures
