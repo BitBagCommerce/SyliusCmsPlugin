@@ -201,8 +201,9 @@ sylius_grid:
                 
                     # ...default actions
                     #
-                    # If you decide to override the admin products importer, you need to copy all default actions, 
-                    # as this config will be overridden :)
+                    # If you decide to override the admin products importer, 
+                    # you need to copy all default actions, as this config 
+                    # will be overridden :)
                     
                     import:
                         type: import
