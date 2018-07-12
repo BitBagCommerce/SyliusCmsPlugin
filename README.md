@@ -22,7 +22,10 @@
 
 ## Overview
 
-Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQs section.
+Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries 
+like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the 
+standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows 
+you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQs section.
 
 ## Support
 
@@ -43,211 +46,21 @@ We also recorded a webinar which presents most of the plugin features, including
 
 </div>
 
-## Installation
-```bash
-$ composer require bitbag/cms-plugin
-```
-    
-Add plugin dependencies to your AppKernel.php file (note the new compiler pass):
-```php
-public function registerBundles()
-{
-    return array_merge(parent::registerBundles(), [
-        ...
-        
-        new \FOS\CKEditorBundle\FOSCKEditorBundle(), // WYSIWYG editor
-        new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
-    ]);
-}
+## Documentation
 
-protected function build(ContainerBuilder $container)
-{
-    ...
+- [Installation](doc/installation.md)
+- [Blocks](doc/blocks.md)
+- [Pages](doc/pages.md)
+- [Sections](doc/sections.md)
+- [Medias](doc/medias.md)
+- [FAQs](doc/faqs.md)
+- [Fixtures](doc/fixtures.md)
+- [WYSIWYG](doc/wysiwyg.md)
+- [Customization](doc/customization.md)
 
-    $container->addCompilerPass(new \BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass());
-}
-```
-
-Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
-
-```bash
-$ bin/console ckeditor:install
-```
-
-Import required config in your `app/config/config.yml` file:
-
-```yaml
-# app/config/config.yml
-
-imports:
-    ...
-    
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
-```
-
-Import routing in your `app/config/routing.yml` file:
-
-```yaml
-
-# app/config/routing.yml
-...
-
-bitbag_sylius_cms_plugin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
-```
-
-Finish the installation by updating the database schema and installing assets:
-```
-$ bin/console doctrine:schema:update --force
-$ bin/console assets:install
-$ bin/console sylius:theme:assets:install
-```
-
-### Sitemap integration
-This plugin has a ready to go integration with [Sylius Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
-
-To enable the integration you need to add the following to your `app/config/config.yml` file:
-```yaml
-# app/config/config.yml
-imports:
-    ...
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
-```
-
-## Usage
-
-### Blocks
-
-If you don't know how to override templates yet, read  [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
-
-In the admin panel, you can now create image and text blocks. Both can be rendered in your twig templates using `bitbag_cms_render_block([block_code])` helper extension.
-For instance, let's assume you have created a block with `homepage_text_block` code and want to render it on store homepage.
-In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add the twig filter like this:
-
-```twig
-{% extends '@SyliusShop/layout.html.twig' %}
-
-{% block content %}
-
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
-
-{{ bitbag_cms_render_block('homepage_text_block') }}
-
-{% endblock %}
-```
-
-To render a block by the product code, you can use `route`.
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
-```
-
-### Pages
-
-You can render page in two ways:
-
-By rendering a page link template:
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
-```
-
-Or rendering a page link directly:
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
-```
-
-### Pages for product grouped by section
-
-You can render page by function Twig:
-
-```twig
-{{ bitbag_cms_render_product_pages(product) }}
-```
-
-### Sections
-
-With sections, you can organize your blocks and pages under some specific categories.
-For instance, you can create a Blog section and display pages and blocks under it. You also have a set of routes to do it:
-
-```twig
-<a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_section_code', {'sectionCode' : 'blog'}) }}">
-    {{ 'app.ui.blog'|trans }}
-</a>
-```
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'blog', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
-```
-
-### FAQs
-
-To render FAQs list, use the `bitbag_sylius_cms_plugin_shop_frequently_asked_question_index` route.
-
-```twig
-<a href="{{ path('bitbag_sylius_cms_plugin_shop_frequently_asked_question_index') }}">{{ 'app.ui.faqs'|trans }}</a>
-```
-
-### Media
-
-You can render media in two ways:
-
-By rendering a media code template:
-
-```twig
-{{ bitbag_cms_render_media('media_code') }}
-```
-
-Or rendering a media code directly:
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_media_render', {'code' : 'file', 'template' : '@App/Some/Template/_path.html.twig'})) }}
-```
-
-### Media provider
-
-You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
-
-```php
-app.media_provider.audio:
-    class: BitBag\SyliusCmsPlugin\MediaProvider\AudioProvider
-    arguments:
-        - "@bitbag_sylius_cms_plugin.media_uploader"
-        - "@templating.engine.twig"
-        - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/audio.html.twig"
-        - "media/audio"
-    tags:
-        - { name: bitbag_sylius_cms_plugin.media_provider, type: audio, label: bitbag_sylius_cms_plugin.ui.audio_provider }
-```
-
-### Fixtures
-
-Sometimes you'll need to set up your environment quickly or even load some primary CMS data on your server. You can take a look at `tests/Application/app/config/fixtures.yml` file to see how you can configure fixtures.
-
-### WYSIWYG Editor (CKEditor or any other which supports Symfony)
-
-For now you can install CKEditor, create proper form extension and replace `Textarea[Text]Type::class` with `CKEditorType::class`.
-For more - take a look at [FriendsOfSylius WYSIWYG step by step guide](https://github.com/FriendsOfSylius/SyliusGoose/blob/master/StepByStep/WYSIWYG_EDITOR_IN_ANY_FORM.md).
-To see which forms you may want to extend, run `$ bin/console debug:container | grep bitbag_sylius_cms_plugin.form` command.
-
-### Use-case
+### Demo
 
 Go to the `tests/Application/app/Resources` or visit [cms.bitbag.shop](https://cms.bitbag.shop) demo page.
-
-## Testing
-```bash
-$ composer install
-$ cd tests/Application
-$ yarn install
-$ yarn run gulp
-$ bin/console assets:install web -e test
-$ bin/console doctrine:schema:create -e test
-$ bin/console server:run 127.0.0.1:8080 -d web -e test
-$ open http://localhost:8080
-$ bin/behat
-$ bin/phpspec run
-```
 
 ## Contribution
 
