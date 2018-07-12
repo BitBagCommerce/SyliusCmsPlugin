@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_admin_block:
     resource: |
         alias: bitbag_sylius_cms_plugin.block
         section: admin
-        templates: BitBagSyliusCmsPlugin:Block
+        templates: BitBagSyliusCmsPlugin:CrudUi
         except: ['show']
         redirect: update
         grid: bitbag_sylius_cms_plugin_admin_block
@@ -19,24 +19,6 @@ bitbag_sylius_cms_plugin_admin_block:
                 parameters:
                     code: $type
     type: sylius.resource
-
-bitbag_sylius_cms_plugin_admin_block_create:
-    path: /blocks/new
-    methods: [GET, POST]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block:createAction
-        _sylius:
-            section: admin
-            template: BitBagSyliusCmsPlugin:Block:create.html.twig
-            redirect:
-                route: bitbag_sylius_cms_plugin_admin_block_update
-                parameters: ~
-            permission: true
-            vars:
-                header: bitbag_sylius_cms_plugin.ui.blocks_header
-                subheader: bitbag_sylius_cms_plugin.ui.blocks_subheader
-                templates:
-                    form: BitBagSyliusCmsPlugin:Block:Crud/_form.html.twig
 
 bitbag_sylius_cms_plugin_admin_block_preview:
     path: /block/preview/{type}
