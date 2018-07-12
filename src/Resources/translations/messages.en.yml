@@ -7,9 +7,6 @@ bitbag_sylius_cms_plugin:
         enabled: Enabled
         blocks_header: Blocks
         blocks_subheader: Manage your blocks
-        text_block: Text block
-        html_block: HTML block
-        image_block: Image block
         pages_header: Pages
         pages_subheader: Manage your pages
         products: Products
