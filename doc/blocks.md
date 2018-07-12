@@ -3,7 +3,7 @@
 Blocks represent single parts of your Sylius web app, where you can put some content hardcoded in the 
 template and change it in the future from admin panel.
 
-## General usage 
+## General usage
 
 In the admin panel, you can create block resources. It could be rendered in your twig templates using `bitbag_cms_render_block([block_code])` helper extension.
 For instance, let's assume you created a block with `homepage_intro` code and want to render it on store homepage.

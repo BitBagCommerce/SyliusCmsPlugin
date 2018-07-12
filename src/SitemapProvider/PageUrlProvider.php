@@ -27,7 +27,7 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class PageUrlProvider implements UrlProviderInterface
+final class PageUrlProvider implements UrlProviderInterface
 {
     /** @var PageRepositoryInterface */
     private $pageRepository;
@@ -44,19 +44,14 @@ class PageUrlProvider implements UrlProviderInterface
     /** @var ChannelContextInterface */
     private $channelContext;
 
-    /** @var array */
-    private $urls = [];
-
-    /** @var */
-    private $channelLocaleCodes;
-
     public function __construct(
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
         SitemapUrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext
-    ) {
+    )
+    {
         $this->pageRepository = $pageRepository;
         $this->router = $router;
         $this->sitemapUrlFactory = $sitemapUrlFactory;
@@ -71,11 +66,13 @@ class PageUrlProvider implements UrlProviderInterface
 
     public function generate(): iterable
     {
+        $urls = [];
+
         foreach ($this->getPages() as $product) {
-            $this->urls[] = $this->createPageUrl($product);
+            $urls[] = $this->createPageUrl($product);
         }
 
-        return $this->urls;
+        return $urls;
     }
 
     private function getTranslations(PageContentInterface $page): Collection
@@ -92,21 +89,17 @@ class PageUrlProvider implements UrlProviderInterface
 
     private function getPages(): iterable
     {
-        return $this->pageRepository->findByEnabled(true);
+        return $this->pageRepository->findEnabled(true);
     }
 
     private function getLocaleCodes(): array
     {
-        if (null === $this->channelLocaleCodes) {
-            /** @var ChannelInterface $channel */
-            $channel = $this->channelContext->getChannel();
+        /** @var ChannelInterface $channel */
+        $channel = $this->channelContext->getChannel();
 
-            $this->channelLocaleCodes = $channel->getLocales()->map(function (LocaleInterface $locale) {
-                return $locale->getCode();
-            })->toArray();
-        }
-
-        return $this->channelLocaleCodes;
+        return $channel->getLocales()->map(function (LocaleInterface $locale) {
+            return $locale->getCode();
+        })->toArray();
     }
 
     private function createPageUrl(PageContentInterface $page): SitemapUrlInterface
@@ -124,11 +117,7 @@ class PageUrlProvider implements UrlProviderInterface
 
         /** @var PageTranslationInterface $translation */
         foreach ($this->getTranslations($page) as $translation) {
-            if (!$translation->getLocale()) {
-                continue;
-            }
-
-            if (!$this->localeInLocaleCodes($translation)) {
+            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
                 continue;
             }
 
