@@ -23,6 +23,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Core\Uploader\ImageUploader;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
 final class PageImporter extends AbstractImporter implements PageImporterInterface
@@ -63,8 +64,11 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ) {
+        parent::__construct($validator);
+
         $this->pageResourceResolver = $pageResourceResolver;
         $this->sectionResolver = $sectionResolver;
         $this->localeContext = $localeContext;
@@ -109,6 +113,8 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $this->importerSectionsResolver->resolve($page, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($page, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
         $this->importerProductsResolver->resolve($page, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
+
+        $this->validateResource($page, ['bitbag']);
 
         $page->getId() ?: $this->entityManager->persist($page);
         $this->entityManager->flush();

@@ -17,6 +17,14 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractImporter implements ImporterInterface
 {
+    /** @var ValidatorInterface */
+    private $validator;
+
+    public function __construct(ValidatorInterface $validator)
+    {
+        $this->validator = $validator;
+    }
+
     public function cleanup(): void
     {
     }
@@ -58,8 +66,20 @@ abstract class AbstractImporter implements ImporterInterface
         return array_unique($locales);
     }
 
-    protected function validateResource(ResourceInterface $resource, ValidatorInterface $validator, array $groups): void
+    protected function validateResource(ResourceInterface $resource, array $groups): void
     {
-        $validator->validate($resource, null, $groups);
+        $errors = $this->validator->validate($resource, null, $groups);
+
+        if(0 < count($errors)) {
+            $message = '';
+
+            foreach ($errors as $error) {
+                $message .= lcfirst(rtrim($error->getMessage(), '.')) . ", ";
+            }
+
+            $message = ucfirst(rtrim($message, ', ')) . ".";
+
+            throw new \RuntimeException($message);
+        }
     }
 }

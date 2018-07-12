@@ -19,6 +19,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
 final class BlockImporter extends AbstractImporter implements BlockImporterInterface
@@ -47,8 +48,11 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ) {
+        parent::__construct($validator);
+
         $this->blockResourceResolver = $blockResourceResolver;
         $this->localeContext = $localeContext;
         $this->importerSectionsResolver = $importerSectionsResolver;
@@ -78,6 +82,8 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $this->importerSectionsResolver->resolve($block, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
         $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
+
+        $this->validateResource($block, ['bitbag']);
 
         $block->getId() ?: $this->entityManager->persist($block);
         $this->entityManager->flush();

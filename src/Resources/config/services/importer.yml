@@ -13,6 +13,7 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
             - "@bitbag_sylius_cms_plugin.resolver.importer_channels"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"
+            - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
             - { name: bitbag.importer }
@@ -25,6 +26,7 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
             - "@bitbag_sylius_cms_plugin.resolver.importer_channels"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"
+            - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
             - { name: bitbag.importer }
@@ -36,6 +38,7 @@ services:
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"
+            - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
             - { name: bitbag.importer }

@@ -18,6 +18,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaImporter extends AbstractImporter implements MediaImporterInterface
@@ -42,8 +43,11 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ) {
+        parent::__construct($validator);
+
         $this->mediaResourceResolver = $mediaResourceResolver;
         $this->localeContext = $localeContext;
         $this->importerSectionsResolver = $importerSectionsResolver;
@@ -71,6 +75,8 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
 
         $this->importerSectionsResolver->resolve($media, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
         $this->importerProductsResolver->resolve($media, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
+
+        $this->validateResource($media, ['bitbag']);
 
         $media->getId() ?: $this->entityManager->persist($media);
         $this->entityManager->flush();
