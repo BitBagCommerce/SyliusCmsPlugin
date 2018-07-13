@@ -1,4 +1,4 @@
-#FAQs
+# FAQs
 
 To render FAQs list, use the `bitbag_sylius_cms_plugin_shop_frequently_asked_question_index` route.
 
