@@ -70,14 +70,14 @@ abstract class AbstractImporter implements ImporterInterface
     {
         $errors = $this->validator->validate($resource, null, $groups);
 
-        if(0 < count($errors)) {
+        if (0 < count($errors)) {
             $message = '';
 
             foreach ($errors as $error) {
-                $message .= lcfirst(rtrim($error->getMessage(), '.')) . ", ";
+                $message .= lcfirst(rtrim($error->getMessage(), '.')) . ', ';
             }
 
-            $message = ucfirst(rtrim($message, ', ')) . ".";
+            $message = ucfirst(rtrim($message, ', ')) . '.';
 
             throw new \RuntimeException($message);
         }

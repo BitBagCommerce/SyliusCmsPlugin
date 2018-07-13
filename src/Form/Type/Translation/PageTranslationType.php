@@ -14,12 +14,10 @@ namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
 use BitBag\SyliusCmsPlugin\Form\Type\PageImageType;
 use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 final class PageTranslationType extends AbstractResourceType
 {

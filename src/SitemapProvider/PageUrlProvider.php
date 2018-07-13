@@ -50,8 +50,7 @@ final class PageUrlProvider implements UrlProviderInterface
         SitemapUrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext
-    )
-    {
+    ) {
         $this->pageRepository = $pageRepository;
         $this->router = $router;
         $this->sitemapUrlFactory = $sitemapUrlFactory;
