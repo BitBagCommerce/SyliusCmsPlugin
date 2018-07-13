@@ -29,6 +29,7 @@ services:
 
     bitbag_sylius_cms_plugin.resolver.block_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@logger"
@@ -36,6 +37,7 @@ services:
 
     bitbag_sylius_cms_plugin.resolver.page_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.context.locale"
@@ -46,12 +48,14 @@ services:
 
     bitbag_sylius_cms_plugin.resolver.media_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@logger"
 
     bitbag_sylius_cms_plugin.resolver.media_provider:
         class: BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.registry.media_provider"
 
