@@ -58,6 +58,7 @@ We also recorded a webinar which presents most of the plugin features, including
 - [Fixtures](doc/fixtures.md)
 - [WYSIWYG](doc/wysiwyg.md)
 - [Using Twig functions in the admin panel](doc/twig-functions-in-admin.md)
+- [Sitemap](doc/sitemap.md)
 - [Customization](doc/customization.md)
 
 ## Contribution
