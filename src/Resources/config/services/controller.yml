@@ -1,17 +1,20 @@
 services:
     bitbag_sylius_cms_plugin.controller.page_slug:
         class: BitBag\SyliusCmsPlugin\Controller\PageSlugController
+        public: true
         arguments:
             - "@sylius.generator.slug"
 
     bitbag_sylius_cms_plugin.controller.action.admin.product_search:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.product"
             - "@fos_rest.view_handler.default"
 
     bitbag_sylius_cms_plugin.controller.action.admin.import_data:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.processor.import"
             - "@form.factory"
@@ -21,6 +24,7 @@ services:
 
     bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction
+        public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.repository.media"
