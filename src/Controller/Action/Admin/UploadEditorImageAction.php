@@ -90,7 +90,7 @@ final class UploadEditorImageAction
 
         do {
             if ($i > 0) {
-                $code = $code . '_' . (string) $i;
+                $code = $code . '_image_' . (string) $i;
             }
 
             ++$i;

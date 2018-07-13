@@ -36,6 +36,5 @@ To render a block by the product code, you can use `route`.
 If you don't know how to override templates yet, 
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-You can create a template under `app/Resources/BitBagSyliusCmsPlugin/views/Shop/Block/show.html.twig` and paste the default 
-[show.html.twig](../src/Resources/views/Shop/Block/show.html.twig) content to it. Afterwards, clear your app cache 
-and customize the file the way you need.
+You can create a template under `app/Resources/BitBagSyliusCmsPlugin/views/Shop/Block` location.
+Available templates you can override can be found under [this location](../src/Resources/views/Shop/Block).

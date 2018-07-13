@@ -1,5 +1,15 @@
 # Medias
 
+In this plugin media represents a digital assets, for instance an image, a video or simple PDF file.
+
+Currently, it supports following media types:
+
+- Image (<img>)
+- Video (<video>)
+- File (<a>)
+
+## General usage
+
 You can render media in two ways:
 
 By rendering a media code template:
@@ -16,7 +26,7 @@ Or rendering a media code directly:
 
 ### Media provider
 
-You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`
+You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`:
 
 ```php
 app.media_provider.audio:
@@ -29,3 +39,11 @@ app.media_provider.audio:
     tags:
         - { name: bitbag_sylius_cms_plugin.media_provider, type: audio, label: bitbag_sylius_cms_plugin.ui.audio_provider }
 ```
+
+## Customization
+
+If you don't know how to override templates yet, 
+read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
+
+You can create a template under `app/Resources/BitBagSyliusCmsPlugin/views/Shop/Media` location.
+Available templates you can override can be found under [this location](../src/Resources/views/Shop/Media).
