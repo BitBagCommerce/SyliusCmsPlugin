@@ -50,6 +50,7 @@ We also recorded a webinar which presents most of the plugin features, including
 ## Documentation
 
 - [Installation](doc/installation.md)
+- [Upgrading](UPGRADE.md)
 - [Blocks](doc/blocks.md)
 - [Pages](doc/pages.md)
 - [Sections](doc/sections.md)
