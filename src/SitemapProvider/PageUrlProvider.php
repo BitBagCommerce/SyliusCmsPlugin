@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\SitemapProvider;
 
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Doctrine\Common\Collections\Collection;
@@ -67,14 +67,14 @@ final class PageUrlProvider implements UrlProviderInterface
     {
         $urls = [];
 
-        foreach ($this->getPages() as $product) {
-            $urls[] = $this->createPageUrl($product);
+        foreach ($this->getPages() as $page) {
+            $urls[] = $this->createPageUrl($page);
         }
 
         return $urls;
     }
 
-    private function getTranslations(PageContentInterface $page): Collection
+    private function getTranslations(PageInterface $page): Collection
     {
         return $page->getTranslations()->filter(function (TranslationInterface $translation) {
             return $this->localeInLocaleCodes($translation);
@@ -101,7 +101,7 @@ final class PageUrlProvider implements UrlProviderInterface
         })->toArray();
     }
 
-    private function createPageUrl(PageContentInterface $page): SitemapUrlInterface
+    private function createPageUrl(PageInterface $page): SitemapUrlInterface
     {
         $pageUrl = $this->sitemapUrlFactory->createNew();
 

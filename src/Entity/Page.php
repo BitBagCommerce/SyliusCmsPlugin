@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-class Page implements PageContentInterface
+class Page implements PageInterface
 {
     use ToggleableTrait;
     use ProductsAwareTrait;
