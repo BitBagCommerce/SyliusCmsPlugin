@@ -40,11 +40,11 @@ final class RenderMediaExtension extends \Twig_Extension
 
     public function renderMedia(string $code): string
     {
-//        $media = $this->mediaResourceResolver->findOrLog($code);
-//
-//        if (null !== $media) {
-//            return $this->mediaProviderResolver->resolveProvider($media)->render($media);
-//        }
+        $media = $this->mediaResourceResolver->findOrLog($code);
+
+        if (null !== $media) {
+            return $this->mediaProviderResolver->resolveProvider($media)->render($media);
+        }
 
         return '';
     }

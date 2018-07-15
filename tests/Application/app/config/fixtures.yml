@@ -71,7 +71,7 @@ sylius_fixtures:
                                                     The left block is rendered with the usage of the particular controller like this:
                                                 </p>
                                                 <pre>
-                                                {{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image'})) }}
+                                                render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image'}))
                                                 </pre>
                                                 <p>
                                                    It also can take template as a parameter, but it's optional. In this case, it works the same as below Twig functions. Sometimes you might want the block to render in a different template, that's where the controller is useful.
@@ -81,9 +81,9 @@ sylius_fixtures:
                                                 </p>
 
                                                 <pre>
-                                                {{ bitbag_cms_render_block('homepage_intro') }}
-                                                {{ bitbag_cms_render_block('homepage_banner_image_1') }}
-                                                {{ bitbag_cms_render_block('homepage_banner_image_2') }}
+                                                bitbag_cms_render_block('homepage_intro')
+                                                bitbag_cms_render_block('homepage_banner_image_1')
+                                                bitbag_cms_render_block('homepage_banner_image_2')
                                                 </pre>
 
                                                 <p>
