@@ -1,4 +1,16 @@
-# UPGRADE FROM 1.2.1/1.1.1 to 1.2.2-dev
+# UPGRADE FROM 1.0 TO 2.0
+
+* Media type field has been removed. For image blocks, use the [media](doc/medias.md) with image type. For HTML blocks,
+use raw content in [WYSIWYG editor](doc/wysiwyg.md)
+* Chanel awareness has been added to pages, blocks, FAQs, sections and media. That being said, many
+repository methods changed their signatures. In case you customized them in your src, check 
+new signatures in interfaces under [BitBag\SyliusCmsPlugin\Repository](src/Repository) namespace
+* WYSIWYG editor has been introduced. You will need to import it in your AppKernel and install 
+its assets. For more, check the [installation guide](doc/installation.md)
+* Sitemap support was added, you will need to enable extra bundle in your AppKernel. Read more
+in the [sitemap documentation](doc/sitemap.md)
+
+# UPGRADE FROM 1.2.1/1.1.1 to 1.2.2
 
 * `bitbag_render_block` has been renamed to `bitbag_cms_render_block`.
 * Database tables has been prefixed with `bitbag_cms` instead of `bitbag_sylius_cms_plugin` for backward compatibility and simplicity.
