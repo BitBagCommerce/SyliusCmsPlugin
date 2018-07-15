@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
@@ -86,7 +86,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
         Assert::notNull($code);
 
-        /** @var PageContentInterface $page */
+        /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);
 
         $page->setCode($code);
@@ -125,7 +125,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         return 'page';
     }
 
-    private function resolveImage(PageContentInterface $page, string $url, string $locale): void
+    private function resolveImage(PageInterface $page, string $url, string $locale): void
     {
         /** @var PageTranslationInterface $pageTranslation */
         $pageTranslation = $page->getTranslation($locale);

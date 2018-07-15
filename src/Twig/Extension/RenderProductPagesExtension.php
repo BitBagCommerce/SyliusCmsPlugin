@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -67,7 +67,7 @@ final class RenderProductPagesExtension extends \Twig_Extension
     {
         $result = [];
 
-        /** @var PageContentInterface $page */
+        /** @var PageInterface $page */
         foreach ($pages as $page) {
             foreach ($page->getSections() as $section) {
                 $sectionCode = $section->getCode();

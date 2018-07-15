@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension;
@@ -59,7 +59,7 @@ final class RenderProductPagesExtensionSpec extends ObjectBehavior
         ProductInterface $product,
         ChannelInterface $channel,
         PageRepositoryInterface $pageRepository,
-        PageContentInterface $page,
+        PageInterface $page,
         SectionInterface $section,
         EngineInterface $templatingEngine
     ): void {

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
@@ -93,7 +93,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
     private function createPage(string $code, array $pageData, bool $generateSlug = false): void
     {
-        /** @var PageContentInterface $page */
+        /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
 
@@ -136,7 +136,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageRepository->add($page);
     }
 
-    private function resolveProducts(PageContentInterface $page, int $limit): void
+    private function resolveProducts(PageInterface $page, int $limit): void
     {
         $products = $this->productRepository->findLatestByChannel(
             $this->channelContext->getChannel(),
@@ -149,7 +149,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    private function resolveSections(PageContentInterface $page, array $sections): void
+    private function resolveSections(PageInterface $page, array $sections): void
     {
         foreach ($sections as $sectionCode) {
             /** @var SectionInterface $section */

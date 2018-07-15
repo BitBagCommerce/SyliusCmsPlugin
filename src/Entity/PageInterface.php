@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
-interface PageContentInterface extends
+interface PageInterface extends
     ResourceInterface,
     TranslatableInterface,
     ToggleableInterface,

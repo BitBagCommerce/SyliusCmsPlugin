@@ -16,8 +16,10 @@ use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
@@ -26,6 +28,9 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
 
     /** @var FactoryInterface */
     private $mediaTranslationFactory;
+
+    /** @var ProviderInterface */
+    private $imageProvider;
 
     /** @var MediaRepositoryInterface */
     private $mediaRepository;
@@ -39,12 +44,14 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     public function __construct(
         FactoryInterface $mediaFactory,
         FactoryInterface $mediaTranslationFactory,
+        ProviderInterface $imageProvider,
         MediaRepositoryInterface $mediaRepository,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;
+        $this->imageProvider = $imageProvider;
         $this->mediaRepository = $mediaRepository;
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
@@ -77,6 +84,9 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media->setType($mediaData['type']);
         $media->setCode($code);
         $media->setEnabled($mediaData['enabled']);
+        $media->setFile(new File($mediaData['path']));
+
+        $this->imageProvider->upload($media);
 
         foreach ($mediaData['translations'] as $localeCode => $translation) {
             /** @var MediaTranslationInterface $mediaTranslation */

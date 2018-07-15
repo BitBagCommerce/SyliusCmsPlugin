@@ -15,7 +15,6 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Factory\BlockFactoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -25,7 +24,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var BlockFactoryInterface */
+    /** @var FactoryInterface */
     private $blockFactory;
 
     /** @var FactoryInterface */
@@ -47,7 +46,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     private $localeContext;
 
     public function __construct(
-        BlockFactoryInterface $blockFactory,
+        FactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
         SectionRepositoryInterface $sectionRepository,

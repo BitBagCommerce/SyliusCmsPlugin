@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\PageContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -40,7 +40,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageContentInterface
+    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -58,7 +58,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         string $slug,
         ?string $localeCode,
         string $channelCode
-    ): ?PageContentInterface {
+    ): ?PageInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.channels', 'channels')

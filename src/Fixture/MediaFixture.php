@@ -45,7 +45,6 @@ final class MediaFixture extends AbstractFixture
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()
-                            ->booleanNode('code')->isRequired()->cannotBeEmpty()->end()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->scalarNode('path')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
