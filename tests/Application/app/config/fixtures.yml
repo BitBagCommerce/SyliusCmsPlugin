@@ -34,43 +34,14 @@ sylius_fixtures:
                 block:
                     options:
                         custom:
-                            homepage_header_image:
-                                type: image
-                                translations:
-                                    en_US:
-                                        image_path: "%fixtures_dir%/homepage_header.jpeg"
-                                        name: |
-                                            Some block name
-                            homepage_banner_image_1:
-                                type: image
-                                translations:
-                                    en_US:
-                                        image_path: "%fixtures_dir%/homepage_banner_1.jpeg"
-                                        link: "/en_US/page/about"
-                                        name: |
-                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
-                            homepage_banner_image_2:
-                                type: image
-                                translations:
-                                    en_US:
-                                        image_path: "%fixtures_dir%/homepage_banner_2.jpeg"
                             homepage_products_info:
-                                type: html
                                 translations:
                                     en_US:
                                         content: |
                                             <div class="ui info message">
                                                 <i class="em em-arrow_down"></i> Click one of the below products to see what you can do with the blocks in your product view! <i class="em em-arrow_down"></i>
                                             </div>
-                            sale:
-                                type: image
-                                sections:
-                                    - "products"
-                                translations:
-                                    en_US:
-                                        image_path: "%fixtures_dir%/sale.jpeg"
                             section_info_block:
-                                type: html
                                 sections:
                                     - "products"
                                 translations:
@@ -83,7 +54,6 @@ sylius_fixtures:
                                             <p>It's done with a simple controller render:</p>
                                             <pre>{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
                             product_info_block:
-                                type: html
                                 products: 5
                                 translations:
                                     en_US:
@@ -92,14 +62,7 @@ sylius_fixtures:
                                             <p>This approach can be helpful with displaying some content dedicated to specific products, like size table or product story</p>
                                             <p>The way you render it is similar to the one from above example:</p>
                                             <pre>{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
-                            size_table:
-                                type: image
-                                products: 5
-                                translations:
-                                    en_US:
-                                        image_path: "%fixtures_dir%/size_table.jpeg"
                             homepage_intro:
-                                type: html
                                 translations:
                                     en_US:
                                         content: |
@@ -127,7 +90,6 @@ sylius_fixtures:
                                                     The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
                                                 </p>
                             lorem_ipsum:
-                                type: text
                                 sections:
                                     - "homepage"
                                 translations:
@@ -141,6 +103,34 @@ sylius_fixtures:
                                                 <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                                             </ul>
                                             <p>Pellentesque habitant morbi tristique sene</p>
+                media:
+                    options:
+                        custom:
+                            homepage_header_image:
+                                type: image
+                                path: "%fixtures_dir%/homepage_header.jpeg"
+                                translations:
+                                    en_US:
+                                        name: |
+                                            Some block name
+                            homepage_banner_image_1:
+                                type: image
+                                path: "%fixtures_dir%/homepage_banner_1.jpeg"
+                                translations:
+                                    en_US:
+                                        name: |
+                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
+                            homepage_banner_image_2:
+                                type: image
+                                path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                            size_table:
+                                type: image
+                                path: "%fixtures_dir%/size_table.jpeg"
+                            sale:
+                                type: image
+                                path: "%fixtures_dir%/sale.jpeg"
+                                sections:
+                                    - "products"
                 page:
                     options:
                         custom:
@@ -191,16 +181,6 @@ sylius_fixtures:
                         custom:
                             lorem_ipsum:
                                 number: 10
-                                translations:
-                                    en_US:
-                                        question: |
-                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
-                                        answer: |
-                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.
-                media:
-                    options:
-                        custom:
-                            test_image:
                                 translations:
                                     en_US:
                                         question: |

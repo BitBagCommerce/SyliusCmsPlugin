@@ -27,6 +27,13 @@ services:
         tags:
             - { name: sylius_fixtures.fixture }
 
+    bitbag_sylius_cms_plugin.fixture.media:
+        class: BitBag\SyliusCmsPlugin\Fixture\MediaFixture
+        arguments:
+            - "@bitbag_sylius_cms_plugin.fixture.factory.media"
+        tags:
+            - { name: sylius_fixtures.fixture }
+
     bitbag_sylius_cms_plugin.fixture.factory.block:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\BlockFixtureFactory
         arguments:
@@ -34,7 +41,6 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.block_translation"
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.repository.section"
-            - "@sylius.image_uploader"
             - "@sylius.repository.product"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
@@ -66,3 +72,13 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.section_translation"
             - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.context.channel"
+
+    bitbag_sylius_cms_plugin.fixture.factory.media:
+        class: BitBag\SyliusCmsPlugin\Fixture\Factory\MediaFixtureFactory
+        arguments:
+            - "@bitbag_sylius_cms_plugin.factory.media"
+            - "@bitbag_sylius_cms_plugin.factory.media_translation"
+            - "@bitbag_sylius_cms_plugin.media_provider.image"
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@bitbag_sylius_cms_plugin.assigner.products"
+            - "@bitbag_sylius_cms_plugin.assigner.sections"
