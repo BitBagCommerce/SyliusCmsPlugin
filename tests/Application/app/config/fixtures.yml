@@ -85,10 +85,6 @@ sylius_fixtures:
                                                 bitbag_cms_render_block('homepage_banner_image_1')
                                                 bitbag_cms_render_block('homepage_banner_image_2')
                                                 </pre>
-
-                                                <p>
-                                                    The block with this nice woman is linked to another page. Click her and see what happens. No pornography included. I promise <i class="em em-relieved"></i>
-                                                </p>
                             lorem_ipsum:
                                 sections:
                                     - "homepage"
@@ -112,17 +108,43 @@ sylius_fixtures:
                                 translations:
                                     en_US:
                                         name: |
-                                            Some block name
-                            homepage_banner_image_1:
-                                type: image
-                                path: "%fixtures_dir%/homepage_banner_1.jpeg"
+                                            <a href="/en_US/page/about">This is a linked title</a>
+                                        alt: Homepage image media
+                                        description: |
+                                            <h3>Media description</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            </p>
+                            homepage_video:
+                                type: video
+                                path: "%fixtures_dir%/homepage_video.mp4"
                                 translations:
                                     en_US:
                                         name: |
-                                            <a href="/en_US/page/about">Click me! <i class="em em-kiss"></i></a>
-                            homepage_banner_image_2:
-                                type: image
-                                path: "%fixtures_dir%/homepage_banner_2.jpeg"
+                                            Homepage video media
+                                        alt: Homepage video
+                                        description: |
+                                            <h3>Media description</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            </p>
+                            homepage_pdf:
+                                type: file
+                                path: "%fixtures_dir%/BitBagOffer.pdf"
+                                translations:
+                                    en_US:
+                                        name: Homepage PDF media
+                                        alt: BitBag offer
+                                        description: |
+                                            <h3>File description</h3>
+                                            <p>
+                                                The below button links to a PDF file.
+                                                Check it out! <i class="em em-slightly-smiling-face"></i>
+                                            </p>
                             size_table:
                                 type: image
                                 path: "%fixtures_dir%/size_table.jpeg"

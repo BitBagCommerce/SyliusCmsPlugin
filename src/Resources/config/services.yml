@@ -46,7 +46,6 @@ services:
         class: BitBag\SyliusCmsPlugin\Uploader\MediaUploader
         arguments:
             - "@bitbag_sylius_cms_plugin.media.filesystem"
-            - "%kernel.project_dir%"
 
     bitbag_sylius_cms_plugin.media.filesystem:
         class: Gaufrette\Filesystem

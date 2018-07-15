@@ -22,11 +22,6 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             type: string
             length: 250
             unique: true
-        originalPath:
-            column: original_path
-            type: string
-            length: 250
-            unique: true
         mimeType:
             column: mime_typ
             type: string

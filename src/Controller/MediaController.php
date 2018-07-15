@@ -16,6 +16,8 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -60,9 +62,12 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
-        $response = new BinaryFileResponse($media->getOriginalPath());
+        $mediaPath = $this->getParameter('kernel.project_dir') . '/web' . $media->getPath();
+        $mediaFile = new File($mediaPath);
+        $mediaName = $media->getName() . '.' . $mediaFile->guessExtension();
+        $response = new BinaryFileResponse($mediaPath);
 
-        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $mediaName);
         $response->headers->set('Content-Type', $media->getMimeType());
 
         return $response;

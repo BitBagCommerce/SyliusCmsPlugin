@@ -49,6 +49,6 @@ abstract class AbstractProvider implements ProviderInterface
 
     public function upload(MediaInterface $media): void
     {
-        $this->uploader->upload($media, $this->pathPrefix);
+        $this->uploader->upload($media,  $this->pathPrefix);
     }
 }
