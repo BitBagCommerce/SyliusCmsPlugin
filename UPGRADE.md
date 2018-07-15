@@ -9,6 +9,8 @@ new signatures in interfaces under [BitBag\SyliusCmsPlugin\Repository](src/Repos
 its assets. For more, check the [installation guide](doc/installation.md)
 * Sitemap support was added, you will need to enable extra bundle in your AppKernel. Read more
 in the [sitemap documentation](doc/sitemap.md)
+* Because of the possibility to [nest CMS Twig functions in the admin backend](doc/twig-functions-in-admin.md), in order to render block and page content
+you are now supposed to use `bitbag_cms_render_content` Twig function
 
 # UPGRADE FROM 1.2.1/1.1.1 to 1.2.2
 
