@@ -29,7 +29,7 @@ final class ChannelsAssigner implements ChannelsAssignerInterface
     public function assign(ChannelsAwareInterface $channelsAware, array $channelsCodes): void
     {
         foreach ($channelsCodes as $channelCode) {
-            /** @var ChannelInterface $channel */
+            /** @var ChannelInterface $channel|null */
             $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
 
             if (null !== $channel) {

@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
@@ -39,7 +39,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /** @var ProductRepositoryInterface */
+    /** @var ImageUploaderInterface */
     private $imageUploader;
 
     /** @var ProductRepositoryInterface */
