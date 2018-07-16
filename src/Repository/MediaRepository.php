@@ -25,9 +25,10 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         ;
     }
 
-    public function findOneEnabledByCode(string $code): ?MediaInterface
+    public function findOneEnabledByCode(string $code, string $channelCode): ?MediaInterface
     {
         return $this->createQueryBuilder('o')
+            ->innerJoin('o.channels', 'channel')
             ->where('o.code = :code')
             ->andWhere('o.enabled = true')
             ->setParameter('code', $code)
@@ -36,30 +37,30 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         ;
     }
 
-    public function findBySectionCode(string $sectionCode, string $localeCode): array
+    public function findBySectionCode(string $sectionCode, string $channelCode): array
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.channels', 'channel')
             ->innerJoin('o.sections', 'section')
-            ->andWhere('translation.locale = :localeCode')
+            ->where('channel.code = :channelCode')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('localeCode', $localeCode)
+            ->setParameter('channelCode', $channelCode)
             ->setParameter('sectionCode', $sectionCode)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findByProductCode(string $productCode, string $localeCode): array
+    public function findByProductCode(string $productCode, string $channelCode): array
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.channels', 'channel')
             ->innerJoin('o.products', 'product')
-            ->andWhere('translation.locale = :localeCode')
+            ->where('channel.code = :channelCode')
             ->andWhere('product.code = :productCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('localeCode', $localeCode)
+            ->setParameter('channelCode', $channelCode)
             ->setParameter('productCode', $productCode)
             ->getQuery()
             ->getResult()

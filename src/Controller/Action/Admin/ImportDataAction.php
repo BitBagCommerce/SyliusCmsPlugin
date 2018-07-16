@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 final class ImportDataAction
@@ -34,8 +34,8 @@ final class ImportDataAction
     /** @var FormFactoryInterface */
     private $formFactory;
 
-    /** @var Session */
-    private $session;
+    /** @var FlashBagInterface */
+    private $flashBag;
 
     /** @var TranslatorInterface */
     private $translator;
@@ -46,13 +46,13 @@ final class ImportDataAction
     public function __construct(
         ImportProcessorInterface $importProcessor,
         FormFactoryInterface $formFactory,
-        Session $session,
+        FlashBagInterface $flashBag,
         TranslatorInterface $translator,
         ViewHandler $viewHandler
     ) {
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
-        $this->session = $session;
+        $this->flashBag = $flashBag;
         $this->translator = $translator;
         $this->viewHandler = $viewHandler;
     }
@@ -65,7 +65,6 @@ final class ImportDataAction
         $form->handleRequest($request);
 
         if ($request->isMethod('POST') && $form->isSubmitted()) {
-            $flashBag = $this->session->getFlashBag();
 
             if ($form->isValid()) {
                 /** @var UploadedFile $file */
@@ -75,12 +74,12 @@ final class ImportDataAction
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
+                    $this->flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
-                    $flashBag->set('error', $exception->getMessage());
+                    $this->flashBag->set('error', $exception->getMessage());
                 }
             } else {
-                $flashBag->set('error', rtrim(implode($this->getFormErrors($form), ', '), ', '));
+                $this->flashBag->set('error', rtrim(implode($this->getFormErrors($form), ', '), ', '));
             }
 
             return new RedirectResponse($referer);

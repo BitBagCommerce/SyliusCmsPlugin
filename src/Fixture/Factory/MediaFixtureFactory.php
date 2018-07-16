@@ -19,6 +19,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -29,6 +30,9 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
 
     /** @var FactoryInterface */
     private $mediaTranslationFactory;
+
+    /** @var ChannelContextInterface */
+    private $channelContext;
 
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
@@ -45,6 +49,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     public function __construct(
         FactoryInterface $mediaFactory,
         FactoryInterface $mediaTranslationFactory,
+        ChannelContextInterface $channelContext,
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
         ProductsAssignerInterface $productsAssigner,
@@ -52,6 +57,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;
+        $this->channelContext = $channelContext;
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaRepository = $mediaRepository;
         $this->productsAssigner = $productsAssigner;
@@ -86,6 +92,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media->setCode($code);
         $media->setEnabled($mediaData['enabled']);
         $media->setFile(new File($mediaData['path']));
+        $media->addChannel($this->channelContext->getChannel());
 
         $this->mediaProviderResolver->resolveProvider($media)->upload($media);
 

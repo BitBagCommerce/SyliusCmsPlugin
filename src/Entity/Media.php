@@ -22,6 +22,7 @@ class Media implements MediaInterface
     use ToggleableTrait;
     use SectionableTrait;
     use ProductsAwareTrait;
+    use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -52,6 +53,7 @@ class Media implements MediaInterface
         $this->initializeTranslationsCollection();
         $this->initializeSectionsCollection();
         $this->initializeProductsCollection();
+        $this->initializeChannelsCollection();
     }
 
     public function getId(): ?int

@@ -16,6 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\File\File;
@@ -86,5 +87,17 @@ final class MediaSpec extends ObjectBehavior
         $this->removeSection($firstSection);
 
         $this->hasSection($firstSection)->shouldReturn(false);
+    }
+
+    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    {
+        $this->addChannel($firstChannel);
+        $this->hasChannel($firstChannel)->shouldReturn(true);
+
+        $this->hasChannel($secondChannel)->shouldReturn(false);
+
+        $this->removeChannel($firstChannel);
+
+        $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 }

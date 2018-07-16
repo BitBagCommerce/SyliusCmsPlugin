@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
@@ -22,7 +23,8 @@ interface MediaInterface extends
     TranslatableInterface,
     ToggleableInterface,
     ProductsAwareInterface,
-    SectionableInterface
+    SectionableInterface,
+    ChannelsAwareInterface
 {
     public const IMAGE_TYPE = 'image';
     public const VIDEO_TYPE = 'video';

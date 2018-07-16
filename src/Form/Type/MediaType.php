@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType;
+use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -58,6 +59,12 @@ final class MediaType extends AbstractResourceType
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,
+            ])
+            ->add('channels', ChannelChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => MediaTranslationType::class,

@@ -71,13 +71,13 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.section"
             - "@bitbag_sylius_cms_plugin.factory.section_translation"
             - "@bitbag_sylius_cms_plugin.repository.section"
-            - "@sylius.context.channel"
 
     bitbag_sylius_cms_plugin.fixture.factory.media:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\MediaFixtureFactory
         arguments:
             - "@bitbag_sylius_cms_plugin.factory.media"
             - "@bitbag_sylius_cms_plugin.factory.media_translation"
+            - "@sylius.context.channel"
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@bitbag_sylius_cms_plugin.assigner.products"
