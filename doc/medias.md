@@ -30,7 +30,7 @@ You can add your own media provider by adding a service with a tag named `bitbag
 
 ```php
 app.media_provider.audio:
-    class: BitBag\SyliusCmsPlugin\MediaProvider\AudioProvider
+    class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
     arguments:
         - "@bitbag_sylius_cms_plugin.media_uploader"
         - "@templating.engine.twig"
