@@ -34,6 +34,14 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
+            ->addChild('media', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_media_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.media')
+            ->setLabelAttribute('icon', 'file')
+        ;
+
+        $cmsRootMenuItem
             ->addChild('pages', [
                 'route' => 'bitbag_sylius_cms_plugin_admin_page_index',
             ])
@@ -55,14 +63,6 @@ final class ContentManagementMenuBuilder
             ])
             ->setLabel('bitbag_sylius_cms_plugin.ui.sections')
             ->setLabelAttribute('icon', 'grid layout')
-        ;
-
-        $cmsRootMenuItem
-            ->addChild('media', [
-                'route' => 'bitbag_sylius_cms_plugin_admin_media_index',
-            ])
-            ->setLabel('bitbag_sylius_cms_plugin.ui.media')
-            ->setLabelAttribute('icon', 'file')
         ;
     }
 }

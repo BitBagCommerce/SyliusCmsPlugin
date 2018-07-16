@@ -18,6 +18,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -29,8 +30,8 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     /** @var FactoryInterface */
     private $mediaTranslationFactory;
 
-    /** @var ProviderInterface */
-    private $imageProvider;
+    /** @var MediaProviderResolverInterface */
+    private $mediaProviderResolver;
 
     /** @var MediaRepositoryInterface */
     private $mediaRepository;
@@ -44,14 +45,14 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     public function __construct(
         FactoryInterface $mediaFactory,
         FactoryInterface $mediaTranslationFactory,
-        ProviderInterface $imageProvider,
+        MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;
-        $this->imageProvider = $imageProvider;
+        $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaRepository = $mediaRepository;
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
@@ -86,7 +87,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media->setEnabled($mediaData['enabled']);
         $media->setFile(new File($mediaData['path']));
 
-        $this->imageProvider->upload($media);
+        $this->mediaProviderResolver->resolveProvider($media)->upload($media);
 
         foreach ($mediaData['translations'] as $localeCode => $translation) {
             /** @var MediaTranslationInterface $mediaTranslation */

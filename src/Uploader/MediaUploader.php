@@ -22,13 +22,9 @@ final class MediaUploader implements MediaUploaderInterface
     /** @var Filesystem */
     private $filesystem;
 
-    /** @var string */
-    private $projectDir;
-
-    public function __construct(Filesystem $filesystem, string $projectDir)
+    public function __construct(Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
-        $this->projectDir = $projectDir;
     }
 
     public function upload(MediaInterface $media, string $pathPrefix): void
@@ -51,8 +47,7 @@ final class MediaUploader implements MediaUploaderInterface
             $path = $this->expandPath($hash . '.' . $file->guessExtension(), $pathPrefix);
         } while ($this->filesystem->has($path));
 
-        $media->setPath($path);
-        $media->setOriginalPath(sprintf('%s/%s', $this->projectDir, $path));
+        $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
 
         $this->filesystem->write(

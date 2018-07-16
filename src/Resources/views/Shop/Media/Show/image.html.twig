@@ -1,3 +1,5 @@
-{% set path = '/'~media.path %}
+<h2>{{ media.name|raw }}</h2>
 
-<img class="ui fluid image" src="{{ path }}" alt="{{ media.name }}"/>
+<img class="ui fluid image" src="{{ media.path }}" alt="{{ media.name }}"/>
+
+<p>{{ media.description|raw }}</p>

@@ -89,22 +89,8 @@ class Media implements MediaInterface
         $this->path = $path;
     }
 
-    public function getOriginalPath(): ?string
-    {
-        return $this->originalPath;
-    }
-
-    public function setOriginalPath(?string $originalPath): void
-    {
-        $this->originalPath = $originalPath;
-    }
-
     public function getFile(): ?File
     {
-        if (null === $this->type && null !== $this->path) {
-            $this->file = new File($this->path);
-        }
-
         return $this->file;
     }
 

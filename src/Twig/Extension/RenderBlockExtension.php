@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-final class RenderBlockExtension extends \Twig_Extension
+class RenderBlockExtension extends \Twig_Extension
 {
     /** @var BlockRepositoryInterface */
     private $blockRepository;

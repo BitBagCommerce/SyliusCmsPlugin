@@ -78,7 +78,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.factory.media"
             - "@bitbag_sylius_cms_plugin.factory.media_translation"
-            - "@bitbag_sylius_cms_plugin.media_provider.image"
+            - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@bitbag_sylius_cms_plugin.assigner.products"
             - "@bitbag_sylius_cms_plugin.assigner.sections"

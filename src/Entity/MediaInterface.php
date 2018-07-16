@@ -36,10 +36,6 @@ interface MediaInterface extends
 
     public function setPath(?string $path): void;
 
-    public function getOriginalPath(): ?string;
-
-    public function setOriginalPath(?string $originalPath): void;
-
     public function getFile(): ?File;
 
     public function setFile(?File $file): void;

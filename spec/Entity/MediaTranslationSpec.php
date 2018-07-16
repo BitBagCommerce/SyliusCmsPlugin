@@ -37,7 +37,7 @@ final class MediaTranslationSpec extends ObjectBehavior
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(PageImageInterface $pageImage): void
+    function it_allows_access_via_properties(): void
     {
         $this->setName('Video');
         $this->getName()->shouldReturn('Video');

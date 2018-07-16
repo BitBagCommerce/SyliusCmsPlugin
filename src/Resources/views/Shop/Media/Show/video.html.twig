@@ -1,9 +1,9 @@
-{% set path = '/'~media.path %}
-
 <div>
     {% if null != media.name %}
-        <h2>{{ media.name }}</h2>
+        <h2>{{ media.name|raw }}</h2>
     {% endif %}
 
-    <video controls width="100%" src="{{ path }}"></video>
+    <video controls width="100%" src="{{ media.path }}"></video>
+
+    <p>{{ media.description|raw }}</p>
 </div>

@@ -34,8 +34,8 @@ final class ProductSearchAction
 
     public function __invoke(Request $request): Response
     {
-        $resource = $this->productRepository->findByNamePart($request->get('phrase', ''));
-        $view = View::create($resource);
+        $product = $this->productRepository->findByNamePart($request->get('phrase', ''));
+        $view = View::create($product);
 
         $this->viewHandler->setExclusionStrategyGroups(['Autocomplete']);
         $view->getContext()->enableMaxDepth();
