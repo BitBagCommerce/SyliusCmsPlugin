@@ -30,7 +30,7 @@ final class MediaTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.alt',
                 'required' => false,
             ])
-            ->add('content', WysiwygType::class)
+            ->add('content', WysiwygType::class, ['required' => false,])
         ;
     }
 

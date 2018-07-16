@@ -97,11 +97,11 @@ final class MediaContext implements Context
     }
 
     /**
-     * @When I fill the description with :arg1
+     * @When I fill the content with :arg1
      */
-    public function iFillTheDescriptionWith(string $description): void
+    public function iFillTheContentWith(string $content): void
     {
-        $this->resolveCurrentPage()->fillDescription($description);
+        $this->resolveCurrentPage()->fillContent($content);
     }
 
     /**

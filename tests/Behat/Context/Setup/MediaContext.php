@@ -85,7 +85,7 @@ final class MediaContext implements Context
     private function createMedia(
         ?string $code = null,
         ?string $name = null,
-        ?string $description = null,
+        ?string $content = null,
         ?string $fileType = null
     ): MediaInterface {
         /** @var MediaInterface $media */
@@ -99,8 +99,8 @@ final class MediaContext implements Context
             $name = $this->randomStringGenerator->generate();
         }
 
-        if (null === $description) {
-            $description = $this->randomStringGenerator->generate();
+        if (null === $content) {
+            $content = $this->randomStringGenerator->generate();
         }
 
         if (null === $fileType) {
@@ -110,7 +110,7 @@ final class MediaContext implements Context
         $media->setCode($code);
         $media->setCurrentLocale('en_US');
         $media->setName($name);
-        $media->setDescription($description);
+        $media->setContent($content);
         $media->setType($fileType);
 
         return $media;

@@ -15,6 +15,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media;
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -32,7 +33,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         Assert::fileExists($path);
 
-        $this->getDocument()->attachFileToField('File', $path);
+        $this->getDocument()->attachFileToField('File', realpath($path));
     }
 
     public function fillCode(string $code): void
@@ -45,9 +46,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Name', $name);
     }
 
-    public function fillDescription(string $description): void
+    public function fillContent(string $content): void
     {
-        $this->getDocument()->fillField('Description', $description);
+        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content, 0);
     }
 
     public function associateSections(array $sectionsNames): void

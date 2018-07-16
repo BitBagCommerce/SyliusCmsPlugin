@@ -17,7 +17,6 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
         content:
             - Length:
                 min: 2
-                max: 2000
                 minMessage: bitbag_sylius_cms_plugin.media.content.min_length
                 maxMessage: bitbag_sylius_cms_plugin.media.content.max_length
                 groups: [bitbag]
