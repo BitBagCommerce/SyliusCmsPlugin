@@ -5,7 +5,6 @@ dist: trusty
 sudo: false
 
 php:
-    - 7.1
     - 7.2
 
 cache:
@@ -20,7 +19,6 @@ env:
         - SYLIUS_BUILD_DIR=etc/build
 
     matrix:
-        - DEPENDENCY_VERSIONS="sylius/sylius:1.1.*
         - DEPENDENCY_VERSIONS="sylius/sylius:1.2.*
 
 before_install:

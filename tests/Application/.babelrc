@@ -7,15 +7,9 @@
       "useBuiltIns": true
     }]
   ],
-
   "plugins": [
     ["transform-object-rest-spread", {
       "useBuiltIns": true
-    }],
-    ["transform-runtime", {
-      "helpers": true,
-      "polyfill": true,
-      "regenerator": true
     }]
   ]
 }
