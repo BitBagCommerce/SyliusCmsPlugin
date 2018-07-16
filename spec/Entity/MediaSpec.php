@@ -51,9 +51,6 @@ final class MediaSpec extends ObjectBehavior
         $this->setFile($uploadedFile);
         $this->getFile()->shouldReturn($uploadedFile);
 
-        $this->setOriginalPath('/media/video');
-        $this->getOriginalPath()->shouldReturn('/media/video');
-
         $this->setMimeType('video/mp4');
         $this->getMimeType()->shouldReturn('video/mp4');
     }
