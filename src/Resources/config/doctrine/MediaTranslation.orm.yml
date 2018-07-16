@@ -12,11 +12,10 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
             column: name
             type: string
             nullable: true
-        description:
-            column: description
+        content:
+            column: content
             type: text
             nullable: true
-            length: 2000
         alt:
             column: alt
             type: text

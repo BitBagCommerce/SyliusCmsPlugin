@@ -18,8 +18,6 @@ class SitemapPageControllerApiLocalesTest extends AbstractTestController
 {
     /**
      * @before
-     *
-     * {@inheritdoc}
      */
     public function setUpDatabase(): void
     {

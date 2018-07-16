@@ -5,5 +5,5 @@
 
     <video controls width="100%" src="{{ media.path }}"></video>
 
-    <p>{{ media.description|raw }}</p>
+    <p>{{ bitbag_cms_render_content(media) }}</p>
 </div>

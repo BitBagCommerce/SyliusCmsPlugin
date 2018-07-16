@@ -22,30 +22,20 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 
 abstract class AbstractTestController extends XmlApiTestCase
 {
-    /**
-     * @var ChannelInterface
-     */
+    /** @var ChannelInterface */
     protected $channel;
 
-    /**
-     * @var LocaleInterface
-     */
+    /** @var LocaleInterface */
     protected $locale;
 
-    /**
-     * @var LocaleInterface
-     */
+    /** @var LocaleInterface */
     protected $secondLocale;
 
-    /**
-     * @var CurrencyInterface
-     */
+    /** @var CurrencyInterface */
     protected $currency;
 
     /**
      * @before
-     *
-     * {@inheritdoc}
      */
     public function setupDatabase(): void
     {

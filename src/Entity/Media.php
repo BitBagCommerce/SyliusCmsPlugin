@@ -126,14 +126,14 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setName($name);
     }
 
-    public function getDescription(): ?string
+    public function getContent(): ?string
     {
-        return $this->getMediaTranslation()->getDescription();
+        return $this->getMediaTranslation()->getContent();
     }
 
-    public function setDescription(?string $description): void
+    public function setContent(?string $content): void
     {
-        $this->getMediaTranslation()->setDescription($description);
+        $this->getMediaTranslation()->setContent($content);
     }
 
     public function getAlt(): ?string

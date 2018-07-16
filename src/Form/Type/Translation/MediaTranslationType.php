@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,10 +30,7 @@ final class MediaTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.alt',
                 'required' => false,
             ])
-            ->add('description', CKEditorType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.description',
-                'required' => false,
-            ])
+            ->add('content', WysiwygType::class)
         ;
     }
 

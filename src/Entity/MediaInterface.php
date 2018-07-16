@@ -24,7 +24,8 @@ interface MediaInterface extends
     ToggleableInterface,
     ProductsAwareInterface,
     SectionableInterface,
-    ChannelsAwareInterface
+    ChannelsAwareInterface,
+    ContentableInterface
 {
     public const IMAGE_TYPE = 'image';
     public const VIDEO_TYPE = 'video';
@@ -56,9 +57,9 @@ interface MediaInterface extends
 
     public function setName(?string $name): void;
 
-    public function getDescription(): ?string;
+    public function getContent(): ?string;
 
-    public function setDescription(?string $description): void;
+    public function setContent(?string $content): void;
 
     public function getAlt(): ?string;
 

@@ -2,7 +2,7 @@
     <h2>{{ media.name|raw }}</h2>
 {% endif %}
 
-<p>{{ media.description|raw }}</p>
+<p>{{ bitbag_cms_render_content(media) }}</p>
 
 <a class="ui icon labeled primary button" href="{{ path('bitbag_sylius_cms_plugin_shop_media_download', {'code': media.code}) }}">
     <i class="download icon"></i>
