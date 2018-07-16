@@ -4,9 +4,9 @@ In this plugin media represents a digital assets, for instance an image, a video
 
 Currently, it supports following media types:
 
-- Image (<img>)
-- Video (<video>)
-- File (<a>)
+- Image (img HTML tag)
+- Video (video HTML tag)
+- File (a HTML tag)
 
 ## General usage
 
@@ -30,7 +30,7 @@ You can add your own media provider by adding a service with a tag named `bitbag
 
 ```php
 app.media_provider.audio:
-    class: BitBag\SyliusCmsPlugin\MediaProvider\AudioProvider
+    class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
     arguments:
         - "@bitbag_sylius_cms_plugin.media_uploader"
         - "@templating.engine.twig"
