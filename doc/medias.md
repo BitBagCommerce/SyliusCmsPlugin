@@ -4,9 +4,9 @@ In this plugin media represents a digital assets, for instance an image, a video
 
 Currently, it supports following media types:
 
-- Image (<img>)
-- Video (<video>)
-- File (<a>)
+- Image (img HTML tag)
+- Video (video HTML tag)
+- File (a HTML tag)
 
 ## General usage
 
