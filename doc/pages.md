@@ -18,7 +18,7 @@ Or rendering a page link directly:
 {{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
 ```
 
-### Pages for product grouped by section
+### Render product pages by section
 
 Let's assume you associated pages to specific products. You can render them grouped by section in your product view by using 
 
