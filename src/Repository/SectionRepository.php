@@ -52,17 +52,14 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
         return $queryBuilder;
     }
 
-    public function findOneByCode(string $code, ?string $localeCode, string $channelCode): ?SectionInterface
+    public function findOneByCode(string $code, ?string $localeCode): ?SectionInterface
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.channels', 'channels')
             ->where('translation.locale = :localeCode')
             ->andWhere('o.code = :code')
-            ->andWhere('channels.code = :channelCode')
             ->setParameter('code', $code)
             ->setParameter('localeCode', $localeCode)
-            ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;

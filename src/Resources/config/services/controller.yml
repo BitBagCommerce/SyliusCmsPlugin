@@ -18,7 +18,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.processor.import"
             - "@form.factory"
-            - "@session"
+            - "@session.flash_bag"
             - "@translator"
             - "@fos_rest.view_handler.default"
 

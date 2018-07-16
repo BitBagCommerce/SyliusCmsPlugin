@@ -16,7 +16,7 @@ use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
-interface SectionInterface extends ResourceInterface, TranslatableInterface, ChannelsAwareInterface
+interface SectionInterface extends ResourceInterface, TranslatableInterface
 {
     public function getCode(): ?string;
 

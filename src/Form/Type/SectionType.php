@@ -31,11 +31,6 @@ final class SectionType extends AbstractResourceType
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => SectionTranslationType::class,
             ])
-            ->add('channels', ChannelChoiceType::class, [
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
-            ])
         ;
     }
 

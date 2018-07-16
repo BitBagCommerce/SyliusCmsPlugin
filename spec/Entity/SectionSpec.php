@@ -40,16 +40,4 @@ final class SectionSpec extends ObjectBehavior
         $this->setCode('blog');
         $this->getCode()->shouldReturn('blog');
     }
-
-    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
-    {
-        $this->addChannel($firstChannel);
-        $this->hasChannel($firstChannel)->shouldReturn(true);
-
-        $this->hasChannel($secondChannel)->shouldReturn(false);
-
-        $this->removeChannel($firstChannel);
-
-        $this->hasChannel($firstChannel)->shouldReturn(false);
-    }
 }

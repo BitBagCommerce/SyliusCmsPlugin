@@ -15,24 +15,33 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 
 final class MediaResourceResolver implements MediaResourceResolverInterface
 {
     /** @var MediaRepositoryInterface */
     private $mediaRepository;
 
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
     /** @var LoggerInterface */
     private $logger;
 
-    public function __construct(MediaRepositoryInterface $mediaRepository, LoggerInterface $logger)
+    public function __construct(
+        MediaRepositoryInterface $mediaRepository,
+        ChannelContextInterface $channelContext,
+        LoggerInterface $logger
+    )
     {
         $this->mediaRepository = $mediaRepository;
+        $this->channelContext = $channelContext;
         $this->logger = $logger;
     }
 
     public function findOrLog(string $code): ?MediaInterface
     {
-        $media = $this->mediaRepository->findOneEnabledByCode($code);
+        $media = $this->mediaRepository->findOneEnabledByCode($code, $this->channelContext->getChannel()->getCode());
 
         if (false === $media instanceof MediaInterface) {
             $this->logger->warning(sprintf(

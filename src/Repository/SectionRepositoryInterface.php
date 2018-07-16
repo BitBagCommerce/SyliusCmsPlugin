@@ -22,5 +22,5 @@ interface SectionRepositoryInterface extends RepositoryInterface
 
     public function findByNamePart(string $phrase, ?string $locale = null): array;
 
-    public function findOneByCode(string $code, ?string $localeCode, string $channelCode): ?SectionInterface;
+    public function findOneByCode(string $code, ?string $localeCode): ?SectionInterface;
 }

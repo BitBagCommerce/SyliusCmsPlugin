@@ -17,7 +17,6 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Section implements SectionInterface
 {
-    use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
     }
@@ -31,7 +30,6 @@ class Section implements SectionInterface
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->initializeChannelsCollection();
     }
 
     public function getId(): ?int

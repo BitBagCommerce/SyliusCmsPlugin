@@ -39,7 +39,6 @@ BitBag\SyliusCmsPlugin\Entity\Block:
                     product_id:
                         referencedColumnName: id
                         onDelete: CASCADE
-
         channels:
             targetEntity: Sylius\Component\Channel\Model\ChannelInterface
             joinTable:
