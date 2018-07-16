@@ -15,8 +15,9 @@ namespace Tests\BitBag\SyliusCmsPlugin\Fixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\SyliusCmsPlugin\Fixture\PageFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
-final class PageFixtureTest extends \PHPUnit_Framework_TestCase
+final class PageFixtureTest extends TestCase
 {
     use ConfigurationTestCaseTrait;
 
