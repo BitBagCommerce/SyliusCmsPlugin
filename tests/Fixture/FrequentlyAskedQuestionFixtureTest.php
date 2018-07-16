@@ -228,9 +228,9 @@ final class FrequentlyAskedQuestionFixtureTest extends \PHPUnit_Framework_TestCa
 
     protected function getConfiguration(): FrequentlyAskedQuestionFixture
     {
-        /** @var FixtureFactoryInterface $blockFixtureFactory */
-        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $faqFixtureFactory */
+        $faqFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new FrequentlyAskedQuestionFixture($blockFixtureFactory);
+        return new FrequentlyAskedQuestionFixture($faqFixtureFactory);
     }
 }

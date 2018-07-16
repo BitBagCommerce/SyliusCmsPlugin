@@ -116,9 +116,9 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
 
     protected function getConfiguration(): SectionFixture
     {
-        /** @var FixtureFactoryInterface $blockFixtureFactory */
-        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $sectionFixtureFactory */
+        $sectionFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new SectionFixture($blockFixtureFactory);
+        return new SectionFixture($sectionFixtureFactory);
     }
 }
