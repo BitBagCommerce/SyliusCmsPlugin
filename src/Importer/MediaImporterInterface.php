@@ -20,6 +20,6 @@ interface MediaImporterInterface extends ImporterInterface
     const CHANNELS_COLUMN = 'channels';
     const PRODUCTS_COLUMN = 'products';
     const NAME_COLUMN = 'name__locale__';
-    const DESCRIPTION_COLUMN = 'description__locale__';
+    const CONTENT_COLUMN = 'content__locale__';
     const ALT_COLUMN = 'alt__locale__';
 }
