@@ -143,7 +143,7 @@ sylius_fixtures:
                                             <h3>File description</h3>
                                             <p>
                                                 The below button links to a PDF file.
-                                                Check it out! <i class="em em-slightly-smiling-face"></i>
+                                                Check it out! <i class="em em-slightly_smiling_face"></i>
                                             </p>
                             size_table:
                                 type: image
