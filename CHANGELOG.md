@@ -17,6 +17,8 @@
 
 **Merged pull requests:**
 
+- Dev [\#175](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/175) ([bitbager](https://github.com/bitbager))
+- Dev [\#174](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/174) ([bitbager](https://github.com/bitbager))
 - Prepare 2.0.0 release [\#172](https://github.com/BitBagCommerce/SyliusCmsPlugin/pull/172) ([bitbager](https://github.com/bitbager))
 
 ## [v2.0.0-rc.2](https://github.com/BitBagCommerce/SyliusCmsPlugin/tree/v2.0.0-rc.2) (2018-07-13)
