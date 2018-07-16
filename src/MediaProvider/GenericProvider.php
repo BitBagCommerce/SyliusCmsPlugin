@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-abstract class AbstractProvider implements ProviderInterface
+abstract class GenericProvider implements ProviderInterface
 {
     /** @var MediaUploaderInterface */
     private $uploader;

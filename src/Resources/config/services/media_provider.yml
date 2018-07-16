@@ -1,6 +1,6 @@
 services:
     bitbag_sylius_cms_plugin.media_provider.image:
-        class: BitBag\SyliusCmsPlugin\MediaProvider\ImageProvider
+        class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
             - "@templating.engine.twig"
@@ -10,7 +10,7 @@ services:
             - { name: bitbag_sylius_cms_plugin.media_provider, type: image, label: bitbag_sylius_cms_plugin.ui.image_provider }
 
     bitbag_sylius_cms_plugin.media_provider.video:
-        class: BitBag\SyliusCmsPlugin\MediaProvider\VideoProvider
+        class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
             - "@templating.engine.twig"
@@ -20,7 +20,7 @@ services:
             - { name: bitbag_sylius_cms_plugin.media_provider, type: video, label: bitbag_sylius_cms_plugin.ui.video_provider }
 
     bitbag_sylius_cms_plugin.media_provider.file:
-        class: BitBag\SyliusCmsPlugin\MediaProvider\FileProvider
+        class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
             - "@templating.engine.twig"
