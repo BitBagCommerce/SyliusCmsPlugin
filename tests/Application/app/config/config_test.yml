@@ -1,11 +1,6 @@
 imports:
     - { resource: "config.yml" }
 
-
 doctrine:
     dbal:
-        path: "%kernel.root_dir%/../var/db_test.sql"
-
-framework:
-    router:
-        resource: "%kernel.root_dir%/config/routing_test.yml"
+        path: "%kernel.project_dir%/var/db_test.sql"
