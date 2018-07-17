@@ -21,7 +21,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Sylius\Component\Core\Uploader\ImageUploader;
+use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
@@ -40,7 +40,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
     /** @var ImageDownloaderInterface */
     private $imageDownloader;
 
-    /** @var ImageUploader */
+    /** @var ImageUploaderInterface */
     private $imageUploader;
 
     /** @var ImporterSectionsResolverInterface */
@@ -60,7 +60,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         ResourceResolverInterface $sectionResolver,
         LocaleContextInterface $localeContext,
         ImageDownloaderInterface $imageDownloader,
-        ImageUploader $imageUploader,
+        ImageUploaderInterface $imageUploader,
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
