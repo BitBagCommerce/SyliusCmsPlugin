@@ -12,10 +12,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Entity\PageImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -61,28 +63,45 @@ final class PageController extends ResourceController
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
-        $newResource = $this->newResourceFactory->create($configuration, $this->factory);
 
-        $form = $this->resourceFormFactory->create($configuration, $newResource);
+        /** @var PageInterface $page */
+        $page = $request->get('id') && $this->repository->find($request->get('id')) ?
+            $this->repository->find($request->get('id')) :
+            $this->factory->createNew();
+        $form = $this->resourceFormFactory->create($configuration, $page);
+        $defaultLocale = $this->getParameter('locale');
 
         $form->handleRequest($request);
 
-        /** @var PageInterface $newResource */
-        $newResource = $form->getData();
+        $page->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $page->setCurrentLocale($request->get('_locale', $defaultLocale));
 
-        $defaultLocale = $this->getParameter('locale');
+        $this->resolveImage($page);
 
-        $newResource->setFallbackLocale($request->get('_locale', $defaultLocale));
-        $newResource->setCurrentLocale($request->get('_locale', $defaultLocale));
+        $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
 
         $view = View::create()
             ->setData([
-                'resource' => $newResource,
-                $this->metadata->getName() => $newResource,
+                'resource' => $page,
+                $this->metadata->getName() => $page,
             ])
             ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
         ;
 
         return $this->viewHandler->handle($configuration, $view);
+    }
+
+    private function resolveImage(PageInterface $page): void
+    {
+        /** @var PageImageInterface $image */
+        if (!$image = $page->getTranslation()->getImage()) {
+            return;
+        }
+
+        $file = $image->getFile() ?: new File($this->getParameter('kernel.project_dir') . '/web/' . $image->getPath());
+        $base64Content = base64_encode(file_get_contents($file->getPathname()));
+        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
+
+        $image->setPath($path);
     }
 }

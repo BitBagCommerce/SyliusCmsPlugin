@@ -16,3 +16,12 @@ bitbag_sylius_cms_plugin_admin_media:
             index:
                 icon: file
     type: sylius.resource
+
+bitbag_sylius_cms_plugin_admin_media_preview:
+    path: /media/preview/{id}
+    methods: [POST, PUT]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:previewAction
+        _sylius:
+            template: "@BitBagSyliusCmsPlugin/Media/preview.html.twig"
+        id: null

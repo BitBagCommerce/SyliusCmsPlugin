@@ -21,8 +21,8 @@ bitbag_sylius_cms_plugin_admin_block:
     type: sylius.resource
 
 bitbag_sylius_cms_plugin_admin_block_preview:
-    path: /block/preview/{type}
-    methods: [GET]
+    path: /block/preview
+    methods: [POST, PUT]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.block:previewAction
         _sylius:
