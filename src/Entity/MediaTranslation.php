@@ -23,7 +23,7 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
     protected $name;
 
     /** @var string */
-    protected $description;
+    protected $content;
 
     /** @var string */
     protected $alt;
@@ -43,14 +43,14 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
         $this->name = $name;
     }
 
-    public function getDescription(): ?string
+    public function getContent(): ?string
     {
-        return $this->description;
+        return $this->content;
     }
 
-    public function setDescription(?string $description): void
+    public function setContent(?string $content): void
     {
-        $this->description = $description;
+        $this->content = $content;
     }
 
     public function getAlt(): ?string

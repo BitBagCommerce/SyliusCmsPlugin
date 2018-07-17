@@ -70,7 +70,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
             $media->setCurrentLocale($locale);
             $media->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
-            $media->setDescription($this->getTranslatableColumnValue(self::DESCRIPTION_COLUMN, $locale, $row));
+            $media->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
             $media->setAlt($this->getTranslatableColumnValue(self::ALT_COLUMN, $locale, $row));
         }
 
@@ -92,7 +92,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
     {
         return [
             self::NAME_COLUMN,
-            self::DESCRIPTION_COLUMN,
+            self::CONTENT_COLUMN,
             self::ALT_COLUMN,
         ];
     }

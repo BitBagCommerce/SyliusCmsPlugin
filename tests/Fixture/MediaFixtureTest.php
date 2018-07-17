@@ -13,11 +13,11 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Fixture;
 
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
-use BitBag\SyliusCmsPlugin\Fixture\PageFixture;
+use BitBag\SyliusCmsPlugin\Fixture\MediaFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
 
-final class PageFixtureTest extends TestCase
+final class MediaFixtureTest extends TestCase
 {
     use ConfigurationTestCaseTrait;
 
@@ -37,7 +37,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'enabled' => true,
                     ],
                 ],
@@ -47,7 +47,7 @@ final class PageFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'enabled' => 'boolean',
                     ],
                 ],
@@ -63,7 +63,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [],
                     ],
                 ],
@@ -73,7 +73,7 @@ final class PageFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => 'array',
                     ],
                 ],
@@ -84,35 +84,35 @@ final class PageFixtureTest extends TestCase
     /**
      * @test
      */
-    public function custom_may_contain_slug(): void
+    public function custom_may_contain_alt(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
-                                'slug' => 'my-page',
+                                'alt' => 'my-media',
                             ],
                         ],
                     ],
                 ],
             ],
-        ], 'custom.*.translations.*.slug');
+        ], 'custom.*.translations.*.alt');
 
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
-                                'slug' => '',
+                                'alt' => '',
                             ],
                         ],
                     ],
                 ],
             ],
-        ], 'custom.*.translations.*.slug');
+        ], 'custom.*.translations.*.alt');
     }
 
     /**
@@ -123,10 +123,10 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
-                                'name' => 'My page',
+                                'name' => 'My media',
                             ],
                         ],
                     ],
@@ -137,7 +137,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
                                 'name' => '',
@@ -152,83 +152,15 @@ final class PageFixtureTest extends TestCase
     /**
      * @test
      */
-    public function custom_may_contain_meta_keywords(): void
-    {
-        $this->assertConfigurationIsValid([
-            [
-                'custom' => [
-                    'page_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'meta_keywords' => 'page',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ], 'custom.*.translations.*.meta_keywords');
-
-        $this->assertConfigurationIsValid([
-            [
-                'custom' => [
-                    'page_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'meta_keywords' => '',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ], 'custom.*.translations.*.meta_keywords');
-    }
-
-    /**
-     * @test
-     */
-    public function custom_may_contain_meta_description(): void
-    {
-        $this->assertConfigurationIsValid([
-            [
-                'custom' => [
-                    'page_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'meta_description' => 'My page',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ], 'custom.*.translations.*.meta_description');
-
-        $this->assertConfigurationIsValid([
-            [
-                'custom' => [
-                    'page_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'meta_description' => 'My page',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ], 'custom.*.translations.*.meta_description');
-    }
-
-    /**
-     * @test
-     */
     public function custom_may_contain_content(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
-                                'content' => 'My page',
+                                'content' => 'My media',
                             ],
                         ],
                     ],
@@ -239,10 +171,10 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'page_1' => [
+                    'media_1' => [
                         'translations' => [
                             'en_US' => [
-                                'content' => 'My page',
+                                'content' => 'My media',
                             ],
                         ],
                     ],
@@ -259,7 +191,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'homepage_banner' => [
+                    'media_banner' => [
                         'number' => 1,
                     ],
                 ],
@@ -269,7 +201,7 @@ final class PageFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
-                    'homepage_banner' => [
+                    'media_banner' => [
                         'number' => '1',
                     ],
                 ],
@@ -285,7 +217,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'homepage_banner' => [
+                    'media_banner' => [
                         'remove_existing' => true,
                     ],
                 ],
@@ -295,7 +227,7 @@ final class PageFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
-                    'homepage_banner' => [
+                    'media_banner' => [
                         'remove_existing' => 'boolean',
                     ],
                 ],
@@ -311,8 +243,8 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'homepage_banner' => [
-                        'sections' => ['blog', 'homepage'],
+                    'media_banner' => [
+                        'sections' => ['blog', 'media'],
                     ],
                 ],
             ],
@@ -321,7 +253,7 @@ final class PageFixtureTest extends TestCase
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'homepage_banner' => [
+                    'media_banner' => [
                         'sections' => [],
                     ],
                 ],
@@ -348,17 +280,27 @@ final class PageFixtureTest extends TestCase
             ],
         ], 'custom.*.sections');
     }
-
+    
     /**
      * @test
      */
-    public function custom_products_is_optional_but_must_be_integer(): void
+    public function custom_products_is_optional_but_must_be_scalar_array(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
-                    'homepage_banner' => [
-                        'products' => 5,
+                    'media_banner' => [
+                        'products' => ['mug', 't-shirt'],
+                    ],
+                ],
+            ],
+        ], 'custom.*.products');
+
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'media_banner' => [
+                        'products' => [],
                     ],
                 ],
             ],
@@ -367,19 +309,29 @@ final class PageFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
-                    'homepage_banner' => [
-                        'enabled' => 'integer',
+                    'custom_1' => [
+                        'products' => '',
+                    ],
+                ],
+            ],
+        ], 'custom.*.products');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'custom_1' => [
+                        'product_name' => 'mug',
                     ],
                 ],
             ],
         ], 'custom.*.products');
     }
 
-    protected function getConfiguration(): PageFixture
+    protected function getConfiguration(): MediaFixture
     {
-        /** @var FixtureFactoryInterface $pageFixtureFactory */
-        $pageFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $mediaFixtureFactory */
+        $mediaFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new PageFixture($pageFixtureFactory);
+        return new MediaFixture($mediaFixtureFactory);
     }
 }

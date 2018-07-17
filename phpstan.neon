@@ -1,4 +1,14 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
+
 parameters:
+    reportUnmatchedIgnoredErrors: false
+
+    symfony:
+        container_xml_path: tests/Application/var/cache/test/appTestDebugProjectContainer.xml
+
     excludes_analyse:
         # Makes PHPStan crash
         - 'src/DependencyInjection/Configuration.php'

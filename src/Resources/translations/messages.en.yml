@@ -50,5 +50,4 @@ bitbag_sylius_cms_plugin:
         breadcrumb: Breadcrumb
         import: Import
         csv_file: CSV file
-        import: Import
         successfully_imported: Data has been imported.

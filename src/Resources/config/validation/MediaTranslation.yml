@@ -14,10 +14,9 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
                 minMessage: bitbag_sylius_cms_plugin.media.alt.min_length
                 maxMessage: bitbag_sylius_cms_plugin.media.alt.max_length
                 groups: [bitbag]
-        description:
+        content:
             - Length:
                 min: 2
-                max: 2000
-                minMessage: bitbag_sylius_cms_plugin.media.description.min_length
-                maxMessage: bitbag_sylius_cms_plugin.media.description.max_length
+                minMessage: bitbag_sylius_cms_plugin.media.content.min_length
+                maxMessage: bitbag_sylius_cms_plugin.media.content.max_length
                 groups: [bitbag]

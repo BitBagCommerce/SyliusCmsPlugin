@@ -21,12 +21,17 @@ class AppKernel extends Kernel
             new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
         ]);
 
+        if (in_array($this->getEnvironment(), ['dev', 'test', 'test_cached'], true)) {
+            $bundles[] = new \Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle();
+            $bundles[] = new \Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle();
+        }
+
         return $bundles;
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load($this->getRootDir() . '/config/config_'  . $this->getEnvironment() . '.yml');
+        $loader->load($this->getProjectDir() . '/app/config/config_' . $this->environment . '.yml');
     }
 
     public function getProjectDir(): string

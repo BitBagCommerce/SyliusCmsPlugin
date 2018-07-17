@@ -38,7 +38,7 @@ final class MediaSpec extends ObjectBehavior
         $this->shouldHaveType(MediaInterface::class);
     }
 
-    function it_allows_access_via_properties(File $uploadedFile): void
+    function it_allows_access_via_properties(): void
     {
         $this->setCode('file');
         $this->getCode()->shouldReturn('file');
@@ -49,8 +49,10 @@ final class MediaSpec extends ObjectBehavior
         $this->setPath('/media/video');
         $this->getPath()->shouldReturn('/media/video');
 
-        $this->setFile($uploadedFile);
-        $this->getFile()->shouldReturn($uploadedFile);
+        $file = new File(__DIR__ . '/MediaSpec.php');
+
+        $this->setFile($file);
+        $this->getFile()->shouldReturn($file);
 
         $this->setMimeType('video/mp4');
         $this->getMimeType()->shouldReturn('video/mp4');

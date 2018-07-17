@@ -18,8 +18,6 @@ class SitemapPageControllerApiTest extends AbstractTestController
 {
     /**
      * @before
-     *
-     * {@inheritdoc}
      */
     public function setUpDatabase(): void
     {

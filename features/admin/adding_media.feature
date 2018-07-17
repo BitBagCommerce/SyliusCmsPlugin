@@ -8,12 +8,12 @@ Feature: Adding new media
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @ui
+    @ui @javascript
     Scenario: Adding new media
         When I go to the create media page
         And I fill the code with "image"
         And I fill the name with "Image"
-        And I fill the description with "Main image"
+        And I fill the content with "Main image"
         And I upload the "aston_martin_db_11.jpg" image
         And I add it
         Then I should be notified that new media has been created
@@ -35,13 +35,13 @@ Feature: Adding new media
     @ui
     Scenario: Trying to add media with too short data
         When I go to the create media page
-        And I fill "Code, Name, Description" fields with 1 character
+        And I fill "Code, Name" fields with 1 character
         And I try to add it
-        Then I should be notified that "Code, Name, Description" fields are too short
+        Then I should be notified that "Code, Name" fields are too short
 
     @ui
     Scenario: Trying to add media with too long data
         When I go to the create media page
-        And I fill "Code, Name, Description" fields with 6000 characters
+        And I fill "Code, Name" fields with 6000 characters
         And I try to add it
-        Then I should be notified that "Code, Name, Description" fields are too long
+        Then I should be notified that "Code, Name" fields are too long

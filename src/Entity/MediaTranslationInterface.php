@@ -21,9 +21,9 @@ interface MediaTranslationInterface extends ResourceInterface, TranslationInterf
 
     public function setName(?string $name): void;
 
-    public function getDescription(): ?string;
+    public function getContent(): ?string;
 
-    public function setDescription(?string $description): void;
+    public function setContent(?string $content): void;
 
     public function getAlt(): ?string;
 

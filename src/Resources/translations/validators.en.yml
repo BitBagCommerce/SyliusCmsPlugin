@@ -74,9 +74,8 @@ bitbag_sylius_cms_plugin:
             not_blank: Name cannot be blank.
             min_length: Name must be at least {{ limit }} characters long.
             max_length: Name can not be longer than {{ limit }} characters.
-        description:
-            min_length: Description must be at least {{ limit }} characters long.
-            max_length: Description can not be longer than {{ limit }} characters.
+        content:
+            min_length: Content must be at least {{ limit }} characters long.
         alt:
             min_length: Alt must be at least {{ limit }} characters long.
             max_length: Alt can not be longer than {{ limit }} characters.

@@ -4,6 +4,10 @@
 !/var/.gitkeep
 
 /web/*
+
+!/web/assets/.gitkeep
+!/web/bundles/.gitkeep
+!/web/media/image/.gitkeep
 !/web/app.php
 !/web/app_dev.php
 !/web/app_test.php

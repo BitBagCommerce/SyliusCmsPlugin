@@ -15,8 +15,9 @@ namespace Tests\BitBag\SyliusCmsPlugin\Fixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use BitBag\SyliusCmsPlugin\Fixture\SectionFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
-final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
+final class SectionFixtureTest extends TestCase
 {
     use ConfigurationTestCaseTrait;
 
@@ -116,9 +117,9 @@ final class SectionFixtureTest extends \PHPUnit_Framework_TestCase
 
     protected function getConfiguration(): SectionFixture
     {
-        /** @var FixtureFactoryInterface $blockFixtureFactory */
-        $blockFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
+        /** @var FixtureFactoryInterface $sectionFixtureFactory */
+        $sectionFixtureFactory = $this->getMockBuilder(FixtureFactoryInterface::class)->getMock();
 
-        return new SectionFixture($blockFixtureFactory);
+        return new SectionFixture($sectionFixtureFactory);
     }
 }

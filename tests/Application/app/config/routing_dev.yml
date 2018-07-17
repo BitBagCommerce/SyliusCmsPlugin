@@ -1,2 +1,5 @@
 _main:
     resource: routing.yml
+
+sylius:
+    resource: "../../../../vendor/sylius/sylius/app/config/routing_dev.yml"
