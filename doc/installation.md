@@ -15,6 +15,7 @@ public function registerBundles()
         new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
+```
 
 Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
