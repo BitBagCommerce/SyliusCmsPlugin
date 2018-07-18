@@ -11,17 +11,10 @@ public function registerBundles()
         ...
         
         new \FOS\CKEditorBundle\FOSCKEditorBundle(), // WYSIWYG editor
+        new \SitemapPlugin\SitemapPlugin(), // Sitemap support
         new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
     ]);
 }
-
-protected function build(ContainerBuilder $container)
-{
-    ...
-
-    $container->addCompilerPass(new \BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass());
-}
-```
 
 Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
