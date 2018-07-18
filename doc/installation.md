@@ -47,7 +47,8 @@ bitbag_sylius_cms_plugin:
 
 Finish the installation by updating the database schema and installing assets:
 ```
-$ bin/console doctrine:schema:update --force
+$ bin/console doctrine:migrations:diff
+$ bin/console doctrine:migrations:migrate
 $ bin/console assets:install
 $ bin/console sylius:theme:assets:install
 ```
