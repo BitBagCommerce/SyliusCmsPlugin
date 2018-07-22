@@ -27,7 +27,21 @@ To check parameters available with the plugin, execute:
 ```bash
 $ bin/console debug:container --parameters | grep bitbag
 ```
+## How to disable localised URLs?
+Customise vendor routing in the file `app/Resources/BitBagSyliusCmsPlugin/config/routing.yml` (create if not exist).
+Add:
+```
+bitbag_sylius_cms_plugin_admin:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin.yml"
+    prefix: /admin
 
+bitbag_sylius_cms_plugin_shop:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
+    prefix: /
+
+sylius_sitemap:
+   resource: "@SitemapPlugin/Resources/config/routing.yml"
+```
 ## Testing
 
 ```bash
