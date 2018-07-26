@@ -51,3 +51,4 @@ bitbag_sylius_cms_plugin:
         import: Import
         csv_file: CSV file
         successfully_imported: Data has been imported.
+        form_was_submitted_with_errors: "The form was submitted with following errors:"

@@ -16,6 +16,8 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 
 interface ProviderInterface
 {
+    public function getTemplate(): string;
+
     public function render(MediaInterface $media, array $options = []): string;
 
     public function upload(MediaInterface $media): void;

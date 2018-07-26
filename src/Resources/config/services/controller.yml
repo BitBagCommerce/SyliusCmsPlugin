@@ -19,6 +19,7 @@ services:
             - "@bitbag_sylius_cms_plugin.processor.import"
             - "@form.factory"
             - "@session.flash_bag"
+            - "@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"
             - "@translator"
             - "@fos_rest.view_handler.default"
 
@@ -29,3 +30,10 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@bitbag_sylius_cms_plugin.factory.media"
+
+    bitbag_sylius_cms_plugin.controller.helper.form_errors_flash:
+        class: BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelper
+        public: true
+        arguments:
+            - "@session.flash_bag"
+            - "@translator"

@@ -18,10 +18,16 @@
     <div class="ui segment">
         <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
 
-        {% if page.image %}
-            {% set path = '/media/image/'~page.image.path %}
-            <img class="page-image ui fluid image" src="{{ path }}" alt="">
-        {% endif %}
+        <div class="ui grid center aligned">
+            <div class="eight wide column">
+                {% if page.image %}
+                    {% set path = '/media/image/'~page.image.path %}
+                    <img class="page-image ui fluid image" src="{{ path }}" alt="">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="ui hidden divider"></div>
 
         <div class="bitbag-page-content">{{ bitbag_cms_render_content(page) }}</div>
         <div class="ui dividing header"></div>

@@ -7,7 +7,9 @@
 {% block content %}
     <div class="column">
         <div class="ui segment">
-            {% include blockTemplate %}
+            {% if mediaTemplate != null %}
+                {% include mediaTemplate %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

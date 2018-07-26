@@ -42,6 +42,11 @@ final class GenericProvider implements ProviderInterface
         $this->pathPrefix = $pathPrefix;
     }
 
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
+
     public function render(MediaInterface $media, array $options = []): string
     {
         return $this->twigEngine->render($this->template, array_merge(['media' => $media], $options));

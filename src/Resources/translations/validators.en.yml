@@ -28,6 +28,7 @@ bitbag_sylius_cms_plugin:
             not_blank:  Slug cannot be blank.
             min_length: Slug must be at least {{ limit }} characters long.
             max_length: Slug can not be longer than {{ limit }} characters.
+            unique: Slug must be unique.
         meta_keywords:
             min_length: Meta keywords must be at least {{ limit }} characters long.
             max_length: Meta keywords can not be longer than {{ limit }} characters.

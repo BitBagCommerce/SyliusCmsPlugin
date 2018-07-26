@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
 use BitBag\SyliusCmsPlugin\Form\Type\ImportType;
 use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +37,9 @@ final class ImportDataAction
     /** @var FlashBagInterface */
     private $flashBag;
 
+    /** @var FormErrorsFlashHelperInterface */
+    private $formErrorsFlashHelper;
+
     /** @var TranslatorInterface */
     private $translator;
 
@@ -47,12 +50,15 @@ final class ImportDataAction
         ImportProcessorInterface $importProcessor,
         FormFactoryInterface $formFactory,
         FlashBagInterface $flashBag,
+        FormErrorsFlashHelperInterface $formErrorsFlashHelper,
         TranslatorInterface $translator,
         ViewHandler $viewHandler
     ) {
+
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
         $this->flashBag = $flashBag;
+        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
         $this->translator = $translator;
         $this->viewHandler = $viewHandler;
     }
@@ -79,7 +85,7 @@ final class ImportDataAction
                     $this->flashBag->set('error', $exception->getMessage());
                 }
             } else {
-                $this->flashBag->set('error', rtrim(implode($this->getFormErrors($form), ', '), ', '));
+                $this->formErrorsFlashHelper->addFlashErrors($form);
             }
 
             return new RedirectResponse($referer);
@@ -93,16 +99,5 @@ final class ImportDataAction
         ;
 
         return $this->viewHandler->handle($view);
-    }
-
-    private function getFormErrors(FormInterface $form): array
-    {
-        $errors = [];
-
-        foreach ($form->getErrors(true) as $error) {
-            $errors[] = $error->getMessage();
-        }
-
-        return $errors;
     }
 }

@@ -1,6 +1,5 @@
 # UPGRADE FROM 1.0 TO 2.0
 
-* With CMS 2.0, Sylius 1.2 is required
 * A lot of database modifications has been made. Read the below changelog first and then migrate your
 structure using `bin/console doctrine:migrations:diff && bin/console doctrine:migrations:migrate` commands
 * Media type field has been removed. For image blocks, use the [media](doc/medias.md) with image type. For HTML blocks,
