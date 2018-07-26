@@ -17,7 +17,7 @@
                     var root = $('#bitbag-cms-resource-preview-modal');
 
                     $('#bitbag_sylius_cms_plugin_channel_switch, #bitbag_sylius_cms_plugin_locale_switch').on('change', function () {
-                        createPreview(form, url);
+                        // createPreview(form, url);
                     });
 
                     createPreview(form, url);

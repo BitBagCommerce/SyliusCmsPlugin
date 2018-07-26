@@ -83,6 +83,7 @@ final class PageController extends ResourceController
         $view = View::create()
             ->setData([
                 'resource' => $page,
+                'preview' => true,
                 $this->metadata->getName() => $page,
             ])
             ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
@@ -98,10 +99,11 @@ final class PageController extends ResourceController
             return;
         }
 
-        $file = $image->getFile() ?: new File($this->getParameter('kernel.project_dir') . '/web/' . $image->getPath());
+        $file = $image->getFile() ?: new File($this->getParameter('kernel.project_dir') . '/web/media/image/' . $image->getPath());
         $base64Content = base64_encode(file_get_contents($file->getPathname()));
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
 
         $image->setPath($path);
+        $page->getTranslation()->setImage($image);
     }
 }
