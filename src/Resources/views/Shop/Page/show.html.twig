@@ -23,7 +23,7 @@
                 {% if page.image %}
                     {% set path = preview is defined and preview == true ? page.image.path : '/media/image/'~page.image.path %}
 
-                    <img class="page-image ui fluid image" src="{{ page.image.path }}" alt="">
+                    <img class="page-image ui fluid image" src="{{ path }}" alt="">
                 {% endif %}
             </div>
         </div>
