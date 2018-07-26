@@ -48,7 +48,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content, 0);
+        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
     }
 
     public function associateSections(array $sectionsNames): void
