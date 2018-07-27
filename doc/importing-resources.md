@@ -215,3 +215,7 @@ sylius_grid:
 
 Create an `_importForm.html.twig` file under `app/Resources/BitBagSyliusCmsPlugin/views/Grid/Form` location. Take a look at
 the default [_importForm.html.twig](../src/Resources/views/Grid/Form/_importForm.html.twig) file.
+
+### Example
+
+Take a look at [block.csv](block.csv) file as an example. CSV files for another resources should not differ much from it.
