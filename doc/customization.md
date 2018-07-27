@@ -9,7 +9,7 @@ You can customize this plugin using:
 In order to check what services are available with this plugin, run the following command:
 
 ```bash
-$ bin/console debug:container | grep bitbag_sylius_cms_plugin
+$ bin/console debug:container bitbag_sylius_cms_plugin
 ```
 
 **Note:**
