@@ -1,4 +1,4 @@
-# Medias
+# Media
 
 In this plugin media represents a digital assets, for instance an image, a video or simple PDF file.
 
