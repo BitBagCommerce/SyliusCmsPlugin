@@ -54,7 +54,7 @@ We also recorded a webinar which presents most of the plugin features, including
 - [Blocks](doc/blocks.md)
 - [Pages](doc/pages.md)
 - [Sections](doc/sections.md)
-- [Medias](doc/medias.md)
+- [Media](doc/media.md)
 - [FAQs](doc/faqs.md)
 - [Fixtures](doc/fixtures.md)
 - [WYSIWYG](doc/wysiwyg.md)
