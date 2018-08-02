@@ -10,7 +10,7 @@ Currently, it supports following media types:
 
 ## General usage
 
-You can render media in two ways:
+You can render media in three ways:
 
 By rendering a media code template:
 
@@ -18,10 +18,16 @@ By rendering a media code template:
 {{ bitbag_cms_render_media('media_code') }}
 ```
 
-Or rendering a media code directly:
+Rendering a media code directly:
 
 ```twig
 {{ render(path('bitbag_sylius_cms_plugin_shop_media_render', {'code' : 'file', 'template' : '@App/Some/Template/_path.html.twig'})) }}
+```
+
+If you want to list media by specific section. Useful for displaying set of images. For example, using "gallery" section you can group set of images and display them as gallery, or even slider.
+
+```twig
+{{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'gallery', 'template' : '@App/Some/Template/_path.html.twig'})) }}
 ```
 
 ### Media provider
