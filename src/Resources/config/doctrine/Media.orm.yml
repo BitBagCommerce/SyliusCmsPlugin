@@ -32,7 +32,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             type: boolean
     manyToMany:
         sections:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\SectionInterface
             joinTable:
                 name: bitbag_cms_media_sections
                 joinColumns:

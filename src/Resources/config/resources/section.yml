@@ -4,8 +4,10 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\Section
+                interface: BitBag\SyliusCmsPlugin\Entity\SectionInterface
                 form: BitBag\SyliusCmsPlugin\Form\Type\SectionType
                 repository: BitBag\SyliusCmsPlugin\Repository\SectionRepository
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\SectionTranslation
+                    interface: BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface

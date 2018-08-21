@@ -4,8 +4,10 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion
+                interface: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface
                 form: BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType
                 repository: BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepository
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation
+                    interface: BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface

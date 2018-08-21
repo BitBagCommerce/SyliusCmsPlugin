@@ -4,9 +4,11 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: BitBag\SyliusCmsPlugin\Entity\Page
+                interface: BitBag\SyliusCmsPlugin\Entity\PageInterface
                 form: BitBag\SyliusCmsPlugin\Form\Type\PageType
                 repository: BitBag\SyliusCmsPlugin\Repository\PageRepository
                 controller: BitBag\SyliusCmsPlugin\Controller\PageController
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\PageTranslation
+                    interface: BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface
