@@ -46,6 +46,7 @@ class SitemapPageControllerApiTest extends AbstractTestController
         $page->setSlug('test 2');
         $page->setEnabled(false);
         $this->getEntityManager()->persist($page);
+
         $this->getEntityManager()->flush();
     }
 
