@@ -43,7 +43,7 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                         referencedColumnName: id
                         onDelete: CASCADE
         sections:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\Section
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\SectionInterface
             joinTable:
                 name: bitbag_cms_page_sections
                 joinColumns:
