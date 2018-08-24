@@ -65,4 +65,4 @@ We also recorded a webinar which presents most of the plugin features, including
 
 ## Contribution
 
-Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
+Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/. 
