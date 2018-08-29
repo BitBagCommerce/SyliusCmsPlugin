@@ -32,17 +32,22 @@ final class ContentParser implements ContentParserInterface
     {
         $functions = $this->twigEnvironment->getFunctions();
 
-        foreach ($this->enabledFunctions as $function) {
-            if (null !== $arguments = $this->getFunctionArguments($function, $input)) {
-                $functionCall = '{{ ' . $function . '(\'' . rtrim(implode($arguments, '\' ,'), '\' ,') . '\') }}';
+        preg_match_all('`{{\s*(?P<method>.+)\s*\((?P<arguments>.*)\)\s*}}`', $input, $callMatches);
 
+        foreach ($callMatches[0] as $index => $call) {
+            $function = $callMatches['method'][$index];
+            if (!in_array($function, $this->enabledFunctions)) {
+                continue;
+            }
+
+            if (null !== $arguments = $this->getFunctionArguments($function, $call)) {
                 try {
                     $functionResult = $this->callFunction($functions, $function, $arguments);
                 } catch (\Exception $exception) {
                     $functionResult = '';
                 }
 
-                $input = str_replace($functionCall, $functionResult, $input);
+                $input = str_replace($call, $functionResult, $input);
             }
         }
 
