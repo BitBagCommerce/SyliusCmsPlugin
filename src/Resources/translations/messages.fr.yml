@@ -6,26 +6,49 @@ bitbag_sylius_cms_plugin:
         cms: Gestion de contenu
         enabled: Activée
         blocks_header: Blocs
-        blocks_subheader: Gère vos blocs
-        text_block: Bloc de texte
-        html_block: Bloc de html
-        image_block: Bloc d'image
-        pages_header: Page
-        pages_subheader: Gérez vos pages
-        products: Des produits
+        blocks_subheader: Gérer vos blocs
+        pages_header: Pages
+        pages_subheader: Gérer vos pages
+        products: Produits
+        page_related_products: Produits liés à la page
         name: Nom
         slug: Slug
         meta_keywords: Meta Mots-clés
         meta_description: Meta Description
         content: Contenu
+        faq: FAQ
         code: Code
         contents: Contenu
         images: Images
+        image: Image
         link: Link
-        faq: FAQ
         faq_header: FAQ
         faq_subheader: Gérer votre FAQ
-        frequently_asked_questions: FAQ
+        frequently_asked_questions: Questions fréquentes (FAQ)
+        question: Question
+        answer: Réponse
         sections: Sections
         sections_header: Sections
         sections_subheader: Gérer vos sections
+        position: Position
+        channels: Canaux
+        preview: Prévisualisation
+        download: Téléchargement
+        name_when_linked: Nom lors d'un lien
+        description_when_linked: Description lors d'un lien
+        media: Médias
+        media_header: Médias
+        media_subheader: Gérer vos médias
+        type: Type
+        file: Fichier
+        alt: Alt
+        description: Description
+        file_provider: Fichier
+        image_provider: Image
+        video_provider: Vidéo
+        read_more: Lire plus
+        breadcrumb: Fil d'Ariane
+        import: Import
+        csv_file: Fichier CSV
+        successfully_imported: Les données ont été importées.
+        form_was_submitted_with_errors: "Le formulaire a les erreurs suivantes :"
