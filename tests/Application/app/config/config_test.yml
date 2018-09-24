@@ -1,6 +1,0 @@
-imports:
-    - { resource: "config.yml" }
-
-doctrine:
-    dbal:
-        path: "%kernel.project_dir%/var/db_test.sql"
