@@ -10,10 +10,13 @@ default:
                 - tests/Behat/Resources/services.xml
 
         FriendsOfBehat\SymfonyExtension:
+            env_file: tests/Application/.env.test
             kernel:
-                class: AppKernel
-                path: tests/Application/app/AppKernel.php
-                bootstrap: vendor/autoload.php
+                env: test
+                debug: true
+                class: Tests\Acme\SyliusExamplePlugin\Application\Kernel
+                path: tests/Application/Kernel.php
+                bootstrap: ~
 
         Lakion\Behat\MinkDebugExtension:
             directory: etc/build

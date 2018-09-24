@@ -7,7 +7,7 @@ parameters:
     reportUnmatchedIgnoredErrors: false
 
     symfony:
-        container_xml_path: tests/Application/var/cache/test/appTestDebugProjectContainer.xml
+        container_xml_path: tests/Application/var/cache/test/ApplicationTestDebugProjectContainer.xml
 
     excludes_analyse:
         # Makes PHPStan crash
