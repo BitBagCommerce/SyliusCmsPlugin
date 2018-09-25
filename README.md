@@ -49,15 +49,18 @@
  
     1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
     
+    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
+    
     2. Run Selenium server with previously downloaded Chromedriver:
     
         ```bash
-        $ bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver
+        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
         ```
+        
     3. Run test application's webserver on `localhost:8080`:
     
         ```bash
-        $ (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web -e test)
+        $ (cd tests/Application && bin/console server:run localhost:8080 -d web -e test)
         ```
     
     4. Run Behat:
