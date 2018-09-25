@@ -60,7 +60,7 @@
     3. Run test application's webserver on `localhost:8080`:
     
         ```bash
-        $ (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web -e test)
+        $ (cd tests/Application && bin/console server:run localhost:8080 -d web -e test)
         ```
     
     4. Run Behat:
