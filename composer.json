@@ -1,6 +1,7 @@
 {
     "name": "sylius/plugin-skeleton",
-    "type": "sylius-plugin",
+    "type": "symfony-bundle",
+    "keywords": ["sylius", "sylius-plugin"],
     "description": "Acme example plugin for Sylius.",
     "license": "MIT",
     "require": {
