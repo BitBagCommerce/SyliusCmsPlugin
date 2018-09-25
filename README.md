@@ -16,8 +16,8 @@
 
     ```bash
     $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn run gulp)
-    $ (cd tests/Application && bin/console assets:install web -e test)
+    $ (cd tests/Application && yarn build)
+    $ (cd tests/Application && bin/console assets:install public -e test)
     
     $ (cd tests/Application && bin/console doctrine:database:create -e test)
     $ (cd tests/Application && bin/console doctrine:schema:create -e test)
@@ -30,40 +30,43 @@
   - PHPUnit
 
     ```bash
-    $ bin/phpunit
+    $ vendor/bin/phpunit
     ```
 
   - PHPSpec
 
     ```bash
-    $ bin/phpspec run
+    $ vendor/bin/phpspec run
     ```
 
   - Behat (non-JS scenarios)
 
     ```bash
-    $ bin/behat --tags="~@javascript"
+    $ vendor/bin/behat --tags="~@javascript"
     ```
 
   - Behat (JS scenarios)
  
     1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
     
+    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
+    
     2. Run Selenium server with previously downloaded Chromedriver:
     
         ```bash
-        $ bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver
+        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
         ```
+        
     3. Run test application's webserver on `localhost:8080`:
     
         ```bash
-        $ (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web -e test)
+        $ (cd tests/Application && bin/console server:run localhost:8080 -d public -e test)
         ```
     
     4. Run Behat:
     
         ```bash
-        $ bin/behat --tags="@javascript"
+        $ vendor/bin/behat --tags="@javascript"
         ```
 
 ### Opening Sylius with your plugin
@@ -72,12 +75,12 @@
 
     ```bash
     $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d web -e test)
+    $ (cd tests/Application && bin/console server:run -d public -e test)
     ```
     
 - Using `dev` environment:
 
     ```bash
     $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d web -e dev)
+    $ (cd tests/Application && bin/console server:run -d public -e dev)
     ```
