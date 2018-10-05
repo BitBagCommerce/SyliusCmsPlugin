@@ -1,13 +1,13 @@
 {
     "name": "sylius/plugin-skeleton",
     "type": "sylius-plugin",
+    "keywords": ["sylius", "sylius-plugin"],
     "description": "Acme example plugin for Sylius.",
     "license": "MIT",
     "require": {
         "php": "^7.2",
 
-        "sylius/sylius": "~1.4.0@dev",
-        "symfony/symfony": "^3.4|^4.1"
+        "sylius/sylius": "~1.4.0@dev"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -33,7 +33,8 @@
         "symfony/dotenv": "^3.4|^4.1",
         "symfony/intl": "^3.4|^4.1",
         "symfony/web-profiler-bundle": "^3.4|^4.1",
-        "symfony/web-server-bundle": "^3.4|^4.1"
+        "symfony/web-server-bundle": "^3.4|^4.1",
+        "sensiolabs/security-checker": "^4.1"
     },
     "prefer-stable": true,
     "autoload": {
