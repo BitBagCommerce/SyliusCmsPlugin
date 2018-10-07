@@ -5,7 +5,6 @@ dist: trusty
 sudo: false
 
 php:
-    - 7.1
     - 7.2
 
 cache:
@@ -26,6 +25,9 @@ before_install:
     - phpenv config-rm xdebug.ini
     - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - mkdir -p "${SYLIUS_CACHE_DIR}"
+
+    - cp tests/Application/.env.test.dist tests/Application/.env.test
+    - set -a && source tests/Application/.env.test && set +a
 
 install:
     - composer require "symfony/symfony:${SYMFONY_VERSION}" --no-interaction --no-update
@@ -67,14 +69,14 @@ before_script:
     - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
 
     # Run webserver
-    - (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web --env=test --quiet > /dev/null 2>&1 &)
+    - (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d public --env=test --quiet > /dev/null 2>&1 &)
 
 script:
     - composer validate --strict
 
-    - bin/phpunit
-    - bin/phpspec run
-    - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun --tags="~@todo"
+    - vendor/bin/phpunit
+    - vendor/bin/phpspec run
+    - vendor/bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun --tags="~@todo"
 
 after_failure:
     - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"

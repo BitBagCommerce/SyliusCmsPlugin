@@ -1,6 +1,11 @@
 {
     "name": "bitbag/cms-plugin",
     "type": "sylius-plugin",
+    "keywords": [
+        "sylius",
+        "sylius-plugin",
+        "sylius-cms"
+    ],
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
     "require": {
@@ -8,7 +13,7 @@
         "league/csv": "^9.0",
         "friendsofsymfony/ckeditor-bundle": "^1.1",
         "stefandoorn/sitemap-plugin": "^1.0",
-        "sylius/sylius": "^1.1|^1.2"
+        "sylius/sylius": "~1.3.0"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -22,8 +27,7 @@
         "friends-of-behat/symfony-extension": "^1.2.1",
         "friends-of-behat/variadic-extension": "^1.1",
         "lakion/mink-debug-extension": "^1.2.3",
-        "phpunit/phpunit": "^7.0",
-        "phpspec/phpspec": "^4.0",
+        "phpspec/phpspec": "^5.0",
         "phpstan/phpstan-doctrine": "^0.10",
         "phpstan/phpstan-shim": "^0.10",
         "phpstan/phpstan-symfony": "^0.10",
@@ -31,7 +35,15 @@
         "sylius-labs/coding-standard": "^2.0",
         "lakion/api-test-case": "^3.1",
         "matthiasnoback/symfony-config-test": "^4.0",
-        "nelmio/alice": "^3.4"
+        "nelmio/alice": "^3.4",
+        "phpunit/phpunit": "^6.5",
+        "symfony/browser-kit": "^3.4|^4.1",
+        "symfony/debug-bundle": "^3.4|^4.1",
+        "symfony/dotenv": "^3.4|^4.1",
+        "symfony/intl": "^3.4|^4.1",
+        "symfony/web-profiler-bundle": "^3.4|^4.1",
+        "symfony/web-server-bundle": "^3.4|^4.1",
+        "sensiolabs/security-checker": "^4.1"
     },
     "prefer-stable": true,
     "autoload": {
@@ -39,16 +51,5 @@
             "BitBag\\SyliusCmsPlugin\\": "src/",
             "Tests\\BitBag\\SyliusCmsPlugin\\": "tests/"
         }
-    },
-    "autoload-dev": {
-        "classmap": ["tests/Application/app/AppKernel.php"]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
-    },
-    "config": {
-        "bin-dir": "bin"
     }
 }

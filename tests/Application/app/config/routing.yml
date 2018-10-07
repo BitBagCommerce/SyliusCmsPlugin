@@ -1,5 +1,0 @@
-sylius:
-    resource: "../../../../vendor/sylius/sylius/app/config/routing.yml"
-
-bitbag_plugin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"

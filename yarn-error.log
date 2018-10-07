@@ -1,0 +1,26 @@
+Arguments: 
+  /usr/local/Cellar/node/10.11.0/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js install
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  10.11.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EEXIST: file already exists, mkdir '/Users/bitbager/Documents/www/SyliusCmsPlugin/node_modules'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

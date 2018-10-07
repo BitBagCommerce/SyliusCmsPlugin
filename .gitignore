@@ -1,11 +1,8 @@
-/bin/*
-!/bin/.gitkeep
-
 /vendor/
 /node_modules/
 
 /etc/build/*
-!/etc/build/.gitkeep
+!/etc/build/.gitignore
 
 tests/Application/node_modules/
 
