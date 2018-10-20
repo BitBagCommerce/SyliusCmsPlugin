@@ -14,7 +14,7 @@ default:
             kernel:
                 env: test
                 debug: true
-                class: BitBag\SyliusCmsPlugin\Application\Kernel
+                class: Tests\BitBag\SyliusCmsPlugin\Application\Kernel
                 path: tests/Application/Kernel.php
                 bootstrap: ~
 
