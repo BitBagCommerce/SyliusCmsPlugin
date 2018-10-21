@@ -14,7 +14,6 @@ namespace BitBag\SyliusCmsPlugin;
 
 use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass;
 use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\MediaProviderPass;
-use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\RemoveSyliusThemeFilesystemLoaderPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -29,6 +28,5 @@ final class BitBagSyliusCmsPlugin extends Bundle
 
         $container->addCompilerPass(new ImporterCompilerPass());
         $container->addCompilerPass(new MediaProviderPass());
-        $container->addCompilerPass(new RemoveSyliusThemeFilesystemLoaderPass());
     }
 }
