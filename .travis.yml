@@ -26,7 +26,7 @@ before_install:
     - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - mkdir -p "${SYLIUS_CACHE_DIR}"
 
-    - cp tests/Application/.env.test.dist tests/Application/.env.test
+    - cp tests/Application/.env.test.dist tests/Application/.env
     - set -a && source tests/Application/.env.test && set +a
 
 install:

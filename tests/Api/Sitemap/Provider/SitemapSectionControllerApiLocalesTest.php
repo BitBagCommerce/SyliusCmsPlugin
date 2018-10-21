@@ -14,7 +14,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Api\Sitemap\Provider;
 
 use BitBag\SyliusCmsPlugin\Entity\Section;
 
-class SitemapSectionControllerApiLocalesTest extends AbstractTestController
+final class SitemapSectionControllerApiLocalesTest extends AbstractTestController
 {
     /**
      * @before
