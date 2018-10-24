@@ -60,6 +60,7 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                 joinColumns:
                     page_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     channel_id:
                         referencedColumnName: id
