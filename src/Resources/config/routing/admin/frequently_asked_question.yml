@@ -12,7 +12,7 @@ bitbag_sylius_cms_plugin_admin_frequently_asked_question:
                 header: bitbag_sylius_cms_plugin.ui.faq_header
                 subheader: bitbag_sylius_cms_plugin.ui.faq_subheader
                 templates:
-                    form: BitBagSyliusCmsPlugin:FrequentlyAskedQuestion:Crud/_form.html.twig
+                    form: "@BitBagSyliusCmsPlugin/FrequentlyAskedQuestion/Crud/_form.html.twig"
             index:
                 icon: help
     type: sylius.resource

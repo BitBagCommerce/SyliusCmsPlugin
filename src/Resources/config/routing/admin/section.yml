@@ -12,7 +12,7 @@ bitbag_sylius_cms_plugin_admin_section:
                 header: bitbag_sylius_cms_plugin.ui.sections_header
                 subheader: bitbag_sylius_cms_plugin.ui.sections_subheader
                 templates:
-                    form: BitBagSyliusCmsPlugin:Section:Crud/_form.html.twig
+                    form: "@BitBagSyliusCmsPlugin/Section/Crud/_form.html.twig"
             index:
                 icon: grid layout
     type: sylius.resource
