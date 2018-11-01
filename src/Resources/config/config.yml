@@ -6,6 +6,11 @@ imports:
 parameters:
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
 
+doctrine:
+    orm:
+        resolve_target_entities:
+            BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface: BitBag\SyliusCmsPlugin\Entity\PageTranslation
+
 jms_serializer:
     metadata:
         directories:

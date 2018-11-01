@@ -3,7 +3,7 @@ BitBag\SyliusCmsPlugin\Entity\PageImage:
     table: bitbag_cms_page_image
     oneToOne:
         owner:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageTranslation
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface
             inversedBy: image
             cascade: [ALL]
             joinColumn:
