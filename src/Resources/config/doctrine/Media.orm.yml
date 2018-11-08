@@ -38,6 +38,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
                 joinColumns:
                     media_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     section_id:
                         referencedColumnName: id
@@ -49,6 +50,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
                 joinColumns:
                     media_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     product_id:
                         referencedColumnName: id
@@ -60,6 +62,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
                 joinColumns:
                     block_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     channel_id:
                         referencedColumnName: id
