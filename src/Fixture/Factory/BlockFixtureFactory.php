@@ -12,14 +12,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
@@ -33,34 +31,29 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     /** @var BlockRepositoryInterface */
     private $blockRepository;
 
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
+    /** @var ProductsAssignerInterface */
+    private $productsAssigner;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    /** @var SectionsAssignerInterface */
+    private $sectionsAssigner;
 
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
+    /** @var ChannelsAssignerInterface */
+    private $channelAssigner;
 
     public function __construct(
         FactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,
         BlockRepositoryInterface $blockRepository,
-        SectionRepositoryInterface $sectionRepository,
-        ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext
+        ProductsAssignerInterface $productsAssigner,
+        SectionsAssignerInterface $sectionsAssigner,
+        ChannelsAssignerInterface $channelAssigner
     ) {
         $this->blockFactory = $blockFactory;
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
-        $this->sectionRepository = $sectionRepository;
-        $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
+        $this->productsAssigner = $productsAssigner;
+        $this->sectionsAssigner = $sectionsAssigner;
+        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void
@@ -87,17 +80,13 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     {
         /** @var BlockInterface $block */
         $block = $this->blockFactory->createNew();
-        $products = $blockData['products'];
 
-        if (null !== $products) {
-            $this->resolveProducts($block, $products);
-        }
-
-        $this->resolveSections($block, $blockData['sections']);
+        $this->sectionsAssigner->assign($block, $blockData['sections']);
+        $this->productsAssigner->assign($block, $blockData['products']);
+        $this->channelAssigner->assign($block, $blockData['channels']);
 
         $block->setCode($code);
         $block->setEnabled($blockData['enabled']);
-        $block->addChannel($this->channelContext->getChannel());
 
         foreach ($blockData['translations'] as $localeCode => $translation) {
             /** @var BlockTranslationInterface $blockTranslation */
@@ -111,28 +100,5 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         }
 
         $this->blockRepository->add($block);
-    }
-
-    private function resolveProducts(BlockInterface $block, int $limit): void
-    {
-        $products = $this->productRepository->findLatestByChannel(
-            $this->channelContext->getChannel(),
-            $this->localeContext->getLocaleCode(),
-            $limit
-        );
-
-        foreach ($products as $product) {
-            $block->addProduct($product);
-        }
-    }
-
-    private function resolveSections(BlockInterface $block, array $sections): void
-    {
-        foreach ($sections as $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            $block->addSection($section);
-        }
     }
 }

@@ -47,6 +47,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture
                             ->integerNode('number')->defaultNull()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('position')->defaultNull()->end()
+                            ->arrayNode('channels')->scalarPrototype()->end()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()

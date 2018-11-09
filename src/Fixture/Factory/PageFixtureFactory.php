@@ -12,16 +12,14 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -36,39 +34,35 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
     /** @var ImageUploaderInterface */
     private $imageUploader;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    /** @var ProductsAssignerInterface */
+    private $productsAssigner;
 
-    /** @var ChannelContextInterface */
-    private $channelContext;
+    /** @var SectionsAssignerInterface */
+    private $sectionsAssigner;
 
-    /** @var LocaleContextInterface */
-    private $localeContext;
+    /** @var ChannelsAssignerInterface */
+    private $channelAssigner;
+
 
     public function __construct(
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
         PageRepositoryInterface $pageRepository,
-        SectionRepositoryInterface $sectionRepository,
         ImageUploaderInterface $imageUploader,
-        ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext
+        ProductsAssignerInterface $productsAssigner,
+        SectionsAssignerInterface $sectionsAssigner,
+        ChannelsAssignerInterface $channelAssigner
     ) {
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
         $this->pageRepository = $pageRepository;
-        $this->sectionRepository = $sectionRepository;
         $this->imageUploader = $imageUploader;
-        $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
+        $this->productsAssigner = $productsAssigner;
+        $this->sectionsAssigner = $sectionsAssigner;
+        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void
@@ -95,17 +89,13 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
-        $products = $pageData['products'];
 
-        if (null !== $products) {
-            $this->resolveProducts($page, $products);
-        }
-
-        $this->resolveSections($page, $pageData['sections']);
+        $this->sectionsAssigner->assign($page, $pageData['sections']);
+        $this->productsAssigner->assign($page, $pageData['products']);
+        $this->channelAssigner->assign($page, $pageData['channels']);
 
         $page->setCode($code);
         $page->setEnabled($pageData['enabled']);
-        $page->addChannel($this->channelContext->getChannel());
 
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */
@@ -134,28 +124,5 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
 
         $this->pageRepository->add($page);
-    }
-
-    private function resolveProducts(PageInterface $page, int $limit): void
-    {
-        $products = $this->productRepository->findLatestByChannel(
-            $this->channelContext->getChannel(),
-            $this->localeContext->getLocaleCode(),
-            $limit
-        );
-
-        foreach ($products as $product) {
-            $page->addProduct($product);
-        }
-    }
-
-    private function resolveSections(PageInterface $page, array $sections): void
-    {
-        foreach ($sections as $sectionCode) {
-            /** @var SectionInterface $section */
-            $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
-
-            $page->addSection($section);
-        }
     }
 }

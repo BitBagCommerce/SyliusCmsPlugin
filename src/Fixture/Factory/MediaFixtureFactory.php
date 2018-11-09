@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
@@ -30,9 +30,6 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
 
     /** @var FactoryInterface */
     private $mediaTranslationFactory;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
 
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
@@ -46,22 +43,25 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     /** @var SectionsAssignerInterface */
     private $sectionsAssigner;
 
+    /** @var ChannelsAssignerInterface */
+    private $channelAssigner;
+
     public function __construct(
         FactoryInterface $mediaFactory,
         FactoryInterface $mediaTranslationFactory,
-        ChannelContextInterface $channelContext,
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
         ProductsAssignerInterface $productsAssigner,
-        SectionsAssignerInterface $sectionsAssigner
+        SectionsAssignerInterface $sectionsAssigner,
+        ChannelsAssignerInterface $channelAssigner
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;
-        $this->channelContext = $channelContext;
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaRepository = $mediaRepository;
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
+        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void
@@ -92,7 +92,6 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media->setCode($code);
         $media->setEnabled($mediaData['enabled']);
         $media->setFile(new File($mediaData['path']));
-        $media->addChannel($this->channelContext->getChannel());
 
         $this->mediaProviderResolver->resolveProvider($media)->upload($media);
 
@@ -109,6 +108,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
 
         $this->sectionsAssigner->assign($media, $mediaData['sections']);
         $this->productsAssigner->assign($media, $mediaData['products']);
+        $this->channelAssigner->assign($media, $mediaData['channels']);
 
         $this->mediaRepository->add($media);
     }
