@@ -146,6 +146,16 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setAlt($alt);
     }
 
+    public function getLink(): ?string
+    {
+        return $this->getMediaTranslation()->getLink();
+    }
+
+    public function setLink(?string $link): void
+    {
+        $this->getMediaTranslation()->setLink($link);
+    }
+
     /**
      * @return MediaTranslationInterface|TranslationInterface
      */
