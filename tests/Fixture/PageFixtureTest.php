@@ -352,13 +352,13 @@ final class PageFixtureTest extends TestCase
     /**
      * @test
      */
-    public function custom_products_is_optional_but_must_be_integer(): void
+    public function custom_products_is_optional_but_must_be_array(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'products' => 5,
+                        'products' => [],
                     ],
                 ],
             ],
