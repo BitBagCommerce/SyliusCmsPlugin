@@ -11,6 +11,9 @@ bitbag_sylius_cms_plugin:
         name:
             min_length: Name must be at least {{ limit }} characters long.
             max_length: Name can not be longer than {{ limit }} characters.
+        link:
+            min_length: Link must be at least {{ limit }} characters long.
+            max_length: Link can not be longer than {{ limit }} characters.
         content:
             not_blank: Content cannot be blank.
             min_length: Content must be at least {{ limit }} characters long.
@@ -80,6 +83,9 @@ bitbag_sylius_cms_plugin:
         alt:
             min_length: Alt must be at least {{ limit }} characters long.
             max_length: Alt can not be longer than {{ limit }} characters.
+        link:
+            min_length: Link must be at least {{ limit }} characters long.
+            max_length: Link can not be longer than {{ limit }} characters.
     import:
         not_blank: Import file cannot be blank.
         invalid_format: Upload a valid CSV import file.
