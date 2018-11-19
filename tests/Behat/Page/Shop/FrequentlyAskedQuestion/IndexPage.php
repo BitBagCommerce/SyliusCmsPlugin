@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion;
 
-use Sylius\Behat\Page\SymfonyPage;
+use FriendsOfBehat\PageObjectExtension\Page\SymfonyPage;
 
 final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
