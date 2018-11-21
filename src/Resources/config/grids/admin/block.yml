@@ -16,13 +16,6 @@ sylius_grid:
                     type: string
                     label: sylius.ui.code
                     sortable: ~
-                content:
-                    type: twig
-                    label: sylius.ui.content
-                    path: .
-                    sortable: translation.content
-                    options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/content.html.twig"
                 enabled:
                     type: twig
                     label: sylius.ui.enabled
