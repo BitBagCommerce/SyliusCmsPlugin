@@ -2,20 +2,18 @@
 ```bash
 $ composer require bitbag/cms-plugin
 ```
-    
-Add plugin dependencies to your AppKernel.php file (note the new compiler pass):
+
+Add plugin dependencies to your config/bundles.php file:
 ```php
-public function registerBundles()
-{
-    return array_merge(parent::registerBundles(), [
-        ...
-        
-        new \FOS\CKEditorBundle\FOSCKEditorBundle(), // WYSIWYG editor
-        new \SitemapPlugin\SitemapPlugin(), // Sitemap support
-        new \BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin(),
-    ]);
-}
+return [
+    ...
+
+    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['dev' => true, 'test' => true], // WYSIWYG editor
+    SitemapPlugin\SitemapPlugin::class => ['dev' => true, 'test' => true], // Sitemap support
+    BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['dev' => true, 'test' => true],
+];
 ```
+The first line above (FOSCKEditorBundle) might have been already added during composer require command.
 
 Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
@@ -23,10 +21,10 @@ Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FO
 $ bin/console ckeditor:install
 ```
 
-Import required config in your `app/config/config.yml` file:
+Import required config in your `config/packages/_sylius.yaml` file:
 
 ```yaml
-# app/config/config.yml
+# config/packages/_sylius.yaml
 
 imports:
     ...
@@ -34,11 +32,11 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
-Import routing in your `app/config/routing.yml` file:
+Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
-# app/config/routing.yml
+# config/routes.yaml
 ...
 
 bitbag_sylius_cms_plugin:
