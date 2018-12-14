@@ -41,7 +41,7 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                 inverseJoinColumns:
                     product_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        cascade: [remove, persist]
         sections:
             targetEntity: BitBag\SyliusCmsPlugin\Entity\SectionInterface
             joinTable:
@@ -52,7 +52,7 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                 inverseJoinColumns:
                     section_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        cascade: [remove, persist]
         channels:
             targetEntity: Sylius\Component\Channel\Model\ChannelInterface
             joinTable:
@@ -60,8 +60,8 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                 joinColumns:
                     page_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        cascade: [remove, persist]
                 inverseJoinColumns:
                     channel_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        cascade: [remove, persist]
