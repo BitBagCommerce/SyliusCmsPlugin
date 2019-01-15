@@ -64,4 +64,8 @@ interface MediaInterface extends
     public function getAlt(): ?string;
 
     public function setAlt(?string $alt): void;
+
+    public function getLink(): ?string;
+
+    public function setLink(?string $link): void;
 }

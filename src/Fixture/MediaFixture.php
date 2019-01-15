@@ -60,6 +60,7 @@ final class MediaFixture extends AbstractFixture
                                         ->scalarNode('name')->defaultNull()->end()
                                         ->scalarNode('content')->defaultNull()->end()
                                         ->scalarNode('alt')->defaultNull()->end()
+                                        ->scalarNode('link')->defaultNull()->end()
                                     ->end()
                                 ->end()
                             ->end()

@@ -20,3 +20,7 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
             column: alt
             type: text
             nullable: true
+        link:
+            column: link
+            type: text
+            nullable: true

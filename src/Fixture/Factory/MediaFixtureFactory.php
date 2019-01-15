@@ -104,6 +104,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
             $mediaTranslation->setName($translation['name']);
             $mediaTranslation->setContent($translation['content']);
             $mediaTranslation->setAlt($translation['alt']);
+            $mediaTranslation->setLink($translation['link']);
             $media->addTranslation($mediaTranslation);
         }
 

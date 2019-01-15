@@ -40,6 +40,9 @@ final class BlockTranslationSpec extends ObjectBehavior
         $this->setName('Escobar favorite quote');
         $this->getName()->shouldReturn('Escobar favorite quote');
 
+        $this->setLink('https://en.wikipedia.org/wiki/Pablo_Escobar');
+        $this->getLink()->shouldReturn('https://en.wikipedia.org/wiki/Pablo_Escobar');
+
         $this->setContent('Plata o plomo');
         $this->getContent()->shouldReturn('Plata o plomo');
     }

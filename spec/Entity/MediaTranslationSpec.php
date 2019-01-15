@@ -47,5 +47,8 @@ final class MediaTranslationSpec extends ObjectBehavior
 
         $this->setAlt('video');
         $this->getAlt()->shouldReturn('video');
+
+        $this->setLink('https://github.com/Netimage/SyliusCmsPlugin');
+        $this->getLink()->shouldReturn('https://github.com/Netimage/SyliusCmsPlugin');
     }
 }
