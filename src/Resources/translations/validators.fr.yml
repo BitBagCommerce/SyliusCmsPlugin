@@ -88,4 +88,4 @@ bitbag_sylius_cms_plugin:
             max_length: Le lien ne peut pas dépasser {{ limit }} caractères.
     import:
         not_blank: Le fichier à importer ne peut pas être vide.
-        invalid_format: Cecie n'est pas un fichier CSV valide.
+        invalid_format: Ceci n'est pas un fichier CSV valide.
