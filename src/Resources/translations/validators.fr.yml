@@ -2,36 +2,90 @@ bitbag_sylius_cms_plugin:
     block:
         image:
             mime_types: Seuls les fichiers PNG et JPEG sont autorisés.
+            not_blank: L'image ne peut pas être vide.
         code:
-            unique: Il existe un bloc existant avec ce code.
+            unique: Il existe déjà un bloc avec ce code.
             not_blank: Le code ne peut pas être vide.
-            min_length: Code doit être au moins {{limit}} caractères long.
-            max_length: Le code ne peut pas dépasser les caractères {{limit}}.
+            min_length: Le code doit faire au moins {{ limit }} caractères.
+            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
         name:
-            min_lenght: Longeur minimale de la prénom.
-            max_lenght: Longeur maximale de la prénom.
+            min_length: Le nom doit faire au moins {{ limit }} caractères.
+            max_length: Le nom ne peut pas dépasser {{ limit }} caractères.
+        link:
+            min_length: Le lien doit faire au moins {{ limit }} caractères.
+            max_length: Le lien ne peut pas dépasser {{ limit }} caractères.
         content:
-            min_lenght: Le contenu doit être au moins {{limit}} caractères long.
+            not_blank: Le contenu ne peut pas être vide
+            min_length: Le contenu doit faire au moins {{ limit }} caractères.
     page:
         code:
-            unique: Il existe une page existante avec ce code.
+            unique: Il existe déjà une page avec ce code.
             not_blank: Le code ne peut pas être vide.
-            min_lenght: Code doit être au moins {{limit}} caractères long.
-            max_lenght: Le code ne peut pas dépasser les caractères {{limit}}.
+            min_length: Le code doit faire au moins {{ limit }} caractères.
+            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
         name:
             not_blank: Le nom de la page ne peut pas être vide.
-            min_lenght: Longeur minimale de la prénom.
-            max_lenght: Longeur maximale de la prénom.
+            min_length: Le nom doit faire au moins {{ limit }} caractères.
+            max_length: Le nom ne peut pas dépasser {{ limit }} caractères.
         slug:
-            not_blank: Slug ne peut pas être vide.
-            min_lenght: Slug doit être au moins {{limit}} caractères long.
-            max_lenght: Slug ne peut pas dépasser les caractères {{limit}}.
+            not_blank: Le slug ne peut pas être vide.
+            min_length: Le slug doit faire au moins {{ limit }} caractères.
+            max_length: Le slug ne peut pas dépasser {{ limit }} caractères.
+            unique: Il existe déjà une page avec ce slug.
         meta_keywords:
-            min_lenght: Les mots-clés Meta doivent être au moins {{limit}} caractères longs.
-            max lenght: Les mots-clés Meta ne peuvent pas dépasser les caractères {{limit}}.
+            min_length: Les mots-clés Meta doivent faire au moins {{ limit }} caractères.
+            max length: Les mots-clés Meta ne peuvent pas dépasser {{ limit }} caractères.
         meta_description:
-            min_lenght: La description Meta doit être au moins {{limit}} caractères long.
-            max_lenght: La description Meta ne peut pas dépasser les caractères {{limit}}.
+            min_length: La description Meta doit faire au moins {{ limit }} caractères.
+            max_length: La description Meta ne peut pas dépasser {{ limit }} caractères.
         content:
             not_blank: Le contenu ne peut pas être vide.
-            min_lenght: Le contenu doit être au moins {{limit}} caractères long.
+            min_length: Le contenu doit faire au moins {{ limit }} caractères.
+    frequently_asked_question:
+        code:
+            unique: Il existe déjà une FAQ avec ce code.
+            not_blank: Le code ne peut pas être vide.
+            min_length: Le code doit faire au moins {{ limit }} caractères.
+            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
+        position:
+            unique: Il existe déjà une FAQ avec ce code.
+            not_blank: La position ne peut pas être vide.
+        question:
+            not_blank: La question ne peut pas être vide.
+            min_length: La question doit faire au moins {{ limit }} caractères.
+        answer:
+            not_blank: La réponse ne peut pas être vide.
+            min_length: La réponse doit faire au moins {{ limit }} caractères.
+    section:
+        code:
+            unique: Il existe déjà une section avec ce code.
+            not_blank: Le code ne peut pas être vide.
+            min_length: Le code doit faire au moins {{ limit }} caractères.
+            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
+        name:
+            not_blank: Le nom de la section ne peut pas être vide.
+            min_length: Le nom doit faire au moins {{ limit }} caractères.
+            max_length: Le nom ne peut pas dépasser {{ limit }} caractères.
+    media:
+        code:
+            unique: Il existe déjà un média avec ce code.
+            not_blank: Le code ne peut pas être vide.
+            min_length: Le code doit faire au moins {{ limit }} caractères.
+            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
+        file:
+            not_blank: Le fichier ne peut pas être vide.
+        name:
+            not_blank: Le nom ne peut pas être vide.
+            min_length: Le nom doit faire au moins {{ limit }} caractères.
+            max_length: Le nom ne peut pas dépasser {{ limit }} caractères.
+        content:
+            min_length: Le contenu doit faire au moins {{ limit }} caractères.
+        alt:
+            min_length: Le texte alteratif doit faire au moins {{ limit }} caractères.
+            max_length: Le texte alternatif ne peut pas dépasser {{ limit }} caractères.
+        link:
+            min_length: Le lien doit faire au moins {{ limit }} caractères.
+            max_length: Le lien ne peut pas dépasser {{ limit }} caractères.
+    import:
+        not_blank: Le fichier à importer ne peut pas être vide.
+        invalid_format: Cecie n'est pas un fichier CSV valide.
