@@ -31,4 +31,4 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
                 inverseJoinColumns:
                     channel_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        cascade: [remove, persist]
