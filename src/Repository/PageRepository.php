@@ -19,12 +19,12 @@ use Sylius\Component\Core\Model\ProductInterface;
 
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
-    public function createListQueryBuilder(string $locale): QueryBuilder
+    public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.translations', 'translation')
-            ->where('translation.locale = :locale')
-            ->setParameter('locale', $locale)
+            ->addSelect('translation')
+            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
+            ->setParameter('localeCode', $localeCode)
         ;
     }
 
