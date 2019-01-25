@@ -45,6 +45,6 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             nullable: true
     oneToOne:
         image:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageImage
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageImageInterface
             mappedBy: owner
             cascade: [ALL]
