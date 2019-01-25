@@ -168,4 +168,9 @@ class Media implements MediaInterface
     {
         return new MediaTranslation();
     }
+    
+    public function __toString(): string
+    {
+        return $this->getName() ?? $this->code;
+    }
 }
