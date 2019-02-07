@@ -3,14 +3,14 @@
 $ composer require bitbag/cms-plugin
 ```
 
-Add plugin dependencies to your config/bundles.php file:
+Add plugin dependencies to your `config/bundles.php` file:
 ```php
 return [
     ...
 
-    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['dev' => true, 'test' => true], // WYSIWYG editor
-    SitemapPlugin\SitemapPlugin::class => ['dev' => true, 'test' => true], // Sitemap support
-    BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['dev' => true, 'test' => true],
+    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
+    SitemapPlugin\SitemapPlugin::class => ['all' => true], // Sitemap support
+    BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
 The first line above (FOSCKEditorBundle) might have been already added during composer require command.
