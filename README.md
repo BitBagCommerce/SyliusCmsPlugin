@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="http://bitbag.shop" target="_blank">
-        <img src="doc/logo.png" width="35%" />
+        <img src="doc/logo.png" width="50%" />
     </a>
     <br />
     <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
