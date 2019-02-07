@@ -135,6 +135,7 @@ final class SectionContext implements Context
 
         foreach ($fields as $field) {
             $this->resolveCurrentPage()->fillField(trim($field), $this->randomStringGenerator->generate($length));
+            sleep(5);
         }
     }
 
