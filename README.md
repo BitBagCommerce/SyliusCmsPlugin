@@ -20,7 +20,7 @@
     </a>
 </h1>
 
-# BitBagSyliusCmsPlugin
+## BitBag SyliusCmsPlugin
 
 Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries 
 like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the 
