@@ -12,10 +12,10 @@
     </testsuites>
 
     <php>
-        <server name="KERNEL_CLASS_PATH" value="/tests/Application/AppKernel.php"/>
-        <server name="KERNEL_DIR" value="tests/Application/app/" />
-        <server name="KERNEL_CLASS" value="AppKernel" />
+        <server name="KERNEL_CLASS" value="Tests\BitBag\SyliusCmsPlugin\Application\Kernel" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true"/>
-        <server name="EXPECTED_RESPONSE_DIR" value="../../Responses/Expected"/>
+        <server name="EXPECTED_RESPONSE_DIR" value="../Responses/Expected"/>
+        <env name="DATABASE_URL" value="sqlite:///%kernel.project_dir%/var/data.db" />
+        <env name="APP_SECRET" value="''" />
     </php>
 </phpunit>

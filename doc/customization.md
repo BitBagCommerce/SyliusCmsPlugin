@@ -51,8 +51,8 @@ $ yarn install
 $ yarn run gulp
 $ bin/console doctrine:schema:create -e test
 $ bin/console ckeditor:install
-$ bin/console assets:install web -e test
-$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ bin/console assets:install public -e test
+$ bin/console server:run 127.0.0.1:8080 -d public -e test
 $ open http://localhost:8080
 $ bin/behat
 $ bin/phpspec run

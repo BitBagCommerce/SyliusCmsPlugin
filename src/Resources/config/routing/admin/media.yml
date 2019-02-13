@@ -12,7 +12,7 @@ bitbag_sylius_cms_plugin_admin_media:
                 header: bitbag_sylius_cms_plugin.ui.media_header
                 subheader: bitbag_sylius_cms_plugin.ui.media_subheader
                 templates:
-                    form: BitBagSyliusCmsPlugin:Media:Crud/_form.html.twig
+                    form: "@BitBagSyliusCmsPlugin/Media/Crud/_form.html.twig"
             index:
                 icon: file
     type: sylius.resource

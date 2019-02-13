@@ -18,10 +18,12 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class SectionRepository extends EntityRepository implements SectionRepositoryInterface
 {
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->addSelect('translation')
+            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
+            ->setParameter('localeCode', $localeCode)
         ;
     }
 

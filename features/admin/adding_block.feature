@@ -38,13 +38,13 @@ Feature: Adding blocks
     Scenario: Trying to add block with blank data
         When I go to the create block page
         And I try to add it
-        Then I should be notified that "Code, Content" fields cannot be blank
+        Then I should be notified that "Code" fields cannot be blank
 
     @ui
     Scenario: Trying to add block with blank data
         When I go to the create block page
         And I try to add it
-        Then I should be notified that "Code, Content" fields cannot be blank
+        Then I should be notified that "Code" fields cannot be blank
 
     @ui
     Scenario: Trying to add block with too long data

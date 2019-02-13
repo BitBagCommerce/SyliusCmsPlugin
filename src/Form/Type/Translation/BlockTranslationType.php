@@ -26,7 +26,13 @@ final class BlockTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.name',
                 'required' => false,
             ])
-            ->add('content', WysiwygType::class)
+            ->add('link', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.link',
+                'required' => false,
+            ])
+            ->add('content', WysiwygType::class, [
+                'required' => false
+            ])
         ;
     }
 

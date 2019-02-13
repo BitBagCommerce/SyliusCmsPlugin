@@ -28,6 +28,9 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
     /** @var string */
     protected $alt;
 
+    /** @var string */
+    protected $link;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,5 +64,15 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
     public function setAlt(?string $alt): void
     {
         $this->alt = $alt;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): void
+    {
+        $this->link = $link;
     }
 }
