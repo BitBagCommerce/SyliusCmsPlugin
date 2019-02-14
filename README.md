@@ -18,9 +18,9 @@
     <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
     </a>
-    <a>
-        <img src="https://sylius.com/assets/badge-approved-by-sylius.png">
-    </a>
+    <p>
+        <img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="100">
+    </p>
 </h1>
 
 ## BitBag SyliusCmsPlugin
