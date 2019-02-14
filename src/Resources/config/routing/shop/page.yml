@@ -32,6 +32,20 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
         _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
+            grid: bitbag_sylius_cms_plugin_shop_page
+            repository:
+                method: findBySectionCode
+                arguments:
+                    - $sectionCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    -
+bitbag_sylius_cms_plugin_shop_page_index_by_section_code_no_grid:
+    path: /pages/{sectionCode}/no-grid
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
+        _sylius:
+            template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
             repository:
                 method: findBySectionCode
                 arguments:
