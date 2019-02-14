@@ -40,6 +40,9 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.block"
             - "@bitbag_sylius_cms_plugin.factory.block_translation"
             - "@bitbag_sylius_cms_plugin.repository.block"
+            - "@sylius.repository.product"
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.assigner.products"
             - "@bitbag_sylius_cms_plugin.assigner.sections"
             - "@bitbag_sylius_cms_plugin.assigner.channels"
@@ -54,6 +57,9 @@ services:
             - "@bitbag_sylius_cms_plugin.assigner.products"
             - "@bitbag_sylius_cms_plugin.assigner.sections"
             - "@bitbag_sylius_cms_plugin.assigner.channels"
+            - "@sylius.repository.product"
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
 
     bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory
