@@ -19,9 +19,9 @@
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
     </a>
     <br />
-    <p>
+    <a>
         <img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="85">
-    </p>
+    </a>
 </h1>
 
 ## BitBag SyliusCmsPlugin
