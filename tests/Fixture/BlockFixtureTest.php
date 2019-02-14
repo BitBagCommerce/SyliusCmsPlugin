@@ -136,13 +136,39 @@ final class BlockFixtureTest extends TestCase
     /**
      * @test
      */
-    public function custom_products_is_optional_but_must_be_array(): void
+    public function custom_products_is_optional_but_must_be_integer(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                       'products' => [],
+                       'products' => 5,
+                    ],
+                ],
+            ],
+        ], 'custom.*.products');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'enabled' => 'integer',
+                    ],
+                ],
+            ],
+        ], 'custom.*.products');
+    }
+
+    /**
+     * @test
+     */
+    public function custom_product_codes_is_optional_but_must_be_array(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'productCodes' => [],
                     ],
                 ],
             ],

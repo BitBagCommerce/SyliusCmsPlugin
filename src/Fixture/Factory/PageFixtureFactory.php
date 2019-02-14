@@ -19,6 +19,9 @@ use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -37,6 +40,15 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var ImageUploaderInterface */
     private $imageUploader;
 
+    /** @var ProductRepositoryInterface  */
+    private $productRepository;
+
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
     /** @var ProductsAssignerInterface */
     private $productsAssigner;
 
@@ -54,7 +66,10 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         ImageUploaderInterface $imageUploader,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner
+        ChannelsAssignerInterface $channelAssigner,
+        ProductRepositoryInterface $productRepository,
+        ChannelContextInterface $channelContext,
+        LocaleContextInterface $localeContext
     ) {
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
@@ -63,6 +78,9 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
         $this->channelAssigner = $channelAssigner;
+        $this->productRepository = $productRepository;
+        $this->channelContext = $channelContext;
+        $this->localeContext = $localeContext;
     }
 
     public function load(array $data): void
@@ -89,9 +107,13 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
+        $products = $pageData['products'];
+        if (null !== $products) {
+            $this->resolveProducts($page, $products);
+        }
 
         $this->sectionsAssigner->assign($page, $pageData['sections']);
-        $this->productsAssigner->assign($page, $pageData['products']);
+        $this->productsAssigner->assign($page, $pageData['productCodes']);
         $this->channelAssigner->assign($page, $pageData['channels']);
 
         $page->setCode($code);
@@ -124,5 +146,17 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
 
         $this->pageRepository->add($page);
+    }
+
+    private function resolveProducts(PageInterface $page, int $limit): void
+    {
+        $products = $this->productRepository->findLatestByChannel(
+            $this->channelContext->getChannel(),
+            $this->localeContext->getLocaleCode(),
+            $limit
+        );
+        foreach ($products as $product) {
+            $page->addProduct($product);
+        }
     }
 }

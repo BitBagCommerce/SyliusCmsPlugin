@@ -18,6 +18,9 @@ use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
@@ -31,6 +34,15 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     /** @var BlockRepositoryInterface */
     private $blockRepository;
 
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
+    /** @var ProductRepositoryInterface */
+    private $productRepository;
+
     /** @var ProductsAssignerInterface */
     private $productsAssigner;
 
@@ -43,6 +55,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     public function __construct(
         FactoryInterface $blockFactory,
         FactoryInterface $blockTranslationFactory,
+        ProductRepositoryInterface $productRepository,
         BlockRepositoryInterface $blockRepository,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
@@ -51,6 +64,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->blockFactory = $blockFactory;
         $this->blockTranslationFactory = $blockTranslationFactory;
         $this->blockRepository = $blockRepository;
+        $this->productRepository = $productRepository;
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
         $this->channelAssigner = $channelAssigner;
@@ -81,8 +95,13 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         /** @var BlockInterface $block */
         $block = $this->blockFactory->createNew();
 
+        $products = $blockData['products'];
+        if ($products !== null) {
+            $this->resolveProducts($block, $products);
+        }
+
         $this->sectionsAssigner->assign($block, $blockData['sections']);
-        $this->productsAssigner->assign($block, $blockData['products']);
+        $this->productsAssigner->assign($block, $blockData['productCodes']);
         $this->channelAssigner->assign($block, $blockData['channels']);
 
         $block->setCode($code);
@@ -100,5 +119,17 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         }
 
         $this->blockRepository->add($block);
+    }
+
+    private function resolveProducts(BlockInterface $block, int $limit): void
+    {
+        $products = $this->productRepository->findLatestByChannel(
+            $this->channelContext->getChannel(),
+            $this->localeContext->getLocaleCode(),
+            $limit
+        );
+        foreach ($products as $product) {
+            $block->addProduct($product);
+        }
     }
 }
