@@ -3,22 +3,24 @@
         <img src="doc/logo.png" width="55%" />
     </a>
     <br />
-    <p href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
         <img src="https://img.shields.io/packagist/l/bitbag/cms-plugin.svg" />
-    </p>
-    <p href="https://packagist.org/packages/bitbag/cms-plugin" title="Version" target="_blank">
+    </a>
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Version" target="_blank">
         <img src="https://img.shields.io/packagist/v/bitbag/cms-plugin.svg" />
-    </p>
-    <p href="http://travis-ci.org/BitBagCommerce/SyliusCmsPlugin" title="Build status" target="_blank">
+    </a>
+    <a href="http://travis-ci.org/BitBagCommerce/SyliusCmsPlugin" title="Build status" target="_blank">
         <img src="https://img.shields.io/travis/BitBagCommerce/SyliusCmsPlugin/master.svg" />
-    </p>
-    <p href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/" title="Scrutinizer" target="_blank">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCmsPlugin/" title="Scrutinizer" target="_blank">
         <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCmsPlugin.svg" />
-    </p>
-    <p href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
+    </a>
+    <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
-    </p>
-    <p align="center"><img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="200"></p>
+    </a>
+    <a>
+        <img src="https://sylius.com/assets/badge-approved-by-sylius.png">
+    </a>
 </h1>
 
 ## BitBag SyliusCmsPlugin
