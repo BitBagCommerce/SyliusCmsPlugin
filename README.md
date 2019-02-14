@@ -19,7 +19,7 @@
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
     </a>
     <p>
-        <img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="100">
+        <img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="75">
     </p>
 </h1>
 
