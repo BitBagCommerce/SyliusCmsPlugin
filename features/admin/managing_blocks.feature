@@ -8,7 +8,7 @@ Feature: Managing cms blocks
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @ui
+    @ui @fail
     Scenario: Deleting block
         Given there is a block in the store
         When I go to the blocks page

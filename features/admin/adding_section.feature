@@ -40,6 +40,6 @@ Feature: Adding new section
     @ui
     Scenario: Trying to add section with too long data
         When I go to the create section page
-        And I fill "Code, Name" fields with 6000 characters
+        And I fill "Code, Name" fields with 251 characters
         And I try to add it
         Then I should be notified that "Code, Name" fields are too long
