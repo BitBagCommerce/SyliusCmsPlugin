@@ -168,6 +168,7 @@ final class PageContext implements Context
      */
     public function iFillTheContentWith(string $content): void
     {
+
         $this->resolveCurrentPage()->fillContent($content);
     }
 

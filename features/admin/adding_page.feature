@@ -54,7 +54,7 @@ Feature: Adding new page
         And I try to add it
         Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description, Content" fields are too short
 
-    @ui
+    @ui @unstable
     Scenario: Trying to add a page with too long data
         When I go to the create page page
         And I fill "Code, Name, Slug, Meta keywords, Meta description" fields with 6000 characters

@@ -41,21 +41,9 @@ Feature: Adding blocks
         Then I should be notified that "Code" fields cannot be blank
 
     @ui
-    Scenario: Trying to add block with blank data
-        When I go to the create block page
-        And I try to add it
-        Then I should be notified that "Code" fields cannot be blank
-
-    @ui
     Scenario: Trying to add block with too long data
         When I go to the create block page
-        And I fill "Code, Name, Content" fields with 6000 characters
+        And I fill "Code, Name, Content" fields with 251 characters
         And I try to add it
         Then I should be notified that "Code, Name" fields are too long
 
-    @ui
-    Scenario: Trying to add block with too long data
-        When I go to the create block page
-        And I fill "Code, Name, Content" fields with 6000 characters
-        And I try to add it
-        Then I should be notified that "Code, Name" fields are too long
