@@ -18,12 +18,12 @@ Feature: Adding frequently asked question
         And I add it
         Then I should be notified that a new frequently asked question has been created
 
-    @ui
+    @ui @unstable
     Scenario: Adding new frequently asked question with long data
         When I go to the create frequently asked question page
         And I fill the code with "whats_the_js_framework_of_the_week"
         And I set the position to 1
-        And I fill "Question, Answer" fields with 6000 characters
+        And I fill "Question, Answer" fields with 1500 characters
         And I add it
         Then I should be notified that a new frequently asked question has been created
 
