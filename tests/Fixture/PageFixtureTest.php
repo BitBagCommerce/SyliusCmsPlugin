@@ -388,7 +388,7 @@ final class PageFixtureTest extends TestCase
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
 
         $this->assertPartialConfigurationIsInvalid([
             [
@@ -398,7 +398,7 @@ final class PageFixtureTest extends TestCase
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
     }
 
     protected function getConfiguration(): PageFixture

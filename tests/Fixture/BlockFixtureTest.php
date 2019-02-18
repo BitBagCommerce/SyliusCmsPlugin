@@ -172,7 +172,7 @@ final class BlockFixtureTest extends TestCase
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
 
         $this->assertPartialConfigurationIsInvalid([
             [
@@ -182,7 +182,7 @@ final class BlockFixtureTest extends TestCase
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
     }
 
     /**
