@@ -40,10 +40,12 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.block"
             - "@bitbag_sylius_cms_plugin.factory.block_translation"
             - "@bitbag_sylius_cms_plugin.repository.block"
-            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.repository.product"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.assigner.products"
+            - "@bitbag_sylius_cms_plugin.assigner.sections"
+            - "@bitbag_sylius_cms_plugin.assigner.channels"
 
     bitbag_sylius_cms_plugin.fixture.factory.page:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\PageFixtureFactory
@@ -51,8 +53,10 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.page"
             - "@bitbag_sylius_cms_plugin.factory.page_translation"
             - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.image_uploader"
+            - "@bitbag_sylius_cms_plugin.assigner.products"
+            - "@bitbag_sylius_cms_plugin.assigner.sections"
+            - "@bitbag_sylius_cms_plugin.assigner.channels"
             - "@sylius.repository.product"
             - "@sylius.context.channel"
             - "@sylius.context.locale"
@@ -63,7 +67,7 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.frequently_asked_question"
             - "@bitbag_sylius_cms_plugin.factory.frequently_asked_question_translation"
             - "@bitbag_sylius_cms_plugin.repository.frequently_asked_question"
-            - "@sylius.context.channel"
+            - "@bitbag_sylius_cms_plugin.assigner.channels"
 
     bitbag_sylius_cms_plugin.fixture.factory.section:
         class: BitBag\SyliusCmsPlugin\Fixture\Factory\SectionFixtureFactory
@@ -77,8 +81,8 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.factory.media"
             - "@bitbag_sylius_cms_plugin.factory.media_translation"
-            - "@sylius.context.channel"
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@bitbag_sylius_cms_plugin.assigner.products"
             - "@bitbag_sylius_cms_plugin.assigner.sections"
+            - "@bitbag_sylius_cms_plugin.assigner.channels"

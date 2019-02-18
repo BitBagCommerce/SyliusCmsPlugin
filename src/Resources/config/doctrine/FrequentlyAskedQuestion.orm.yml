@@ -28,6 +28,7 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
                 joinColumns:
                     faq_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     channel_id:
                         referencedColumnName: id

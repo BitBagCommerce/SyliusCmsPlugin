@@ -280,7 +280,7 @@ final class MediaFixtureTest extends TestCase
             ],
         ], 'custom.*.sections');
     }
-    
+
     /**
      * @test
      */
@@ -290,31 +290,31 @@ final class MediaFixtureTest extends TestCase
             [
                 'custom' => [
                     'media_banner' => [
-                        'products' => ['mug', 't-shirt'],
+                        'productCodes' => ['mug', 't-shirt'],
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
 
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'media_banner' => [
-                        'products' => [],
+                        'productCodes' => [],
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'custom_1' => [
-                        'products' => '',
+                        'productCodes' => '',
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
 
         $this->assertPartialConfigurationIsInvalid([
             [
@@ -324,7 +324,7 @@ final class MediaFixtureTest extends TestCase
                     ],
                 ],
             ],
-        ], 'custom.*.products');
+        ], 'custom.*.productCodes');
     }
 
     protected function getConfiguration(): MediaFixture

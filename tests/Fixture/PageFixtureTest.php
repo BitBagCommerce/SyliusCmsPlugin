@@ -375,6 +375,32 @@ final class PageFixtureTest extends TestCase
         ], 'custom.*.products');
     }
 
+    /**
+     * @test
+     */
+    public function custom_product_codes_is_optional_but_must_be_array(): void
+    {
+        $this->assertConfigurationIsValid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'productCodes' => [],
+                    ],
+                ],
+            ],
+        ], 'custom.*.productCodes');
+
+        $this->assertPartialConfigurationIsInvalid([
+            [
+                'custom' => [
+                    'homepage_banner' => [
+                        'enabled' => 'integer',
+                    ],
+                ],
+            ],
+        ], 'custom.*.productCodes');
+    }
+
     protected function getConfiguration(): PageFixture
     {
         /** @var FixtureFactoryInterface $pageFixtureFactory */

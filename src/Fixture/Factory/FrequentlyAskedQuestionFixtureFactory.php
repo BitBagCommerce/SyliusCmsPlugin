@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
+use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInterface
@@ -29,19 +29,19 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     /** @var FrequentlyAskedQuestionRepositoryInterface */
     private $frequentlyAskedQuestionRepository;
 
-    /** @var ChannelContextInterface */
-    private $channelContext;
+    /** @var ChannelsAssignerInterface */
+    private $channelAssigner;
 
     public function __construct(
         FactoryInterface $frequentlyAskedQuestionFactory,
         FactoryInterface $frequentlyAskedQuestionTranslationFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        ChannelContextInterface $channelContext
+        ChannelsAssignerInterface $channelAssigner
     ) {
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
-        $this->channelContext = $channelContext;
+        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void
@@ -72,7 +72,8 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         $frequentlyAskedQuestion->setCode($code);
         $frequentlyAskedQuestion->setEnabled($frequentlyAskedQuestionData['enabled']);
         $frequentlyAskedQuestion->setPosition($position);
-        $frequentlyAskedQuestion->addChannel($this->channelContext->getChannel());
+
+        $this->channelAssigner->assign($frequentlyAskedQuestion, $frequentlyAskedQuestionData['channels']);
 
         foreach ($frequentlyAskedQuestionData['translations'] as $localeCode => $translation) {
             /** @var FrequentlyAskedQuestionTranslationInterface $frequentlyAskedQuestionTranslation */
