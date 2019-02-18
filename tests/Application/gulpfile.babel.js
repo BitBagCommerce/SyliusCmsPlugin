@@ -3,49 +3,49 @@ import gulp from 'gulp';
 import yargs from 'yargs';
 
 const { argv } = yargs
-    .options({
-        rootPath: {
-            description: '<path> path to public assets directory',
-            type: 'string',
-            requiresArg: true,
-            required: false,
-        },
-        nodeModulesPath: {
-            description: '<path> path to node_modules directory',
-            type: 'string',
-            requiresArg: true,
-            required: false,
-        },
-    });
+  .options({
+    rootPath: {
+      description: '<path> path to public assets directory',
+      type: 'string',
+      requiresArg: true,
+      required: false,
+    },
+    nodeModulesPath: {
+      description: '<path> path to node_modules directory',
+      type: 'string',
+      requiresArg: true,
+      required: false,
+    },
+  });
 
 const config = [
-    '--rootPath',
-    argv.rootPath || '../../../../../../../tests/Application/public/assets',
-    '--nodeModulesPath',
-    argv.nodeModulesPath || '../../../../../../../tests/Application/node_modules',
+  '--rootPath',
+  argv.rootPath || '../../../../../../../tests/Application/public/assets',
+  '--nodeModulesPath',
+  argv.nodeModulesPath || '../../../../../../../tests/Application/node_modules',
 ];
 
 export const buildAdmin = function buildAdmin() {
-    return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
-        .pipe(chug({ args: config, tasks: 'build' }));
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
+    .pipe(chug({ args: config, tasks: 'build' }));
 };
 buildAdmin.description = 'Build admin assets.';
 
 export const watchAdmin = function watchAdmin() {
-    return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
-        .pipe(chug({ args: config, tasks: 'watch' }));
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
+    .pipe(chug({ args: config, tasks: 'watch' }));
 };
 watchAdmin.description = 'Watch admin asset sources and rebuild on changes.';
 
 export const buildShop = function buildShop() {
-    return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
-        .pipe(chug({ args: config, tasks: 'build' }));
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
+    .pipe(chug({ args: config, tasks: 'build' }));
 };
 buildShop.description = 'Build shop assets.';
 
 export const watchShop = function watchShop() {
-    return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
-        .pipe(chug({ args: config, tasks: 'watch' }));
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/gulpfile.babel.js', { read: false })
+    .pipe(chug({ args: config, tasks: 'watch' }));
 };
 watchShop.description = 'Watch shop asset sources and rebuild on changes.';
 

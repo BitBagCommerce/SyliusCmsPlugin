@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="http://bitbag.shop" target="_blank">
-        <img src="doc/logo.jpeg" width="35%" />
+        <img src="doc/logo.png" width="55%" />
     </a>
     <br />
     <a href="https://packagist.org/packages/bitbag/cms-plugin" title="License" target="_blank">
@@ -18,9 +18,12 @@
     <a href="https://packagist.org/packages/bitbag/cms-plugin" title="Total Downloads" target="_blank">
         <img src="https://poser.pugx.org/bitbag/cms-plugin/downloads" />
     </a>
+    <p>
+        <img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="85">
+    </p>
 </h1>
 
-# BitBagSyliusCmsPlugin
+## BitBag SyliusCmsPlugin
 
 Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries 
 like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the 
@@ -32,7 +35,7 @@ you to add dynamic blocks with images, text or HTML to your storefront as well a
 You can order our support on [this page](https://bitbag.shop/products/sylius-content-management-system).
 
 We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
-Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
+Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop)! :rocket:
 
 ## Demo
 

@@ -1,4 +1,6 @@
 services:
+    _defaults: { public: true }
+
     bitbag_sylius_cms_plugin.behat.context.ui.admin.block:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\BlockContext
         arguments:
@@ -9,9 +11,7 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.block.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.block.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-            - "@__symfony__.bitbag_sylius_cms_plugin.repository.block"
-        tags:
-            - { name: fob.context_service }
+            - "@bitbag_sylius_cms_plugin.repository.block"
 
     bitbag_sylius_cms_plugin.behat.context.ui.admin.page:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\PageContext
@@ -23,9 +23,7 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.page.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.page.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-            - "@__symfony__.bitbag_sylius_cms_plugin.repository.page"
-        tags:
-            - { name: fob.context_service }
+            - "@bitbag_sylius_cms_plugin.repository.page"
 
     bitbag_sylius_cms_plugin.behat.context.ui.admin.frequently_asked_question:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext
@@ -37,8 +35,6 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-        tags:
-            - { name: fob.context_service }
 
     bitbag_sylius_cms_plugin.behat.context.ui.admin.section:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\SectionContext
@@ -50,15 +46,11 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.section.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.section.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-        tags:
-            - { name: fob.context_service }
 
     bitbag_sylius_cms_plugin.behat.context.ui.shop.homepage_blocks:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext
         arguments:
             - "@bitbag_sylius_cms_plugin.behat.page.shop.home"
-        tags:
-            - { name: fob.context_service }
 
     bitbag_sylius_cms_plugin.behat.context.ui.shop.page:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\PageContext
@@ -66,15 +58,11 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.shop.page.show"
             - "@bitbag_sylius_cms_plugin.behat.page.shop.page.index"
             - "@sylius.behat.shared_storage"
-        tags:
-            - { name: fob.context_service }
 
     bitbag_sylius_cms_plugin.behat.context.ui.shop.frequently_asked_question:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext
         arguments:
             - "@bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index"
-        tags:
-            - { name: fob.context_service }
 
     bitbag_sylius_cms_plugin.behat.context.ui.admin.media:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\MediaContext
@@ -86,6 +74,4 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.media.create"
             - "@bitbag_sylius_cms_plugin.behat.page.admin.media.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
-            - "@__symfony__.bitbag_sylius_cms_plugin.repository.media"
-        tags:
-            - { name: fob.context_service }
+            - "@bitbag_sylius_cms_plugin.repository.media"

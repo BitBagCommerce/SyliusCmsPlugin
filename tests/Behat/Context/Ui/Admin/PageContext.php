@@ -15,7 +15,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Behat\NotificationType;
-use Sylius\Behat\Page\SymfonyPageInterface;
+use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -168,6 +168,7 @@ final class PageContext implements Context
      */
     public function iFillTheContentWith(string $content): void
     {
+
         $this->resolveCurrentPage()->fillContent($content);
     }
 

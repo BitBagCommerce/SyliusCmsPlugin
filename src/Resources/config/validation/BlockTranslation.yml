@@ -7,10 +7,14 @@ BitBag\SyliusCmsPlugin\Entity\BlockTranslation:
                 minMessage: bitbag_sylius_cms_plugin.block.name.min_length
                 maxMessage: bitbag_sylius_cms_plugin.block.name.max_length
                 groups: ['bitbag']
+        link:
+            - Length:
+                min: 2
+                max: 250
+                minMessage: bitbag_sylius_cms_plugin.block.link.min_length
+                maxMessage: bitbag_sylius_cms_plugin.block.link.max_length
+                groups: ['bitbag']
         content:
-            - NotBlank:
-                message: bitbag_sylius_cms_plugin.block.content.not_blank
-                groups: ['bitbag_content']
             - Length:
                 min: 2
                 minMessage: bitbag_sylius_cms_plugin.block.content.min_length
