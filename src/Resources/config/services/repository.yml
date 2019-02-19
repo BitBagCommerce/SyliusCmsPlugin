@@ -1,3 +1,4 @@
 services:
     bitbag_sylius_cms_plugin.repository.product:
         class: BitBag\SyliusCmsPlugin\Repository\ProductRepository
+
