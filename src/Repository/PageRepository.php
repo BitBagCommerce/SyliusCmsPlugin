@@ -99,7 +99,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     public function findByProduct(ProductInterface $product, string $channelCode): array
