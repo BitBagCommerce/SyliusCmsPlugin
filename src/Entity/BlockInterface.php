@@ -22,6 +22,7 @@ interface BlockInterface extends
     TranslatableInterface,
     ToggleableInterface,
     ProductsAwareInterface,
+    TaxonAwareInterface,
     SectionableInterface,
     ChannelsAwareInterface,
     ContentableInterface

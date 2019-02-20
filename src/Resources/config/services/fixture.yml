@@ -44,6 +44,7 @@ services:
             - "@sylius.context.channel"
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.assigner.products"
+            - "@bitbag_sylius_cms_plugin.assigner.taxons"
             - "@bitbag_sylius_cms_plugin.assigner.sections"
             - "@bitbag_sylius_cms_plugin.assigner.channels"
 

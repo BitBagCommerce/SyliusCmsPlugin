@@ -4,3 +4,4 @@ monolog:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: error
+            include_stacktraces: true

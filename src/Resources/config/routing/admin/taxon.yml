@@ -1,0 +1,6 @@
+bitbag_sylius_cms_plugin_admin_ajax_taxon_by_name_phrase:
+    path: /ajax/taxon/search-by-name
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.action.admin.taxon_search

@@ -9,6 +9,10 @@ services:
         arguments:
             - "@sylius.repository.product"
 
+    bitbag_sylius_cms_plugin.assigner.taxons:
+        class: BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner
+        arguments:
+            - "@sylius.repository.taxon"
 
     bitbag_sylius_cms_plugin.assigner.sections:
         class: BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner
