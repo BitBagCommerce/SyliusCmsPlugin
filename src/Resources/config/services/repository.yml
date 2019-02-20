@@ -1,13 +1,8 @@
 services:
     bitbag_sylius_cms_plugin.repository.product:
         class: BitBag\SyliusCmsPlugin\Repository\ProductRepository
-        arguments:
-            - "@sylius.manager.product"
-            - "@=service('sylius.manager.product').getClassMetadata('Sylius\\\\Component\\\\Core\\\\Model\\\\Product')"
+        parent: sylius.repository.taxon
 
     bitbag_sylius_cms_plugin.repository.taxon:
         class: BitBag\SyliusCmsPlugin\Repository\TaxonRepository
-        arguments:
-            - "@sylius.manager.taxon"
-            - "@=service('sylius.manager.taxon').getClassMetadata('Sylius\\\\Component\\\\Core\\\\Model\\\\Taxon')"
-
+        parent: sylius.repository.taxon
