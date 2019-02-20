@@ -87,6 +87,21 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
+    public function findBySectionCode(string $sectionCode, ?string $localeCode): array
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->innerJoin('o.sections', 'section')
+            ->where('translation.locale = :localeCode')
+            ->andWhere('section.code = :sectionCode')
+            ->andWhere('o.enabled = true')
+            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('localeCode', $localeCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findByProduct(ProductInterface $product, string $channelCode): array
     {
         return $this->createQueryBuilder('o')

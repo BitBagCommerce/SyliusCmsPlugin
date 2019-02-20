@@ -66,4 +66,17 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
             ->getOneOrNullResult()
         ;
     }
+
+    public function findByCodesAndLocale(string $codes, string $localeCode): array
+    {
+        return $this->createQueryBuilder('o')
+            ->leftJoin('o.translations', 'translation')
+            ->where('translation.locale = :localeCode')
+            ->andWhere('o.code IN(:codes)')
+            ->setParameter('codes', explode(',', $codes))
+            ->setParameter('localeCode', $localeCode)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

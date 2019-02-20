@@ -10,8 +10,7 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionTranslation:
     fields:
         question:
             column: question
-            type: string
-            length: 1500
+            type: text
             nullable: false
         answer:
             column: answer

@@ -33,6 +33,8 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
 
+    public function findBySectionCode(string $sectionCode, ?string $localeCode): array;
+
     public function findByProduct(ProductInterface $product, string $channelCode): array;
 
     public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array;
