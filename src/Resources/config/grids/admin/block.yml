@@ -19,7 +19,7 @@ sylius_grid:
                 enabled:
                     type: twig
                     label: sylius.ui.enabled
-                    path: .
+                    path: enabled
                     sortable: ~
                     options:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
