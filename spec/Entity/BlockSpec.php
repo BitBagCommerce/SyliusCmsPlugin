@@ -19,6 +19,7 @@ use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Core\Model\TaxonInterface;
 
 final class BlockSpec extends ObjectBehavior
 {
@@ -80,5 +81,17 @@ final class BlockSpec extends ObjectBehavior
         $this->removeChannel($firstChannel);
 
         $this->hasChannel($firstChannel)->shouldReturn(false);
+    }
+
+    function it_associates_taxons(TaxonInterface $firstTaxon, TaxonInterface $secondTaxon): void
+    {
+        $this->addTaxon($firstTaxon);
+        $this->hasTaxon($firstTaxon)->shouldReturn(true);
+
+        $this->hasTaxon($secondTaxon)->shouldReturn(false);
+
+        $this->removeTaxon($firstTaxon);
+
+        $this->hasTaxon($secondTaxon)->shouldReturn(false);
     }
 }
