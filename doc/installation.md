@@ -47,8 +47,8 @@ Finish the installation by updating the database schema and installing assets:
 ```
 $ bin/console doctrine:migrations:diff
 $ bin/console doctrine:migrations:migrate
-$ bin/console assets:install
-$ bin/console sylius:theme:assets:install
+$ bin/console assets:install --symlink
+$ bin/console sylius:theme:assets:install --symlink
 ```
 
 ## Testing & running the plugin
