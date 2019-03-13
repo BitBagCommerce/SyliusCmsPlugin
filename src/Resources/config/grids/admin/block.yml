@@ -34,7 +34,7 @@ sylius_grid:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, type]
+                        fields: [code]
                 enabled:
                     type: boolean
             actions:
