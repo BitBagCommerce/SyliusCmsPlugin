@@ -15,4 +15,5 @@ sylius_grid:
             fields:
                 createdAt:
                     type: datetime
+                    sortable: ~
             limits: [10]
