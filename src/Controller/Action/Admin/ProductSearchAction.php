@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
 
-use BitBag\SyliusCmsPlugin\Repository\ProductRepositoryInterface;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,18 +24,26 @@ final class ProductSearchAction
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
     /** @var ViewHandler */
     private $viewHandler;
 
-    public function __construct(ProductRepositoryInterface $productRepository, ViewHandler $viewHandler)
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        LocaleContextInterface $localeContext,
+        ViewHandler $viewHandler
+    )
     {
         $this->productRepository = $productRepository;
+        $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
     {
-        $product = $this->productRepository->findByNamePart($request->get('phrase', ''));
+        $product = $this->productRepository->findByNamePart($request->get('phrase', ''), $this->localeContext->getLocaleCode());
         $view = View::create($product);
 
         $this->viewHandler->setExclusionStrategyGroups(['Autocomplete']);

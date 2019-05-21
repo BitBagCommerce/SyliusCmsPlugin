@@ -4,7 +4,6 @@ imports:
     - { resource: services/event_listener.yml }
     - { resource: services/controller.yml }
     - { resource: services/fixture.yml }
-    - { resource: services/repository.yml }
     - { resource: services/importer.yml }
     - { resource: services/resolver.yml }
     - { resource: services/media_provider.yml }
