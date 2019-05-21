@@ -13,7 +13,7 @@
         "league/csv": "^9.0",
         "friendsofsymfony/ckeditor-bundle": "^1.1",
         "stefandoorn/sitemap-plugin": "^1.0",
-        "sylius/sylius": "~1.4.0|~1.5.0",
+        "sylius/sylius": "^1.4.0",
         "sensiolabs/security-checker": "^5.0"
     },
     "require-dev": {
