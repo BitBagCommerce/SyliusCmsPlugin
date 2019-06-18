@@ -16,7 +16,7 @@ services:
             - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
-            - { name: bitbag.importer }
+            - { name: bitbag.cmsplugin.importer }
 
     bitbag_sylius_cms_plugin.importer.block:
         class: BitBag\SyliusCmsPlugin\Importer\BlockImporter
@@ -29,7 +29,7 @@ services:
             - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
-            - { name: bitbag.importer }
+            - { name: bitbag.cmsplugin.importer }
 
     bitbag_sylius_cms_plugin.importer.media:
         class: BitBag\SyliusCmsPlugin\Importer\MediaImporter
@@ -41,4 +41,4 @@ services:
             - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
-            - { name: bitbag.importer }
+            - { name: bitbag.cmsplugin.importer }
