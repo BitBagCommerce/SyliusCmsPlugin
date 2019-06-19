@@ -8,4 +8,4 @@ read [this documentation page](http://docs.sylius.com/en/1.2/book/architecture/f
 
 ## General usage
 
-Just take a look at [this fixtures.yml](../tests/Application/app/config/fixtures.yml) file.
+Just take a look at [this](../tests/Application/config/packages/bitbag_sylius_cms_plugin.yml) file.
