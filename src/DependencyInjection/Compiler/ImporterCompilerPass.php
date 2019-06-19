@@ -19,6 +19,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 final class ImporterCompilerPass implements CompilerPassInterface
 {
+    private const TAG_ID = 'bitbag.cmsplugin.importer';
+
     public function process(ContainerBuilder $container): void
     {
         if (!$container->has('bitbag_sylius_cms_plugin.importer.chain')) {
@@ -27,10 +29,10 @@ final class ImporterCompilerPass implements CompilerPassInterface
 
         $container
             ->registerForAutoconfiguration(ImporterInterface::class)
-            ->addTag('bitbag.importer')
+            ->addTag(self::TAG_ID)
         ;
 
-        $taggedServices = $container->findTaggedServiceIds('bitbag.importer');
+        $taggedServices = $container->findTaggedServiceIds(self::TAG_ID);
         $definition = $container->findDefinition('bitbag_sylius_cms_plugin.importer.chain');
 
         foreach ($taggedServices as $id => $tags) {
