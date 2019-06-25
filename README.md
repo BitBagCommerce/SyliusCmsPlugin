@@ -32,7 +32,7 @@ you to add dynamic blocks with images, text or HTML to your storefront as well a
 
 ## Support
 
-You can order our support on [this page](https://bitbag.shop/products/sylius-content-management-system).
+You can order our support on [this page](https://bitbag.io/contact).
 
 We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
 Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop)! :rocket:
