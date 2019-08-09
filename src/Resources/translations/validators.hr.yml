@@ -1,7 +1,7 @@
 bitbag_sylius_cms_plugin:
     block:
         image:
-            mime_types: Samo su PNG ili JPG formati dopušteni.
+            mime_types: Samo su PNG, SVG ili JPG formati dopušteni.
             not_blank: Slika ne može biti prazna.
         code:
             unique: Postoji blok sa istim kodom.
