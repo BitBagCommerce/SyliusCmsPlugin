@@ -95,7 +95,9 @@ final class PageController extends ResourceController
     private function resolveImage(PageInterface $page): void
     {
         /** @var PageImageInterface $image */
-        if (!$image = $page->getTranslation()->getImage()) {
+        $image = $page->getTranslation()->getImage();
+
+        if (!$image || !$image->getPath()) {
             return;
         }
 
