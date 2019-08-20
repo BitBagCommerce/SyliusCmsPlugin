@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-final class FrequentlyAskedQuestionRepository extends EntityRepository implements FrequentlyAskedQuestionRepositoryInterface
+class FrequentlyAskedQuestionRepository extends EntityRepository implements FrequentlyAskedQuestionRepositoryInterface
 {
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
