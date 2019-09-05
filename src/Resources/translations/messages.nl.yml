@@ -33,3 +33,4 @@ bitbag_sylius_cms_plugin:
         sections_header: Secties
         sections_subheader: Beheer secties
         position: Positie
+        title: Titel

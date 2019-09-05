@@ -52,4 +52,8 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function getImage(): ?PageImageInterface;
 
     public function setImage(?PageImageInterface $image): void;
+
+    public function getTitle(): ?string;
+
+    public function setTitle(?string $title): void;
 }

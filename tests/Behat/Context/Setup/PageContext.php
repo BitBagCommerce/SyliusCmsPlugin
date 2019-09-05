@@ -157,6 +157,16 @@ final class PageContext implements Context
     }
 
     /**
+     * @Given this page also has :title title
+     */
+    public function thisPageAlsoHasTitle(string $title): void
+    {
+        $this->sharedStorage->get('page')->setTitle($title);
+
+        $this->entityManager->flush();
+    }
+
+    /**
      * @Given this page also has :content image
      */
     public function thisPageAlsoHasImage(string $image): void
