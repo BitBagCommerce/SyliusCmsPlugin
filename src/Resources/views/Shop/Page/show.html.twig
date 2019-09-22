@@ -1,5 +1,13 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
+{%- block title -%}
+    {% if page.title is not empty %}
+        {{ page.title }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{%- endblock -%}
+
 {% block metatags %}
     {% if page.metaKeywords is not empty %}
         <meta name="keywords" content="{{ page.metaKeywords }}"/>

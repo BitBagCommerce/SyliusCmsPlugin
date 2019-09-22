@@ -27,4 +27,6 @@ interface ShowPageInterface extends SymfonyPageInterface
     public function hasPageLink(string $linkName): bool;
 
     public function hasPageImage(): bool;
+
+    public function hasTitle(string $title): bool;
 }

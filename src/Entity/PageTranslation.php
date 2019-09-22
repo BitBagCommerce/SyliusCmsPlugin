@@ -46,6 +46,9 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var string */
     protected $breadcrumb;
 
+    /** @var string */
+    protected $title;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,5 +146,15 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     public function setMetaDescription(?string $metaDescription): void
     {
         $this->metaDescription = $metaDescription;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
     }
 }

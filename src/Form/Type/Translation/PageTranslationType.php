@@ -55,6 +55,10 @@ final class PageTranslationType extends AbstractResourceType
                 'required' => false,
             ])
             ->add('content', WysiwygType::class)
+            ->add('title', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.title',
+                'required' => false,
+            ])
         ;
     }
 

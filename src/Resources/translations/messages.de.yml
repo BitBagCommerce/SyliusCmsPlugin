@@ -22,3 +22,4 @@ bitbag_sylius_cms_plugin:
         contents: Inhalte
         images: Bilder
         link: Link
+        title: Titel

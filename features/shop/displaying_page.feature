@@ -48,3 +48,24 @@ Feature: Displaying pages
         And I should also see "iPhone 8" and "iPhone X" products associated with this page
         And I should also see "Blog" and "General" sections associated with this page
         And I should also see page image
+
+    @ui @javascript @title
+    Scenario: Displaying page with title
+        Given there is a page in the store
+        And this page has "some_page_with_title" code
+        And this page has "some_page_with_title" name
+        And this page also has "some_page_with_title" slug
+        And this page also has "Lorem ipsum" content
+        And this page also has "title" title
+        When I go to this page
+        Then I should see page title "title"
+
+    @ui @javascript @title
+    Scenario: Displaying page with default title
+        Given there is a page in the store
+        And this page has "title" code
+        And this page has "Title" name
+        And this page also has "title" slug
+        And this page also has "Lorem ipsum" content
+        When I go to this page
+        Then I should see page title "Sylius"

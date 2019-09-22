@@ -34,3 +34,4 @@ bitbag_sylius_cms_plugin:
         sections_header: Sekcje
         sections_subheader: Zarządzaj sekcjami
         position: Pozycja
+        title: Tytuł
