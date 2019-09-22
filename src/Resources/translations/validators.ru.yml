@@ -1,7 +1,7 @@
 bitbag_sylius_cms_plugin:
     block:
         image:
-            mime_types: Только PNG или JPEG.
+            mime_types: Только PNG, SVG или JPEG.
             not_blank: Изображение обязательно.
         code:
             unique: Блок с таким кодом уже существует.
