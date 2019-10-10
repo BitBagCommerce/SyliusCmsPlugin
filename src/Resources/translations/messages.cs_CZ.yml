@@ -2,6 +2,7 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Bloky
         pages: Stránky
+        title: Titul
     cms:
         content_management: Obsahový management
         cms: Obsahový management

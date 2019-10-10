@@ -65,5 +65,8 @@ final class PageTranslationSpec extends ObjectBehavior
 
         $this->setDescriptionWhenLinked('description linked');
         $this->getDescriptionWhenLinked()->shouldReturn('description linked');
+
+        $this->setTitle('title');
+        $this->getTitle()->shouldReturn('title');
     }
 }

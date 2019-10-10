@@ -24,6 +24,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         return $this->createQueryBuilder('o')
             ->addSelect('translation')
             ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
+            ->leftJoin('o.sections', 'sections')
             ->setParameter('localeCode', $localeCode)
         ;
     }

@@ -1,7 +1,7 @@
 bitbag_sylius_cms_plugin:
     block:
         image:
-            mime_types: Only PNG and JPEG files are allowed.
+            mime_types: Only PNG, SVG and JPEG files are allowed.
             not_blank: Image cannot be blank.
         code:
             unique: There is an existing block with this code.

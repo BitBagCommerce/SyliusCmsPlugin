@@ -9,7 +9,8 @@ services:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction
         public: true
         arguments:
-            - "@bitbag_sylius_cms_plugin.repository.product"
+            - "@sylius.repository.product"
+            - "@sylius.context.locale"
             - "@fos_rest.view_handler.default"
 
     bitbag_sylius_cms_plugin.controller.action.admin.taxon_search:

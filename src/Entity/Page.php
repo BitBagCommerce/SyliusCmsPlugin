@@ -156,6 +156,16 @@ class Page implements PageInterface
         $this->getPageTranslation()->setImage($image);
     }
 
+    public function getTitle(): ?string
+    {
+        return $this->getPageTranslation()->getTitle();
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->getPageTranslation()->setTitle($title);
+    }
+
     /**
      * @return PageTranslationInterface|TranslationInterface|null
      */

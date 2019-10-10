@@ -181,7 +181,7 @@ final class ProductImporter extends AbstractImporter implements ProductImporterI
             - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
-            - { name: bitbag.importer }
+            - { name: bitbag.cmsplugin.importer }
 ```
 
 5. :tada:

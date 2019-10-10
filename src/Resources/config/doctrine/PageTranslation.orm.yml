@@ -43,6 +43,10 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: content
             type: text
             nullable: true
+        title:
+            column: title
+            type: string
+            nullable: true
     oneToOne:
         image:
             targetEntity: BitBag\SyliusCmsPlugin\Entity\PageImageInterface

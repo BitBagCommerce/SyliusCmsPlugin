@@ -70,6 +70,11 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
         return $this->getElement('page-image')->isVisible();
     }
 
+    public function hasTitle(string $title): bool
+    {
+        return $this->getSession()->evaluateScript('return document.title') === $title;
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

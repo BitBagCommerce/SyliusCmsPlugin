@@ -120,4 +120,12 @@ final class PageContext implements Context
     {
         Assert::true($this->indexPage->hasPagesNumber($pagesNumber));
     }
+
+    /**
+     * @Then I should see page title :title
+     */
+    public function iShouldSeePageTitle(string $title): void
+    {
+        Assert::true($this->showPage->hasTitle($title));
+    }
 }

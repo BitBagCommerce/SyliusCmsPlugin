@@ -63,4 +63,8 @@ interface PageInterface extends
     public function getDescriptionWhenLinked(): ?string;
 
     public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void;
+
+    public function getTitle(): ?string;
+
+    public function setTitle(?string $title): void;
 }
