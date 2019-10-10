@@ -17,25 +17,34 @@ use FOS\RestBundle\View\ViewHandler;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class TaxonSearchAction
 {
     /** @var TaxonRepositoryInterface */
     private $taxonRepository;
 
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
     /** @var ViewHandler */
     private $viewHandler;
 
-    public function __construct(TaxonRepositoryInterface $taxonRepository, ViewHandler $viewHandler)
+    public function __construct(
+        TaxonRepositoryInterface $taxonRepository,
+        LocaleContextInterface $localeContext,
+        ViewHandler $viewHandler
+    )
     {
         $this->taxonRepository = $taxonRepository;
+        $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
     {
-        $product = $this->taxonRepository->findByNamePart($request->get('phrase', ''));
-        $view = View::create($product);
+        $taxon = $this->taxonRepository->findByNamePart($request->get('phrase', ''), $this->localeContext->getLocaleCode());
+        $view = View::create($taxon);
 
         $this->viewHandler->setExclusionStrategyGroups(['Autocomplete']);
         $view->getContext()->enableMaxDepth();

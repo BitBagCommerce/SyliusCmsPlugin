@@ -17,7 +17,8 @@ services:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\TaxonSearchAction
         public: true
         arguments:
-            - "@bitbag_sylius_cms_plugin.repository.taxon"
+            - "@sylius.repository.taxon"
+            - "@sylius.context.locale"
             - "@fos_rest.view_handler.default"
 
     bitbag_sylius_cms_plugin.controller.action.admin.import_data:
