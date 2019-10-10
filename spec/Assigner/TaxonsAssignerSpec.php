@@ -4,7 +4,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner;
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Repository\TaxonRepositoryInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\TaxonInterface;
