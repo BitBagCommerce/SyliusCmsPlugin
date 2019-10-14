@@ -4,9 +4,35 @@ dist: trusty
 
 sudo: false
 
-php:
-    - 7.2
-    - 7.3
+matrix:
+    include:
+        # Sylius 1.4
+        -
+            php: 7.2
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.4.*"
+        -
+            php: 7.3
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.4.*"
+        # Sylius 1.5
+        -
+            php: 7.2
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.5.*"
+        -
+            php: 7.3
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.5.*"
+        # Sylius 1.6
+        -
+            php: 7.2
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.6.*"
+        -
+            php: 7.3
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.6.*"
 
 cache:
     yarn: true
@@ -27,7 +53,8 @@ before_install:
     - mkdir -p tests/Application/public/media/image
 
 install:
-    - composer install --no-interaction --prefer-dist
+    - composer require ${DEPENDENCY_VERSIONS} --no-update
+    - composer update --no-interaction --prefer-dist
     - (cd tests/Application && yarn install)
 
 before_script:
