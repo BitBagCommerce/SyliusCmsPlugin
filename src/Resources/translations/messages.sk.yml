@@ -1,0 +1,55 @@
+bitbag_sylius_cms_plugin:
+    ui:
+        blocks: Bloky
+        pages: Stránky
+        content_management: Správa obsahu
+        cms: Správa obsahu
+        enabled: Aktívny
+        blocks_header: Bloky
+        blocks_subheader: Spravujte vaše bloky
+        pages_header: Stránky
+        pages_subheader: Spravujte vaše stránky
+        products: Produkty
+        page_related_products: Produkty relevantné ku stránke
+        name: Meno
+        slug: Slug
+        meta_keywords: Meta keywords
+        meta_description: Meta description
+        content: Obsah
+        faq: FAQ
+        code: Kód
+        contents: Obsah
+        images: Obrázky
+        image: Obrázok
+        link: Odkaz
+        faq_header: FAQ
+        faq_subheader: Spravujte vaše časté otázky
+        frequently_asked_questions: Časté otázky
+        question: Otázka
+        answer: Odpoveď
+        sections: Sekcie
+        sections_header: Sekcie
+        sections_subheader: Spravujte vaše sekcie
+        position: Pozícia
+        channels: Kanál
+        preview: Náhľad
+        download: Stiahnuť
+        name_when_linked: Názov v odkaze
+        description_when_linked: Popis v odkaze
+        media: Médiá
+        media_header: Médiá
+        media_subheader: Spravujte vaše médiá
+        type: Typ
+        file: Súbor
+        alt: Alt
+        description: Popis
+        file_provider: Súbor
+        image_provider: Obrázok
+        video_provider: Video
+        read_more: Ukáž viac
+        breadcrumb: Breadcrumb
+        import: Import
+        csv_file: CSV súbor
+        successfully_imported: Dáta boli naimportované
+        form_was_submitted_with_errors: "Formulár obsahuje nasledovné chyby:"
+        title: Titulok
