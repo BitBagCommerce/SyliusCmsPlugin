@@ -1,0 +1,91 @@
+bitbag_sylius_cms_plugin:
+    block:
+        image:
+            mime_types: Iba PNG, SVG a JPEG súbory sú povolené.
+            not_blank: Obrázok nesmie byť prázdny.
+        code:
+            unique: Blok s týmto kódom už existuje.
+            not_blank: Kód nesmie byť prázdny.
+            min_length: Kód musí mať najmenej {{ limit }} znakov.
+            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
+        name:
+            min_length: Názov musí mať najmenej {{ limit }} znakov.
+            max_length: Názov nesmie mať viac ako {{ limit }} znakov.
+        link:
+            min_length: Odkaz musí mať najmenej {{ limit }} znakov.
+            max_length: Odkaz nesmie mať viac ako {{ limit }} znakov.
+        content:
+            not_blank: Obsah nesmie byť prázdny.
+            min_length: Obsah musí mať najmenej {{ limit }} znakov.
+    page:
+        code:
+            unique: Stránka s týmto kódom už existuje.
+            not_blank: Kód nesmie byť prázdny.
+            min_length: Kód musí mať najmenej {{ limit }} znakov.
+            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
+        name:
+            not_blank: Názov nemôže byť prázdny.
+            min_length: Názov musí mať najmenej {{ limit }} znakov.
+            max_length: Názov nesmie mať viac ako {{ limit }} znakov.
+        slug:
+            not_blank:  Slug nesmie byť prázdny.
+            min_length: Slug musí mať najmenej {{ limit }} znakov.
+            max_length: Slug nesmie mať viac ako {{ limit }} znakov.
+            unique: Slug musí byť unikátny.
+        meta_keywords:
+            min_length: Meta keywords musí mať najmenej {{ limit }} znakov.
+            max_length: Meta keywords nesmie mať viac ako {{ limit }} znakov.
+        meta_description:
+            min_length: Meta decription musí mať najmenej {{ limit }} znakov.
+            max_length: Meta description nesmie mať viac ako {{ limit }} znakov.
+        content:
+            not_blank: Obsah nesmie byť prázdny.
+            min_length: Obsah musí mať najmenej {{ limit }} znakov.
+    frequently_asked_question:
+        code:
+            unique: FAQ s týmto kódom už existuje.
+            not_blank: Kód nesmie byť prázdny.
+            min_length: Kód musí mať najmenej {{ limit }} znakov.
+            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
+        position:
+            unique: FAQ s touto pozíciou už existuje.
+            not_blank: Pozícia nesmie byť prázdna.
+        question:
+            not_blank: Otázka nesmie byť prázdna.
+            min_length: Otázka musí mať najmenej {{ limit }} znakov.
+        answer:
+            not_blank: Odpoveď nesmie byť prázdna.
+            min_length: Odpoveď musí mať najmenej {{ limit }} znakov.
+    section:
+        code:
+            unique: Sekcia s týmto kódom už existuje.
+            not_blank: Kód nesmie byť prázdny.
+            min_length: Kód musí mať najmenej {{ limit }} znakov.
+            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
+        name:
+            not_blank: Názov nemôže byť prázdny.
+            min_length: Názov musí mať najmenej {{ limit }} znakov.
+            max_length: Názov nesmie mať viac ako {{ limit }} znakov.
+    media:
+        code:
+            unique: Médium s týmto kódom už existuje.
+            not_blank: Kód nesmie byť prázdny.
+            min_length: Kód musí mať najmenej {{ limit }} znakov.
+            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
+        file:
+            not_blank: Súbor nemôže byť prázdny.
+        name:
+            not_blank: Názov nemôže byť prázdny.
+            min_length: Názov musí mať najmenej {{ limit }} znakov.
+            max_length: Názov nesmie mať viac ako {{ limit }} znakov.
+        content:
+            min_length: Obsah musí mať najmenej {{ limit }} znakov.
+        alt:
+            min_length: Alt musí mať najmenej {{ limit }} znakov.
+            max_length: Alt nesmie mať viac ako {{ limit }} znakov.
+        link:
+            min_length: Odkaz musí mať najmenej {{ limit }} znakov.
+            max_length: Odkaz nesmie mať viac ako {{ limit }} znakov.
+    import:
+        not_blank: Importovaný súbor nesmie byť prázdny.
+        invalid_format: Súbor nemá platný CSV formát.
