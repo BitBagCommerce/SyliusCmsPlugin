@@ -16,6 +16,9 @@ bitbag_sylius_cms_plugin_admin_media:
 bitbag_sylius_cms_plugin_admin_product:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/product.yml"
 
+bitbag_sylius_cms_plugin_admin_taxon:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/taxon.yml"
+
 bitbag_sylius_cms_plugin_admin_locale:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/locale.yml"
 

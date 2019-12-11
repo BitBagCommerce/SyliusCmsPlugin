@@ -18,6 +18,7 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -44,6 +45,10 @@ final class BlockType extends AbstractResourceType
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
+                'multiple' => true,
+            ])
+            ->add('taxons', TaxonAutocompleteChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.taxons',
                 'multiple' => true,
             ])
             ->add('channels', ChannelChoiceType::class, [

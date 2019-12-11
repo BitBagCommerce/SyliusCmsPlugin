@@ -10,6 +10,7 @@ bitbag_sylius_cms_plugin:
         pages_header: Pages
         pages_subheader: Manage your pages
         products: Products
+        taxons: Taxons
         page_related_products: Page related products
         name: Name
         slug: Slug

@@ -13,6 +13,14 @@ services:
             - "@sylius.context.locale"
             - "@fos_rest.view_handler.default"
 
+    bitbag_sylius_cms_plugin.controller.action.admin.taxon_search:
+        class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\TaxonSearchAction
+        public: true
+        arguments:
+            - "@sylius.repository.taxon"
+            - "@sylius.context.locale"
+            - "@fos_rest.view_handler.default"
+
     bitbag_sylius_cms_plugin.controller.action.admin.import_data:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction
         public: true

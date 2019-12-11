@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
@@ -46,6 +47,9 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     /** @var ProductsAssignerInterface */
     private $productsAssigner;
 
+    /** @var TaxonsAssignerInterface */
+    private $taxonsAssigner;
+
     /** @var SectionsAssignerInterface */
     private $sectionsAssigner;
 
@@ -60,6 +64,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         ChannelContextInterface $channelContext,
         LocaleContextInterface $localeContext,
         ProductsAssignerInterface $productsAssigner,
+        TaxonsAssignerInterface $taxonsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
         ChannelsAssignerInterface $channelAssigner
     ) {
@@ -70,6 +75,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
         $this->productsAssigner = $productsAssigner;
+        $this->taxonsAssigner = $taxonsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
         $this->channelAssigner = $channelAssigner;
     }
@@ -106,6 +112,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $this->sectionsAssigner->assign($block, $blockData['sections']);
         $this->productsAssigner->assign($block, $blockData['productCodes']);
+        $this->taxonsAssigner->assign($block, $blockData['taxons']);
         $this->channelAssigner->assign($block, $blockData['channels']);
 
         $block->setCode($code);
