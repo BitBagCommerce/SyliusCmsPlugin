@@ -29,7 +29,7 @@ final class ImageDownloader implements ImageDownloaderInterface
     {
         $pathInfo = pathinfo($url);
         $extension = $pathInfo['extension'];
-        $path = sys_get_temp_dir() . md5(random_bytes(10)) . '.' . $extension;
+        $path = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . md5(random_bytes(10)) . '.' . $extension;
 
         $this->filesystem->dumpFile($path, file_get_contents($url));
 
