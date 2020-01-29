@@ -36,7 +36,7 @@ Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
-# config/routes.yaml
+# routes/sylius_admin.yaml
 ...
 
 bitbag_sylius_cms_plugin:
