@@ -23,19 +23,16 @@
     </p>
 </h1>
 
+## About us
+
+At BitBag we do believe in open source. However, we are able to do it just beacuse of our awesome clients, who are kind enough to share some parts of our work with the community. Therefore, if you feel like there is a possibility for us working together, feel free to reach us out. You will find out more about our professional services, technologies and contact details at https://bitbag.io/.
+
 ## BitBag SyliusCmsPlugin
 
 Almost each eCommerce app has to present some content. Managing it is often done via third-party libraries 
 like Wordpress, eZ Platform or a built-in content management system. As Sylius does not have a CMS in the 
 standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows 
 you to add dynamic blocks with images, text or HTML to your storefront as well as pages and FAQs section.
-
-## Support
-
-You can order our support on [this page](https://bitbag.io/contact).
-
-We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
-Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop)! :rocket:
 
 ## Demo
 
