@@ -42,6 +42,13 @@ final class GenericProvider implements ProviderInterface
         $this->pathPrefix = $pathPrefix;
     }
 
+    public function setTemplate(string $string): ProviderInterface
+    {
+        $this->template = $string;
+
+        return $this;
+    }
+
     public function getTemplate(): string
     {
         return $this->template;

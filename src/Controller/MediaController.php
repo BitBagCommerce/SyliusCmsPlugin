@@ -40,9 +40,15 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
-        $mediaProviderResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider');
+        $mediaProvider = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider')
+            ->resolveProvider($media);
 
-        return new Response($mediaProviderResolver->resolveProvider($media)->render($media));
+        $template = $request->get('template');
+        if (null !== $template) {
+            $mediaProvider->setTemplate($template);
+        }
+
+        return new Response($mediaProvider->render($media));
     }
 
     public function downloadMediaAction(Request $request): Response
