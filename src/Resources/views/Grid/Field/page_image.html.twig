@@ -1,5 +1,5 @@
 {% if data.translation.image %}
     <img src="{{ data.translation.image.path|imagine_filter(filter|default('sylius_admin_product_thumbnail')) }}" class="ui bordered image"/>
 {% else %}
-    <img src="http://via.placeholder.com/50x50" class="ui bordered image"/>
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="ui bordered image"/>
 {% endif %}
