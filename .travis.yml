@@ -5,8 +5,8 @@ dist: trusty
 sudo: false
 
 php:
-    - 7.2
     - 7.3
+    - 7.4
 
 cache:
     yarn: true

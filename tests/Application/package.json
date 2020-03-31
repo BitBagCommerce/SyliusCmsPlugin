@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "chart.js": "^2.9.3",
     "jquery": "^3.2.0",
     "lightbox2": "^2.9.0",
-    "semantic-ui-css": "^2.2.0"
+    "semantic-ui-css": "^2.2.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
