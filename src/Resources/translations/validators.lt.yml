@@ -1,0 +1,92 @@
+bitbag_sylius_cms_plugin:
+    block:
+        image:
+            mime_types: Leidžiami tik PNG ir JPEG formatų failai.
+            not_blank: Paveikslą nurodyti privaloma.
+        code:
+            unique: Blokas su tokiu kodu jau egzistuoja.
+            not_blank: Kodą įvesti privaloma.
+            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
+            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
+        name:
+            min_length: Pavadinimo ilgis turi būti bent {{ limit }} simb.
+            max_length: Pavadinimas negali būti ilgesnis nei {{ limit }} simb.
+        link:
+            min_length: Nurodos ilgis turi būti bent {{ limit }} simb.
+            max_length: Nuoroda negali būti ilgesnė nei {{ limit }} simb.
+        content:
+            not_blank: Turinį įvesti privaloma.
+            min_length: Turinio ilgis turi būti bent {{ limit }} simb.
+    page:
+        code:
+            unique: Puslapis su tokiu kodu jau egzistuoja.
+            not_blank: Kodą įvesti privaloma.
+            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
+            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
+        name:
+            not_blank: Pavadinimą įvesti privaloma.
+            min_length: Pavadinimo ilgis turi būti bent {{ limit }} simb.
+            max_length: Pavadinimas negali būti ilgesnis nei {{ limit }} simb.
+        slug:
+            not_blank:  Šliužą įvesti privaloma.
+            min_length: Šliužo ilgis turi būti bent {{ limit }} simb.
+            max_length: Šliužas negali būti ilgesnis nei {{ limit }} simb.
+            unique: Šliužas turi būti unikalus.
+        meta_keywords:
+            min_length: Meta raktinių žodžių ilgis turi būti bent {{ limit }} simb.
+            max_length: Meta raktiniai žodžiai negali būti trumpesni nei {{ limit }} simb.
+        meta_description:
+            min_length: Meta aprašymo ilgis turi būti bent {{ limit }} simb.
+            max_length: Meta aprašymas negali būti ilgesnis nei {{ limit }} simb.
+        content:
+            not_blank: Turinį įvesti privaloma.
+            min_length: Turinio ilgis turi būti bent {{ limit }} simb.
+    frequently_asked_question:
+        code:
+            unique: DUK įrašas su tokiu kodu jau egzistuoja.
+            not_blank: Kodą įvesti privaloma.
+            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
+            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
+        position:
+            unique: DUK įrašas su tokia pozicija jau egzistuoja.
+            not_blank: Poziciją įvesti privaloma.
+        question:
+            not_blank: Klausimą įvesti privaloma.
+            min_length: Klausimo ilgis turi būti bent {{ limit }} simb.
+        answer:
+            not_blank: Atsakymą įvesti privaloma.
+            min_length: Atsakymo ilgis turi būti bent {{ limit }} simb.
+    section:
+        code:
+            unique: Blokų grupė su tokiu kodu jau egzistuoja.
+            not_blank: Kodą įvesti privaloma.
+            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
+            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
+        name:
+            not_blank: Pavadinimą įvesti privaloma.
+            min_length: Pavadinimo ilgis turi būti bent {{ limit }} simb.
+            max_length: Pavadinimas negali būti ilgesnis nei {{ limit }} simb.
+    media:
+        code:
+            unique: Failas su tokiu kodu jau egzistuoja.
+            not_blank: Kodą įvesti privaloma.
+            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
+            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
+        file:
+            not_blank: Failą pasirinkti privaloma.
+        name:
+            not_blank: Pavadinimą įvesti privaloma.
+            min_length: Pavadinimo ilgis turi būti bent {{ limit }} simb.
+            max_length: Pavadinimas negali būti ilgesnis nei {{ limit }} simb.
+        content:
+            min_length: Turinio ilgis turi būti bent {{ limit }} simb.
+        alt:
+            min_length: Alternatyviojo teksto ilgis turi būti bent {{ limit }} simb.
+            max_length: Alternatyvusis tekstas negali būti ilgesnis nei {{ limit }} simb.
+        link:
+            min_length: Nurodos ilgis turi būti bent {{ limit }} simb.
+            max_length: Nuoroda negali būti ilgesnė nei {{ limit }} simb.
+    import:
+        not_blank: Importuojamą failą pasirinkti privaloma.
+        invalid_format: Įkeltas netinkamas failas. Pasirinkite CSV formato failą.
+
