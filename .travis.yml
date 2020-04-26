@@ -6,43 +6,12 @@ sudo: false
 
 matrix:
     include:
-        # Sylius 1.4
-        -
-            php: 7.2
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.4.*"
-        -
-            php: 7.3
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.4.*"
-        # Sylius 1.5
-        -
-            php: 7.2
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.5.*"
-        -
-            php: 7.3
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.5.*"
-        # Sylius 1.6
-        -
-            php: 7.2
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.6.*"
-        -
-            php: 7.3
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.6.*"
         # Sylius 1.7
         -
             php: 7.3
             env:
                 - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
-        -
-            php: 7.4
-            env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
-                
+
 cache:
     yarn: true
     directories:
