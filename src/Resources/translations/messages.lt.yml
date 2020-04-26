@@ -1,0 +1,55 @@
+bitbag_sylius_cms_plugin:
+    ui:
+        blocks: Blokai
+        pages: Puslapiai
+        content_management: Turinio valdymas
+        cms: Turinio valdymas
+        enabled: Įjungta
+        blocks_header: Blokai
+        blocks_subheader: Blokų tvarkymas
+        pages_header: Puslapiai
+        pages_subheader: Puslapių tvarkymas
+        products: Produktai
+        page_related_products: Su puslapiu susiję produktai
+        name: Pavadinimas
+        slug: Šliužas (nuorodos dalis)
+        meta_keywords: Meta raktiniai žodžiai
+        meta_description: Meta aprašymas
+        content: Turinys
+        faq: DUK
+        code: Kodas
+        contents: Turinys
+        images: Paveikslai
+        image: Paveikslas
+        link: Nuoroda
+        faq_header: DUK
+        faq_subheader: Dažniausiai užduodamų klausimų tvarkymas
+        frequently_asked_questions: Dažniausiai užduodami klausimai
+        question: Klausimas
+        answer: Atsakymas
+        sections: Blokų grupė
+        sections_header: Blokų grupė
+        sections_subheader: Blokų grupių tvarkymas
+        position: Pozicija
+        channels: Kanalai
+        preview: Peržiūra
+        download: Parsisiųsti
+        name_when_linked: Pavadinimas nuorodose
+        description_when_linked: Aprašymas nuorodose
+        media: Medija
+        media_header: Medija
+        media_subheader: Įterptinų failų valdymas
+        type: Tipas
+        file: Failas
+        alt: Alternatyvusis tekstas
+        description: Aprašymas
+        file_provider: Failas
+        image_provider: Paveikslas
+        video_provider: Vaizdo įrašas
+        read_more: Skaityti toliau
+        breadcrumb: Pavadinimas kelyje
+        import: Importuoti
+        csv_file: CSV failas
+        successfully_imported: Duomenys sėkmingai importuoti.
+        form_was_submitted_with_errors: "Forma pateikta su klaidomis:"
+
