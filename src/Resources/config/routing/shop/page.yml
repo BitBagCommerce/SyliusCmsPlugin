@@ -38,7 +38,7 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
                 arguments:
                     - $sectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
-                    -
+
 bitbag_sylius_cms_plugin_shop_page_index_by_section_code_no_grid:
     path: /pages/{sectionCode}/no-grid
     methods: [GET]
