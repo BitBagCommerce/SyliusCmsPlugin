@@ -1,0 +1,12 @@
+build:
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+    environment:
+        variables:
+            COMPOSER_MEMORY_LIMIT: -1
+
+filter:
+    excluded_paths: [tests/*, spec/*]
