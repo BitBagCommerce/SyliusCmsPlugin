@@ -33,7 +33,16 @@ matrix:
             php: 7.3
             env:
                 - DEPENDENCY_VERSIONS="sylius/sylius:1.6.*"
-
+        # Sylius 1.7
+        -
+            php: 7.3
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
+        -
+            php: 7.4
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
+                
 cache:
     yarn: true
     directories:

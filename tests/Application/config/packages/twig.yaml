@@ -4,3 +4,11 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    Twig\Extra\Intl\IntlExtension: ~
