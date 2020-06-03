@@ -51,25 +51,3 @@ services:
         factory: ['@knp_gaufrette.filesystem_map', get]
         arguments:
             - "%bitbag_sylius_cms_plugin.uploader.filesystem%"
-
-    bitbag_sylius_cms_plugin.sitemap_provider.page:
-        class: BitBag\SyliusCmsPlugin\SitemapProvider\PageUrlProvider
-        arguments:
-            - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@router"
-            - "@sylius.sitemap_url_factory"
-            - "@sylius.context.locale"
-            - "@sylius.context.channel"
-        tags:
-            - { name: sylius.sitemap_provider }
-
-    bitbag_sylius_cms_plugin.sitemap_provider.section:
-        class: BitBag\SyliusCmsPlugin\SitemapProvider\SectionUrlProvider
-        arguments:
-            - "@bitbag_sylius_cms_plugin.repository.section"
-            - "@router"
-            - "@sylius.sitemap_url_factory"
-            - "@sylius.context.locale"
-            - "@sylius.context.channel"
-        tags:
-            - { name: sylius.sitemap_provider }
