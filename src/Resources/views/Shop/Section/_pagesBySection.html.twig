@@ -1,0 +1,10 @@
+{% if pages is not empty %}
+    <div class="bitbag-page">
+        <h2>{{ section.name }}</h2>
+        <nav class="ui link list">
+            {% for page in pages %}
+                <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug': page.slug}) }}" class="item">{{ page.name }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+{% endif %}

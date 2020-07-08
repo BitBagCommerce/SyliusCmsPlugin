@@ -31,6 +31,17 @@ services:
         tags:
             - { name: twig.extension }
 
+    bitbag_sylius_cms_plugin.twig.extension.section_pages:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderSectionPagesExtension
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
+            - "@templating"
+        tags:
+            - { name: twig.extension }
+
     bitbag_sylius_cms_plugin.twig.extension.render_content:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderContentExtension
         arguments:
