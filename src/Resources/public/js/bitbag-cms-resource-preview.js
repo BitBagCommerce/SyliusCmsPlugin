@@ -42,10 +42,11 @@
             contentType: false,
             cache: false,
         }).done(function(response) {
-            console.log(response)
-            var src = 'data:text/html;charset=utf-8, ' + encodeURIComponent(response);
+            console.log(response);
+            var blob = new Blob([response], {type : 'text/html', charset: 'utf-8'});
+            var blobUrl = window.URL.createObjectURL(blob);
 
-            $('#bitbag-cms-resource-preview-modal iframe').attr('src', src);
+            $('#bitbag-cms-resource-preview-modal iframe').attr('src', blobUrl);
             $('#bitbag-cms-resource-preview-modal .ui.loadable').removeClass('loading');
         });
     }
