@@ -12,7 +12,6 @@
         "php": "^7.3",
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1|^2.0",
-        "stefandoorn/sitemap-plugin": "^1.0",
         "sylius/sylius": "^1.7"
     },
     "require-dev": {
@@ -42,6 +41,9 @@
         "symfony/intl": "^4.4",
         "symfony/web-profiler-bundle": "^4.4",
         "symfony/web-server-bundle": "^4.4"
+    },
+    "suggest": {
+        "stefandoorn/sitemap-plugin": "Adds CMS pages & sections support to the Sylius sitemap plugin"
     },
     "conflict": {
         "symfony/symfony": "4.1.8",
