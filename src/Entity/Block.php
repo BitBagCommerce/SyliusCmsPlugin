@@ -95,7 +95,7 @@ class Block implements BlockInterface
         return $this->getTranslation();
     }
 
-    protected function createTranslation(): BlockTranslation
+    protected function createTranslation(): BlockTranslationInterface
     {
         return new BlockTranslation();
     }
