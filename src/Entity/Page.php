@@ -174,6 +174,9 @@ class Page implements PageInterface
         return $this->getTranslation();
     }
 
+    /**
+     * @return PageTranslationInterface|TranslationInterface
+     */
     protected function createTranslation(): TranslationInterface
     {
         return new PageTranslation();
