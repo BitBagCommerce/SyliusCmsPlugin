@@ -17,5 +17,5 @@ use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 
 interface MediaProviderResolverInterface
 {
-    public function resolveProvider(MediaInterface $media): ProviderInterface;
+    public function resolveProvider(MediaInterface $media, ?string $template = null): ProviderInterface;
 }
