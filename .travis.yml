@@ -32,6 +32,7 @@ before_install:
 
 install:
     - composer require ${DEPENDENCY_VERSIONS} --no-update
+    - composer require stefandoorn/sitemap-plugin --no-update
     - composer update --no-interaction --prefer-dist
     - (cd tests/Application && yarn install)
 

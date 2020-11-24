@@ -1,3 +1,8 @@
+# UPGRADE FROM 2.4 TO 2.5
+
+* The `stefandoorn/sitemap-plugin` dependency has been removed, and moved to the `suggest` section of composer.json.
+If you didn't require this plugin by yourselves, but want to keep the sitemap support, consider requiring it directly in your project as described [here](doc/sitemap.md).
+
 # UPGRADE FROM 1.0 TO 2.0
 
 * A lot of database modifications has been made. Read the below changelog first and then migrate your
