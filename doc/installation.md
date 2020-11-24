@@ -54,6 +54,16 @@ bitbag_sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
+If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions
+import optional sitemap providers:
+```yaml
+# config/services.yaml
+...
+imports:
+...
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
+```
+
 Finish the installation by updating the database schema and installing assets:
 ```
 $ bin/console doctrine:migrations:diff
