@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Assigner;
 use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
+use Webmozart\Assert\Assert;
 
 final class TaxonsAssigner implements TaxonsAssignerInterface
 {
@@ -32,9 +33,8 @@ final class TaxonsAssigner implements TaxonsAssignerInterface
             /** @var TaxonInterface $taxon */
             $taxon = $this->taxonRepository->findOneBy(['code' => $taxonCode]);
 
-            if (null !== $taxon) {
-                $taxonAware->addTaxon($taxon);
-            }
+            Assert::notNull($taxon, sprintf('Taxon with %s code not found.', $taxonCode));
+            $taxonAware->addTaxon($taxon);
         }
     }
 }
