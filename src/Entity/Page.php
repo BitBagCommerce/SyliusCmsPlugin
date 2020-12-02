@@ -35,6 +35,9 @@ class Page implements PageInterface
     /** @var string */
     protected $code;
 
+    /** @var \DateTimeImmutable|null */
+    protected $publishAt;
+
     public function __construct()
     {
         $this->initializeProductsCollection();
@@ -174,8 +177,18 @@ class Page implements PageInterface
         return $this->getTranslation();
     }
 
-    protected function createTranslation(): ?PageTranslationInterface
+    protected function createTranslation(): PageTranslationInterface
     {
         return new PageTranslation();
+    }
+
+    public function getPublishAt(): ?\DateTimeImmutable
+    {
+        return $this->publishAt;
+    }
+
+    public function setPublishAt(?\DateTimeImmutable $publishAt): void
+    {
+        $this->publishAt = $publishAt;
     }
 }

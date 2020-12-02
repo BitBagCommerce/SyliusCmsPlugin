@@ -46,14 +46,19 @@ final class RenderProductPagesExtension extends \Twig_Extension
         ];
     }
 
-    public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
+    public function renderProductPages(ProductInterface $product, ?string $sectionCode = null, ?string $date = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
 
+        $parsedDate = null;
+        if (!empty($date)) {
+            $parsedDate = new \DateTimeImmutable($date);
+        }
+
         if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode);
+            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
         } else {
-            $pages = $this->pageRepository->findByProduct($product, $channelCode);
+            $pages = $this->pageRepository->findByProduct($product, $channelCode, $parsedDate);
         }
 
         $data = $this->sortBySections($pages);
