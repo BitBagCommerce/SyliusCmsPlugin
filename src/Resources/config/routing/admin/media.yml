@@ -19,7 +19,7 @@ bitbag_sylius_cms_plugin_admin_media:
 
 bitbag_sylius_cms_plugin_admin_media_preview:
     path: /media/preview/{id}
-    methods: [GET, POST, PUT]
+    methods: [POST, PUT]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media:previewAction
         _sylius:

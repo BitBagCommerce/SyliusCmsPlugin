@@ -54,3 +54,4 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Data has been imported.
         form_was_submitted_with_errors: "The form was submitted with following errors:"
         title: Title
+        publish_at: Publish at

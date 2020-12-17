@@ -18,25 +18,4 @@
             {% endif %}
         </div>
     </div>
-    
-    {% if resources|length > 0 %}
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {% for frequentlyAskedQuestion in resources %}
-                {
-                    "@type": "Question",
-                    "name": "{{ frequentlyAskedQuestion.question }}",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "{{ frequentlyAskedQuestion.answer|striptags|escape }}"
-                    }
-                }{% if not loop.last %},{% endif %}
-            {% endfor %}
-          ]
-        }
-        </script>
-    {% endif %}
 {% endblock %}

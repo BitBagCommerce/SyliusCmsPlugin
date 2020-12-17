@@ -2,7 +2,6 @@ parameters:
     bitbag_cms.twig.admin_functions:
         - bitbag_cms_render_block
         - bitbag_cms_render_media
-    bitbag_cms.twig.link_template: "@@BitBagSyliusCmsPlugin/Page/link.html.twig"
 
 services:
     bitbag_sylius_cms_plugin.twig.extension.block:
@@ -43,13 +42,3 @@ services:
         arguments:
             - "@twig"
             - "%bitbag_cms.twig.admin_functions%"
-
-    bitbag_sylius_cms_plugin.twig.extension.render_link:
-        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderLinkExtension
-        arguments:
-            - "@sylius.context.locale"
-            - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@router.default"
-            - "%bitbag_cms.twig.link_template%"
-        tags:
-            - { name: twig.extension }
