@@ -47,8 +47,7 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
             column: title
             type: string
             nullable: true
-    oneToOne:
+    manyToOne:
         image:
-            targetEntity: BitBag\SyliusCmsPlugin\Entity\PageImageInterface
-            mappedBy: owner
-            cascade: [ALL]
+            targetEntity: BitBag\SyliusCmsPlugin\Entity\MediaInterface
+            cascade: [PERSIST]

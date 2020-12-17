@@ -1,5 +1,6 @@
 {% macro translationForm(translations, resource) %}
     {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion">
@@ -12,7 +13,9 @@
                 <div class="ui content{% if 0 == loop.index0 %} active{% endif %}">
                     {% for field in translationForm %}
 
-                        {% if 'image' == field.vars.name %}
+                        {% if 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                            {{ media.mediaWidget(field) }}
+                        {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}
                         {% else %}
                             {{ form_row(field) }}
@@ -27,6 +30,7 @@
 
 {% macro translationFormWithSlug(translations, slugFieldTemplate, resource) %}
     {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion">
@@ -41,6 +45,8 @@
 
                         {% if field.vars.name == 'slug' %}
                             {% include slugFieldTemplate with { 'slugField': translationForm.slug, 'resource': resource } %}
+                        {% elseif 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                            {{ media.mediaWidget(field) }}
                         {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}
                         {% else %}

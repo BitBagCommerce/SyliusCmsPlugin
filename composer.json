@@ -58,6 +58,9 @@
         }
     },
     "autoload-dev": {
+        "psr-4": {
+            "spec\\BitBag\\SyliusCmsPlugin\\": "spec/"
+        },
         "classmap": ["tests/Application/Kernel.php"]
     }
 }
