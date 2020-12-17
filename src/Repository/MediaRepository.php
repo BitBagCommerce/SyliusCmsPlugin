@@ -66,4 +66,31 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->getResult()
         ;
     }
+
+    /**
+     * @return MediaInterface[]
+     */
+    public function findByPhrase(string $phrase, ?string $mediaType = null): array
+    {
+        $qb = $this->createListQueryBuilder();
+        $expr = $qb->expr();
+
+        $qb
+            ->andWhere($expr->orX(
+                $expr->like('o.code', ':phrase'),
+                $expr->like('translation.name', ':phrase')
+            ))
+            ->andWhere('o.enabled = true')
+            ->setParameter('phrase', '%'.addcslashes($phrase, "%_").'%')
+        ;
+
+        if (null !== $mediaType) {
+            $qb
+                ->andWhere('o.type = :mediaType')
+                ->setParameter('mediaType', $mediaType)
+            ;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

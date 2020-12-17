@@ -146,12 +146,12 @@ class Page implements PageInterface
         $this->getPageTranslation()->setBreadcrumb($breadcrumb);
     }
 
-    public function getImage(): ?ImageInterface
+    public function getImage(): ?MediaInterface
     {
         return $this->getPageTranslation()->getImage();
     }
 
-    public function setImage(?ImageInterface $image): void
+    public function setImage(?MediaInterface $image): void
     {
         $this->getPageTranslation()->setImage($image);
     }

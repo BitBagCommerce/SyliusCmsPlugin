@@ -1,0 +1,21 @@
+BitBag\SyliusCmsPlugin\Entity\Media:
+    exclusion_policy: ALL
+    xml_root_name: media
+    properties:
+        id:
+            expose: true
+            type: integer
+            xml_attribute: true
+            groups: [Autocomplete]
+        code:
+            expose: true
+            type: string
+            groups: [Autocomplete]
+        path:
+            expose: true
+            type: string
+            groups: [Autocomplete]
+    virtual_properties:
+        getName:
+            serialized_name: name
+            groups: [Autocomplete]

@@ -25,4 +25,9 @@ interface MediaRepositoryInterface extends RepositoryInterface
     public function findBySectionCode(string $sectionCode, string $channelCode): array;
 
     public function findByProductCode(string $productCode, string $channelCode): array;
+
+    /**
+     * @return MediaInterface[]
+     */
+    public function findByPhrase(string $phrase, ?string $mediaType = null): array;
 }
