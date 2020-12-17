@@ -22,7 +22,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var string */
     protected $slug;
 
-    /** @var PageImageInterface */
+    /** @var MediaInterface */
     protected $image;
 
     /** @var string */
@@ -74,17 +74,13 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
         $this->slug = $slug;
     }
 
-    public function getImage(): ?PageImageInterface
+    public function getImage(): ?MediaInterface
     {
         return $this->image;
     }
 
-    public function setImage(?PageImageInterface $image): void
+    public function setImage(?MediaInterface $image): void
     {
-        if ($image !== null) {
-            $image->setOwner($this);
-        }
-
         $this->image = $image;
     }
 

@@ -37,10 +37,12 @@ final class MediaType extends AbstractResourceType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $data = $builder->getData();
+
         $builder
             ->add('code', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
-                'disabled' => null !== $builder->getData()->getCode(),
+                'disabled' => null !== $data && null !== $data->getCode(),
             ])
             ->add('type', ChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.type',

@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\PageImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -94,14 +94,16 @@ final class PageController extends ResourceController
 
     private function resolveImage(PageInterface $page): void
     {
-        /** @var PageImageInterface $image */
-        $image = $page->getTranslation()->getImage();
+        /** @var PageTranslationInterface $translation */
+        $translation = $page->getTranslation();
+
+        $image = $translation->getImage();
 
         if (!$image || !$image->getPath()) {
             return;
         }
 
-        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . '/media/image/' . $image->getPath());
+        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
         $base64Content = base64_encode(file_get_contents($file->getPathname()));
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
 

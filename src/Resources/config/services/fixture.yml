@@ -54,7 +54,7 @@ services:
             - "@bitbag_sylius_cms_plugin.factory.page"
             - "@bitbag_sylius_cms_plugin.factory.page_translation"
             - "@bitbag_sylius_cms_plugin.repository.page"
-            - "@sylius.image_uploader"
+            - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.assigner.products"
             - "@bitbag_sylius_cms_plugin.assigner.sections"
             - "@bitbag_sylius_cms_plugin.assigner.channels"
