@@ -1,3 +1,7 @@
+function htmlToString(item) {
+  return String(item).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+};
+
 (function ($) {
     'use strict';
     $.fn.extend({
@@ -9,6 +13,7 @@
             var choiceValue = element.data('choice-value');
             var autocompleteValue = element.find('input.autocomplete').val();
             var loadForEditUrl = element.data('load-edit-url');
+            var nameMessage = element.data('name-message');
             element.dropdown({
               delay: {
                 search: 250
@@ -27,19 +32,19 @@
                   return {
                     success: true,
                     results: response.map(function (item) {
-                      if(item.path == null){
-                        return {
-                          name: item[choiceName],
-                          value: item[choiceValue]
-                        };
-                      }
-                      else {
-                        return {
-                          name: '<img src="' + item.path + '" alt="media-img"></img>' + '<strong>' + item[choiceName] + '</strong>' + ' ('+ item.code + ')',
-                          value: item[choiceValue]
-                        };
-                      }
 
+                      if(item[choiceName] == null){
+                        return {
+                          name: '<img src="' + item.path + '" alt="media-img"></img>' + '<strong>' + nameMessage + '</strong>' + ' ('+ item.code + ')',
+                          value: item[choiceValue]
+                        };
+                      }
+                      else{
+                        return {
+                          name: '<img src="' + item.path + '" alt="media-img"></img>' + '<strong>' + htmlToString(item[choiceName])  + '</strong>' + ' ('+ item.code + ')',
+                          value: item[choiceValue]
+                        };
+                      }
                     })
                   };
                 }
