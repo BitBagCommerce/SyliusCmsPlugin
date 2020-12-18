@@ -35,3 +35,4 @@ bitbag_sylius_cms_plugin:
         sections_subheader: Zarządzaj sekcjami
         position: Pozycja
         title: Tytuł
+        empty_name: Brak nazwy
