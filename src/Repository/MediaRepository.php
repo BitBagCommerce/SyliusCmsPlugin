@@ -70,7 +70,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
     /**
      * @return MediaInterface[]
      */
-    public function findByPhrase(string $phrase, ?string $mediaType = null): array
+    public function findByPhrase(string $phrase, ?string $mediaType = null, ?int $maxResults = null): array
     {
         $qb = $this->createListQueryBuilder();
         $expr = $qb->expr();
@@ -89,6 +89,10 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
                 ->andWhere('o.type = :mediaType')
                 ->setParameter('mediaType', $mediaType)
             ;
+        }
+
+        if (null !== $maxResults) {
+            $qb->setMaxResults($maxResults);
         }
 
         return $qb->getQuery()->getResult();

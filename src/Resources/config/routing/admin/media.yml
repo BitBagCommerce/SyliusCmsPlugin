@@ -40,6 +40,7 @@ bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
                 arguments:
                     phrase: $phrase
                     mediaType: $mediaType
+                    limit: 50
 
 bitbag_sylius_cms_plugin_admin_ajax_media_by_code:
     path: /ajax/media/code

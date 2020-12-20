@@ -18,6 +18,9 @@ addons:
 services:
     - mysql
 
+addons:
+    chrome: stable
+
 cache:
     yarn: true
     directories:
