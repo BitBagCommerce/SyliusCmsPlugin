@@ -29,5 +29,5 @@ interface MediaRepositoryInterface extends RepositoryInterface
     /**
      * @return MediaInterface[]
      */
-    public function findByPhrase(string $phrase, ?string $mediaType = null): array;
+    public function findByPhrase(string $phrase, ?string $mediaType = null, ?int $maxResults = null): array;
 }

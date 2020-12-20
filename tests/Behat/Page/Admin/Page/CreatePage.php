@@ -14,6 +14,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Behat\Mink\Driver\Selenium2Driver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
@@ -28,13 +29,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField($field, $value);
     }
 
-    public function uploadImage(string $image): void
+    public function chooseImage(string $code): void
     {
-        $path = __DIR__ . '/../../../Resources/images/' . $image;
-
-        Assert::fileExists($path);
-
-        $this->getDocument()->attachFileToField('Choose file', realpath($path));
+        FormHelper::fillHiddenInput($this->getSession(), self::IMAGE_FORM_ID, $code);
     }
 
     public function fillCode(string $code): void
