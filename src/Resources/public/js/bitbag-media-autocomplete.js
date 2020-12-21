@@ -1,5 +1,14 @@
 function htmlToString(item) {
-  return String(item).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  var mapObj = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+  };
+  var str = String(item).replace(/&|<|>|"/gi, function(matched){
+    return mapObj[matched];
+  });
+  return str;
 };
 
 (function ($) {
@@ -35,14 +44,14 @@ function htmlToString(item) {
 
                       if(item[choiceName] == null){
                         return {
-                          name: '<img src="' + item.path + '" alt="media-img"></img>' + '<strong>' + nameMessage + '</strong>' + ' ('+ item.code + ')',
-                          value: item[choiceValue]
+                          name: `<img src=" ${item.path} " alt="media-img"></img><strong> ${nameMessage} </strong> (${item.code})`,
+                          value: item[choiceValue],
                         };
                       }
                       else{
                         return {
-                          name: '<img src="' + item.path + '" alt="media-img"></img>' + '<strong>' + htmlToString(item[choiceName])  + '</strong>' + ' ('+ item.code + ')',
-                          value: item[choiceValue]
+                          name: `<img src=" ${item.path} " alt="media-img"></img><strong> ${htmlToString(item[choiceName])} </strong> (${item.code})`,
+                          value: item[choiceValue],
                         };
                       }
                     })
