@@ -3,12 +3,6 @@ bitbag_sylius_cms_plugin_shop_media_render:
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media:renderMediaAction
-        _sylius:
-            repository:
-                method: findOneByCode
-                arguments:
-                    - $code
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_media_render_template:
     path: /media-template/{code}
@@ -20,14 +14,22 @@ bitbag_sylius_cms_plugin_shop_media_render_template:
             repository:
                 method: findOneEnabledByCode
                 arguments:
-                - $code
-                - "expr:service('sylius.context.channel').getChannel().getCode()"
+                    - $code
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_media_download:
     path: /media/download/{code}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media:downloadMediaAction
+        disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_ATTACHMENT
+
+bitbag_sylius_cms_plugin_shop_media_inline:
+    path: /media/inline/{code}
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.media:downloadMediaAction
+        disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_INLINE
 
 bitbag_sylius_cms_plugin_shop_media_index_by_section_code:
     path: /media/section/{sectionCode}

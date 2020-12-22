@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -124,6 +125,11 @@ class Media implements MediaInterface
     public function setName(?string $name): void
     {
         $this->getMediaTranslation()->setName($name);
+    }
+
+    public function getDownloadName(): string
+    {
+        return FilenameHelper::removeSlashes($this->getName() ?? $this->getCode() ?? self::DEFAULT_DOWNLOAD_NAME);
     }
 
     public function getContent(): ?string
