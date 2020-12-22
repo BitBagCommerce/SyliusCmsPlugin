@@ -31,6 +31,8 @@ interface MediaInterface extends
     public const VIDEO_TYPE = 'video';
     public const FILE_TYPE = 'file';
 
+    public const DEFAULT_DOWNLOAD_NAME = 'media';
+
     public function getCode(): ?string;
 
     public function setCode(?string $code): void;
@@ -56,6 +58,8 @@ interface MediaInterface extends
     public function getName(): ?string;
 
     public function setName(?string $name): void;
+
+    public function getDownloadName(): string;
 
     public function getContent(): ?string;
 

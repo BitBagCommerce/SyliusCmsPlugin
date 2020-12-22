@@ -28,7 +28,7 @@ bitbag_sylius_cms_plugin_admin_media_preview:
 
 bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
     path: /ajax/media/search
-    methods: [ GET ]
+    methods: [GET]
     defaults:
         _format: json
         _controller: bitbag_sylius_cms_plugin.controller.media:indexAction
@@ -40,7 +40,8 @@ bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
                 arguments:
                     phrase: $phrase
                     mediaType: $mediaType
-                    limit: 50
+                    limit: "!!int $limit"
+                    page: "!!int $page"
 
 bitbag_sylius_cms_plugin_admin_ajax_media_by_code:
     path: /ajax/media/code
