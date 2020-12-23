@@ -38,8 +38,8 @@ sylius_grid:
                     form_options:
                         choices:
                             sylius.ui.image: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::IMAGE_TYPE
-                            sylius.ui.file: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::FILE_TYPE
-                            sylius.ui.video: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::VIDEO_TYPE
+                            bitbag_sylius_cms_plugin.ui.file: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::FILE_TYPE
+                            bitbag_sylius_cms_plugin.ui.video: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::VIDEO_TYPE
             actions:
                 main:
                     import:
