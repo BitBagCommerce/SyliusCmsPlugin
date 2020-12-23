@@ -18,10 +18,11 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class MediaRepository extends EntityRepository implements MediaRepositoryInterface
 {
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->setParameter('locale', $locale)
         ;
     }
 
@@ -65,50 +66,5 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->getQuery()
             ->getResult()
         ;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function findByPhrase(
-        ?string $phrase,
-        ?string $mediaType = null,
-        int $limit = self::DEFAULT_LIMIT,
-        int $page = self::DEFAULT_PAGE
-    ): array {
-        $qb = $this->createListQueryBuilder();
-        $expr = $qb->expr();
-
-        $qb->andWhere('o.enabled = true');
-
-        if (null !== $phrase && strlen($phrase) > 0) {
-            $qb
-                ->andWhere($expr->orX(
-                    $expr->like('o.code', ':phrase'),
-                    $expr->like('translation.name', ':phrase')
-                ))
-                ->setParameter(
-                    'phrase',
-                    '%' . addcslashes((string)$phrase, "%_") . '%'
-                )
-            ;
-        }
-
-        if (null !== $mediaType) {
-            $qb
-                ->andWhere('o.type = :mediaType')
-                ->setParameter('mediaType', $mediaType)
-            ;
-        }
-        
-        $qb->orderBy('o.code');
-
-        $paginator = $this->getPaginator($qb);
-        $paginator
-            ->setMaxPerPage($limit > 0 ? $limit : self::DEFAULT_LIMIT)
-            ->setCurrentPage($page > 0 ? $page : self::DEFAULT_PAGE)
-        ;
-
-        return (array) $paginator->getCurrentPageResults();
     }
 }

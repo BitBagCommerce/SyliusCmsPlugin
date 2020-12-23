@@ -7,17 +7,22 @@ sylius_grid:
                     class: "%bitbag_sylius_cms_plugin.model.media.class%"
                     repository:
                         method: createListQueryBuilder
+                        arguments:
+                            - "expr:service('sylius.context.locale').getLocaleCode()"
             sorting:
                 code: asc
             limits: [10, 25, 50]
             fields:
+                name:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.name
                 code:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.code
                     sortable: ~
                 path:
                     type: string
-                    label: bitbag_sylius_cms_plugin.ui.name
+                    label: bitbag_sylius_cms_plugin.ui.path
                 type:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.type
@@ -26,7 +31,15 @@ sylius_grid:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, type]
+                        fields: [code, translations.name]
+                type:
+                    type: select
+                    label: sylius.ui.type
+                    form_options:
+                        choices:
+                            sylius.ui.image: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::IMAGE_TYPE
+                            sylius.ui.file: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::FILE_TYPE
+                            sylius.ui.video: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::VIDEO_TYPE
             actions:
                 main:
                     import:

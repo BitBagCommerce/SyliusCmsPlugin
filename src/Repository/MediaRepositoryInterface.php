@@ -18,24 +18,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface MediaRepositoryInterface extends RepositoryInterface
 {
-    public const DEFAULT_LIMIT = 50;
-    public const DEFAULT_PAGE = 1;
-
-    public function createListQueryBuilder(): QueryBuilder;
+    public function createListQueryBuilder(string $locale): QueryBuilder;
 
     public function findOneEnabledByCode(string $code, string $channelCode): ?MediaInterface;
 
     public function findBySectionCode(string $sectionCode, string $channelCode): array;
 
     public function findByProductCode(string $productCode, string $channelCode): array;
-
-    /**
-     * @return MediaInterface[]
-     */
-    public function findByPhrase(
-        ?string $phrase,
-        ?string $mediaType = null,
-        int $limit = self::DEFAULT_LIMIT,
-        int $page = self::DEFAULT_PAGE
-    ): array;
 }
