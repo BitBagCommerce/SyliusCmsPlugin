@@ -13,6 +13,7 @@ bitbag_sylius_cms_plugin:
         taxons: Taxons
         page_related_products: Page related products
         name: Name
+        path: Path
         slug: Slug
         meta_keywords: Meta keywords
         meta_description: Meta description
@@ -42,6 +43,7 @@ bitbag_sylius_cms_plugin:
         media_subheader: Manage digital assets
         type: Type
         file: File
+        video: Video
         alt: Alt
         description: Description
         file_provider: File
