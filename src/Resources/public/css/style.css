@@ -18,3 +18,20 @@
 .bitbag-cms-import .ui.action.input input[type="text"] {
     width: auto;
 }
+
+.media__item {
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.media {
+    width: 100px!important;
+    height:100px!important;
+}
+.mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 20px;
+}

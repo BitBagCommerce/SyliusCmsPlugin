@@ -23,3 +23,11 @@ knp_gaufrette:
     filesystems:
         bitbag_sylius_cms_plugin_media:
             adapter: "%bitbag_sylius_cms_plugin.uploader.filesystem%"
+
+sylius_ui:
+    events:
+        sylius.admin.layout.javascripts:
+            blocks:
+                javascripts:
+                    template: "@BitBagSyliusCmsPlugin/_javascripts.html.twig"
+                    priority: 10
