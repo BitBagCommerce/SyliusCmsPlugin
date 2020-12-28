@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.6/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="vendor/autoload.php">
+         bootstrap="tests/Application/config/bootstrap.php">
     <testsuites>
         <testsuite name="BitBagSyliusCmsPlugin Test Suite">
             <directory>tests</directory>
@@ -15,7 +15,7 @@
         <server name="KERNEL_CLASS" value="Tests\BitBag\SyliusCmsPlugin\Application\Kernel" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true"/>
         <server name="EXPECTED_RESPONSE_DIR" value="../Responses/Expected"/>
-        <env name="DATABASE_URL" value="mysql://root@127.0.0.1/cms_plugin_fork_%kernel.environment%" />
         <env name="APP_SECRET" value="''" />
+        <env name="APP_ENV" value="test"/>
     </php>
 </phpunit>
