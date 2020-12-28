@@ -117,6 +117,11 @@ jobs:
                 run: |
                     (cd tests/Application && bin/console doctrine:database:create -vvv)
                     (cd tests/Application && bin/console doctrine:schema:create -vvv)
+                    
+            -
+                name: Install ckeditor
+                run: |
+                    (cd tests/Application && bin/console ckeditor:install)
 
             -
                 name: Prepare test application assets
