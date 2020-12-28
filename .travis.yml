@@ -1,16 +1,22 @@
 language: php
 
-dist: trusty
+dist: bionic
 
 sudo: false
 
 matrix:
     include:
-        # Sylius 1.7
+        # Sylius 1.8
         -
             php: 7.3
             env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.8.*"
+
+addons:
+    chrome: stable
+
+services:
+    - mysql
 
 cache:
     yarn: true
@@ -49,23 +55,23 @@ before_script:
 
     # Download and configure ChromeDriver
     - |
-        if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ] || [ "$($SYLIUS_CACHE_DIR/chromedriver --version | grep -c 2.34)" = "0" ]; then
-            curl http://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip > chromedriver.zip
+        export CHROMEDRIVER_STABLE_VERSION=$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ] || [ "$($SYLIUS_CACHE_DIR/chromedriver --version | grep -c $CHROMEDRIVER_STABLE_VERSION)" = "0" ]; then
+            curl https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_STABLE_VERSION/chromedriver_linux64.zip > chromedriver.zip
             unzip chromedriver.zip
             chmod +x chromedriver
             mv chromedriver $SYLIUS_CACHE_DIR
+            rm chromedriver.zip
         fi
-
     # Run ChromeDriver
     - $SYLIUS_CACHE_DIR/chromedriver > /dev/null 2>&1 &
 
     # Download and configure Selenium
     - |
-        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.4.0)" = "0" ]; then
-            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
+        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.141.59)" = "0" ]; then
+            curl https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar > selenium.jar
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
-
     # Run Selenium
     - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
 
