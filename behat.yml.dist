@@ -4,28 +4,25 @@ imports:
 
 default:
     extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
 
-        FriendsOfBehat\SymfonyExtension:
-            bootstrap: tests/Application/config/bootstrap.php
-            kernel:
-                debug: true
-                class: Tests\BitBag\SyliusCmsPlugin\Application\Kernel
-                path: tests/Application/Kernel.php
-                environment: test
-
-        Lakion\Behat\MinkDebugExtension:
+        FriendsOfBehat\MinkDebugExtension:
             directory: etc/build
             clean_start: false
             screenshot: true
 
         Behat\MinkExtension:
             files_path: "%paths.base%/vendor/sylius/sylius/src/Sylius/Behat/Resources/fixtures/"
-            base_url: "http://localhost:8080/"
+            base_url: "http://127.0.0.1:8080/"
             default_session: symfony
-            javascript_session: chrome
+            javascript_session: chrome_headless
             sessions:
                 symfony:
                     symfony: ~
+                chrome_headless:
+                    chrome:
+                        api_url: http://127.0.0.1:9222
+                        validate_certificate: false
                 chrome:
                     selenium2:
                         browser: chrome
@@ -39,14 +36,20 @@ default:
                                     - "start-fullscreen"
                                     - "start-maximized"
                                     - "no-sandbox"
+                            extra_capabilities:
+                                unexpectedAlertBehaviour: accept
+                firefox:
+                    selenium2:
+                        browser: firefox
+            show_auto: false
+
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/Application/config/bootstrap.php
+            kernel:
+                class: Tests\BitBag\SyliusCmsPlugin\Application\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
 
         FriendsOfBehat\SuiteSettingsExtension:
             paths:
                 - "features"
-    formatters:
-        pretty:
-            verbose: true
-            paths: false
-            snippets: false

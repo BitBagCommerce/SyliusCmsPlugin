@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
-use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
+use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
 final class WysiwygHelper
 {
     public static function fillContent(Session $session, DocumentElement $document, string $content, int $iframeNumber = 1): void
     {
-        Assert::isInstanceOf($session->getDriver(), Selenium2Driver::class);
+        Assert::isInstanceOf($session->getDriver(), ChromeDriver::class);
 
         $session->wait(3000);
         $session->switchToIFrame($iframeNumber);
