@@ -10,14 +10,12 @@ function htmlToString(item) {
   });
   return str;
 };
-
 (function ($) {
     'use strict';
     $.fn.extend({
         mediaAutoComplete: function mediaAutoComplete() {
           this.each(function (idx, el) {
             var element = $(el);
-            var criteriaName = element.data('criteria-name');
             var choiceName = element.data('choice-name');
             var choiceValue = element.data('choice-value');
             var autocompleteValue = element.find('input.autocomplete').val();
@@ -32,16 +30,20 @@ function htmlToString(item) {
                 dataType: 'JSON',
                 cache: false,
                 beforeSend: function beforeSend(settings) {
-                  /* eslint-disable-next-line no-param-reassign */
-                  settings.data[criteriaName] = settings.urlData.query;
-
+                  settings.data.limit = 30;
+                  settings.data.criteria = {
+                    search: {
+                    type: 'contains',
+                    value: settings.urlData.query,
+                    },
+                    type: 'image',
+                    };
                   return settings;
                 },
                 onResponse: function onResponse(response) {
                   return {
                     success: true,
-                    results: response.map(function (item) {
-
+                    results: response._embedded.items.map(function (item) {
                       if(item[choiceName] == null){
                         return {
                           name: `<img src=" ${item.path} " alt="media-img"></img><strong> ${nameMessage} </strong> (${item.code})`,
@@ -68,7 +70,6 @@ function htmlToString(item) {
                 beforeSend: function beforeSend(settings) {
                   /* eslint-disable-next-line no-param-reassign */
                   settings.data[choiceValue] = autocompleteValue.split(',').filter(String);
-
                   return settings;
                 },
                 onSuccess: function onSuccess(response) {
@@ -78,7 +79,6 @@ function htmlToString(item) {
                 }
               });
             }
-
             window.setTimeout(function () {
               element.dropdown('set selected', element.find('input.autocomplete').val().split(',').filter(String));
             }, 5000);
@@ -86,7 +86,6 @@ function htmlToString(item) {
         }
       });
 })($);
-
 (function($) {
     $(document).ready(function () {
         $('.bitbag-media-autocomplete').mediaAutoComplete();

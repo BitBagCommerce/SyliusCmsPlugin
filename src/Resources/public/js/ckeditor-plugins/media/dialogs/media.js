@@ -1,33 +1,83 @@
+let oldValue = null;
+let currentPage = 1;
+
+function insertHtml(data) {
+    var output = data.map(media =>
+        `<div class="media__item">
+          <label for="${media.code}">${media.name}</label>
+          <input image-path="${media.path}" class="mediaInput" type="radio" name="media" value="${media.code}">
+          <img class="media" src=" ${media.path} "/>
+        </div>`
+    ).join('');
+    return output;
+}
+
+function ajaxCall(phrase) {
+    console.log("ajax call");
+
+    var myObject = {
+        criteria: {
+            search: {
+                type: 'contains',
+                value: phrase
+            },
+            type: 'image',
+        },
+        page: currentPage,
+        limit: 20,
+    };
+      var shallowEncoded = $.param( myObject );
+      var shallowDecoded = decodeURIComponent( shallowEncoded );
+
+    $.ajax({
+        type: 'GET',
+        url: route + '?' + shallowDecoded,
+        dataType: 'JSON',
+        success(data) {
+        var element = CKEDITOR.document.getById('grid');
+        if(data.length == 10){
+            var paginationContainer = CKEDITOR.document.getById('pagination');
+            if (paginationContainer) {
+                paginationContainer.setHtml(
+                    `<button class="media__button">Next page..</button>`
+                );
+            }
+        }
+        else {
+            var paginationContainer = CKEDITOR.document.getById('pagination');
+            var pageNum = 1;
+            if (paginationContainer) {
+                paginationContainer.setHtml(
+                    ``
+                );
+
+            }
+        }
+        $('button').on('click', function () {
+            console.log("page has been changed");
+            currentPage++;
+        });
+
+        if (element) {
+            element.setHtml(insertHtml(data._embedded.items));
+        }
+        },
+        error(jqXHR, textStatus, errorThrown) {
+        console.log(`ajax error ${textStatus} ${errorThrown}`);
+        },
+         });
+}
+
+
+
 CKEDITOR.dialog.add('mediaDialog', editor => ({
     title: 'Insert products',
     minWidth: 200,
     minHeight: 200,
     resizable: CKEDITOR.DIALOG_RESIZE_NONE,
-    onLoad(api) {
-        var output = [];
-        var document = this.getElement().getDocument();
-        var element = document.getById('grid');
-        $.ajax({
-            type: 'GET',
-            url: route,
-            data: jQuery.param({ page: 1, limit: 10 }),
-            dataType: 'json',
-            success(data) {
-            output = data.map(media =>
-                `<div class="media__item">
-                  <label for="${media.code}">${media.name}</label>
-                  <input image-path="${media.path}" class="mediaInput" type="radio" name="media" value="${media.code}">
-                  <img class="media" src=" ${media.path} "/>
-                </div>`
-            ).join('');
-            if (element) {
-                element.setHtml(output);
-            }
-            },
-            error(jqXHR, textStatus, errorThrown) {
-            console.log(`ajax error ${textStatus} ${errorThrown}`);
-            },
-        });
+    onShow(api) {
+        let phrase = '';
+        ajaxCall(phrase);
     },
 
     contents: [
@@ -42,28 +92,11 @@ CKEDITOR.dialog.add('mediaDialog', editor => ({
                         controlStyle: 'width: 3em',
                         onKeyUp: function() {
                                 var phrase = this.getValue();
-                                $.ajax({
-                                    type: 'GET',
-                                    url: route,
-                                    data: jQuery.param({ phrase: phrase, page: 1, limit: 10}),
-                                    dataType: 'json',
-                                    success(data) {
-                                    var element = CKEDITOR.document.getById('grid');
-                                    output = data.map(media =>
-                                        `<div class="media__item">
-                                          <label for="${media.code}">${media.name}</label>
-                                          <input image-path="${media.path}" class="mediaInput" type="radio" name="media" value="${media.code}">
-                                          <img class="media" src=" ${media.path} "/>
-                                        </div>`
-                                    ).join('');
-                                    if (element) {
-                                        element.setHtml(output);
-                                    }
-                                    },
-                                    error(jqXHR, textStatus, errorThrown) {
-                                    console.log(`ajax error ${textStatus} ${errorThrown}`);
-                                    },
-                                });
+                                if(oldValue === phrase){
+                                    return;
+                                }
+                                    oldValue = this.getValue();
+                                    ajaxCall(phrase);
                         }
                     },
                     {
@@ -83,8 +116,13 @@ CKEDITOR.dialog.add('mediaDialog', editor => ({
                     },
                     {
                         type: 'html',
-                        id: 'foo',
+                        id: 'mediaGrid',
                         html: '<form class="mediaGrid" id="grid"></form>',
+                    },
+                    {
+                        type: 'html',
+                        id: 'pagination',
+                        html: '<div class="pagination" id="pagination"></div>',
                     },
 
                 ]
@@ -92,13 +130,11 @@ CKEDITOR.dialog.add('mediaDialog', editor => ({
     ],
     onOk() {
         const dialog = this;
-        var document = CKEDITOR.document;
-
-        var element = document.find( '.mediaInput:checked');
-        var imgPath = element.getItem(0).getAttribute( 'image-path' );
-
-        var imageWidth = dialog.getContentElement('mediaContent','imageWidth').getValue();
-        var imageHeight = dialog.getContentElement('mediaContent','imageHeight').getValue();
+        const document = CKEDITOR.document;
+        const element = document.find( '.mediaInput:checked');
+        const imgPath = element.getItem(0).getAttribute( 'image-path' );
+        const imageWidth = dialog.getContentElement('mediaContent','imageWidth').getValue();
+        const imageHeight = dialog.getContentElement('mediaContent','imageHeight').getValue();
 
         editor.insertHtml(`<img src="${imgPath}" alt="media-img" style="height:${imageWidth}px; width:${imageHeight}px"/>`);
 

@@ -35,3 +35,7 @@
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 20px;
 }
+.media__button {
+    padding: 5px!important;
+    border: 1px solid grey!important;
+}
