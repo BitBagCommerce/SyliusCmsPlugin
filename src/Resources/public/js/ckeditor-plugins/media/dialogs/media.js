@@ -1,22 +1,38 @@
 let oldValue = null;
 let phrase = '';
-let current_page = 1;
-let total_pages = null;
-let limit = 5;
+let currentPage = 1;
+let totalPages = null;
+let limit = 12;
+let mediaCodeLength = 20;
+
+function trimValue(item) {
+    return item.length > mediaCodeLength ?
+        item.substring(0, mediaCodeLength) + '...' :
+        item;
+}
+
+function htmlToString(item) {
+    return String(item).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+};
+
+function checkName(item) {
+    if (item) return item;
+    else return 'Empty name';
+};
 
 function insertHtml (data) {
     const output = data.map(media =>
-        `<div class="media__item">
-          <label for="${media.code}">${media.name}</label>
-          <input image-path="${media.path}" class="mediaInput" type="radio" name="media" value="${media.code}">
-          <img class="media" src=" ${media.path} "/>
+        `<div class="media-list__item">
+          <label for="${media.code}" class="media-list__item__label"><strong>${htmlToString(checkName(media.name))}</strong></strong> (${trimValue(media.code)})</label>
+          <input image-path="${media.path}" class="media-list__item__input" type="radio" name="media" value="${media.code}">
+          <img class="media-list__item__img" src="${media.path}"/>
         </div>`
     ).join('');
     return output;
 }
 
 function refreshMedia () {
-    showMedia(phrase, current_page);
+    showMedia(phrase, currentPage);
 }
 
 function numPages(totalResults){
@@ -24,43 +40,43 @@ function numPages(totalResults){
 }
 
 function prevPage(){
-    if (current_page > 1) {
-        current_page--;
-        changePage(current_page);
+    if (currentPage > 1) {
+        currentPage--;
+        changePage(currentPage);
     }
     refreshMedia();
 
 }
 
 function nextPage(){
-    if (current_page < total_pages) {
-        current_page++;
-        changePage(current_page);
+    if (currentPage < totalPages) {
+        currentPage++;
+        changePage(currentPage);
     }
     refreshMedia();
 }
 
 function changePage(page)
 {
-    const btn_next = document.getElementById("btn_next");
-    const btn_prev = document.getElementById("btn_prev");
-    const pageNumber = document.getElementById("pageNumber");
+    const btn_next = document.getElementById("btn-next");
+    const btn_prev = document.getElementById("btn-prev");
+    const pageNumber = document.getElementById("page-number");
 
     if (page < 1) page = 1;
-    if (page > total_pages) page = total_pages;
+    if (page > totalPages) page = totalPages;
 
     pageNumber.innerHTML = page;
 
     if (page == 1) {
         btn_prev.style.visibility = "hidden";
-    } 
+    }
     else {
         btn_prev.style.visibility = "visible";
     }
 
-    if (page == total_pages) {
+    if (page == totalPages) {
         btn_next.style.visibility = "hidden";
-    } 
+    }
     else {
         btn_next.style.visibility = "visible";
     }
@@ -86,9 +102,9 @@ function showMedia (phrase, pageNumber) {
         url: route + '?' + shallowDecoded,
         dataType: 'JSON',
         success(data) {
-        total_pages = numPages(data.total);
-        changePage(current_page);
-        const element = CKEDITOR.document.getById('grid');
+        totalPages = numPages(data.total);
+        changePage(currentPage);
+        const element = CKEDITOR.document.getById('media-list');
         if (element) {
             element.setHtml(insertHtml(data._embedded.items));
         }
@@ -99,21 +115,19 @@ function showMedia (phrase, pageNumber) {
          });
 }
 
-
-
 CKEDITOR.dialog.add ('mediaDialog', editor => ({
-    title: 'Insert products',
-    minWidth: 200,
-    minHeight: 200,
+    title: 'Choose media',
+    minWidth: 500,
+    minHeight: 300,
     resizable: CKEDITOR.DIALOG_RESIZE_NONE,
-    onShow(api) {
+    onShow() {
         phrase = '';
-        showMedia(phrase, current_page);
+        showMedia(phrase, currentPage);
     },
 
     contents: [
         {
-            id: "mediaContent",
+            id: "media-content",
                 elements: [
                     {
                         type: 'text',
@@ -127,8 +141,8 @@ CKEDITOR.dialog.add ('mediaDialog', editor => ({
                                     return;
                                 }
                                     oldValue = this.getValue();
-                                    changePage(current_page);
-                                    showMedia(phrase, current_page);
+                                    changePage(currentPage);
+                                    showMedia(phrase, currentPage);
                         }
                     },
                     {
@@ -155,47 +169,46 @@ CKEDITOR.dialog.add ('mediaDialog', editor => ({
                             },
                         ]
                     },
-                    
+
                     {
                         type: 'html',
-                        id: 'mediaGrid',
-                        html: '<form class="mediaGrid" id="grid"></form>',
+                        id: 'media-list',
+                        label: 'Media found:',
+                        html: '<form class="media-list" id="media-list"></form>',
                     },
                     {
                         type: 'hbox',
                         widths: [ '25%', '25%', '25%' ],
                         style: 'width: 10em',
-                        align: 'left',
+                        align: 'center',
                         children: [
                             {
                                 type: 'html',
-                                id: 'btn_prev',
-                                html: '<button class="btn btn_prev" id="btn_prev" onclick="prevPage()">Previous</button>',
+                                id: 'btn-prev',
+                                html: '<button class="btn" id="btn-prev" onclick="prevPage()">&lsaquo;</button>',
                             },
                             {
                                 type: 'html',
-                                id: 'pageNumber',
-                                html: '<span class="pageNumber" id="pageNumber"></span>',
+                                id: 'page-number',
+                                html: '<span class="page-number" id="page-number"></span>',
                             },
                             {
                                 type: 'html',
-                                id: 'btn_next',
-                                html: '<button class="btn btn_next" id="btn_next" onclick="nextPage()">Next</button>',
+                                id: 'btn-next',
+                                html: '<button class="btn" id="btn-next" onclick="nextPage()">&rsaquo;</button>',
                             },
                         ]
                     },
-                   
-                   
                 ]
         },
     ],
     onOk() {
         const dialog = this;
         const document = CKEDITOR.document;
-        const element = document.find( '.mediaInput:checked');
+        const element = document.find( '.media-list__item__input:checked');
         const imagePath = element.getItem(0).getAttribute( 'image-path' );
-        const imageWidth = dialog.getContentElement('mediaContent','imageWidth').getValue();
-        const imageHeight = dialog.getContentElement('mediaContent','imageHeight').getValue();
+        const imageWidth = dialog.getContentElement('media-content','imageWidth').getValue();
+        const imageHeight = dialog.getContentElement('media-content','imageHeight').getValue();
 
         editor.insertHtml(`<img src="${imagePath}" alt="media-img" style="height:${imageWidth}px; width:${imageHeight}px"/>`);
     },
