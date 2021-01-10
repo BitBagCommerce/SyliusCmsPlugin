@@ -6,11 +6,17 @@ sudo: false
 
 matrix:
     include:
-        # Sylius 1.7
+        # Sylius 1.8
         -
             php: 7.3
             env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.7.*"
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.8.*"
+
+addons:
+    chrome: stable
+
+services:
+    - mysql
 
 addons:
     chrome: stable
@@ -60,7 +66,6 @@ before_script:
             mv chromedriver $SYLIUS_CACHE_DIR
             rm chromedriver.zip
         fi
-
     # Run ChromeDriver
     - $SYLIUS_CACHE_DIR/chromedriver > /dev/null 2>&1 &
 
@@ -70,7 +75,6 @@ before_script:
             curl https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar > selenium.jar
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
-
     # Run Selenium
     - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
 

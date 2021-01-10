@@ -13,7 +13,7 @@
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1|^2.0",
         "stefandoorn/sitemap-plugin": "^1.0",
-        "sylius/sylius": "^1.7"
+        "sylius/sylius": "^1.8"
     },
     "require-dev": {
         "behat/behat": "^3.6",
@@ -29,10 +29,10 @@
         "lchrusciel/api-test-case": "^3.0",
         "matthiasnoback/symfony-config-test": "^3.0",
         "phpspec/phpspec": "^6.0",
-        "phpstan/phpstan-doctrine": "^0.10",
-        "phpstan/phpstan-shim": "^0.10",
-        "phpstan/phpstan-symfony": "^0.10",
-        "phpstan/phpstan-webmozart-assert": "^0.10",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-doctrine": "^0.12",
+        "phpstan/phpstan-symfony": "^0.12",
+        "phpstan/phpstan-webmozart-assert": "^0.12",
         "phpunit/phpunit": "^6.5",
         "sensiolabs/security-checker": "^5.0",
         "sylius-labs/coding-standard": "^3.0",
