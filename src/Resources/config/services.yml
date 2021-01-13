@@ -51,3 +51,6 @@ services:
         factory: ['@knp_gaufrette.filesystem_map', get]
         arguments:
             - "%bitbag_sylius_cms_plugin.uploader.filesystem%"
+
+    bitbag_sylius_cms_plugin.sorter.sections:
+        class: BitBag\SyliusCmsPlugin\Sorter\SectionsSorter

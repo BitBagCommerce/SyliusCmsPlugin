@@ -43,6 +43,7 @@ services:
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.context.channel"
             - "@templating"
+            - "@bitbag_sylius_cms_plugin.sorter.sections"
         tags:
             - { name: twig.runtime }
 

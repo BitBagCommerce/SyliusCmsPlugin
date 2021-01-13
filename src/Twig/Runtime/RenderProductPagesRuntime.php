@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -29,14 +29,19 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var EngineInterface */
     private $templatingEngine;
 
+    /** @var SectionsSorterInterface */
+    private $sectionsSorter;
+
     public function __construct(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine
+        EngineInterface $templatingEngine,
+        SectionsSorterInterface $sectionsSorter
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;
         $this->templatingEngine = $templatingEngine;
+        $this->sectionsSorter = $sectionsSorter;
     }
 
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
@@ -49,30 +54,10 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
             $pages = $this->pageRepository->findByProduct($product, $channelCode);
         }
 
-        $data = $this->sortBySections($pages);
+        $data = $this->sectionsSorter->sortBySections($pages);
 
         return $this->templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', [
             'data' => $data,
         ]);
-    }
-
-    private function sortBySections(array $pages): array
-    {
-        $result = [];
-
-        /** @var PageInterface $page */
-        foreach ($pages as $page) {
-            foreach ($page->getSections() as $section) {
-                $sectionCode = $section->getCode();
-                if (!array_key_exists($sectionCode, $result)) {
-                    $result[$sectionCode] = [];
-                    $result[$sectionCode]['section'] = $section;
-                }
-
-                $result[$sectionCode][] = $page;
-            }
-        }
-
-        return $result;
     }
 }

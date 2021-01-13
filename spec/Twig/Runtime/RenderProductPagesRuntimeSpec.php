@@ -51,12 +51,15 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
         SectionInterface $section,
-        EngineInterface $templatingEngine
+        EngineInterface $templatingEngine,
+        SectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
         $page->getSections()->willReturn(new ArrayCollection([$section]));
+        $section->getCode()->willReturn("SECTION_CODE");
         $pageRepository->findByProduct($product, 'WEB')->willReturn([])->shouldBeCalled();
+        $sectionsSorter->sortBySections([])->willReturn([]);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product)->shouldReturn('content');
