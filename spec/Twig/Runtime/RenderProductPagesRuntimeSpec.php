@@ -15,6 +15,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -29,9 +30,10 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
     function let(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine
+        EngineInterface $templatingEngine,
+        SectionsSorterInterface $sectionsSorter
     ): void {
-        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine);
+        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter);
     }
 
     function it_is_initializable(): void
@@ -51,12 +53,15 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
         SectionInterface $section,
-        EngineInterface $templatingEngine
+        EngineInterface $templatingEngine,
+        SectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
         $page->getSections()->willReturn(new ArrayCollection([$section]));
+        $section->getCode()->willReturn("SECTION_CODE");
         $pageRepository->findByProduct($product, 'WEB')->willReturn([])->shouldBeCalled();
+        $sectionsSorter->sortBySections([])->willReturn([]);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product)->shouldReturn('content');
