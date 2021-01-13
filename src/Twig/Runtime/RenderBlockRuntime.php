@@ -27,6 +27,8 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     /** @var EngineInterface */
     private $templatingEngine;
 
+    private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
@@ -42,7 +44,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
-            $template = $template ?? '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+            $template = $template ?? self::DEFAULT_TEMPLATE;
 
             return $this->templatingEngine->render($template, ['block' => $block]);
         }
