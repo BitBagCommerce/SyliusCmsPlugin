@@ -82,4 +82,12 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
 
         $this->getLinkForCode($code, $options)->shouldReturn("link");
     }
+
+    function it_returns_not_found_message_when_getting_link_for_code(
+        LocaleContextInterface $localeContext
+    ): void {
+        $localeContext->getLocaleCode()->willReturn("en_US");
+
+        $this->getLinkForCode("CODE", ['notFoundMessage' => "message"])->shouldReturn("message");
+    }
 }
