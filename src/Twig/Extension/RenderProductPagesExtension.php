@@ -12,74 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class RenderProductPagesExtension extends \Twig_Extension
+final class RenderProductPagesExtension extends AbstractExtension
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var EngineInterface */
-    private $templatingEngine;
-
-    public function __construct(
-        PageRepositoryInterface $pageRepository,
-        ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine
-    ) {
-        $this->pageRepository = $pageRepository;
-        $this->channelContext = $channelContext;
-        $this->templatingEngine = $templatingEngine;
-    }
-
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_product_pages', [$this, 'renderProductPages'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_product_pages', [RenderProductPagesRuntime::class, 'renderProductPages'], ['is_safe' => ['html']]),
         ];
-    }
-
-    public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
-    {
-        $channelCode = $this->channelContext->getChannel()->getCode();
-
-        if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode);
-        } else {
-            $pages = $this->pageRepository->findByProduct($product, $channelCode);
-        }
-
-        $data = $this->sortBySections($pages);
-
-        return $this->templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', [
-            'data' => $data,
-        ]);
-    }
-
-    private function sortBySections(array $pages): array
-    {
-        $result = [];
-
-        /** @var PageInterface $page */
-        foreach ($pages as $page) {
-            foreach ($page->getSections() as $section) {
-                $sectionCode = $section->getCode();
-                if (!array_key_exists($sectionCode, $result)) {
-                    $result[$sectionCode] = [];
-                    $result[$sectionCode]['section'] = $section;
-                }
-
-                $result[$sectionCode][] = $page;
-            }
-        }
-
-        return $result;
     }
 }

@@ -12,40 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntime;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class RenderMediaExtension extends \Twig_Extension
+final class RenderMediaExtension extends AbstractExtension
 {
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var MediaResourceResolverInterface */
-    private $mediaResourceResolver;
-
-    public function __construct(
-        MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
-    ) {
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->mediaResourceResolver = $mediaResourceResolver;
-    }
-
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_media', [$this, 'renderMedia'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_media', [RenderMediaRuntime::class, 'renderMedia'], ['is_safe' => ['html']]),
         ];
-    }
-
-    public function renderMedia(string $code): string
-    {
-        $media = $this->mediaResourceResolver->findOrLog($code);
-
-        if (null !== $media) {
-            return $this->mediaProviderResolver->resolveProvider($media)->render($media);
-        }
-
-        return '';
     }
 }
