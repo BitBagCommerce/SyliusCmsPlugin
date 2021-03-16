@@ -17,6 +17,7 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class SectionType extends AbstractResourceType
@@ -27,6 +28,9 @@ final class SectionType extends AbstractResourceType
             ->add('code', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
+            ])
+            ->add('enabled', CheckboxType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => SectionTranslationType::class,

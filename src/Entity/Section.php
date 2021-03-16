@@ -12,11 +12,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Section implements SectionInterface
 {
+    use ToggleableTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
     }

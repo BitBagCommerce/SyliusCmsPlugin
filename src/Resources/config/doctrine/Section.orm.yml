@@ -13,3 +13,6 @@ BitBag\SyliusCmsPlugin\Entity\Section:
             type: string
             length: 250
             unique: true
+        enabled:
+            column: enabled
+            type: boolean
