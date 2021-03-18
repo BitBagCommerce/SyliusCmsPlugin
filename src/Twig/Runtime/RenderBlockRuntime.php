@@ -14,7 +14,7 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class RenderBlockRuntime implements RenderBlockRuntimeInterface
 {
@@ -24,7 +24,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     /** @var BlockResourceResolverInterface */
     private $blockResourceResolver;
 
-    /** @var EngineInterface */
+    /** @var Environment */
     private $templatingEngine;
 
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
@@ -32,7 +32,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
-        EngineInterface $templatingEngine
+        Environment $templatingEngine
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockResourceResolver = $blockResourceResolver;

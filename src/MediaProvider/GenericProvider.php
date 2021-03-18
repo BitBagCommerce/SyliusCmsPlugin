@@ -14,14 +14,14 @@ namespace BitBag\SyliusCmsPlugin\MediaProvider;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class GenericProvider implements ProviderInterface
 {
     /** @var MediaUploaderInterface */
     private $uploader;
 
-    /** @var EngineInterface */
+    /** @var Environment */
     private $twigEngine;
 
     /** @var string */
@@ -32,7 +32,7 @@ final class GenericProvider implements ProviderInterface
 
     public function __construct(
         MediaUploaderInterface $uploader,
-        EngineInterface $twigEngine,
+        Environment $twigEngine,
         string $template,
         string $pathPrefix
     ) {

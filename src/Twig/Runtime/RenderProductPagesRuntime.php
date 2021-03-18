@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterface
 {
@@ -26,7 +26,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var ChannelContextInterface */
     private $channelContext;
 
-    /** @var EngineInterface */
+    /** @var Environment */
     private $templatingEngine;
 
     /** @var SectionsSorterInterface */
@@ -35,7 +35,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     public function __construct(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine,
+        Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter
     ) {
         $this->pageRepository = $pageRepository;
