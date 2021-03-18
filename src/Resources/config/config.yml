@@ -3,8 +3,10 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services.yml" }
+    - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
 
 parameters:
+    sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
 
 jms_serializer:
