@@ -19,7 +19,6 @@ use Doctrine\Common\Collections\Collection;
 use SitemapPlugin\Factory\UrlFactoryInterface;
 use SitemapPlugin\Model\AlternativeUrl;
 use SitemapPlugin\Model\ChangeFrequency;
-use SitemapPlugin\Model\SitemapInterface;
 use SitemapPlugin\Model\UrlInterface;
 use SitemapPlugin\Provider\UrlProviderInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
