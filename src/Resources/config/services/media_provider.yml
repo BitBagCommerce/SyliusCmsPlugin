@@ -3,7 +3,7 @@ services:
         class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
-            - "@templating.engine.twig"
+            - "@twig"
             - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/image.html.twig"
             - "media/image"
         tags:
@@ -13,7 +13,7 @@ services:
         class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
-            - "@templating.engine.twig"
+            - "@twig"
             - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/video.html.twig"
             - "media/video"
         tags:
@@ -23,7 +23,7 @@ services:
         class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
         arguments:
             - "@bitbag_sylius_cms_plugin.media_uploader"
-            - "@templating.engine.twig"
+            - "@twig"
             - "@@BitBagSyliusCmsPlugin/Shop/Media/Show/file.html.twig"
             - "media/file"
         tags:

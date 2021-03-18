@@ -15,7 +15,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.resolver.block_resource"
-            - "@templating"
+            - "@twig"
         tags:
             - { name: twig.runtime }
 
@@ -42,7 +42,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@sylius.context.channel"
-            - "@templating"
+            - "@twig"
             - "@bitbag_sylius_cms_plugin.sorter.sections"
         tags:
             - { name: twig.runtime }
