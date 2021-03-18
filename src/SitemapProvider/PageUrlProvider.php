@@ -16,9 +16,11 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Doctrine\Common\Collections\Collection;
-use SitemapPlugin\Factory\SitemapUrlFactoryInterface;
+use SitemapPlugin\Factory\UrlFactoryInterface;
+use SitemapPlugin\Model\AlternativeUrl;
 use SitemapPlugin\Model\ChangeFrequency;
-use SitemapPlugin\Model\SitemapUrlInterface;
+use SitemapPlugin\Model\SitemapInterface;
+use SitemapPlugin\Model\UrlInterface;
 use SitemapPlugin\Provider\UrlProviderInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -35,7 +37,7 @@ final class PageUrlProvider implements UrlProviderInterface
     /** @var RouterInterface */
     private $router;
 
-    /** @var SitemapUrlFactoryInterface */
+    /** @var UrlFactoryInterface */
     private $sitemapUrlFactory;
 
     /** @var LocaleContextInterface */
@@ -47,7 +49,7 @@ final class PageUrlProvider implements UrlProviderInterface
     public function __construct(
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        SitemapUrlFactoryInterface $sitemapUrlFactory,
+        UrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext
     ) {
@@ -63,7 +65,7 @@ final class PageUrlProvider implements UrlProviderInterface
         return 'cms_pages';
     }
 
-    public function generate(): iterable
+    public function generate(ChannelInterface $channel): iterable
     {
         $urls = [];
 
@@ -101,9 +103,14 @@ final class PageUrlProvider implements UrlProviderInterface
         })->toArray();
     }
 
-    private function createPageUrl(PageInterface $page): SitemapUrlInterface
+    private function createPageUrl(PageInterface $page): UrlInterface
     {
-        $pageUrl = $this->sitemapUrlFactory->createNew();
+        $location = $this->router->generate('bitbag_sylius_cms_plugin_shop_page_show', [
+            'slug' => $page->getTranslation($this->localeContext->getLocaleCode())->getSlug(),
+            '_locale' => $this->localeContext->getLocaleCode(),
+        ]);
+
+        $pageUrl = $this->sitemapUrlFactory->createNew($location);
 
         $pageUrl->setChangeFrequency(ChangeFrequency::daily());
         $pageUrl->setPriority(0.7);
@@ -116,7 +123,7 @@ final class PageUrlProvider implements UrlProviderInterface
 
         /** @var PageTranslationInterface $translation */
         foreach ($this->getTranslations($page) as $translation) {
-            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
+            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation) || $translation->getLocale() === $this->localeContext->getLocaleCode()) {
                 continue;
             }
 
@@ -125,13 +132,7 @@ final class PageUrlProvider implements UrlProviderInterface
                 '_locale' => $translation->getLocale(),
             ]);
 
-            if ($translation->getLocale() === $this->localeContext->getLocaleCode()) {
-                $pageUrl->setLocalization($location);
-
-                continue;
-            }
-
-            $pageUrl->addAlternative($location, $translation->getLocale());
+            $pageUrl->addAlternative(new AlternativeUrl($location, $translation->getLocale()));
         }
 
         return $pageUrl;
