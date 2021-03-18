@@ -12,7 +12,7 @@
         "php": "^7.3",
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1|^2.0",
-        "stefandoorn/sitemap-plugin": "^1.0||2.0-dev",
+        "stefandoorn/sitemap-plugin": "^1.0||dev-master",
         "sylius/sylius": "^1.8"
     },
     "require-dev": {
