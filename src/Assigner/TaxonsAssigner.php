@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 final class TaxonsAssigner implements TaxonsAssignerInterface
 {

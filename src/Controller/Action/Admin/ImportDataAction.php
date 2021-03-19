@@ -16,8 +16,6 @@ use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
 use BitBag\SyliusCmsPlugin\Form\Type\ImportType;
 use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
-use FOS\RestBundle\View\View;
-use FOS\RestBundle\View\ViewHandler;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;

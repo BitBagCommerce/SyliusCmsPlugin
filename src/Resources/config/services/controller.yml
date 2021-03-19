@@ -30,7 +30,7 @@ services:
             - "@session.flash_bag"
             - "@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"
             - "@translator"
-            - "@fos_rest.view_handler.default"
+            - "@twig"
 
     bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction
