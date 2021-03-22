@@ -18,14 +18,14 @@ use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class RenderBlockRuntimeSpec extends ObjectBehavior
 {
     function let(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
-        EngineInterface $templatingEngine
+        Environment $templatingEngine
     ): void {
         $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine);
     }
@@ -43,7 +43,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     function it_renders_block(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        EngineInterface $templatingEngine
+        Environment $templatingEngine
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
@@ -54,7 +54,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     function it_renders_block_with_template(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        EngineInterface $templatingEngine
+        Environment $templatingEngine
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');
