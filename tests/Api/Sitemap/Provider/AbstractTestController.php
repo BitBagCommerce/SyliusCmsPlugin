@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Api\Sitemap\Provider;
 
-use Lakion\ApiTestCase\XmlApiTestCase;
+use ApiTestCase\XmlApiTestCase;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Currency\Model\Currency;

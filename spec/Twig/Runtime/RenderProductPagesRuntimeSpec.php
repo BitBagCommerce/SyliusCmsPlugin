@@ -23,14 +23,14 @@ use PhpSpec\ObjectBehavior;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class RenderProductPagesRuntimeSpec extends ObjectBehavior
 {
     function let(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine,
+        Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter
     ): void {
         $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter);
@@ -53,7 +53,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
         SectionInterface $section,
-        EngineInterface $templatingEngine,
+        Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
@@ -74,7 +74,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
         SectionInterface $section,
-        EngineInterface $templatingEngine,
+        Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
