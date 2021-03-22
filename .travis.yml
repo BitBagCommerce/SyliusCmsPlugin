@@ -6,20 +6,17 @@ sudo: false
 
 matrix:
     include:
-        # Sylius 1.8
+        # Sylius 1.9
         -
             php: 7.3
             env:
-                - DEPENDENCY_VERSIONS="sylius/sylius:1.8.*"
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.9.*"
 
 addons:
     chrome: stable
 
 services:
     - mysql
-
-addons:
-    chrome: stable
 
 cache:
     yarn: true
@@ -50,6 +47,7 @@ before_script:
     - (cd tests/Application && bin/console ckeditor:install --clear=drop -vvv)
     - (cd tests/Application && bin/console assets:install public -vvv)
     - (cd tests/Application && bin/console cache:warmup -vvv)
+    - (cd tests/Application && bin/console sylius:sitemap:generate -vvv)
     - (cd tests/Application && yarn build)
 
     # Configure display
@@ -88,5 +86,5 @@ script:
     - vendor/bin/phpspec run
     - vendor/bin/behat --strict -vvv --no-interaction --tags '~@unstable' || vendor/bin/behat --strict -vvv --no-interaction --rerun --tags '~@unstable'
 
-after_failure:
-    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
+#after_failure:
+#    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
