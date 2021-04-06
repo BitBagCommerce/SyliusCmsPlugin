@@ -168,7 +168,7 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setLink($link);
     }
 
-    public function getWidth(): int
+    public function getWidth(): ?int
     {
         return $this->width;
     }
@@ -178,7 +178,7 @@ class Media implements MediaInterface
         $this->width = $width;
     }
 
-    public function getHeight(): int
+    public function getHeight(): ?int
     {
         return $this->height;
     }
