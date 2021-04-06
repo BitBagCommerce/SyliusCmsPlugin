@@ -49,10 +49,10 @@ class Media implements MediaInterface
     /** @var string */
     protected $originalPath;
 
-    /** @var int */
+    /** @var int|null */
     protected $width;
 
-    /** @var int */
+    /** @var int|null */
     protected $height;
 
     public function __construct()
