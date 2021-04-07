@@ -1,3 +1,9 @@
+# UPGRADE FROM 2.4 TO 3.0
+
+* Width and height has been added to image media. Now width and height html tags are generated in shop image.
+  Read the below changelog first and then migrate your structure using 
+  `bin/console doctrine:migrations:diff && bin/console doctrine:migrations:migrate` commands
+
 # UPGRADE FROM 1.0 TO 2.0
 
 * A lot of database modifications has been made. Read the below changelog first and then migrate your
