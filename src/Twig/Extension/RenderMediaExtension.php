@@ -18,10 +18,17 @@ use Twig\TwigFunction;
 
 final class RenderMediaExtension extends AbstractExtension
 {
+    /** @var RenderMediaRuntime */
+    private $mediaRuntime;
+
+    public function __construct(RenderMediaRuntime $mediaRuntime){
+        $this->mediaRuntime = $mediaRuntime;
+    }
+
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_media', [RenderMediaRuntime::class, 'renderMedia'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_media', [$this->mediaRuntime, 'renderMedia'], ['is_safe' => ['html']]),
         ];
     }
 }

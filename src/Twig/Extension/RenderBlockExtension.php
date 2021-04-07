@@ -18,10 +18,17 @@ use Twig\TwigFunction;
 
 class RenderBlockExtension extends AbstractExtension
 {
+    /** @var RenderBlockRuntime */
+    private $blockRuntime;
+
+    public function __construct(RenderBlockRuntime $blockRuntime){
+        $this->blockRuntime = $blockRuntime;
+    }
+
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_block', [RenderBlockRuntime::class, 'renderBlock'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_block', [$this->blockRuntime, 'renderBlock'], ['is_safe' => ['html']]),
         ];
     }
 }
