@@ -50,17 +50,16 @@ final class MediaUploader implements MediaUploaderInterface
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
 
-        $this->filesystem->write(
-            $media->getPath(),
-            file_get_contents($media->getFile()->getPathname())
-        );
-
         if( false !== strpos($media->getMimeType(),'image') ) {
-            list($width, $height) = getimagesize($path);
+            list($width, $height) = getimagesize($media->getFile()->getPathname());
             $media->setWidth($width);
             $media->setHeight($height);
         }
 
+        $this->filesystem->write(
+            $media->getPath(),
+            file_get_contents($media->getFile()->getPathname())
+        );
     }
 
     public function remove(string $path): bool
