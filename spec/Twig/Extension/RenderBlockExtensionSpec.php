@@ -13,12 +13,19 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class RenderBlockExtensionSpec extends ObjectBehavior
 {
+    function let(
+        RenderBlockRuntimeInterface $blockRuntime
+    ) {
+        $this->beConstructedWith($blockRuntime);
+    }
+
     function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderBlockExtension::class);

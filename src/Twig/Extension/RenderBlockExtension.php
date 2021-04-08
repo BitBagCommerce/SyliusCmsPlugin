@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class RenderBlockExtension extends AbstractExtension
 {
-    /** @var RenderBlockRuntime */
+    /** @var RenderBlockRuntimeInterface */
     private $blockRuntime;
 
-    public function __construct(RenderBlockRuntime $blockRuntime){
+    public function __construct(RenderBlockRuntimeInterface $blockRuntime){
         $this->blockRuntime = $blockRuntime;
     }
 

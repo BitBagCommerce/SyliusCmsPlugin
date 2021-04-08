@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntime;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class RenderMediaExtension extends AbstractExtension
 {
-    /** @var RenderMediaRuntime */
+    /** @var RenderMediaRuntimeInterface */
     private $mediaRuntime;
 
-    public function __construct(RenderMediaRuntime $mediaRuntime){
+    public function __construct(RenderMediaRuntimeInterface $mediaRuntime){
         $this->mediaRuntime = $mediaRuntime;
     }
 
