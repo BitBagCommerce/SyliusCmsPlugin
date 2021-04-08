@@ -79,9 +79,6 @@ function htmlToString(item) {
                 }
               });
             }
-            window.setTimeout(function () {
-              element.dropdown('set selected', element.find('input.autocomplete').val().split(',').filter(String));
-            }, 5000);
           });
         }
       });
