@@ -3,7 +3,7 @@ let phrase = '';
 let currentPage = 1;
 let totalPages = null;
 let limit = 12;
-let mediaCodeLength = 20;
+const mediaCodeLength = 20;
 
 function trimValue(item) {
     return item.length > mediaCodeLength ?
@@ -23,7 +23,7 @@ function checkName(item) {
 function insertHtml (data) {
     const output = data.map(media =>
         `<div class="media-list__item">
-          <label for="${media.code}" class="media-list__item__label"><strong>${htmlToString(checkName(media.name))}</strong></strong> (${trimValue(media.code)})</label>
+          <label for="${media.code}" class="media-list__item__label"><strong>${trimValue(htmlToString(checkName(media.name)))}</strong></strong> (${trimValue(media.code)})</label>
           <input image-path="${media.path}" class="media-list__item__input" type="radio" name="media" value="${media.code}">
           <img class="media-list__item__img" src="${media.path}"/>
         </div>`
@@ -117,8 +117,8 @@ function showMedia (phrase, pageNumber) {
 
 CKEDITOR.dialog.add ('mediaDialog', editor => ({
     title: 'Choose media',
-    minWidth: 500,
-    minHeight: 300,
+    minWidth: 1000,
+    minHeight: 600,
     resizable: CKEDITOR.DIALOG_RESIZE_NONE,
     onShow() {
         phrase = '';
@@ -210,6 +210,6 @@ CKEDITOR.dialog.add ('mediaDialog', editor => ({
         const imageWidth = dialog.getContentElement('media-content','imageWidth').getValue();
         const imageHeight = dialog.getContentElement('media-content','imageHeight').getValue();
 
-        editor.insertHtml(`<img src="${imagePath}" alt="media-img" style="height:${imageWidth}px; width:${imageHeight}px"/>`);
+        editor.insertHtml(`<img src="${imagePath}" alt="media-img" style="height:${imageHeight}px; width:${imageWidth}px"/>`);
     },
 }));
