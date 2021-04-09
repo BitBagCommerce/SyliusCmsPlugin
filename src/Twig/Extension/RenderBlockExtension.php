@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class RenderBlockExtension extends AbstractExtension
+final class RenderBlockExtension extends AbstractExtension
 {
     /** @var RenderBlockRuntimeInterface */
     private $blockRuntime;
