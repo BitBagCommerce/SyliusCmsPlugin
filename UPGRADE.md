@@ -1,4 +1,7 @@
-# UPGRADE FROM 2.4 TO 3.0
+# UPGRADE FROM 2.4 TO 3.0 
+
+* The `stefandoorn/sitemap-plugin` dependency has been removed, and moved to the `suggest` section of composer.json.
+If you didn't require this plugin by yourselves, but want to keep the sitemap support, consider requiring it directly in your project as described [here](doc/sitemap.md).
 
 * Width and height has been added to image media. Now width and height html tags are generated in shop image.
   Read the below changelog first and then migrate your structure using 

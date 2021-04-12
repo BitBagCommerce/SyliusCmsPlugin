@@ -5,6 +5,3 @@ bitbag_sylius_cms_plugin_admin:
 bitbag_sylius_cms_plugin_shop:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
     prefix: /{_locale}
-
-sylius_sitemap:
-   resource: "@SitemapPlugin/Resources/config/routing.yml"

@@ -9,7 +9,6 @@ return [
     ...
 
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
-    SitemapPlugin\SitemapPlugin::class => ['all' => true], // Sitemap support
     BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
@@ -54,7 +53,8 @@ bitbag_sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
-Import optional sitemap providers:
+If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions
+import optional sitemap providers:
 ```yaml
 # config/services.yaml
 ...
@@ -63,6 +63,14 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
 ```
 
+and plugin dependency to your `config/bundles.php` file:
+```php
+return [
+    ...
+
+    SitemapPlugin\SitemapPlugin::class => ['all' => true], // Sitemap support
+];
+```
 
 Finish the installation by updating the database schema and installing assets:
 ```
