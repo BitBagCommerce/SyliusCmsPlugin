@@ -20,8 +20,9 @@
 }
 
 .media-list {
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(6, 100px);
+    grid-template-columns: repeat(6, 150px);
     grid-gap: 20px;
 }
 
@@ -60,8 +61,8 @@
 }
 
 .media-list__item__img {
-    width: 100px!important;
-    height:100px!important;
+    width: 150px!important;
+    height:150px!important;
 }
 
 .btn {

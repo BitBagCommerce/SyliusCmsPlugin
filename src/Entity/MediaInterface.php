@@ -72,4 +72,12 @@ interface MediaInterface extends
     public function getLink(): ?string;
 
     public function setLink(?string $link): void;
+
+    public function getWidth(): ?int;
+
+    public function setWidth(?int $width): void;
+
+    public function getHeight(): ?int;
+
+    public function setHeight(?int $height): void;
 }

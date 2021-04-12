@@ -12,16 +12,23 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntime;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class RenderMediaExtension extends AbstractExtension
 {
+    /** @var RenderMediaRuntimeInterface */
+    private $mediaRuntime;
+
+    public function __construct(RenderMediaRuntimeInterface $mediaRuntime){
+        $this->mediaRuntime = $mediaRuntime;
+    }
+
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_media', [RenderMediaRuntime::class, 'renderMedia'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_media', [$this->mediaRuntime, 'renderMedia'], ['is_safe' => ['html']]),
         ];
     }
 }
