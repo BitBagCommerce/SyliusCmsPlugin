@@ -8,7 +8,7 @@ matrix:
     include:
         # Sylius 1.9
         -
-            php: 7.3
+            php: 7.4
             env:
                 - DEPENDENCY_VERSIONS="sylius/sylius:1.9.*"
 
