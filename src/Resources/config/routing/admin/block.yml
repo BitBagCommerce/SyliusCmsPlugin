@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_admin_block:
     resource: |
         alias: bitbag_sylius_cms_plugin.block
         section: admin
-        templates: BitBagSyliusCmsPlugin:CrudUi
+        templates: '@BitBagSyliusCmsPlugin/CrudUi'
         except: ['show']
         redirect: update
         grid: bitbag_sylius_cms_plugin_admin_block

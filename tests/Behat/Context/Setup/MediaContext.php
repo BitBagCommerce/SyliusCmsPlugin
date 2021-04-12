@@ -82,6 +82,18 @@ final class MediaContext implements Context
         $this->saveMedia($media);
     }
 
+    /**
+     * @Given there is an existing :type media with :code code
+     */
+    public function thereIsAnExistingTypeMediaWithCode(string $type, string $code): void
+    {
+        $media = $this->createMedia($code, null, null, $type);
+
+        $this->uploadFile($media, 'aston_martin_db_11.jpg');
+
+        $this->saveMedia($media);
+    }
+
     private function createMedia(
         ?string $code = null,
         ?string $name = null,

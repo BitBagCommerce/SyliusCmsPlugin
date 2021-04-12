@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface MediaRepositoryInterface extends RepositoryInterface
 {
-    public function createListQueryBuilder(): QueryBuilder;
+    public function createListQueryBuilder(string $locale): QueryBuilder;
 
     public function findOneEnabledByCode(string $code, string $channelCode): ?MediaInterface;
 

@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Assigner;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
+use Webmozart\Assert\Assert;
 
 final class ChannelsAssigner implements ChannelsAssignerInterface
 {
@@ -32,9 +33,8 @@ final class ChannelsAssigner implements ChannelsAssignerInterface
             /** @var ChannelInterface $channel|null */
             $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
 
-            if (null !== $channel) {
-                $channelsAware->addChannel($channel);
-            }
+            Assert::notNull($channel, sprintf('Channel with %s code not found.', $channelCode));
+            $channelsAware->addChannel($channel);
         }
     }
 }

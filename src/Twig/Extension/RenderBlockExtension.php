@@ -12,48 +12,23 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use Symfony\Component\Templating\EngineInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class RenderBlockExtension extends \Twig_Extension
+final class RenderBlockExtension extends AbstractExtension
 {
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
+    /** @var RenderBlockRuntimeInterface */
+    private $blockRuntime;
 
-    /** @var BlockResourceResolverInterface */
-    private $blockResourceResolver;
-
-    /** @var EngineInterface */
-    private $templatingEngine;
-
-    public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        BlockResourceResolverInterface $blockResourceResolver,
-        EngineInterface $templatingEngine
-    ) {
-        $this->blockRepository = $blockRepository;
-        $this->blockResourceResolver = $blockResourceResolver;
-        $this->templatingEngine = $templatingEngine;
+    public function __construct(RenderBlockRuntimeInterface $blockRuntime){
+        $this->blockRuntime = $blockRuntime;
     }
 
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_block', [$this->blockRuntime, 'renderBlock'], ['is_safe' => ['html']]),
         ];
-    }
-
-    public function renderBlock(string $code, ?string $template = null): string
-    {
-        $block = $this->blockResourceResolver->findOrLog($code);
-
-        if (null !== $block) {
-            $template = $template ?? '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
-
-            return $this->templatingEngine->render($template, ['block' => $block]);
-        }
-
-        return '';
     }
 }

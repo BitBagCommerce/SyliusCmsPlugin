@@ -17,5 +17,7 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface
 
 interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {
-    public function uploadImage(string $image): void;
+    public const IMAGE_FORM_ID = 'bitbag_sylius_cms_plugin_page_translations_en_US_image';
+
+    public function chooseImage(string $code): void;
 }

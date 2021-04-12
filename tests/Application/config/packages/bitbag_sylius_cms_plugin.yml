@@ -2,7 +2,7 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 
 parameters:
-    fixtures_dir: "%kernel.root_dir%/Resources/fixtures"
+    fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
 
 sylius_fixtures:
     suites:

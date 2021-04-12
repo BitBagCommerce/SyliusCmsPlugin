@@ -17,6 +17,10 @@ BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion:
                 min: 2
                 minMessage: 'bitbag_sylius_cms_plugin.frequently_asked_question.code.min_length'
                 groups: ['bitbag']
+            - Regex:
+                  pattern: '/^[\w-]*$/'
+                  message: 'bitbag_sylius_cms_plugin.frequently_asked_question.code.regex'
+                  groups: [ 'bitbag' ]
         position:
             - NotBlank:
                 message: 'bitbag_sylius_cms_plugin.frequently_asked_question.position.not_blank'
