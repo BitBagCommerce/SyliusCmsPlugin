@@ -35,7 +35,12 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     public function findBySectionCode(string $sectionCode, ?string $localeCode): array;
 
-    public function findByProduct(ProductInterface $product, string $channelCode): array;
+    public function findByProduct(ProductInterface $product, string $channelCode, ?\DateTimeInterface $date): array;
 
-    public function findByProductAndSectionCode(ProductInterface $product, string $sectionCode, string $channelCode): array;
+    public function findByProductAndSectionCode(
+        ProductInterface $product,
+        string $sectionCode,
+        string $channelCode,
+        ?\DateTimeInterface $date
+    ): array;
 }
