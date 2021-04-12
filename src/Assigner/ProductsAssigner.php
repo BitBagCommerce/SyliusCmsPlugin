@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Assigner;
 use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Webmozart\Assert\Assert;
 
 final class ProductsAssigner implements ProductsAssignerInterface
 {
@@ -32,9 +33,8 @@ final class ProductsAssigner implements ProductsAssignerInterface
             /** @var ProductInterface $product */
             $product = $this->productRepository->findOneBy(['code' => $productCode]);
 
-            if (null !== $product) {
-                $productsAware->addProduct($product);
-            }
+            Assert::notNull($product, sprintf('Product with %s code not found.', $productCode));
+            $productsAware->addProduct($product);
         }
     }
 }

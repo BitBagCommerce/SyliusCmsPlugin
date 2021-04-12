@@ -52,7 +52,6 @@ Import routing in your `config/routes.yaml` file:
 bitbag_sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
-
 If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions
 import optional sitemap providers:
 ```yaml

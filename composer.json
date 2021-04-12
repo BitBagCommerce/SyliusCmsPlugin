@@ -44,6 +44,9 @@
     "suggest": {
         "stefandoorn/sitemap-plugin": "^2.0@alpha"
     },
+    "suggest": {
+        "stefandoorn/sitemap-plugin": "Adds CMS pages & sections support to the Sylius sitemap plugin"
+    },
     "conflict": {
         "symfony/symfony": "4.1.8",
         "symfony/browser-kit": "4.1.8",
