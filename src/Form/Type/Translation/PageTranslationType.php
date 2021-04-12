@@ -12,7 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
 
-use BitBag\SyliusCmsPlugin\Form\Type\PageImageType;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -42,9 +43,10 @@ final class PageTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.description_when_linked',
                 'required' => false,
             ])
-            ->add('image', PageImageType::class, [
-                'label' => false,
+            ->add('image', MediaAutocompleteChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.image',
                 'required' => false,
+                'media_type' => MediaInterface::IMAGE_TYPE,
             ])
             ->add('metaKeywords', TextareaType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.meta_keywords',

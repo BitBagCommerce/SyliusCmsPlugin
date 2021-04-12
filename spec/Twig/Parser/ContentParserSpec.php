@@ -2,14 +2,16 @@
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Parser;
 
-use BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension;
 use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParser;
 use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Twig\Environment;
+use Twig\TwigFunction;
 
 final class ContentParserSpec extends ObjectBehavior
 {
-    function let(\Twig_Environment $twigEnvironment): void
+    function let(Environment $twigEnvironment): void
     {
         $this->beConstructedWith($twigEnvironment, ['bitbag_cms_render_block']);
     }
@@ -24,20 +26,40 @@ final class ContentParserSpec extends ObjectBehavior
         $this->shouldHaveType(ContentParserInterface::class);
     }
 
-    function it_parses_string_functions(
-        \Twig_Environment $twigEnvironment,
-        \Twig_Function $renderBlockFunction,
-        RenderBlockExtension $renderBlockExtension
+    function it_parses_string_function(
+        Environment $twigEnvironment,
+        TwigFunction $renderBlockFunction,
+        RenderBlockRuntimeInterface $renderBlockRuntime
     ): void
     {
         $twigEnvironment->getFunctions()->willReturn([
             'bitbag_cms_render_block' => $renderBlockFunction,
         ]);
-        $renderBlockFunction->getCallable()->willReturn([$renderBlockExtension, 'renderBlock']);
+        $renderBlockFunction->getCallable()->willReturn([$renderBlockRuntime, 'renderBlock']);
 
         $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
 
-        $renderBlockExtension->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
+        $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
+
+        $this->parse($input);
+    }
+
+    function it_parses_string_functions(
+        Environment $twigEnvironment,
+        TwigFunction $renderBlockFunction,
+        RenderBlockRuntimeInterface $renderBlockRuntime
+    ): void
+    {
+        $twigEnvironment->getFunctions()->willReturn([
+            'bitbag_cms_render_block' => $renderBlockFunction,
+        ]);
+        $renderBlockFunction->getCallable()->willReturn([$renderBlockRuntime, 'renderBlock']);
+
+        $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}
+                  Let's render twice! {{ bitbag_cms_render_block('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
+
+        $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
+        $renderBlockRuntime->renderBlock('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
 
         $this->parse($input);
     }

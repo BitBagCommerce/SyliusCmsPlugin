@@ -15,14 +15,15 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageImage;
+use BitBag\SyliusCmsPlugin\Entity\Media;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -37,8 +38,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var PageRepositoryInterface */
     private $pageRepository;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
+    /** @var MediaProviderResolverInterface */
+    private $mediaProviderResolver;
 
     /** @var ProductRepositoryInterface  */
     private $productRepository;
@@ -63,7 +64,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
         PageRepositoryInterface $pageRepository,
-        ImageUploaderInterface $imageUploader,
+        MediaProviderResolverInterface $mediaProviderResolver,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
         ChannelsAssignerInterface $channelAssigner,
@@ -74,7 +75,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
         $this->pageRepository = $pageRepository;
-        $this->imageUploader = $imageUploader;
+        $this->mediaProviderResolver = $mediaProviderResolver;
         $this->productsAssigner = $productsAssigner;
         $this->sectionsAssigner = $sectionsAssigner;
         $this->channelAssigner = $channelAssigner;
@@ -132,14 +133,16 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $pageTranslation->setContent($translation['content']);
 
             if ($translation['image_path']) {
-                $image = new PageImage();
+                $image = new Media();
                 $path = $translation['image_path'];
                 $uploadedImage = new UploadedFile($path, md5($path) . '.jpg');
 
                 $image->setFile($uploadedImage);
+                $image->setCode(md5(uniqid()));
+                $image->setType(MediaInterface::IMAGE_TYPE);
                 $pageTranslation->setImage($image);
 
-                $this->imageUploader->upload($image);
+                $this->mediaProviderResolver->resolveProvider($image)->upload($image);
             }
 
             $page->addTranslation($pageTranslation);

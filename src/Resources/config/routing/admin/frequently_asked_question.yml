@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_admin_frequently_asked_question:
     resource: |
         alias: bitbag_sylius_cms_plugin.frequently_asked_question
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: '@BitBagSyliusCmsPlugin/CrudUi'
         redirect: update
         grid: bitbag_sylius_cms_plugin_admin_frequently_asked_question
         except: ['show']

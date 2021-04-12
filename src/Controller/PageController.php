@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\PageImageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -40,22 +40,17 @@ final class PageController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $page);
 
-        $view = View::create($page);
 
         if ($configuration->isHtmlRequest()) {
-            $view
-                ->setTemplate($configuration->getTemplate(ResourceActions::SHOW . '.html'))
-                ->setTemplateVar($this->metadata->getName())
-                ->setData([
-                    'configuration' => $configuration,
-                    'metadata' => $this->metadata,
-                    'resource' => $page,
-                    $this->metadata->getName() => $page,
-                ])
-            ;
+            return $this->render($configuration->getTemplate(ResourceActions::SHOW . '.html'), [
+                'configuration' => $configuration,
+                'metadata' => $this->metadata,
+                'resource' => $page,
+                $this->metadata->getName() => $page,
+            ]);
         }
 
-        return $this->viewHandler->handle($configuration, $view);
+        return $this->viewHandler->handle($configuration, View::create($page));
     }
 
     public function previewAction(Request $request): Response
@@ -80,28 +75,29 @@ final class PageController extends ResourceController
 
         $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
 
-        $view = View::create()
-            ->setData([
-                'resource' => $page,
-                'preview' => true,
-                $this->metadata->getName() => $page,
-            ])
-            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
-        ;
+        if (!$configuration->isHtmlRequest()) {
+            $this->viewHandler->handle($configuration, View::create($page));
+        }
 
-        return $this->viewHandler->handle($configuration, $view);
+        return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
+            'resource' => $page,
+            'preview' => true,
+            $this->metadata->getName() => $page,
+        ]);
     }
 
     private function resolveImage(PageInterface $page): void
     {
-        /** @var PageImageInterface $image */
-        $image = $page->getTranslation()->getImage();
+        /** @var PageTranslationInterface $translation */
+        $translation = $page->getTranslation();
+
+        $image = $translation->getImage();
 
         if (!$image || !$image->getPath()) {
             return;
         }
 
-        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . '/media/image/' . $image->getPath());
+        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
         $base64Content = base64_encode(file_get_contents($file->getPathname()));
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
 
