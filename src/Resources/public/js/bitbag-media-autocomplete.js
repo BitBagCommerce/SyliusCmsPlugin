@@ -130,3 +130,4 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
     return $(".bitbag-media-autocomplete").mediaAutoComplete();
   });
 })($);
+
