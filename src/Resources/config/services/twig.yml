@@ -7,6 +7,8 @@ parameters:
 services:
     bitbag_sylius_cms_plugin.twig.extension.block:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderBlockExtension
+        arguments:
+            - "@bitbag_sylius_cms_plugin.twig.runtime.block"
         tags:
             - { name: twig.extension }
 
@@ -21,6 +23,8 @@ services:
 
     bitbag_sylius_cms_plugin.twig.extension.media:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension
+        arguments:
+            - "@bitbag_sylius_cms_plugin.twig.runtime.media"
         tags:
             - { name: twig.extension }
 

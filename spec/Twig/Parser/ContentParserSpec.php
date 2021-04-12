@@ -26,7 +26,7 @@ final class ContentParserSpec extends ObjectBehavior
         $this->shouldHaveType(ContentParserInterface::class);
     }
 
-    function it_parses_string_functions(
+    function it_parses_string_function(
         Environment $twigEnvironment,
         TwigFunction $renderBlockFunction,
         RenderBlockRuntimeInterface $renderBlockRuntime
@@ -40,6 +40,26 @@ final class ContentParserSpec extends ObjectBehavior
         $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
 
         $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
+
+        $this->parse($input);
+    }
+
+    function it_parses_string_functions(
+        Environment $twigEnvironment,
+        TwigFunction $renderBlockFunction,
+        RenderBlockRuntimeInterface $renderBlockRuntime
+    ): void
+    {
+        $twigEnvironment->getFunctions()->willReturn([
+            'bitbag_cms_render_block' => $renderBlockFunction,
+        ]);
+        $renderBlockFunction->getCallable()->willReturn([$renderBlockRuntime, 'renderBlock']);
+
+        $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}
+                  Let's render twice! {{ bitbag_cms_render_block('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
+
+        $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
+        $renderBlockRuntime->renderBlock('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
 
         $this->parse($input);
     }

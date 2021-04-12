@@ -15,6 +15,10 @@ BitBag\SyliusCmsPlugin\Entity\Media:
                 minMessage: 'bitbag_sylius_cms_plugin.media.code.min_length'
                 maxMessage: 'bitbag_sylius_cms_plugin.media.code.max_length'
                 groups: ['bitbag']
+            - Regex:
+                  pattern: '/^[\w-]*$/'
+                  message: 'bitbag_sylius_cms_plugin.media.code.regex'
+                  groups: [ 'bitbag' ]
         file:
             - Expression:
                 expression: '!(this.getPath() == null and this.getFile() == null)'

@@ -13,12 +13,19 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class RenderMediaExtensionSpec extends ObjectBehavior
 {
+    function let(
+        RenderMediaRuntimeInterface $mediaRuntime
+    ) {
+        $this->beConstructedWith($mediaRuntime);
+    }
+
     function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderMediaExtension::class);

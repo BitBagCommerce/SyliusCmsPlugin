@@ -32,3 +32,9 @@ sylius_ui:
                 javascripts:
                     template: "@BitBagSyliusCmsPlugin/_javascripts.html.twig"
                     priority: 10
+liip_imagine:
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%kernel.project_dir%/public"

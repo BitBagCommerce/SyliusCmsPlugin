@@ -166,14 +166,14 @@ class Page implements PageInterface
     }
 
     /**
-     * @return PageTranslationInterface|TranslationInterface|null
+     * @return PageTranslationInterface|TranslationInterface
      */
     protected function getPageTranslation(): PageTranslationInterface
     {
         return $this->getTranslation();
     }
 
-    protected function createTranslation(): ?PageTranslationInterface
+    protected function createTranslation(): PageTranslationInterface
     {
         return new PageTranslation();
     }
