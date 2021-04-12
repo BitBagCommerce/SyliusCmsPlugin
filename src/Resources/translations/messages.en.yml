@@ -57,3 +57,4 @@ bitbag_sylius_cms_plugin:
         form_was_submitted_with_errors: "The form was submitted with following errors:"
         title: Title
         empty_name: Empty name
+        publish_at: Publish at
