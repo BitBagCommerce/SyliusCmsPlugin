@@ -36,3 +36,5 @@ bitbag_sylius_cms_plugin:
         position: Pozycja
         title: Tytuł
         empty_name: Brak nazwy
+        publish_at: Opublikuj
+        page_will_be_publish_at: Strona zostanie opublikowana

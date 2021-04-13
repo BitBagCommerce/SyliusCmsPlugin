@@ -32,7 +32,7 @@ BitBag\SyliusCmsPlugin\Entity\Page:
                     on: update
         publishAt:
             column: publish_at
-            type: date_immutable
+            type: datetime_immutable
             nullable: true
 
     manyToMany:
