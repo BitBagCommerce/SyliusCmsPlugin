@@ -1,9 +1,6 @@
 language: php
-
 dist: bionic
-
 sudo: false
-
 matrix:
     include:
         # Sylius 1.9
@@ -11,50 +8,47 @@ matrix:
             php: 7.4
             env:
                 - DEPENDENCY_VERSIONS="sylius/sylius:1.9.*"
-
+                - APP_ENV=test
+        -
+            php: 7.4
+            env:
+                - DEPENDENCY_VERSIONS="sylius/sylius:1.9.*"
+                - USE_SITEMAP=1
+                - APP_ENV=test_sitemap
 addons:
     chrome: stable
-
 services:
     - mysql
-
 cache:
     yarn: true
     directories:
         - ~/.composer/cache/files
         - $SYLIUS_CACHE_DIR
-
 env:
     global:
-        - APP_ENV=test
         - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
         - SYLIUS_BUILD_DIR=etc/build
-
 before_install:
     - phpenv config-rm xdebug.ini
     - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - mkdir -p "${SYLIUS_CACHE_DIR}"
     - mkdir -p tests/Application/public/media/image
-
 install:
     - composer require ${DEPENDENCY_VERSIONS} --no-update
-    - composer require stefandoorn/sitemap-plugin --no-update
+    - ([[ ! -z "$USE_SITEMAP" ]] && (composer require stefandoorn/sitemap-plugin ^2.0@alpha --no-update )) || true
     - composer update --no-interaction --prefer-dist
     - (cd tests/Application && yarn install)
-
 before_script:
     - (cd tests/Application && bin/console doctrine:database:create -vvv)
     - (cd tests/Application && bin/console doctrine:schema:create -vvv)
     - (cd tests/Application && bin/console ckeditor:install --clear=drop -vvv)
     - (cd tests/Application && bin/console assets:install public -vvv)
     - (cd tests/Application && bin/console cache:warmup -vvv)
-    - (cd tests/Application && bin/console sylius:sitemap:generate -vvv)
+    - ([[ ! -z "$USE_SITEMAP" ]] && (cd tests/Application && bin/console sylius:sitemap:generate -vvv)) || true
     - (cd tests/Application && yarn build)
-
     # Configure display
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
     - export DISPLAY=:99
-
     # Download and configure ChromeDriver
     - |
         export CHROMEDRIVER_STABLE_VERSION=$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
@@ -67,7 +61,6 @@ before_script:
         fi
     # Run ChromeDriver
     - $SYLIUS_CACHE_DIR/chromedriver > /dev/null 2>&1 &
-
     # Download and configure Selenium
     - |
         if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.141.59)" = "0" ]; then
@@ -76,16 +69,10 @@ before_script:
         fi
     # Run Selenium
     - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
-
     # Run webserver
     - (cd tests/Application && bin/console server:run 127.0.0.1:8080 --quiet > /dev/null 2>&1 &)
-
 script:
     - composer validate --strict
-
     - vendor/bin/phpunit
     - vendor/bin/phpspec run
     - vendor/bin/behat --strict -vvv --no-interaction --tags '~@unstable' || vendor/bin/behat --strict -vvv --no-interaction --rerun --tags '~@unstable'
-
-#after_failure:
-#    - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
