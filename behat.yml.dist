@@ -4,14 +4,7 @@ imports:
 
 default:
     extensions:
-
-        FriendsOfBehat\SymfonyExtension:
-            bootstrap: tests/Application/config/bootstrap.php
-            kernel:
-                debug: true
-                class: Tests\BitBag\SyliusCmsPlugin\Application\Kernel
-                path: tests/Application/Kernel.php
-                environment: test
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
 
         FriendsOfBehat\MinkDebugExtension:
             directory: etc/build
@@ -20,39 +13,25 @@ default:
 
         Behat\MinkExtension:
             files_path: "%paths.base%/vendor/sylius/sylius/src/Sylius/Behat/Resources/fixtures/"
-            base_url: "http://localhost:8080/"
+            base_url: "https://127.0.0.1:8080/"
             default_session: symfony
-            javascript_session: chrome
+            javascript_session: chrome_headless
             sessions:
                 symfony:
                     symfony: ~
-                chrome:
-                    selenium2:
-                        browser: chrome
-                        capabilities:
-                            browserName: chrome
-                            browser: chrome
-                            version: ""
-                            marionette: null # https://github.com/Behat/MinkExtension/pull/311
-                            chrome:
-                                switches:
-                                    - "start-fullscreen"
-                                    - "start-maximized"
-                                    - "no-sandbox"
-                            extra_capabilities:
-                                acceptSslCerts: true
-                                acceptInsecureCerts: true
-                                unexpectedAlertBehaviour: accept
-                                goog:chromeOptions:
-                                    w3c: false # https://github.com/Sylius/Sylius/issues/10561
+                chrome_headless:
+                    chrome:
+                        api_url: http://127.0.0.1:9222
+                        validate_certificate: false
+            show_auto: false
+
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/Application/config/bootstrap.php
+            kernel:
+                class: Tests\BitBag\SyliusCmsPlugin\Application\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
 
         FriendsOfBehat\SuiteSettingsExtension:
             paths:
                 - "features"
-    formatters:
-        pretty:
-            verbose: true
-            paths: false
-            snippets: false
