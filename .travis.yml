@@ -68,7 +68,6 @@ before_script:
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
     - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
-    # Run webserver
     - (cd tests/Application && bin/console server:run 127.0.0.1:8080 --quiet > /dev/null 2>&1 &)
 script:
     - composer validate --strict
