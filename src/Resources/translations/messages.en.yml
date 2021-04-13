@@ -58,3 +58,4 @@ bitbag_sylius_cms_plugin:
         title: Title
         empty_name: Empty name
         publish_at: Publish at
+        page_will_be_publish_at: This page will be publish at
