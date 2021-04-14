@@ -20,6 +20,7 @@ services:
             - "@sylius.repository.product"
             - "@bitbag_sylius_cms_plugin.repository.section"
             - "@sylius.image_uploader"
+            - "@bitbag_sylius_cms_plugin.media_uploader"
 
     bitbag_sylius_cms_plugin.behat.context.setup.frequently_asked_question:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext
