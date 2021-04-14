@@ -73,7 +73,7 @@ jobs:
         name: install chromedriver
         uses: nanasess/setup-chromedriver@master
         with:
-          chromedriver-version: '75.0.3770.8'
+          chromedriver-version: '73.0.3683.68'
       -
         name: Run Chrome Headless
         run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1 > /dev/null 2>&1 &
