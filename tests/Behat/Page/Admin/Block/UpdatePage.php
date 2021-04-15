@@ -13,9 +13,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
-use Webmozart\Assert\Assert;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
@@ -33,7 +31,7 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 
     public function fillContent(string $content): void
     {
-        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
+        $this->getDocument()->fillField('Content', $content);
     }
 
     public function disable(): void

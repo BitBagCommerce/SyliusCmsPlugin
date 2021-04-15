@@ -15,7 +15,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
@@ -65,7 +64,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
+        $this->getDocument()->fillField('Content', $content);
     }
 
     public function associateSections(array $sectionsNames): void

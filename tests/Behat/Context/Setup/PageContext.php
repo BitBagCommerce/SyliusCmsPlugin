@@ -24,7 +24,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -54,9 +53,6 @@ final class PageContext implements Context
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
-
     /** @var MediaUploaderInterface */
     private $mediaUploader;
 
@@ -68,7 +64,6 @@ final class PageContext implements Context
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
-        ImageUploaderInterface $imageUploader,
         MediaUploaderInterface $mediaUploader
 
     ) {
@@ -79,7 +74,6 @@ final class PageContext implements Context
         $this->entityManager = $entityManager;
         $this->productRepository = $productRepository;
         $this->sectionRepository = $sectionRepository;
-        $this->imageUploader = $imageUploader;
         $this->mediaUploader = $mediaUploader;
     }
 
