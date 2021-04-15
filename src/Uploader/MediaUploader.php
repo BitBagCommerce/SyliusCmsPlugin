@@ -50,8 +50,8 @@ final class MediaUploader implements MediaUploaderInterface
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
 
-        if( false !== strpos($media->getMimeType(),'image') ) {
-            list($width, $height) = getimagesize($media->getFile()->getPathname());
+        if (false !== strpos($media->getMimeType(), 'image')) {
+            [$width, $height] = getimagesize($media->getFile()->getPathname());
             $media->setWidth($width);
             $media->setHeight($height);
         }

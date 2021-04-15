@@ -40,7 +40,6 @@ final class PageController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $page);
 
-
         if ($configuration->isHtmlRequest()) {
             return $this->render($configuration->getTemplate(ResourceActions::SHOW . '.html'), [
                 'configuration' => $configuration,

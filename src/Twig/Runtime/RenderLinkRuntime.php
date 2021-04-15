@@ -63,7 +63,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
     ): string {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
         if (!$page) {
-            return isset($options['notFoundMessage']) ? $options['notFoundMessage'] : '';
+            return $options['notFoundMessage'] ?? '';
         }
 
         return $this->router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $page->getSlug()]);

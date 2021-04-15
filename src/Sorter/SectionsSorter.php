@@ -32,6 +32,7 @@ final class SectionsSorter implements SectionsSorterInterface
                 $result[$sectionCode][] = $page;
             }
         }
+
         return $result;
     }
 }

@@ -21,7 +21,8 @@ final class RenderMediaExtension extends AbstractExtension
     /** @var RenderMediaRuntimeInterface */
     private $mediaRuntime;
 
-    public function __construct(RenderMediaRuntimeInterface $mediaRuntime){
+    public function __construct(RenderMediaRuntimeInterface $mediaRuntime)
+    {
         $this->mediaRuntime = $mediaRuntime;
     }
 

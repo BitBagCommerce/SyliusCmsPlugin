@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class BlockController extends ResourceController
 {
-    const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+    public const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function renderBlockAction(Request $request): Response
     {
@@ -44,6 +44,7 @@ final class BlockController extends ResourceController
         }
 
         $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
+
         return $this->render($template, [
             'configuration' => $configuration,
             'metadata' => $this->metadata,

@@ -28,7 +28,9 @@ interface MediaInterface extends
     ContentableInterface
 {
     public const IMAGE_TYPE = 'image';
+
     public const VIDEO_TYPE = 'video';
+
     public const FILE_TYPE = 'file';
 
     public const DEFAULT_DOWNLOAD_NAME = 'media';

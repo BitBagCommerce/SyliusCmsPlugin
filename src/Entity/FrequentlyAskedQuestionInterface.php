@@ -27,9 +27,6 @@ interface FrequentlyAskedQuestionInterface extends
 
     public function setCode(?string $code): void;
 
-    /**
-     * @return int|null
-     */
     public function getPosition(): ?int;
 
     public function setPosition(?int $position): void;
