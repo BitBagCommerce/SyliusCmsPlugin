@@ -31,7 +31,7 @@ final class BlockTranslationType extends AbstractResourceType
                 'required' => false,
             ])
             ->add('content', WysiwygType::class, [
-                'required' => false
+                'required' => false,
             ])
         ;
     }

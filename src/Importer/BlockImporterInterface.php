@@ -14,11 +14,17 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 
 interface BlockImporterInterface extends ImporterInterface
 {
-    const CODE_COLUMN = 'code';
-    const SECTIONS_COLUMN = 'sections';
-    const CHANNELS_COLUMN = 'channels';
-    const PRODUCTS_COLUMN = 'products';
-    const NAME_COLUMN = 'name__locale__';
-    const CONTENT_COLUMN = 'content__locale__';
-    const LINK_COLUMN = 'link__locale__';
+    public const CODE_COLUMN = 'code';
+
+    public const SECTIONS_COLUMN = 'sections';
+
+    public const CHANNELS_COLUMN = 'channels';
+
+    public const PRODUCTS_COLUMN = 'products';
+
+    public const NAME_COLUMN = 'name__locale__';
+
+    public const CONTENT_COLUMN = 'content__locale__';
+
+    public const LINK_COLUMN = 'link__locale__';
 }

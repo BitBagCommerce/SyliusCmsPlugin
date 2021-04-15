@@ -41,7 +41,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
 
-    /** @var ProductRepositoryInterface  */
+    /** @var ProductRepositoryInterface */
     private $productRepository;
 
     /** @var ChannelContextInterface */
@@ -58,7 +58,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
     /** @var ChannelsAssignerInterface */
     private $channelAssigner;
-
 
     public function __construct(
         FactoryInterface $pageFactory,

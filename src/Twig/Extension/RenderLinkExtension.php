@@ -19,7 +19,7 @@ class RenderLinkExtension extends AbstractExtension
         return [
             new TwigFunction('bitbag_cms_render_link_for_code', [RenderLinkRuntime::class, 'renderLinkForCode'], [
                 'needs_environment' => true,
-                'is_safe' => ['html']
+                'is_safe' => ['html'],
             ]),
             new TwigFunction('bitbag_cms_get_link_for_code', [RenderLinkRuntime::class, 'getLinkForCode']),
         ];

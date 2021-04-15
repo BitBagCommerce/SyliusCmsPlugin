@@ -42,9 +42,7 @@ final class ImportDataAction
     /** @var TranslatorInterface */
     private $translator;
 
-    /**
-     * @var Environment
-     */
+    /** @var Environment */
     private $twig;
 
     public function __construct(
@@ -55,7 +53,6 @@ final class ImportDataAction
         TranslatorInterface $translator,
         Environment $twig
     ) {
-
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
         $this->flashBag = $flashBag;
@@ -72,7 +69,6 @@ final class ImportDataAction
         $form->handleRequest($request);
 
         if ($request->isMethod('POST') && $form->isSubmitted()) {
-
             if ($form->isValid()) {
                 /** @var UploadedFile $file */
                 $file = $form->get('file')->getData();

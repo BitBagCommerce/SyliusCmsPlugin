@@ -21,7 +21,8 @@ final class RenderBlockExtension extends AbstractExtension
     /** @var RenderBlockRuntimeInterface */
     private $blockRuntime;
 
-    public function __construct(RenderBlockRuntimeInterface $blockRuntime){
+    public function __construct(RenderBlockRuntimeInterface $blockRuntime)
+    {
         $this->blockRuntime = $blockRuntime;
     }
 
