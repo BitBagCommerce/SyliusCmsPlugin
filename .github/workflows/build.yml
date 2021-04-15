@@ -68,7 +68,7 @@ jobs:
       -
         name: Install certificates
         run: symfony server:ca:install
-
+        
       -
         name: Run Chrome Headless
         run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --disable-web-security --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1 > /dev/null 2>&1 &
