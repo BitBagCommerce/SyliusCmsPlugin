@@ -43,13 +43,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        $this->getSession()->executeScript("
-                var element = document.getElementById('Content');
-                element.style.opacity = 1;
-                element.style.visibility = 'visible'
-            ");
-        $this->getSession()->wait(2000);
-
         $this->getDocument()->fillField('Content', $content);
     }
 
