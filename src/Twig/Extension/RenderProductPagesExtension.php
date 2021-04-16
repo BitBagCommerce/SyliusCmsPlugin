@@ -12,48 +12,32 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class RenderProductPagesExtension extends \Twig_Extension
+final class RenderProductPagesExtension extends AbstractExtension
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var EngineInterface */
-    private $templatingEngine;
-
-    public function __construct(
-        PageRepositoryInterface $pageRepository,
-        ChannelContextInterface $channelContext,
-        EngineInterface $templatingEngine
-    ) {
-        $this->pageRepository = $pageRepository;
-        $this->channelContext = $channelContext;
-        $this->templatingEngine = $templatingEngine;
-    }
-
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_product_pages', [$this, 'renderProductPages'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_product_pages', [RenderProductPagesRuntime::class, 'renderProductPages'], ['is_safe' => ['html']]),
         ];
     }
 
-    public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
+    public function renderProductPages(ProductInterface $product, ?string $sectionCode = null, ?string $date = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
 
+        $parsedDate = null;
+        if (!empty($date)) {
+            $parsedDate = new \DateTimeImmutable($date);
+        }
+
         if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode);
+            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
         } else {
-            $pages = $this->pageRepository->findByProduct($product, $channelCode);
+            $pages = $this->pageRepository->findByProduct($product, $channelCode, $parsedDate);
         }
 
         $data = $this->sortBySections($pages);

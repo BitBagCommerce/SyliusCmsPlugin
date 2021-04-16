@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class BlockController extends ResourceController
 {
-    const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+    public const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function renderBlockAction(Request $request): Response
     {
@@ -39,23 +39,18 @@ final class BlockController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
-        $view = View::create($block);
-        $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
-
-        if ($configuration->isHtmlRequest()) {
-            $view
-                ->setTemplate($template)
-                ->setTemplateVar($this->metadata->getName())
-                ->setData([
-                    'configuration' => $configuration,
-                    'metadata' => $this->metadata,
-                    'resource' => $block,
-                    $this->metadata->getName() => $block,
-                ])
-            ;
+        if (!$configuration->isHtmlRequest()) {
+            return $this->viewHandler->handle($configuration, View::create($block));
         }
 
-        return $this->viewHandler->handle($configuration, $view);
+        $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
+
+        return $this->render($template, [
+            'configuration' => $configuration,
+            'metadata' => $this->metadata,
+            'resource' => $block,
+            $this->metadata->getName() => $block,
+        ]);
     }
 
     public function previewAction(Request $request): Response
@@ -76,15 +71,14 @@ final class BlockController extends ResourceController
         $block->setFallbackLocale($request->get('_locale', $defaultLocale));
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
-        $view = View::create()
-            ->setData([
-                'resource' => $block,
-                $this->metadata->getName() => $block,
-                'blockTemplate' => self::BLOCK_TEMPLATE,
-            ])
-            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
-        ;
+        if (!$configuration->isHtmlRequest()) {
+            return $this->viewHandler->handle($configuration, View::create($block));
+        }
 
-        return $this->viewHandler->handle($configuration, $view);
+        return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
+            'resource' => $block,
+            $this->metadata->getName() => $block,
+            'blockTemplate' => self::BLOCK_TEMPLATE,
+        ]);
     }
 }

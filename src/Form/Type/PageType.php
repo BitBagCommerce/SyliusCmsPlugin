@@ -18,6 +18,7 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -50,6 +51,13 @@ final class PageType extends AbstractResourceType
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
+            ])
+            ->add('publishAt', DateTimeType::class, [
+                'input' => 'datetime_immutable',
+                'label' => 'bitbag_sylius_cms_plugin.ui.publish_at',
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'required' => false,
             ])
         ;
     }

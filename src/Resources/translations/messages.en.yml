@@ -13,6 +13,7 @@ bitbag_sylius_cms_plugin:
         taxons: Taxons
         page_related_products: Page related products
         name: Name
+        path: Path
         slug: Slug
         meta_keywords: Meta keywords
         meta_description: Meta description
@@ -42,6 +43,7 @@ bitbag_sylius_cms_plugin:
         media_subheader: Manage digital assets
         type: Type
         file: File
+        video: Video
         alt: Alt
         description: Description
         file_provider: File
@@ -54,3 +56,6 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Data has been imported.
         form_was_submitted_with_errors: "The form was submitted with following errors:"
         title: Title
+        empty_name: Empty name
+        publish_at: Publish at
+        page_will_be_publish_at: This page will be publish at

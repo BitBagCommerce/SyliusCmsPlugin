@@ -13,16 +13,17 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageImage;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
@@ -40,8 +41,11 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
     /** @var ImageDownloaderInterface */
     private $imageDownloader;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
+    /** @var FactoryInterface */
+    private $mediaFactory;
+
+    /** @var MediaProviderResolverInterface */
+    private $mediaProviderResolver;
 
     /** @var ImporterSectionsResolverInterface */
     private $importerSectionsResolver;
@@ -60,7 +64,8 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         ResourceResolverInterface $sectionResolver,
         LocaleContextInterface $localeContext,
         ImageDownloaderInterface $imageDownloader,
-        ImageUploaderInterface $imageUploader,
+        FactoryInterface $mediaFactory,
+        MediaProviderResolverInterface $mediaProviderResolver,
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
@@ -73,7 +78,8 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $this->sectionResolver = $sectionResolver;
         $this->localeContext = $localeContext;
         $this->imageDownloader = $imageDownloader;
-        $this->imageUploader = $imageUploader;
+        $this->mediaFactory = $mediaFactory;
+        $this->mediaProviderResolver = $mediaProviderResolver;
         $this->importerSectionsResolver = $importerSectionsResolver;
         $this->importerChannelsResolver = $importerChannelsResolver;
         $this->importerProductsResolver = $importerProductsResolver;
@@ -127,21 +133,18 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
     private function resolveImage(PageInterface $page, string $url, string $locale): void
     {
-        /** @var PageTranslationInterface $pageTranslation */
-        $pageTranslation = $page->getTranslation($locale);
         $downloadedImage = $this->imageDownloader->download($url);
 
-        if (null !== $pageImage = $pageTranslation->getImage()) {
-            $this->imageUploader->remove($pageTranslation->getImage()->getPath());
-        } else {
-            $pageImage = new PageImage();
-        }
+        /** @var MediaInterface $image */
+        $image = $this->mediaFactory->createNew();
+        $image->setFile($downloadedImage);
 
-        $pageImage->setFile($downloadedImage);
-        $pageImage->setOwner($pageTranslation);
+        /** @var PageTranslationInterface $pageTranslation */
+        $pageTranslation = $page->getTranslation($locale);
+        $pageTranslation->setImage($image);
 
-        $this->imageUploader->upload($pageImage);
-        $this->entityManager->persist($pageImage);
+        $this->mediaProviderResolver->resolveProvider($image)->upload($image);
+        $this->entityManager->persist($image);
     }
 
     private function getTranslatableColumns(): array

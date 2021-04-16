@@ -1,7 +1,9 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
+{% set published = (page.publishAt is not null and page.publishAt|date("Y-m-d H:i:s") < "now"|date("Y-m-d H:i:s") or page.publishAt is null) %}
+
 {%- block title -%}
-    {% if page.title is not empty %}
+    {% if page.title is not empty and published == true  %}
         {{ page.title }}
     {% else %}
         {{ parent() }}
@@ -9,47 +11,51 @@
 {%- endblock -%}
 
 {% block metatags %}
-    {% if page.metaKeywords is not empty %}
-        <meta name="keywords" content="{{ page.metaKeywords }}"/>
-    {% endif %}
-    {% if page.metaDescription is not empty %}
-        <meta name="description" content="{{ page.metaDescription }}"/>
+    {% if published == true %}
+        {% if page.metaKeywords is not empty %}
+            <meta name="keywords" content="{{ page.metaKeywords }}"/>
+        {% endif %}
+        {% if page.metaDescription is not empty %}
+            <meta name="description" content="{{ page.metaDescription }}"/>
+        {% endif %}
     {% endif %}
 {% endblock %}
-
 {% block content %}
-    <div class="ui breadcrumb">
-        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
-        <div class="divider"> /</div>
-        <div class="active section">{{ page.breadcrumb }}</div>
-    </div>
-    <div class="ui segment">
-        <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
+    {% if published == true %}
+        <div class="ui breadcrumb">
+            <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+            <div class="divider"> /</div>
+            <div class="active section">{{ page.breadcrumb }}</div>
+        </div>
+        <div class="ui segment">
+            <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
 
-        <div class="ui grid center aligned">
-            <div class="eight wide column">
-                {% if page.image %}
-                    {% set path = preview is defined and preview == true ? page.image.path : '/media/image/'~page.image.path %}
+            <div class="ui grid center aligned">
+                <div class="eight wide column">
+                    {% if page.image %}
+                        <img class="page-image ui fluid image" src="{{ page.image.path }}" alt="">
+                    {% endif %}
+                </div>
+            </div>
 
-                    <img class="page-image ui fluid image" src="{{ path }}" alt="">
-                {% endif %}
+            <div class="ui hidden divider"></div>
+
+            <div class="bitbag-page-content">{{ bitbag_cms_render_content(page) }}</div>
+            <div class="ui dividing header"></div>
+            <div class="bitbag-page-sections">
+                {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
             </div>
         </div>
-
-        <div class="ui hidden divider"></div>
-
-        <div class="bitbag-page-content">{{ bitbag_cms_render_content(page) }}</div>
-        <div class="ui dividing header"></div>
-        <div class="bitbag-page-sections">
-            {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
-        </div>
-    </div>
-    {% if page.products|length > 0 %}
-        <h2>
-            {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
-        </h2>
-        <div class="bitbag-page-products">
-            {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
-        </div>
+        {% if page.products|length > 0 %}
+            <h2>
+                {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
+            </h2>
+            <div class="bitbag-page-products">
+                {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
+            </div>
+        {% endif %}
+    {% else %}
+        {% include '@BitBagSyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
     {% endif %}
+
 {% endblock %}

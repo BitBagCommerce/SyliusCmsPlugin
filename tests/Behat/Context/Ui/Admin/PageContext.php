@@ -335,11 +335,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @When I upload the :image image
+     * @When I choose :code media as image
      */
-    public function iUploadTheImage(string $image): void
+    public function iChooseMediaAsImage(string $code): void
     {
-        $this->resolveCurrentPage()->uploadImage($image);
+        $this->resolveCurrentPage()->chooseImage($code);
     }
 
     /**
