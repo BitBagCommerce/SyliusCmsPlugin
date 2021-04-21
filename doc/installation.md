@@ -71,6 +71,15 @@ return [
 ];
 ```
 
+you will probably need to change the extension of the imported file in 
+
+```yaml
+# config/packages/sitemap_plugin.yaml
+
+    imports:
+        - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
+```
+
 Finish the installation by updating the database schema and installing assets:
 ```
 $ bin/console doctrine:migrations:diff
