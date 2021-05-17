@@ -8,6 +8,7 @@ sylius_resource:
                 form: BitBag\SyliusCmsPlugin\Form\Type\BlockType
                 repository: BitBag\SyliusCmsPlugin\Repository\BlockRepository
                 controller: BitBag\SyliusCmsPlugin\Controller\BlockController
+                factory: Sylius\Component\Resource\Factory\TranslatableFactory
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\BlockTranslation

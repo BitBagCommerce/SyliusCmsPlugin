@@ -7,6 +7,7 @@ sylius_resource:
                 interface: BitBag\SyliusCmsPlugin\Entity\SectionInterface
                 form: BitBag\SyliusCmsPlugin\Form\Type\SectionType
                 repository: BitBag\SyliusCmsPlugin\Repository\SectionRepository
+                factory: Sylius\Component\Resource\Factory\TranslatableFactory
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\SectionTranslation
