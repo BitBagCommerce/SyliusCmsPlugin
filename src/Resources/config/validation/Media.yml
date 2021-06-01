@@ -4,6 +4,11 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             fields: [code]
             groups: ['bitbag']
             message: 'bitbag_sylius_cms_plugin.media.code.unique'
+        - BitBag\SyliusCmsPlugin\Validator\Constraint\FileMatchesType:
+              groups: [ 'bitbag' ]
+              messageImage: 'bitbag_sylius_cms_plugin.media.file.type_image'
+              messageVideo: 'bitbag_sylius_cms_plugin.media.file.type_video'
+              field: 'type'
     properties:
         code:
             - NotBlank:

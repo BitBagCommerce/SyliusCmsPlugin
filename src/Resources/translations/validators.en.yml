@@ -79,6 +79,8 @@ bitbag_sylius_cms_plugin:
             regex: Media code can only be comprised of letters, numbers, dashes and underscores.
         file:
             not_blank: File cannot be blank.
+            type_image: Uploaded file cannot be marked as image.
+            type_video: Uploaded file cannot be marked as video.
         name:
             not_blank: Name cannot be blank.
             min_length: Name must be at least {{ limit }} characters long.

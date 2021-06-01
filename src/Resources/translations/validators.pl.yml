@@ -62,3 +62,7 @@ bitbag_sylius_cms_plugin:
             not_blank: Name cannot be blank.
             min_length: Name must be at least {{ limit }} characters long.
             max_length: Name can not be longer than {{ limit }} characters.
+    media:
+        file:
+            type_image: Przesłanego pliku nie można oznaczyć jako obraz.
+            type_video: Przesłanego pliku nie można oznaczyć jako wideo.
