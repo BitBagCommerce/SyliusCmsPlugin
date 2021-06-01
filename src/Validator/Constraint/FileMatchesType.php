@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Validator;
+namespace BitBag\SyliusCmsPlugin\Validator\Constraint;
 
+use BitBag\SyliusCmsPlugin\Validator\FileMatchesTypeValidator;
 use Symfony\Component\Validator\Constraint;
 
 
@@ -15,8 +16,13 @@ final class FileMatchesType extends Constraint
 
     public $field;
 
-    public function getTargets()
+    public function getTargets(): string
     {
         return self::CLASS_CONSTRAINT;
+    }
+
+    public function validatedBy(): string
+    {
+        return FileMatchesTypeValidator::class;
     }
 }
