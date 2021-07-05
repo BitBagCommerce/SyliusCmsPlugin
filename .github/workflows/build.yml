@@ -1,23 +1,29 @@
 name: Build
 
 on:
-  push: ~
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request: ~
   release:
     types: [created]
   schedule:
     -
       cron: "0 1 * * 6" # Run at 1am every Saturday
+  workflow_dispatch: ~
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
-    name: "PHP ${{ matrix.php }}, MySQL ${{ matrix.mysql }}"
+    name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
 
     strategy:
       fail-fast: false
       matrix:
-        php: [7.4, 7.3]
+        php: [7.4]
+        symfony: [^4.4, ^5.2]
+        sylius: [~1.10.0]
         node: [10.x]
         mysql: [5.7, 8.0]
 
@@ -39,8 +45,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "${{ matrix.php }}"
-          ini-values: date.timezone=Europe/Warsaw, opcache.enable=1, opcache.enable_cli=1, opcache.memory_consumption=256, opcache.max_accelerated_files=32531, opcache.interned_strings_buffer=8, opcache.validate_timestamps=0, opcache.save_comments=1, opcache.fast_shutdown=0
-          extensions: intl, gd, opcache, mysql, pdo_mysql, :xdebug
+          extensions: intl
           tools: symfony
           coverage: none
 
@@ -62,6 +67,20 @@ jobs:
           mysql root password: "root"
 
       -
+        name: Configure sysctl limits
+        run: |
+          sudo swapoff -a
+          sudo sysctl -w vm.swappiness=1
+          sudo sysctl -w fs.file-max=262144
+          sudo sysctl -w vm.max_map_count=262144
+
+      -
+        name: Runs Elasticsearch
+        uses: elastic/elastic-github-actions/elasticsearch@master
+        with:
+          stack-version: 6.8.15
+
+      -
         name: Output PHP version for Symfony CLI
         run: php -v | head -n 1 | awk '{ print $2 }' > .php-version
 
@@ -71,7 +90,7 @@ jobs:
 
       -
         name: Run Chrome Headless
-        run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --disable-web-security --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1 > /dev/null 2>&1 &
+        run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1 > /dev/null 2>&1 &
 
       -
         name: Run webserver
@@ -90,6 +109,19 @@ jobs:
           key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-${{ matrix.php }}-composer-
+
+      -
+        name: Restrict Symfony version
+        if: matrix.symfony != ''
+        run: |
+          composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
+          composer config extra.symfony.require "${{ matrix.symfony }}"
+
+      -
+        name: Restrict Sylius version
+        if: matrix.sylius != ''
+        run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
+
       -
         name: Install PHP dependencies
         run: composer install --no-interaction
@@ -107,6 +139,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json **/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-${{ matrix.node }}-yarn-
+
       -
         name: Install JS dependencies
         run: (cd tests/Application && yarn install)
@@ -122,6 +155,7 @@ jobs:
         run: |
           (cd tests/Application && bin/console assets:install public -vvv)
           (cd tests/Application && yarn build)
+
       -
         name: Prepare test application cache
         run: (cd tests/Application && bin/console cache:warmup -vvv)
@@ -138,13 +172,17 @@ jobs:
         name: Validate database schema
         run: (cd tests/Application && bin/console doctrine:schema:validate)
 
+      #            -
+      #                name: Run PHPStan
+      #                run: vendor/bin/phpstan analyse -c phpstan.neon -l max src/
+
+      #            -
+      #                name: Run Psalm
+      #                run: vendor/bin/psalm
+
       -
         name: Run PHPSpec
         run: vendor/bin/phpspec run --ansi -f progress --no-interaction
-
-      -
-        name: Run PHPUnit
-        run: vendor/bin/phpunit --colors=always
 
       -
         name: Run Behat
