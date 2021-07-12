@@ -20,8 +20,9 @@
             data-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
         >
             {{- form_widget(form, {'attr': {'class' : 'autocomplete'}}) -}}
+            <span class="js-image-delete btn-delete is-hidden">X</span>
             <i class="dropdown icon"></i>
-            <div class="default text">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
+            <div class="default text js-selected-image">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
             <div class="menu"></div>
         </div>
         {{- form_errors(form) -}}
