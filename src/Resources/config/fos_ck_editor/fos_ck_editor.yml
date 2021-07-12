@@ -3,6 +3,9 @@ fos_ck_editor:
     configs:
         bitbag_sylius_cms_plugin:
             toolbar: bitbag_sylius_cms_plugin
+            enterMode: 3
+            shiftEnterMode: 1
+            forcePasteAsPlainText: 'allow-word'
             extraPlugins:
                 - 'media'
     plugins:

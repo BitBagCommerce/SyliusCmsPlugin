@@ -42,7 +42,10 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
           choiceValue = _el$dataset.choiceValue,
           loadEditUrl = _el$dataset.loadEditUrl,
           nameMessage = _el$dataset.nameMessage;
-        var autocompleteValue = element.find("input.autocomplete").val();
+        var imageDelete = element.find(".js-image-delete"),
+          selectedImage = element.find(".js-selected-image"),
+          autocompleteInput = element.find("input.autocomplete");
+        var autocompleteValue = autocompleteInput.val();
         var autocompleteTextValues = autocompleteValue
           .split(",")
           .filter(String);
@@ -52,13 +55,16 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
         ) {
           var values =
             arguments.length > 1 && arguments[1] !== undefined ?
-            arguments[1] : [];
+              arguments[1] : [];
           element.dropdown({
             delay: {
               search: 250
             },
             values: values,
             forceSelection: false,
+            onChange: function () {
+              imageDelete.removeClass("is-hidden");
+            },
             apiSettings: {
               dataType: "JSON",
               cache: false,
@@ -120,6 +126,18 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
         } else {
           createDropdownFromElement(element);
         }
+
+        if (imageDelete.length) {
+          if (autocompleteTextValues.length) {
+            imageDelete.removeClass("is-hidden");
+          }
+          imageDelete.on("click", () => {
+            imageDelete.addClass("is-hidden");
+            autocompleteInput.val("");
+            selectedImage.html("");
+          });
+        }
+
       });
     }
   });
@@ -130,4 +148,3 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
     return $(".bitbag-media-autocomplete").mediaAutoComplete();
   });
 })($);
-
