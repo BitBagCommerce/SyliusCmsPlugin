@@ -21,17 +21,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.4]
-        symfony: [^4.4]
-        sylius: [~1.8.0, ~1.9.0, ~1.10.0]
-        node: [10.x]
-        mysql: [5.7]
+        php: ["8.0", "7.4"]
+        symfony: ["^4.4", "^5.2"]
+        sylius: ["~1.9.0", "~1.10.0"]
+        node: ["10.x"]
+        mysql: ["8.0"]
 
         exclude:
-          # sylius 1.8 exluded because in code exist stricted properties types
-          -
-            sylius: ~1.8.0
-            php: 7.4
+          - sylius: ~1.9.0
+            php: 8.0
+
+          - sylius: ~1.10.0
+            symfony: 4.4
 
     env:
       APP_ENV: test
@@ -148,6 +149,10 @@ jobs:
         run: (cd tests/Application && bin/console cache:warmup -vvv)
 
       -
+        name: Load fixtures in test application
+        run: (cd tests/Application && bin/console sylius:fixtures:load -n)
+
+      -
         name: Validate composer.json
         run: composer validate --ansi --strict
 
@@ -160,5 +165,14 @@ jobs:
         run: vendor/bin/phpspec run --ansi -f progress --no-interaction
 
       -
-        name: Run PHPUnit
-        run: vendor/bin/phpunit --colors=always
+        name: Run Behat
+        run: vendor/bin/behat --colors --strict -vvv --no-interaction || vendor/bin/behat --colors --strict -vvv --no-interaction --rerun
+
+      -
+        name: Upload Behat logs
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: Behat logs
+          path: etc/build/
+          if-no-files-found: ignore
