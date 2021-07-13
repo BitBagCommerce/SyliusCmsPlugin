@@ -42,6 +42,9 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
           choiceValue = _el$dataset.choiceValue,
           loadEditUrl = _el$dataset.loadEditUrl,
           nameMessage = _el$dataset.nameMessage;
+        var imageDelete = element.find(".js-image-delete"),
+          selectedImage = element.find(".js-selected-image"),
+          autocompleteInput = element.find("input.autocomplete");
         var autocompleteValue = element.find("input.autocomplete").val();
         var autocompleteTextValues = autocompleteValue
           .split(",")
@@ -59,6 +62,9 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
             },
             values: values,
             forceSelection: false,
+            onChange: function () {
+              imageDelete.removeClass("is-hidden");
+            },
             apiSettings: {
               dataType: "JSON",
               cache: false,
@@ -120,6 +126,18 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
         } else {
           createDropdownFromElement(element);
         }
+
+        if (imageDelete.length) {
+          if (autocompleteTextValues.length) {
+            imageDelete.removeClass("is-hidden");
+          }
+          imageDelete.on("click", () => {
+            imageDelete.addClass("is-hidden");
+            autocompleteInput.val("");
+            selectedImage.html("");
+          });
+        }
+
       });
     }
   });
