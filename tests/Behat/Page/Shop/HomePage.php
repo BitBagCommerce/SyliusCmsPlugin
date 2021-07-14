@@ -30,7 +30,7 @@ class HomePage extends BaseHomePage implements HomePageInterface
     {
         return array_merge(parent::getDefinedElements(), [
             'image_block' => '.bitbag-image-block',
-            'content' => '.bitbag-block p',
+            'content' => '.bitbag-block',
         ]);
     }
 }
