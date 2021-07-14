@@ -127,6 +127,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $pageTranslation->setLocale($localeCode);
             $pageTranslation->setSlug($slug);
             $pageTranslation->setName($translation['name']);
+            $pageTranslation->setNameWhenLinked($translation['name_when_linked']);
+            $pageTranslation->setDescriptionWhenLinked($translation['description_when_linked']);
             $pageTranslation->setMetaKeywords($translation['meta_keywords']);
             $pageTranslation->setMetaDescription($translation['meta_description']);
             $pageTranslation->setContent($translation['content']);
