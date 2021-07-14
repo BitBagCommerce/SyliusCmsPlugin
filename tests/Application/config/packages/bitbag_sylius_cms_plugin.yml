@@ -102,6 +102,18 @@ sylius_fixtures:
                                                 <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                                             </ul>
                                             <p>Pellentesque habitant morbi tristique sene</p>
+                            taxons_and_products_block:
+                                channels:
+                                - "FASHION_WEB"
+                                productCodes:
+                                - "666F_boyfriend_jeans_with_rips"
+                                - "727F_patched_cropped_jeans"
+                                - "111F_patched_jeans_with_fancy_badges"
+                                taxons:
+                                - "womens_jeans"
+                                translations:
+                                    en_US:
+                                        name: "Womens jeans"
                 media:
                     options:
                         custom:
@@ -156,6 +168,15 @@ sylius_fixtures:
                                 path: "%fixtures_dir%/sale.jpeg"
                                 sections:
                                 - "products"
+                            media_with_products:
+                                type: image
+                                path: "%fixtures_dir%/homepage_header.jpeg"
+                                channels:
+                                    - "FASHION_WEB"
+                                productCodes:
+                                    - "666F_boyfriend_jeans_with_rips"
+                                    - "727F_patched_cropped_jeans"
+                                    - "111F_patched_jeans_with_fancy_badges"
                 page:
                     options:
                         custom:
