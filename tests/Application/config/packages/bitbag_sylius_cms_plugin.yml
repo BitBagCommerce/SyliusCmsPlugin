@@ -38,6 +38,8 @@ sylius_fixtures:
                     options:
                         custom:
                             homepage_products_info:
+                                channels:
+                                - "FASHION_WEB"
                                 translations:
                                     en_US:
                                         content: |
@@ -45,6 +47,8 @@ sylius_fixtures:
                                                 <i class="em em-arrow_down"></i> Click one of the below products to see what you can do with the blocks in your product view! <i class="em em-arrow_down"></i>
                                             </div>
                             section_info_block:
+                                channels:
+                                - "FASHION_WEB"
                                 sections:
                                 - "products"
                                 translations:
@@ -57,6 +61,8 @@ sylius_fixtures:
                                             <p>It's done with a simple controller render:</p>
                                             <pre>{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
                             product_info_block:
+                                channels:
+                                - "FASHION_WEB"
                                 products: 5
                                 translations:
                                     en_US:
@@ -66,6 +72,8 @@ sylius_fixtures:
                                             <p>The way you render it is similar to the one from above example:</p>
                                             <pre>{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}</pre>
                             homepage_intro:
+                                channels:
+                                - "FASHION_WEB"
                                 translations:
                                     en_US:
                                         content: |
@@ -89,6 +97,8 @@ sylius_fixtures:
                                             bitbag_cms_render_block('homepage_banner_image_2')
                                             </pre>
                             lorem_ipsum:
+                                channels:
+                                - "FASHION_WEB"
                                 sections:
                                 - "homepage"
                                 translations:
@@ -120,6 +130,8 @@ sylius_fixtures:
                             homepage_header_image:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
+                                channels:
+                                - "FASHION_WEB"
                                 translations:
                                     en_US:
                                         name: |
@@ -135,6 +147,8 @@ sylius_fixtures:
                             homepage_video:
                                 type: video
                                 path: "%fixtures_dir%/homepage_video.mp4"
+                                channels:
+                                - "FASHION_WEB"
                                 translations:
                                     en_US:
                                         name: |
@@ -150,6 +164,8 @@ sylius_fixtures:
                             homepage_pdf:
                                 type: file
                                 path: "%fixtures_dir%/BitBagOffer.pdf"
+                                channels:
+                                - "FASHION_WEB"
                                 translations:
                                     en_US:
                                         name: Homepage PDF media
@@ -161,9 +177,13 @@ sylius_fixtures:
                                                 Check it out! <i class="em em-slightly_smiling_face"></i>
                                             </p>
                             size_table:
+                                channels:
+                                - "FASHION_WEB"
                                 type: image
                                 path: "%fixtures_dir%/size_table.jpeg"
                             sale:
+                                channels:
+                                - "FASHION_WEB"
                                 type: image
                                 path: "%fixtures_dir%/sale.jpeg"
                                 sections:
@@ -181,13 +201,17 @@ sylius_fixtures:
                     options:
                         custom:
                             lorem_ipsum:
-                                number: 15
+                                channels:
+                                - "FASHION_WEB"
+                                number: 14
                                 products: 5
                                 sections:
                                 - "blog"
                                 translations:
                                     en_US:
                                         name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias?"
+                                        name_when_linked: "Lorem ipsum dolor"
+                                        description_when_linked: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
                                         image_path: "%fixtures_dir%/homepage_header.jpeg"
                                         content: |
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Verba tu fingas et ea dicas, quae non sentias? Fortitudinis quaedam praecepta sunt ac paene leges, quae effeminari virum vetant in dolore. Propter nos enim illam, non propter eam nosmet ipsos diligimus. At ego quem huic anteponam non audeo dicere; </p>
@@ -206,6 +230,8 @@ sylius_fixtures:
                                             <p>Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet. </p>
                             about:
                                 products: 5
+                                channels:
+                                - "FASHION_WEB"
                                 sections:
                                 - "general"
                                 - "store"
@@ -213,6 +239,8 @@ sylius_fixtures:
                                     en_US:
                                         name: "About us"
                                         slug: "about"
+                                        name_when_linked: "Read more about us"
+                                        description_when_linked: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
                                         content: |
                                             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
                                             <ul>
@@ -226,6 +254,8 @@ sylius_fixtures:
                     options:
                         custom:
                             lorem_ipsum:
+                                channels:
+                                - "FASHION_WEB"
                                 number: 10
                                 translations:
                                     en_US:
