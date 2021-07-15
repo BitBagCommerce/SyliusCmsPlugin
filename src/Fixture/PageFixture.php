@@ -55,6 +55,8 @@ final class PageFixture extends AbstractFixture
                                     ->children()
                                         ->scalarNode('slug')->defaultNull()->end()
                                         ->scalarNode('name')->defaultNull()->end()
+                                        ->scalarNode('name_when_linked')->defaultNull()->end()
+                                        ->scalarNode('description_when_linked')->defaultNull()->end()
                                         ->scalarNode('image_path')->defaultNull()->end()
                                         ->scalarNode('meta_keywords')->defaultNull()->end()
                                         ->scalarNode('meta_description')->defaultNull()->end()

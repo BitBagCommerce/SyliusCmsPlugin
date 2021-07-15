@@ -1,8 +1,16 @@
 <div class="bitbag-block">
     {% if null != block.name %}
         <h2>{{ block.name }}</h2>
+        {% if null != block.taxons %}
+            {% for taxon in block.taxons %}
+                <p>Taxon: {{ taxon.slug }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if null != block.products %}
+            {% for product in block.products %}
+                <p>Product: {{ product }}</p>
+            {% endfor %}
+        {% endif %}
     {% endif %}
-    <p>
-        {{ bitbag_cms_render_content(block) }}
-    </p>
+    {{ bitbag_cms_render_content(block) }}
 </div>
