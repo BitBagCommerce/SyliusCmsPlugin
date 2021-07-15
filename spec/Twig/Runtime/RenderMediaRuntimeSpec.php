@@ -46,7 +46,7 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
         MediaInterface $media
     ): void {
         $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
-        $provider->render($media)->willReturn('content');
+        $provider->render($media, null)->willReturn('content');
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
 
         $this->renderMedia('bitbag')->shouldReturn('content');

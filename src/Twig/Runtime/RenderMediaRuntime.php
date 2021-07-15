@@ -31,7 +31,7 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
         $this->mediaResourceResolver = $mediaResourceResolver;
     }
 
-    public function renderMedia(string $code, string $template = null): string
+    public function renderMedia(string $code, ?string $template = null): string
     {
         $media = $this->mediaResourceResolver->findOrLog($code);
 
