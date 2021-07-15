@@ -20,6 +20,9 @@
                 <div class="ui fluid segment">
                     {{ bitbag_cms_render_block('homepage_intro') }}
                 </div>
+                <div class="ui fluid segment">
+                    {{ bitbag_cms_render_media('homepage_pdf') }}
+                </div>
             </div>
         </div>
         <div class="ui stackable two column grid">
@@ -30,7 +33,7 @@
             </div>
             <div class="column">
                 <div class="ui fluid segment">
-                    {{ bitbag_cms_render_media('homepage_pdf') }}
+                    {{ bitbag_cms_render_media('media_with_parameteres', "examples/media_custom_template.html.twig")}}
                 </div>
             </div>
         </div>

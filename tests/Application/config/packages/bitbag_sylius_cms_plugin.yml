@@ -192,11 +192,20 @@ sylius_fixtures:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
                                 channels:
-                                    - "FASHION_WEB"
+                                - "FASHION_WEB"
                                 productCodes:
-                                    - "666F_boyfriend_jeans_with_rips"
-                                    - "727F_patched_cropped_jeans"
-                                    - "111F_patched_jeans_with_fancy_badges"
+                                - "666F_boyfriend_jeans_with_rips"
+                                - "727F_patched_cropped_jeans"
+                                - "111F_patched_jeans_with_fancy_badges"
+                            media_with_parameteres:
+                                channels:
+                                - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/homepage_header.jpeg"
+                                translations:
+                                    en_US:
+                                        name: Custom media template
+                                        content: "This is a custom media template to edit for your needs or create a completely new one."
                 page:
                     options:
                         custom:
