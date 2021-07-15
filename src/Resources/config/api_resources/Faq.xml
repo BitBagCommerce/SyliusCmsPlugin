@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%" shortName="FrequentlyAskedQuestion">
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>shop:cms:read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="denormalizationContext">
+            <attribute name="groups">
+                <attribute>shop:cms:write</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="validation_groups">sylius</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="shop_get_media">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/faq</attribute>
+            </collectionOperation>
+
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="shop_get_wishlist">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/faq/{id}</attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" writable="false"/>
+        <property name="code" identifier="false" writable="false"/>
+        <property name="position" identifier="false" writable="false"/>
+        <property name="enabled" identifier="false" writable="false"/>
+        <property name="channels" identifier="false" writable="false"/>
+    </resource>
+</resources>
