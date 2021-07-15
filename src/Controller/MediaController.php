@@ -102,16 +102,12 @@ final class MediaController extends ResourceController
 
         $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
 
-        $view = View::create()
-            ->setData([
-                'resource' => $media,
-                $this->metadata->getName() => $media,
-                'mediaTemplate' => $mediaTemplate,
-            ])
-            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
-        ;
-
-        return $this->viewHandler->handle($configuration, $view);
+        return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
+            'metadata' => $this->metadata,
+            'resource' => $media,
+            'mediaTemplate' => $mediaTemplate,
+            $this->metadata->getName() => $media,
+        ]);
     }
 
     private function resolveFile(MediaInterface $media): void
