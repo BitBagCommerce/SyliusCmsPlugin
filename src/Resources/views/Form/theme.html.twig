@@ -19,9 +19,10 @@
             data-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
             data-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
         >
-            {{- form_widget(form, {'attr': {'class' : 'autocomplete'}}) -}}
+            {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
+            <span class="btn-delete is-hidden js-image-delete">X</span>
             <i class="dropdown icon"></i>
-            <div class="default text">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
+            <div class="default text js-selected-image">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
             <div class="menu"></div>
         </div>
         {{- form_errors(form) -}}

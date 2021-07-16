@@ -77,3 +77,25 @@
 .page-number {
     font-size: 1.4em!important;
 }
+
+.btn-delete {
+    position: absolute;
+    color: #DB2828;
+    right: 40px;
+    cursor: pointer;
+    z-index: 5;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-delete .is-hidden {
+    display: none;
+}
+
+.bitbag-media-autocomplete .dropdown.icon {
+    pointer-events: none;
+}
+
+.bitbag-media-autocomplete .search {
+    cursor: pointer!important;
+}
