@@ -1,0 +1,9 @@
+<h2 class="center aligned">{{ media.translation.name }}</h2>
+<img class="ui fluid image" src="{{ media.path }}" alt="{{ media.translation.alt }}"
+    {% if media.width is not null %} width="{{ media.width }}" {% endif %}
+    {% if media.height is not null %} height="{{ media.height }}" {% endif %}
+/>
+<p></p>
+<p>{{ media.translation.content }}</p>
+<p>You can find this template in:</p>
+<code>templates/examples/media_custom_template.html.twig</code>

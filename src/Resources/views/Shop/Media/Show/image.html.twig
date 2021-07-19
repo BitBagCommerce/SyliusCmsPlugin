@@ -1,8 +1,8 @@
 <h2>{{ media.name|raw }}</h2>
 
 <img class="ui fluid image" src="{{ media.path }}" alt="{{ media.name }}"
-    {% if media.width is not null %} width="{{ media.width }} {% endif %}"
-    {% if media.height is not null %} height="{{ media.height }} {% endif %}"
+    {% if media.width is not null %} width="{{ media.width }}" {% endif %}
+    {% if media.height is not null %} height="{{ media.height }}" {% endif %}
 />
 
 <p>{{ bitbag_cms_render_content(media) }}</p>
