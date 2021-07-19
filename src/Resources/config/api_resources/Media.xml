@@ -27,7 +27,7 @@
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="shop_get_wishlist">
+            <itemOperation name="shop_get_media">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/media/{id}</attribute>
             </itemOperation>

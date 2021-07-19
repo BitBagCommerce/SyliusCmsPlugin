@@ -19,7 +19,7 @@
         <attribute name="validation_groups">sylius</attribute>
 
         <collectionOperations>
-            <collectionOperation name="shop_get_media">
+            <collectionOperation name="shop_get_page">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/pages</attribute>
             </collectionOperation>
@@ -27,7 +27,7 @@
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="shop_get_wishlist">
+            <itemOperation name="shop_get_page">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/pages/{id}</attribute>
             </itemOperation>
