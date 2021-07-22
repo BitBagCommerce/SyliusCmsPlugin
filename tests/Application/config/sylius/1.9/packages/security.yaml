@@ -40,7 +40,7 @@ security:
                 csrf_token_id: admin_authenticate
             remember_me:
                 secret: "%env(APP_SECRET)%"
-                path: /admin
+                path: "/%sylius_admin.path_name%"
                 name: APP_ADMIN_REMEMBER_ME
                 lifetime: 31536000
                 remember_me_parameter: _remember_me

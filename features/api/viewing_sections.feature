@@ -16,6 +16,6 @@ Feature: Getting data from cms sections
         And I should see section with code "section-1"
 
     @api
-    Scenario: Display section
+    Scenario: Displaying section
         Given I view section with code "section-1"
         Then I should see section name

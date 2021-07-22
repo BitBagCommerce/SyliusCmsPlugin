@@ -16,7 +16,7 @@ Feature: Getting data from cms blocks
         And I should see block with code "block-1"
 
     @api
-    Scenario:
+    Scenario: Displaying block
         Given I view block with code "block-1"
         Then I should see block name
         And I should see block content

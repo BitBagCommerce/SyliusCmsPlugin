@@ -37,7 +37,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 
     public function findBySectionCode(string $sectionCode, ?string $localeCode): array
@@ -70,6 +70,6 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 }
