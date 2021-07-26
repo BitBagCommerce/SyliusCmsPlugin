@@ -28,7 +28,7 @@ final class SectionContext implements Context
     public function __construct(SectionRepositoryInterface $sectionRepository, string $locale = 'en_US')
     {
         $this->sectionRepository = $sectionRepository;
-        $this->locale            = $locale;
+        $this->locale = $locale;
     }
 
     /**
@@ -37,7 +37,7 @@ final class SectionContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :section
      */
-    public function getSectionByCode($sectionCode): SectionInterface
+    public function getSectionByCode(string $sectionCode): SectionInterface
     {
         $section = $this->sectionRepository->findOneByCode($sectionCode, $this->locale);
 

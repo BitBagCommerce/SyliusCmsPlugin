@@ -28,7 +28,7 @@ final class BlockContext implements Context
     public function __construct(BlockRepositoryInterface $blockRepository, string $locale = 'en_US')
     {
         $this->blockRepository = $blockRepository;
-        $this->locale          = $locale;
+        $this->locale = $locale;
     }
 
     /**
@@ -37,7 +37,7 @@ final class BlockContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :block
      */
-    public function getBlockByCode($blockCode): BlockInterface
+    public function getBlockByCode(string $blockCode): BlockInterface
     {
         $block = $this->blockRepository->findEnabledByCode($blockCode, $this->locale);
 

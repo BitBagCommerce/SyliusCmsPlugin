@@ -28,7 +28,7 @@ final class MediaContext implements Context
     public function __construct(MediaRepositoryInterface $mediaRepositoryInterface, string $locale = 'en_US')
     {
         $this->mediaRepositoryInterface = $mediaRepositoryInterface;
-        $this->locale                   = $locale;
+        $this->locale = $locale;
     }
 
     /**
@@ -37,7 +37,7 @@ final class MediaContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :media
      */
-    public function getMediaByCode($mediaCode): MediaInterface
+    public function getMediaByCode(string $mediaCode): MediaInterface
     {
         $media = $this->mediaRepositoryInterface->findOneEnabledByCode($mediaCode, $this->locale);
 

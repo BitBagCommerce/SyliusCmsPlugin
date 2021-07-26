@@ -43,18 +43,19 @@ final class PageContext implements Context
     /**
      * @Then /^I should see (\d+) page(?:s)? in the list$/
      */
-    public function iShouldSeePageInTheList($count): void
+    public function iShouldSeePageInTheList(int $count): void
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
-            $count
+            $count,
+            sprintf('There is no page with name "%s"', $count)
         );
     }
 
     /**
      * @Then /^I should see the "([^"]*)" page$/
      */
-    public function iShouldSeeThePage($page): void
+    public function iShouldSeeThePage(string $page): void
     {
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
@@ -78,7 +79,7 @@ final class PageContext implements Context
     /**
      * @Then /^I should see the page name "([^"]*)"$/
      */
-    public function iShouldSeeThePageName($name): void
+    public function iShouldSeeThePageName(string $name): void
     {
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
@@ -86,14 +87,15 @@ final class PageContext implements Context
                 'en_US',
                 'name',
                 $name
-            )
+            ),
+            sprintf('There is no page with name "%s"', $name)
         );
     }
 
     /**
      * @Then /^I should see the page content "([^"]*)"$/
      */
-    public function iShouldSeeThePageContent($content): void
+    public function iShouldSeeThePageContent(string $content): void
     {
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
@@ -101,7 +103,8 @@ final class PageContext implements Context
                 'en_US',
                 'content',
                 $content
-            )
+            ),
+            sprintf('There is no page with content "%s"', $content)
         );
     }
 }

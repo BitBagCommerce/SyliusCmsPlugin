@@ -34,7 +34,7 @@ final class FrequentlyAskedQuestionContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :faq
      */
-    public function getFAQByCode($faqCode): FrequentlyAskedQuestionInterface
+    public function getFAQByCode(string $faqCode): FrequentlyAskedQuestionInterface
     {
         $faq = $this->frequentlyAskedQuestionRepository->findOneEnabledByCode($faqCode);
 

@@ -43,7 +43,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @Then /^I should see (\d+) question(?:s)? in the list$/
      */
-    public function iShouldSeeQuestionsInTheList($count): void
+    public function iShouldSeeQuestionsInTheList(string $count): void
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
@@ -54,7 +54,7 @@ final class FrequentlyAskedQuestionContext implements Context
     /**
      * @Given /^I should see the "([^"]*)" question$/
      */
-    public function iShouldSeeTheQuestion($code): void
+    public function iShouldSeeTheQuestion(string $code): void
     {
         Assert::true(
             $this->responseChecker->hasItemWithValue(

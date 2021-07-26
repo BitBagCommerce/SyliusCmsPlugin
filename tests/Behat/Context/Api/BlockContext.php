@@ -42,7 +42,7 @@ final class BlockContext implements Context
     /**
      * @Then /^I should see (\d+) blocks in the list$/
      */
-    public function iShouldSeeBlocksInTheList($count): void
+    public function iShouldSeeBlocksInTheList(int $count): void
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
@@ -54,7 +54,7 @@ final class BlockContext implements Context
      * @Then I should see block with code :block
      * @Given I view block with code :block
      */
-    public function iShouldSeeBlockWithCode($code): void
+    public function iShouldSeeBlockWithCode(string $code): void
     {
         Assert::true(
             $this->responseChecker->hasItemWithValue(

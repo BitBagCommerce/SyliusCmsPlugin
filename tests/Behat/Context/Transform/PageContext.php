@@ -28,7 +28,7 @@ final class PageContext implements Context
     public function __construct(PageRepositoryInterface $pageRepository, string $locale = 'en_US')
     {
         $this->pageRepository = $pageRepository;
-        $this->locale         = $locale;
+        $this->locale = $locale;
     }
 
     /**
@@ -37,7 +37,7 @@ final class PageContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :page
      */
-    public function getPageByCode($pageCode): PageInterface
+    public function getPageByCode(string $pageCode): PageInterface
     {
         $page = $this->pageRepository->findOneEnabledByCode($pageCode, $this->locale);
 

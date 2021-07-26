@@ -43,7 +43,7 @@ final class MediaContext implements Context
     /**
      * @Then /^I should see (\d+) media in the list$/
      */
-    public function iShouldSeeMediaInTheList($count): void
+    public function iShouldSeeMediaInTheList(int $count): void
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
@@ -71,7 +71,7 @@ final class MediaContext implements Context
                 "en_US",
                 "content",
                 "That shouldn't exist"
-            ), "Missing question"
+            ), "Missing media"
         );
     }
 

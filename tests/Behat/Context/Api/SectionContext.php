@@ -43,7 +43,7 @@ final class SectionContext implements Context
     /**
      * @Then /^I should see (\d+) sections in the list$/
      */
-    public function iShouldSeeSectionsInTheList($count): void
+    public function iShouldSeeSectionsInTheList(int $count): void
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
