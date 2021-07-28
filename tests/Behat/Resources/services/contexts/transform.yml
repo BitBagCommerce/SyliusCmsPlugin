@@ -1,0 +1,31 @@
+services:
+    _defaults: { public: true }
+
+    bitbag_sylius_cms_plugin.behat.context.transform.block:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\BlockContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.block"
+            - "%locale%"
+
+    bitbag_sylius_cms_plugin.behat.context.transform.frequently_asked_question:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\FrequentlyAskedQuestionContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.frequently_asked_question"
+
+    bitbag_sylius_cms_plugin.behat.context.transform.media:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\MediaContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "%locale%"
+
+    bitbag_sylius_cms_plugin.behat.context.transform.page:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\PageContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "%locale%"
+
+    bitbag_sylius_cms_plugin.behat.context.transform.section:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\SectionContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "%locale%"

@@ -1,0 +1,16 @@
+default:
+    suites:
+        api_shop_pages:
+            contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - bitbag_sylius_cms_plugin.behat.context.transform.page
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.product
+                - bitbag_sylius_cms_plugin.behat.context.setup.page
+                - bitbag_sylius_cms_plugin.behat.context.setup.section
+
+                - bitbag_sylius_cms_plugin.behat.context.api.page
+            filters:
+                tags: "@shop_pages && @api"

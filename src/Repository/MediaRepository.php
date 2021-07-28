@@ -26,43 +26,48 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         ;
     }
 
-    public function findOneEnabledByCode(string $code, string $channelCode): ?MediaInterface
+    public function findOneEnabledByCode(string $code, string $localeCode): ?MediaInterface
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.channels', 'channel')
-            ->where('o.code = :code')
+            ->leftJoin('o.translations', 'translation')
+            ->where('translation.locale = :localeCode')
+            ->andWhere('o.code = :code')
             ->andWhere('o.enabled = true')
             ->setParameter('code', $code)
+            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
 
-    public function findBySectionCode(string $sectionCode, string $channelCode): array
+    public function findBySectionCode(string $sectionCode, ?string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.channels', 'channel')
             ->innerJoin('o.sections', 'section')
-            ->where('channel.code = :channelCode')
+            ->where('translation.locale = :localeCode')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('channelCode', $channelCode)
+            ->setParameter('localeCode', $localeCode)
             ->setParameter('sectionCode', $sectionCode)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findByProductCode(string $productCode, string $channelCode): array
+    public function findByProductCode(string $productCode, string $channelCode, ?string $localeCode): array
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.channels', 'channel')
+            ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.products', 'product')
-            ->where('channel.code = :channelCode')
+            ->innerJoin('o.channels', 'channels')
+            ->andWhere('translation.locale = :localeCode')
             ->andWhere('product.code = :productCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('channelCode', $channelCode)
+            ->andWhere('channels.code = :channelCode')
+            ->setParameter('localeCode', $localeCode)
             ->setParameter('productCode', $productCode)
+            ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()
         ;

@@ -1,3 +1,5 @@
 imports:
     - { resource: contexts/setup.yml }
     - { resource: contexts/ui.yml }
+    - { resource: contexts/api.yml }
+    - { resource: contexts/transform.yml }

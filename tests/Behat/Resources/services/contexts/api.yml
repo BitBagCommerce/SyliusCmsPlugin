@@ -1,0 +1,32 @@
+services:
+    _defaults: { public: true }
+
+    bitbag_sylius_cms_plugin.behat.context.api.block:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\BlockContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.behat.api_platform_client.shop.block"
+            - "@Sylius\\Behat\\Client\\ResponseCheckerInterface"
+
+    bitbag_sylius_cms_plugin.behat.context.api.frequently_asked_question:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\FrequentlyAskedQuestionContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.behat.api_platform_client.shop.frequently_asked_question"
+            - "@Sylius\\Behat\\Client\\ResponseCheckerInterface"
+
+    bitbag_sylius_cms_plugin.behat.context.api.media:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\MediaContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.behat.api_platform_client.shop.media"
+            - "@Sylius\\Behat\\Client\\ResponseCheckerInterface"
+
+    bitbag_sylius_cms_plugin.behat.context.api.page:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\PageContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.behat.api_platform_client.shop.page"
+            - "@Sylius\\Behat\\Client\\ResponseCheckerInterface"
+
+    bitbag_sylius_cms_plugin.behat.context.api.section:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\SectionContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.behat.api_platform_client.shop.section"
+            - "@Sylius\\Behat\\Client\\ResponseCheckerInterface"
