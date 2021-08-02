@@ -3,9 +3,8 @@
 /*
  * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.shop and write us
- * an email on mikolaj.krol@bitbag.pl.
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
  */
 
 declare(strict_types=1);
@@ -60,7 +59,7 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
         $originalRoute = $requestAttributes->get('_route');
 
         if (!$this->isMethodDelete($eventRequest) ||
-            !$this->isBitBagRoute($originalRoute) ||
+            !$this->isProtectedRoute($originalRoute) ||
             !$this->isAdminSection($requestAttributes->get('_sylius', []))
         ) {
             return;
@@ -111,7 +110,7 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
         return Request::METHOD_DELETE === $request->getMethod();
     }
 
-    private function isBitBagRoute(string $route): bool
+    private function isProtectedRoute(string $route): bool
     {
         return 0 === strpos($route, 'bitbag');
     }
