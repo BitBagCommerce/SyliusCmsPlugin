@@ -11,3 +11,11 @@ services:
         tags:
             - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.media.pre_create, method: uploadMedia }
             - { name: kernel.event_listener, event: bitbag_sylius_cms_plugin.media.pre_update, method: uploadMedia }
+
+    bitbag_sylius.event_subscriber.resource_delete:
+        class: BitBag\SyliusCmsPlugin\EventListener\ResourceDeleteSubscriber
+        arguments:
+            - "@router"
+            - "@session"
+        tags:
+            - { name: kernel.event_subscriber, event: kernel.exception }

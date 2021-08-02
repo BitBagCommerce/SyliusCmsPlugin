@@ -7,8 +7,7 @@ sylius_grid:
                     class: "%bitbag_sylius_cms_plugin.model.media.class%"
                     repository:
                         method: createListQueryBuilder
-                        arguments:
-                            - "expr:service('sylius.context.locale').getLocaleCode()"
+                        arguments: ["%locale%"]
             sorting:
                 code: asc
             limits: [10, 25, 50]
