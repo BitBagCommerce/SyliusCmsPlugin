@@ -24,6 +24,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
@@ -110,9 +111,10 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             $page->setDescriptionWhenLinked($this->getTranslatableColumnValue(self::DESCRIPTION_WHEN_LINKED_COLUMN, $locale, $row));
 
             $url = $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row);
+            $imageCode = $this->getTranslatableColumnValue(self::IMAGE_CODE_COLUMN, $locale, $row);
 
             if (null !== $url) {
-                $this->resolveImage($page, $url ?? '', $locale);
+                $this->resolveImage($page, $url ?? '', $locale, $imageCode);
             }
         }
 
@@ -131,13 +133,15 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         return 'page';
     }
 
-    private function resolveImage(PageInterface $page, string $url, string $locale): void
+    private function resolveImage(PageInterface $page, string $url, string $locale, string $imageCode): void
     {
         $downloadedImage = $this->imageDownloader->download($url);
 
         /** @var MediaInterface $image */
         $image = $this->mediaFactory->createNew();
         $image->setFile($downloadedImage);
+        $image->setType($this->getFileType($downloadedImage));
+        $image->setCode($imageCode);
 
         /** @var PageTranslationInterface $pageTranslation */
         $pageTranslation = $page->getTranslation($locale);
@@ -147,12 +151,27 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $this->entityManager->persist($image);
     }
 
+    private function getFileType(File $file): string
+    {
+        switch ($file->getExtension()) {
+            case 'png':
+            case 'jpg':
+            case 'jpeg':
+            case 'gif':
+                return MediaInterface::IMAGE_TYPE;
+            case 'mp4':
+                return MediaInterface::VIDEO_TYPE;
+        }
+        return MediaInterface::FILE_TYPE;
+    }
+
     private function getTranslatableColumns(): array
     {
         return [
             self::SLUG_COLUMN,
             self::NAME_COLUMN,
             self::IMAGE_COLUMN,
+            self::IMAGE_CODE_COLUMN,
             self::META_KEYWORDS_COLUMN,
             self::META_DESCRIPTION_COLUMN,
             self::CONTENT_COLUMN,
