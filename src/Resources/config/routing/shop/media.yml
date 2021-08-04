@@ -16,6 +16,7 @@ bitbag_sylius_cms_plugin_shop_media_render_template:
                 arguments:
                     - $code
                     - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_media_download:
     path: /media/download/{code}

@@ -52,6 +52,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.media"
             - "@sylius.context.locale"
+            - "@sylius.context.channel"
             - "@logger"
 
     bitbag_sylius_cms_plugin.resolver.media_provider:
