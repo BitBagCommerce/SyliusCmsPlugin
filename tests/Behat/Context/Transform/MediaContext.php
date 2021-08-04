@@ -15,6 +15,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform;
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\Behat\Service\SharedStorageInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
@@ -22,13 +23,15 @@ final class MediaContext implements Context
     /** @var MediaRepositoryInterface */
     private $mediaRepositoryInterface;
 
-    /** @var string */
-    private $locale;
+    /** @var SharedStorageInterface */
+    private $sharedStorage;
 
-    public function __construct(MediaRepositoryInterface $mediaRepositoryInterface, string $locale = 'en_US')
-    {
+    public function __construct(
+        MediaRepositoryInterface $mediaRepositoryInterface,
+        SharedStorageInterface $sharedStorage
+    ) {
         $this->mediaRepositoryInterface = $mediaRepositoryInterface;
-        $this->locale = $locale;
+        $this->sharedStorage = $sharedStorage;
     }
 
     /**
@@ -39,7 +42,11 @@ final class MediaContext implements Context
      */
     public function getMediaByCode(string $mediaCode): MediaInterface
     {
-        $media = $this->mediaRepositoryInterface->findOneEnabledByCode($mediaCode, $this->locale);
+        $media = $this->mediaRepositoryInterface->findOneEnabledByCode(
+            $mediaCode,
+            $this->sharedStorage->get('locale')->getCode(),
+            $this->sharedStorage->get('channel')->getCode()
+        );
 
         Assert::notNull(
             $media,

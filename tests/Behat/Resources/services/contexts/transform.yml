@@ -16,7 +16,7 @@ services:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\MediaContext
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.media"
-            - "%locale%"
+            - '@sylius.behat.shared_storage'
 
     bitbag_sylius_cms_plugin.behat.context.transform.page:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\PageContext
