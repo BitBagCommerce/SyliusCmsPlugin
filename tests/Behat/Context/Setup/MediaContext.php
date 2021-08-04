@@ -19,6 +19,7 @@ use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -98,7 +99,8 @@ final class MediaContext implements Context
         ?string $code = null,
         ?string $name = null,
         ?string $content = null,
-        ?string $fileType = null
+        ?string $fileType = null,
+        ChannelInterface $channel = null
     ): MediaInterface {
         /** @var MediaInterface $media */
         $media = $this->mediaFactory->createNew();
@@ -119,11 +121,16 @@ final class MediaContext implements Context
             $fileType = MediaInterface::FILE_TYPE;
         }
 
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
+
         $media->setCode($code);
         $media->setCurrentLocale('en_US');
         $media->setName($name);
         $media->setContent($content);
         $media->setType($fileType);
+        $media->addChannel($channel);
 
         return $media;
     }
