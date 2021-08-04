@@ -15,7 +15,7 @@ bitbag_sylius_cms_plugin_shop_media_render_template:
                 method: findOneEnabledByCode
                 arguments:
                     - $code
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_sylius_cms_plugin_shop_media_download:
     path: /media/download/{code}
@@ -42,6 +42,7 @@ bitbag_sylius_cms_plugin_shop_media_index_by_section_code:
                 method: findBySectionCode
                 arguments:
                     - $sectionCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_media_index_by_product_code:
@@ -55,4 +56,5 @@ bitbag_sylius_cms_plugin_shop_media_index_by_product_code:
                 method: findByProductCode
                 arguments:
                     - $productCode
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"

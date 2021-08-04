@@ -40,22 +40,25 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         ;
     }
 
-    public function findBySectionCode(string $sectionCode, ?string $localeCode): array
+    public function findBySectionCode(string $sectionCode, string $localeCode, string $channelCode): array
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.channels', 'channel')
+            ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
-            ->where('translation.locale = :localeCode')
+            ->innerJoin('o.channels', 'channels')
+            ->andWhere('translation.locale = :localeCode')
             ->andWhere('section.code = :sectionCode')
             ->andWhere('o.enabled = true')
+            ->andWhere('channels.code = :channelCode')
             ->setParameter('localeCode', $localeCode)
             ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
-    public function findByProductCode(string $productCode, string $channelCode, ?string $localeCode): array
+    public function findByProductCode(string $productCode, string $localeCode, string $channelCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
