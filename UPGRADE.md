@@ -3,9 +3,13 @@
 * The `stefandoorn/sitemap-plugin` dependency has been removed, and moved to the `suggest` section of composer.json.
 If you didn't require this plugin by yourselves, but want to keep the sitemap support, consider requiring it directly in your project as described [here](doc/sitemap.md).
 
+* PageImages (`bitbag_cms_page_image`) has been removed. All images connected with Pages should be added to the Media after the update.
+
 * Width and height has been added to image media. Now width and height html tags are generated in shop image.
   Read the below changelog first and then migrate your structure using 
   `bin/console doctrine:migrations:diff && bin/console doctrine:migrations:migrate` commands
+
+
 
 # UPGRADE FROM 1.0 TO 2.0
 
