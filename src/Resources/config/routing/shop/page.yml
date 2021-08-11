@@ -54,10 +54,12 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code_no_grid:
 
 bitbag_sylius_cms_plugin_shop_page_index_by_section_code_template:
     path: /pages-template/{sectionCode}
+    methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
         _sylius:
             template: $template
+            grid: bitbag_sylius_cms_plugin_shop_page
             repository:
                 method: findBySectionCode
                 arguments:
