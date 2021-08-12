@@ -56,20 +56,26 @@ Read more about  [Sylius  CMS](https://bitbag.io/sylius-cms-all-you-need-to-know
 
 ---
 
-BitBag is an agency that provides high-quality **eCommerce and Digital Experience software**. Our main area of expertise includes eCommerce consulting and development for B2C, B2B, and Multi-vendor Marketplaces.
-The scope of our services related to Sylius includes:
-- **Consulting** in the field of strategy development
-- Personalized **headless software development**
-- **System maintenance and long-term support**
-- **Outsourcing**
-- **Plugin development**
-- **Data migration**
+BitBag is a company of people who **love what they do** and do it right. We fulfill the eCommerce technology stack with **Sylius**, Shopware, Akeneo and Pimcore for PIM, eZ Platform for CMS and VueStorefront for PWA. Our goal is to provide real digital transformation with an agile solution that scales with the **clients’ needs**. Our main area of expertise includes eCommerce consulting and development for B2C, B2B, and Multi-vendor Marketplaces.</br>
+We are advisers in the first place. We start each project with a diagnosis of problems, and an analysis of the needs and **goals** that the client wants to achieve.</br>
+We build **unforgettable**, consistent digital customer journeys on top of the **best technologies**.Based on a detailed analysis of the goals and needs of a given organization we create dedicated systems and applications that let businesses grow.<br>
+Our team is fluent in **Polish, English, German and French**. That is why our cooperation with clients from all over the world is smooth.
 
-Some numbers regarding Sylius:
-* **20+ experts** including consultants, UI/UX designers, Sylius trained front-end and back-end developers,
-* **100+ projects** delivered on top of Sylius,
-* Clients from  **20+ countries**
-* **3+ years** in the Sylius ecosystem.
+**Some numbers from BitBag regarding Sylius:**
+ - 50+ **experts** including consultants, UI/UX designers, Sylius trained front-end and back-end developers,
+ - 120+ projects **delivered** on top of Sylius,
+ - 25+ **countries** of BitBag’s customers,
+ - 4+ **years** in the Sylius ecosystem.
+
+**Our services:**
+ - Business audit/Consulting in the field of **strategy** development,
+ - Data/shop **migration**,
+ - Headless **eCommerce**,
+ - Personalized **software** development,
+ - **Project** maintenance and long term support,
+ - Technical **support**.
+
+**Key clients:** Mollie, Guave, P24, Folkstar, i-LUNCH, Elvi Project, WestCoast Gifts.
 
 ---
 
