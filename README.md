@@ -79,7 +79,7 @@ Our team is fluent in **Polish, English, German and French**. That is why our co
 
 ---
 
-If you need some help with Sylius development, don't be hesitate to contact us directly. You can fill the form on [this site](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms) or send us an e-mail to hello@bitbag.io!
+If you need some help with Sylius development, don't be hesitated to contact us directly. You can fill the form on [this site](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms) or send us an e-mail to hello@bitbag.io!
 
 ---
 
@@ -90,28 +90,40 @@ If you need some help with Sylius development, don't be hesitate to contact us d
 ---- 
 
 For online communication, we invite you to chat with us & other users on [Sylius Slack](https://sylius-devs.slack.com/).
-
-# Demo
+# Demo Sylius Shop
 
 ---
 
-We created a demo app with some useful use-cases of the plugin! Visit [demo.bitbag.shop](https://demo.bitbag.shop) to take a look at it.
-The admin can be accessed under [demo.bitbag.shop/admin](https://demo.bitbag.shop/admin) link and `sylius: sylius` credentials.
+We created a demo app with some useful use-cases of plugins!
+Visit [sylius-demo.bitbag.io](https://sylius-demo.bitbag.io/) to take a look at it. The admin can be accessed under
+[sylius-demo.bitbag.io/admin/login](https://sylius-demo.bitbag.io/admin/login) link and `sylius: sylius` credentials.
+Plugins that we have used in the demo:
 
-We also recorded a webinar which presents most of the plugin features, including how they have been implemented and specific use-cases.
+| BitBag's Plugin | GitHub | Sylius' Store|
+| ------ | ------ | ------|
+| ACL Plugin | *Private. Available after the purchasing.*| https://plugins.sylius.com/plugin/access-control-layer-plugin/|
+| Braintree Plugin | https://github.com/BitBagCommerce/SyliusBraintreePlugin |https://plugins.sylius.com/plugin/braintree-plugin/|
+| CMS Plugin | https://github.com/BitBagCommerce/SyliusCmsPlugin | https://plugins.sylius.com/plugin/cmsplugin/|
+| Elasticsearch Plugin | https://github.com/BitBagCommerce/SyliusElasticsearchPlugin | https://plugins.sylius.com/plugin/2004/|
+| Mailchimp Plugin | https://github.com/BitBagCommerce/SyliusMailChimpPlugin | https://plugins.sylius.com/plugin/mailchimp/ |
+| Multisafepay Plugin | https://github.com/BitBagCommerce/SyliusMultiSafepayPlugin |
+| Wishlist Plugin | https://github.com/BitBagCommerce/SyliusWishlistPlugin | https://plugins.sylius.com/plugin/wishlist-plugin/|
+| **Sylius' Plugin** | **GitHub** | **Sylius' Store** |
+| Admin Order Creation Plugin | https://github.com/Sylius/AdminOrderCreationPlugin | https://plugins.sylius.com/plugin/admin-order-creation-plugin/ |
+| Invoicing Plugin | https://github.com/Sylius/InvoicingPlugin | https://plugins.sylius.com/plugin/invoicing-plugin/ |
+| Refund Plugin | https://github.com/Sylius/RefundPlugin | https://plugins.sylius.com/plugin/refund-plugin/ |
 
-<div align="center">
-
-[![Webinar](https://img.youtube.com/vi/Nk8fKA48t_Y/0.jpg)](https://www.youtube.com/watch?v=Nk8fKA48t_Y)
-
-</div>
-
-
-
-**If you need an overview of this plugin, schedule a consultation with our expert.**
+**If you need an overview of Sylius' capabilities, schedule a consultation with our expert.**
 
 [![](https://bitbag.io/wp-content/uploads/2020/10/button_free_consulatation-1.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
 
+## Additional resources for developers
+
+---
+To learn more about our contribution workflow and more, we encourage you to use the following resources:
+* [Sylius Documentation](https://docs.sylius.com/en/latest/)
+* [Sylius Contribution Guide](https://docs.sylius.com/en/latest/contributing/)
+* [Sylius Online Course](https://sylius.com/online-course/)
 
 
 ## License
