@@ -90,6 +90,7 @@ If you need some help with Sylius development, don't be hesitated to contact us 
 ---- 
 
 For online communication, we invite you to chat with us & other users on [Sylius Slack](https://sylius-devs.slack.com/).
+
 # Demo Sylius Shop
 
 ---
