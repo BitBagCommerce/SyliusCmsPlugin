@@ -12,7 +12,7 @@
 
 At BitBag we do believe in open source. However, we are able to do it just because of our awesome clients, who are kind enough to share some parts of our work with the community. Therefore, if you feel like there is a possibility for us to work  together, feel free to reach out. You will find out more about our professional services, technologies, and contact details at [https://bitbag.io/](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms).
 
-Like what we do? Want to join us? Check out our job listings on our [career page](https://bitbag.io/career/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms). Not familiar with Symfony & Sylius yet but still wanna start with us? Join our [academy](https://bitbag.io/pl/akademia?utm_source=github&utm_medium=url&utm_campaign=akademia)!
+Like what we do? Want to join us? Check out our job listings on our [career page](https://bitbag.io/career/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms). Not familiar with Symfony & Sylius yet, but still wanna start with us? Join our [academy](https://bitbag.io/pl/akademia?utm_source=github&utm_medium=url&utm_campaign=akademia)!
 
 ## Table of Content
 
@@ -30,7 +30,7 @@ Like what we do? Want to join us? Check out our job listings on our [career page
 
 ***
 
-Almost every eCommerce app has to present some content. Managing it is often done via third-party libraries like Wordpress, eZ Platform, or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images text or HTML to your storefront as well as pages and FAQs section.
+Almost every eCommerce app has to present some content. Managing it is often done via third-party libraries like WordPress, eZ Platform, or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own, which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront, as well as pages and FAQs section.
 
 - [Installation](doc/installation.md)
 - [Upgrading](UPGRADE.md)
@@ -47,7 +47,7 @@ Almost every eCommerce app has to present some content. Managing it is often don
 - [Customization](doc/customization.md)
 
 ## We are here to help
-This **open-source plugin was developed to help the Sylius community**. If you have any additional questions, would like help with installing or configuring the plugin or need any assistance with your Sylius project - let us know!
+This **open-source plugin was developed to help the Sylius community**. If you have any additional questions, would like help with installing or configuring the plugin, or need any assistance with your Sylius project - let us know!
 
 [![](https://bitbag.io/wp-content/uploads/2020/10/button-contact.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
 
@@ -58,7 +58,7 @@ Read more about  [Sylius  CMS](https://bitbag.io/sylius-cms-all-you-need-to-know
 
 BitBag is a company of people who **love what they do** and do it right. We fulfill the eCommerce technology stack with **Sylius**, Shopware, Akeneo, and Pimcore for PIM, eZ Platform for CMS, and VueStorefront for PWA. Our goal is to provide real digital transformation with an agile solution that scales with the **clients’ needs**. Our main area of expertise includes eCommerce consulting and development for B2C, B2B, and Multi-vendor Marketplaces.</br>
 We are advisers in the first place. We start each project with a diagnosis of problems, and an analysis of the needs and **goals** that the client wants to achieve.</br>
-We build **unforgettable**, consistent digital customer journeys on top of the **best technologies**. Based on a detailed analysis of the goals and needs of a given organization we create dedicated systems and applications that let businesses grow.<br>
+We build **unforgettable**, consistent digital customer journeys on top of the **best technologies**. Based on a detailed analysis of the goals and needs of a given organization, we create dedicated systems and applications that let businesses grow.<br>
 Our team is fluent in **Polish, English, German and, French**. That is why our cooperation with clients from all over the world is smooth.
 
 **Some numbers from BitBag regarding Sylius:**
@@ -79,7 +79,7 @@ Our team is fluent in **Polish, English, German and, French**. That is why our c
 
 ---
 
-If you need some help with Sylius development, don't be hesitated to contact us directly. You can fill the form on [this site](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms) or send us an e-mail to hello@bitbag.io!
+If you need some help with Sylius development, don't be hesitated to contact us directly. You can fill the form on [this site](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms) or send us an e-mail at hello@bitbag.io!
 
 ---
 
