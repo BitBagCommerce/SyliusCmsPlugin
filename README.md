@@ -83,7 +83,7 @@ If you need some help with Sylius development, don't be hesitated to contact us 
 
 ---
 
-[![](https://bitbag.io/wp-content/uploads/2021/08/sylius-badges-transparent.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
+[![](https://bitbag.io/wp-content/uploads/2021/08/sylius-badges-transparent-wide.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
 
 ## Community
 
