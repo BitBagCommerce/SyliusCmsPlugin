@@ -1,0 +1,5 @@
+{% extends 'FOSCKEditorBundle:Form:ckeditor_widget.html.twig' %}
+
+{% block ckeditor_widget_extra %}
+    CKEDITOR.dtd.$removeEmpty['i'] = false;
+{% endblock %}
