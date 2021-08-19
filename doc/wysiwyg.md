@@ -10,7 +10,6 @@ You can use a custom [WysiwygType](../src/Form/Type/WysiwygType.php) any place y
 Take [the BlockTranslationType](../src/Form/Type/Translation/BlockTranslationType.php) as an example.
 
 **Note:**
-
 *In the WYSIWYG fields, you can use Twig function nesting. Read more [here](twig-functions-in-admin.md).*
 
 ## Configuration
@@ -23,7 +22,6 @@ If you want to customize any behavior of the CKEditor, you have to override one 
 
 
 **Note:**
-
 Remember to add your js configuration to `config/packages/twig.yaml` file:**
 ```yaml
 # Symfony 2/3: app/config/config.yml
