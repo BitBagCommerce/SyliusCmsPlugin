@@ -22,7 +22,7 @@ Like what we do? Want to join us? Check out our job listings on our [career page
 * [Support](#we-are-here-to-help)
 * [About us](#about-us)
     * [Community](#community)
-* [Demo](#demo)
+* [Demo](#demo-sylius-shop)
 * [License](#license)
 * [Contact](#contact)
 
