@@ -29,6 +29,7 @@ Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must ad
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
 Import required config in your `config/packages/_sylius.yaml` file:
