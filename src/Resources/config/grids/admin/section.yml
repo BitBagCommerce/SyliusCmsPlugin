@@ -25,7 +25,7 @@ sylius_grid:
                     type: string
                     label: sylius.ui.search
                     options:
-                        fields: [code, type]
+                        fields: [code]
             actions:
                 main:
                     create:
