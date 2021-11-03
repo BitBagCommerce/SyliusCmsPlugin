@@ -13,7 +13,8 @@
         "sylius/sylius": "~1.8.0 || ~1.9.0 || ~1.10.0",
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1||^2.0",
-        "instaclick/php-webdriver": "^1.4"
+        "instaclick/php-webdriver": "^1.4",
+        "symfony/webpack-encore-bundle": "^1.12"
     },
     "require-dev": {
         "behat/behat": "^3.7",
@@ -46,11 +47,16 @@
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
         "vimeo/psalm": "4.7.1"
     },
-    "suggest": {
-        "stefandoorn/sitemap-plugin": "^2.0@alpha"
+    "conflict": {
+        "doctrine/dbal": "^3.0",
+        "symfony/symfony": "4.1.8",
+        "symfony/browser-kit": "4.1.8",
+        "symfony/dom-crawler": "4.1.8",
+        "symfony/routing": "4.1.8",
+        "symfony/doctrine-bridge": "4.4.16"
     },
     "suggest": {
-        "stefandoorn/sitemap-plugin": "Adds CMS pages & sections support to the Sylius sitemap plugin"
+        "stefandoorn/sitemap-plugin": "^2.0@alpha"
     },
     "prefer-stable": true,
     "autoload": {

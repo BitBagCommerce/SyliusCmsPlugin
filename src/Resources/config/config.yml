@@ -30,8 +30,12 @@ sylius_ui:
         sylius.admin.layout.javascripts:
             blocks:
                 javascripts:
-                    template: "@BitBagSyliusCmsPlugin/_javascripts.html.twig"
+                    template: "@BitBagSyliusCmsPlugin/_scripts.html.twig"
                     priority: 10
+        sylius.admin.layout.stylesheets:
+            blocks:
+                stylesheets:
+                    template: "@BitBagSyliusCmsPlugin/_styles.html.twig"
 liip_imagine:
     loaders:
         default:
