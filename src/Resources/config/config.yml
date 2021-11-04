@@ -25,17 +25,6 @@ knp_gaufrette:
         bitbag_sylius_cms_plugin_media:
             adapter: "%bitbag_sylius_cms_plugin.uploader.filesystem%"
 
-sylius_ui:
-    events:
-        sylius.admin.layout.javascripts:
-            blocks:
-                javascripts:
-                    template: "@BitBagSyliusCmsPlugin/_scripts.html.twig"
-                    priority: 10
-        sylius.admin.layout.stylesheets:
-            blocks:
-                stylesheets:
-                    template: "@BitBagSyliusCmsPlugin/_styles.html.twig"
 liip_imagine:
     loaders:
         default:
