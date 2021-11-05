@@ -11,11 +11,11 @@
     padding-bottom: 0;
 }
 
-.bitbag-cms-import .ui.action.input input[type="file"] {
+.bitbag-cms-import .ui.action.input input[type='file'] {
     display: none;
 }
 
-.bitbag-cms-import .ui.action.input input[type="text"] {
+.bitbag-cms-import .ui.action.input input[type='text'] {
     width: auto;
 }
 
@@ -32,26 +32,27 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    position: relative!important;
+    position: relative !important;
 }
 
-.media-list__item__label, .media-list__item__label > strong {
+.media-list__item__label,
+.media-list__item__label > strong {
     white-space: -moz-pre-wrap !important;
-    white-space: -webkit-pre-wrap!important;
-    white-space: -pre-wrap!important;
-    white-space: -o-pre-wrap!important;
-    white-space: pre-wrap!important;
-    word-wrap: break-word!important;
-    word-break: break-all!important;
-    white-space: normal!important;
+    white-space: -webkit-pre-wrap !important;
+    white-space: -pre-wrap !important;
+    white-space: -o-pre-wrap !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    white-space: normal !important;
 }
 
 .media-list__item__label > strong {
-    display: block!important;
+    display: block !important;
 }
 
 .media-list__item__input {
-    position: absolute!important;
+    position: absolute !important;
     bottom: 10px;
     right: 10px;
 }
@@ -61,13 +62,13 @@
 }
 
 .media-list__item__img {
-    width: 150px!important;
-    height:150px!important;
+    width: 150px !important;
+    height: 150px !important;
 }
 
 .btn {
-    display: inline-block!important;
-    font-size: 1.4em!important;
+    display: inline-block !important;
+    font-size: 1.4em !important;
 }
 
 .btn:hover {
@@ -75,12 +76,12 @@
 }
 
 .page-number {
-    font-size: 1.4em!important;
+    font-size: 1.4em !important;
 }
 
 .btn-delete {
     position: absolute;
-    color: #DB2828;
+    color: #db2828;
     right: 40px;
     cursor: pointer;
     z-index: 5;
@@ -97,5 +98,5 @@
 }
 
 .bitbag-media-autocomplete .search {
-    cursor: pointer!important;
+    cursor: pointer !important;
 }

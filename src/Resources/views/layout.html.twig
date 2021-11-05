@@ -1,1 +1,14 @@
 {% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/css/style.css'} %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
+{% endblock %}

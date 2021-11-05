@@ -1,11 +1,11 @@
 {% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
-<div class="bitbag-cms-import ">
+<div class="bitbag-cms-import" data-bb-wrapper="bitbag-cms-import">
     <form method="POST" enctype="multipart/form-data" action="{{ path('bitbag_sylius_cms_plugin_admin_import_data', {'resourceName': app.request.get('resourceName')}) }}" novalidate="novalidate" class="ui form">
 
         <div class="ui action input">
-            <input type="text" placeholder="{{ 'bitbag_sylius_cms_plugin.ui.csv_file'|trans }}" readonly>
+            <input type="text" placeholder="{{ 'bitbag_sylius_cms_plugin.ui.csv_file'|trans }}" data-bb-text="text" readonly>
 
-            {{ form_widget(form.file) }}
+            {{ form_widget(form.file, { 'attr': {'data-bb-file': 'file'} }) }}
 
             <button class="ui teal left labeled icon button">
                 <i class="upload icon"></i>
