@@ -48,7 +48,7 @@
             contentType: false,
             cache: false,
         }).done(function(response) {
-            console.log(response);
+            // console.log(response);
             var blob = new Blob([response], {type : 'text/html', charset: 'utf-8'});
             var blobUrl = window.URL.createObjectURL(blob);
 
