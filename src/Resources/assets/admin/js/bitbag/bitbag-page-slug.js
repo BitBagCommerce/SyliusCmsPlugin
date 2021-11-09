@@ -21,6 +21,7 @@ export class HandleSlugUpdate {
         if (this.wrappers.length === 0) {
             throw new Error('Cms Plugin - Given selectors for handling slug update, are not valid');
         }
+
         this._handleFields();
     }
 
@@ -29,6 +30,11 @@ export class HandleSlugUpdate {
             const locale = item.dataset.locale;
             const textField = item.querySelector(`#${this.bbTarget}_translations_${locale}_name`);
             const slugField = item.querySelector(`#${this.bbTarget}_translations_${locale}_slug`);
+            const lockField = item.querySelector(this.lockFieldIndicator);
+
+            if (!textField || !slugField || !locale) {
+                return;
+            }
 
             let timeout;
 
@@ -42,6 +48,15 @@ export class HandleSlugUpdate {
                 timeout = setTimeout(() => {
                     this._updateSlug(slugField, textField.value);
                 }, 1000);
+            });
+
+            if (!lockField) {
+                return;
+            }
+
+            lockField.addEventListener('click', (e) => {
+                e.preventDefault();
+                this._toggleSlugModification(slugField, lockField);
             });
         });
     }
@@ -65,6 +80,14 @@ export class HandleSlugUpdate {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    _toggleSlugModification(readOnlyEl, toggler) {
+        readOnlyEl.readOnly = !readOnlyEl.readOnly;
+
+        const icon = toggler.querySelector('i');
+        icon.classList.toggle('lock');
+        icon.classList.toggle('unlock');
     }
 }
 
