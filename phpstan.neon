@@ -1,0 +1,18 @@
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    excludes_analyse:
+        # Makes PHPStan crash
+        - 'src/DependencyInjection/Configuration.php'
+
+        # Test dependencies
+        - 'tests/Application/app/**.php'
+        - 'tests/Application/src/**.php'
+
+        # ECS Fixer dependency
+        - 'src/Fixer/**.php'
+
+    ignoreErrors:
+        - '/Parameter #1 \$configuration of method Symfony\\Component\\DependencyInjection\\Extension\\Extension::processConfiguration\(\) expects Symfony\\Component\\Config\\Definition\\ConfigurationInterface, Symfony\\Component\\Config\\Definition\\ConfigurationInterface\|null given\./'
