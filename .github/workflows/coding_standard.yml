@@ -1,0 +1,95 @@
+name: Coding standard
+
+on:
+    push:
+        branches-ignore:
+            - 'dependabot/**'
+    pull_request: ~
+    release:
+        types: [created]
+    schedule:
+        -
+            cron: "0 1 * * 6" # Run at 1am every Saturday
+    workflow_dispatch: ~
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+
+        name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
+
+        strategy:
+            fail-fast: false
+            matrix:
+                php: [7.4, 7.3, 8.0]
+                symfony: [^4.4, ^5.2]
+                sylius: [~1.8.0, ~1.9.0, ~1.10.0]
+                node: [10.x]
+                mysql: [5.7]
+
+                exclude:
+                    -
+                        php: 7.3
+                        mysql: 8.0
+                    -
+                        sylius: ~1.8.0
+                        symfony: ^5.2
+                    -
+                        sylius: ~1.8.0
+                        php: 8.0
+                    -
+                        sylius: ~1.9.0
+                        php: 8.0
+                    -
+                        sylius: ~1.10.0
+                        php: 7.3
+
+        env:
+            APP_ENV: test
+            DATABASE_URL: "mysql://root:root@127.0.0.1/sylius?serverVersion=${{ matrix.mysql }}"
+
+        steps:
+            -
+                uses: actions/checkout@v2
+            -
+                name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                  php-version: "${{ matrix.php }}"
+                  extensions: intl
+                  tools: symfony
+                  coverage: none
+            -
+                name: Get Composer cache directory
+                id: composer-cache
+                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            -
+                name: Cache Composer
+                uses: actions/cache@v2
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-php-${{ matrix.php }}-composer-
+            -
+                name: Restrict Symfony version
+                if: matrix.symfony != ''
+                run: |
+                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
+                    composer config extra.symfony.require "${{ matrix.symfony }}"
+            -
+                name: Restrict Sylius version
+                if: matrix.sylius != ''
+                run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
+
+            -
+                name: Install PHP dependencies
+                run: composer install --no-interaction
+
+            -
+                name: Run PHPStan
+                run: vendor/bin/phpstan analyse -c phpstan.neon -l 7 src/
+
+            -   name: Run ECS
+                run: vendor/bin/ecs
