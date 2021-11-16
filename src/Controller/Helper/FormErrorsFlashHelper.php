@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller\Helper;
 
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -35,7 +36,7 @@ final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
         }
 
         $errors = [];
-
+        /** @var FormError $error */
         foreach ($form->getErrors(true) as $error) {
             $errors[] = $error->getMessage();
         }

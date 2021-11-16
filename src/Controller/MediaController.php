@@ -10,7 +10,11 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
+use Psalm\Storage\Assertion;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -18,6 +22,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Webmozart\Assert\Assert;
 
 final class MediaController extends ResourceController
 {
@@ -28,6 +33,7 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
+        /** @var MediaResourceResolverInterface $mediaResourceResolver */
         $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
         $media = $mediaResourceResolver->findOrLog($code);
 
@@ -37,6 +43,7 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
+        /** @var MediaProviderResolverInterface $mediaProviderResolver */
         $mediaProviderResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider');
 
         return new Response($mediaProviderResolver->resolveProvider($media)->render($media, $request->get('template')));
@@ -49,11 +56,12 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
+        /** @var MediaResourceResolverInterface $mediaResourceResolver */
         $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
         /** @var MediaInterface $media */
         $media = $mediaResourceResolver->findOrLog($code);
 
-        if (null === $media) {
+        if (null == $media) {
             return new Response();
         }
 
@@ -79,7 +87,7 @@ final class MediaController extends ResourceController
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
         /** @var MediaInterface $media */
-        $media = $request->get('id') && $this->repository->find($request->get('id')) ?
+        $media = !is_null($request->get('id')) && $this->repository->find($request->get('id')) ?
             $this->repository->find($request->get('id')) :
             $this->factory->createNew();
         $form = $this->resourceFormFactory->create($configuration, $media);
@@ -89,15 +97,18 @@ final class MediaController extends ResourceController
 
         if ($form->isValid()) {
             $defaultLocale = $this->getParameter('locale');
-            $mediaTemplate = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider')->resolveProvider($media)->getTemplate();
+            /** @var MediaProviderResolverInterface $mediaProviderResolver */
+            $mediaProviderResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider');
+            $mediaTemplate = $mediaProviderResolver->resolveProvider($media)->getTemplate();
 
             $this->resolveFile($media);
 
             $media->setFallbackLocale($request->get('_locale', $defaultLocale));
             $media->setCurrentLocale($request->get('_locale', $defaultLocale));
         }
-
-        $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
+        /** @var FormErrorsFlashHelperInterface $formErrorsFlashHelper */
+        $formErrorsFlashHelper = $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash');
+        $formErrorsFlashHelper->addFlashErrors($form);
 
         return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
             'metadata' => $this->metadata,
@@ -109,14 +120,18 @@ final class MediaController extends ResourceController
 
     private function resolveFile(MediaInterface $media): void
     {
-        if (!$media->getFile() && !$media->getPath()) {
+        if (is_null($media->getFile()) && is_null($media->getPath())) {
             return;
         }
-
-        $file = $media->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
-        $base64Content = base64_encode(file_get_contents($file->getPathname()));
-        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-
+        $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
+        $fileContents = file_get_contents($file->getPathname());
+        if(is_string($fileContents)) {
+            $base64Content = base64_encode(file_get_contents($file->getPathname()));
+            $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
+        }
+        else {
+            $path = 'Path error';
+        }
         $media->setPath($path);
     }
 }

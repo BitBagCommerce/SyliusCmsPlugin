@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
+use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -28,6 +29,7 @@ final class PageController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
+        /** @var PageResourceResolverInterface $pageResourceResolver */
         $pageResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.page_resource');
 
         $page = $pageResourceResolver->findOrLog($code);
@@ -57,7 +59,7 @@ final class PageController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
 
         /** @var PageInterface $page */
-        $page = $request->get('id') && $this->repository->find($request->get('id')) ?
+        $page = !is_null($request->get('id')) && $this->repository->find($request->get('id')) ?
             $this->repository->find($request->get('id')) :
             $this->factory->createNew();
         $form = $this->resourceFormFactory->create($configuration, $page);

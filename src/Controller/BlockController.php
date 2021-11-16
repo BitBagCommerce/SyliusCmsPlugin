@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -28,6 +29,7 @@ final class BlockController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
+        /** @var BlockResourceResolverInterface $blockResourceResolver */
         $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
         $block = $blockResourceResolver->findOrLog($code);
 

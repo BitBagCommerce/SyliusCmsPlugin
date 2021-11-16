@@ -47,7 +47,7 @@ final class UploadEditorImageAction
         /** @var UploadedFile $image */
         $image = $request->files->get('upload');
 
-        if (null === $image || !$this->isValidImage($image)) {
+        if (null == $image || !$this->isValidImage($image)) {
             throw new BadRequestHttpException();
         }
 
@@ -62,7 +62,7 @@ final class UploadEditorImageAction
 
     private function isValidImage(UploadedFile $image): bool
     {
-        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']);
+        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'], true);
     }
 
     private function createMedia(UploadedFile $image): MediaInterface
