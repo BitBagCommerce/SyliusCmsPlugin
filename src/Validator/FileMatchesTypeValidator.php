@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Validator;
 
-use BitBag\SyliusCmsPlugin\Entity\Media;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Validator\Constraint\FileMatchesType;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -30,12 +30,12 @@ final class FileMatchesTypeValidator extends ConstraintValidator
 
         $mime = $value->hasFile() ? $value->getFile()->getMimeType() : $value->getMimeType();
 
-        if (Media::IMAGE_TYPE === $value->getType() && !(str_starts_with($mime, 'image/'))) {
+        if (MediaInterface::IMAGE_TYPE === $value->getType() && !(str_starts_with($mime, 'image/'))) {
             $this->context->buildViolation($constraint->messageImage)
                 ->addViolation();
         }
 
-        if (Media::VIDEO_TYPE === $value->getType() && !(str_starts_with($mime, 'video/'))) {
+        if (MediaInterface::VIDEO_TYPE === $value->getType() && !(str_starts_with($mime, 'video/'))) {
             $this->context->buildViolation($constraint->messageVideo)
                 ->atPath($constraint->field)
                 ->addViolation();
