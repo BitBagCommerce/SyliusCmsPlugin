@@ -104,7 +104,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $block = $this->blockFactory->createNew();
 
         $products = $blockData['products'];
-        if ($products !== null) {
+        if (null !== $products) {
             $this->resolveProducts($block, $products);
         }
 

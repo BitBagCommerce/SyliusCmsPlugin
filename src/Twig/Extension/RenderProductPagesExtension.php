@@ -23,8 +23,11 @@ final class RenderProductPagesExtension extends AbstractExtension
         ];
     }
 
-    public function renderProductPages(ProductInterface $product, ?string $sectionCode = null, ?string $date = null): string
-    {
+    public function renderProductPages(
+        ProductInterface $product,
+        ?string $sectionCode = null,
+        ?string $date = null
+    ): string {
         $channelCode = $this->channelContext->getChannel()->getCode();
 
         $parsedDate = null;

@@ -25,8 +25,11 @@ final class ResourceResolver implements ResourceResolverInterface
     /** @var string */
     private $uniqueColumn;
 
-    public function __construct(RepositoryInterface $repository, FactoryInterface $factory, string $uniqueColumn)
-    {
+    public function __construct(
+        RepositoryInterface $repository,
+        FactoryInterface $factory,
+        string $uniqueColumn
+    ) {
         $this->repository = $repository;
         $this->factory = $factory;
         $this->uniqueColumn = $uniqueColumn;

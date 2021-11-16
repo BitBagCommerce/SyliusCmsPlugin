@@ -70,8 +70,11 @@ final class ContentParser implements ContentParserInterface
         return null;
     }
 
-    private function callFunction(array $functions, string $functionName, array $arguments): string
-    {
+    private function callFunction(
+        array $functions,
+        string $functionName,
+        array $arguments
+    ): string {
         Assert::keyExists($functions, $functionName, sprintf('Function %s does not exist!', $functionName));
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];

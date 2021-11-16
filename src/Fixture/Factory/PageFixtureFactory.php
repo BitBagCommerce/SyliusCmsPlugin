@@ -101,8 +101,11 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    private function createPage(string $code, array $pageData, bool $generateSlug = false): void
-    {
+    private function createPage(
+        string $code,
+        array $pageData,
+        bool $generateSlug = false
+    ): void {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];

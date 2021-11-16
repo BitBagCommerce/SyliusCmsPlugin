@@ -101,8 +101,11 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByProduct(ProductInterface $product, string $channelCode, ?\DateTimeInterface $date = null): array
-    {
+    public function findByProduct(
+        ProductInterface $product,
+        string $channelCode,
+        ?\DateTimeInterface $date = null
+    ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.channels', 'channel')

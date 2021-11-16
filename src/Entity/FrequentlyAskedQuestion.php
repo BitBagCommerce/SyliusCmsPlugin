@@ -17,6 +17,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
 {
     use ChannelsAwareTrait;
+
     use ToggleableTrait,
         TranslatableTrait {
         __construct as private initializeTranslationsCollection;

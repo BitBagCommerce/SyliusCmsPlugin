@@ -39,8 +39,11 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findBySectionCode(string $sectionCode, string $localeCode, string $channelCode): array
-    {
+    public function findBySectionCode(
+        string $sectionCode,
+        string $localeCode,
+        string $channelCode
+    ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
@@ -57,8 +60,11 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findByProductCode(string $productCode, string $localeCode, string $channelCode): array
-    {
+    public function findByProductCode(
+        string $productCode,
+        string $localeCode,
+        string $channelCode
+    ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.products', 'product')

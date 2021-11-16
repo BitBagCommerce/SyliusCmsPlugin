@@ -131,8 +131,12 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         return 'page';
     }
 
-    private function resolveImage(PageInterface $page, string $url, string $locale, string $imageCode): void
-    {
+    private function resolveImage(
+        PageInterface $page,
+        string $url,
+        string $locale,
+        string $imageCode
+    ): void {
         $downloadedImage = $this->imageDownloader->download($url);
 
         /** @var MediaInterface $image */
@@ -160,6 +164,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             case 'mp4':
                 return MediaInterface::VIDEO_TYPE;
         }
+
         return MediaInterface::FILE_TYPE;
     }
 

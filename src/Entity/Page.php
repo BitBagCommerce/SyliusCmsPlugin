@@ -18,10 +18,15 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Page implements PageInterface
 {
     use ToggleableTrait;
+
     use ProductsAwareTrait;
+
     use SectionableTrait;
+
     use TimestampableTrait;
+
     use ChannelsAwareTrait;
+
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

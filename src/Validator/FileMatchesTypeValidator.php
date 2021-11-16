@@ -30,12 +30,12 @@ final class FileMatchesTypeValidator extends ConstraintValidator
 
         $mime = $value->hasFile() ? $value->getFile()->getMimeType() : $value->getMimeType();
 
-        if ($value->getType() === Media::IMAGE_TYPE && !(str_starts_with($mime, 'image/'))) {
+        if (Media::IMAGE_TYPE === $value->getType() && !(str_starts_with($mime, 'image/'))) {
             $this->context->buildViolation($constraint->messageImage)
                 ->addViolation();
         }
 
-        if ($value->getType() === Media::VIDEO_TYPE && !(str_starts_with($mime, 'video/'))) {
+        if (Media::VIDEO_TYPE === $value->getType() && !(str_starts_with($mime, 'video/'))) {
             $this->context->buildViolation($constraint->messageVideo)
                 ->atPath($constraint->field)
                 ->addViolation();
