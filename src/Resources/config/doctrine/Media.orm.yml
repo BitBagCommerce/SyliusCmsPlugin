@@ -69,7 +69,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             joinTable:
                 name: bitbag_cms_media_channels
                 joinColumns:
-                    block_id:
+                    media_id:
                         referencedColumnName: id
                         onDelete: CASCADE
                 inverseJoinColumns:
