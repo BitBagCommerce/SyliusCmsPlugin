@@ -42,20 +42,28 @@ final class BlockFixture extends AbstractFixture
     {
         $removeExistingNodeDefinition = new BooleanNodeDefinition('remove_existing');
         $removeExistingNodeDefinition->defaultTrue()->end();
+
         $numberNodeDefinition = new IntegerNodeDefinition('number');
         $numberNodeDefinition->defaultNull()->end();
+
         $lastFourProductsNodeDefinition = new BooleanNodeDefinition('last_four_products');
         $lastFourProductsNodeDefinition->defaultFalse()->end();
+
         $enabledNodeDefinition = new BooleanNodeDefinition('enabled');
         $enabledNodeDefinition->defaultTrue()->end();
+
         $productsNodeDefinition = new IntegerNodeDefinition('products');
         $productsNodeDefinition->defaultNull()->end();
+
         $productCodesNodeDefinition = new ArrayNodeDefinition('productCodes');
         $productCodesNodeDefinition->scalarPrototype()->end();
+
         $taxonsNodeDefinition = new ArrayNodeDefinition('taxons');
         $taxonsNodeDefinition->scalarPrototype()->end();
+
         $sectionsNodeDefinition = new ArrayNodeDefinition('sections');
         $sectionsNodeDefinition->scalarPrototype()->end();
+
         $channelsNodeDefinition = new ArrayNodeDefinition('channels');
         $channelsNodeDefinition->scalarPrototype()->end();
 
