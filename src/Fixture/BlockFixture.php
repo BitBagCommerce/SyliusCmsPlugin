@@ -13,6 +13,10 @@ namespace BitBag\SyliusCmsPlugin\Fixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 final class BlockFixture extends AbstractFixture
 {
@@ -36,34 +40,54 @@ final class BlockFixture extends AbstractFixture
 
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
+        $removeExistingNodeDefinition = new BooleanNodeDefinition('remove_existing');
+        $removeExistingNodeDefinition->defaultTrue()->end();
+        $numberNodeDefinition = new IntegerNodeDefinition('number');
+        $numberNodeDefinition->defaultNull()->end();
+        $lastFourProductsNodeDefinition = new BooleanNodeDefinition('last_four_products');
+        $lastFourProductsNodeDefinition->defaultFalse()->end();
+        $enabledNodeDefinition = new BooleanNodeDefinition('enabled');
+        $enabledNodeDefinition->defaultTrue()->end();
+        $productsNodeDefinition = new IntegerNodeDefinition('products');
+        $productsNodeDefinition->defaultNull()->end();
+        $productCodesNodeDefinition = new ArrayNodeDefinition('productCodes');
+        $productCodesNodeDefinition->scalarPrototype()->end();
+        $taxonsNodeDefinition = new ArrayNodeDefinition('taxons');
+        $taxonsNodeDefinition->scalarPrototype()->end();
+        $sectionsNodeDefinition = new ArrayNodeDefinition('sections');
+        $sectionsNodeDefinition->scalarPrototype()->end();
+        $channelsNodeDefinition = new ArrayNodeDefinition('channels');
+        $channelsNodeDefinition->scalarPrototype()->end();
+
+        $nameNodeDefinition = new ScalarNodeDefinition('name');
+        $nameNodeDefinition->defaultNull()->end();
+        $contentNodeDefinition = new ScalarNodeDefinition('content');
+        $contentNodeDefinition->defaultNull()->end();
+        $linkNodeDefinition = new ScalarNodeDefinition('link');
+        $linkNodeDefinition->defaultNull()->end();
+        $imagePathNodeDefinition = new ScalarNodeDefinition('image_path');
+        $imagePathNodeDefinition->defaultNull()->end();
+        $translationsNodeDefinition = new ArrayNodeDefinition('translations');
+        $translationsNodeDefinition
+            ->children()
+            ->append($nameNodeDefinition)
+            ->append($contentNodeDefinition)
+            ->append($linkNodeDefinition)
+            ->append($imagePathNodeDefinition)
+            ->end();
+
         $optionsNode
             ->children()
-                ->arrayNode('custom')
-                    ->prototype('array')
-                        ->children()
-                            ->booleanNode('remove_existing')->defaultTrue()->end()
-                            ->integerNode('number')->defaultNull()->end()
-                            ->booleanNode('last_four_products')->defaultFalse()->end()
-                            ->booleanNode('enabled')->defaultTrue()->end()
-                            ->integerNode('products')->defaultNull()->end()
-                            ->arrayNode('productCodes')->scalarPrototype()->end()->end()
-                            ->arrayNode('taxons')->scalarPrototype()->end()->end()
-                            ->arrayNode('sections')->scalarPrototype()->end()->end()
-                            ->arrayNode('channels')->scalarPrototype()->end()->end()
-                            ->arrayNode('translations')
-                                ->prototype('array')
-                                    ->children()
-                                        ->scalarNode('name')->defaultNull()->end()
-                                        ->scalarNode('content')->defaultNull()->end()
-                                        ->scalarNode('link')->defaultNull()->end()
-                                        ->scalarNode('image_path')->defaultNull()->end()
-                                    ->end()
-                                ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
+            ->append($removeExistingNodeDefinition)
+            ->append($numberNodeDefinition)
+            ->append($lastFourProductsNodeDefinition)
+            ->append($enabledNodeDefinition)
+            ->append($productsNodeDefinition)
+            ->append($productCodesNodeDefinition)
+            ->append($taxonsNodeDefinition)
+            ->append($sectionsNodeDefinition)
+            ->append($channelsNodeDefinition)
+            ->append($translationsNodeDefinition)
+            ->end();
     }
 }
