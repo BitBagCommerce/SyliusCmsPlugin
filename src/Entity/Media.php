@@ -127,12 +127,16 @@ class Media implements MediaInterface
 
     public function getName(): ?string
     {
-        return $this->getMediaTranslation()->getName();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        return $mediaTranslationInterface->getName();
     }
 
     public function setName(?string $name): void
     {
-        $this->getMediaTranslation()->setName($name);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setName($name);
     }
 
     public function getDownloadName(): string
@@ -142,32 +146,44 @@ class Media implements MediaInterface
 
     public function getContent(): ?string
     {
-        return $this->getMediaTranslation()->getContent();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        return $mediaTranslationInterface->getContent();
     }
 
     public function setContent(?string $content): void
     {
-        $this->getMediaTranslation()->setContent($content);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setContent($content);
     }
 
     public function getAlt(): ?string
     {
-        return $this->getMediaTranslation()->getAlt();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        return $mediaTranslationInterface->getAlt();
     }
 
     public function setAlt(?string $alt): void
     {
-        $this->getMediaTranslation()->setAlt($alt);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setAlt($alt);
     }
 
     public function getLink(): ?string
     {
-        return $this->getMediaTranslation()->getLink();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        return $mediaTranslationInterface->getLink();
     }
 
     public function setLink(?string $link): void
     {
-        $this->getMediaTranslation()->setLink($link);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setLink($link);
     }
 
     public function getWidth(): ?int

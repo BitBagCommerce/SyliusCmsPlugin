@@ -27,7 +27,7 @@ final class MediaUploadListener
 
     public function uploadMedia(ResourceControllerEvent $event): void
     {
-        /** @var MediaInterface $media */
+        /** @var ?MediaInterface $media */
         $media = $event->getSubject();
 
         Assert::isInstanceOf($media, MediaInterface::class);

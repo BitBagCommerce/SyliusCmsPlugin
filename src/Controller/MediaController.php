@@ -126,7 +126,7 @@ final class MediaController extends ResourceController
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         if(is_string($fileContents)) {
-            $base64Content = base64_encode(file_get_contents($file->getPathname()));
+            $base64Content = base64_encode($fileContents);
             $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
         }
         else {

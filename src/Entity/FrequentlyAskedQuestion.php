@@ -65,22 +65,30 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
 
     public function getQuestion(): ?string
     {
-        return $this->getFrequentlyAskedQuestionTranslation()->getQuestion();
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
+        $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+        return $frequentlyAskedQuestionInterface->getQuestion();
     }
 
     public function setQuestion(?string $question): void
     {
-        $this->getFrequentlyAskedQuestionTranslation()->setQuestion($question);
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
+        $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+        $frequentlyAskedQuestionInterface->setQuestion($question);
     }
 
     public function getAnswer(): ?string
     {
-        return $this->getFrequentlyAskedQuestionTranslation()->getAnswer();
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
+        $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+        return $frequentlyAskedQuestionInterface->getAnswer();
     }
 
     public function setAnswer(?string $answer): void
     {
-        $this->getFrequentlyAskedQuestionTranslation()->setAnswer($answer);
+        /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
+        $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+        $frequentlyAskedQuestionInterface->setAnswer($answer);
     }
 
     /**

@@ -10,10 +10,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
+use Gedmo\Translator\TranslationInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\File\File;
@@ -72,7 +74,9 @@ final class PageController extends ResourceController
 
         $this->resolveImage($page);
 
-        $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
+        /** @var FormErrorsFlashHelperInterface $formErrorsFlashHelper */
+        $formErrorsFlashHelper = $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash');
+        $formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
             $this->viewHandler->handle($configuration, View::create($page));
@@ -92,15 +96,18 @@ final class PageController extends ResourceController
 
         $image = $translation->getImage();
 
-        if (!$image || !$image->getPath()) {
+        if (is_null($image) || is_null($image->getPath())) {
             return;
         }
 
-        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
-        $base64Content = base64_encode(file_get_contents($file->getPathname()));
+        $file = $image->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
+        $fileContents = file_get_contents($file->getPathname());
+        assert(is_string($fileContents));
+        $base64Content = base64_encode($fileContents);
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-
         $image->setPath($path);
-        $page->getTranslation()->setImage($image);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $page->getTranslation();
+        $pageTranslationInterface->setImage($image);
     }
 }

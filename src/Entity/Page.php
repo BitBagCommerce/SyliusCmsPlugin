@@ -73,108 +73,148 @@ class Page implements PageInterface
 
     public function getSlug(): ?string
     {
-        return $this->getPageTranslation()->getSlug();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getSlug();
     }
 
     public function setSlug(?string $slug): void
     {
-        $this->getPageTranslation()->setSlug($slug);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setSlug($slug);
     }
 
     public function getMetaKeywords(): ?string
     {
-        return $this->getPageTranslation()->getMetaKeywords();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getMetaKeywords();
     }
 
     public function setMetaKeywords(?string $metaKeywords): void
     {
-        $this->getPageTranslation()->setMetaKeywords($metaKeywords);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setMetaKeywords($metaKeywords);
     }
 
     public function getMetaDescription(): ?string
     {
-        return $this->getPageTranslation()->getMetaDescription();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getMetaDescription();
     }
 
     public function setMetaDescription(?string $metaDescription): void
     {
-        $this->getPageTranslation()->setMetaDescription($metaDescription);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setMetaDescription($metaDescription);
     }
 
     public function getContent(): ?string
     {
-        return $this->getPageTranslation()->getContent();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getContent();
     }
 
     public function setContent(?string $content): void
     {
-        $this->getPageTranslation()->setContent($content);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setContent($content);
     }
 
     public function getName(): ?string
     {
-        return $this->getPageTranslation()->getName();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getName();
     }
 
     public function setName(?string $name): void
     {
-        $this->getPageTranslation()->setName($name);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setName($name);
     }
 
     public function getNameWhenLinked(): ?string
     {
-        return $this->getPageTranslation()->getNameWhenLinked();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getNameWhenLinked();
     }
 
     public function setNameWhenLinked(?string $nameWhenLinked): void
     {
-        $this->getPageTranslation()->setNameWhenLinked($nameWhenLinked);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setNameWhenLinked($nameWhenLinked);
     }
 
     public function getDescriptionWhenLinked(): ?string
     {
-        return $this->getPageTranslation()->getDescriptionWhenLinked();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getDescriptionWhenLinked();
     }
 
     public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void
     {
-        $this->getPageTranslation()->setDescriptionWhenLinked($descriptionWhenLinked);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setDescriptionWhenLinked($descriptionWhenLinked);
     }
 
     public function getBreadcrumb(): ?string
     {
-        return $this->getPageTranslation()->getBreadcrumb();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getBreadcrumb();
     }
 
     public function setBreadcrumb(?string $breadcrumb): void
     {
-        $this->getPageTranslation()->setBreadcrumb($breadcrumb);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setBreadcrumb($breadcrumb);
     }
 
     public function getImage(): ?MediaInterface
     {
-        return $this->getPageTranslation()->getImage();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getImage();
     }
 
     public function setImage(?MediaInterface $image): void
     {
-        $this->getPageTranslation()->setImage($image);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setImage($image);
     }
 
     public function getTitle(): ?string
     {
-        return $this->getPageTranslation()->getTitle();
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        return $pageTranslationInterface->getTitle();
     }
 
     public function setTitle(?string $title): void
     {
-        $this->getPageTranslation()->setTitle($title);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTitle($title);
     }
 
     /**
      * @return PageTranslationInterface|TranslationInterface
      */
-    protected function getPageTranslation(): PageTranslationInterface
+    protected function getPageTranslation(): TranslationInterface
     {
         return $this->getTranslation();
     }
