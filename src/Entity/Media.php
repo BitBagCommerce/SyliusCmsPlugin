@@ -129,6 +129,7 @@ class Media implements MediaInterface
     {
         /** @var MediaTranslationInterface $mediaTranslationInterface */
         $mediaTranslationInterface = $this->getMediaTranslation();
+
         return $mediaTranslationInterface->getName();
     }
 
@@ -148,6 +149,7 @@ class Media implements MediaInterface
     {
         /** @var MediaTranslationInterface $mediaTranslationInterface */
         $mediaTranslationInterface = $this->getMediaTranslation();
+
         return $mediaTranslationInterface->getContent();
     }
 
@@ -162,6 +164,7 @@ class Media implements MediaInterface
     {
         /** @var MediaTranslationInterface $mediaTranslationInterface */
         $mediaTranslationInterface = $this->getMediaTranslation();
+
         return $mediaTranslationInterface->getAlt();
     }
 
@@ -176,6 +179,7 @@ class Media implements MediaInterface
     {
         /** @var MediaTranslationInterface $mediaTranslationInterface */
         $mediaTranslationInterface = $this->getMediaTranslation();
+
         return $mediaTranslationInterface->getLink();
     }
 

@@ -15,7 +15,6 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
-use Gedmo\Translator\TranslationInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\File\File;
@@ -61,7 +60,7 @@ final class PageController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
 
         /** @var PageInterface $page */
-        $page = !is_null($request->get('id')) && $this->repository->find($request->get('id')) ?
+        $page = null !== $request->get('id') && $this->repository->find($request->get('id')) ?
             $this->repository->find($request->get('id')) :
             $this->factory->createNew();
         $form = $this->resourceFormFactory->create($configuration, $page);
@@ -96,7 +95,7 @@ final class PageController extends ResourceController
 
         $image = $translation->getImage();
 
-        if (is_null($image) || is_null($image->getPath())) {
+        if (null === $image || null === $image->getPath()) {
             return;
         }
 

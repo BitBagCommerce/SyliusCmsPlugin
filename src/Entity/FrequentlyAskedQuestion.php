@@ -67,6 +67,7 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
         $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+
         return $frequentlyAskedQuestionInterface->getQuestion();
     }
 
@@ -81,6 +82,7 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestionInterface */
         $frequentlyAskedQuestionInterface = $this->getFrequentlyAskedQuestionTranslation();
+
         return $frequentlyAskedQuestionInterface->getAnswer();
     }
 

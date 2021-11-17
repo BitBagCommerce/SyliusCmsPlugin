@@ -87,12 +87,12 @@ final class UploadEditorImageAction
         $i = 0;
 
         do {
-            if ($i > 0) {
+            if (0 < $i) {
                 $code = $code . '_image_' . (string) $i;
             }
 
             ++$i;
-        } while (count($this->mediaRepository->findBy(['code' => $code])) > 0);
+        } while (0 < count($this->mediaRepository->findBy(['code' => $code])));
 
         return $code;
     }

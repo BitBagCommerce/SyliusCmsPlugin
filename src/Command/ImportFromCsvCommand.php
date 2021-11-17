@@ -45,6 +45,7 @@ final class ImportFromCsvCommand extends Command
         $file = $input->getArgument('file');
 
         $this->importProcessor->process($resourceName, $file);
+
         return 0;
     }
 }

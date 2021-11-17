@@ -14,7 +14,6 @@ use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use Psalm\Storage\Assertion;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -22,7 +21,6 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Webmozart\Assert\Assert;
 
 final class MediaController extends ResourceController
 {
@@ -87,7 +85,7 @@ final class MediaController extends ResourceController
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
         /** @var MediaInterface $media */
-        $media = !is_null($request->get('id')) && $this->repository->find($request->get('id')) ?
+        $media = null !== $request->get('id') && $this->repository->find($request->get('id')) ?
             $this->repository->find($request->get('id')) :
             $this->factory->createNew();
         $form = $this->resourceFormFactory->create($configuration, $media);
@@ -120,16 +118,15 @@ final class MediaController extends ResourceController
 
     private function resolveFile(MediaInterface $media): void
     {
-        if (is_null($media->getFile()) && is_null($media->getPath())) {
+        if (null === $media->getFile() && null === $media->getPath()) {
             return;
         }
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
-        if(is_string($fileContents)) {
+        if (is_string($fileContents)) {
             $base64Content = base64_encode($fileContents);
             $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-        }
-        else {
+        } else {
             $path = 'Path error';
         }
         $media->setPath($path);

@@ -75,6 +75,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getSlug();
     }
 
@@ -89,6 +90,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getMetaKeywords();
     }
 
@@ -103,6 +105,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getMetaDescription();
     }
 
@@ -117,6 +120,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getContent();
     }
 
@@ -131,6 +135,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getName();
     }
 
@@ -145,6 +150,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getNameWhenLinked();
     }
 
@@ -159,6 +165,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getDescriptionWhenLinked();
     }
 
@@ -173,6 +180,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getBreadcrumb();
     }
 
@@ -187,6 +195,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getImage();
     }
 
@@ -201,6 +210,7 @@ class Page implements PageInterface
     {
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
+
         return $pageTranslationInterface->getTitle();
     }
 

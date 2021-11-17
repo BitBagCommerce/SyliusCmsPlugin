@@ -49,6 +49,7 @@ class Section implements SectionInterface
     {
         /** @var SectionTranslationInterface $sectionTranslationInterface */
         $sectionTranslationInterface = $this->getSectionTranslation();
+
         return $sectionTranslationInterface->getName();
     }
 

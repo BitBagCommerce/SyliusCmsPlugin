@@ -64,6 +64,7 @@ class Block implements BlockInterface
     {
         /** @var BlockTranslationInterface $blockTranslationInterface */
         $blockTranslationInterface = $this->getBlockTranslation();
+
         return $blockTranslationInterface->getName();
     }
 
@@ -78,6 +79,7 @@ class Block implements BlockInterface
     {
         /** @var BlockTranslationInterface $blockTranslationInterface */
         $blockTranslationInterface = $this->getBlockTranslation();
+
         return $blockTranslationInterface->getContent();
     }
 
@@ -92,6 +94,7 @@ class Block implements BlockInterface
     {
         /** @var BlockTranslationInterface $blockTranslationInterface */
         $blockTranslationInterface = $this->getBlockTranslation();
+
         return $blockTranslationInterface->getLink();
     }
 

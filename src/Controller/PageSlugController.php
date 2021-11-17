@@ -28,6 +28,7 @@ final class PageSlugController
     {
         $name = $request->query->get('name');
         assert(is_string($name));
+
         return new JsonResponse([
             'slug' => $this->slugGenerator->generate($name),
         ]);

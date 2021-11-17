@@ -38,7 +38,7 @@ final class AboveTwoArgumentsMultilineFixer implements FixerInterface
                     }
                     ++$index;
                 }
-                if (count($variableTokenIndexes) > 2) {
+                if (2 < count($variableTokenIndexes)) {
                     if (!$tokens[$openBracketIndex + 1]->isWhitespace()) {
                         $tokens[$openBracketIndex + 1] = new Token([\T_STRING, "\n        " . $tokens[$openBracketIndex + 1]->getContent()]);
                     }
