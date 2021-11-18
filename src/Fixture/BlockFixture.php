@@ -16,7 +16,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 final class BlockFixture extends AbstractFixture
 {
@@ -40,6 +39,8 @@ final class BlockFixture extends AbstractFixture
 
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
+
+
         $removeExistingNodeDefinition = new BooleanNodeDefinition('remove_existing');
         $removeExistingNodeDefinition->defaultTrue()->end();
 
@@ -67,25 +68,30 @@ final class BlockFixture extends AbstractFixture
         $channelsNodeDefinition = new ArrayNodeDefinition('channels');
         $channelsNodeDefinition->scalarPrototype()->end();
 
+        $translationsNodeDefinition = new ArrayNodeDefinition('translations');
+        $translationsNodeArrayPrototype = $translationsNodeDefinition->arrayPrototype();
+
         $nameNodeDefinition = new ScalarNodeDefinition('name');
         $nameNodeDefinition->defaultNull()->end();
+
         $contentNodeDefinition = new ScalarNodeDefinition('content');
         $contentNodeDefinition->defaultNull()->end();
+
         $linkNodeDefinition = new ScalarNodeDefinition('link');
         $linkNodeDefinition->defaultNull()->end();
+
         $imagePathNodeDefinition = new ScalarNodeDefinition('image_path');
         $imagePathNodeDefinition->defaultNull()->end();
-        $translationsNodeDefinition = new ArrayNodeDefinition('translations');
-        $translationsNodeDefinition
-            ->children()
+
+        $translationsNodeArrayPrototype
             ->append($nameNodeDefinition)
             ->append($contentNodeDefinition)
             ->append($linkNodeDefinition)
-            ->append($imagePathNodeDefinition)
-            ->end();
+            ->append($imagePathNodeDefinition);
 
-        $optionsNode
-            ->children()
+        $customNodeDefinition = new ArrayNodeDefinition('custom');
+        $generalArrayNodeDefinition = $customNodeDefinition->arrayPrototype();
+        $generalArrayNodeDefinition
             ->append($removeExistingNodeDefinition)
             ->append($numberNodeDefinition)
             ->append($lastFourProductsNodeDefinition)
@@ -95,7 +101,9 @@ final class BlockFixture extends AbstractFixture
             ->append($taxonsNodeDefinition)
             ->append($sectionsNodeDefinition)
             ->append($channelsNodeDefinition)
-            ->append($translationsNodeDefinition)
-            ->end();
+            ->append($translationsNodeDefinition);
+
+        $customNodeDefinition->append($generalArrayNodeDefinition);
+        $optionsNode->append($customNodeDefinition);
     }
 }
