@@ -225,6 +225,8 @@ class Media implements MediaInterface
 
     public function __toString(): string
     {
-        return $this->getName() ?? $this->code;
+        $result = $this->getName() ?? $this->code;
+        assert(is_string($result));
+        return $result;
     }
 }

@@ -87,9 +87,9 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
     public function import(array $row): void
     {
-        /** @var string $code */
+        /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        Assert::notNull($code);
+        assert(!is_null($code));
 
         /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);
@@ -122,7 +122,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
         $this->validateResource($page, ['bitbag']);
 
-        $page->getId() ?: $this->entityManager->persist($page);
+        $this->entityManager->persist($page);
         $this->entityManager->flush();
     }
 

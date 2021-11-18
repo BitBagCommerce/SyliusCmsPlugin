@@ -17,34 +17,34 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $slug;
 
-    /** @var MediaInterface */
+    /** @var MediaInterface|null */
     protected $image;
 
-    /** @var string */
+    /** @var string|null */
     protected $name;
 
-    /** @var string */
+    /** @var string|null */
     protected $content;
 
-    /** @var string */
+    /** @var string|null */
     protected $metaKeywords;
 
-    /** @var string */
+    /** @var string|null */
     protected $metaDescription;
 
-    /** @var string */
+    /** @var string|null */
     protected $nameWhenLinked;
 
-    /** @var string */
+    /** @var string|null */
     protected $descriptionWhenLinked;
 
-    /** @var string */
+    /** @var string|null */
     protected $breadcrumb;
 
-    /** @var string */
+    /** @var string|null */
     protected $title;
 
     public function getId(): ?int

@@ -18,7 +18,6 @@ use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Webmozart\Assert\Assert;
 
 final class BlockImporter extends AbstractImporter implements BlockImporterInterface
 {
@@ -61,9 +60,9 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
     public function import(array $row): void
     {
-        /** @var string $code */
+        /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        Assert::notNull($code);
+        assert(!is_null($code));
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
 
@@ -83,7 +82,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $this->validateResource($block, ['bitbag']);
 
-        $block->getId() ?: $this->entityManager->persist($block);
+        $this->entityManager->persist($block);
         $this->entityManager->flush();
     }
 

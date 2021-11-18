@@ -55,9 +55,9 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
 
     public function import(array $row): void
     {
-        /** @var string $code */
+        /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        Assert::notNull($code);
+        assert(null !== ($code));
         /** @var MediaInterface $media */
         $media = $this->mediaResourceResolver->getResource($code);
 
@@ -77,7 +77,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
 
         $this->validateResource($media, ['bitbag']);
 
-        $media->getId() ?: $this->entityManager->persist($media);
+        $this->entityManager->persist($media);
         $this->entityManager->flush();
     }
 

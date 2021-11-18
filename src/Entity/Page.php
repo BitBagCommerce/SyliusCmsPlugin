@@ -34,7 +34,7 @@ class Page implements PageInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
     /** @var \DateTimeImmutable|null */
@@ -51,12 +51,12 @@ class Page implements PageInterface
         $this->createdAt = new \DateTime();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(?int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

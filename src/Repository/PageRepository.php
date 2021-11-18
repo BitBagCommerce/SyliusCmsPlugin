@@ -116,8 +116,8 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('channelCode', $channelCode)
         ;
 
-        if (!empty($date)) {
-            $this->addDateFilter($qb);
+        if (null !== $date) {
+            $this->addDateFilter($qb, $date);
         }
 
         return $qb
@@ -145,7 +145,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('channelCode', $channelCode)
         ;
 
-        if (!empty($date)) {
+        if (null !== $date) {
             $this->addDateFilter($qb, $date);
         }
 

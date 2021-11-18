@@ -43,7 +43,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
 
     public function setContent(?string $content): void
     {
-        assert(!is_null($content));
+        assert(null !== $content);
         $this->content = $content;
     }
 

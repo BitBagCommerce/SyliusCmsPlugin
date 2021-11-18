@@ -45,7 +45,8 @@ final class ImportProcessor implements ImportProcessorInterface
             try {
                 $importer->import($row);
             } catch (\Exception $exception) {
-                throw new ImportFailedException($exception->getMessage(), ++$index);
+                $index += 1;
+                throw new ImportFailedException($exception->getMessage(), $index);
             }
 
             $this->entityManager->clear();

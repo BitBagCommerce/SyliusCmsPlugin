@@ -22,7 +22,7 @@ class Section implements SectionInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
     public function __construct()

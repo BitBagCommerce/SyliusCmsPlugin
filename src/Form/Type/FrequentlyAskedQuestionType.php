@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class FrequentlyAskedQuestionType extends AbstractResourceType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('code', TextType::class, [
