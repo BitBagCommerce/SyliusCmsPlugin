@@ -33,19 +33,19 @@ class Media implements MediaInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $type;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
-    /** @var string */
+    /** @var string|null */
     protected $path;
 
-    /** @var File */
+    /** @var File|null */
     protected $file;
 
-    /** @var string */
+    /** @var string|null */
     protected $mimeType;
 
     /** @var string */

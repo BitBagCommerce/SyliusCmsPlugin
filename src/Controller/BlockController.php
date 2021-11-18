@@ -40,6 +40,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         if (!$configuration->isHtmlRequest()) {
+            assert(!is_null($this->viewHandler));
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
@@ -72,6 +73,7 @@ final class BlockController extends ResourceController
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         if (!$configuration->isHtmlRequest()) {
+            assert(!is_null($this->viewHandler));
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 

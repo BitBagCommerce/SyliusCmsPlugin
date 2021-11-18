@@ -57,6 +57,7 @@ class Block implements BlockInterface
 
     public function setCode(?string $code): void
     {
+        assert(!is_null($code));
         $this->code = $code;
     }
 

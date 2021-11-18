@@ -26,10 +26,10 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
-    /** @var int */
+    /** @var int|null */
     protected $position;
 
     public function __construct()

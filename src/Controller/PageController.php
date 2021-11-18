@@ -50,6 +50,7 @@ final class PageController extends ResourceController
             ]);
         }
 
+        assert(!is_null($this->viewHandler));
         return $this->viewHandler->handle($configuration, View::create($page));
     }
 
@@ -78,6 +79,7 @@ final class PageController extends ResourceController
         $formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
+            assert(!is_null($this->viewHandler));
             $this->viewHandler->handle($configuration, View::create($page));
         }
 
