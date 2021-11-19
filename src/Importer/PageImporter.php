@@ -89,7 +89,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
     {
         /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        assert(!is_null($code));
+        assert(null !== $code);
 
         /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);

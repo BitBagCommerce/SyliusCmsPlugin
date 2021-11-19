@@ -62,7 +62,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     {
         /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        assert(!is_null($code));
+        assert(null !== $code);
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
 

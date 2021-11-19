@@ -59,7 +59,6 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
 
     public function setLink(?string $link): void
     {
-        assert(!is_null($link));
         $this->link = $link;
     }
 }

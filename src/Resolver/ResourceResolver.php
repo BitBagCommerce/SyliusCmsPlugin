@@ -38,7 +38,8 @@ final class ResourceResolver implements ResourceResolverInterface
     public function getResource(string $identifier, string $factoryMethod = 'createNew'): ResourceInterface
     {
         /** @var ResourceInterface $resource */
-        if ($resource = $this->repository->findOneBy([$this->uniqueColumn => $identifier])) {
+        $resource = $this->repository->findOneBy([$this->uniqueColumn => $identifier]);
+        if (null !== $resource) {
             return $resource;
         }
 
