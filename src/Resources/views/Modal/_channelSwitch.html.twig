@@ -6,7 +6,7 @@
         <label for="bitbag_sylius_cms_plugin_channel_switch" class="required">
             {{ 'sylius.ui.channel'|trans }}
         </label>
-        <select id="bitbag_sylius_cms_plugin_channel_switch" class=" ui dropdown">
+        <select id="bitbag_sylius_cms_plugin_channel_switch" data-bb-channel class=" ui dropdown">
             {% for channel in channels %}
                 <option value="{{ channel.code }}" {{ channel.code is same as(code) ? 'selected' : '' }}>
                     {{ channel.name }}
