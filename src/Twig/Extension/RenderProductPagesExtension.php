@@ -10,12 +10,48 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
+use BitBag\SyliusCmsPlugin\Entity\Page;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Sorter\SectionsSorter;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Sylius\Component\Core\Model\ProductInterface;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+    /**
+     * @var Environment
+     */
+    private $environment;
+
+    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager, Environment $environment)
+    {
+        $this->container = $container;
+        $this->entityManager = $entityManager;
+        $this->environment = $environment;
+    }
+
+
     public function getFunctions(): array
     {
         return [
@@ -23,48 +59,44 @@ final class RenderProductPagesExtension extends AbstractExtension
         ];
     }
 
+    /**
+     * @throws NotFoundExceptionInterface
+     * @throws SyntaxError
+     * @throws ContainerExceptionInterface
+     * @throws RuntimeError
+     * @throws LoaderError
+     * @throws Exception
+     */
     public function renderProductPages(
         ProductInterface $product,
         ?string $sectionCode = null,
         ?string $date = null
     ): string {
-        $channelCode = $this->channelContext->getChannel()->getCode();
+        $channelCode = $this->container->get('sylius.context.channel')->getChannel();
 
         $parsedDate = null;
-        if (!empty($date)) {
-            $parsedDate = new \DateTimeImmutable($date);
+        if (null !== $date) {
+            $parsedDate = new DateTimeImmutable($date);
         }
 
+        /** @var PageRepositoryInterface $pageRepository */
+        $pageRepository = $this->entityManager->getRepository(Page::class);
         if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
+            $pages = $pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
         } else {
-            $pages = $this->pageRepository->findByProduct($product, $channelCode, $parsedDate);
+            $pages = $pageRepository->findByProduct($product, $channelCode, $parsedDate);
         }
 
         $data = $this->sortBySections($pages);
 
-        return $this->templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', [
+        return $this->environment->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', [
             'data' => $data,
         ]);
     }
 
     private function sortBySections(array $pages): array
     {
-        $result = [];
-
-        /** @var PageInterface $page */
-        foreach ($pages as $page) {
-            foreach ($page->getSections() as $section) {
-                $sectionCode = $section->getCode();
-                if (!array_key_exists($sectionCode, $result)) {
-                    $result[$sectionCode] = [];
-                    $result[$sectionCode]['section'] = $section;
-                }
-
-                $result[$sectionCode][] = $page;
-            }
-        }
-
-        return $result;
+        $sectionsSorter = new SectionsSorter();
+        return $sectionsSorter->sortBySections($pages);
     }
 }
