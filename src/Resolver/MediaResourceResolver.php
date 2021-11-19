@@ -44,6 +44,7 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
 
     public function findOrLog(string $code): ?MediaInterface
     {
+        assert(null !== $this->channelContext->getChannel()->getCode());
         $media = $this->mediaRepository->findOneEnabledByCode(
             $code,
             $this->localeContext->getLocaleCode(),

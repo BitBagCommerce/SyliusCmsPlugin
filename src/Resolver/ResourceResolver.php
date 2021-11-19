@@ -13,6 +13,8 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Symfony\Component\CssSelector\Exception\InternalErrorException;
+use function PHPUnit\Framework\callback;
 
 final class ResourceResolver implements ResourceResolverInterface
 {
@@ -35,14 +37,22 @@ final class ResourceResolver implements ResourceResolverInterface
         $this->uniqueColumn = $uniqueColumn;
     }
 
+    /**
+     * @throws InternalErrorException
+     */
     public function getResource(string $identifier, string $factoryMethod = 'createNew'): ResourceInterface
     {
-        /** @var ResourceInterface $resource */
+        /** @var ResourceInterface|null $resource */
         $resource = $this->repository->findOneBy([$this->uniqueColumn => $identifier]);
         if (null !== $resource) {
             return $resource;
         }
-
-        return $this->factory->$factoryMethod();
+        $callback = [$this->factory, $factoryMethod];
+        if(is_callable($callback)) {
+            return call_user_func($callback);
+        }
+        else {
+            throw new InternalErrorException('$factoryMethod in ResourceResolver.php is not callable');
+        }
     }
 }
