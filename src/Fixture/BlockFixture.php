@@ -13,8 +13,6 @@ namespace BitBag\SyliusCmsPlugin\Fixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 
@@ -66,6 +64,7 @@ final class BlockFixture extends AbstractFixture
     {
         $nodeDefinition = new ScalarNodeDefinition($name);
         $nodeDefinition->defaultNull()->end();
+
         return $nodeDefinition;
     }
 

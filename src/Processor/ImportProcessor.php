@@ -46,6 +46,7 @@ final class ImportProcessor implements ImportProcessorInterface
                 $importer->import($row);
             } catch (\Exception $exception) {
                 $index += 1;
+
                 throw new ImportFailedException($exception->getMessage(), $index);
             }
 

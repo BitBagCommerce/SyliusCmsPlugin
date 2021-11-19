@@ -41,6 +41,7 @@ final class BlockController extends ResourceController
 
         if (!$configuration->isHtmlRequest()) {
             assert(null !== $this->viewHandler);
+
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
@@ -74,6 +75,7 @@ final class BlockController extends ResourceController
 
         if (!$configuration->isHtmlRequest()) {
             assert(null !== $this->viewHandler);
+
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
