@@ -1,9 +1,16 @@
 import './bitbag-media-autocomplete';
-// import './bitbag-cms-resource-preview';
-import {HandleCsvUpload, HandleSlugUpdate, HandlePreview} from './bitbag';
+import {HandleCsvUpload, HandleSlugUpdate, HandlePreview, HandleAutoComplete} from './bitbag';
 
-new HandleCsvUpload().init();
+if (document.querySelector('[data-bb-cms-text]') && document.querySelector('[data-bb-cms-file]')) {
+    new HandleCsvUpload().init();
+}
 
-new HandleSlugUpdate().init();
+if (document.querySelectorAll('[data-bb-cms-wrapper]')?.length > 0) {
+    new HandleSlugUpdate().init();
+}
 
-new HandlePreview().init();
+if (document.querySelector('[data-bb-cms-preview-btn]') && document.querySelector('[data-bb-cms-preview-modal]')) {
+    new HandlePreview().init();
+}
+
+new HandleAutoComplete().init();

@@ -35,7 +35,7 @@
 
     <div class="ui styled fluid accordion">
         {% for locale, translationForm in translations %}
-            <div data-locale="{{ locale }}" data-bb-wrapper>
+            <div data-locale="{{ locale }}" data-bb-cms-wrapper>
                 <div class="title{% if 0 == loop.index0 %} active{% endif %}">
                     <i class="dropdown icon"></i>
                     {{ flags.fromLocaleCode(locale) }} {{ locale|sylius_locale_name }}

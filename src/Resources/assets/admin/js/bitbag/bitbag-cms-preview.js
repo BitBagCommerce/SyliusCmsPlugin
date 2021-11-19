@@ -7,17 +7,31 @@
 export class HandlePreview {
     constructor(
         config = {
-            previewButton: 'data-bb-preview-btn',
-            previewModal: 'data-bb-preview-modal',
-            channelSwitch: 'data-bb-channel',
-            localeSwitch: 'data-bb-locale',
+            previewButton: 'data-bb-cms-preview-btn',
+            previewModal: 'data-bb-cms-preview-modal',
+            channelSwitch: 'data-bb-cms-channel',
+            localeSwitch: 'data-bb-cms-locale',
         }
     ) {
+        this.config = config;
         this.button = document.querySelector(`[${config.previewButton}]`);
         this.modal = document.querySelector(`[${config.previewModal}]`);
         this.modalSelector = config.previewModal;
         this.channelSelector = config.channelSwitch;
         this.localeSelector = config.localeSwitch;
+    }
+    init() {
+        if (typeof this.config !== 'object') {
+            throw new Error('Bitbag CMS Plugin - HandlsPreview class config is not a valid object');
+        }
+        if (
+            typeof this.localeSelector !== 'string' ||
+            typeof this.channelSelector !== 'string' ||
+            typeof this.modalSelector !== 'string'
+        ) {
+            throw new Error('Bitbag CMS Plugin - HandlsPreview class config key values are not valid strings');
+        }
+        this._resourcePreview();
     }
 
     _$_CKEDITOR_MODAL_SHOW() {
@@ -25,16 +39,16 @@ export class HandlePreview {
         return root.modal('show');
     }
 
+    _$_CKEDITOR_UPDATE_INSTANCES() {
+        [...CKEDITOR.instances].forEach((instance) => instance.updateElement());
+    }
+
     _resourcePreview() {
         this.button.addEventListener('click', (e) => {
             e.preventDefault();
 
-            for (const instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].updateElement();
-            }
-
+            this._$_CKEDITOR_UPDATE_INSTANCES;
             this._createPreview();
-
             this._$_CKEDITOR_MODAL_SHOW();
         });
     }
@@ -65,14 +79,8 @@ export class HandlePreview {
             console.log(error);
         } finally {
             this.modal.querySelector('.ui.loadable').classList.remove('loading');
+            this.modal.disabled = false;
         }
-    }
-
-    init() {
-        if (!this.button || !this.modal) {
-            throw new Error('BitBag CMS Pugin - bitbag cms preview, couldnt retrieve correct nodes in the DOM');
-        }
-        this._resourcePreview();
     }
 }
 

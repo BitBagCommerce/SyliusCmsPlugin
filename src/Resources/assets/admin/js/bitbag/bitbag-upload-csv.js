@@ -5,15 +5,17 @@
 */
 
 export class HandleCsvUpload {
-    constructor(config = {textField: 'data-bb-text', fileField: 'data-bb-file'}) {
+    constructor(config = {textField: 'data-bb-cms-text', fileField: 'data-bb-cms-file'}) {
+        this.config = config;
         this.textField = document.querySelector(`[${config.textField}]`);
         this.fileField = document.querySelector(`[${config.fileField}]`);
     }
 
     init() {
-        if (!this.textField || !this.fileField) {
-            return;
+        if (typeof this.config !== 'object') {
+            throw new Error('Bitbag CMS Plugin - HandleCsvUpload class config is not a valid object');
         }
+
         this._handleFields();
     }
 

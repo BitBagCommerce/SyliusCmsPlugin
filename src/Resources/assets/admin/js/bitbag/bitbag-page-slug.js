@@ -7,19 +7,23 @@
 export class HandleSlugUpdate {
     constructor(
         config = {
-            wrappersIndicator: 'data-bb-wrapper',
-            lockFieldIndicator: 'data-bb-toggle-slug',
+            wrappersIndicator: 'data-bb-cms-wrapper',
+            lockFieldIndicator: 'data-bb-cms-toggle-slug',
             bbTarget: 'bitbag_sylius_cms_plugin_page',
         }
     ) {
         this.wrappers = document.querySelectorAll(`[${config.wrappersIndicator}]`);
         this.lockFieldIndicator = `[${config.lockFieldIndicator}]`;
         this.bbTarget = config.bbTarget;
+        this.config = config;
     }
 
     init() {
-        if (this.wrappers.length === 0) {
-            throw new Error('Cms Plugin - Given selectors for handling slug update, are not valid');
+        if (typeof this.config !== 'object') {
+            throw new Error('Bitbag CMS Plugin - HandlsSlugUpdate class config is not a valid object');
+        }
+        if (typeof this.lockFieldIndicator !== 'string' || typeof this.bbTarget !== 'string') {
+            throw new Error('Bitbag CMS Plugin - HandlsSlugUpdate class config key values are not valid strings');
         }
 
         this._handleFields();
