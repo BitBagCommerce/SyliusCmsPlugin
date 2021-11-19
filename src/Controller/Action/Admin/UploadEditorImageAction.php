@@ -44,10 +44,10 @@ final class UploadEditorImageAction
 
     public function __invoke(Request $request): Response
     {
-        /** @var UploadedFile $image */
+        /** @var UploadedFile|null $image */
         $image = $request->files->get('upload');
 
-        if (null == $image || !$this->isValidImage($image)) {
+        if (null === $image || !$this->isValidImage($image)) {
             throw new BadRequestHttpException();
         }
 

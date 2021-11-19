@@ -56,10 +56,10 @@ final class MediaController extends ResourceController
         $code = $request->get('code');
         /** @var MediaResourceResolverInterface $mediaResourceResolver */
         $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
-        /** @var MediaInterface $media */
+        /** @var MediaInterface|null $media */
         $media = $mediaResourceResolver->findOrLog($code);
 
-        if (null == $media) {
+        if (null === $media) {
             return new Response();
         }
 
