@@ -45,11 +45,11 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
-
+        assert(null !== $channelCode);
         if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode);
+            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, null);
         } else {
-            $pages = $this->pageRepository->findByProduct($product, $channelCode);
+            $pages = $this->pageRepository->findByProduct($product, $channelCode, null);
         }
 
         $data = $this->sectionsSorter->sortBySections($pages);

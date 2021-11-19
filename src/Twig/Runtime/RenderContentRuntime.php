@@ -25,7 +25,7 @@ final class RenderContentRuntime implements RenderContentRuntimeInterface
 
     public function renderContent(ContentableInterface $contentableResource): string
     {
-        $content = (string) html_entity_decode((string) $contentableResource->getContent(), \ENT_QUOTES);
+        $content = html_entity_decode((string) $contentableResource->getContent(), \ENT_QUOTES);
 
         return $this->contentParser->parse($content);
     }
