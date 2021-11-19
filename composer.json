@@ -8,12 +8,6 @@
     ],
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/MateuszDyla/coding-standard.git"
-        }
-    ],
     "require": {
         "php": "^7.3 || ^7.4 || ^8.0",
         "sylius/sylius": "~1.8.0 || ~1.9.0 || ~1.10.0",
