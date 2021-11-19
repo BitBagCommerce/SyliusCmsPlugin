@@ -51,6 +51,7 @@ final class PageController extends ResourceController
         }
 
         assert(null !== $this->viewHandler);
+
         return $this->viewHandler->handle($configuration, View::create($page));
     }
 

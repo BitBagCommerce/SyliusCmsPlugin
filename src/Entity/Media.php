@@ -227,6 +227,7 @@ class Media implements MediaInterface
     {
         $result = $this->getName() ?? $this->code;
         assert(is_string($result));
+
         return $result;
     }
 }
