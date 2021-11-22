@@ -22,14 +22,14 @@ export class HandlePreview {
     }
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandlsPreview class config is not a valid object');
+            throw new Error('Bitbag CMS Plugin - HandlePreview class config is not a valid object');
         }
         if (
             typeof this.localeSelector !== 'string' ||
             typeof this.channelSelector !== 'string' ||
             typeof this.modalSelector !== 'string'
         ) {
-            throw new Error('Bitbag CMS Plugin - HandlsPreview class config key values are not valid strings');
+            throw new Error('Bitbag CMS Plugin - HandlePreview class config key values are not valid strings');
         }
         this._resourcePreview();
     }

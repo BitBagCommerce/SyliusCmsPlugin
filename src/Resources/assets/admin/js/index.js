@@ -1,4 +1,3 @@
-import './bitbag-media-autocomplete';
 import {HandleCsvUpload, HandleSlugUpdate, HandlePreview, HandleAutoComplete} from './bitbag';
 
 if (document.querySelector('[data-bb-cms-text]') && document.querySelector('[data-bb-cms-file]')) {

@@ -20,10 +20,10 @@ export class HandleSlugUpdate {
 
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandlsSlugUpdate class config is not a valid object');
+            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config is not a valid object');
         }
         if (typeof this.lockFieldIndicator !== 'string' || typeof this.bbTarget !== 'string') {
-            throw new Error('Bitbag CMS Plugin - HandlsSlugUpdate class config key values are not valid strings');
+            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config key values are not valid strings');
         }
 
         this._handleFields();
