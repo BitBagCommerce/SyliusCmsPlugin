@@ -12,9 +12,9 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface

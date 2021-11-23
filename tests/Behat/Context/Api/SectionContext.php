@@ -43,8 +43,10 @@ final class SectionContext implements Context
      */
     public function iShouldSeeSectionsInTheList(int $count): void
     {
-        Assert::count($this->responseChecker->getCollection(
-            $this->apiClient->getLastResponse()),
+        Assert::count(
+            $this->responseChecker->getCollection(
+                $this->apiClient->getLastResponse()
+            ),
             $count
         );
     }
@@ -55,7 +57,7 @@ final class SectionContext implements Context
      */
     public function iShouldSeeSectionWithCode(SectionInterface $section): void
     {
-        $this->apiClient->show((string)$section->getId());
+        $this->apiClient->show((string) $section->getId());
     }
 
     /**
@@ -66,10 +68,11 @@ final class SectionContext implements Context
         Assert::false(
             $this->responseChecker->hasTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "name",
+                'en_US',
+                'name',
                 "That shouldn't exist"
-            ), "Section has missing name"
+            ),
+            'Section has missing name'
         );
     }
 }

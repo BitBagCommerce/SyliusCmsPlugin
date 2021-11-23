@@ -15,8 +15,11 @@ use Behat\Mink\Session;
 
 final class FormHelper
 {
-    public static function fillHiddenInput(Session $session, string $id, $value): void
-    {
+    public static function fillHiddenInput(
+        Session $session,
+        string $id,
+        $value
+    ): void {
         try {
             $session->executeScript(
                 sprintf(
@@ -26,10 +29,10 @@ final class FormHelper
                 )
             );
         }
-            /** @noinspection PhpRedundantCatchClauseInspection */
+        /** @noinspection PhpRedundantCatchClauseInspection */
         catch (UnsupportedDriverActionException $ex) {
             $session->getPage()
-                ->find('css','input#'.$id)
+                ->find('css', 'input#' . $id)
                 ->setValue($value)
             ;
         }

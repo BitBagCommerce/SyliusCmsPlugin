@@ -43,8 +43,10 @@ final class MediaContext implements Context
      */
     public function iShouldSeeMediaInTheList(int $count): void
     {
-        Assert::count($this->responseChecker->getCollection(
-            $this->apiClient->getLastResponse()),
+        Assert::count(
+            $this->responseChecker->getCollection(
+                $this->apiClient->getLastResponse()
+            ),
             $count
         );
     }
@@ -55,7 +57,7 @@ final class MediaContext implements Context
      */
     public function iShouldSeeTheMedia(MediaInterface $media): void
     {
-        $this->apiClient->show((string)$media->getId());
+        $this->apiClient->show((string) $media->getId());
     }
 
     /**
@@ -66,11 +68,11 @@ final class MediaContext implements Context
         Assert::false(
             $this->responseChecker->hasTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "content",
+                'en_US',
+                'content',
                 "That shouldn't exist"
-            ), "Missing media"
+            ),
+            'Missing media'
         );
     }
-
 }
