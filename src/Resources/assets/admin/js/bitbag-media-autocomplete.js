@@ -15,21 +15,18 @@ var HTMLChars = {
 };
 
 var htmlToString = function htmlToString(item) {
-    console.log('html to string');
     return String(item).replace(/&|<|>|"/gi, function (matched) {
         return HTMLChars[matched];
     });
 };
 
 var trimValue = function trimValue(item) {
-    console.log('trim valeu');
     return item.length > mediaCharLimit ? item.substring(0, mediaCharLimit) + '...' : item;
 };
 
 var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
-    console.log('option name tmpl');
     return '\n    <img src="'
-        .concat(item.path, ' " alt="media-img-dupa" />\n    <strong> ')
+        .concat(item.path, ' " alt="media-img" />\n    <strong> ')
         .concat(!item[nameField] ? defaultName : trimValue(htmlToString(item[nameField])), ' </strong>\n    (')
         .concat(trimValue(item.code), ')\n');
 };
@@ -39,7 +36,6 @@ var optionNameTmpl = function optionNameTmpl(item, nameField, defaultName) {
 
     $.fn.extend({
         mediaAutoComplete: function mediaAutoComplete() {
-            console.log('media autocomplete');
             this.each(function (idx, el) {
                 var element = $(el);
                 var _el$dataset = el.dataset,

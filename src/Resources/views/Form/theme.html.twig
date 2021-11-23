@@ -9,21 +9,21 @@
         {{- form_label(form) -}}
         <div
             class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-            data-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
+            data-bb-cms-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
             'mediaType': form.vars.media_type,
         })}}"
-            data-choice-name="{{ choice_name }}"
-            data-choice-value="{{ choice_value }}"
-            data-criteria-type="{{ remote_criteria_type }}"
-            data-criteria-name="{{ remote_criteria_name }}"
-            data-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
-            data-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
+            data-bb-cms-choice-name="{{ choice_name }}"
+            data-bb-cms-choice-value="{{ choice_value }}"
+            data-bb-cms-criteria-type="{{ remote_criteria_type }}"
+            data-bb-cms-criteria-name="{{ remote_criteria_name }}"
+            data-bb-cms-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
+            data-bb-cms-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
         >
             {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
-            <span class="btn-delete is-hidden js-image-delete">X</span>
+            <span class="btn-delete is-hidden" data-bb-cms-delete-selected>X</span>
             <i class="dropdown icon"></i>
-            <div class="default text js-selected-image">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
-            <div class="menu"></div>
+            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-bb-cms-image-select>
+            <div class="menu" data-bb-cms-selection-menu>/div>
         </div>
         {{- form_errors(form) -}}
     </div>
