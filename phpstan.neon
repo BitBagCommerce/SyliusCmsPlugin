@@ -4,7 +4,7 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-    excludePaths:
+    excludes_analyse:
         # Sitemap dependent providers
         - 'src/SitemapProvider'
         - 'src/Importer/AbstractImporter'
