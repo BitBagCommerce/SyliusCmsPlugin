@@ -11,4 +11,4 @@ parameters:
         - 'tests/Application/config/bootstrap.php'
         - 'tests/Fixture/PageFixtureTest.php'
     ignoreErrors:
-        - '#.*NodeParentInterface\|null.*#'
+        - '#.*NodeParentInterface.*#'
