@@ -36,7 +36,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
 
         /** @var NodeElement $productOnPage */
         foreach ($productsOnPage as $productOnPage) {
-            if (false === in_array($productOnPage->getText(), $productsNames)) {
+            if (false === in_array($productOnPage->getText(), $productsNames, true)) {
                 return false;
             }
         }
@@ -50,7 +50,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
 
         /** @var NodeElement $sectionOnPage */
         foreach ($sectionsOnPage as $sectionOnPage) {
-            if (false === in_array($sectionOnPage->getText(), $sectionNames)) {
+            if (false === in_array($sectionOnPage->getText(), $sectionNames, true)) {
                 return false;
             }
         }

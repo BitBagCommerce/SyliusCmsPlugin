@@ -18,8 +18,14 @@ use Webmozart\Assert\Assert;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
+    /**
+     * @var ApiClientInterface
+     */
     private $apiClient;
 
+    /**
+     * @var ResponseCheckerInterface
+     */
     private $responseChecker;
 
     public function __construct(
@@ -45,7 +51,7 @@ final class FrequentlyAskedQuestionContext implements Context
     {
         Assert::count($this->responseChecker->getCollection(
             $this->apiClient->getLastResponse()),
-            $count
+            intval($count)
         );
     }
 
