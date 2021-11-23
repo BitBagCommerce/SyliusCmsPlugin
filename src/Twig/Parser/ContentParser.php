@@ -58,6 +58,7 @@ final class ContentParser implements ContentParserInterface
     {
         $start = '{{ ' . $functionName . '(';
         $end = ') }}';
+        /** @var string[]|false $functionParts */
         $functionParts = explode($start, $input);
 
         if (false !== $functionParts && isset($functionParts[1])) {
