@@ -65,7 +65,7 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
-        /** @var null|string $mediaPath */
+        /** @var string|null $mediaPath */
         $mediaPath = $media->getPath();
         assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
         $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
@@ -125,7 +125,7 @@ final class MediaController extends ResourceController
             return;
         }
 
-        /** @var null|string $mediaPath */
+        /** @var string|null $mediaPath */
         $mediaPath = $media->getPath();
         assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
