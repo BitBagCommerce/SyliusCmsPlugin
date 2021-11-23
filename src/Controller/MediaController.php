@@ -67,7 +67,7 @@ final class MediaController extends ResourceController
 
         /** @var null|string $mediaPath */
         $mediaPath = $media->getPath();
-        assert(null !== $mediaPath) && is_string($this->getParameter('sylius_core.public_dir'));
+        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
         $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
         $mediaFile = new File($mediaPath);
         $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();
@@ -127,7 +127,7 @@ final class MediaController extends ResourceController
 
         /** @var null|string $mediaPath */
         $mediaPath = $media->getPath();
-        assert(null !== $mediaPath) && is_string($this->getParameter('sylius_core.public_dir'));
+        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         if (is_string($fileContents)) {
