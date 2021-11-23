@@ -42,8 +42,10 @@ final class BlockContext implements Context
      */
     public function iShouldSeeBlocksInTheList(int $count): void
     {
-        Assert::count($this->responseChecker->getCollection(
-            $this->apiClient->getLastResponse()),
+        Assert::count(
+            $this->responseChecker->getCollection(
+                $this->apiClient->getLastResponse()
+            ),
             $count
         );
     }
@@ -57,7 +59,7 @@ final class BlockContext implements Context
         Assert::true(
             $this->responseChecker->hasItemWithValue(
                 $this->apiClient->index(),
-                "code",
+                'code',
                 $code
             ),
             sprintf('There is no blocks with code "%s"', $code)
@@ -72,10 +74,11 @@ final class BlockContext implements Context
         Assert::false(
             $this->responseChecker->hasTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "answer",
+                'en_US',
+                'answer',
                 "That shouldn't exist"
-            ), "Block has missing name"
+            ),
+            'Block has missing name'
         );
     }
 
@@ -87,10 +90,11 @@ final class BlockContext implements Context
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "content",
-                "Hi there!"
-            ), "Block has missing content"
+                'en_US',
+                'content',
+                'Hi there!'
+            ),
+            'Block has missing content'
         );
     }
 }
