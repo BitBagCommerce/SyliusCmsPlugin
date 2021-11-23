@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Parser;
 
+use BadFunctionCallException;
+use PhpSpec\Exception\Fracture\MethodNotFoundException;
+use Symfony\Component\CssSelector\Exception\InternalErrorException;
 use Webmozart\Assert\Assert;
 
 final class ContentParser implements ContentParserInterface
@@ -34,7 +37,7 @@ final class ContentParser implements ContentParserInterface
 
         foreach ($callMatches[0] as $index => $call) {
             $function = $callMatches['method'][$index];
-            if (!in_array($function, $this->enabledFunctions)) {
+            if (!in_array($function, $this->enabledFunctions, true)) {
                 continue;
             }
 
@@ -58,7 +61,7 @@ final class ContentParser implements ContentParserInterface
         $end = ') }}';
         $functionParts = explode($start, $input);
 
-        if (isset($functionParts[1])) {
+        if (false !== $functionParts && isset($functionParts[1])) {
             $functionParts = explode($end, $functionParts[1]);
             $arguments = explode(',', $functionParts[0]);
 
@@ -70,6 +73,9 @@ final class ContentParser implements ContentParserInterface
         return null;
     }
 
+    /**
+     * @throws MethodNotFoundException
+     */
     private function callFunction(
         array $functions,
         string $functionName,
@@ -79,9 +85,13 @@ final class ContentParser implements ContentParserInterface
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];
         $callable = $function->getCallable();
+        assert(is_array($callable));
         $extension = $callable[0];
         $extensionMethod = $callable[1];
-
-        return call_user_func_array([$extension, $extensionMethod], $arguments);
+        $callback = [$extension, $extensionMethod];
+        if(!is_callable($callback)) {
+            throw new BadFunctionCallException('Provided method ' . $extensionMethod . ' is not callable', );
+        }
+        return call_user_func_array($callback, $arguments);
     }
 }

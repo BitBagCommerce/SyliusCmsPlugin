@@ -32,10 +32,7 @@ final class MediaUploader implements MediaUploaderInterface
         }
 
         $file = $media->getFile();
-
-        /** @var File $file */
-        Assert::isInstanceOf($file, File::class);
-
+        assert(null !== $file);
         if (null !== $media->getPath() && $this->has($media->getPath())) {
             $this->remove($media->getPath());
         }
@@ -47,16 +44,21 @@ final class MediaUploader implements MediaUploaderInterface
 
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
-
-        if (false !== strpos($media->getMimeType(), 'image')) {
-            [$width, $height] = getimagesize($media->getFile()->getPathname());
+        $file = $media->getFile();
+        assert(null !== $file);
+        $mimeType = $media->getMimeType();
+        if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
+            [$width, $height] = getimagesize($file->getPathname());
             $media->setWidth($width);
             $media->setHeight($height);
         }
 
+        $mediaPath = $media->getPath();
+        $fileContents = file_get_contents($file->getPathname());
+        assert(null !== $mediaPath && false !== $fileContents);
         $this->filesystem->write(
-            $media->getPath(),
-            file_get_contents($media->getFile()->getPathname())
+            $mediaPath,
+            $fileContents
         );
     }
 

@@ -25,11 +25,12 @@ final class ImageDownloader implements ImageDownloaderInterface
 
     public function download(string $url): File
     {
+        $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10));
         $pathInfo = pathinfo($url);
         $extension = $pathInfo['extension'] ?? null;
-        null !== $extension ?
-            $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10)) . '.' . $extension :
-            $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10));
+        if(null !== $extension) {
+            $path .= '.' . $extension;
+        }
         $contents = file_get_contents($url);
         assert(is_string($contents));
         $this->filesystem->dumpFile($path, $contents);

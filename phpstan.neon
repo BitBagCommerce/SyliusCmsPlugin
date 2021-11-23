@@ -1,15 +1,14 @@
+includes:
+    - vendor/bitbag/coding-standard/phpstan.neon
 parameters:
     reportUnmatchedIgnoredErrors: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-
     excludes_analyse:
-        # Makes PHPStan crash
-        - 'src/DependencyInjection/Configuration.php'
-
-        # Test dependencies
-        - 'tests/Application/app/**.php'
-        - 'tests/Application/src/**.php'
-
-        # ECS Fixer dependency
-        - 'src/Fixer/**.php'
+        # Sitemap dependent providers
+        - 'src/SitemapProvider'
+        - 'src/Importer/AbstractImporter'
+        - 'tests/Application/config/bootstrap.php'
+        - 'tests/Fixture/PageFixtureTest.php'
+    ignoreErrors:
+        - '#.*NodeParentInterface.*#'

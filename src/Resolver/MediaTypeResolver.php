@@ -16,11 +16,11 @@ final class MediaTypeResolver implements MediaTypeResolverInterface
 {
     public function resolveType(string $mimeType): string
     {
-        if (preg_match('/^(image)\/\w{0,}$/', $mimeType)) {
+        if (false !== preg_match('/^(image)\/\w{0,}$/', $mimeType)) {
             return MediaInterface::IMAGE_TYPE;
         }
 
-        if (preg_match('/^(video)\/\w{0,}$/', $mimeType)) {
+        if (false !== preg_match('/^(video)\/\w{0,}$/', $mimeType)) {
             return MediaInterface::VIDEO_TYPE;
         }
 

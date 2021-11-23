@@ -35,7 +35,7 @@ abstract class AbstractTestController extends XmlApiTestCase
     /**
      * @before
      */
-    public function setupDatabase(): void
+    public function setUpDatabase(): void
     {
         parent::setUpDatabase();
 
