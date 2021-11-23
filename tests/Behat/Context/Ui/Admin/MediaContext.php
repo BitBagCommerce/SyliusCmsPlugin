@@ -12,8 +12,8 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use Sylius\Behat\NotificationType;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
+use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -55,7 +55,6 @@ final class MediaContext implements Context
         NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
-
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         MediaRepositoryInterface $mediaRepository
@@ -178,7 +177,8 @@ final class MediaContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s must be at least %d characters long.',
-                trim($field), 2
+                trim($field),
+                2
             )));
         }
     }

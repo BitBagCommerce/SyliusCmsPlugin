@@ -12,8 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Uploader;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Gaufrette\Filesystem;
-use Symfony\Component\HttpFoundation\File\File;
-use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface
 {

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
 use BitBag\SyliusCmsPlugin\Entity\Page;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorter;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
@@ -31,26 +30,24 @@ use Twig\TwigFunction;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {
-    /**
-     * @var ContainerInterface
-     */
+    /** @var ContainerInterface */
     private $container;
-    /**
-     * @var EntityManagerInterface
-     */
+
+    /** @var EntityManagerInterface */
     private $entityManager;
-    /**
-     * @var Environment
-     */
+
+    /** @var Environment */
     private $environment;
 
-    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager, Environment $environment)
-    {
+    public function __construct(
+        ContainerInterface $container,
+        EntityManagerInterface $entityManager,
+        Environment $environment
+    ) {
         $this->container = $container;
         $this->entityManager = $entityManager;
         $this->environment = $environment;
     }
-
 
     public function getFunctions(): array
     {
@@ -97,6 +94,7 @@ final class RenderProductPagesExtension extends AbstractExtension
     private function sortBySections(array $pages): array
     {
         $sectionsSorter = new SectionsSorter();
+
         return $sectionsSorter->sortBySections($pages);
     }
 }
