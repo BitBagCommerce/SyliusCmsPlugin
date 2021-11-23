@@ -101,7 +101,10 @@ final class PageController extends ResourceController
             return;
         }
 
-        $file = $image->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
+        /** @var string|null $imagePath */
+        $imagePath = $image->getPath();
+        assert(null !== $imagePath && is_string($this->getParameter('sylius_core.public_dir')));
+        $file = $image->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . $imagePath);
         $fileContents = file_get_contents($file->getPathname());
         assert(is_string($fileContents));
         $base64Content = base64_encode($fileContents);
