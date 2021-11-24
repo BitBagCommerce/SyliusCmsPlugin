@@ -41,7 +41,6 @@ class Page implements PageInterface
         $this->initializeSectionsCollection();
         $this->initializeTranslationsCollection();
         $this->initializeChannelsCollection();
-        $this->initializeChannelsCollection();
 
         $this->createdAt = new \DateTime();
     }
