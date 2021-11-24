@@ -24,17 +24,13 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 final class MediaController extends ResourceController
 {
-    /**
-     * @var MediaProviderResolverInterface
-     */
+    /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
-    /**
-     * @var MediaResourceResolverInterface
-     */
+
+    /** @var MediaResourceResolverInterface */
     private $mediaResourceResolver;
-    /**
-     * @var FormErrorsFlashHelperInterface
-     */
+
+    /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
 
     public function renderMediaAction(Request $request): Response
