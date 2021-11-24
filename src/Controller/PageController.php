@@ -10,30 +10,30 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
+use BitBag\SyliusCmsPlugin\CustomResourceController;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class PageController extends ResourceController
+final class PageController extends CustomResourceController
 {
+    /** @var PageResourceResolverInterface */
+    protected $resourceResolver;
+
     public function renderLinkAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        /** @var PageResourceResolverInterface $pageResourceResolver */
-        $pageResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.page_resource');
 
-        $page = $pageResourceResolver->findOrLog($code);
+        $page = $this->resourceResolver->findOrLog($code);
 
         if (null === $page) {
             return new Response();
@@ -57,15 +57,13 @@ final class PageController extends ResourceController
 
     public function previewAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
 
         /** @var PageInterface $page */
-        $page = null !== $request->get('id') && $this->repository->find($request->get('id')) ?
-            $this->repository->find($request->get('id')) :
-            $this->factory->createNew();
-        $form = $this->resourceFormFactory->create($configuration, $page);
+        $page = $this->getResourceInterface($request);
+        $form = $this->getFormForResource($configuration, $page);
         $defaultLocale = $this->getParameter('locale');
 
         $form->handleRequest($request);
@@ -75,9 +73,7 @@ final class PageController extends ResourceController
 
         $this->resolveImage($page);
 
-        /** @var FormErrorsFlashHelperInterface $formErrorsFlashHelper */
-        $formErrorsFlashHelper = $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash');
-        $formErrorsFlashHelper->addFlashErrors($form);
+        $this->formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
             assert(null !== $this->viewHandler);

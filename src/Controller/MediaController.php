@@ -10,11 +10,11 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
+use BitBag\SyliusCmsPlugin\CustomResourceController;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\File;
@@ -22,25 +22,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
-final class MediaController extends ResourceController
+final class MediaController extends CustomResourceController
 {
+    /** @var MediaResourceResolverInterface */
+    protected $resourceResolver;
+
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
 
-    /** @var MediaResourceResolverInterface */
-    private $mediaResourceResolver;
-
-    /** @var FormErrorsFlashHelperInterface */
-    private $formErrorsFlashHelper;
-
     public function renderMediaAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-
-        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
-
-        $code = $request->get('code');
-        $media = $this->mediaResourceResolver->findOrLog($code);
+        $configuration = $this->getRequestConfiguration($request);
+        /** @var MediaInterface|null $media */
+        $media = $this->getMediaForRequestCode($configuration, $request);
 
         if (null === $media) {
             return new Response();
@@ -53,13 +47,10 @@ final class MediaController extends ResourceController
 
     public function downloadMediaAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
-        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
-
-        $code = $request->get('code');
         /** @var MediaInterface|null $media */
-        $media = $this->mediaResourceResolver->findOrLog($code);
+        $media = $this->getMediaForRequestCode($configuration, $request);
 
         if (null === $media) {
             return new Response();
@@ -86,14 +77,12 @@ final class MediaController extends ResourceController
 
     public function previewAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
         /** @var MediaInterface $media */
-        $media = null !== $request->get('id') && $this->repository->find($request->get('id')) ?
-            $this->repository->find($request->get('id')) :
-            $this->factory->createNew();
-        $form = $this->resourceFormFactory->create($configuration, $media);
+        $media = $this->getResourceInterface($request);
+        $form = $this->getFormForResource($configuration, $media);
         $mediaTemplate = null;
 
         $form->handleRequest($request);
@@ -145,19 +134,11 @@ final class MediaController extends ResourceController
         $this->mediaProviderResolver = $mediaProviderResolver;
     }
 
-    /**
-     * @required
-     */
-    public function setMediaResourceResolver(MediaResourceResolverInterface $mediaResourceResolver): void
+    private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface
     {
-        $this->mediaResourceResolver = $mediaResourceResolver;
-    }
+        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
+        $code = $request->get('code');
 
-    /**
-     * @required
-     */
-    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
-    {
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
+        return $this->resourceResolver->findOrLog($code);
     }
 }

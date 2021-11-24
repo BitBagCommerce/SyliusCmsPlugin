@@ -52,5 +52,12 @@ services:
         public: true
         calls:
             - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_provider"]
-            - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
+            - setResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
+            - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
+
+  bitbag_sylius_cms_plugin.controller.page:
+        class: BitBag\SyliusCmsPlugin\Controller\PageController
+        public: true
+        calls:
+            - setResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.page_resource"]
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
