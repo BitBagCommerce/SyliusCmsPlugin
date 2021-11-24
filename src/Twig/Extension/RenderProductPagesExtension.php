@@ -17,11 +17,7 @@ use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\ContainerInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -37,9 +33,8 @@ final class RenderProductPagesExtension extends AbstractExtension
 
     /** @var Environment */
     private $environment;
-    /**
-     * @var ChannelContextInterface
-     */
+
+    /** @var ChannelContextInterface */
     private $channelContext;
 
     public function __construct(
