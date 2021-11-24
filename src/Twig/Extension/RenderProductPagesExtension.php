@@ -20,6 +20,8 @@ use Exception;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -30,23 +32,24 @@ use Twig\TwigFunction;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {
-    /** @var ContainerInterface */
-    private $container;
-
     /** @var EntityManagerInterface */
     private $entityManager;
 
     /** @var Environment */
     private $environment;
+    /**
+     * @var ChannelContextInterface
+     */
+    private $channelContext;
 
     public function __construct(
-        ContainerInterface $container,
+        ChannelContextInterface $channelContext,
         EntityManagerInterface $entityManager,
         Environment $environment
     ) {
-        $this->container = $container;
         $this->entityManager = $entityManager;
         $this->environment = $environment;
+        $this->channelContext = $channelContext;
     }
 
     public function getFunctions(): array
@@ -57,9 +60,7 @@ final class RenderProductPagesExtension extends AbstractExtension
     }
 
     /**
-     * @throws NotFoundExceptionInterface
      * @throws SyntaxError
-     * @throws ContainerExceptionInterface
      * @throws RuntimeError
      * @throws LoaderError
      * @throws Exception
@@ -69,15 +70,15 @@ final class RenderProductPagesExtension extends AbstractExtension
         ?string $sectionCode = null,
         ?string $date = null
     ): string {
-        $channelCode = $this->container->get('sylius.context.channel')->getChannel();
-
+        /** @var string|null $channelCode */
+        $channelCode = $this->channelContext->getChannel()->getCode();
         $parsedDate = null;
         if (null !== $date) {
             $parsedDate = new DateTimeImmutable($date);
         }
-
         /** @var PageRepositoryInterface $pageRepository */
         $pageRepository = $this->entityManager->getRepository(Page::class);
+        assert(null !== $channelCode);
         if (null !== $sectionCode) {
             $pages = $pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
         } else {
