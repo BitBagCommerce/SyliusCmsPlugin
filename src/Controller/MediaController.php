@@ -24,6 +24,19 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 final class MediaController extends ResourceController
 {
+    /**
+     * @var MediaProviderResolverInterface
+     */
+    private $mediaProviderResolver;
+    /**
+     * @var MediaResourceResolverInterface
+     */
+    private $mediaResourceResolver;
+    /**
+     * @var FormErrorsFlashHelperInterface
+     */
+    private $formErrorsFlashHelper;
+
     public function renderMediaAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
@@ -31,9 +44,7 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        /** @var MediaResourceResolverInterface $mediaResourceResolver */
-        $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
-        $media = $mediaResourceResolver->findOrLog($code);
+        $media = $this->mediaResourceResolver->findOrLog($code);
 
         if (null === $media) {
             return new Response();
@@ -41,10 +52,7 @@ final class MediaController extends ResourceController
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
-        /** @var MediaProviderResolverInterface $mediaProviderResolver */
-        $mediaProviderResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider');
-
-        return new Response($mediaProviderResolver->resolveProvider($media)->render($media, $request->get('template')));
+        return new Response($this->mediaProviderResolver->resolveProvider($media)->render($media, $request->get('template')));
     }
 
     public function downloadMediaAction(Request $request): Response
@@ -54,10 +62,8 @@ final class MediaController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        /** @var MediaResourceResolverInterface $mediaResourceResolver */
-        $mediaResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_resource');
         /** @var MediaInterface|null $media */
-        $media = $mediaResourceResolver->findOrLog($code);
+        $media = $this->mediaResourceResolver->findOrLog($code);
 
         if (null === $media) {
             return new Response();
@@ -98,18 +104,14 @@ final class MediaController extends ResourceController
 
         if ($form->isValid()) {
             $defaultLocale = $this->getParameter('locale');
-            /** @var MediaProviderResolverInterface $mediaProviderResolver */
-            $mediaProviderResolver = $this->get('bitbag_sylius_cms_plugin.resolver.media_provider');
-            $mediaTemplate = $mediaProviderResolver->resolveProvider($media)->getTemplate();
+            $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();
 
             $this->resolveFile($media);
 
             $media->setFallbackLocale($request->get('_locale', $defaultLocale));
             $media->setCurrentLocale($request->get('_locale', $defaultLocale));
         }
-        /** @var FormErrorsFlashHelperInterface $formErrorsFlashHelper */
-        $formErrorsFlashHelper = $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash');
-        $formErrorsFlashHelper->addFlashErrors($form);
+        $this->formErrorsFlashHelper->addFlashErrors($form);
 
         return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
             'metadata' => $this->metadata,
@@ -137,5 +139,29 @@ final class MediaController extends ResourceController
             $path = 'Path error';
         }
         $media->setPath($path);
+    }
+
+    /**
+     * @required
+     */
+    public function setMediaProviderResolver(MediaProviderResolverInterface $mediaProviderResolver): void
+    {
+        $this->mediaProviderResolver = $mediaProviderResolver;
+    }
+
+    /**
+     * @required
+     */
+    public function setMediaResourceResolver(MediaResourceResolverInterface $mediaResourceResolver): void
+    {
+        $this->mediaResourceResolver = $mediaResourceResolver;
+    }
+
+    /**
+     * @required
+     */
+    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
+    {
+        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
     }
 }

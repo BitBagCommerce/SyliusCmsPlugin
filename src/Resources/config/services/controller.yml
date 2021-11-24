@@ -46,3 +46,11 @@ services:
         arguments:
             - "@session.flash_bag"
             - "@translator"
+
+    bitbag_sylius_cms_plugin.controller.media:
+        class: BitBag\SyliusCmsPlugin\Controller\MediaController
+        public: true
+        calls:
+            - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_provider"]
+            - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
+            - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
