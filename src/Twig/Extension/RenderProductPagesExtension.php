@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\Page;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorter;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
@@ -36,9 +35,8 @@ final class RenderProductPagesExtension extends AbstractExtension
 
     /** @var ChannelContextInterface */
     private $channelContext;
-    /**
-     * @var PageRepositoryInterface
-     */
+
+    /** @var PageRepositoryInterface */
     private $pageRepository;
 
     public function __construct(
