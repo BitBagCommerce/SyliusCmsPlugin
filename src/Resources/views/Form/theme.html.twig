@@ -12,6 +12,7 @@
             data-bb-cms-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
             'mediaType': form.vars.media_type,
         })}}"
+            data-bb-cms-autocomplete
             data-bb-cms-choice-name="{{ choice_name }}"
             data-bb-cms-choice-value="{{ choice_value }}"
             data-bb-cms-criteria-type="{{ remote_criteria_type }}"
@@ -23,7 +24,8 @@
             <span class="btn-delete is-hidden" data-bb-cms-delete-selected>X</span>
             <i class="dropdown icon"></i>
             <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-bb-cms-image-select>
-            <div class="menu" data-bb-cms-selection-menu>/div>
+            <div class="default text" data-bb-cms-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
+            <div class="menu" data-bb-cms-selection-menu></div>
         </div>
         {{- form_errors(form) -}}
     </div>

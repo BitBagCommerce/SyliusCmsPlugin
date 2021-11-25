@@ -4,6 +4,8 @@
  We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
 */
 
+import triggerCustomEvent from '../../../common/js/utilities/triggerCustomEvent';
+
 export class HandlePreview {
     constructor(
         config = {
@@ -68,6 +70,7 @@ export class HandlePreview {
         };
 
         try {
+            triggerCustomEvent(this.mediaContainer, 'cms.create.preview.start');
             const req = await fetch(`${path}?_channel_code=${channelCode}&_locale=${localeCode}`, settings);
             const res = await req.text();
 
@@ -75,11 +78,14 @@ export class HandlePreview {
             const blobUrl = window.URL.createObjectURL(blob);
 
             this.modal.querySelector('iframe').src = blobUrl;
+            triggerCustomEvent(this.mediaContainer, 'cms.create.preview.completed', res);
         } catch (error) {
-            console.log(error);
+            console.error(`BitBag CMS Plugin - HandlePreview class error : ${error}`);
+            triggerCustomEvent(this.mediaContainer, 'cms.create.preview.error', error);
         } finally {
             this.modal.querySelector('.ui.loadable').classList.remove('loading');
             this.modal.disabled = false;
+            triggerCustomEvent(this.mediaContainer, 'cms.create.preview.end');
         }
     }
 }

@@ -81,16 +81,18 @@
 
 .btn-delete {
     position: absolute;
+    font-weight: bold;
     color: #db2828;
-    right: 40px;
+    right: 30px;
     cursor: pointer;
     z-index: 5;
     width: 20px;
     height: 20px;
-}
 
-.btn-delete .is-hidden {
-    display: none;
+    &.is-hidden {
+        pointer-events: none;
+        opacity: 0.2;
+    }
 }
 
 .bitbag-media-autocomplete .dropdown.icon {

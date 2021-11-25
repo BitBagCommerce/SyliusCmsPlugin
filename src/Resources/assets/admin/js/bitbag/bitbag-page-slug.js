@@ -4,6 +4,8 @@
  We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
 */
 
+import triggerCustomEvent from '../../../common/js/utilities/triggerCustomEvent';
+
 export class HandleSlugUpdate {
     constructor(
         config = {
@@ -66,23 +68,22 @@ export class HandleSlugUpdate {
     }
 
     async _updateSlug(slugField, value) {
-        try {
-            slugField.parentNode.classList.add('loading');
-
-            slugField.value = await this._getValidSlug(slugField.dataset.url, value);
-            slugField.parentNode.classList.remove('loading');
-        } catch (error) {
-            console.error(error);
-        }
+        triggerCustomEvent(this.mediaContainer, 'cms.slug.update.start');
+        slugField.parentNode.classList.add('loading');
+        slugField.value = await this._getValidSlug(slugField.dataset.url, value);
+        slugField.parentNode.classList.remove('loading');
+        triggerCustomEvent(this.mediaContainer, 'cms.slug.update.end');
     }
 
     async _getValidSlug(url, value) {
         try {
             const request = await fetch(`${url}?name=${value}`);
             const response = await request.json();
+            triggerCustomEvent(this.mediaContainer, 'cms.slug.update.completed', response);
             return response.slug;
         } catch (error) {
-            console.error(error);
+            console.error(`BitBag CMS Plugin - HandleSlugUpdate class error : ${error}`);
+            triggerCustomEvent(this.mediaContainer, 'cms.slug.update.error', error);
         }
     }
 

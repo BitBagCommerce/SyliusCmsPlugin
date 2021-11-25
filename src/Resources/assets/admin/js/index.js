@@ -12,4 +12,6 @@ if (document.querySelector('[data-bb-cms-preview-btn]') && document.querySelecto
     new HandlePreview().init();
 }
 
-new HandleAutoComplete().init();
+if (document.querySelector('[data-bb-cms-autocomplete]')) {
+    new HandleAutoComplete().init();
+}
