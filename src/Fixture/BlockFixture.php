@@ -63,7 +63,7 @@ final class BlockFixture extends AbstractFixture
     {
         $nodeDefinition = new ArrayNodeDefinition($name);
 
-        return $nodeDefinition->scalarPrototype()->end()->end();
+        return $nodeDefinition->scalarPrototype();
     }
 
     private function translationsConfiguration(): NodeDefinition
