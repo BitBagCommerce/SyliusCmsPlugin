@@ -62,10 +62,8 @@ final class BlockFixture extends AbstractFixture
 
     private function createArrayOfScalars(string $name): NodeDefinition
     {
-        $nodeDefinition = new ScalarNodeDefinition($name);
-        $nodeDefinition->defaultNull()->end();
-
-        return $nodeDefinition;
+        $nodeDefinition = new ArrayNodeDefinition($name);
+        return $nodeDefinition->scalarPrototype()->end()->end();
     }
 
     private function translationsConfiguration(): NodeDefinition
