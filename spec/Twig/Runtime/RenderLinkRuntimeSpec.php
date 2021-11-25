@@ -18,6 +18,7 @@ use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
@@ -88,6 +89,6 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
     ): void {
         $localeContext->getLocaleCode()->willReturn("en_US");
 
-        $this->getLinkForCode("CODE", ['notFoundMessage' => "message"])->shouldReturn("message");
+        $this->shouldThrow(NotFoundHttpException::class)->during('getLinkForCode', ["CODE"]);
     }
 }
