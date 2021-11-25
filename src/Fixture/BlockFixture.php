@@ -14,7 +14,6 @@ use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 
 final class BlockFixture extends AbstractFixture
 {
@@ -63,6 +62,7 @@ final class BlockFixture extends AbstractFixture
     private function createArrayOfScalars(string $name): NodeDefinition
     {
         $nodeDefinition = new ArrayNodeDefinition($name);
+
         return $nodeDefinition->scalarPrototype()->end()->end();
     }
 
