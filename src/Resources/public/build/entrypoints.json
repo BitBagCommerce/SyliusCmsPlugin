@@ -2,18 +2,18 @@
   "entrypoints": {
     "bitbag-cms-shop": {
       "css": [
-        "/public/bitbag-cms-shop.css"
+        "/public/build/bitbag-cms-shop.css"
       ],
       "js": [
-        "/public/bitbag-cms-shop.js"
+        "/public/build/bitbag-cms-shop.js"
       ]
     },
     "bitbag-cms-admin": {
       "css": [
-        "/public/bitbag-cms-admin.css"
+        "/public/build/bitbag-cms-admin.css"
       ],
       "js": [
-        "/public/bitbag-cms-admin.js"
+        "/public/build/bitbag-cms-admin.js"
       ]
     }
   }
