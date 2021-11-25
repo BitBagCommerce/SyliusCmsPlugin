@@ -55,7 +55,7 @@ services:
             - setResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
 
-  bitbag_sylius_cms_plugin.controller.page:
+    bitbag_sylius_cms_plugin.controller.page:
         class: BitBag\SyliusCmsPlugin\Controller\PageController
         public: true
         calls:

@@ -7,7 +7,6 @@ parameters:
     excludes_analyse:
         # Sitemap dependent providers
         - 'src/SitemapProvider'
-        - 'src/Importer/AbstractImporter'
         - 'tests/Application/config/bootstrap.php'
         - 'tests/Fixture/PageFixtureTest.php'
     ignoreErrors:
