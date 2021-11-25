@@ -64,7 +64,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         /** @var PageInterface|null $page */
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
         if (null === $page) {
-            throw new NotFoundHttpException('Page for code ' . $code . ' not found');
+            throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }
 
         return $this->router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $page->getSlug()]);
