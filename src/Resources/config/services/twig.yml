@@ -42,6 +42,7 @@ services:
             - "@sylius.context.channel"
             - "@doctrine.orm.entity_manager"
             - "@twig"
+            - "@bitbag_sylius_cms_plugin.repository.page"
         tags:
             - { name: twig.extension }
 

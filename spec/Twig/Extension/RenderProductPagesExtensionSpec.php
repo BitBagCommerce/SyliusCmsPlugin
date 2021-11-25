@@ -10,12 +10,26 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 
 final class RenderProductPagesExtensionSpec extends ObjectBehavior
 {
+    function let(
+        ChannelContextInterface $channelContext,
+        EntityManagerInterface $entityManager,
+        Environment $environment,
+        PageRepositoryInterface $pageRepository
+    ): void {
+        $this->beConstructedWith($channelContext, $entityManager, $environment, $pageRepository);
+    }
+
     function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderProductPagesExtension::class);

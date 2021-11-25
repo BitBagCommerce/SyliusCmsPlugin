@@ -36,15 +36,21 @@ final class RenderProductPagesExtension extends AbstractExtension
 
     /** @var ChannelContextInterface */
     private $channelContext;
+    /**
+     * @var PageRepositoryInterface
+     */
+    private $pageRepository;
 
     public function __construct(
         ChannelContextInterface $channelContext,
         EntityManagerInterface $entityManager,
-        Environment $environment
+        Environment $environment,
+        PageRepositoryInterface $pageRepository
     ) {
         $this->entityManager = $entityManager;
         $this->environment = $environment;
         $this->channelContext = $channelContext;
+        $this->pageRepository = $pageRepository;
     }
 
     public function getFunctions(): array
@@ -71,13 +77,11 @@ final class RenderProductPagesExtension extends AbstractExtension
         if (null !== $date) {
             $parsedDate = new DateTimeImmutable($date);
         }
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->entityManager->getRepository(Page::class);
         assert(null !== $channelCode);
         if (null !== $sectionCode) {
-            $pages = $pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
+            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, $parsedDate);
         } else {
-            $pages = $pageRepository->findByProduct($product, $channelCode, $parsedDate);
+            $pages = $this->pageRepository->findByProduct($product, $channelCode, $parsedDate);
         }
 
         $data = $this->sortBySections($pages);

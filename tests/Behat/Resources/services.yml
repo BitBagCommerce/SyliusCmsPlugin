@@ -6,3 +6,13 @@ imports:
 services:
     bitbag_sylius_cms_plugin.behat.random_string_generator:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGenerator
+
+    bitbag_sylius_cms_plugin.twig.extension.product_pages:
+        class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension
+        arguments:
+            - "@sylius.context.channel"
+            - "@doctrine.orm.entity_manager"
+            - "@twig"
+            - "@bitbag_sylius_cms_plugin.repository.page"
+        tags:
+            - { name: twig.extension }
