@@ -13,7 +13,6 @@ namespace BitBag\SyliusCmsPlugin\Fixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 
 final class BlockFixture extends AbstractFixture
 {
@@ -47,39 +46,24 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('last_four_products')->defaultFalse()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
-                            ->append($this->createArrayOfScalars('productCodes'))
-                            ->append($this->createArrayOfScalars('taxons'))
-                            ->append($this->createArrayOfScalars('sections'))
-                            ->append($this->createArrayOfScalars('channels'))
-                            ->append($this->translationsConfiguration())
+                            ->arrayNode('productCodes')->scalarPrototype()->end()->end()
+                            ->arrayNode('taxons')->scalarPrototype()->end()->end()
+                            ->arrayNode('sections')->scalarPrototype()->end()->end()
+                            ->arrayNode('channels')->scalarPrototype()->end()->end()
+                            ->arrayNode('translations')
+                                ->arrayPrototype()
+                                    ->children()
+                                        ->scalarNode('name')->defaultNull()->end()
+                                        ->scalarNode('content')->defaultNull()->end()
+                                        ->scalarNode('link')->defaultNull()->end()
+                                        ->scalarNode('image_path')->defaultNull()->end()
+                                    ->end()
+                                ->end()
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
             ->end()
         ;
-    }
-
-    private function createArrayOfScalars(string $name): NodeDefinition
-    {
-        $nodeDefinition = new ArrayNodeDefinition($name);
-
-        return $nodeDefinition->scalarPrototype();
-    }
-
-    private function translationsConfiguration(): NodeDefinition
-    {
-        $translationsNodeDefinition = new ArrayNodeDefinition('translations');
-        $translationsNodeDefinition
-            ->arrayPrototype()
-                ->children()
-                    ->scalarNode('name')->end()
-                    ->scalarNode('content')->end()
-                    ->scalarNode('link')->end()
-                    ->scalarNode('image_path')->end()
-                ->end()
-            ->end()
-        ;
-
-        return $translationsNodeDefinition;
     }
 }
