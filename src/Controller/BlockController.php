@@ -75,7 +75,7 @@ final class BlockController extends ResourceController
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         if (!$configuration->isHtmlRequest()) {
-            Assert::notNull($this->viewHandler);
+            Assert::true(null !== $this->viewHandler);
 
             return $this->viewHandler->handle($configuration, View::create($block));
         }
