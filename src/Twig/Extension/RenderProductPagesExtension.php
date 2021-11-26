@@ -27,9 +27,6 @@ use Twig\TwigFunction;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
     /** @var Environment */
     private $environment;
 
@@ -41,11 +38,9 @@ final class RenderProductPagesExtension extends AbstractExtension
 
     public function __construct(
         ChannelContextInterface $channelContext,
-        EntityManagerInterface $entityManager,
         Environment $environment,
         PageRepositoryInterface $pageRepository
     ) {
-        $this->entityManager = $entityManager;
         $this->environment = $environment;
         $this->channelContext = $channelContext;
         $this->pageRepository = $pageRepository;

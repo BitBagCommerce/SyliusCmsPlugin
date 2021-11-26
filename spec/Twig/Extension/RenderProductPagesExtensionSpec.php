@@ -23,11 +23,10 @@ final class RenderProductPagesExtensionSpec extends ObjectBehavior
 {
     function let(
         ChannelContextInterface $channelContext,
-        EntityManagerInterface $entityManager,
         Environment $environment,
         PageRepositoryInterface $pageRepository
     ): void {
-        $this->beConstructedWith($channelContext, $entityManager, $environment, $pageRepository);
+        $this->beConstructedWith($channelContext, $environment, $pageRepository);
     }
 
     function it_is_initializable(): void
