@@ -41,7 +41,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         if (!$configuration->isHtmlRequest()) {
-            Assert::notNull($this->viewHandler);
+            Assert::true(null !== $this->viewHandler);
 
             return $this->viewHandler->handle($configuration, View::create($block));
         }
