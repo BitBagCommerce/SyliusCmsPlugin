@@ -10,15 +10,9 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntimeInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 
 final class RenderProductPagesExtensionSpec extends ObjectBehavior

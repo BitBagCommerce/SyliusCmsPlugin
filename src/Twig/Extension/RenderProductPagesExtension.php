@@ -10,22 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SectionsSorter;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntimeInterface;
-use DateTimeImmutable;
-use Doctrine\ORM\EntityManagerInterface;
-use Exception;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Webmozart\Assert\Assert;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {

@@ -4,10 +4,10 @@ namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner;
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use PhpSpec\ObjectBehavior;
-use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
 
 final class SectionsAssignerSpec extends ObjectBehavior
 {

@@ -15,7 +15,6 @@ use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Component\Resource\ResourceActions;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

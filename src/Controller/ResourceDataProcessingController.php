@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
-use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolver;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
@@ -43,7 +41,8 @@ abstract class ResourceDataProcessingController extends ResourceController
         return $this->requestConfigurationFactory->create($this->metadata, $request);
     }
 
-    protected function setResourcePath(MediaInterface $resource): void {
+    protected function setResourcePath(MediaInterface $resource): void
+    {
         /** @var string|null $resourcePath */
         $resourcePath = $resource->getPath();
         Assert::notNull($resourcePath);
