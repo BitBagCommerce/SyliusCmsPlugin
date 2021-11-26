@@ -41,13 +41,13 @@ abstract class ResourceDataProcessingController extends ResourceController
         return $this->requestConfigurationFactory->create($this->metadata, $request);
     }
 
-    protected function setResourcePath(MediaInterface $resource): void
+    protected function setResourceMediaPath(MediaInterface $media): void
     {
-        /** @var string|null $resourcePath */
-        $resourcePath = $resource->getPath();
-        Assert::notNull($resourcePath);
+        /** @var string|null $mediaPath */
+        $mediaPath = $media->getPath();
+        Assert::notNull($mediaPath);
         Assert::string($this->getParameter('sylius_core.public_dir'));
-        $file = $resource->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $resource->getPath());
+        $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         if (is_string($fileContents)) {
             $base64Content = base64_encode($fileContents);
@@ -55,7 +55,7 @@ abstract class ResourceDataProcessingController extends ResourceController
         } else {
             $path = 'Path error';
         }
-        $resource->setPath($path);
+        $media->setPath($path);
     }
 
     /**

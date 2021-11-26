@@ -96,7 +96,7 @@ final class PageController extends ResourceDataProcessingController
         if (null === $image || null === $image->getPath()) {
             return;
         }
-        $this->setResourcePath($image);
+        $this->setResourceMediaPath($image);
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $page->getTranslation();
         $pageTranslationInterface->setImage($image);
