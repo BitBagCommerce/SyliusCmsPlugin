@@ -111,7 +111,7 @@ final class MediaController extends ResourceDataProcessingController
             return;
         }
 
-        $this->setResourcePath();
+        $this->setResourcePath($media);
     }
 
     /**

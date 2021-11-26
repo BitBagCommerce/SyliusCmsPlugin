@@ -16,6 +16,7 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Webmozart\Assert\Assert;
 
 abstract class ResourceDataProcessingController extends ResourceController
 {
@@ -42,11 +43,11 @@ abstract class ResourceDataProcessingController extends ResourceController
         return $this->requestConfigurationFactory->create($this->metadata, $request);
     }
 
-    /** @param MediaInterface|PageInterface $resource */
-    protected function setResourcePath(ResourceInterface $resource) {
-        /** @var string|null $mediaPath */
-        $mediaPath = $resource->getPath();
-        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
+    protected function setResourcePath(MediaInterface $resource): void {
+        /** @var string|null $resourcePath */
+        $resourcePath = $resource->getPath();
+        Assert::notNull($resourcePath);
+        Assert::string($this->getParameter('sylius_core.public_dir'));
         $file = $resource->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $resource->getPath());
         $fileContents = file_get_contents($file->getPathname());
         if (is_string($fileContents)) {

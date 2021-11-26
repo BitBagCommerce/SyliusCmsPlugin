@@ -96,16 +96,7 @@ final class PageController extends ResourceDataProcessingController
         if (null === $image || null === $image->getPath()) {
             return;
         }
-
-        /** @var string|null $imagePath */
-        $imagePath = $image->getPath();
-        assert(null !== $imagePath && is_string($this->getParameter('sylius_core.public_dir')));
-        $file = $image->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . $imagePath);
-        $fileContents = file_get_contents($file->getPathname());
-        assert(is_string($fileContents));
-        $base64Content = base64_encode($fileContents);
-        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-        $image->setPath($path);
+        $this->setResourcePath($image);
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $page->getTranslation();
         $pageTranslationInterface->setImage($image);
