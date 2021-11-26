@@ -2,18 +2,22 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin;
+namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
+use BitBag\SyliusCmsPlugin\Entity\Media;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolver;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 
-abstract class CustomResourceController extends ResourceController
+abstract class ResourceDataProcessingController extends ResourceController
 {
     /** @var ResourceResolverInterface */
     protected $resourceResolver;
@@ -36,6 +40,22 @@ abstract class CustomResourceController extends ResourceController
     protected function getRequestConfiguration(Request $request): RequestConfiguration
     {
         return $this->requestConfigurationFactory->create($this->metadata, $request);
+    }
+
+    /** @param MediaInterface|PageInterface $resource */
+    protected function setResourcePath(ResourceInterface $resource) {
+        /** @var string|null $mediaPath */
+        $mediaPath = $resource->getPath();
+        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
+        $file = $resource->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $resource->getPath());
+        $fileContents = file_get_contents($file->getPathname());
+        if (is_string($fileContents)) {
+            $base64Content = base64_encode($fileContents);
+            $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
+        } else {
+            $path = 'Path error';
+        }
+        $resource->setPath($path);
     }
 
     /**

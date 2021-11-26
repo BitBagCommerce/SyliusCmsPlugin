@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\CustomResourceController;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
@@ -22,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
-final class MediaController extends CustomResourceController
+final class MediaController extends ResourceDataProcessingController
 {
     /** @var MediaResourceResolverInterface */
     protected $resourceResolver;
@@ -112,18 +111,7 @@ final class MediaController extends CustomResourceController
             return;
         }
 
-        /** @var string|null $mediaPath */
-        $mediaPath = $media->getPath();
-        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
-        $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
-        $fileContents = file_get_contents($file->getPathname());
-        if (is_string($fileContents)) {
-            $base64Content = base64_encode($fileContents);
-            $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-        } else {
-            $path = 'Path error';
-        }
-        $media->setPath($path);
+        $this->setResourcePath();
     }
 
     /**

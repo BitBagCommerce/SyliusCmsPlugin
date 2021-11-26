@@ -15,6 +15,7 @@ use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Twig\Environment;
+use Webmozart\Assert\Assert;
 
 final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterface
 {
@@ -45,7 +46,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
-        assert(null !== $channelCode);
+        Assert::notNull($channelCode);
         if (null !== $sectionCode) {
             $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, null);
         } else {

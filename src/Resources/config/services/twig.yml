@@ -39,9 +39,7 @@ services:
     bitbag_sylius_cms_plugin.twig.extension.product_pages:
         class: BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension
         arguments:
-            - "@sylius.context.channel"
-            - "@twig"
-            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@bitbag_sylius_cms_plugin.twig.runtime.product_pages"
         tags:
             - { name: twig.extension }
 
