@@ -24,6 +24,7 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Webmozart\Assert\Assert;
 
 final class PageImporter extends AbstractImporter implements PageImporterInterface
 {
@@ -88,7 +89,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
     {
         /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        assert(null !== $code);
+        Assert::notNull($code);
 
         /** @var PageInterface $page */
         $page = $this->pageResourceResolver->getResource($code);

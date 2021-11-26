@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\AbstractTranslation;
+use Webmozart\Assert\Assert;
 
 class BlockTranslation extends AbstractTranslation implements BlockTranslationInterface
 {
@@ -43,7 +44,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
 
     public function setContent(?string $content): void
     {
-        assert(null !== $content);
+        Assert::notNull($content);
         $this->content = $content;
     }
 

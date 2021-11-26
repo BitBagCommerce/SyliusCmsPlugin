@@ -15,6 +15,7 @@ use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Webmozart\Assert\Assert;
 
 final class MediaResourceResolver implements MediaResourceResolverInterface
 {
@@ -44,7 +45,7 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
 
     public function findOrLog(string $code): ?MediaInterface
     {
-        assert(null !== $this->channelContext->getChannel()->getCode());
+        Assert::notNull($this->channelContext->getChannel()->getCode());
         $media = $this->mediaRepository->findOneEnabledByCode(
             $code,
             $this->localeContext->getLocaleCode(),

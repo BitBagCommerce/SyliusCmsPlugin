@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Webmozart\Assert\Assert;
 
 final class MediaController extends ResourceDataProcessingController
 {
@@ -59,7 +60,8 @@ final class MediaController extends ResourceDataProcessingController
 
         /** @var string|null $mediaPath */
         $mediaPath = $media->getPath();
-        assert(null !== $mediaPath && is_string($this->getParameter('sylius_core.public_dir')));
+        Assert::notNull($mediaPath);
+        Assert::string($this->getParameter('sylius_core.public_dir'));
         $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
         $mediaFile = new File($mediaPath);
         $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();

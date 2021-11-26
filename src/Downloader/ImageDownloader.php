@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Downloader;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
+use Webmozart\Assert\Assert;
 
 final class ImageDownloader implements ImageDownloaderInterface
 {
@@ -32,7 +33,7 @@ final class ImageDownloader implements ImageDownloaderInterface
             $path .= '.' . $extension;
         }
         $contents = file_get_contents($url);
-        assert(is_string($contents));
+        Assert::string($contents);
         $this->filesystem->dumpFile($path, $contents);
 
         return new File($path);

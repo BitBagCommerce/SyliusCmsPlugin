@@ -17,6 +17,7 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Webmozart\Assert\Assert;
 
 final class BlockController extends ResourceController
 {
@@ -40,7 +41,7 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         if (!$configuration->isHtmlRequest()) {
-            assert(null !== $this->viewHandler);
+            Assert::notNull($this->viewHandler);
 
             return $this->viewHandler->handle($configuration, View::create($block));
         }
@@ -74,7 +75,7 @@ final class BlockController extends ResourceController
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         if (!$configuration->isHtmlRequest()) {
-            assert(null !== $this->viewHandler);
+            Assert::notNull($this->viewHandler);
 
             return $this->viewHandler->handle($configuration, View::create($block));
         }

@@ -17,6 +17,7 @@ use FOS\RestBundle\View\View;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Webmozart\Assert\Assert;
 
 final class PageController extends ResourceDataProcessingController
 {
@@ -48,7 +49,7 @@ final class PageController extends ResourceDataProcessingController
             ]);
         }
 
-        assert(null !== $this->viewHandler);
+        Assert::notNull($this->viewHandler);
 
         return $this->viewHandler->handle($configuration, View::create($page));
     }
@@ -74,7 +75,7 @@ final class PageController extends ResourceDataProcessingController
         $this->formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
-            assert(null !== $this->viewHandler);
+            Assert::notNull($this->viewHandler);
             $this->viewHandler->handle($configuration, View::create($page));
         }
 

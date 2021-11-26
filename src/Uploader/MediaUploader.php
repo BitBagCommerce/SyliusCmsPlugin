@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Uploader;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Gaufrette\Filesystem;
+use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface
 {
@@ -30,7 +31,7 @@ final class MediaUploader implements MediaUploaderInterface
         }
 
         $file = $media->getFile();
-        assert(null !== $file);
+        Assert::notNull($file);
         if (null !== $media->getPath() && $this->has($media->getPath())) {
             $this->remove($media->getPath());
         }
@@ -43,7 +44,7 @@ final class MediaUploader implements MediaUploaderInterface
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
         $file = $media->getFile();
-        assert(null !== $file);
+        Assert::notNull($file);
         $mimeType = $media->getMimeType();
         if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
             [$width, $height] = getimagesize($file->getPathname());
@@ -53,7 +54,8 @@ final class MediaUploader implements MediaUploaderInterface
 
         $mediaPath = $media->getPath();
         $fileContents = file_get_contents($file->getPathname());
-        assert(null !== $mediaPath && false !== $fileContents);
+        Assert::notNull($mediaPath);
+        Assert::notFalse($fileContents);
         $this->filesystem->write(
             $mediaPath,
             $fileContents

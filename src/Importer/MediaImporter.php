@@ -17,6 +17,7 @@ use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Webmozart\Assert\Assert;
 
 final class MediaImporter extends AbstractImporter implements MediaImporterInterface
 {
@@ -56,7 +57,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
     {
         /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
-        assert(null !== ($code));
+        Assert::notNull($code);
         /** @var MediaInterface $media */
         $media = $this->mediaResourceResolver->getResource($code);
 
