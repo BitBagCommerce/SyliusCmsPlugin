@@ -49,7 +49,7 @@ final class PageController extends ResourceDataProcessingController
             ]);
         }
 
-        Assert::true(null !== $this->viewHandler);
+        Assert::true(null !== $this->viewHandler, 'View handler is null');
 
         return $this->viewHandler->handle($configuration, View::create($page));
     }
@@ -75,7 +75,7 @@ final class PageController extends ResourceDataProcessingController
         $this->formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
-            Assert::true(null !== $this->viewHandler);
+            Assert::true(null !== $this->viewHandler, 'View handler is null');
             $this->viewHandler->handle($configuration, View::create($page));
         }
 

@@ -45,7 +45,7 @@ abstract class ResourceDataProcessingController extends ResourceController
     {
         /** @var string|null $mediaPath */
         $mediaPath = $media->getPath();
-        Assert::notNull($mediaPath);
+        Assert::notNull($mediaPath, 'Media path is null');
         Assert::string($this->getParameter('sylius_core.public_dir'));
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());

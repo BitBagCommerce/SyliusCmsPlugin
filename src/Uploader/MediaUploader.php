@@ -31,7 +31,7 @@ final class MediaUploader implements MediaUploaderInterface
         }
 
         $file = $media->getFile();
-        Assert::notNull($file);
+        Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
         if (null !== $media->getPath() && $this->has($media->getPath())) {
             $this->remove($media->getPath());
         }
@@ -44,7 +44,7 @@ final class MediaUploader implements MediaUploaderInterface
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
         $file = $media->getFile();
-        Assert::notNull($file);
+        Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
         $mimeType = $media->getMimeType();
         if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
             [$width, $height] = getimagesize($file->getPathname());
@@ -54,8 +54,8 @@ final class MediaUploader implements MediaUploaderInterface
 
         $mediaPath = $media->getPath();
         $fileContents = file_get_contents($file->getPathname());
-        Assert::notNull($mediaPath);
-        Assert::notFalse($fileContents);
+        Assert::notNull($mediaPath, sprintf('Media path for media identified by id: "%s" is null', $media->getId()));
+        Assert::notFalse($fileContents, sprintf('File contents for file identified by id: "%s" is false', $file->getPath()));
         $this->filesystem->write(
             $mediaPath,
             $fileContents

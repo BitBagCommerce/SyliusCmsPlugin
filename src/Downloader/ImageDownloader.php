@@ -33,7 +33,7 @@ final class ImageDownloader implements ImageDownloaderInterface
             $path .= '.' . $extension;
         }
         $contents = file_get_contents($url);
-        Assert::string($contents);
+        Assert::string($contents, sprintf('Content of file in path %s is null', $path));
         $this->filesystem->dumpFile($path, $contents);
 
         return new File($path);

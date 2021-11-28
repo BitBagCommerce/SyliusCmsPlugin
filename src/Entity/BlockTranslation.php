@@ -44,7 +44,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
 
     public function setContent(?string $content): void
     {
-        Assert::notNull($content);
+        Assert::notNull($content, sprintf('Content of block translation identified by id: "%s", passed to setter, is null', $this->getId()));
         $this->content = $content;
     }
 

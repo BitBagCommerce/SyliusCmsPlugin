@@ -28,7 +28,7 @@ final class PageSlugController
     public function generateAction(Request $request): JsonResponse
     {
         $name = $request->query->get('name');
-        Assert::string($name);
+        Assert::string($name, 'Name from request is not string');
 
         return new JsonResponse([
             'slug' => $this->slugGenerator->generate($name),

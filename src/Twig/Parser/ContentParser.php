@@ -85,7 +85,7 @@ final class ContentParser implements ContentParserInterface
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];
         $callable = $function->getCallable();
-        Assert::isArray($callable);
+        Assert::isArray($callable, sprintf('Function with name "%s" is not callable', $functionName));
         $extension = $callable[0];
         $extensionMethod = $callable[1];
         $callback = [$extension, $extensionMethod];

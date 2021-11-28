@@ -58,7 +58,7 @@ class Block implements BlockInterface
 
     public function setCode(?string $code): void
     {
-        Assert::notNull($code);
+        Assert::notNull($code, sprintf('Code of block identified by id: "%s", passed to setter, is null', $this->getId()));
         $this->code = $code;
     }
 
