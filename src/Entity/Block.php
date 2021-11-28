@@ -40,10 +40,10 @@ class Block implements BlockInterface
         $this->initializeChannelsCollection();
     }
 
-    /** @var int */
+    /** @var int|null */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
     public function getId(): ?int
@@ -58,7 +58,6 @@ class Block implements BlockInterface
 
     public function setCode(?string $code): void
     {
-        Assert::notNull($code, sprintf('Code of block identified by id: "%s", passed to setter, is null', $this->getId()));
         $this->code = $code;
     }
 
