@@ -4,18 +4,21 @@ services:
         parent: sylius.behat.page.admin.crud.index
         public: false
         arguments:
-            - 'bitbag_sylius_cms_plugin_admin_page_index'
+            - 'behat.mink.default_session'
+            - 'behat.mink.parameters'
 
     bitbag_sylius_cms_plugin.behat.page.admin.page.create:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\CreatePage
         parent: sylius.behat.page.admin.crud.create
         public: false
         arguments:
-            - 'bitbag_sylius_cms_plugin_admin_page_create'
+            - 'behat.mink.default_session'
+            - 'behat.mink.parameters'
 
     bitbag_sylius_cms_plugin.behat.page.admin.page.update:
         class: Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePage
         parent: sylius.behat.page.admin.crud.update
         public: false
         arguments:
-            - 'bitbag_sylius_cms_plugin_admin_page_update'
+            - 'behat.mink.default_session'
+            - 'behat.mink.parameters'
