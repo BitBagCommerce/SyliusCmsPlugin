@@ -13,7 +13,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use Webmozart\Assert\Assert;
 
 class Block implements BlockInterface
 {
