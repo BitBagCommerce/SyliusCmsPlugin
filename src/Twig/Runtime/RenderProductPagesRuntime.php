@@ -46,7 +46,6 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
-        Assert::notNull($channelCode, sprintf('Channel code for channel identified by id: "%s" is null', $this->channelContext->getChannel()->getId()));
         if (null !== $sectionCode) {
             $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, null);
         } else {
