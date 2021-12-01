@@ -115,7 +115,6 @@ final class Kernel extends BaseKernel
         $container->addCompilerPass(new AuthenticationManagerPolyfillPass());
     }
 
-
     /**
      * @return string[]
      */
