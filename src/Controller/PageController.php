@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 
 final class PageController extends ResourceController
 {
-//    use ResourceDataProcessingTrait;
+    use ResourceDataProcessingTrait;
 
     /** @var PageResourceResolverInterface */
     private $pageResourceResolver;
@@ -31,83 +31,83 @@ final class PageController extends ResourceController
     /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
 
-//    public function renderLinkAction(Request $request): Response
-//    {
-//        $configuration = $this->getRequestConfiguration($request);
-//
-//        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
-//
-//        $code = $request->get('code');
-//
-//        $page = $this->pageResourceResolver->findOrLog($code);
-//
-//        if (null === $page) {
-//            return new Response();
-//        }
-//
-//        $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $page);
-//
-//        if ($configuration->isHtmlRequest()) {
-//            return $this->render($configuration->getTemplate(ResourceActions::SHOW . '.html'), [
-//                'configuration' => $configuration,
-//                'metadata' => $this->metadata,
-//                'resource' => $page,
-//                $this->metadata->getName() => $page,
-//            ]);
-//        }
-//
-//        Assert::true(null !== $this->viewHandler, 'View handler is null');
-//
-//        return $this->viewHandler->handle($configuration, View::create($page));
-//    }
-//
-//    public function previewAction(Request $request): Response
-//    {
-//        $configuration = $this->getRequestConfiguration($request);
-//
-//        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
-//
-//        /** @var PageInterface $page */
-//        $page = $this->getResourceInterface($request);
-//        $form = $this->getFormForResource($configuration, $page);
-//        $defaultLocale = $this->getParameter('locale');
-//
-//        $form->handleRequest($request);
-//
-//        $page->setFallbackLocale($request->get('_locale', $defaultLocale));
-//        $page->setCurrentLocale($request->get('_locale', $defaultLocale));
-//
-//        $this->resolveImage($page);
-//
-//        $this->formErrorsFlashHelper->addFlashErrors($form);
-//
-//        if (!$configuration->isHtmlRequest()) {
-//            Assert::true(null !== $this->viewHandler, 'View handler is null');
-//            $this->viewHandler->handle($configuration, View::create($page));
-//        }
-//
-//        return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
-//            'resource' => $page,
-//            'preview' => true,
-//            $this->metadata->getName() => $page,
-//        ]);
-//    }
-//
-//    private function resolveImage(PageInterface $page): void
-//    {
-//        /** @var PageTranslationInterface $translation */
-//        $translation = $page->getTranslation();
-//
-//        $image = $translation->getImage();
-//
-//        if (null === $image || null === $image->getPath()) {
-//            return;
-//        }
-//        $this->setResourceMediaPath($image);
-//        /** @var PageTranslationInterface $pageTranslationInterface */
-//        $pageTranslationInterface = $page->getTranslation();
-//        $pageTranslationInterface->setImage($image);
-//    }
+    public function renderLinkAction(Request $request): Response
+    {
+        $configuration = $this->getRequestConfiguration($request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
+
+        $code = $request->get('code');
+
+        $page = $this->pageResourceResolver->findOrLog($code);
+
+        if (null === $page) {
+            return new Response();
+        }
+
+        $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $page);
+
+        if ($configuration->isHtmlRequest()) {
+            return $this->render($configuration->getTemplate(ResourceActions::SHOW . '.html'), [
+                'configuration' => $configuration,
+                'metadata' => $this->metadata,
+                'resource' => $page,
+                $this->metadata->getName() => $page,
+            ]);
+        }
+
+        Assert::true(null !== $this->viewHandler, 'View handler is null');
+
+        return $this->viewHandler->handle($configuration, View::create($page));
+    }
+
+    public function previewAction(Request $request): Response
+    {
+        $configuration = $this->getRequestConfiguration($request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
+
+        /** @var PageInterface $page */
+        $page = $this->getResourceInterface($request);
+        $form = $this->getFormForResource($configuration, $page);
+        $defaultLocale = $this->getParameter('locale');
+
+        $form->handleRequest($request);
+
+        $page->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $page->setCurrentLocale($request->get('_locale', $defaultLocale));
+
+        $this->resolveImage($page);
+
+        $this->formErrorsFlashHelper->addFlashErrors($form);
+
+        if (!$configuration->isHtmlRequest()) {
+            Assert::true(null !== $this->viewHandler, 'View handler is null');
+            $this->viewHandler->handle($configuration, View::create($page));
+        }
+
+        return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
+            'resource' => $page,
+            'preview' => true,
+            $this->metadata->getName() => $page,
+        ]);
+    }
+
+    private function resolveImage(PageInterface $page): void
+    {
+        /** @var PageTranslationInterface $translation */
+        $translation = $page->getTranslation();
+
+        $image = $translation->getImage();
+
+        if (null === $image || null === $image->getPath()) {
+            return;
+        }
+        $this->setResourceMediaPath($image);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $page->getTranslation();
+        $pageTranslationInterface->setImage($image);
+    }
 
     public function setPageResourceResolver(PageResourceResolverInterface $pageResourceResolver): void
     {
