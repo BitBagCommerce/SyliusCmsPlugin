@@ -99,7 +99,7 @@ final class MediaController extends ResourceController
             $defaultLocale = $this->getParameter('locale');
             $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();
 
-            $this->resolveFile($media);
+            $this->setResourceMediaPathIfExists($media);
 
             $media->setFallbackLocale($request->get('_locale', $defaultLocale));
             $media->setCurrentLocale($request->get('_locale', $defaultLocale));
@@ -114,7 +114,7 @@ final class MediaController extends ResourceController
         ]);
     }
 
-    private function resolveFile(MediaInterface $media): void
+    private function setResourceMediaPathIfExists(MediaInterface $media): void
     {
         if (null === $media->getFile() && null === $media->getPath()) {
             return;
