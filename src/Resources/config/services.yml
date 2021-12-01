@@ -54,4 +54,3 @@ services:
 
     bitbag_sylius_cms_plugin.sorter.sections:
         class: BitBag\SyliusCmsPlugin\Sorter\SectionsSorter
-
