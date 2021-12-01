@@ -4,26 +4,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolver;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Webmozart\Assert\Assert;
 
-abstract class ResourceDataProcessingController extends ResourceController
+trait ResourceDataProcessingTrait
 {
-    /** @var ResourceResolverInterface */
-    protected $resourceResolver;
-
-    /** @var FormErrorsFlashHelperInterface */
-    protected $formErrorsFlashHelper;
-
     protected function getResourceInterface(Request $request): object
     {
         return null !== $request->get('id') && $this->repository->find($request->get('id')) ?
@@ -56,21 +46,5 @@ abstract class ResourceDataProcessingController extends ResourceController
             $path = 'Path error';
         }
         $media->setPath($path);
-    }
-
-    /**
-     * @required
-     */
-    public function setResourceResolver(ResourceResolver $resourceResolver): void
-    {
-        $this->resourceResolver = $resourceResolver;
-    }
-
-    /**
-     * @required
-     */
-    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
-    {
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
     }
 }

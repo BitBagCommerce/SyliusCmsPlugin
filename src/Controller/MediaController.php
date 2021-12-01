@@ -10,10 +10,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\File;
@@ -22,13 +24,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Webmozart\Assert\Assert;
 
-final class MediaController extends ResourceDataProcessingController
+final class MediaController extends ResourceController
 {
+    use ResourceDataProcessingTrait;
+
     /** @var MediaResourceResolverInterface */
-    protected $resourceResolver;
+    private $mediaResourceResolver;
 
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
+
+    /** @var FormErrorsFlashHelperInterface */
+    private $formErrorsFlashHelper;
 
     public function renderMediaAction(Request $request): Response
     {
@@ -92,7 +99,7 @@ final class MediaController extends ResourceDataProcessingController
             $defaultLocale = $this->getParameter('locale');
             $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();
 
-            $this->resolveFile($media);
+            $this->setResourceMediaPathIfExists($media);
 
             $media->setFallbackLocale($request->get('_locale', $defaultLocale));
             $media->setCurrentLocale($request->get('_locale', $defaultLocale));
@@ -107,7 +114,7 @@ final class MediaController extends ResourceDataProcessingController
         ]);
     }
 
-    private function resolveFile(MediaInterface $media): void
+    private function setResourceMediaPathIfExists(MediaInterface $media): void
     {
         if (null === $media->getFile() && null === $media->getPath()) {
             return;
@@ -116,12 +123,19 @@ final class MediaController extends ResourceDataProcessingController
         $this->setResourceMediaPath($media);
     }
 
-    /**
-     * @required
-     */
     public function setMediaProviderResolver(MediaProviderResolverInterface $mediaProviderResolver): void
     {
         $this->mediaProviderResolver = $mediaProviderResolver;
+    }
+
+    public function setMediaResourceResolver(MediaResourceResolverInterface $mediaResourceResolver): void
+    {
+        $this->mediaResourceResolver = $mediaResourceResolver;
+    }
+
+    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
+    {
+        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
     }
 
     private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface
@@ -129,6 +143,6 @@ final class MediaController extends ResourceDataProcessingController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
         $code = $request->get('code');
 
-        return $this->resourceResolver->findOrLog($code);
+        return $this->mediaResourceResolver->findOrLog($code);
     }
 }

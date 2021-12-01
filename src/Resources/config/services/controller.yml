@@ -46,3 +46,20 @@ services:
         arguments:
             - "@session.flash_bag"
             - "@translator"
+
+    bitbag_sylius_cms_plugin.controller.media.overriden:
+        class: BitBag\SyliusCmsPlugin\Controller\MediaController
+        public: true
+        parent: "bitbag_sylius_cms_plugin.controller.media"
+        calls:
+            - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_provider"]
+            - setMediaResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
+            - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
+
+    bitbag_sylius_cms_plugin.controller.page.overriden:
+        class: BitBag\SyliusCmsPlugin\Controller\PageController
+        public: true
+        parent: "bitbag_sylius_cms_plugin.controller.page"
+        calls:
+            - setPageResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.page_resource"]
+            - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]

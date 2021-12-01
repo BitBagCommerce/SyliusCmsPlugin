@@ -10,19 +10,26 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
 
-final class PageController extends ResourceDataProcessingController
+final class PageController extends ResourceController
 {
+    use ResourceDataProcessingTrait;
+
     /** @var PageResourceResolverInterface */
-    protected $resourceResolver;
+    private $pageResourceResolver;
+
+    /** @var FormErrorsFlashHelperInterface */
+    private $formErrorsFlashHelper;
 
     public function renderLinkAction(Request $request): Response
     {
@@ -32,7 +39,7 @@ final class PageController extends ResourceDataProcessingController
 
         $code = $request->get('code');
 
-        $page = $this->resourceResolver->findOrLog($code);
+        $page = $this->pageResourceResolver->findOrLog($code);
 
         if (null === $page) {
             return new Response();
@@ -100,5 +107,15 @@ final class PageController extends ResourceDataProcessingController
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $page->getTranslation();
         $pageTranslationInterface->setImage($image);
+    }
+
+    public function setPageResourceResolver(PageResourceResolverInterface $pageResourceResolver): void
+    {
+        $this->pageResourceResolver = $pageResourceResolver;
+    }
+
+    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
+    {
+        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
     }
 }
