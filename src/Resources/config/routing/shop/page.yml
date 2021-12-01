@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_shop_page_show:
     path: /page/{slug}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page:showAction
+        _controller: bitbag_sylius_cms_plugin.page:showAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/show.html.twig"
             repository:
@@ -16,7 +16,7 @@ bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
     path: /page/link/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page:renderLinkAction
+        _controller: bitbag_sylius_cms_plugin.page:renderLinkAction
         _sylius:
             template: $template
             repository:
@@ -29,7 +29,7 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
     path: /pages/{sectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
+        _controller: bitbag_sylius_cms_plugin.page:indexAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
             grid: bitbag_sylius_cms_plugin_shop_page
@@ -43,7 +43,7 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code_no_grid:
     path: /pages/{sectionCode}/no-grid
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
+        _controller: bitbag_sylius_cms_plugin.page:indexAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
             repository:
@@ -56,7 +56,7 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code_template:
     path: /pages-template/{sectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page:indexAction
+        _controller: bitbag_sylius_cms_plugin.page:indexAction
         _sylius:
             template: $template
             grid: bitbag_sylius_cms_plugin_shop_page
