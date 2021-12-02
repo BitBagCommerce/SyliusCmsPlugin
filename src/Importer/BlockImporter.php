@@ -11,11 +11,11 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
@@ -37,8 +37,8 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     /** @var ImporterProductsResolverInterface */
     private $importerProductsResolver;
 
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    /** @var BlockRepositoryInterface */
+    private $blockRepository;
 
     public function __construct(
         ResourceResolverInterface $blockResourceResolver,
@@ -47,7 +47,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        EntityManagerInterface $entityManager
+        BlockRepositoryInterface $blockRepository
     ) {
         parent::__construct($validator);
 
@@ -56,7 +56,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $this->importerSectionsResolver = $importerSectionsResolver;
         $this->importerChannelsResolver = $importerChannelsResolver;
         $this->importerProductsResolver = $importerProductsResolver;
-        $this->entityManager = $entityManager;
+        $this->blockRepository = $blockRepository;
     }
 
     public function import(array $row): void
@@ -82,9 +82,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 
         $this->validateResource($block, ['bitbag']);
-
-        $this->entityManager->persist($block);
-        $this->entityManager->flush();
+        $this->blockRepository->add($block);
     }
 
     public function getResourceCode(): string
