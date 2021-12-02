@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block bitbag_media_autocomplete_choice_row %}
-    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+    <div 
+        class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}"
+        data-bb-target="cms-handle-autocomplete"
+    >
         {{- form_label(form) -}}
         <div
             class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"

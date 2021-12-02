@@ -1,17 +1,17 @@
 import {HandleCsvUpload, HandleSlugUpdate, HandlePreview, HandleAutoComplete} from './bitbag';
 
-if (document.querySelector('[data-bb-cms-text]') && document.querySelector('[data-bb-cms-file]')) {
+if (document.querySelector('[data-bb-target="cms-import"]')) {
     new HandleCsvUpload().init();
 }
 
-if (document.querySelectorAll('[data-bb-cms-wrapper]')?.length > 0) {
+if (document.querySelectorAll('[data-bb-target="cms-slug-update"]')?.length > 0) {
     new HandleSlugUpdate().init();
 }
 
-if (document.querySelector('[data-bb-cms-preview-btn]') && document.querySelector('[data-bb-cms-preview-modal]')) {
+if (document.querySelectorAll('[data-bb-cms-preview-btn]').length > 0) {
     new HandlePreview().init();
 }
 
-if (document.querySelector('[data-bb-cms-autocomplete]')) {
+if (document.querySelector('[data-bb-target="cms-handle-autocomplete"]')) {
     new HandleAutoComplete().init();
 }

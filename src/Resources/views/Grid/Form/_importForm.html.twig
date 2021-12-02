@@ -1,5 +1,5 @@
 {% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
-<div class="bitbag-cms-import" data-bb-cms-wrapper="bitbag-cms-import">
+<div class="bitbag-cms-import" data-bb-cms-wrapper data-bb-target="cms-import">
     <form method="POST" enctype="multipart/form-data" action="{{ path('bitbag_sylius_cms_plugin_admin_import_data', {'resourceName': app.request.get('resourceName')}) }}" novalidate="novalidate" class="ui form">
 
         <div class="ui action input">

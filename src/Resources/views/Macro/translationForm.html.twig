@@ -33,7 +33,7 @@
     {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
-    <div class="ui styled fluid accordion">
+    <div class="ui styled fluid accordion" data-bb-target="cms-slug-update">
         {% for locale, translationForm in translations %}
             <div data-locale="{{ locale }}" data-bb-cms-wrapper>
                 <div class="title{% if 0 == loop.index0 %} active{% endif %}">
