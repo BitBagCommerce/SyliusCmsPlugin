@@ -37,6 +37,10 @@ trait ResourceDataProcessingTrait
         $mediaPath = $media->getPath();
         Assert::notNull($mediaPath, 'Media path is null');
         Assert::string($this->getParameter('sylius_core.public_dir'));
+//        $filePath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
+//        $this->cacheResolver->isStored($filePath) ?
+//            $file = $this->cacheResolver->resolve($filePath) :
+//            $file = $media->getFile();
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         if (is_string($fileContents)) {

@@ -14,6 +14,7 @@ use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
+use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -36,6 +37,9 @@ final class MediaController extends ResourceController
 
     /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
+
+    /** @var ResolverInterface */
+    private $cacheResolver;
 
     public function renderMediaAction(Request $request): Response
     {
@@ -99,7 +103,9 @@ final class MediaController extends ResourceController
             $defaultLocale = $this->getParameter('locale');
             $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();
 
-            $this->setResourceMediaPathIfExists($media);
+            if (null !== $media->getFile() || null !== $media->getPath()) {
+                $this->setResourceMediaPath($media);
+            }
 
             $media->setFallbackLocale($request->get('_locale', $defaultLocale));
             $media->setCurrentLocale($request->get('_locale', $defaultLocale));
@@ -112,15 +118,6 @@ final class MediaController extends ResourceController
             'mediaTemplate' => $mediaTemplate,
             $this->metadata->getName() => $media,
         ]);
-    }
-
-    private function setResourceMediaPathIfExists(MediaInterface $media): void
-    {
-        if (null === $media->getFile() && null === $media->getPath()) {
-            return;
-        }
-
-        $this->setResourceMediaPath($media);
     }
 
     public function setMediaProviderResolver(MediaProviderResolverInterface $mediaProviderResolver): void
@@ -136,6 +133,11 @@ final class MediaController extends ResourceController
     public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
     {
         $this->formErrorsFlashHelper = $formErrorsFlashHelper;
+    }
+
+    public function setCacheResolver(ResolverInterface $cacheResolver): void
+    {
+        $this->cacheResolver = $cacheResolver;
     }
 
     private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface

@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Parser;
 
-use BadFunctionCallException;
 use PhpSpec\Exception\Fracture\MethodNotFoundException;
 use Webmozart\Assert\Assert;
 
@@ -89,9 +88,7 @@ final class ContentParser implements ContentParserInterface
         $extension = $callable[0];
         $extensionMethod = $callable[1];
         $callback = [$extension, $extensionMethod];
-        if (!is_callable($callback)) {
-            throw new BadFunctionCallException('Provided method ' . $extensionMethod . ' is not callable', );
-        }
+        Assert::isCallable($callback);
 
         return call_user_func_array($callback, $arguments);
     }
