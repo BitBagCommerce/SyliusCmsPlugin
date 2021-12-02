@@ -27,7 +27,8 @@ final class SectionsSorter implements SectionsSorterInterface
         return $result;
     }
 
-    private function foo(PageInterface $page, array $tempResult): array {
+    private function foo(PageInterface $page, array $tempResult): array
+    {
         Assert::isIterable($page->getSections());
         foreach ($page->getSections() as $section) {
             $sectionCode = $section->getCode();
