@@ -21,26 +21,26 @@ final class SectionsSorter implements SectionsSorterInterface
 
         /** @var PageInterface $page */
         foreach ($pages as $page) {
-            $result = $this->foo($page, $result);
+            $result = $this->updateSectionsArray($page, $result);
         }
 
         return $result;
     }
 
-    private function foo(PageInterface $page, array $tempResult): array
+    private function updateSectionsArray(PageInterface $page, array $currentResult): array
     {
         Assert::isIterable($page->getSections());
         foreach ($page->getSections() as $section) {
             $sectionCode = $section->getCode();
             Assert::notNull($sectionCode);
-            if (!array_key_exists($sectionCode, $tempResult)) {
-                $tempResult[$sectionCode] = [];
-                $tempResult[$sectionCode]['section'] = $section;
+            if (!array_key_exists($sectionCode, $currentResult)) {
+                $currentResult[$sectionCode] = [];
+                $currentResult[$sectionCode]['section'] = $section;
             }
 
-            $tempResult[$sectionCode][] = $page;
+            $currentResult[$sectionCode][] = $page;
         }
 
-        return $tempResult;
+        return $currentResult;
     }
 }
