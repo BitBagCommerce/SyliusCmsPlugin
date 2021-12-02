@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
+use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
@@ -50,5 +52,15 @@ trait ResourceDataProcessingTrait
             $path = 'Path error';
         }
         $media->setPath($path);
+    }
+
+    public function setCacheResolver(ResolverInterface $cacheResolver): void
+    {
+        $this->cacheResolver = $cacheResolver;
+    }
+
+    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
+    {
+        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
     }
 }

@@ -130,15 +130,6 @@ final class MediaController extends ResourceController
         $this->mediaResourceResolver = $mediaResourceResolver;
     }
 
-    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
-    {
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
-    }
-
-    public function setCacheResolver(ResolverInterface $cacheResolver): void
-    {
-        $this->cacheResolver = $cacheResolver;
-    }
 
     private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface
     {

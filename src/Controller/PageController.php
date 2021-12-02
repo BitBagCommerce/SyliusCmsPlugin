@@ -113,9 +113,4 @@ final class PageController extends ResourceController
     {
         $this->pageResourceResolver = $pageResourceResolver;
     }
-
-    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
-    {
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
-    }
 }
