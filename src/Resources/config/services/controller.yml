@@ -55,6 +55,7 @@ services:
             - setMediaProviderResolver: ["@bitbag_sylius_cms_plugin.resolver.media_provider"]
             - setMediaResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.media_resource"]
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
+            - setCacheManager: ["@liip_imagine.cache.manager"]
 
     bitbag_sylius_cms_plugin.controller.page.overriden:
         class: BitBag\SyliusCmsPlugin\Controller\PageController
@@ -63,3 +64,4 @@ services:
         calls:
             - setPageResourceResolver: ["@bitbag_sylius_cms_plugin.resolver.page_resource"]
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
+            - setCacheManager: ["@liip_imagine.cache.manager"]
