@@ -39,18 +39,12 @@ trait ResourceDataProcessingTrait
         $mediaPath = $media->getPath();
         Assert::notNull($mediaPath, 'Media path is null');
         Assert::string($this->getParameter('sylius_core.public_dir'));
-//        $filePath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
-//        $this->cacheResolver->isStored($filePath) ?
-//            $file = $this->cacheResolver->resolve($filePath) :
-//            $file = $media->getFile();
-        $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
-        $fileContents = file_get_contents($file->getPathname());
-        if (is_string($fileContents)) {
-            $base64Content = base64_encode($fileContents);
-            $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-        } else {
-            $path = 'Path error';
-        }
+        $path = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
+        $resolvedPath = $this->cacheResolver->resolve(parse_url($path, PHP_URL_PATH), 'sylius_shop_product_original');
+        $file = new File($resolvedPath);
+        $fileContent = $file->getContent();
+        $base64Content = base64_encode($fileContent);
+        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
         $media->setPath($path);
     }
 
