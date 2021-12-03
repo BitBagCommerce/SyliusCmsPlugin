@@ -36,7 +36,7 @@ trait ResourceDataProcessingTrait
     {
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
-        Assert::notNull($fileContents);
+        Assert::string($fileContents);
         $base64Content = base64_encode($fileContents);
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
         $media->setPath($path);
