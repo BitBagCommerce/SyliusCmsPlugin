@@ -126,7 +126,6 @@ final class MediaController extends ResourceController
         $this->mediaResourceResolver = $mediaResourceResolver;
     }
 
-
     private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface
     {
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
