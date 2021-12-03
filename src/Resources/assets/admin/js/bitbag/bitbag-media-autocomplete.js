@@ -37,7 +37,7 @@ export class HandleAutoComplete {
             throw new Error('Bitbag CMS Plugin - HandleAutoComplete class config is not a valid object');
         }
         this._handleSavedValue();
-        this._handleImageChoose();
+        this._handleImageChoice();
         this._handleResetBtn();
     }
 
@@ -52,7 +52,7 @@ export class HandleAutoComplete {
         });
     }
 
-    _handleImageChoose() {
+    _handleImageChoice() {
         this.selectInput.addEventListener('click', (e) => {
             e.preventDefault();
 
@@ -94,8 +94,8 @@ export class HandleAutoComplete {
     async _getMediaImages() {
         const path = this.mediaContainer.dataset.bbCmsUrl;
         const typeQuery = this.mediaContainer.dataset.bbCmsCriteriaType;
-
         const url = `${path}&limit=${this.config.limit}&criteria[search][type]=${typeQuery}`;
+
         try {
             triggerCustomEvent(this.mediaContainer, 'cms.media.display.start');
 

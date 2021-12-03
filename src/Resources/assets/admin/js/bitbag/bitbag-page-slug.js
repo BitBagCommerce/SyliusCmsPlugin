@@ -24,6 +24,7 @@ export class HandleSlugUpdate {
         if (typeof this.config !== 'object') {
             throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config is not a valid object');
         }
+
         if (typeof this.lockFieldIndicator !== 'string' || typeof this.bbTarget !== 'string') {
             throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config key values are not valid strings');
         }
@@ -46,11 +47,12 @@ export class HandleSlugUpdate {
 
             textField.addEventListener('input', (e) => {
                 e.preventDefault();
+
                 if (slugField.readOnly) {
                     return;
                 }
-                clearTimeout(timeout);
 
+                clearTimeout(timeout);
                 timeout = setTimeout(() => {
                     this._updateSlug(slugField, textField.value);
                 }, 1000);
