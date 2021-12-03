@@ -11,6 +11,7 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Webmozart\Assert\Assert;
 
 trait ResourceDataProcessingTrait
 {
@@ -33,8 +34,10 @@ trait ResourceDataProcessingTrait
 
     protected function setResourceMediaPath(MediaInterface $media): void
     {
-        $file = $media->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
-        $base64Content = base64_encode(file_get_contents($file->getPathname()));
+        $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
+        $fileContents = file_get_contents($file->getPathname());
+        Assert::notNull($fileContents);
+        $base64Content = base64_encode($fileContents);
         $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
         $media->setPath($path);
     }
