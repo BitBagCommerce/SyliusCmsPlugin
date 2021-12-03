@@ -14,7 +14,6 @@ use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -37,9 +36,6 @@ final class MediaController extends ResourceController
 
     /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
-
-    /** @var ResolverInterface */
-    private $cacheResolver;
 
     public function renderMediaAction(Request $request): Response
     {

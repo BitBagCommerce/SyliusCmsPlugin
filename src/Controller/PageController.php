@@ -15,7 +15,6 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
-use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,9 +30,6 @@ final class PageController extends ResourceController
 
     /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
-
-    /** @var ResolverInterface */
-    private $cacheResolver;
 
     public function renderLinkAction(Request $request): Response
     {
