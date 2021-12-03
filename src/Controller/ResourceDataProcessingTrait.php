@@ -34,6 +34,7 @@ trait ResourceDataProcessingTrait
 
     protected function setResourceMediaPath(MediaInterface $media): void
     {
+        Assert::string($media->getPath());
         $file = $media->getFile() ?? new File($this->getParameter('sylius_core.public_dir') . '/' . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         Assert::string($fileContents);
