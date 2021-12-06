@@ -86,6 +86,7 @@ trait ResourceDataProcessingTrait
     private function setPathForNonImageFile(MediaInterface $media): void
     {
         Assert::string($media->getPath());
+        Assert::string($this->getParameter('sylius_core.public_dir'));
         $file = new File($this->getParameter('sylius_core.public_dir') . $media->getPath());
         $fileContents = file_get_contents($file->getPathname());
         Assert::string($fileContents);
