@@ -6,7 +6,8 @@ namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Liip\ImagineBundle\Imagine\Data\DataManager;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
@@ -16,46 +17,85 @@ use Webmozart\Assert\Assert;
 
 trait ResourceDataProcessingTrait
 {
-    protected function getResourceInterface(Request $request): object
+    /** @var CacheManager */
+    private $cacheManager;
+
+    /** @var DataManager */
+    private $dataManager;
+
+    /** @var FormErrorsFlashHelperInterface */
+    private $formErrorsFlashHelper;
+
+    private function getResourceInterface(Request $request): object
     {
         return null !== $request->get('id') && $this->repository->find($request->get('id')) ?
             $this->repository->find($request->get('id')) :
             $this->factory->createNew();
     }
 
-    protected function getFormForResource(RequestConfiguration $configuration, ResourceInterface $resource): FormInterface
+    private function getFormForResource(RequestConfiguration $configuration, ResourceInterface $resource): FormInterface
     {
         return $this->resourceFormFactory->create($configuration, $resource);
     }
 
-    protected function getRequestConfiguration(Request $request): RequestConfiguration
+    private function getRequestConfiguration(Request $request): RequestConfiguration
     {
         return $this->requestConfigurationFactory->create($this->metadata, $request);
     }
 
-    protected function setResourceMediaPath(MediaInterface $media): void
+    private function setResourceMediaPath(MediaInterface $media): void
     {
-        /** @var string|null $mediaPath */
-        $mediaPath = $media->getPath();
-        Assert::notNull($mediaPath, 'Media path is null');
-        Assert::string($this->getParameter('sylius_core.public_dir'));
-        $path = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
-        Assert::string(parse_url($path, PHP_URL_PATH));
-        $resolvedPath = $this->cacheResolver->resolve(parse_url($path, PHP_URL_PATH), 'sylius_shop_product_original');
-        $file = new File($resolvedPath);
-        $fileContent = $file->getContent();
-        $base64Content = base64_encode($fileContent);
-        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-        $media->setPath($path);
-    }
-
-    public function setCacheResolver(ResolverInterface $cacheResolver): void
-    {
-        $this->cacheResolver = $cacheResolver;
+        if (null === $media->getPath()) {
+            return;
+        }
+        Assert::notNull($media->getMimeType(), 'Media mime type is null');
+        if (1 === preg_match("/image\//", $media->getMimeType())) {
+            $this->setPathForImageFile($media);
+        } else {
+            $this->setPathForNonImageFile($media);
+        }
     }
 
     public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
     {
         $this->formErrorsFlashHelper = $formErrorsFlashHelper;
+    }
+
+    public function setCacheManager(CacheManager $cacheManager): void
+    {
+        $this->cacheManager = $cacheManager;
+    }
+
+    public function setDataManager(DataManager $dataManager): void
+    {
+        $this->dataManager = $dataManager;
+    }
+
+    private function setPathForImageFile(MediaInterface $media): void
+    {
+        Assert::string($media->getPath());
+        if (!$this->cacheManager->isStored($media->getPath(), $this::FILTER)) {
+            $this->cacheManager->store($this->dataManager->find($this::FILTER, $media->getPath()), $media->getPath(), $this::FILTER);
+        }
+        $resolvedPath = $this->cacheManager->resolve($media->getPath(), $this::FILTER);
+        $fileContents = file_get_contents($resolvedPath);
+        Assert::string($fileContents);
+        $this->setFileContentsAsMediaPath($media, $fileContents);
+    }
+
+    private function setPathForNonImageFile(MediaInterface $media): void
+    {
+        Assert::string($media->getPath());
+        $file = new File($this->getParameter('sylius_core.public_dir') . $media->getPath());
+        $fileContents = file_get_contents($file->getPathname());
+        Assert::string($fileContents);
+        $this->setFileContentsAsMediaPath($media, $fileContents);
+    }
+
+    private function setFileContentsAsMediaPath(MediaInterface $media, string $fileContents): void
+    {
+        $base64Content = base64_encode($fileContents);
+        $path = 'data:' . $media->getMimeType() . ';base64, ' . $base64Content;
+        $media->setPath($path);
     }
 }

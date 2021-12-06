@@ -10,11 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use Liip\ImagineBundle\Imagine\Cache\Resolver\ResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -35,11 +33,7 @@ final class MediaController extends ResourceController
     /** @var MediaProviderResolverInterface */
     private $mediaProviderResolver;
 
-    /** @var FormErrorsFlashHelperInterface */
-    private $formErrorsFlashHelper;
-
-    /** @var ResolverInterface */
-    private $cacheResolver;
+    public const FILTER = 'sylius_admin_product_original';
 
     public function renderMediaAction(Request $request): Response
     {
@@ -63,9 +57,7 @@ final class MediaController extends ResourceController
         /** @var MediaInterface|null $media */
         $media = $this->getMediaForRequestCode($configuration, $request);
 
-        if (null === $media) {
-            return new Response();
-        }
+        Assert::notNull($media);
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
 
@@ -129,7 +121,6 @@ final class MediaController extends ResourceController
     {
         $this->mediaResourceResolver = $mediaResourceResolver;
     }
-
 
     private function getMediaForRequestCode(RequestConfiguration $configuration, Request $request): ?MediaInterface
     {
