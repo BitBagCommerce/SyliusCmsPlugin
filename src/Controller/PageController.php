@@ -24,6 +24,8 @@ final class PageController extends ResourceController
 {
     use ResourceDataProcessingTrait;
 
+    use CommonSetterDependencyInjectionsTrait;
+
     /** @var PageResourceResolverInterface */
     private $pageResourceResolver;
 

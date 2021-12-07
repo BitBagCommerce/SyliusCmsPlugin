@@ -27,6 +27,8 @@ final class MediaController extends ResourceController
 {
     use ResourceDataProcessingTrait;
 
+    use CommonSetterDependencyInjectionsTrait;
+
     /** @var MediaResourceResolverInterface */
     private $mediaResourceResolver;
 

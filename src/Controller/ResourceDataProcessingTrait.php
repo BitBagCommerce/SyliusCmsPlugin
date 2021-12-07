@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use Liip\ImagineBundle\Imagine\Cache\CacheManager;
-use Liip\ImagineBundle\Imagine\Data\DataManager;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
@@ -17,15 +14,6 @@ use Webmozart\Assert\Assert;
 
 trait ResourceDataProcessingTrait
 {
-    /** @var CacheManager */
-    private $cacheManager;
-
-    /** @var DataManager */
-    private $dataManager;
-
-    /** @var FormErrorsFlashHelperInterface */
-    private $formErrorsFlashHelper;
-
     private function getResourceInterface(Request $request): object
     {
         return null !== $request->get('id') && $this->repository->find($request->get('id')) ?
@@ -54,21 +42,6 @@ trait ResourceDataProcessingTrait
         } else {
             $this->setPathForNonImageFile($media);
         }
-    }
-
-    public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
-    {
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
-    }
-
-    public function setCacheManager(CacheManager $cacheManager): void
-    {
-        $this->cacheManager = $cacheManager;
-    }
-
-    public function setDataManager(DataManager $dataManager): void
-    {
-        $this->dataManager = $dataManager;
     }
 
     private function setPathForImageFile(MediaInterface $media): void
