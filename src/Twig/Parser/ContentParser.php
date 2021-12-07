@@ -72,9 +72,6 @@ final class ContentParser implements ContentParserInterface
         return null;
     }
 
-    /**
-     * @throws MethodNotFoundException
-     */
     private function callFunction(
         array $functions,
         string $functionName,
