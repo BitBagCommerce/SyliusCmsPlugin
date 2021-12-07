@@ -46,7 +46,8 @@
         "symfony/intl": "^4.4 || ^5.2",
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
         "vimeo/psalm": "4.7.1",
-        "matthiasnoback/symfony-config-test": "^4.3"
+        "matthiasnoback/symfony-config-test": "^4.3",
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0"
     },
     "conflict": {
         "doctrine/orm": "^2.10"
