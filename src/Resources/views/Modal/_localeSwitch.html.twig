@@ -6,7 +6,7 @@
         <label for="bitbag_sylius_cms_plugin_locale_switch" class="required">
             {{ 'sylius.ui.locale'|trans }}
         </label>
-        <select id="bitbag_sylius_cms_plugin_locale_switch" class=" ui dropdown">
+        <select id="bitbag_sylius_cms_plugin_locale_switch" data-bb-cms-locale class=" ui dropdown">
             {% for locale in locales %}
                 <option value="{{ locale.code }}" {{ locale.code is same as(code) ? 'selected' : '' }}>
                     {{ locale.name }}
