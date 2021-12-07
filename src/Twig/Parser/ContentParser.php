@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Parser;
 
-use PhpSpec\Exception\Fracture\MethodNotFoundException;
 use Webmozart\Assert\Assert;
 
 final class ContentParser implements ContentParserInterface
