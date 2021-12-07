@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Application;
 
+use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\AuthenticationManagerPolyfillPass;
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -105,6 +106,13 @@ final class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+    }
+
+    protected function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new AuthenticationManagerPolyfillPass());
     }
 
     /**
