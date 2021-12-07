@@ -46,6 +46,9 @@
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
         "vimeo/psalm": "4.7.1"
     },
+    "conflict": {
+        "doctrine/orm": "^2.10"
+    },
     "suggest": {
         "stefandoorn/sitemap-plugin": "^2.0@alpha"
     },
