@@ -78,6 +78,7 @@ Feature: Adding new page
         When I go to the create page page
         And I fill the code with "best_day_ever"
         And I add "Blog" and "Homepage" sections to it
+        And I fill the slug with "Slug"
         And I fill the name with "Best day ever"
         And I fill the content with "This was the best day of my life"
         And I add it
