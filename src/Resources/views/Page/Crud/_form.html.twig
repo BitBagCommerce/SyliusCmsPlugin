@@ -5,7 +5,7 @@
 
 {{ form_errors(form) }}
 
-<div class="ui two column stackable grid">
+<div class="ui two column stackable grid" data-bb-target="cms-handle-preview">
     <div class="column">
         <div class="ui segment">
             {{ form_row(form.code) }}
@@ -15,7 +15,7 @@
             {{ form_row(form.channels) }}
             {{ form_row(form.publishAt) }}
 
-            <a href="#" class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('bitbag_sylius_cms_plugin_admin_page_preview', {'id': form.vars.data.id}) }}">
+            <a href="#" data-bb-cms-preview-btn class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('bitbag_sylius_cms_plugin_admin_page_preview', {'id': form.vars.data.id}) }}">
                 <i class="eye icon"></i>
                 {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
             </a>

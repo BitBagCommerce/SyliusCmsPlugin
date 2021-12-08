@@ -3,7 +3,7 @@
 
 {% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
 
-<div class="ui two column stackable grid">
+<div class="ui two column stackable grid" data-bb-target="cms-handle-preview">
     <div class="column">
         <div class="ui segment">
             {{ form_errors(form) }}
@@ -14,7 +14,12 @@
             {{ form_row(form.sections) }}
             {{ form_row(form.channels) }}
 
-            <a href="#" class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview') }}">
+            <a 
+                href="#" 
+                class="ui labeled button icon primary bitbag-cms-resource-preview"  
+                data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview') }}"
+                data-bb-cms-preview-btn
+            >
                 <i class="eye icon"></i>
                 {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
             </a>
