@@ -10,13 +10,5 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-upload-csv.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-page-slug.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-block-image-preview.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-cms-resource-preview.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-block-image-preview.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-cms-resource-preview.js'} %}
-    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/bitbagsyliuscmsplugin/js/bitbag-media-autocomplete.js'} %}
-
     {{ sonata_block_render_event(event_prefix ~ '.javascripts') }}
 {% endblock %}
