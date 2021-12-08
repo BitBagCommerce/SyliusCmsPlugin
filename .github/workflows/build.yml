@@ -133,10 +133,6 @@ jobs:
         run: (cd tests/Application && yarn install)
 
       -
-        name: Add gulp
-        run: (cd tests/Application && yarn add gulp)
-
-      -
         name: Prepare test application database
         run: |
           (cd tests/Application && bin/console doctrine:database:create -vvv)
