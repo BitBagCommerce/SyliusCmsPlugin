@@ -108,13 +108,6 @@ final class Kernel extends BaseKernel
         }
     }
 
-    protected function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new AuthenticationManagerPolyfillPass());
-    }
-
     /**
      * @return string[]
      */
