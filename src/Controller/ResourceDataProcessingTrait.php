@@ -36,7 +36,7 @@ trait ResourceDataProcessingTrait
         if (null === $media->getPath()) {
             return;
         }
-        Assert::notNull($media->getMimeType(), 'Media mime type is null');
+        Assert::notNull($media->getMimeType());
         if (1 === preg_match("/image\//", $media->getMimeType())) {
             $this->setPathForImageFile($media);
         } else {

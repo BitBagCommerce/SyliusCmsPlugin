@@ -65,7 +65,7 @@ final class MediaController extends ResourceController
 
         /** @var string|null $mediaPath */
         $mediaPath = $media->getPath();
-        Assert::notNull($mediaPath, 'Media path is null');
+        Assert::notNull($mediaPath);
         Assert::string($this->getParameter('sylius_core.public_dir'), 'sylius_core.public_dir is not string');
         $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
         $mediaFile = new File($mediaPath);
