@@ -3,7 +3,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\BlockType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.block.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -11,7 +11,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.block_translation.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.translation.block.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -19,7 +19,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\BlockImageType
         arguments:
             - BitBag\SyliusCmsPlugin\Entity\BlockImage
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.block_image.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -27,7 +27,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\PageType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.page.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.page.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -35,7 +35,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.page_translation.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.translation.page.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -43,7 +43,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.frequently_asked_question.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -51,7 +51,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.frequently_asked_question_translation.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -59,7 +59,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\SectionType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.section.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.section.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -67,7 +67,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\SectionTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.section_translation.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.translation.section.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -80,7 +80,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.media_translation.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.translation.media.validation_groups%"
         tags:
             - { name: form.type }
 
@@ -88,7 +88,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Form\Type\MediaType
         arguments:
             - "%bitbag_sylius_cms_plugin.model.media.class%"
-            - ['bitbag']
+            - "%bitbag_sylius_cms_plugin.form.type.media.validation_groups%"
             - "%bitbag_sylius_cms_plugin.media_providers%"
         tags:
             - { name: form.type }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Application;
 
+use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\AuthenticationManagerPolyfillPass;
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
