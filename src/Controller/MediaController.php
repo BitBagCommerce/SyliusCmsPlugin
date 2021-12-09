@@ -61,10 +61,9 @@ final class MediaController extends ResourceController
         Assert::notNull($media);
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
         $mediaPath = $this->getMediaPathIfNotNull($media);
-        $pathFromRootDirectory = $this->getParameter('sylius_core.public_dir') . $mediaPath;
-        $mediaFile = new File($pathFromRootDirectory);
+        $mediaFile = new File($mediaPath);
         $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();
-        $response = new BinaryFileResponse($pathFromRootDirectory);
+        $response = new BinaryFileResponse($mediaPath);
 
         $response->setContentDisposition(
             $request->get('disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT),
