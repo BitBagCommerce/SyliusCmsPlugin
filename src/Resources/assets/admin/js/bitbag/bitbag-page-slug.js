@@ -70,22 +70,20 @@ export class HandleSlugUpdate {
     }
 
     async _updateSlug(slugField, value) {
-        triggerCustomEvent(this.mediaContainer, 'cms.slug.update.start');
+        triggerCustomEvent(slugField, 'cms.slug.update.start');
         slugField.parentNode.classList.add('loading');
         slugField.value = await this._getValidSlug(slugField.dataset.url, value);
         slugField.parentNode.classList.remove('loading');
-        triggerCustomEvent(this.mediaContainer, 'cms.slug.update.end');
+        triggerCustomEvent(slugField, 'cms.slug.update.end');
     }
 
     async _getValidSlug(url, value) {
         try {
             const request = await fetch(`${url}?name=${value}`);
             const response = await request.json();
-            triggerCustomEvent(this.mediaContainer, 'cms.slug.update.completed', response);
             return response.slug;
         } catch (error) {
             console.error(`BitBag CMS Plugin - HandleSlugUpdate class error : ${error}`);
-            triggerCustomEvent(this.mediaContainer, 'cms.slug.update.error', error);
         }
     }
 
