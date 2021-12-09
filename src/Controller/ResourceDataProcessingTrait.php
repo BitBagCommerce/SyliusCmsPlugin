@@ -73,9 +73,11 @@ trait ResourceDataProcessingTrait
         $media->setPath($path);
     }
 
-    private function getMediaPathIfNotNull(MediaInterface $media): string {
+    private function getMediaPathIfNotNull(MediaInterface $media): string
+    {
         Assert::string($media->getPath());
         Assert::string($this->getParameter('sylius_core.public_dir'));
+
         return $media->getPath();
     }
 }
