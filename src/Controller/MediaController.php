@@ -13,6 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Controller;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
+use phpDocumentor\Reflection\Types\This;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
@@ -58,19 +59,13 @@ final class MediaController extends ResourceController
 
         /** @var MediaInterface|null $media */
         $media = $this->getMediaForRequestCode($configuration, $request);
-
         Assert::notNull($media);
-
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
-
-        /** @var string|null $mediaPath */
-        $mediaPath = $media->getPath();
-        Assert::notNull($mediaPath);
-        Assert::string($this->getParameter('sylius_core.public_dir'), 'sylius_core.public_dir is not string');
-        $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
-        $mediaFile = new File($mediaPath);
+        $mediaPath = $this->getMediaPathIfNotNull($media);
+        $pathFromRootDirectory = $this->getParameter('sylius_core.public_dir') . $mediaPath;
+        $mediaFile = new File($pathFromRootDirectory);
         $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();
-        $response = new BinaryFileResponse($mediaPath);
+        $response = new BinaryFileResponse($pathFromRootDirectory);
 
         $response->setContentDisposition(
             $request->get('disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT),

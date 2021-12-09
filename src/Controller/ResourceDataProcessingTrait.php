@@ -59,9 +59,8 @@ trait ResourceDataProcessingTrait
 
     private function setPathForNonImageMediaType(MediaInterface $media): void
     {
-        Assert::string($media->getPath());
-        Assert::string($this->getParameter('sylius_core.public_dir'));
-        $file = new File($this->getParameter('sylius_core.public_dir') . $media->getPath());
+        $mediaPath = $this->getMediaPathIfNotNull($media);
+        $file = new File($this->getParameter('sylius_core.public_dir') . $mediaPath);
         $fileContents = file_get_contents($file->getPathname());
         Assert::string($fileContents);
         $this->setFileContentsAsMediaPath($media, $fileContents);
@@ -72,5 +71,11 @@ trait ResourceDataProcessingTrait
         $base64Content = base64_encode($fileContents);
         $path = 'data:' . $media->getMimeType() . ';base64, ' . $base64Content;
         $media->setPath($path);
+    }
+
+    private function getMediaPathIfNotNull(MediaInterface $media): string {
+        Assert::string($media->getPath());
+        Assert::string($this->getParameter('sylius_core.public_dir'));
+        return $media->getPath();
     }
 }
