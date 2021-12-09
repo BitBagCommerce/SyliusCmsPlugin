@@ -7,7 +7,7 @@ namespace BitBag\SyliusCmsPlugin\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AuthenticationManagerPolyfillPass implements CompilerPassInterface
+final class AuthenticationManagerPolyfillPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
