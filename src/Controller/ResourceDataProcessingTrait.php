@@ -37,14 +37,15 @@ trait ResourceDataProcessingTrait
             return;
         }
         Assert::notNull($media->getMimeType());
-        if (1 === preg_match("/image\//", $media->getMimeType())) {
-            $this->setPathForImageFile($media);
+        Assert::notNull($media->getType());
+        if (1 === preg_match("/image\//", $media->getMimeType()) && 'image' === $media->getType()) {
+            $this->setPathForImageMediaType($media);
         } else {
-            $this->setPathForNonImageFile($media);
+            $this->setPathForNonImageMediaType($media);
         }
     }
 
-    private function setPathForImageFile(MediaInterface $media): void
+    private function setPathForImageMediaType(MediaInterface $media): void
     {
         Assert::string($media->getPath());
         if (!$this->cacheManager->isStored($media->getPath(), $this::FILTER)) {
@@ -56,7 +57,7 @@ trait ResourceDataProcessingTrait
         $this->setFileContentsAsMediaPath($media, $fileContents);
     }
 
-    private function setPathForNonImageFile(MediaInterface $media): void
+    private function setPathForNonImageMediaType(MediaInterface $media): void
     {
         Assert::string($media->getPath());
         Assert::string($this->getParameter('sylius_core.public_dir'));
