@@ -8,7 +8,7 @@ use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Liip\ImagineBundle\Imagine\Data\DataManager;
 
-trait CommonSetterDependencyInjectionsTrait
+trait MediaPageControllersCommonDependencyInjectionsTrait
 {
     /** @var CacheManager */
     private $cacheManager;
