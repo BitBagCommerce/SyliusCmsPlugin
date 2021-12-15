@@ -11,10 +11,10 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
@@ -33,8 +33,8 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
     /** @var ImporterProductsResolverInterface */
     private $importerProductsResolver;
 
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    /** @var MediaRepositoryInterface */
+    private $mediaRepository;
 
     public function __construct(
         ResourceResolverInterface $mediaResourceResolver,
@@ -42,7 +42,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        EntityManagerInterface $entityManager
+        MediaRepositoryInterface $mediaRepository
     ) {
         parent::__construct($validator);
 
@@ -50,12 +50,12 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         $this->localeContext = $localeContext;
         $this->importerSectionsResolver = $importerSectionsResolver;
         $this->importerProductsResolver = $importerProductsResolver;
-        $this->entityManager = $entityManager;
+        $this->mediaRepository = $mediaRepository;
     }
 
     public function import(array $row): void
     {
-        /** @var string $code */
+        /** @var string|null $code */
         $code = $this->getColumnValue(self::CODE_COLUMN, $row);
         Assert::notNull($code);
         /** @var MediaInterface $media */
@@ -77,8 +77,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
 
         $this->validateResource($media, ['bitbag']);
 
-        $media->getId() ?: $this->entityManager->persist($media);
-        $this->entityManager->flush();
+        $this->mediaRepository->add($media);
     }
 
     public function getResourceCode(): string

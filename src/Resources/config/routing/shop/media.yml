@@ -2,13 +2,13 @@ bitbag_sylius_cms_plugin_shop_media_render:
     path: /media/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:renderMediaAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:renderMediaAction
 
 bitbag_sylius_cms_plugin_shop_media_render_template:
     path: /media-template/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:showAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:showAction
         _sylius:
             template: $template
             repository:
@@ -22,21 +22,21 @@ bitbag_sylius_cms_plugin_shop_media_download:
     path: /media/download/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:downloadMediaAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_ATTACHMENT
 
 bitbag_sylius_cms_plugin_shop_media_inline:
     path: /media/inline/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:downloadMediaAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_INLINE
 
 bitbag_sylius_cms_plugin_shop_media_index_by_section_code:
     path: /media/section/{sectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:indexAction
         _sylius:
             template: $template
             repository:
@@ -50,7 +50,7 @@ bitbag_sylius_cms_plugin_shop_media_index_by_product_code:
     path: /media/product/{productCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:indexAction
         _sylius:
             template: $template
             repository:

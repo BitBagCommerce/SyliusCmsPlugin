@@ -11,11 +11,18 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
 use BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Twig\Extension\AbstractExtension;
 
 final class RenderProductPagesExtensionSpec extends ObjectBehavior
 {
+    function let(
+        RenderProductPagesRuntimeInterface $productPagesRuntime
+    ): void {
+        $this->beConstructedWith($productPagesRuntime);
+    }
+
     function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderProductPagesExtension::class);

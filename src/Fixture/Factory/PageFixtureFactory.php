@@ -20,6 +20,7 @@ use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -101,8 +102,11 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    private function createPage(string $code, array $pageData, bool $generateSlug = false): void
-    {
+    private function createPage(
+        string $code,
+        array $pageData,
+        bool $generateSlug = false
+    ): void {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
@@ -152,8 +156,10 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
     private function resolveProducts(PageInterface $page, int $limit): void
     {
+        /** @var ChannelInterface $channel */
+        $channel = $this->channelContext->getChannel();
         $products = $this->productRepository->findLatestByChannel(
-            $this->channelContext->getChannel(),
+            $channel,
             $this->localeContext->getLocaleCode(),
             $limit
         );

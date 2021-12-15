@@ -39,7 +39,7 @@ final class MediaFixture extends AbstractFixture
         $optionsNode
             ->children()
                 ->arrayNode('custom')
-                    ->prototype('array')
+                    ->arrayPrototype()
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()
@@ -50,7 +50,7 @@ final class MediaFixture extends AbstractFixture
                             ->arrayNode('sections')->scalarPrototype()->end()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
                             ->arrayNode('translations')
-                                ->prototype('array')
+                                ->arrayPrototype()
                                     ->children()
                                         ->scalarNode('name')->defaultNull()->end()
                                         ->scalarNode('content')->defaultNull()->end()

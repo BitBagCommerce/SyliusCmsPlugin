@@ -28,7 +28,7 @@ final class TaxonsAssigner implements TaxonsAssignerInterface
     public function assign(TaxonAwareInterface $taxonAware, array $taxonCodes): void
     {
         foreach ($taxonCodes as $taxonCode) {
-            /** @var TaxonInterface $taxon */
+            /** @var TaxonInterface|null $taxon */
             $taxon = $this->taxonRepository->findOneBy(['code' => $taxonCode]);
 
             Assert::notNull($taxon, sprintf('Taxon with %s code not found.', $taxonCode));

@@ -87,12 +87,7 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @param string|null $code
-     * @param int|null $position
-     * @param bool $prefixQuestionWithPosition
      * @param ChannelInterface $channel
-     *
-     * @return FrequentlyAskedQuestionInterface
      */
     private function createFrequentlyAskedQuestion(
         ?string $code = null,

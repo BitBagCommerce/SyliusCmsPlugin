@@ -43,8 +43,10 @@ final class PageContext implements Context
      */
     public function iShouldSeePageInTheList(int $count): void
     {
-        Assert::count($this->responseChecker->getCollection(
-            $this->apiClient->getLastResponse()),
+        Assert::count(
+            $this->responseChecker->getCollection(
+                $this->apiClient->getLastResponse()
+            ),
             $count,
             sprintf('There is no page with name "%s"', $count)
         );
@@ -58,7 +60,7 @@ final class PageContext implements Context
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
                 $this->apiClient->index(),
-                "en_US",
+                'en_US',
                 'name',
                 $page
             ),
@@ -71,7 +73,7 @@ final class PageContext implements Context
      */
     public function iOpenPage(PageInterface $page): void
     {
-        $this->apiClient->show((string)$page->getId());
+        $this->apiClient->show((string) $page->getId());
     }
 
     /**

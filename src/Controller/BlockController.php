@@ -11,11 +11,13 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Webmozart\Assert\Assert;
 
 final class BlockController extends ResourceController
 {
@@ -28,6 +30,7 @@ final class BlockController extends ResourceController
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
+        /** @var BlockResourceResolverInterface $blockResourceResolver */
         $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
         $block = $blockResourceResolver->findOrLog($code);
 
@@ -38,6 +41,8 @@ final class BlockController extends ResourceController
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $block);
 
         if (!$configuration->isHtmlRequest()) {
+            Assert::true(null !== $this->viewHandler);
+
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
@@ -70,6 +75,8 @@ final class BlockController extends ResourceController
         $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         if (!$configuration->isHtmlRequest()) {
+            Assert::true(null !== $this->viewHandler);
+
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 

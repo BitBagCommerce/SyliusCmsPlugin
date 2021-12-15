@@ -12,7 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Uploader;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Gaufrette\Filesystem;
-use Symfony\Component\HttpFoundation\File\File;
 use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface
@@ -32,10 +31,7 @@ final class MediaUploader implements MediaUploaderInterface
         }
 
         $file = $media->getFile();
-
-        /** @var File $file */
-        Assert::isInstanceOf($file, File::class);
-
+        Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
         if (null !== $media->getPath() && $this->has($media->getPath())) {
             $this->remove($media->getPath());
         }
@@ -47,16 +43,22 @@ final class MediaUploader implements MediaUploaderInterface
 
         $media->setPath('/' . $path);
         $media->setMimeType($file->getMimeType());
-
-        if (false !== strpos($media->getMimeType(), 'image')) {
-            [$width, $height] = getimagesize($media->getFile()->getPathname());
+        $file = $media->getFile();
+        Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
+        $mimeType = $media->getMimeType();
+        if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
+            [$width, $height] = getimagesize($file->getPathname());
             $media->setWidth($width);
             $media->setHeight($height);
         }
 
+        $mediaPath = $media->getPath();
+        $fileContents = file_get_contents($file->getPathname());
+        Assert::notNull($mediaPath, sprintf('Media path for media identified by id: "%s" is null', $media->getId()));
+        Assert::notFalse($fileContents, sprintf('File contents for file identified by id: "%s" is false', $file->getPath()));
         $this->filesystem->write(
-            $media->getPath(),
-            file_get_contents($media->getFile()->getPathname())
+            $mediaPath,
+            $fileContents
         );
     }
 

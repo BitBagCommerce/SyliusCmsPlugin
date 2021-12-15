@@ -17,16 +17,16 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $name;
 
-    /** @var string */
+    /** @var string|null */
     protected $content;
 
-    /** @var string */
+    /** @var string|null */
     protected $alt;
 
-    /** @var string */
+    /** @var string|null */
     protected $link;
 
     public function getId(): ?int

@@ -20,7 +20,7 @@ final class RenderBlockExtensionSpec extends ObjectBehavior
 {
     function let(
         RenderBlockRuntimeInterface $blockRuntime
-    ) {
+    ): void {
         $this->beConstructedWith($blockRuntime);
     }
 

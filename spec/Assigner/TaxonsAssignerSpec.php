@@ -4,10 +4,10 @@ namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner;
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 final class TaxonsAssignerSpec extends ObjectBehavior
 {

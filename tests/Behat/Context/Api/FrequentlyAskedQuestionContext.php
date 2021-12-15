@@ -18,8 +18,10 @@ use Webmozart\Assert\Assert;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
+    /** @var ApiClientInterface */
     private $apiClient;
 
+    /** @var ResponseCheckerInterface */
     private $responseChecker;
 
     public function __construct(
@@ -43,9 +45,11 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iShouldSeeQuestionsInTheList(string $count): void
     {
-        Assert::count($this->responseChecker->getCollection(
-            $this->apiClient->getLastResponse()),
-            $count
+        Assert::count(
+            $this->responseChecker->getCollection(
+                $this->apiClient->getLastResponse()
+            ),
+            (int) $count
         );
     }
 
@@ -57,7 +61,7 @@ final class FrequentlyAskedQuestionContext implements Context
         Assert::true(
             $this->responseChecker->hasItemWithValue(
                 $this->apiClient->index(),
-                "code",
+                'code',
                 $code
             ),
             sprintf('There is no question with code "%s"', $code)
@@ -69,7 +73,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iViewFaqWithCode(FrequentlyAskedQuestionInterface $faq): void
     {
-        $this->apiClient->show((string)$faq->getId());
+        $this->apiClient->show((string) $faq->getId());
     }
 
     /**
@@ -80,10 +84,11 @@ final class FrequentlyAskedQuestionContext implements Context
         Assert::false(
             $this->responseChecker->hasTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "question",
+                'en_US',
+                'question',
                 "That shouldn't exist"
-            ), "Missing question"
+            ),
+            'Missing question'
         );
     }
 
@@ -95,10 +100,11 @@ final class FrequentlyAskedQuestionContext implements Context
         Assert::false(
             $this->responseChecker->hasTranslation(
                 $this->apiClient->getLastResponse(),
-                "en_US",
-                "answer",
+                'en_US',
+                'answer',
                 "That shouldn't exist"
-            ), "Missing answer"
+            ),
+            'Missing answer'
         );
     }
 }

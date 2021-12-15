@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Sorter;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use Webmozart\Assert\Assert;
 
 final class SectionsSorter implements SectionsSorterInterface
 {
@@ -20,17 +21,26 @@ final class SectionsSorter implements SectionsSorterInterface
 
         /** @var PageInterface $page */
         foreach ($pages as $page) {
-            foreach ($page->getSections() as $section) {
-                $sectionCode = $section->getCode();
-                if (!array_key_exists($sectionCode, $result)) {
-                    $result[$sectionCode] = [];
-                    $result[$sectionCode]['section'] = $section;
-                }
-
-                $result[$sectionCode][] = $page;
-            }
+            $result = $this->updateSectionsArray($page, $result);
         }
 
         return $result;
+    }
+
+    private function updateSectionsArray(PageInterface $page, array $currentResult): array
+    {
+        Assert::isIterable($page->getSections());
+        foreach ($page->getSections() as $section) {
+            $sectionCode = $section->getCode();
+            Assert::notNull($sectionCode);
+            if (!array_key_exists($sectionCode, $currentResult)) {
+                $currentResult[$sectionCode] = [];
+                $currentResult[$sectionCode]['section'] = $section;
+            }
+
+            $currentResult[$sectionCode][] = $page;
+        }
+
+        return $currentResult;
     }
 }

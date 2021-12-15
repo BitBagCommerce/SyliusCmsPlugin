@@ -15,13 +15,18 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Webmozart\Assert\Assert;
 
 class Media implements MediaInterface
 {
     use ToggleableTrait;
+
     use SectionableTrait;
+
     use ProductsAwareTrait;
+
     use ChannelsAwareTrait;
+
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -29,19 +34,19 @@ class Media implements MediaInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $type;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
-    /** @var string */
+    /** @var string|null */
     protected $path;
 
-    /** @var File */
+    /** @var File|null */
     protected $file;
 
-    /** @var string */
+    /** @var string|null */
     protected $mimeType;
 
     /** @var string */
@@ -123,12 +128,17 @@ class Media implements MediaInterface
 
     public function getName(): ?string
     {
-        return $this->getMediaTranslation()->getName();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+
+        return $mediaTranslationInterface->getName();
     }
 
     public function setName(?string $name): void
     {
-        $this->getMediaTranslation()->setName($name);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setName($name);
     }
 
     public function getDownloadName(): string
@@ -138,32 +148,47 @@ class Media implements MediaInterface
 
     public function getContent(): ?string
     {
-        return $this->getMediaTranslation()->getContent();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+
+        return $mediaTranslationInterface->getContent();
     }
 
     public function setContent(?string $content): void
     {
-        $this->getMediaTranslation()->setContent($content);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setContent($content);
     }
 
     public function getAlt(): ?string
     {
-        return $this->getMediaTranslation()->getAlt();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+
+        return $mediaTranslationInterface->getAlt();
     }
 
     public function setAlt(?string $alt): void
     {
-        $this->getMediaTranslation()->setAlt($alt);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setAlt($alt);
     }
 
     public function getLink(): ?string
     {
-        return $this->getMediaTranslation()->getLink();
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+
+        return $mediaTranslationInterface->getLink();
     }
 
     public function setLink(?string $link): void
     {
-        $this->getMediaTranslation()->setLink($link);
+        /** @var MediaTranslationInterface $mediaTranslationInterface */
+        $mediaTranslationInterface = $this->getMediaTranslation();
+        $mediaTranslationInterface->setLink($link);
     }
 
     public function getWidth(): ?int
@@ -201,6 +226,9 @@ class Media implements MediaInterface
 
     public function __toString(): string
     {
-        return $this->getName() ?? $this->code;
+        $result = $this->getName() ?? $this->code;
+        Assert::string($result);
+
+        return $result;
     }
 }

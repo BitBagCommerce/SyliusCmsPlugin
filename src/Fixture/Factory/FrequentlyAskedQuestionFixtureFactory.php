@@ -62,8 +62,11 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         }
     }
 
-    private function createFrequentlyAskedQuestion(string $code, array $frequentlyAskedQuestionData, int $position): void
-    {
+    private function createFrequentlyAskedQuestion(
+        string $code,
+        array $frequentlyAskedQuestionData,
+        int $position
+    ): void {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 

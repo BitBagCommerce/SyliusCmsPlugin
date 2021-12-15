@@ -39,7 +39,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture
         $optionsNode
             ->children()
                 ->arrayNode('custom')
-                    ->prototype('array')
+                    ->arrayPrototype()
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()
@@ -47,7 +47,7 @@ final class FrequentlyAskedQuestionFixture extends AbstractFixture
                             ->integerNode('position')->defaultNull()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
                             ->arrayNode('translations')
-                                ->prototype('array')
+                                ->arrayPrototype()
                                     ->children()
                                         ->scalarNode('question')->defaultNull()->end()
                                         ->scalarNode('answer')->defaultNull()->end()

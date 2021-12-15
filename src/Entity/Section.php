@@ -22,7 +22,7 @@ class Section implements SectionInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
     public function __construct()
@@ -47,12 +47,17 @@ class Section implements SectionInterface
 
     public function getName(): ?string
     {
-        return $this->getSectionTranslation()->getName();
+        /** @var SectionTranslationInterface $sectionTranslationInterface */
+        $sectionTranslationInterface = $this->getSectionTranslation();
+
+        return $sectionTranslationInterface->getName();
     }
 
     public function setName(?string $name): void
     {
-        $this->getSectionTranslation()->setName($name);
+        /** @var SectionTranslationInterface $sectionTranslationInterface */
+        $sectionTranslationInterface = $this->getSectionTranslation();
+        $sectionTranslationInterface->setName($name);
     }
 
     /**

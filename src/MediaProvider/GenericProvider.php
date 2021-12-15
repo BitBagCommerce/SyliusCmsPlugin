@@ -45,8 +45,11 @@ final class GenericProvider implements ProviderInterface
         return $this->template;
     }
 
-    public function render(MediaInterface $media, ?string $template = null, array $options = []): string
-    {
+    public function render(
+        MediaInterface $media,
+        ?string $template = null,
+        array $options = []
+    ): string {
         return $this->twigEngine->render($template ?? $this->template, array_merge(['media' => $media], $options));
     }
 

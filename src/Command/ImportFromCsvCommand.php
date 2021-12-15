@@ -39,11 +39,13 @@ final class ImportFromCsvCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $resourceName = $input->getArgument('resource');
         $file = $input->getArgument('file');
 
         $this->importProcessor->process($resourceName, $file);
+
+        return 0;
     }
 }
