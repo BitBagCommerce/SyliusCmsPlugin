@@ -126,7 +126,7 @@ final class MediaController extends ResourceController
         $media->setCurrentLocale($request->get('_locale', $defaultLocale));
     }
 
-    private function setMediaPathIfExists(MediaInterface $media)
+    private function setMediaPathIfExists(MediaInterface $media): void
     {
         if (null !== $media->getFile() || null !== $media->getPath()) {
             $this->setResourceMediaPath($media);
