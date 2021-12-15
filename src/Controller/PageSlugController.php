@@ -13,6 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Controller;
 use Sylius\Component\Product\Generator\SlugGeneratorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Webmozart\Assert\Assert;
 
 final class PageSlugController
 {
@@ -27,6 +28,7 @@ final class PageSlugController
     public function generateAction(Request $request): JsonResponse
     {
         $name = $request->query->get('name');
+        Assert::string($name);
 
         return new JsonResponse([
             'slug' => $this->slugGenerator->generate($name),

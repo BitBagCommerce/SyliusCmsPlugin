@@ -12,9 +12,9 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -73,7 +73,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown->click();
 
         foreach ($sectionsNames as $sectionName) {
-            $dropdown->waitFor(10, function () use ($sectionName) {
+            $dropdown->waitFor(10, function () use ($sectionName): bool {
                 return $this->hasElement('association_dropdown_section_item', [
                     '%item%' => $sectionName,
                 ]);

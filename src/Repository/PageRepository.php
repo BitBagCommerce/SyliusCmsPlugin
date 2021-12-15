@@ -101,8 +101,11 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByProduct(ProductInterface $product, string $channelCode, ?\DateTimeInterface $date = null): array
-    {
+    public function findByProduct(
+        ProductInterface $product,
+        string $channelCode,
+        ?\DateTimeInterface $date = null
+    ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.channels', 'channel')
@@ -113,8 +116,8 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('channelCode', $channelCode)
         ;
 
-        if (!empty($date)) {
-            $this->addDateFilter($qb);
+        if (null !== $date) {
+            $this->addDateFilter($qb, $date);
         }
 
         return $qb
@@ -142,7 +145,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('channelCode', $channelCode)
         ;
 
-        if (!empty($date)) {
+        if (null !== $date) {
             $this->addDateFilter($qb, $date);
         }
 

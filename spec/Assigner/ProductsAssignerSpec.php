@@ -6,8 +6,8 @@ use BitBag\SyliusCmsPlugin\Assigner\ProductsAssigner;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 final class ProductsAssignerSpec extends ObjectBehavior
 {

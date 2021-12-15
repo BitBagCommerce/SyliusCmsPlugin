@@ -17,10 +17,15 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
+
     use SectionableTrait;
+
     use ProductsAwareTrait;
+
     use TaxonAwareTrait;
+
     use ChannelsAwareTrait;
+
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -34,10 +39,10 @@ class Block implements BlockInterface
         $this->initializeChannelsCollection();
     }
 
-    /** @var int */
+    /** @var int|null */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $code;
 
     public function getId(): ?int
@@ -57,32 +62,47 @@ class Block implements BlockInterface
 
     public function getName(): ?string
     {
-        return $this->getBlockTranslation()->getName();
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+
+        return $blockTranslationInterface->getName();
     }
 
     public function setName(?string $name): void
     {
-        $this->getBlockTranslation()->setName($name);
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+        $blockTranslationInterface->setName($name);
     }
 
     public function getContent(): ?string
     {
-        return $this->getBlockTranslation()->getContent();
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+
+        return $blockTranslationInterface->getContent();
     }
 
     public function setContent(?string $content): void
     {
-        $this->getBlockTranslation()->setContent($content);
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+        $blockTranslationInterface->setContent($content);
     }
 
     public function getLink(): ?string
     {
-        return $this->getBlockTranslation()->getLink();
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+
+        return $blockTranslationInterface->getLink();
     }
 
     public function setLink(?string $link): void
     {
-        $this->getBlockTranslation()->setLink($link);
+        /** @var BlockTranslationInterface $blockTranslationInterface */
+        $blockTranslationInterface = $this->getBlockTranslation();
+        $blockTranslationInterface->setLink($link);
     }
 
     /**

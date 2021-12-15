@@ -13,7 +13,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
@@ -23,7 +22,6 @@ use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
@@ -63,7 +61,6 @@ final class PageContext implements Context
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
         MediaUploaderInterface $mediaUploader
-
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
@@ -223,8 +220,12 @@ final class PageContext implements Context
         $this->entityManager->flush();
     }
 
-    private function createPage(?string $code = null, ?string $name = null, ?string $content = null, ChannelInterface $channel = null): PageInterface
-    {
+    private function createPage(
+        ?string $code = null,
+        ?string $name = null,
+        ?string $content = null,
+        ChannelInterface $channel = null
+    ): PageInterface {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
 
@@ -264,7 +265,7 @@ final class PageContext implements Context
 
         $image->setFile($uploadedImage);
 
-        $this->mediaUploader->upload($image,'/tests/Application/Resources/images/' );
+        $this->mediaUploader->upload($image, '/tests/Application/Resources/images/');
 
         return $image;
     }

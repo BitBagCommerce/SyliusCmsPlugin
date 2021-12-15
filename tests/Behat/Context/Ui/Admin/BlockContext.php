@@ -12,8 +12,8 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use Sylius\Behat\NotificationType;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
+use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -21,7 +21,6 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context

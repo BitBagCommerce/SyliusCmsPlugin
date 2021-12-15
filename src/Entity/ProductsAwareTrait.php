@@ -8,7 +8,6 @@
 
 declare(strict_types=1);
 
-
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;

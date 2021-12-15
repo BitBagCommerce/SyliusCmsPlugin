@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
+use BadFunctionCallException;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -25,20 +26,31 @@ final class ResourceResolver implements ResourceResolverInterface
     /** @var string */
     private $uniqueColumn;
 
-    public function __construct(RepositoryInterface $repository, FactoryInterface $factory, string $uniqueColumn)
-    {
+    public function __construct(
+        RepositoryInterface $repository,
+        FactoryInterface $factory,
+        string $uniqueColumn
+    ) {
         $this->repository = $repository;
         $this->factory = $factory;
         $this->uniqueColumn = $uniqueColumn;
     }
 
+    /**
+     * @throws BadFunctionCallException
+     */
     public function getResource(string $identifier, string $factoryMethod = 'createNew'): ResourceInterface
     {
-        /** @var ResourceInterface $resource */
-        if ($resource = $this->repository->findOneBy([$this->uniqueColumn => $identifier])) {
+        /** @var ResourceInterface|null $resource */
+        $resource = $this->repository->findOneBy([$this->uniqueColumn => $identifier]);
+        if (null !== $resource) {
             return $resource;
         }
+        $callback = [$this->factory, $factoryMethod];
+        if (!is_callable($callback)) {
+            throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');
+        }
 
-        return $this->factory->$factoryMethod();
+        return call_user_func($callback);
     }
 }

@@ -37,8 +37,7 @@ final class BlockContext implements Context
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $blockFactory,
         BlockRepositoryInterface $blockRepository
-    )
-    {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->blockFactory = $blockFactory;
@@ -80,8 +79,7 @@ final class BlockContext implements Context
         ?string $code = null,
         ?string $content = null,
         ChannelInterface $channel = null
-    ): BlockInterface
-    {
+    ): BlockInterface {
         /** @var BlockInterface $block */
         $block = $this->blockFactory->createNew();
 

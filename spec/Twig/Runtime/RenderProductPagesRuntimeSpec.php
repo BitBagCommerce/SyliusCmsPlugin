@@ -60,7 +60,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $channelContext->getChannel()->willReturn($channel);
         $page->getSections()->willReturn(new ArrayCollection([$section]));
         $section->getCode()->willReturn("SECTION_CODE");
-        $pageRepository->findByProduct($product, 'WEB')->willReturn([])->shouldBeCalled();
+        $pageRepository->findByProduct($product, 'WEB', null)->willReturn([])->shouldBeCalled();
         $sectionsSorter->sortBySections([])->willReturn([]);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
 
@@ -81,7 +81,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $channelContext->getChannel()->willReturn($channel);
         $page->getSections()->willReturn(new ArrayCollection([$section]));
         $section->getCode()->willReturn("SECTION_CODE");
-        $pageRepository->findByProductAndSectionCode($product, 'SECTION_CODE','WEB')->willReturn([])->shouldBeCalled();
+        $pageRepository->findByProductAndSectionCode($product, 'SECTION_CODE','WEB', null)->willReturn([])->shouldBeCalled();
         $sectionsSorter->sortBySections([])->willReturn([]);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
 

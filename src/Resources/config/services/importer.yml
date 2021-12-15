@@ -28,7 +28,7 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.importer_channels"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"
             - "@validator"
-            - "@doctrine.orm.entity_manager"
+            - "@bitbag_sylius_cms_plugin.repository.block"
         tags:
             - { name: bitbag.cmsplugin.importer }
 
@@ -40,6 +40,6 @@ services:
             - "@bitbag_sylius_cms_plugin.resolver.importer_sections"
             - "@bitbag_sylius_cms_plugin.resolver.importer_products"
             - "@validator"
-            - "@doctrine.orm.entity_manager"
+            - "@bitbag_sylius_cms_plugin.repository.media"
         tags:
             - { name: bitbag.cmsplugin.importer }

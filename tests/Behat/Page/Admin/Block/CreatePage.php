@@ -57,7 +57,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown->click();
 
         foreach ($sectionsNames as $sectionName) {
-            $dropdown->waitFor(10, function () use ($sectionName) {
+            $dropdown->waitFor(10, function () use ($sectionName): bool {
                 return $this->hasElement('association_dropdown_section_item', [
                     '%item%' => $sectionName,
                 ]);

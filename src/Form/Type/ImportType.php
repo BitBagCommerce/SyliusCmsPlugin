@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
 
 final class ImportType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('file', FileType::class, [
             'required' => true,

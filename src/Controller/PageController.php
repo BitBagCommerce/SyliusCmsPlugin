@@ -12,25 +12,34 @@ namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
+use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Webmozart\Assert\Assert;
 
 final class PageController extends ResourceController
 {
+    use ResourceDataProcessingTrait;
+
+    use MediaPageControllersCommonDependencyInjectionsTrait;
+
+    /** @var PageResourceResolverInterface */
+    private $pageResourceResolver;
+
+    public const FILTER = 'sylius_admin_product_original';
+
     public function renderLinkAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
 
         $code = $request->get('code');
-        $pageResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.page_resource');
 
-        $page = $pageResourceResolver->findOrLog($code);
+        $page = $this->pageResourceResolver->findOrLog($code);
 
         if (null === $page) {
             return new Response();
@@ -47,20 +56,20 @@ final class PageController extends ResourceController
             ]);
         }
 
+        Assert::true(null !== $this->viewHandler);
+
         return $this->viewHandler->handle($configuration, View::create($page));
     }
 
     public function previewAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+        $configuration = $this->getRequestConfiguration($request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
 
         /** @var PageInterface $page */
-        $page = $request->get('id') && $this->repository->find($request->get('id')) ?
-            $this->repository->find($request->get('id')) :
-            $this->factory->createNew();
-        $form = $this->resourceFormFactory->create($configuration, $page);
+        $page = $this->getResourceInterface($request);
+        $form = $this->getFormForResource($configuration, $page);
         $defaultLocale = $this->getParameter('locale');
 
         $form->handleRequest($request);
@@ -70,9 +79,10 @@ final class PageController extends ResourceController
 
         $this->resolveImage($page);
 
-        $this->get('bitbag_sylius_cms_plugin.controller.helper.form_errors_flash')->addFlashErrors($form);
+        $this->formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
+            Assert::true(null !== $this->viewHandler);
             $this->viewHandler->handle($configuration, View::create($page));
         }
 
@@ -90,15 +100,17 @@ final class PageController extends ResourceController
 
         $image = $translation->getImage();
 
-        if (!$image || !$image->getPath()) {
+        if (null === $image || null === $image->getPath()) {
             return;
         }
+        $this->setResourceMediaPath($image);
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $page->getTranslation();
+        $pageTranslationInterface->setImage($image);
+    }
 
-        $file = $image->getFile() ?: new File($this->getParameter('sylius_core.public_dir') . $image->getPath());
-        $base64Content = base64_encode(file_get_contents($file->getPathname()));
-        $path = 'data:' . $file->getMimeType() . ';base64, ' . $base64Content;
-
-        $image->setPath($path);
-        $page->getTranslation()->setImage($image);
+    public function setPageResourceResolver(PageResourceResolverInterface $pageResourceResolver): void
+    {
+        $this->pageResourceResolver = $pageResourceResolver;
     }
 }

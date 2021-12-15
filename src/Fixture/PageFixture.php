@@ -39,7 +39,7 @@ final class PageFixture extends AbstractFixture
         $optionsNode
             ->children()
                 ->arrayNode('custom')
-                    ->prototype('array')
+                    ->arrayPrototype()
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->integerNode('number')->defaultNull()->end()

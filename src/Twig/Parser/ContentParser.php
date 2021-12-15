@@ -34,7 +34,7 @@ final class ContentParser implements ContentParserInterface
 
         foreach ($callMatches[0] as $index => $call) {
             $function = $callMatches['method'][$index];
-            if (!in_array($function, $this->enabledFunctions)) {
+            if (!in_array($function, $this->enabledFunctions, true)) {
                 continue;
             }
 
@@ -56,9 +56,10 @@ final class ContentParser implements ContentParserInterface
     {
         $start = '{{ ' . $functionName . '(';
         $end = ') }}';
+        /** @var string[]|false $functionParts */
         $functionParts = explode($start, $input);
 
-        if (isset($functionParts[1])) {
+        if (false !== $functionParts && isset($functionParts[1])) {
             $functionParts = explode($end, $functionParts[1]);
             $arguments = explode(',', $functionParts[0]);
 
@@ -70,15 +71,21 @@ final class ContentParser implements ContentParserInterface
         return null;
     }
 
-    private function callFunction(array $functions, string $functionName, array $arguments): string
-    {
+    private function callFunction(
+        array $functions,
+        string $functionName,
+        array $arguments
+    ): string {
         Assert::keyExists($functions, $functionName, sprintf('Function %s does not exist!', $functionName));
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];
         $callable = $function->getCallable();
+        Assert::isArray($callable, sprintf('Function with name "%s" is not callable', $functionName));
         $extension = $callable[0];
         $extensionMethod = $callable[1];
+        $callback = [$extension, $extensionMethod];
+        Assert::isCallable($callback);
 
-        return call_user_func_array([$extension, $extensionMethod], $arguments);
+        return call_user_func_array($callback, $arguments);
     }
 }

@@ -39,7 +39,7 @@ final class SectionFixture extends AbstractFixture
         $optionsNode
             ->children()
                 ->arrayNode('custom')
-                    ->prototype('array')
+                    ->arrayPrototype()
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
                             ->arrayNode('translations')

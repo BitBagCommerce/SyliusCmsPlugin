@@ -36,8 +36,11 @@ final class MediaAutocompleteChoiceType extends AbstractType
         ]);
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
+    public function buildView(
+        FormView $view,
+        FormInterface $form,
+        array $options
+    ): void {
         $view->vars['remote_criteria_type'] = 'contains';
         $view->vars['remote_criteria_name'] = 'phrase';
         $view->vars['media_type'] = $options['media_type'];

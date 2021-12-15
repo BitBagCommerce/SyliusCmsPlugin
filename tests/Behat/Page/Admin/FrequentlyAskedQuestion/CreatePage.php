@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -30,7 +29,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function setPosition(int $position): void
     {
-        $this->getDocument()->fillField('Position', $position);
+        $this->getDocument()->fillField('Position', (string) $position);
     }
 
     public function fillQuestion(string $question): void

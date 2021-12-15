@@ -17,13 +17,13 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $name;
 
-    /** @var string */
+    /** @var string|null */
     protected $content;
 
-    /** @var string */
+    /** @var string|null */
     protected $link;
 
     public function getName(): ?string

@@ -28,7 +28,7 @@ final class SectionsAssigner implements SectionsAssignerInterface
     public function assign(SectionableInterface $sectionsAware, array $sectionsCodes): void
     {
         foreach ($sectionsCodes as $sectionCode) {
-            /** @var SectionInterface $section */
+            /** @var SectionInterface|null $section */
             $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
 
             Assert::notNull($section, sprintf('Section with %s code not found.', $sectionCode));

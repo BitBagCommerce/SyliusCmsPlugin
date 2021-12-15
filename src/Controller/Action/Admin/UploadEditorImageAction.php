@@ -44,7 +44,7 @@ final class UploadEditorImageAction
 
     public function __invoke(Request $request): Response
     {
-        /** @var UploadedFile $image */
+        /** @var UploadedFile|null $image */
         $image = $request->files->get('upload');
 
         if (null === $image || !$this->isValidImage($image)) {
@@ -62,7 +62,7 @@ final class UploadEditorImageAction
 
     private function isValidImage(UploadedFile $image): bool
     {
-        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']);
+        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'], true);
     }
 
     private function createMedia(UploadedFile $image): MediaInterface
@@ -87,12 +87,12 @@ final class UploadEditorImageAction
         $i = 0;
 
         do {
-            if ($i > 0) {
+            if (0 < $i) {
                 $code = $code . '_image_' . (string) $i;
             }
 
             ++$i;
-        } while (count($this->mediaRepository->findBy(['code' => $code])) > 0);
+        } while (0 < count($this->mediaRepository->findBy(['code' => $code])));
 
         return $code;
     }

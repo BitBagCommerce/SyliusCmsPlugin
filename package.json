@@ -1,0 +1,9 @@
+{
+    "name": "@bitbag/cms-plugin",
+    "description": "Cms plugin for Sylius.",
+    "repository": "https://github.com/BitBagCommerce/SyliusCmsPlugin.git",
+    "license": "MIT",
+    "scripts": {
+        "dist": "yarn encore production --config-name bitbag-plugin-dist"
+    }
+}

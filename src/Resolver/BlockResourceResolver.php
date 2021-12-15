@@ -14,6 +14,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Webmozart\Assert\Assert;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
@@ -39,6 +40,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     public function findOrLog(string $code): ?BlockInterface
     {
         $channel = $this->channelContext->getChannel();
+        Assert::notNull($channel->getCode());
         $block = $this->blockRepository->findEnabledByCode($code, $channel->getCode());
 
         if (false === $block instanceof BlockInterface) {
