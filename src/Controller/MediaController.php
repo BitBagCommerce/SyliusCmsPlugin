@@ -87,15 +87,9 @@ final class MediaController extends ResourceController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $defaultLocale = $this->getParameter('locale');
+            $this->setMediaLocales($media, $request);
+            $this->setMediaPathIfExists($media);
             $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();
-
-            if (null !== $media->getFile() || null !== $media->getPath()) {
-                $this->setResourceMediaPath($media);
-            }
-
-            $media->setFallbackLocale($request->get('_locale', $defaultLocale));
-            $media->setCurrentLocale($request->get('_locale', $defaultLocale));
         }
         $this->formErrorsFlashHelper->addFlashErrors($form);
 
@@ -123,5 +117,19 @@ final class MediaController extends ResourceController
         $code = $request->get('code');
 
         return $this->mediaResourceResolver->findOrLog($code);
+    }
+
+    private function setMediaLocales(MediaInterface $media, Request $request): void
+    {
+        $defaultLocale = $this->getParameter('locale');
+        $media->setFallbackLocale($request->get('_locale', $defaultLocale));
+        $media->setCurrentLocale($request->get('_locale', $defaultLocale));
+    }
+
+    private function setMediaPathIfExists(MediaInterface $media)
+    {
+        if (null !== $media->getFile() || null !== $media->getPath()) {
+            $this->setResourceMediaPath($media);
+        }
     }
 }
