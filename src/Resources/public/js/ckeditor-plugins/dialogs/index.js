@@ -21,42 +21,43 @@ function htmlToString(item) {
 
 function checkName(item) {
     if (item) return item;
-    else return 'Empty name';
+
+    return 'Empty name';
 }
 
 function insertImageHtml(data) {
     const output = data
-        .map(
-            (media) =>
-                `<div class="media-list__item">
+        .map((media) => {
+            return `<div class="media-list__item">
           <label for="${media.code}" class="media-list__item__label"><strong>${trimValue(
-                    htmlToString(checkName(media.name))
-                )}</strong></strong> (${trimValue(media.code)})</label>
+                htmlToString(checkName(media.name))
+            )}</strong> (${trimValue(media.code)})</label>
           <input image-path="${media.path}" class="media-list__item__input" type="radio" name="media" value="${
-                    media.code
-                }">
+                media.code
+            }">
           <img class="media-list__item__img" src="${media.path}"/>
-        </div>`
-        )
+        </div>`;
+        })
         .join('');
+
     return output;
 }
 
 function insertVideoHtml(data) {
     const output = data
-        .map(
-            (media) =>
-                `<div class="media-list__item">
+        .map((media) => {
+            return `<div class="media-list__item">
           <label for="${media.code}" class="media-list__item__label"><strong>${trimValue(
-                    htmlToString(checkName(media.name))
-                )}</strong></strong> (${trimValue(media.code)})</label>
+                htmlToString(checkName(media.name))
+            )}</strong> (${trimValue(media.code)})</label>
           <input image-path="${media.path}" class="media-list__item__input" type="radio" name="media" value="${
-                    media.code
-                }">
+                media.code
+            }">
           <video class="media-list__item__img" src="${media.path}"></video>
-        </div>`
-        )
+        </div>`;
+        })
         .join('');
+
     return output;
 }
 
@@ -69,6 +70,7 @@ function prevImagesPage() {
         currentPage--;
         changePage(currentPage, 'image-btn-next', 'image-btn-prev', 'image-page-number');
     }
+
     showMediaImages(phrase, currentPage);
 }
 
@@ -77,6 +79,7 @@ function nextImagesPage() {
         currentPage++;
         changePage(currentPage, 'image-btn-next', 'image-btn-prev', 'image-page-number');
     }
+
     showMediaImages(phrase, currentPage);
 }
 
@@ -85,6 +88,7 @@ function prevVideosPage() {
         currentPage--;
         changePage(currentPage, 'video-btn-next', 'video-btn-prev', 'video-page-number');
     }
+
     showMediaVideos(phrase, currentPage);
 }
 
@@ -93,6 +97,7 @@ function nextVideosPage() {
         currentPage++;
         changePage(currentPage, 'video-btn-next', 'video-btn-prev', 'video-page-number');
     }
+
     showMediaVideos(phrase, currentPage);
 }
 
@@ -131,23 +136,25 @@ function showMediaImages(phrase, pageNumber) {
         page: pageNumber,
         limit: limit,
     };
+
     const shallowEncoded = $.param(myObject);
     const shallowDecoded = decodeURIComponent(shallowEncoded);
 
     $.ajax({
         type: 'GET',
-        url: route + '?' + shallowDecoded,
+        url: `${route}?${shallowDecoded}`,
         dataType: 'JSON',
         success(data) {
             totalPages = numPages(data.total);
             changePage(currentPage, 'image-btn-next', 'image-btn-prev', 'image-page-number');
             const element = CKEDITOR.document.getById('media-image-list');
+
             if (element) {
                 element.setHtml(insertImageHtml(data._embedded.items));
             }
         },
         error(jqXHR, textStatus, errorThrown) {
-            console.log(`ajax error ${textStatus} ${errorThrown}`);
+            console.error(`ajax error ${textStatus} ${errorThrown}`);
         },
     });
 }
@@ -164,23 +171,25 @@ function showMediaVideos(phrase, pageNumber) {
         page: pageNumber,
         limit: limit,
     };
+
     const shallowEncoded = $.param(myObject);
     const shallowDecoded = decodeURIComponent(shallowEncoded);
 
     $.ajax({
         type: 'GET',
-        url: route + '?' + shallowDecoded,
+        url: `${route}?${shallowDecoded}`,
         dataType: 'JSON',
         success(data) {
             totalPages = numPages(data.total);
             changePage(currentPage, 'video-btn-next', 'video-btn-prev', 'video-page-number');
             const element = CKEDITOR.document.getById('media-video-list');
+
             if (element) {
                 element.setHtml(insertVideoHtml(data._embedded.items));
             }
         },
         error(jqXHR, textStatus, errorThrown) {
-            console.log(`ajax error ${textStatus} ${errorThrown}`);
+            console.error(`ajax error ${textStatus} ${errorThrown}`);
         },
     });
 }
@@ -207,9 +216,11 @@ CKEDITOR.dialog.add('videoDialog', (editor) => ({
                     controlStyle: 'width: 100%',
                     onKeyUp: function () {
                         phrase = this.getValue();
+
                         if (oldValue === phrase) {
                             return;
                         }
+
                         oldValue = this.getValue();
                         changePage(currentPage, 'video-btn-next', 'video-btn-prev', 'video-page-number');
                         showMediaVideos(phrase, currentPage);
@@ -308,9 +319,11 @@ CKEDITOR.dialog.add('imageDialog', (editor) => ({
                     controlStyle: 'width: 100%',
                     onKeyUp: function () {
                         phrase = this.getValue();
+
                         if (oldValue === phrase) {
                             return;
                         }
+
                         oldValue = this.getValue();
                         changePage(currentPage, 'image-btn-next', 'image-btn-prev', 'image-page-number');
                         showMediaImages(phrase, currentPage);
