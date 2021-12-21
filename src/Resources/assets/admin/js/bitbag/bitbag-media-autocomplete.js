@@ -79,7 +79,7 @@ export class HandleAutoComplete {
             const data = await res.json();
 
             this._addToSelectMenu(data);
-            this.selectMenu.firstChild.click();
+            this.selectMenu?.firstChild?.click();
 
             triggerCustomEvent(this.mediaContainer, 'cms.media.saved.reload.completed', data);
         } catch (error) {
@@ -127,7 +127,7 @@ export class HandleAutoComplete {
     _addToSelectMenu(arr) {
         triggerCustomEvent(this.mediaContainer, 'cms.media.display.update.start');
         this.selectMenu.innerHTML = '';
-        arr.forEach((item) => {
+        arr?.forEach((item) => {
             this.selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
         });
         triggerCustomEvent(this.mediaContainer, 'cms.media.display.update.end');
