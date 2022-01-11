@@ -7,10 +7,14 @@ fos_ck_editor:
             forcePasteAsPlainText: 'allow-word'
             allowedContent: true
             extraPlugins:
-                - 'media'
+                - 'mediaVideo'
+                - 'mediaImage'
     plugins:
-        media:
-            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/media/'
+        mediaVideo:
+            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/video/'
+            filename: 'plugin.js'
+        mediaImage:
+            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/image/'
             filename: 'plugin.js'
     toolbars:
         configs:
@@ -26,4 +30,4 @@ fos_ck_editor:
                 - '@standard.paragraph'
                 - '@standard.about'
         items:
-            standard.insert: ['Image', 'Media', 'Table', 'HorizontalRule', 'SpecialChar']
+            standard.insert: ['Image', 'MediaVideo', 'MediaImage', 'Table', 'HorizontalRule', 'SpecialChar']
