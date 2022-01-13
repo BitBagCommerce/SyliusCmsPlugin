@@ -70,8 +70,6 @@
             }
         </style>
 
-        {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
-
         {{ sonata_block_render_event('sylius.shop.layout.stylesheets') }}
         {{ sylius_template_event('sylius.shop.layout.stylesheets') }}
     {% endblock %}
