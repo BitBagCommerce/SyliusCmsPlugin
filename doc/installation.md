@@ -43,24 +43,11 @@ twig:
 
 imports:
     ...
-
-    - { resource: "@BitBagSyliusWishlistPlugin/Resources/config/config.yml" }
-```
-
-4. Import routing in your `config/routes.yaml` file:
-
-Import required config in your `config/packages/_sylius.yaml` file:
-
-```yaml
-# config/packages/_sylius.yaml
-
-imports:
-    ...
     
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
-Import routing in your `config/routes.yaml` file:
+4. Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
