@@ -1,9 +1,14 @@
 ## Installation
+
+
+1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
+
 ```bash
 $ composer require bitbag/cms-plugin
 ```
 
-Add plugin dependencies to your `config/bundles.php` file:
+2. Add plugin dependencies to your `config/bundles.php` file:
+
 ```php
 return [
     ...
@@ -31,6 +36,18 @@ twig:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
         - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
+
+3. Import required config in your `config/packages/_sylius.yaml` file:
+```yaml
+# config/packages/_sylius.yaml
+
+imports:
+    ...
+
+    - { resource: "@BitBagSyliusWishlistPlugin/Resources/config/config.yml" }
+```
+
+4. Import routing in your `config/routes.yaml` file:
 
 Import required config in your `config/packages/_sylius.yaml` file:
 
@@ -81,13 +98,31 @@ you will probably need to change the extension of the imported file in
         - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
 ```
 
-Finish the installation by updating the database schema and installing assets:
+5. Finish the installation by updating the database schema and installing assets:
+
 ```
 $ bin/console doctrine:migrations:diff
 $ bin/console doctrine:migrations:migrate
 $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
 ```
+
+6. Add plugin assets to your project
+
+We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
+
+- [Import webpack config](./01.1-webpack-config.md)*
+- [Add entry to existing config](./01.2-webpack-entry.md))
+- [Import entries in your entry.js files](./01.3-import-entry.md))
+- [Your own custom config](./01.4-custom-solution.md))
+
+<small>* Default option for plugin development</small>
+
+
+However, if you are not using Webpack, here are instructions on how to add optimized and compressed assets directly to your project templates:
+
+- [Non webpack solution](./01.5-non-webpack.md)
+
 
 ## Testing & running the plugin
 ```bash
