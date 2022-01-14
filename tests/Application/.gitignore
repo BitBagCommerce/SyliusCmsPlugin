@@ -8,6 +8,7 @@
 !/public/media/image/.gitignore
 
 /node_modules
+/yarn-error.log
 
 ###> symfony/framework-bundle ###
 /.env.*.local
