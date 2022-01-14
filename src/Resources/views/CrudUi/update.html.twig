@@ -21,11 +21,3 @@
 
 {{ sonata_block_render_event(event_prefix ~ '.after_content', {'resource': resource}) }}
 {% endblock %}
-
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('bundles/bitbagsyliuscmsplugin/css/style.css') }}">
-
-    {{ sonata_block_render_event(event_prefix ~ '.stylesheets') }}
-{% endblock %}
