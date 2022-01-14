@@ -53,6 +53,20 @@ export class HandlePreview {
             this._createPreview();
             this._$_CKEDITOR_MODAL_SHOW();
         });
+        document.querySelector(`[${this.channelSelector}]`).addEventListener('change', (e) => {
+            e.preventDefault();
+
+            this._$_CKEDITOR_UPDATE_INSTANCES;
+            this._createPreview();
+            this._$_CKEDITOR_MODAL_SHOW();
+        });
+        document.querySelector(`[${this.localeSelector}]`).addEventListener('change', (e) => {
+            e.preventDefault();
+
+            this._$_CKEDITOR_UPDATE_INSTANCES;
+            this._createPreview();
+            this._$_CKEDITOR_MODAL_SHOW();
+        });
     }
 
     async _createPreview() {
