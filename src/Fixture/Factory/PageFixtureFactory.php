@@ -19,15 +19,18 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Webmozart\Assert\Assert;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
 {
+    public const CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE = 'Channel with code "%s" not found';
+
     /** @var FactoryInterface */
     private $pageFactory;
 
@@ -43,9 +46,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
     /** @var LocaleContextInterface */
     private $localeContext;
 
@@ -58,6 +58,9 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     /** @var ChannelsAssignerInterface */
     private $channelAssigner;
 
+    /** @var ChannelRepositoryInterface */
+    private $channelRepository;
+
     public function __construct(
         FactoryInterface $pageFactory,
         FactoryInterface $pageTranslationFactory,
@@ -67,8 +70,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         SectionsAssignerInterface $sectionsAssigner,
         ChannelsAssignerInterface $channelAssigner,
         ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
+        ChannelRepositoryInterface $channelRepository
     ) {
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
@@ -78,8 +81,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->sectionsAssigner = $sectionsAssigner;
         $this->channelAssigner = $channelAssigner;
         $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
         $this->localeContext = $localeContext;
+        $this->channelRepository = $channelRepository;
     }
 
     public function load(array $data): void
@@ -110,13 +113,14 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
+        $channelsCodes = $pageData['channels'];
         if (null !== $products) {
-            $this->resolveProducts($page, $products);
+            $this->resolveProductsForChannels($page, $products, $channelsCodes);
         }
 
         $this->sectionsAssigner->assign($page, $pageData['sections']);
         $this->productsAssigner->assign($page, $pageData['productCodes']);
-        $this->channelAssigner->assign($page, $pageData['channels']);
+        $this->channelAssigner->assign($page, $channelsCodes);
 
         $page->setCode($code);
         $page->setEnabled($pageData['enabled']);
@@ -154,15 +158,31 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $this->pageRepository->add($page);
     }
 
-    private function resolveProducts(PageInterface $page, int $limit): void
-    {
-        /** @var ChannelInterface $channel */
-        $channel = $this->channelContext->getChannel();
+    private function resolveProductsForChannels(
+        PageInterface $page,
+        int $limit,
+        array $channelCodes
+    ): void {
+        foreach ($channelCodes as $channelCode) {
+            /** @var ChannelInterface|null $channel */
+            $channel = $this->channelRepository->findOneByCode($channelCode);
+            Assert::notNull($channel, sprintf(self::CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE, $channelCode));
+
+            $this->resolveProductsForChannel($page, $limit, $channel);
+        }
+    }
+
+    private function resolveProductsForChannel(
+        PageInterface $page,
+        int $limit,
+        ChannelInterface $channel
+    ): void {
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),
             $limit
         );
+
         foreach ($products as $product) {
             $page->addProduct($product);
         }
