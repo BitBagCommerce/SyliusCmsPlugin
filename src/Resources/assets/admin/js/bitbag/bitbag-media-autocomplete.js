@@ -45,12 +45,14 @@ export class HandleAutoComplete {
     _handleResetBtn(mediaContainer) {
         const deleteButton = mediaContainer.querySelector(this.deleteButton);
 
-        if (mediaContainer.querySelector(`input[type=hidden]`).value === '') {
+        if (mediaContainer.querySelector('input[type=hidden]').value === '') {
             deleteButton.classList.add('is-hidden');
+
             return;
         }
+
         deleteButton.classList.remove('is-hidden');
-        deleteButton.addEventListener('click', (e) => {
+        deleteButton.addEventListener('click', () => {
             this._resetValues(mediaContainer);
         });
     }
@@ -61,19 +63,19 @@ export class HandleAutoComplete {
 
             this._getMediaImages(mediaContainer);
         });
-        mediaContainer.querySelector(`input[type=hidden]`).addEventListener('change', (e) => {
+        mediaContainer.querySelector('input[type=hidden]').addEventListener('change', (e) => {
             e.preventDefault();
 
             this._handleResetBtn(mediaContainer);
         });
     }
     async _handleSavedValue(mediaContainer) {
-        if (mediaContainer.querySelector(`input[type=hidden]`).value === '') {
+        if (mediaContainer.querySelector('input[type=hidden]').value === '') {
             return;
         }
 
         const url = `${mediaContainer.dataset.bbCmsLoadEditUrl}?code=${
-            mediaContainer.querySelector(`input[type=hidden]`).value
+            mediaContainer.querySelector('input[type=hidden]').value
         }`;
 
         try {
@@ -123,7 +125,7 @@ export class HandleAutoComplete {
 
     _resetValues(mediaContainer) {
         triggerCustomEvent(mediaContainer, 'cms.media.reset.start');
-        mediaContainer.querySelector(`input[type=hidden]`).value = '';
+        mediaContainer.querySelector('input[type=hidden]').value = '';
         mediaContainer.querySelector(this.selectMenu).innerHTML = '';
         mediaContainer.querySelector(this.placeholder).innerHTML = '';
         triggerCustomEvent(mediaContainer, 'cms.media.reset.end');
