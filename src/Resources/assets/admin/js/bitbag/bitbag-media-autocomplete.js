@@ -24,113 +24,119 @@ export class HandleAutoComplete {
         }
     ) {
         this.config = config;
-        this.mediaContainer = document.querySelector(`[${config.bbMediaContainer}]`);
-        this.deleteButton = document.querySelector(`[${config.deleteButton}]`);
-        this.selectMenu = document.querySelector(`[${config.selectMenu}]`);
-        this.selectInput = document.querySelector(`[${config.selectInput}]`);
-        this.placeholder = document.querySelector(`[${config.placeholder}]`);
-        this.hiddenInput = this.mediaContainer.querySelector('input[type=hidden]');
+        this.mediaContainers = document.querySelectorAll(`[${config.bbMediaContainer}]`);
+        this.deleteButton = `[${config.deleteButton}]`;
+        this.selectMenu = `[${config.selectMenu}]`;
+        this.selectInput = `[${config.selectInput}]`;
+        this.placeholder = `[${config.placeholder}]`;
     }
 
     init() {
         if (typeof this.config !== 'object') {
             throw new Error('Bitbag CMS Plugin - HandleAutoComplete class config is not a valid object');
         }
-        this._handleSavedValue();
-        this._handleImageChoice();
-        this._handleResetBtn();
+        this.mediaContainers.forEach((mediaContainer) => {
+            this._handleSavedValue(mediaContainer);
+            this._handleImageChoice(mediaContainer);
+            this._handleResetBtn(mediaContainer);
+        });
     }
 
-    _handleResetBtn() {
-        if (this.hiddenInput.value === '') {
-            this.deleteButton.classList.add('is-hidden');
+    _handleResetBtn(mediaContainer) {
+        const deleteButton = mediaContainer.querySelector(this.deleteButton);
+
+        if (mediaContainer.querySelector(`input[type=hidden]`).value === '') {
+            deleteButton.classList.add('is-hidden');
             return;
         }
-        this.deleteButton.classList.remove('is-hidden');
-        this.deleteButton.addEventListener('click', (e) => {
-            this._resetValues();
+        deleteButton.classList.remove('is-hidden');
+        deleteButton.addEventListener('click', (e) => {
+            this._resetValues(mediaContainer);
         });
     }
 
-    _handleImageChoice() {
-        this.selectInput.addEventListener('click', (e) => {
+    _handleImageChoice(mediaContainer) {
+        mediaContainer.querySelector(this.selectInput).addEventListener('click', (e) => {
             e.preventDefault();
 
-            this._getMediaImages();
+            this._getMediaImages(mediaContainer);
         });
-        this.hiddenInput.addEventListener('change', (e) => {
+        mediaContainer.querySelector(`input[type=hidden]`).addEventListener('change', (e) => {
             e.preventDefault();
 
-            this._handleResetBtn();
+            this._handleResetBtn(mediaContainer);
         });
     }
-    async _handleSavedValue() {
-        if (this.hiddenInput.value === '') {
+    async _handleSavedValue(mediaContainer) {
+        if (mediaContainer.querySelector(`input[type=hidden]`).value === '') {
             return;
         }
 
-        const url = `${this.mediaContainer.dataset.bbCmsLoadEditUrl}?code=${this.hiddenInput.value}`;
+        const url = `${mediaContainer.dataset.bbCmsLoadEditUrl}?code=${
+            mediaContainer.querySelector(`input[type=hidden]`).value
+        }`;
 
         try {
-            triggerCustomEvent(this.mediaContainer, 'cms.media.saved.reload.start');
+            triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.start');
 
-            this.mediaContainer.classList.add('loading');
+            mediaContainer.classList.add('loading');
             const res = await fetch(url);
             const data = await res.json();
 
-            this._addToSelectMenu(data);
-            this.selectMenu?.firstChild?.click();
+            this._addToSelectMenu(data, mediaContainer);
+            mediaContainer.querySelector(this.selectMenu)?.firstChild?.click();
 
-            triggerCustomEvent(this.mediaContainer, 'cms.media.saved.reload.completed', data);
+            triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.completed', data);
         } catch (error) {
             console.error(`BitBag CMS Plugin - HandleAutoComplete class error : ${error}`);
-            triggerCustomEvent(this.mediaContainer, 'cms.media.saved.reload.error', error);
+            triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.error', error);
         } finally {
-            this.mediaContainer.classList.remove('loading');
-            triggerCustomEvent(this.mediaContainer, 'cms.media.saved.reload.end');
+            mediaContainer.classList.remove('loading');
+            triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.end');
         }
     }
 
-    async _getMediaImages() {
-        const path = this.mediaContainer.dataset.bbCmsUrl;
-        const typeQuery = this.mediaContainer.dataset.bbCmsCriteriaType;
+    async _getMediaImages(mediaContainer) {
+        const path = mediaContainer.dataset.bbCmsUrl;
+        const typeQuery = mediaContainer.dataset.bbCmsCriteriaType;
         const url = `${path}&limit=${this.config.limit}&criteria[search][type]=${typeQuery}`;
 
         try {
-            triggerCustomEvent(this.mediaContainer, 'cms.media.display.start');
+            triggerCustomEvent(mediaContainer, 'cms.media.display.start');
 
-            this.mediaContainer.classList.add('loading');
+            mediaContainer.classList.add('loading');
             const res = await fetch(url);
             const data = await res.json();
             const items = data._embedded.items;
 
-            this._addToSelectMenu(items);
+            this._addToSelectMenu(items, mediaContainer);
 
-            triggerCustomEvent(this.mediaContainer, 'cms.media.display.completed', data);
+            triggerCustomEvent(mediaContainer, 'cms.media.display.completed', data);
         } catch (error) {
             console.error(`BitBag CMS Plugin - HandleAutoComplete class error : ${error}`);
-            triggerCustomEvent(this.mediaContainer, 'cms.media.display.error', error);
+            triggerCustomEvent(mediaContainer, 'cms.media.display.error', error);
         } finally {
-            this.mediaContainer.classList.remove('loading');
-            triggerCustomEvent(this.mediaContainer, 'cms.media.display.end');
+            mediaContainer.classList.remove('loading');
+            triggerCustomEvent(mediaContainer, 'cms.media.display.end');
         }
     }
 
-    _resetValues() {
-        triggerCustomEvent(this.mediaContainer, 'cms.media.reset.start');
-        this.hiddenInput.value = '';
-        this.selectMenu.innerHTML = '';
-        this.placeholder.innerHTML = '';
-        triggerCustomEvent(this.mediaContainer, 'cms.media.reset.end');
+    _resetValues(mediaContainer) {
+        triggerCustomEvent(mediaContainer, 'cms.media.reset.start');
+        mediaContainer.querySelector(`input[type=hidden]`).value = '';
+        mediaContainer.querySelector(this.selectMenu).innerHTML = '';
+        mediaContainer.querySelector(this.placeholder).innerHTML = '';
+        triggerCustomEvent(mediaContainer, 'cms.media.reset.end');
     }
 
-    _addToSelectMenu(arr) {
-        triggerCustomEvent(this.mediaContainer, 'cms.media.display.update.start');
-        this.selectMenu.innerHTML = '';
+    _addToSelectMenu(arr, mediaContainer) {
+        triggerCustomEvent(mediaContainer, 'cms.media.display.update.start');
+        const selectMenu = mediaContainer.querySelector(this.selectMenu);
+        selectMenu.innerHTML = '';
         arr?.forEach((item) => {
-            this.selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
+            selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
         });
-        triggerCustomEvent(this.mediaContainer, 'cms.media.display.update.end');
+        triggerCustomEvent(mediaContainer, 'cms.media.display.update.end');
     }
 
     _itemTemplate(link, code) {
