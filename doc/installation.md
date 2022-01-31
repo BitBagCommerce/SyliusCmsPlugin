@@ -110,6 +110,17 @@ However, if you are not using Webpack, here are instructions on how to add optim
 
 - [Non webpack solution](./01.5-non-webpack.md)
 
+7. Passing required "backend" values to "frontend"
+
+In order to make plugin finally work you need to declare "route", in admin _scripts.html.twig you can pass:
+
+```
+<script>
+    const route = "{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase')|escape('js') }}";
+</script>
+```
+
+Any other approach, that will allow cms pages to read this value in js, under "route" key, will work. 
 
 ## Testing & running the plugin
 ```bash
