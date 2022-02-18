@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3 || ^7.4 || ^8.0",
-        "sylius/sylius": "~1.8.0 || ~1.9.0 || ~1.10.0",
+        "sylius/sylius": "~1.8.0 || ~1.9.0 || ~1.10.0 || ~1.11.0",
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1||^2.0",
         "instaclick/php-webdriver": "^1.4",
@@ -74,5 +74,13 @@
             "spec\\BitBag\\SyliusCmsPlugin\\": "spec/"
         },
         "classmap": ["tests/Application/Kernel.php"]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/thanks": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
     }
 }
