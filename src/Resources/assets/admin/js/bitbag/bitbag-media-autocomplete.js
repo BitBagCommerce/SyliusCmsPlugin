@@ -47,7 +47,6 @@ export class HandleAutoComplete {
 
         if (mediaContainer.querySelector('input[type=hidden]').value === '') {
             deleteButton.classList.add('is-hidden');
-
             return;
         }
 
@@ -58,14 +57,21 @@ export class HandleAutoComplete {
     }
 
     _handleImageChoice(mediaContainer) {
+        let timeout;
         mediaContainer.querySelector(this.selectInput).addEventListener('click', (e) => {
             e.preventDefault();
-
             this._getMediaImages(mediaContainer);
+        });
+        mediaContainer.querySelector(this.selectInput).addEventListener('input', (e) => {
+            e.preventDefault();
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                console.log('1', e.target.value);
+                this._getMediaImages(mediaContainer, e.target.value);
+            }, 500);
         });
         mediaContainer.querySelector('input[type=hidden]').addEventListener('change', (e) => {
             e.preventDefault();
-
             this._handleResetBtn(mediaContainer);
         });
     }
@@ -98,11 +104,12 @@ export class HandleAutoComplete {
         }
     }
 
-    async _getMediaImages(mediaContainer) {
+    async _getMediaImages(mediaContainer, value = false) {
         const path = mediaContainer.dataset.bbCmsUrl;
         const typeQuery = mediaContainer.dataset.bbCmsCriteriaType;
-        const url = `${path}&limit=${this.config.limit}&criteria[search][type]=${typeQuery}`;
-
+        const searchValue = value ? `&criteria[search][value]=${value}` : '';
+        const url = `${path}&limit=${this.config.limit}&criteria[search][type]=${typeQuery}&criteria[search][value]=${searchValue}`;
+        console.log(value);
         try {
             triggerCustomEvent(mediaContainer, 'cms.media.display.start');
 
