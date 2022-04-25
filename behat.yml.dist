@@ -17,12 +17,12 @@ default:
             default_session: symfony
             javascript_session: chrome_headless
             sessions:
-                symfony:
-                    symfony: ~
-                chrome_headless:
+                default:
                     chrome:
-                        api_url: http://127.0.0.1:9222
-                        validate_certificate: false
+                        api_url: "http://localhost:9222"
+                        # Set the optimal Socket Timeout to avoid client-server connection problems in behat scripts.
+                        socket_timeout: 60
+                        dom_wait_timeout: 60000
             show_auto: false
 
         FriendsOfBehat\SymfonyExtension:
