@@ -23,6 +23,7 @@ default:
                     chrome:
                         api_url: http://127.0.0.1:9222
                         validate_certificate: false
+                        socket_timeout: 60
                 chrome:
                     selenium2:
                         browser: chrome
