@@ -10,6 +10,7 @@ parameters:
         - 'src/Importer/AbstractImporter'
         - 'tests/Application/config/bootstrap.php'
         - 'tests/Fixture/PageFixtureTest.php'
+        - 'src/Controller/Helper'
     ignoreErrors:
         - '#.*NodeParentInterface.*#'
         - '#.*PHPDoc tag @throws with type Exception|Psr\Container\ContainerExceptionInterface is not subtype of Throwable.*#'
