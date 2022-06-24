@@ -1,0 +1,115 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        <i class="icon block layout"></i>
+        <span class="sf-toolbar-value">CMS</span>
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <i class="icon block layout"></i>
+            <b>Block</b>
+            <span>{{ collector.block|length }}</span>
+        </div>
+        <div class="sf-toolbar-info-piece">
+            <i class="icon file"></i>
+            <b>Media</b>
+            <span>{{ collector.media|length  }}</span>
+        </div>
+        <div class="sf-toolbar-info-piece">
+            <i class="icon sticky note"></i>
+            <b>Pages</b>
+            <span>{{ collector.page|length  }}</span>
+        </div>
+    {% endset %}
+
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { 'link': true }) }}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block menu %}
+    <span class="label">
+        <span class="icon"><img src="..." alt=""/></span>
+        <strong>CMS</strong>
+    </span>
+{% endblock %}
+
+{% block panel %}
+    {# Optional, for showing the most details. #}
+    <h2>Block</h2>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Enabled</th>
+            <th>Section</th>
+        </tr>
+
+        {% for block in collector.block %}
+            <tr>
+                <td>{{ block.code }}</td>
+                <td>{% if block.enabled %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        {% for section in block.sections %}
+                            <li>{{ section.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Media</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Path</th>
+            <th>Type</th>
+        </tr>
+
+        {% for media in collector.media %}
+            <tr>
+                <td>{{ media.name }}</td>
+                <td>{{ media.code }}</td>
+                <td>{{ media.path }}</td>
+                <td>{{ media.type }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Page</h2>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Section</th>
+        </tr>
+        {% set url = app.request.uri|replace({ (app.request.requesturi) : ''}) %}
+        {% for page in collector.page %}
+            <tr>
+                <td>
+                    {% if page.image and page.image.path%}
+                        <img src="{{ url ~ '/media/cache/sylius_admin_product_thumbnail/' ~ page.image.path }}">
+                    {% endif %}
+                </td>
+                <td>{{ page.code }}</td>
+                <td>{{ page.name }}</td>
+                <td>{{ page.slug }}</td>
+                <td>
+                    <ul>
+                        {% for section in page.sections %}
+                            <li>{{ section.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

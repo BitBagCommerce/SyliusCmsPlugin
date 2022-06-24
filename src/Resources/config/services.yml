@@ -8,6 +8,7 @@ imports:
     - { resource: services/resolver.yml }
     - { resource: services/media_provider.yml }
     - { resource: services/assigner.yml }
+    - { resource: services/data_collector.yml }
 
 parameters:
     bitbag_sylius_cms_plugin.media_provider.interface: BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface

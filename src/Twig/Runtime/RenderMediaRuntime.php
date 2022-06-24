@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 
@@ -21,12 +22,17 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
     /** @var MediaResourceResolverInterface */
     private $mediaResourceResolver;
 
+    /** @var MediaRenderingHistory */
+    private $mediaRenderingHistory;
+
     public function __construct(
         MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
+        MediaResourceResolverInterface $mediaResourceResolver,
+        MediaRenderingHistory $mediaRenderingHistory
     ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaResourceResolver = $mediaResourceResolver;
+        $this->mediaRenderingHistory = $mediaRenderingHistory;
     }
 
     public function renderMedia(string $code, ?string $template = null): string
@@ -34,6 +40,7 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
         $media = $this->mediaResourceResolver->findOrLog($code);
 
         if (null !== $media) {
+            $this->mediaRenderingHistory->startRendering($media);
             return $this->mediaProviderResolver->resolveProvider($media)->render($media, $template);
         }
 

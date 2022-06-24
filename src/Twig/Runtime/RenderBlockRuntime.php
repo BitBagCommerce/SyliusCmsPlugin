@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Twig\Environment;
@@ -26,15 +27,21 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     private $templatingEngine;
 
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+    /**
+     * @var BlockRenderingHistory
+     */
+    private $blockRenderingHistory;
 
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        BlockRenderingHistory $blockRenderingHistory
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockResourceResolver = $blockResourceResolver;
         $this->templatingEngine = $templatingEngine;
+        $this->blockRenderingHistory = $blockRenderingHistory;
     }
 
     public function renderBlock(string $code, ?string $template = null): string
@@ -42,9 +49,13 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
+            $this->blockRenderingHistory->startRenderingBlock($block);
+
             $template = $template ?? self::DEFAULT_TEMPLATE;
 
-            return $this->templatingEngine->render($template, ['block' => $block]);
+            $result =  $this->templatingEngine->render($template, ['block' => $block]);
+
+            return $result;
         }
 
         return '';

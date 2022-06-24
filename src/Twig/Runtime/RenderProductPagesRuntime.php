@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -31,16 +32,22 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var SectionsSorterInterface */
     private $sectionsSorter;
 
+    /** @var PageRenderingHistory */
+    private $pageRenderingHistory;
+
+
     public function __construct(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        SectionsSorterInterface $sectionsSorter,
+        PageRenderingHistory $pageRenderingHistory
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;
         $this->templatingEngine = $templatingEngine;
         $this->sectionsSorter = $sectionsSorter;
+        $this->pageRenderingHistory = $pageRenderingHistory;
     }
 
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
@@ -52,6 +59,8 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         } else {
             $pages = $this->pageRepository->findByProduct($product, $channelCode, null);
         }
+
+        $this->pageRenderingHistory->startRenderingMultiple($pages);
 
         $data = $this->sectionsSorter->sortBySections($pages);
 

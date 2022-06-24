@@ -1,0 +1,18 @@
+services:
+  bitbag_sylius_cms_plugin.profiler.block_history:
+    class: BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory
+
+  bitbag_sylius_cms_plugin.profiler.page_history:
+    class: BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory
+
+  bitbag_sylius_cms_plugin.profiler.media_history:
+    class: BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory
+
+  bitbag_sylius_cms_plugin.profiler.cms:
+    class: BitBag\SyliusCmsPlugin\DataCollector\CMSDataCollector
+    tags:
+      - { name: data_collector, id: 'bitbag_sylius_cms_plugin.data_collector.cms', template: "@BitBagSyliusCmsPlugin/DataCollector/block_collector.html.twig" }
+    arguments:
+      - '@bitbag_sylius_cms_plugin.profiler.block_history'
+      - '@bitbag_sylius_cms_plugin.profiler.media_history'
+      - '@bitbag_sylius_cms_plugin.profiler.page_history'

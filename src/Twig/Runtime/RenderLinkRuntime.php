@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -30,17 +31,24 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 
     /** @var string */
     private $defaultTemplate;
+    /**
+     * @var PageRenderingHistory
+     */
+    private $pageRenderingHistory;
+
 
     public function __construct(
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
+        PageRenderingHistory $pageRenderingHistory,
         string $defaultTemplate
     ) {
         $this->localeContext = $localeContext;
         $this->pageRepository = $pageRepository;
         $this->router = $router;
         $this->defaultTemplate = $defaultTemplate;
+        $this->pageRenderingHistory = $pageRenderingHistory;
     }
 
     public function renderLinkForCode(
@@ -66,6 +74,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         if (null === $page) {
             throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }
+        $this->pageRenderingHistory->startRendering($page);
 
         return $this->router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $page->getSlug()]);
     }
