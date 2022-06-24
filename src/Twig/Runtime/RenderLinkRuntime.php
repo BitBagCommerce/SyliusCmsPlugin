@@ -31,11 +31,9 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 
     /** @var string */
     private $defaultTemplate;
-    /**
-     * @var PageRenderingHistory
-     */
-    private $pageRenderingHistory;
 
+    /** @var PageRenderingHistory */
+    private $pageRenderingHistory;
 
     public function __construct(
         LocaleContextInterface $localeContext,

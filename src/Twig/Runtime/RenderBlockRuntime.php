@@ -27,9 +27,8 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     private $templatingEngine;
 
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
-    /**
-     * @var BlockRenderingHistory
-     */
+
+    /** @var BlockRenderingHistory */
     private $blockRenderingHistory;
 
     public function __construct(
@@ -53,9 +52,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
 
             $template = $template ?? self::DEFAULT_TEMPLATE;
 
-            $result =  $this->templatingEngine->render($template, ['block' => $block]);
-
-            return $result;
+            return $this->templatingEngine->render($template, ['block' => $block]);
         }
 
         return '';

@@ -35,7 +35,6 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var PageRenderingHistory */
     private $pageRenderingHistory;
 
-
     public function __construct(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
