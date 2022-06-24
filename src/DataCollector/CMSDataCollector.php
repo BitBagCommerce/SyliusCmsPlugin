@@ -33,14 +33,17 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
         BlockRenderingHistoryInterface $blockRenderingHistory,
         MediaRenderingHistoryInterface $mediaRenderingHistory,
         PageRenderingHistoryInterface $pageRenderingHistory
-    )
-    {
+    ) {
         $this->blockRenderingHistory = $blockRenderingHistory;
         $this->mediaRenderingHistory = $mediaRenderingHistory;
         $this->pageRenderingHistory = $pageRenderingHistory;
     }
 
-    public function collect(Request $request, Response $response, \Throwable $exception = null): void
+    public function collect(
+        Request $request,
+        Response $response,
+        \Throwable $exception = null
+    ): void
     {
         $this->data = [
             'media' => $this->mediaRenderingHistory->getRenderedHistory(),
@@ -51,7 +54,7 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
 
     public static function getTemplate(): ?string
     {
-        return "@BitBagSyliusCmsPlugin/CMSDataCollector/block_collector.html.twig";
+        return '@BitBagSyliusCmsPlugin/CMSDataCollector/block_collector.html.twig';
     }
 
     public function reset(): void

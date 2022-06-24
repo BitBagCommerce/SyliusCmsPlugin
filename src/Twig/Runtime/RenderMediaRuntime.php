@@ -41,6 +41,7 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
 
         if (null !== $media) {
             $this->mediaRenderingHistory->startRendering($media);
+
             return $this->mediaProviderResolver->resolveProvider($media)->render($media, $template);
         }
 

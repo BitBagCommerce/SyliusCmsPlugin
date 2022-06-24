@@ -24,7 +24,7 @@ final class PageRenderingHistory implements PageRenderingHistoryInterface
 
     public function startRenderingMultiple(array $pages): void
     {
-        $this->currentlyRendered = array_merge($this->currentlyRendered,$pages);
+        $this->currentlyRendered = array_merge($this->currentlyRendered, $pages);
     }
 
     public function getRenderedHistory(): array
