@@ -43,8 +43,7 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
         Request $request,
         Response $response,
         \Throwable $exception = null
-    ): void
-    {
+    ): void {
         $this->data = [
             'media' => $this->mediaRenderingHistory->getRenderedHistory(),
             'block' => $this->blockRenderingHistory->getRenderedHistory(),
