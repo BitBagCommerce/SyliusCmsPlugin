@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
@@ -31,9 +33,10 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        SectionsSorterInterface $sectionsSorter,
+        PageRenderingHistoryInterface $pageRenderingHistory
     ): void {
-        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter);
+        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter, $pageRenderingHistory);
     }
 
     function it_is_initializable(): void

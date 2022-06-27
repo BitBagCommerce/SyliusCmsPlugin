@@ -15,7 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
 final class PageRenderingHistory implements PageRenderingHistoryInterface
 {
-    private array $currentlyRendered = [];
+    /** @var array */
+    private $currentlyRendered = [];
 
     public function startRendering(PageInterface $page): void
     {

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Twig\Environment;
@@ -28,14 +29,14 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
 
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
-    /** @var BlockRenderingHistory */
+    /** @var BlockRenderingHistoryInterface */
     private $blockRenderingHistory;
 
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        BlockRenderingHistory $blockRenderingHistory
+        BlockRenderingHistoryInterface $blockRenderingHistory
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockResourceResolver = $blockResourceResolver;

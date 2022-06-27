@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -32,7 +33,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var SectionsSorterInterface */
     private $sectionsSorter;
 
-    /** @var PageRenderingHistory */
+    /** @var PageRenderingHistoryInterface */
     private $pageRenderingHistory;
 
     public function __construct(
@@ -40,7 +41,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingHistory $pageRenderingHistory
+        PageRenderingHistoryInterface $pageRenderingHistory
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -32,14 +33,14 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
     /** @var string */
     private $defaultTemplate;
 
-    /** @var PageRenderingHistory */
+    /** @var PageRenderingHistoryInterface */
     private $pageRenderingHistory;
 
     public function __construct(
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        PageRenderingHistory $pageRenderingHistory,
+        PageRenderingHistoryInterface $pageRenderingHistory,
         string $defaultTemplate
     ) {
         $this->localeContext = $localeContext;

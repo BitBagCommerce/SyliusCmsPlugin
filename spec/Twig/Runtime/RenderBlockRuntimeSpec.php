@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
@@ -25,9 +27,10 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     function let(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        BlockRenderingHistoryInterface $blockRenderingHistory
     ): void {
-        $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine);
+        $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine, $blockRenderingHistory);
     }
 
     function it_is_initializable(): void

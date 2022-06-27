@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 
@@ -22,13 +23,13 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
     /** @var MediaResourceResolverInterface */
     private $mediaResourceResolver;
 
-    /** @var MediaRenderingHistory */
+    /** @var MediaRenderingHistoryInterface */
     private $mediaRenderingHistory;
 
     public function __construct(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaResourceResolverInterface $mediaResourceResolver,
-        MediaRenderingHistory $mediaRenderingHistory
+        MediaRenderingHistoryInterface $mediaRenderingHistory
     ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaResourceResolver = $mediaResourceResolver;

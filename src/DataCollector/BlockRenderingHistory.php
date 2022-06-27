@@ -15,7 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
 final class BlockRenderingHistory implements BlockRenderingHistoryInterface
 {
-    private array $currentlyRendered = [];
+    /** @var array */
+    private $currentlyRendered = [];
 
     public function startRenderingBlock(BlockInterface $block): void
     {

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime;
@@ -27,9 +29,10 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
     function let(
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
-        RouterInterface $router
+        RouterInterface $router,
+        PageRenderingHistoryInterface $pageRenderingHistory
     ): void {
-        $this->beConstructedWith($localeContext, $pageRepository, $router, "defaultTemplate");
+        $this->beConstructedWith($localeContext, $pageRepository, $router, $pageRenderingHistory, "defaultTemplate");
     }
 
     function it_is_initializable(): void

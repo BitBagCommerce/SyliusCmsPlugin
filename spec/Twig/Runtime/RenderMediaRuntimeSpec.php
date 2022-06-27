@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory;
+use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
@@ -24,9 +26,10 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
 {
     function let(
         MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
+        MediaResourceResolverInterface $mediaResourceResolver,
+        MediaRenderingHistoryInterface $mediaRenderingHistory
     ): void {
-        $this->beConstructedWith($mediaProviderResolver, $mediaResourceResolver);
+        $this->beConstructedWith($mediaProviderResolver, $mediaResourceResolver, $mediaRenderingHistory);
     }
 
     function it_is_initializable(): void

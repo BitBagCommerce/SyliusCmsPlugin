@@ -15,7 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 
 final class MediaRenderingHistory implements MediaRenderingHistoryInterface
 {
-    private array $currentlyRendered = [];
+    /** @var array */
+    private $currentlyRendered = [];
 
     public function startRendering(MediaInterface $media): void
     {
