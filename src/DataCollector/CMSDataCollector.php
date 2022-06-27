@@ -48,7 +48,7 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
         $this->data = [
             'media' => $this->mediaRenderingHistory->getRenderedHistory(),
             'block' => $this->blockRenderingHistory->getRenderedHistory(),
-            'page' => $this->pageRenderingHistory->getRenderedHistory()
+            'page' => $this->pageRenderingHistory->getRenderedHistory(),
         ];
     }
 

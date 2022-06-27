@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory;
 use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
@@ -46,9 +45,13 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
         MediaResourceResolverInterface $mediaResourceResolver,
         MediaProviderResolverInterface $mediaProviderResolver,
         ProviderInterface $provider,
-        MediaInterface $media
+        MediaInterface $media,
+        MediaRenderingHistoryInterface $mediaRenderingHistory
     ): void {
         $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
+
+        $mediaRenderingHistory->startRendering($media)
+        ;
         $provider->render($media, null)->willReturn('content');
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
 

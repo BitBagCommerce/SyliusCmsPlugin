@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory;
 use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;

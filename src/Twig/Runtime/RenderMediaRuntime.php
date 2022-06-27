@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory;
 use BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;

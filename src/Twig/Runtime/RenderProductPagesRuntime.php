@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory;
 use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
