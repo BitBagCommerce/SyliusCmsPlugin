@@ -32,7 +32,7 @@ final class WysiwygType extends AbstractType
             'config' => [
                 'filebrowserUploadUrl' => $this->urlGenerator->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
                 'bodyId' => 'bitbag-ckeditor',
-                'removePlugins' => 'exportpdf'
+                'removePlugins' => 'exportpdf',
             ],
         ]);
     }
