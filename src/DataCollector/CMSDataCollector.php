@@ -18,9 +18,7 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 
 class CMSDataCollector extends Collector implements DataCollectorInterface
 {
-    /**
-     * @var BlockRenderingHistoryInterface
-     */
+    /** @var BlockRenderingHistoryInterface */
     private $blockRenderingHistory;
 
     /** @var MediaRenderingHistoryInterface */
