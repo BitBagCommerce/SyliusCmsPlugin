@@ -1,0 +1,16 @@
+default:
+  suites:
+    ui_shop_media:
+      contexts:
+        - sylius.behat.context.hook.doctrine_orm
+
+        - sylius.behat.context.setup.channel
+        - sylius.behat.context.setup.product
+        - bitbag_sylius_cms_plugin.behat.context.setup.media
+        - bitbag_sylius_cms_plugin.behat.context.transform.media
+
+        - bitbag_sylius_cms_plugin.behat.context.api.media
+        - bitbag_sylius_cms_plugin.behat.context.ui.shop.homepage_blocks
+        - bitbag_sylius_cms_plugin.behat.context.ui.shop.media
+      filters:
+        tags: "@shop_media && @ui"
