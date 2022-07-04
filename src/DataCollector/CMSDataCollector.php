@@ -18,19 +18,19 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 
 class CMSDataCollector extends Collector implements DataCollectorInterface
 {
-    /** @var BlockRenderingHistoryInterface */
+    /** @var BlockRenderingEventRecorderInterface */
     private $blockRenderingHistory;
 
-    /** @var MediaRenderingHistoryInterface */
+    /** @var MediaRenderingEventRecorderInterface */
     private $mediaRenderingHistory;
 
-    /** @var PageRenderingHistoryInterface */
+    /** @var PageRenderingEventRecorderInterface */
     private $pageRenderingHistory;
 
     public function __construct(
-        BlockRenderingHistoryInterface $blockRenderingHistory,
-        MediaRenderingHistoryInterface $mediaRenderingHistory,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingHistory,
+        MediaRenderingEventRecorderInterface $mediaRenderingHistory,
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ) {
         $this->blockRenderingHistory = $blockRenderingHistory;
         $this->mediaRenderingHistory = $mediaRenderingHistory;
@@ -43,9 +43,9 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
         \Throwable $exception = null
     ): void {
         $this->data = [
-            'media' => $this->mediaRenderingHistory->getRenderedHistory(),
-            'block' => $this->blockRenderingHistory->getRenderedHistory(),
-            'page' => $this->pageRenderingHistory->getRenderedHistory(),
+            'media' => $this->mediaRenderingHistory->getRecordedEvents(),
+            'block' => $this->blockRenderingHistory->getRecordedEvents(),
+            'page' => $this->pageRenderingHistory->getRecordedEvents(),
         ];
     }
 

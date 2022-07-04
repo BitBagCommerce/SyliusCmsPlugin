@@ -11,19 +11,24 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\DataCollector;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
-final class MediaRenderingHistory implements MediaRenderingHistoryInterface
+final class PageRenderingEventRecorder implements PageRenderingEventRecorderInterface
 {
     /** @var array */
     private $currentlyRendered = [];
 
-    public function startRendering(MediaInterface $media): void
+    public function recordRenderingPageEvent(PageInterface $page): void
     {
-        $this->currentlyRendered[] = $media;
+        $this->currentlyRendered[] = $page;
     }
 
-    public function getRenderedHistory(): array
+    public function recordRenderingPageEventMultiple(array $pages): void
+    {
+        $this->currentlyRendered = array_merge($this->currentlyRendered, $pages);
+    }
+
+    public function getRecordedEvents(): array
     {
         return $this->currentlyRendered;
     }

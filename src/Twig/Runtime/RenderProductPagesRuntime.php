@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorderInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -32,7 +32,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     /** @var SectionsSorterInterface */
     private $sectionsSorter;
 
-    /** @var PageRenderingHistoryInterface */
+    /** @var PageRenderingEventRecorderInterface */
     private $pageRenderingHistory;
 
     public function __construct(
@@ -40,7 +40,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;
@@ -59,7 +59,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
             $pages = $this->pageRepository->findByProduct($product, $channelCode, null);
         }
 
-        $this->pageRenderingHistory->startRenderingMultiple($pages);
+        $this->pageRenderingHistory->recordRenderingPageEventMultiple($pages);
 
         $data = $this->sectionsSorter->sortBySections($pages);
 

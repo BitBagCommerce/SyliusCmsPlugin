@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime;
@@ -29,7 +29,7 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ): void {
         $this->beConstructedWith($localeContext, $pageRepository, $router, $pageRenderingHistory, "defaultTemplate");
     }
@@ -49,7 +49,7 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         PageInterface $page,
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ): void {
         $options = [];
         $code = "CODE";
@@ -59,7 +59,7 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         $localeContext->getLocaleCode()->willReturn($localeCode);
         $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
 
-        $pageRenderingHistory->startRendering($page);
+        $pageRenderingHistory->recordRenderingPageEvent($page);
 
         $environment->render($template ?? "defaultTemplate", [
             'page' => $page,
@@ -74,7 +74,7 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ): void {
         $code = "CODE";
         $localeCode = "en_US";
@@ -85,7 +85,7 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
         $page->getSlug()->willReturn($slug);
 
-        $pageRenderingHistory->startRendering($page);
+        $pageRenderingHistory->recordRenderingPageEvent($page);
 
         $router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn("link");
 

@@ -11,15 +11,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\DataCollector;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
-interface PageRenderingHistoryInterface
+interface BlockRenderingEventRecorderInterface
 {
-    public function startRendering(PageInterface $page): void;
+    public function recordRenderingBlock(BlockInterface $block): void;
 
-    public function startRenderingMultiple(array $pages): void;
-
-    public function getRenderedHistory(): array;
+    public function getRecordedEvents(): array;
 
     public function reset(): void;
 }

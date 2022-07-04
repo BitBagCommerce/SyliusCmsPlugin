@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistoryInterface;
+use BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
@@ -33,7 +33,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ): void {
         $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter, $pageRenderingHistory);
     }
@@ -57,7 +57,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         SectionInterface $section,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingHistoryInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingHistory
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
@@ -66,7 +66,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $section->getCode()->willReturn("SECTION_CODE");
         $pageRepository->findByProduct($product, 'WEB', null)->willReturn([])->shouldBeCalled();
 
-        $pageRenderingHistory->startRenderingMultiple([]);
+        $pageRenderingHistory->recordRenderingPageEventMultiple([]);
         $sectionsSorter->sortBySections([])->willReturn([]);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');

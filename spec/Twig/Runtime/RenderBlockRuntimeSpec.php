@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistoryInterface;
+use BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingEventRecorderInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
@@ -27,7 +27,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        BlockRenderingHistoryInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingHistory
     ): void {
         $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine, $blockRenderingHistory);
     }
@@ -46,11 +46,11 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
         Environment $templatingEngine,
-        BlockRenderingHistoryInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingHistory
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
 
-        $blockRenderingHistory->startRenderingBlock($block);
+        $blockRenderingHistory->recordRenderingBlock($block);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
 
@@ -61,11 +61,11 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
         Environment $templatingEngine,
-        BlockRenderingHistoryInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingHistory
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
 
-        $blockRenderingHistory->startRenderingBlock($block);
+        $blockRenderingHistory->recordRenderingBlock($block);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');
 

@@ -13,11 +13,11 @@ namespace BitBag\SyliusCmsPlugin\DataCollector;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 
-interface MediaRenderingHistoryInterface
+interface MediaRenderingEventRecorderInterface
 {
-    public function startRendering(MediaInterface $media): void;
+    public function recordRenderingMediaEvents(MediaInterface $media): void;
 
-    public function getRenderedHistory(): array;
+    public function getRecordedEvents(): array;
 
     public function reset(): void;
 }
