@@ -1,12 +1,12 @@
 services:
   bitbag_sylius_cms_plugin.profiler.block_history:
-    class: BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingHistory
+    class: BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingEventRecorder
 
   bitbag_sylius_cms_plugin.profiler.page_history:
-    class: BitBag\SyliusCmsPlugin\DataCollector\PageRenderingHistory
+    class: BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorder
 
   bitbag_sylius_cms_plugin.profiler.media_history:
-    class: BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingHistory
+    class: BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingEventRecorder
 
   bitbag_sylius_cms_plugin.profiler.cms:
     class: BitBag\SyliusCmsPlugin\DataCollector\CMSDataCollector
