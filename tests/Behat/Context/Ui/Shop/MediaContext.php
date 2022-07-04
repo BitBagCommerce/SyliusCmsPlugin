@@ -16,7 +16,6 @@ use Behat\Mink\Element\DocumentElement;
 use Behat\MinkExtension\Context\RawMinkContext;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePageInterface;
-use Webmozart\Assert\Assert;
 
 class MediaContext extends RawMinkContext implements Context
 {
@@ -41,7 +40,7 @@ class MediaContext extends RawMinkContext implements Context
     {
         $media = $this->mediaRepository->findOneBy(['code' => $arg1]);
 
-            $xpath = "//img[@src='" . $media->getPath() . "']";
+        $xpath = "//img[@src='" . $media->getPath() . "']";
         $this->getPage()->find('xpath', $xpath)->getParent();
     }
 
