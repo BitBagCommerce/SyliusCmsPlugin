@@ -41,7 +41,7 @@ class MediaContext extends RawMinkContext implements Context
     {
         $media = $this->mediaRepository->findOneBy(['code' => $arg1]);
 
-        $xpath = "//img[@src='".$media->getPath()."']";
+            $xpath = "//img[@src='" . $media->getPath() . "']";
         $this->getPage()->find('xpath', $xpath)->getParent();
     }
 
