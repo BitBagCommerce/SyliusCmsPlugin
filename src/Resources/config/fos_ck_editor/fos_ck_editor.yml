@@ -9,6 +9,8 @@ fos_ck_editor:
             extraPlugins:
                 - 'mediaVideo'
                 - 'mediaImage'
+            removePlugins:
+                - "exportpdf"
     plugins:
         mediaVideo:
             path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/video/'
