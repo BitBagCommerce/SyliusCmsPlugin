@@ -1,18 +1,18 @@
 services:
-  bitbag_sylius_cms_plugin.profiler.block_history:
+  bitbag_sylius_cms_plugin.data_collector.block:
     class: BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.profiler.page_history:
+  bitbag_sylius_cms_plugin.data_collector.page:
     class: BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.profiler.media_history:
+  bitbag_sylius_cms_plugin.data_collector.media:
     class: BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.profiler.cms:
+  bitbag_sylius_cms_plugin.data_collector.cms:
     class: BitBag\SyliusCmsPlugin\DataCollector\CMSDataCollector
     tags:
       - { name: data_collector, id: 'bitbag_sylius_cms_plugin.data_collector.cms', template: "@BitBagSyliusCmsPlugin/DataCollector/block_collector.html.twig" }
     arguments:
-      - '@bitbag_sylius_cms_plugin.profiler.block_history'
-      - '@bitbag_sylius_cms_plugin.profiler.media_history'
-      - '@bitbag_sylius_cms_plugin.profiler.page_history'
+      - '@bitbag_sylius_cms_plugin.data_collector.block'
+      - '@bitbag_sylius_cms_plugin.data_collector.media'
+      - '@bitbag_sylius_cms_plugin.data_collector.page'

@@ -14,18 +14,20 @@ namespace spec\BitBag\SyliusCmsPlugin\DataCollector;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use PhpSpec\ObjectBehavior;
 
-class BlockRenderingEventRecorderSpec extends ObjectBehavior
+final class BlockRenderingEventRecorderSpec extends ObjectBehavior
 {
     function it_start_render(
         BlockInterface $block
     ) {
-        $this->recordRenderingBlock($block);
+        $this->recordRenderingBlock($block)
+            ->shouldReturn(null);
     }
 
-    function it_start_render_and_return_data(
+    function it_starts_render_and_return_data(
         BlockInterface $block
     ) {
-        $this->recordRenderingBlock($block);
+        $this->recordRenderingBlock($block)
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([$block]);
@@ -34,9 +36,11 @@ class BlockRenderingEventRecorderSpec extends ObjectBehavior
     function it_start_render_and_clear_data(
         BlockInterface $block
     ) {
-        $this->recordRenderingBlock($block);
+        $this->recordRenderingBlock($block)
+            ->shouldReturn(null);
 
-        $this->reset();
+        $this->reset()
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([]);

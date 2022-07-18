@@ -15,18 +15,20 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use PhpSpec\ObjectBehavior;
 
-class MediaRenderingEventRecorderSpec extends ObjectBehavior
+final class MediaRenderingEventRecorderSpec extends ObjectBehavior
 {
     function it_start_render(
         MediaInterface $media
     ) {
-        $this->recordRenderingMediaEvents($media);
+        $this->recordRenderingMediaEvents($media)
+            ->shouldReturn(null);
     }
 
-    function it_start_render_and_return_data(
+    function it_starts_render_and_return_data(
         MediaInterface $media
     ) {
-        $this->recordRenderingMediaEvents($media);
+        $this->recordRenderingMediaEvents($media)
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([$media]);
@@ -35,9 +37,11 @@ class MediaRenderingEventRecorderSpec extends ObjectBehavior
     function it_start_render_and_clear_data(
         MediaInterface $media
     ) {
-        $this->recordRenderingMediaEvents($media);
+        $this->recordRenderingMediaEvents($media)
+            ->shouldReturn(null);
 
-        $this->reset();
+        $this->reset()
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([]);

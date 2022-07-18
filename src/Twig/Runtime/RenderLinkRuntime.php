@@ -36,11 +36,11 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
     private $pageRenderingHistory;
 
     public function __construct(
-        LocaleContextInterface              $localeContext,
-        PageRepositoryInterface             $pageRepository,
-        RouterInterface                     $router,
+        LocaleContextInterface $localeContext,
+        PageRepositoryInterface $pageRepository,
+        RouterInterface $router,
         PageRenderingEventRecorderInterface $pageRenderingHistory,
-        string                              $defaultTemplate
+        string $defaultTemplate
     ) {
         $this->localeContext = $localeContext;
         $this->pageRepository = $pageRepository;

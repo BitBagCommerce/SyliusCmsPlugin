@@ -15,7 +15,7 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
 final class PageRenderingEventRecorder implements PageRenderingEventRecorderInterface
 {
-    /** @var array */
+    /** @var PageInterface[] */
     private $currentlyRendered = [];
 
     public function recordRenderingPageEvent(PageInterface $page): void
@@ -28,6 +28,7 @@ final class PageRenderingEventRecorder implements PageRenderingEventRecorderInte
         $this->currentlyRendered = array_merge($this->currentlyRendered, $pages);
     }
 
+    /** @return PageInterface[] */
     public function getRecordedEvents(): array
     {
         return $this->currentlyRendered;

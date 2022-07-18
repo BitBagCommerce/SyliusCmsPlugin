@@ -16,18 +16,20 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use PhpSpec\ObjectBehavior;
 
-class PageRenderingEventRecorderSpec extends ObjectBehavior
+final class PageRenderingEventRecorderSpec extends ObjectBehavior
 {
     function it_start_render(
         PageInterface $page
     ) {
-        $this->recordRenderingPageEvent($page);
+        $this->recordRenderingPageEvent($page)
+            ->shouldReturn(null);
     }
 
-    function it_start_render_and_return_data(
+    function it_starts_render_and_return_data(
         PageInterface $page
     ) {
-        $this->recordRenderingPageEvent($page);
+        $this->recordRenderingPageEvent($page)
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([$page]);
@@ -36,7 +38,8 @@ class PageRenderingEventRecorderSpec extends ObjectBehavior
     function it_start_multi_render_and_return_data(
         PageInterface $page
     ) {
-        $this->recordRenderingPageEventMultiple([$page]);
+        $this->recordRenderingPageEventMultiple([$page])
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([$page]);
@@ -45,9 +48,11 @@ class PageRenderingEventRecorderSpec extends ObjectBehavior
     function it_start_render_and_clear_data(
         PageInterface $page
     ) {
-        $this->recordRenderingPageEvent($page);
+        $this->recordRenderingPageEvent($page)
+            ->shouldReturn(null);
 
-        $this->reset();
+        $this->reset()
+            ->shouldReturn(null);
 
         $this->getRecordedEvents()
             ->shouldReturn([]);

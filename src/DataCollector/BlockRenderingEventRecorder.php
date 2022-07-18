@@ -15,7 +15,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 
 final class BlockRenderingEventRecorder implements BlockRenderingEventRecorderInterface
 {
-    /** @var array */
+    /** @var BlockInterface[] */
     private $recordedEvents = [];
 
     public function recordRenderingBlock(BlockInterface $block): void
@@ -23,6 +23,7 @@ final class BlockRenderingEventRecorder implements BlockRenderingEventRecorderIn
         $this->recordedEvents[] = $block;
     }
 
+    /** @return BlockInterface[] */
     public function getRecordedEvents(): array
     {
         return $this->recordedEvents;

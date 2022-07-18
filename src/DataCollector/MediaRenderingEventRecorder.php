@@ -15,7 +15,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 
 final class MediaRenderingEventRecorder implements MediaRenderingEventRecorderInterface
 {
-    /** @var array */
+    /** @var MediaInterface[] */
     private $recordedEvents = [];
 
     public function recordRenderingMediaEvents(MediaInterface $media): void
@@ -23,6 +23,7 @@ final class MediaRenderingEventRecorder implements MediaRenderingEventRecorderIn
         $this->recordedEvents[] = $media;
     }
 
+    /** @return MediaInterface[] */
     public function getRecordedEvents(): array
     {
         return $this->recordedEvents;

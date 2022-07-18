@@ -18,7 +18,7 @@ services:
             - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.resolver.block_resource"
             - "@twig"
-            - "@bitbag_sylius_cms_plugin.profiler.block_history"
+            - "@bitbag_sylius_cms_plugin.data_collector.block"
         tags:
             - { name: twig.runtime }
 
@@ -34,7 +34,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.media_provider"
             - "@bitbag_sylius_cms_plugin.resolver.media_resource"
-            - "@bitbag_sylius_cms_plugin.profiler.media_history"
+            - "@bitbag_sylius_cms_plugin.data_collector.media"
         tags:
             - { name: twig.runtime }
 
@@ -52,7 +52,7 @@ services:
             - "@sylius.context.channel"
             - "@twig"
             - "@bitbag_sylius_cms_plugin.sorter.sections"
-            - "@bitbag_sylius_cms_plugin.profiler.page_history"
+            - "@bitbag_sylius_cms_plugin.data_collector.page"
         tags:
             - { name: twig.runtime }
 
@@ -85,7 +85,7 @@ services:
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@router.default"
-            - "@bitbag_sylius_cms_plugin.profiler.page_history"
+            - "@bitbag_sylius_cms_plugin.data_collector.page"
             - "%bitbag_cms.twig.link_template%"
         tags:
             - { name: twig.runtime }
