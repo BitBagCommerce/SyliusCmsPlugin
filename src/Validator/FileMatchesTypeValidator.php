@@ -24,6 +24,10 @@ final class FileMatchesTypeValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, FileMatchesType::class);
         }
 
+        if ($value->getPath() == null && $value->getFile() == null) {
+            return;
+        }
+
         if ($value->hasFile() && null !== $value->getFile()->getMimeType()) {
             return;
         }
