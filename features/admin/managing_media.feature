@@ -8,7 +8,7 @@ Feature: Managing digital assets
         Given the store operates on a single channel in "United States"
         And I am logged in as an administrator
 
-    @todo
+    @ui
     Scenario: Creating image media
         When I go to the create media page
         And I select image as media type
@@ -19,7 +19,7 @@ Feature: Managing digital assets
         And I should be on the edit media page
 
 
-    @todo
+    @ui
     Scenario: Updating image media asset
         Given there is a media with "price"
         And I select image as media type
