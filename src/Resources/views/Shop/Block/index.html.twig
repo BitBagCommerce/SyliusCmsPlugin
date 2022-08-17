@@ -1,7 +1,9 @@
 {% for block in blocks %}
-    <div class="column">
-        <div class="ui segment">
-            {{ bitbag_cms_render_block(block.code) }}
-        </div>
+    {% if block.name != null %}
+    <h4 class="ui horizontal section divider header">{{ block.name }}</h4>
+    {% endif %}
+    
+    <div class="ui column segment">
+        {{ bitbag_cms_render_block(block.code) }}
     </div>
 {% endfor %}
