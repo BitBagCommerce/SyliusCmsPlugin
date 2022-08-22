@@ -11,20 +11,19 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\DataCollector;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use PhpSpec\ObjectBehavior;
 
 final class MediaRenderingEventRecorderSpec extends ObjectBehavior
 {
-    function it_start_render(
+    public function it_start_render(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)
             ->shouldReturn(null);
     }
 
-    function it_starts_render_and_return_data(
+    public function it_starts_render_and_return_data(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)
@@ -34,7 +33,7 @@ final class MediaRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$media]);
     }
 
-    function it_start_render_and_clear_data(
+    public function it_start_render_and_clear_data(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)

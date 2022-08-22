@@ -29,18 +29,18 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
     /** @var BlockRenderingEventRecorderInterface */
-    private $blockRenderingHistory;
+    private $blockRenderingEventRecorder;
 
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        BlockRenderingEventRecorderInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingEventRecorder
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockResourceResolver = $blockResourceResolver;
         $this->templatingEngine = $templatingEngine;
-        $this->blockRenderingHistory = $blockRenderingHistory;
+        $this->blockRenderingEventRecorder = $blockRenderingEventRecorder;
     }
 
     public function renderBlock(string $code, ?string $template = null): string
@@ -48,7 +48,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
         $block = $this->blockResourceResolver->findOrLog($code);
 
         if (null !== $block) {
-            $this->blockRenderingHistory->recordRenderingBlock($block);
+            $this->blockRenderingEventRecorder->recordRenderingBlock($block);
 
             $template = $template ?? self::DEFAULT_TEMPLATE;
 

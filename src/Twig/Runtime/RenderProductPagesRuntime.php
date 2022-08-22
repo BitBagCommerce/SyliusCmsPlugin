@@ -33,20 +33,20 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
     private $sectionsSorter;
 
     /** @var PageRenderingEventRecorderInterface */
-    private $pageRenderingHistory;
+    private $pageRenderingEventRecorder;
 
     public function __construct(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;
         $this->templatingEngine = $templatingEngine;
         $this->sectionsSorter = $sectionsSorter;
-        $this->pageRenderingHistory = $pageRenderingHistory;
+        $this->pageRenderingEventRecorder = $pageRenderingEventRecorder;
     }
 
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
@@ -59,7 +59,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
             $pages = $this->pageRepository->findByProduct($product, $channelCode, null);
         }
 
-        $this->pageRenderingHistory->recordRenderingPageEventMultiple($pages);
+        $this->pageRenderingEventRecorder->recordRenderingPageEventMultiple($pages);
 
         $data = $this->sectionsSorter->sortBySections($pages);
 

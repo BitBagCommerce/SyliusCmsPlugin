@@ -11,21 +11,19 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\DataCollector;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use PhpSpec\ObjectBehavior;
 
 final class PageRenderingEventRecorderSpec extends ObjectBehavior
 {
-    function it_start_render(
+    public function it_start_render(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)
             ->shouldReturn(null);
     }
 
-    function it_starts_render_and_return_data(
+    public function it_starts_render_and_return_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)
@@ -35,7 +33,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$page]);
     }
 
-    function it_start_multi_render_and_return_data(
+    public function it_start_multi_render_and_return_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEventMultiple([$page])
@@ -45,7 +43,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$page]);
     }
 
-    function it_start_render_and_clear_data(
+    public function it_start_render_and_clear_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)

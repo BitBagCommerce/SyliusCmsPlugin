@@ -23,49 +23,49 @@ use Twig\Environment;
 
 final class RenderBlockRuntimeSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        BlockRenderingEventRecorderInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingEventRecorder
     ): void {
-        $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine, $blockRenderingHistory);
+        $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine, $blockRenderingEventRecorder);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderBlockRuntime::class);
     }
 
-    function it_implements_render_block_runtime_interface(): void
+    public function it_implements_render_block_runtime_interface(): void
     {
         $this->shouldHaveType(RenderBlockRuntimeInterface::class);
     }
 
-    function it_renders_block(
+    public function it_renders_block(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
         Environment $templatingEngine,
-        BlockRenderingEventRecorderInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingEventRecorder
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
 
-        $blockRenderingHistory->recordRenderingBlock($block);
+        $blockRenderingEventRecorder->recordRenderingBlock($block);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
 
         $this->renderBlock('bitbag');
     }
 
-    function it_renders_block_with_template(
+    public function it_renders_block_with_template(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
         Environment $templatingEngine,
-        BlockRenderingEventRecorderInterface $blockRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingEventRecorder
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
 
-        $blockRenderingHistory->recordRenderingBlock($block);
+        $blockRenderingEventRecorder->recordRenderingBlock($block);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');
 

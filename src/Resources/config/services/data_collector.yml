@@ -1,18 +1,18 @@
 services:
-  bitbag_sylius_cms_plugin.data_collector.block:
+  bitbag_sylius_cms_plugin.data_collector.block_rendering_event_recorder:
     class: BitBag\SyliusCmsPlugin\DataCollector\BlockRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.data_collector.page:
+  bitbag_sylius_cms_plugin.data_collector.page_rendering_event_recorder:
     class: BitBag\SyliusCmsPlugin\DataCollector\PageRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.data_collector.media:
+  bitbag_sylius_cms_plugin.data_collector.media_rendering_event_recorder:
     class: BitBag\SyliusCmsPlugin\DataCollector\MediaRenderingEventRecorder
 
-  bitbag_sylius_cms_plugin.data_collector.cms:
+  bitbag_sylius_cms_plugin.data_collector.cms_data_collector:
     class: BitBag\SyliusCmsPlugin\DataCollector\CMSDataCollector
     tags:
-      - { name: data_collector, id: 'bitbag_sylius_cms_plugin.data_collector.cms', template: "@BitBagSyliusCmsPlugin/DataCollector/block_collector.html.twig" }
+      - { name: data_collector, id: 'bitbag_sylius_cms_plugin.data_collector.cms_data_collector', template: "@BitBagSyliusCmsPlugin/DataCollector/block_collector.html.twig" }
     arguments:
-      - '@bitbag_sylius_cms_plugin.data_collector.block'
-      - '@bitbag_sylius_cms_plugin.data_collector.media'
-      - '@bitbag_sylius_cms_plugin.data_collector.page'
+      - '@bitbag_sylius_cms_plugin.data_collector.block_rendering_event_recorder'
+      - '@bitbag_sylius_cms_plugin.data_collector.media_rendering_event_recorder'
+      - '@bitbag_sylius_cms_plugin.data_collector.page_rendering_event_recorder'

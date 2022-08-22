@@ -23,34 +23,34 @@ use PhpSpec\ObjectBehavior;
 
 final class RenderMediaRuntimeSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaResourceResolverInterface $mediaResourceResolver,
-        MediaRenderingEventRecorderInterface $mediaRenderingHistory
+        MediaRenderingEventRecorderInterface $mediaRenderingEventRecorder
     ): void {
-        $this->beConstructedWith($mediaProviderResolver, $mediaResourceResolver, $mediaRenderingHistory);
+        $this->beConstructedWith($mediaProviderResolver, $mediaResourceResolver, $mediaRenderingEventRecorder);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderMediaRuntime::class);
     }
 
-    function it_implements_render_media_runtime_interface(): void
+    public function it_implements_render_media_runtime_interface(): void
     {
         $this->shouldHaveType(RenderMediaRuntimeInterface::class);
     }
 
-    function it_renders_media(
+    public function it_renders_media(
         MediaResourceResolverInterface $mediaResourceResolver,
         MediaProviderResolverInterface $mediaProviderResolver,
         ProviderInterface $provider,
         MediaInterface $media,
-        MediaRenderingEventRecorderInterface $mediaRenderingHistory
+        MediaRenderingEventRecorderInterface $mediaRenderingEventRecorder
     ): void {
         $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
 
-        $mediaRenderingHistory->recordRenderingMediaEvents($media)
+        $mediaRenderingEventRecorder->recordRenderingMediaEvents($media)
         ;
         $provider->render($media, null)->willReturn('content');
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);

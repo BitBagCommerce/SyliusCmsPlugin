@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssigner;
@@ -11,28 +13,27 @@ use Sylius\Component\Core\Model\ChannelInterface;
 
 final class ChannelsAssignerSpec extends ObjectBehavior
 {
-    function let(ChannelRepositoryInterface $channelRepository): void
+    public function let(ChannelRepositoryInterface $channelRepository): void
     {
         $this->beConstructedWith($channelRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ChannelsAssigner::class);
     }
 
-    function it_implements_channels_assigner_interface(): void
+    public function it_implements_channels_assigner_interface(): void
     {
         $this->shouldHaveType(ChannelsAssignerInterface::class);
     }
 
-    function it_assigns_channels(
+    public function it_assigns_channels(
         ChannelRepositoryInterface $channelRepository,
         ChannelInterface $webChannel,
         ChannelInterface $posChannel,
         ChannelsAwareInterface $channelsAware
-    ): void
-    {
+    ): void {
         $channelRepository->findOneBy(['code' => 'web'])->willReturn($webChannel);
         $channelRepository->findOneBy(['code' => 'pos'])->willReturn($posChannel);
 

@@ -33,20 +33,20 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
     private $defaultTemplate;
 
     /** @var PageRenderingEventRecorderInterface */
-    private $pageRenderingHistory;
+    private $pageRenderingEventRecorder;
 
     public function __construct(
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        PageRenderingEventRecorderInterface $pageRenderingHistory,
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder,
         string $defaultTemplate
     ) {
         $this->localeContext = $localeContext;
         $this->pageRepository = $pageRepository;
         $this->router = $router;
         $this->defaultTemplate = $defaultTemplate;
-        $this->pageRenderingHistory = $pageRenderingHistory;
+        $this->pageRenderingEventRecorder = $pageRenderingEventRecorder;
     }
 
     public function renderLinkForCode(
@@ -72,7 +72,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         if (null === $page) {
             throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }
-        $this->pageRenderingHistory->recordRenderingPageEvent($page);
+        $this->pageRenderingEventRecorder->recordRenderingPageEvent($page);
 
         return $this->router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $page->getSlug()]);
     }

@@ -20,23 +20,23 @@ use PhpSpec\ObjectBehavior;
 
 final class RenderContentRuntimeSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         ContentParserInterface $contentParser
     ): void {
         $this->beConstructedWith($contentParser);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderContentRuntime::class);
     }
 
-    function it_implements_render_content_runtime_interface(): void
+    public function it_implements_render_content_runtime_interface(): void
     {
         $this->shouldHaveType(RenderContentRuntimeInterface::class);
     }
 
-    function it_renders_content(
+    public function it_renders_content(
         ContentParserInterface $contentParser,
         ContentableInterface $contentableResource
     ): void {

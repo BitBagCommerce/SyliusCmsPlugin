@@ -17,23 +17,23 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 final class BlockTranslationSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_is_a_resource(): void
+    public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_block_translation_interface(): void
+    public function it_implements_block_translation_interface(): void
     {
         $this->shouldHaveType(BlockTranslationInterface::class);
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
+    public function it_allows_access_via_properties(): void
     {
         $this->setName('Escobar favorite quote');
         $this->getName()->shouldReturn('Escobar favorite quote');

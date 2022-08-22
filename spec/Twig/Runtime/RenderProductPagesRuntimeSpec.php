@@ -28,27 +28,27 @@ use Twig\Environment;
 
 final class RenderProductPagesRuntimeSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ): void {
-        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter, $pageRenderingHistory);
+        $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter, $pageRenderingEventRecorder);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderProductPagesRuntime::class);
     }
 
-    function it_implements_render_product_pages_runtime_interface(): void
+    public function it_implements_render_product_pages_runtime_interface(): void
     {
         $this->shouldHaveType(RenderProductPagesRuntimeInterface::class);
     }
 
-    function it_renders_product_pages(
+    public function it_renders_product_pages(
         ChannelContextInterface $channelContext,
         ProductInterface $product,
         ChannelInterface $channel,
@@ -57,16 +57,16 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         SectionInterface $section,
         Environment $templatingEngine,
         SectionsSorterInterface $sectionsSorter,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
 
         $page->getSections()->willReturn(new ArrayCollection([$section]));
-        $section->getCode()->willReturn("SECTION_CODE");
+        $section->getCode()->willReturn('SECTION_CODE');
         $pageRepository->findByProduct($product, 'WEB', null)->willReturn([])->shouldBeCalled();
 
-        $pageRenderingHistory->recordRenderingPageEventMultiple([]);
+        $pageRenderingEventRecorder->recordRenderingPageEventMultiple([]);
         $sectionsSorter->sortBySections([])->willReturn([]);
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
@@ -74,7 +74,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $this->renderProductPages($product)->shouldReturn('content');
     }
 
-    function it_renders_product_pages_with_sections(
+    public function it_renders_product_pages_with_sections(
         ChannelContextInterface $channelContext,
         ProductInterface $product,
         ChannelInterface $channel,
@@ -87,8 +87,8 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
         $page->getSections()->willReturn(new ArrayCollection([$section]));
-        $section->getCode()->willReturn("SECTION_CODE");
-        $pageRepository->findByProductAndSectionCode($product, 'SECTION_CODE','WEB', null)->willReturn([])->shouldBeCalled();
+        $section->getCode()->willReturn('SECTION_CODE');
+        $pageRepository->findByProductAndSectionCode($product, 'SECTION_CODE', 'WEB', null)->willReturn([])->shouldBeCalled();
         $sectionsSorter->sortBySections([])->willReturn([]);
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
 

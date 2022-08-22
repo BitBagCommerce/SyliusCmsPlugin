@@ -23,16 +23,16 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
     private $mediaResourceResolver;
 
     /** @var MediaRenderingEventRecorderInterface */
-    private $mediaRenderingHistory;
+    private $mediaRenderingEventRecorder;
 
     public function __construct(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaResourceResolverInterface $mediaResourceResolver,
-        MediaRenderingEventRecorderInterface $mediaRenderingHistory
+        MediaRenderingEventRecorderInterface $mediaRenderingEventRecorder
     ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaResourceResolver = $mediaResourceResolver;
-        $this->mediaRenderingHistory = $mediaRenderingHistory;
+        $this->mediaRenderingEventRecorder = $mediaRenderingEventRecorder;
     }
 
     public function renderMedia(string $code, ?string $template = null): string
@@ -40,7 +40,7 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
         $media = $this->mediaResourceResolver->findOrLog($code);
 
         if (null !== $media) {
-            $this->mediaRenderingHistory->recordRenderingMediaEvents($media);
+            $this->mediaRenderingEventRecorder->recordRenderingMediaEvents($media);
 
             return $this->mediaProviderResolver->resolveProvider($media)->render($media, $template);
         }

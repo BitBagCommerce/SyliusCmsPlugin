@@ -19,22 +19,22 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 class CMSDataCollector extends Collector implements DataCollectorInterface
 {
     /** @var BlockRenderingEventRecorderInterface */
-    private $blockRenderingHistory;
+    private $blockRenderingEventRecorder;
 
     /** @var MediaRenderingEventRecorderInterface */
-    private $mediaRenderingHistory;
+    private $mediaRenderingEventRecorder;
 
     /** @var PageRenderingEventRecorderInterface */
-    private $pageRenderingHistory;
+    private $pageRenderingRecorder;
 
     public function __construct(
-        BlockRenderingEventRecorderInterface $blockRenderingHistory,
-        MediaRenderingEventRecorderInterface $mediaRenderingHistory,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        BlockRenderingEventRecorderInterface $blockRenderingEventRecorder,
+        MediaRenderingEventRecorderInterface $mediaRenderingEventRecorder,
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ) {
-        $this->blockRenderingHistory = $blockRenderingHistory;
-        $this->mediaRenderingHistory = $mediaRenderingHistory;
-        $this->pageRenderingHistory = $pageRenderingHistory;
+        $this->blockRenderingEventRecorder = $blockRenderingEventRecorder;
+        $this->mediaRenderingEventRecorder = $mediaRenderingEventRecorder;
+        $this->pageRenderingRecorder = $pageRenderingEventRecorder;
     }
 
     public function collect(
@@ -43,9 +43,9 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
         \Throwable $exception = null
     ): void {
         $this->data = [
-            'media' => $this->mediaRenderingHistory->getRecordedEvents(),
-            'block' => $this->blockRenderingHistory->getRecordedEvents(),
-            'page' => $this->pageRenderingHistory->getRecordedEvents(),
+            'media' => $this->mediaRenderingEventRecorder->getRecordedEvents(),
+            'block' => $this->blockRenderingEventRecorder->getRecordedEvents(),
+            'page' => $this->pageRenderingRecorder->getRecordedEvents(),
         ];
     }
 
@@ -76,6 +76,6 @@ class CMSDataCollector extends Collector implements DataCollectorInterface
 
     public function getName(): string
     {
-        return 'bitbag_sylius_cms_plugin.data_collector.cms';
+        return 'bitbag_sylius_cms_plugin.data_collector.cms_data_collector';
     }
 }

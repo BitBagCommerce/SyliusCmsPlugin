@@ -18,23 +18,23 @@ use Twig\TwigFunction;
 
 final class RenderMediaExtensionSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         RenderMediaRuntimeInterface $mediaRuntime
     ) {
         $this->beConstructedWith($mediaRuntime);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderMediaExtension::class);
     }
 
-    function it_extends_abstract_extension(): void
+    public function it_extends_abstract_extension(): void
     {
         $this->shouldHaveType(AbstractExtension::class);
     }
 
-    function it_returns_functions(): void
+    public function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
 

@@ -19,23 +19,23 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 final class PageTranslationSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(PageTranslation::class);
     }
 
-    function it_is_a_resource(): void
+    public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_page_translation_interface(): void
+    public function it_implements_page_translation_interface(): void
     {
         $this->shouldHaveType(PageTranslationInterface::class);
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties(MediaInterface $pageImage): void
+    public function it_allows_access_via_properties(MediaInterface $pageImage): void
     {
         $this->setName('Homepage');
         $this->getName()->shouldReturn('Homepage');

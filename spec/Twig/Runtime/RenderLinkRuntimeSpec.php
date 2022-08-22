@@ -25,78 +25,78 @@ use Twig\Environment;
 
 final class RenderLinkRuntimeSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ): void {
-        $this->beConstructedWith($localeContext, $pageRepository, $router, $pageRenderingHistory, "defaultTemplate");
+        $this->beConstructedWith($localeContext, $pageRepository, $router, $pageRenderingEventRecorder, 'defaultTemplate');
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderLinkRuntime::class);
     }
 
-    function it_implements_render_link_runtime_interface(): void
+    public function it_implements_render_link_runtime_interface(): void
     {
         $this->shouldHaveType(RenderLinkRuntimeInterface::class);
     }
 
-    function it_renders_link_for_code(
+    public function it_renders_link_for_code(
         Environment $environment,
         PageInterface $page,
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ): void {
         $options = [];
-        $code = "CODE";
+        $code = 'CODE';
         $template = null;
-        $localeCode = "en_US";
+        $localeCode = 'en_US';
 
         $localeContext->getLocaleCode()->willReturn($localeCode);
         $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
 
-        $pageRenderingHistory->recordRenderingPageEvent($page);
+        $pageRenderingEventRecorder->recordRenderingPageEvent($page);
 
-        $environment->render($template ?? "defaultTemplate", [
+        $environment->render($template ?? 'defaultTemplate', [
             'page' => $page,
             'options' => $options,
-        ])->willReturn("link");
+        ])->willReturn('link');
 
-        $this->renderLinkForCode($environment, $code, $options, $template)->shouldReturn("link");
+        $this->renderLinkForCode($environment, $code, $options, $template)->shouldReturn('link');
     }
 
-    function it_gets_link_for_code(
+    public function it_gets_link_for_code(
         RouterInterface $router,
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         PageInterface $page,
-        PageRenderingEventRecorderInterface $pageRenderingHistory
+        PageRenderingEventRecorderInterface $pageRenderingEventRecorder
     ): void {
-        $code = "CODE";
-        $localeCode = "en_US";
-        $slug = "SLUG";
+        $code = 'CODE';
+        $localeCode = 'en_US';
+        $slug = 'SLUG';
         $options = [];
 
         $localeContext->getLocaleCode()->willReturn($localeCode);
         $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
         $page->getSlug()->willReturn($slug);
 
-        $pageRenderingHistory->recordRenderingPageEvent($page);
+        $pageRenderingEventRecorder->recordRenderingPageEvent($page);
 
-        $router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn("link");
+        $router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn('link');
 
-        $this->getLinkForCode($code, $options)->shouldReturn("link");
+        $this->getLinkForCode($code, $options)->shouldReturn('link');
     }
 
-    function it_returns_not_found_message_when_getting_link_for_code(
+    public function it_returns_not_found_message_when_getting_link_for_code(
         LocaleContextInterface $localeContext
     ): void {
-        $localeContext->getLocaleCode()->willReturn("en_US");
+        $localeContext->getLocaleCode()->willReturn('en_US');
 
-        $this->shouldThrow(NotFoundHttpException::class)->during('getLinkForCode', ["CODE"]);
+        $this->shouldThrow(NotFoundHttpException::class)->during('getLinkForCode', ['CODE']);
     }
 }
