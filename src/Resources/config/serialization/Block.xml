@@ -22,7 +22,7 @@
         <attribute name="channels">
             <group>shop:cms:read</group>
         </attribute>
-        <attribute name="taxonomies">
+        <attribute name="taxons">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="translations">
