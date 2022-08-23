@@ -75,3 +75,9 @@ services:
             - "@bitbag_sylius_cms_plugin.behat.page.admin.media.update"
             - "@bitbag_sylius_cms_plugin.behat.random_string_generator"
             - "@bitbag_sylius_cms_plugin.repository.media"
+            -
+    bitbag_sylius_cms_plugin.behat.context.ui.shop.media:
+        class: Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\MediaContext
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.media"
+            - "@bitbag_sylius_cms_plugin.behat.page.shop.home"
