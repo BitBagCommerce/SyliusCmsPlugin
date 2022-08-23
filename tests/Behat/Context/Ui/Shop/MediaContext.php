@@ -44,9 +44,6 @@ class MediaContext extends RawMinkContext implements Context
         $this->getPage()->find('xpath', $xpath)->getParent();
     }
 
-    /**
-     * @return DocumentElement
-     */
     private function getPage(): DocumentElement
     {
         return $this->getSession()->getPage();
