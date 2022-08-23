@@ -36,7 +36,7 @@ class MediaContext extends RawMinkContext implements Context
     /**
      * @When I want to see a media with code :arg1
      */
-    public function iWantToSeeAMedia(string $arg1)
+    public function iWantToSeeAMedia(string $arg1): void
     {
         $media = $this->mediaRepository->findOneBy(['code' => $arg1]);
 
@@ -47,7 +47,7 @@ class MediaContext extends RawMinkContext implements Context
     /**
      * @return DocumentElement
      */
-    private function getPage()
+    private function getPage(): DocumentElement
     {
         return $this->getSession()->getPage();
     }

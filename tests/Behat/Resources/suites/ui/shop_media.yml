@@ -9,7 +9,6 @@ default:
         - bitbag_sylius_cms_plugin.behat.context.setup.media
         - bitbag_sylius_cms_plugin.behat.context.transform.media
 
-        - bitbag_sylius_cms_plugin.behat.context.api.media
         - bitbag_sylius_cms_plugin.behat.context.ui.shop.homepage_blocks
         - bitbag_sylius_cms_plugin.behat.context.ui.shop.media
       filters:
