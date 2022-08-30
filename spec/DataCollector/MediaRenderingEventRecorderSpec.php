@@ -23,7 +23,7 @@ final class MediaRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn(null);
     }
 
-    public function it_starts_render_and_return_data(
+    public function it_starts_rendering_and_returns_data(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)
@@ -33,7 +33,7 @@ final class MediaRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$media]);
     }
 
-    public function it_start_rendering_and_clear_data(
+    public function it_starts_rendering_and_clears_data(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)

@@ -23,7 +23,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn(null);
     }
 
-    public function it_starts_render_and_return_data(
+    public function it_starts_multirendering_and_returns_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)
@@ -43,7 +43,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$page]);
     }
 
-    public function it_start_rendering_and_clear_data(
+    public function it_starts_rendering_and_clears_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)
