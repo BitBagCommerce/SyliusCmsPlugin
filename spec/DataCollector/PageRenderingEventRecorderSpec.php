@@ -16,7 +16,7 @@ use PhpSpec\ObjectBehavior;
 
 final class PageRenderingEventRecorderSpec extends ObjectBehavior
 {
-    public function it_start_render(
+    public function it_start_rendering(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)
@@ -33,7 +33,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$page]);
     }
 
-    public function it_start_multi_render_and_return_data(
+    public function it_starts_multirendering_and_returns_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEventMultiple([$page])
@@ -43,7 +43,7 @@ final class PageRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$page]);
     }
 
-    public function it_start_render_and_clear_data(
+    public function it_start_rendering_and_clear_data(
         PageInterface $page
     ) {
         $this->recordRenderingPageEvent($page)

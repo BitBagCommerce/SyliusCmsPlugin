@@ -16,7 +16,7 @@ use PhpSpec\ObjectBehavior;
 
 final class BlockRenderingEventRecorderSpec extends ObjectBehavior
 {
-    public function it_start_render(
+    public function it_start_rendering(
         BlockInterface $block
     ) {
         $this->recordRenderingBlock($block)
@@ -33,7 +33,7 @@ final class BlockRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$block]);
     }
 
-    public function it_start_render_and_clear_data(
+    public function it_start_rendering_and_clear_data(
         BlockInterface $block
     ) {
         $this->recordRenderingBlock($block)

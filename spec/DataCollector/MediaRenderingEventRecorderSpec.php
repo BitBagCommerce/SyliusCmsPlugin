@@ -16,7 +16,7 @@ use PhpSpec\ObjectBehavior;
 
 final class MediaRenderingEventRecorderSpec extends ObjectBehavior
 {
-    public function it_start_render(
+    public function it_start_rendering(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)
@@ -33,7 +33,7 @@ final class MediaRenderingEventRecorderSpec extends ObjectBehavior
             ->shouldReturn([$media]);
     }
 
-    public function it_start_render_and_clear_data(
+    public function it_start_rendering_and_clear_data(
         MediaInterface $media
     ) {
         $this->recordRenderingMediaEvents($media)

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector as Collector;
 use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 
-class CMSDataCollector extends Collector implements DataCollectorInterface
+final class CMSDataCollector extends Collector implements DataCollectorInterface
 {
     /** @var BlockRenderingEventRecorderInterface */
     private $blockRenderingEventRecorder;
