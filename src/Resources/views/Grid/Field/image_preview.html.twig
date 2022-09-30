@@ -1,0 +1,5 @@
+{% if 'image' in data.mimeType %}
+    <img src="{{ data.path|imagine_filter(filter|default('sylius_admin_product_thumbnail')) }}" class="ui bordered image"/>
+{% else %}
+    <p>{{ data.mimeType }}</p>
+{% endif %}

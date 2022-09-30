@@ -12,6 +12,12 @@ sylius_grid:
                 code: asc
             limits: [10, 25, 50]
             fields:
+                media_file:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.preview
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/image_preview.html.twig"
                 name:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.name
