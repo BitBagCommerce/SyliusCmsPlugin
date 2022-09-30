@@ -32,7 +32,7 @@ jobs:
             php: 8.0
 
           - sylius: ~1.10.0
-            symfony: 4.4
+            symfony: ^4.4
 
           - sylius: ~1.11.0
             php: 7.4
