@@ -27,7 +27,7 @@ services:
         arguments:
             - "@bitbag_sylius_cms_plugin.processor.import"
             - "@form.factory"
-            - "@session.flash_bag"
+            - "@request_stack"
             - "@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"
             - "@translator"
             - "@twig"
@@ -44,7 +44,7 @@ services:
         class: BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelper
         public: true
         arguments:
-            - "@session.flash_bag"
+            - "@request_stack"
             - "@translator"
 
     bitbag_sylius_cms_plugin.controller.media.overriden:

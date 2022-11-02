@@ -46,14 +46,14 @@ final class ImportDataAction
     public function __construct(
         ImportProcessorInterface $importProcessor,
         FormFactoryInterface $formFactory,
-        FlashBagInterface $flashBag,
+        RequestStack $requestStack,
         FormErrorsFlashHelperInterface $formErrorsFlashHelper,
         TranslatorInterface $translator,
         Environment $twig
     ) {
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
-        $this->flashBag = $flashBag;
+        $this->requestStack = $requestStack;
         $this->formErrorsFlashHelper = $formErrorsFlashHelper;
         $this->translator = $translator;
         $this->twig = $twig;
@@ -71,13 +71,14 @@ final class ImportDataAction
                 /** @var UploadedFile $file */
                 $file = $form->get('file')->getData();
                 $resourceName = $request->get('resourceName');
-
+                $session = $this->requestStack->getSession()->getFlashBag();
+                
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $this->flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
+                    $session->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
-                    $this->flashBag->set('error', $exception->getMessage());
+                    $session->set('error', $exception->getMessage());
                 }
             } else {
                 $this->formErrorsFlashHelper->addFlashErrors($form);
