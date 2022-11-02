@@ -16,6 +16,7 @@ services:
         class: BitBag\SyliusCmsPlugin\EventListener\ResourceDeleteSubscriber
         arguments:
             - "@router"
-            - "@session"
+            - "@request_stack"
         tags:
             - { name: kernel.event_subscriber, event: kernel.exception }
+            

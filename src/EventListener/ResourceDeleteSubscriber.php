@@ -15,11 +15,10 @@ use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ResourceDeleteSubscriber implements EventSubscriberInterface
 {
@@ -27,12 +26,12 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
     private $router;
 
     /** @var SessionInterface */
-    private $session;
+    private $requestStack;
 
-    public function __construct(UrlGeneratorInterface $router, SessionInterface $session)
+    public function __construct(UrlGeneratorInterface $router, RequestStack $requestStack)
     {
         $this->router = $router;
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     public static function getSubscribedEvents(): array
@@ -70,8 +69,8 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
             return;
         }
 
-        /** @var FlashBagInterface $flashBag */
-        $flashBag = $this->session->getBag('flashes');
+        $session = $this->requestStack->getSession();
+        $flashBag = $session->getBag('flashes');
         $flashBag->add('error', [
             'message' => 'sylius.resource.delete_error',
             'parameters' => ['%resource%' => $resourceName],

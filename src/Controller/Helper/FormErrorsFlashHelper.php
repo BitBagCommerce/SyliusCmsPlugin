@@ -18,14 +18,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 {
     /** @var FlashBagInterface */
-    private $flashBag;
+    private $requestStack;
 
     /** @var TranslatorInterface */
     private $translator;
 
-    public function __construct(FlashBagInterface $flashBag, TranslatorInterface $translator)
+    public function __construct(RequestStack $requestStack, TranslatorInterface $translator)
     {
-        $this->flashBag = $flashBag;
+        $this->requestStack = $requestStack;
         $this->translator = $translator;
     }
 
@@ -43,6 +43,7 @@ final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 
         $message = $this->translator->trans('bitbag_sylius_cms_plugin.ui.form_was_submitted_with_errors') . ' ' . rtrim(implode(' ', $errors));
 
-        $this->flashBag->set('error', $message);
+        $session = $this->requestStack->getSession()->getFlashBag();
+        $session->set('error', $message);
     }
 }
