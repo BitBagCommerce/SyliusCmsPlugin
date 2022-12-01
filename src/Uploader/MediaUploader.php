@@ -37,11 +37,11 @@ final class MediaUploader implements MediaUploaderInterface
         }
 
         $originalName = null;
-        if($media->getSaveWithOriginalName()) {
+        if ($media->getSaveWithOriginalName()) {
             try {
                 $originalName = $file->getClientOriginalName();
+            } catch (\Exception $unused) {
             }
-            catch(\Exception $unused) {}
         }
 
         do {
@@ -79,7 +79,11 @@ final class MediaUploader implements MediaUploaderInterface
         return false;
     }
 
-    private function expandPath(string $path, string $pathPrefix, ?string $originalName = null): string
+    private function expandPath(
+        string $path,
+        string $pathPrefix,
+        ?string $originalName = null
+    ): string
     {
         return sprintf(
             '%s/%s/%s/%s',
