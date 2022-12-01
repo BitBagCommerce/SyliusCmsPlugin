@@ -36,9 +36,17 @@ final class MediaUploader implements MediaUploaderInterface
             $this->remove($media->getPath());
         }
 
+        $originalName = null;
+        if($media->getSaveWithOriginalName()) {
+            try {
+                $originalName = $file->getClientOriginalName();
+            }
+            catch(\Exception $unused) {}
+        }
+
         do {
             $hash = bin2hex(random_bytes(16));
-            $path = $this->expandPath($hash . '.' . $file->guessExtension(), $pathPrefix);
+            $path = $this->expandPath($hash . '.' . $file->guessExtension(), $pathPrefix, $originalName);
         } while ($this->filesystem->has($path));
 
         $media->setPath('/' . $path);
@@ -71,14 +79,14 @@ final class MediaUploader implements MediaUploaderInterface
         return false;
     }
 
-    private function expandPath(string $path, string $pathPrefix): string
+    private function expandPath(string $path, string $pathPrefix, ?string $originalName = null): string
     {
         return sprintf(
             '%s/%s/%s/%s',
             $pathPrefix,
             substr($path, 0, 2),
             substr($path, 2, 2),
-            substr($path, 4)
+            $originalName ?? substr($path, 4)
         );
     }
 

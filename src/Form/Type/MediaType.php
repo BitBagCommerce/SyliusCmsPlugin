@@ -59,6 +59,9 @@ final class MediaType extends AbstractResourceType
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
             ])
+            ->add('saveWithOriginalName', CheckboxType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.save_with_original_name',
+            ])
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.products',
                 'multiple' => true,

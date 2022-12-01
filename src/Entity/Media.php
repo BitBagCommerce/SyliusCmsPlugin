@@ -58,6 +58,9 @@ class Media implements MediaInterface
     /** @var int|null */
     protected $height;
 
+    /** @var bool|null */
+    protected $saveWithOriginalName;
+
     public function __construct()
     {
         $this->initializeTranslationsCollection();
@@ -209,6 +212,16 @@ class Media implements MediaInterface
     public function setHeight(?int $height): void
     {
         $this->height = $height;
+    }
+
+    public function getSaveWithOriginalName(): ?bool
+    {
+        return $this->saveWithOriginalName;
+    }
+
+    public function setSaveWithOriginalName(?bool $saveWithOriginalName): void
+    {
+        $this->saveWithOriginalName = $saveWithOriginalName;
     }
 
     /**
