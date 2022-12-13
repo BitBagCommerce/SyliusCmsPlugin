@@ -54,3 +54,10 @@ services:
 
     bitbag_sylius_cms_plugin.sorter.sections:
         class: BitBag\SyliusCmsPlugin\Sorter\SectionsSorter
+
+    bitbag_sylius_cms_plugin.media_listener:
+        class: BitBag\SyliusCmsPlugin\EventListener\CmsMediaListener
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'postLoad', entity: 'BitBag\SyliusCmsPlugin\Entity\Media' }
+        arguments:
+            - "@liip_imagine.cache.manager"

@@ -51,9 +51,7 @@ trait ResourceDataProcessingTrait
         if (!$this->cacheManager->isStored($media->getPath(), $this::FILTER)) {
             $this->cacheManager->store($this->dataManager->find($this::FILTER, $media->getPath()), $media->getPath(), $this::FILTER);
         }
-        $resolvedPath = $this->cacheManager->resolve($media->getPath(), $this::FILTER);
-        $fileContents = file_get_contents($resolvedPath);
-        Assert::string($fileContents);
+        $fileContents = $this->dataManager->find($this::FILTER, $media->getPath())->getContent();
         $this->setFileContentsAsMediaPath($media, $fileContents);
     }
 
@@ -76,8 +74,8 @@ trait ResourceDataProcessingTrait
     private function getMediaPathIfNotNull(MediaInterface $media): string
     {
         Assert::string($media->getPath());
-        Assert::string($this->getParameter('sylius_core.public_dir'));
+        Assert::string($this->getParameter('bitbag_sylius_cms_plugin.uploader.filesystem'));
 
-        return $this->getParameter('sylius_core.public_dir') . $media->getPath();
+        return 'gaufrette://' . $this->getParameter('bitbag_sylius_cms_plugin.uploader.filesystem') . '/' . $media->getPath();
     }
 }

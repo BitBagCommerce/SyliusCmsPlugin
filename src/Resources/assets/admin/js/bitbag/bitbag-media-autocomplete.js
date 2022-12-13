@@ -147,7 +147,7 @@ export class HandleAutoComplete {
         const selectMenu = mediaContainer.querySelector(this.selectMenu);
         selectMenu.innerHTML = '';
         arr?.forEach((item) => {
-            selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
+            selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.imaginePaths.tiny, item.code.trim()));
         });
         triggerCustomEvent(mediaContainer, 'cms.media.display.update.end');
     }

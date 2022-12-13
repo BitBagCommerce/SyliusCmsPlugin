@@ -41,7 +41,7 @@ final class MediaUploader implements MediaUploaderInterface
             $path = $this->expandPath($hash . '.' . $file->guessExtension(), $pathPrefix);
         } while ($this->filesystem->has($path));
 
-        $media->setPath('/' . $path);
+        $media->setPath($path);
         $media->setMimeType($file->getMimeType());
         $file = $media->getFile();
         Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));

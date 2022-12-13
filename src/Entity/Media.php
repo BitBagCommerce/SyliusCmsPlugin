@@ -58,6 +58,9 @@ class Media implements MediaInterface
     /** @var int|null */
     protected $height;
 
+    /** @var array */
+    public $imaginePaths = [];
+
     public function __construct()
     {
         $this->initializeTranslationsCollection();

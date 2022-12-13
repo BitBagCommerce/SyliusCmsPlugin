@@ -17,7 +17,6 @@ use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -59,15 +58,13 @@ final class MediaController extends ResourceController
         /** @var MediaInterface|null $media */
         $media = $this->getMediaForRequestCode($configuration, $request);
         Assert::notNull($media);
+        Assert::notNull($media->getPath());
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $media);
-        $mediaPath = $this->getMediaPathIfNotNull($media);
-        $mediaFile = new File($mediaPath);
-        $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();
-        $response = new BinaryFileResponse($mediaPath);
+        $response = new BinaryFileResponse('gaufrette://' . $this->getParameter('bitbag_sylius_cms_plugin.uploader.filesystem') . '/' . $media->getPath());
 
         $response->setContentDisposition(
             $request->get('disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT),
-            $mediaName
+            $media->getDownloadName() . '.' . pathinfo($media->getPath(), \PATHINFO_EXTENSION),
         );
         $response->headers->set('Content-Type', $media->getMimeType());
 

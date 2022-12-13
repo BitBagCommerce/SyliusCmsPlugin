@@ -1,6 +1,12 @@
 <h2>{{ media.name|raw }}</h2>
 
-<img class="ui fluid image" src="{{ media.path }}" alt="{{ media.name }}"
+{% if page.image.path starts with 'data:' %}
+    {% set src = page.image.path %}
+{% else %}
+    {% set src = page.image.path|imagine_filter('sylius_large') %}
+{% endif %}
+
+<img class="ui fluid image" src="{{ src }}" alt="{{ media.name }}"
     {% if media.width is not null %} width="{{ media.width }}" {% endif %}
     {% if media.height is not null %} height="{{ media.height }}" {% endif %}
 />

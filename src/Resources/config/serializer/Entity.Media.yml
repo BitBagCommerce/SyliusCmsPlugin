@@ -15,6 +15,10 @@ BitBag\SyliusCmsPlugin\Entity\Media:
             expose: true
             type: string
             groups: [Autocomplete]
+        imaginePaths:
+            expose: true
+            type: array
+            groups: [Autocomplete]
     relations:
         -
             rel: self
