@@ -11,4 +11,4 @@ sylius_shop_default_locale:
     path: /
     methods: [GET]
     defaults:
-        _controller: sylius.controller.shop.locale_switch:switchAction
+        _controller: sylius.controller.shop.locale_switch::switchAction

@@ -10,4 +10,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.section
             filters:
-                tags: "@managing_sections && @ui"
+                tags: "@managing_sections&&@ui"

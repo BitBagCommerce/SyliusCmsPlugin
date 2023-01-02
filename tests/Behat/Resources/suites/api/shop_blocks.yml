@@ -12,4 +12,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.api.block
             filters:
-                tags: "@shop_blocks && @api"
+                tags: "@shop_blocks&&@api"

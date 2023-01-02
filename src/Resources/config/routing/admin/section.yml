@@ -22,7 +22,7 @@ bitbag_sylius_cms_plugin_admin_ajax_section_by_name_phrase:
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.section:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.section::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -37,7 +37,7 @@ bitbag_sylius_cms_plugin_admin_ajax_section_by_code:
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.section:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.section::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true

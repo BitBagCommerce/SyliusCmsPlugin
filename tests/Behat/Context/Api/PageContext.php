@@ -14,13 +14,15 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
+use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
 {
-    private $apiClient;
+    private ApiClientInterface $apiClient;
 
-    private $responseChecker;
+    private ResponseCheckerInterface $responseChecker;
 
     public function __construct(
         ApiClientInterface $apiClient,
@@ -35,7 +37,7 @@ final class PageContext implements Context
      */
     public function iWantToBrowsePages(): void
     {
-        $this->apiClient->index();
+        $this->apiClient->index(Resources::PAGES);
     }
 
     /**
@@ -59,7 +61,7 @@ final class PageContext implements Context
     {
         Assert::true(
             $this->responseChecker->hasItemWithTranslation(
-                $this->apiClient->index(),
+                $this->apiClient->index(Resources::PAGES),
                 'en_US',
                 'name',
                 $page
@@ -73,7 +75,11 @@ final class PageContext implements Context
      */
     public function iOpenPage(PageInterface $page): void
     {
-        $this->apiClient->show((string) $page->getId());
+        if (SyliusKernel::MINOR_VERSION === '11') {
+            $this->apiClient->show((string) $page->getId());
+        } else {
+            $this->apiClient->show(Resources::PAGES, (string) $page->getId());
+        }
     }
 
     /**

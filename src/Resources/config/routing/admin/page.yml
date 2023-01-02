@@ -21,7 +21,7 @@ bitbag_sylius_cms_plugin_admin_page_preview:
     path: /page/preview/{id}
     methods: [GET, POST, PUT]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden:previewAction
+        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::previewAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Page/preview.html.twig"
         id: null

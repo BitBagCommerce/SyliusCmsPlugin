@@ -13,4 +13,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.api.media
             filters:
-                tags: "@shop_media && @api"
+                tags: "@shop_media&&@api"

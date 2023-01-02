@@ -12,13 +12,14 @@ namespace BitBag\SyliusCmsPlugin\Controller\Helper;
 
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 {
-    /** @var FlashBagInterface */
     private $requestStack;
+
+    /** @var RequestStack */
 
     /** @var TranslatorInterface */
     private $translator;

@@ -14,13 +14,14 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
 final class SectionContext implements Context
 {
-    private $apiClient;
+    private ApiClientInterface $apiClient;
 
-    private $responseChecker;
+    private ResponseCheckerInterface $responseChecker;
 
     public function __construct(
         ApiClientInterface $apiClient,
@@ -35,7 +36,7 @@ final class SectionContext implements Context
      */
     public function iWantToBrowseSections(): void
     {
-        $this->apiClient->index();
+        $this->apiClient->index(Resources::SECTIONS);
     }
 
     /**
@@ -57,7 +58,7 @@ final class SectionContext implements Context
      */
     public function iShouldSeeSectionWithCode(SectionInterface $section): void
     {
-        $this->apiClient->show((string) $section->getId());
+        $this->apiClient->show(Resources::SECTIONS, (string) $section->getId());
     }
 
     /**
