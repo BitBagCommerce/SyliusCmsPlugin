@@ -17,9 +17,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 {
-    private $requestStack;
-
     /** @var RequestStack */
+    private $requestStack;
 
     /** @var TranslatorInterface */
     private $translator;
