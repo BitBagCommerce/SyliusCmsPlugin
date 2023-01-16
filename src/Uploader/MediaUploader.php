@@ -38,10 +38,7 @@ final class MediaUploader implements MediaUploaderInterface
 
         $originalName = null;
         if ($media->getSaveWithOriginalName()) {
-            try {
-                $originalName = $file->getClientOriginalName();
-            } catch (\Exception $unused) {
-            }
+            $originalName = $file->getClientOriginalName();
         }
 
         do {
