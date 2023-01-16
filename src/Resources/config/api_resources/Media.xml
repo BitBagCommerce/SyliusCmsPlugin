@@ -41,6 +41,7 @@
         <property name="enabled" identifier="false" writable="false"/>
         <property name="width" identifier="false" writable="false"/>
         <property name="height" identifier="false" writable="false"/>
+        <property name="saveWithOriginalName" identifier="false" writable="false"/>
         <property name="sections" identifier="false" writable="false"/>
         <property name="products" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>

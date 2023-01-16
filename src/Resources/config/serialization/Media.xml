@@ -28,6 +28,9 @@
         <attribute name="height">
             <group>shop:cms:read</group>
         </attribute>
+        <attribute name="saveWithOriginalName">
+            <group>shop:cms:read</group>
+        </attribute>
         <attribute name="sections">
             <group>shop:cms:read</group>
         </attribute>
