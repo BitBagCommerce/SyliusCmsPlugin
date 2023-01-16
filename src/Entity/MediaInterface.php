@@ -81,7 +81,7 @@ interface MediaInterface extends
 
     public function setHeight(?int $height): void;
 
-    public function getSaveWithOriginalName(): ?bool;
+    public function getSaveWithOriginalName(): bool;
 
-    public function setSaveWithOriginalName(?bool $saveWithOriginalName): void;
+    public function setSaveWithOriginalName(bool $saveWithOriginalName): void;
 }
