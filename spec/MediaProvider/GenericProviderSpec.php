@@ -17,21 +17,21 @@ use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use PhpSpec\ObjectBehavior;
 use Twig\Environment;
 
-final class FileProviderSpec extends ObjectBehavior
+final class GenericProviderSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         MediaUploaderInterface $uploader,
         Environment $twigEngine
     ) {
         $this->beConstructedWith($uploader, $twigEngine, '@Template', '/media/');
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(GenericProvider::class);
     }
 
-    function it_implements_provider_interface(): void
+    public function it_implements_provider_interface(): void
     {
         $this->shouldHaveType(ProviderInterface::class);
     }
@@ -40,7 +40,7 @@ final class FileProviderSpec extends ObjectBehavior
     {
         $twigEngine->render('@Template', ['media' => $media, 'config' => []])->willReturn('content');
 
-        $this->render($media, ['config' => []])->shouldReturn('content');
+        $this->render($media, '@Template', ['config' => []])->shouldReturn('content');
     }
 
     public function it_uploads(MediaInterface $media, MediaUploaderInterface $uploader): void
