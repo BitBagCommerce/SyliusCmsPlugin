@@ -45,6 +45,7 @@ final class MediaFixture extends AbstractFixture
                             ->integerNode('number')->defaultNull()->end()
                             ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
                             ->scalarNode('path')->isRequired()->cannotBeEmpty()->end()
+                            ->scalarNode('original_name')->isRequired()->cannotBeEmpty()->end()
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('productCodes')->scalarPrototype()->end()->end()
                             ->arrayNode('sections')->scalarPrototype()->end()->end()

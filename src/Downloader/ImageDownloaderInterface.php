@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Downloader;
 
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface ImageDownloaderInterface
 {
-    public function download(string $url): File;
+    public function download(string $url): UploadedFile;
 }

@@ -18,7 +18,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
@@ -88,7 +88,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media->setType($mediaData['type']);
         $media->setCode($code);
         $media->setEnabled($mediaData['enabled']);
-        $media->setFile(new File($mediaData['path']));
+        $media->setFile(new UploadedFile($mediaData['path'], $mediaData['original_name']));
 
         $this->mediaProviderResolver->resolveProvider($media)->upload($media);
 

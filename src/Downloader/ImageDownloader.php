@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Downloader;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Webmozart\Assert\Assert;
 
 final class ImageDownloader implements ImageDownloaderInterface
@@ -24,11 +24,13 @@ final class ImageDownloader implements ImageDownloaderInterface
         $this->filesystem = $filesystem;
     }
 
-    public function download(string $url): File
+    public function download(string $url): UploadedFile
     {
         $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10));
         $pathInfo = pathinfo($url);
         $extension = $pathInfo['extension'] ?? null;
+        $originalName = $pathInfo['basename'] ?? '';
+
         if (null !== $extension) {
             $path .= '.' . $extension;
         }
@@ -36,6 +38,6 @@ final class ImageDownloader implements ImageDownloaderInterface
         Assert::string($contents, sprintf('Content of file in path %s is null', $path));
         $this->filesystem->dumpFile($path, $contents);
 
-        return new File($path);
+        return new UploadedFile($path, $originalName);
     }
 }
