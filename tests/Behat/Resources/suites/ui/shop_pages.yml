@@ -11,4 +11,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.shop.page
             filters:
-                tags: "@shop_pages && @ui"
+                tags: "@shop_pages&&@ui"

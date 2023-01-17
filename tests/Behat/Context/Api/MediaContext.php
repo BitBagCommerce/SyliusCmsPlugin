@@ -14,13 +14,14 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
 {
-    private $apiClient;
+    private ApiClientInterface $apiClient;
 
-    private $responseChecker;
+    private ResponseCheckerInterface $responseChecker;
 
     public function __construct(
         ApiClientInterface $apiClient,
@@ -35,7 +36,7 @@ final class MediaContext implements Context
      */
     public function iWantToBrowseMedia(): void
     {
-        $this->apiClient->index();
+        $this->apiClient->index(Resources::MEDIA);
     }
 
     /**
@@ -57,7 +58,7 @@ final class MediaContext implements Context
      */
     public function iShouldSeeTheMedia(MediaInterface $media): void
     {
-        $this->apiClient->show((string) $media->getId());
+        $this->apiClient->show(Resources::MEDIA, (string) $media->getId());
     }
 
     /**

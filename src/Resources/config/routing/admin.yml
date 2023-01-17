@@ -26,7 +26,7 @@ bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     path: /page/generate-slug
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page_slug:generateAction
+        _controller: bitbag_sylius_cms_plugin.controller.page_slug::generateAction
 
 bitbag_sylius_cms_plugin_admin_import_data:
     path: /import/{resourceName}

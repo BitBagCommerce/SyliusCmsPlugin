@@ -14,15 +14,14 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestionInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
-    /** @var ApiClientInterface */
-    private $apiClient;
+    private ApiClientInterface $apiClient;
 
-    /** @var ResponseCheckerInterface */
-    private $responseChecker;
+    private ResponseCheckerInterface $responseChecker;
 
     public function __construct(
         ApiClientInterface $apiClient,
@@ -37,7 +36,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iWantToBrowseFAQs(): void
     {
-        $this->apiClient->index();
+        $this->apiClient->index(Resources::FAQ);
     }
 
     /**
@@ -60,7 +59,7 @@ final class FrequentlyAskedQuestionContext implements Context
     {
         Assert::true(
             $this->responseChecker->hasItemWithValue(
-                $this->apiClient->index(),
+                $this->apiClient->index(Resources::FAQ),
                 'code',
                 $code
             ),
@@ -73,7 +72,7 @@ final class FrequentlyAskedQuestionContext implements Context
      */
     public function iViewFaqWithCode(FrequentlyAskedQuestionInterface $faq): void
     {
-        $this->apiClient->show((string) $faq->getId());
+        $this->apiClient->show(Resources::FAQ, (string) $faq->getId());
     }
 
     /**

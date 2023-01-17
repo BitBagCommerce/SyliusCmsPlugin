@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "chart.js": "^3.7.1",
+    "jquery": "^3.5.0",
+    "jquery.dirtyforms": "^2.0.0",
+    "lightbox2": "^2.9.0",
+    "semantic-ui-css": "^2.2.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "dedent": "^0.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "merge-stream": "^1.0.0",
+    "sass": "^1.39.2",
+    "sass-loader": "^12.1.0"
+  },
+  "scripts": {
+    "dev": "yarn encore dev",
+    "watch": "yarn encore dev --watch",
+    "prod": "yarn encore prod",
+    "lint": "yarn lint:js",
+    "lint:js": "eslint gulpfile.babel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sylius/Sylius.git"
+  },
+  "author": "Paweł Jędrzejewski",
+  "license": "MIT"
+}

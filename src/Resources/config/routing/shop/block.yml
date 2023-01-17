@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_shop_block_render:
     path: /block/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block:renderBlockAction
+        _controller: bitbag_sylius_cms_plugin.controller.block::renderBlockAction
         _sylius:
             repository:
                 method: findOneByCode
@@ -13,7 +13,7 @@ bitbag_sylius_cms_plugin_shop_block_index_by_section_code:
     path: /blocks/section/{sectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
         _sylius:
             template: $template
             repository:
@@ -27,7 +27,7 @@ bitbag_sylius_cms_plugin_shop_block_index_by_product_code:
     path: /blocks/product/{productCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
         _sylius:
             template: $template
             repository:

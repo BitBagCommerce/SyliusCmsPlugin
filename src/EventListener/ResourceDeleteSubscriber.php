@@ -15,24 +15,22 @@ use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ResourceDeleteSubscriber implements EventSubscriberInterface
 {
-    /** @var UrlGeneratorInterface */
-    private $router;
+    private UrlGeneratorInterface $router;
 
-    /** @var SessionInterface */
-    private $session;
+    private RequestStack $requestStack;
 
-    public function __construct(UrlGeneratorInterface $router, SessionInterface $session)
+    public function __construct(UrlGeneratorInterface $router, RequestStack $requestStack)
     {
         $this->router = $router;
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     public static function getSubscribedEvents(): array
@@ -49,7 +47,7 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (!$event->isMasterRequest() || 'html' !== $event->getRequest()->getRequestFormat()) {
+        if (!$event->isMainRequest() || 'html' !== $event->getRequest()->getRequestFormat()) {
             return;
         }
 
@@ -70,8 +68,9 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
             return;
         }
 
+        $session = $this->requestStack->getSession();
         /** @var FlashBagInterface $flashBag */
-        $flashBag = $this->session->getBag('flashes');
+        $flashBag = $session->getBag('flashes');
         $flashBag->add('error', [
             'message' => 'sylius.resource.delete_error',
             'parameters' => ['%resource%' => $resourceName],

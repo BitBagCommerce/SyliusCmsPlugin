@@ -9,4 +9,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.shop.homepage_blocks
             filters:
-                tags: "@shop_blocks && @ui"
+                tags: "@shop_blocks&&@ui"

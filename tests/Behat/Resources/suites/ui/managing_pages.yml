@@ -13,4 +13,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.page
             filters:
-                tags: "@managing_pages && @ui"
+                tags: "@managing_pages&&@ui"

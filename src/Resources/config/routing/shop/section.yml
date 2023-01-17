@@ -2,7 +2,7 @@ bitbag_sylius_cms_plugin_shop_section_show:
     path: /section/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.section:showAction
+        _controller: bitbag_sylius_cms_plugin.controller.section::showAction
         _sylius:
             template: $template
             repository:
@@ -15,7 +15,7 @@ bitbag_sylius_cms_plugin_shop_section_show_codes:
     path: /sections/{codes}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.section:indexAction
+        _controller: bitbag_sylius_cms_plugin.controller.section::indexAction
         _sylius:
             template: $template
             repository:

@@ -11,4 +11,4 @@ default:
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.block
             filters:
-                tags: "@managing_blocks && @ui"
+                tags: "@managing_blocks&&@ui"

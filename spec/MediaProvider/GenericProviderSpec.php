@@ -19,19 +19,19 @@ use Twig\Environment;
 
 final class GenericProviderSpec extends ObjectBehavior
 {
-    public function let(
+    function let(
         MediaUploaderInterface $uploader,
         Environment $twigEngine
     ) {
         $this->beConstructedWith($uploader, $twigEngine, '@Template', '/media/');
     }
 
-    public function it_is_initializable(): void
+    function it_is_initializable(): void
     {
         $this->shouldHaveType(GenericProvider::class);
     }
 
-    public function it_implements_provider_interface(): void
+    function it_implements_provider_interface(): void
     {
         $this->shouldHaveType(ProviderInterface::class);
     }

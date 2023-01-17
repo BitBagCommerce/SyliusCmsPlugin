@@ -18,8 +18,9 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
@@ -31,8 +32,8 @@ final class ImportDataAction
     /** @var FormFactoryInterface */
     private $formFactory;
 
-    /** @var FlashBagInterface */
-    private $flashBag;
+    /** @var RequestStack */
+    private $requestStack;
 
     /** @var FormErrorsFlashHelperInterface */
     private $formErrorsFlashHelper;
@@ -46,14 +47,14 @@ final class ImportDataAction
     public function __construct(
         ImportProcessorInterface $importProcessor,
         FormFactoryInterface $formFactory,
-        FlashBagInterface $flashBag,
+        RequestStack $requestStack,
         FormErrorsFlashHelperInterface $formErrorsFlashHelper,
         TranslatorInterface $translator,
         Environment $twig
     ) {
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
-        $this->flashBag = $flashBag;
+        $this->requestStack = $requestStack;
         $this->formErrorsFlashHelper = $formErrorsFlashHelper;
         $this->translator = $translator;
         $this->twig = $twig;
@@ -71,13 +72,16 @@ final class ImportDataAction
                 /** @var UploadedFile $file */
                 $file = $form->get('file')->getData();
                 $resourceName = $request->get('resourceName');
+                /** @var Session $session */
+                $session = $this->requestStack->getSession();
+                $flashBag = $session->getFlashBag();
 
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $this->flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
+                    $flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
-                    $this->flashBag->set('error', $exception->getMessage());
+                    $flashBag->set('error', $exception->getMessage());
                 }
             } else {
                 $this->formErrorsFlashHelper->addFlashErrors($form);

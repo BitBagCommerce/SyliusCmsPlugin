@@ -1,2 +1,0 @@
-framework:
-    templating: { engines: ["twig"] }
