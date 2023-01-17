@@ -14,7 +14,7 @@ use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Webmozart\Assert\Assert;
 
 class Media implements MediaInterface
@@ -43,7 +43,7 @@ class Media implements MediaInterface
     /** @var string|null */
     protected $path;
 
-    /** @var File|null */
+    /** @var UploadedFile|null */
     protected $file;
 
     /** @var string|null */
@@ -60,6 +60,9 @@ class Media implements MediaInterface
 
     /** @var array */
     public $imaginePaths = [];
+
+    /** @var bool */
+    protected $saveWithOriginalName = false;
 
     public function __construct()
     {
@@ -104,12 +107,12 @@ class Media implements MediaInterface
         $this->path = $path;
     }
 
-    public function getFile(): ?File
+    public function getFile(): ?UploadedFile
     {
         return $this->file;
     }
 
-    public function setFile(?File $file): void
+    public function setFile(?UploadedFile $file): void
     {
         $this->file = $file;
     }
@@ -212,6 +215,16 @@ class Media implements MediaInterface
     public function setHeight(?int $height): void
     {
         $this->height = $height;
+    }
+
+    public function getSaveWithOriginalName(): bool
+    {
+        return $this->saveWithOriginalName;
+    }
+
+    public function setSaveWithOriginalName(bool $saveWithOriginalName): void
+    {
+        $this->saveWithOriginalName = $saveWithOriginalName;
     }
 
     /**

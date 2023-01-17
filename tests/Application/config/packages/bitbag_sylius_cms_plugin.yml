@@ -130,6 +130,7 @@ sylius_fixtures:
                             homepage_header_image:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
+                                original_name: "homepage_header.jpeg"
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
@@ -147,6 +148,7 @@ sylius_fixtures:
                             homepage_video:
                                 type: video
                                 path: "%fixtures_dir%/homepage_video.mp4"
+                                original_name: "homepage_video.mp4"
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
@@ -164,6 +166,7 @@ sylius_fixtures:
                             homepage_pdf:
                                 type: file
                                 path: "%fixtures_dir%/BitBagOffer.pdf"
+                                original_name: "BitBagOffer.pdf"
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
@@ -181,16 +184,19 @@ sylius_fixtures:
                                 - "FASHION_WEB"
                                 type: image
                                 path: "%fixtures_dir%/size_table.jpeg"
+                                original_name: "size_table.jpeg"
                             sale:
                                 channels:
                                 - "FASHION_WEB"
                                 type: image
                                 path: "%fixtures_dir%/sale.jpeg"
+                                original_name: "sale.jpeg"
                                 sections:
                                 - "products"
                             media_with_products:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
+                                original_name: "homepage_header.jpeg"
                                 channels:
                                 - "FASHION_WEB"
                                 productCodes:
@@ -202,6 +208,7 @@ sylius_fixtures:
                                 - "FASHION_WEB"
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
+                                original_name: "homepage_header.jpeg"
                                 translations:
                                     en_US:
                                         name: Custom media template

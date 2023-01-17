@@ -14,7 +14,7 @@ use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface MediaInterface extends
     ResourceInterface,
@@ -41,9 +41,9 @@ interface MediaInterface extends
 
     public function setPath(?string $path): void;
 
-    public function getFile(): ?File;
+    public function getFile(): ?UploadedFile;
 
-    public function setFile(?File $file): void;
+    public function setFile(?UploadedFile $file): void;
 
     public function hasFile(): bool;
 
@@ -80,4 +80,8 @@ interface MediaInterface extends
     public function getHeight(): ?int;
 
     public function setHeight(?int $height): void;
+
+    public function getSaveWithOriginalName(): bool;
+
+    public function setSaveWithOriginalName(bool $saveWithOriginalName): void;
 }
