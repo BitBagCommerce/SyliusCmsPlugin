@@ -10,17 +10,18 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Parser;
 
+use Twig\Environment;
 use Webmozart\Assert\Assert;
 
 final class ContentParser implements ContentParserInterface
 {
-    /** @var \Twig_Environment */
+    /** @var Environment */
     private $twigEnvironment;
 
     /** @var array */
     private $enabledFunctions;
 
-    public function __construct(\Twig_Environment $twigEnvironment, array $enabledFunctions)
+    public function __construct(Environment $twigEnvironment, array $enabledFunctions)
     {
         $this->twigEnvironment = $twigEnvironment;
         $this->enabledFunctions = $enabledFunctions;
