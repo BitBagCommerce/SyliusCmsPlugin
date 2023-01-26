@@ -84,8 +84,14 @@ export class HandleAutoComplete {
             return;
         }
 
-        const url = `${mediaContainer.dataset.bbCmsLoadEditUrl}?code=${
-            mediaContainer.querySelector('input[type=hidden]').value
+        const url = `${mediaContainer.dataset.bbCmsLoadEditUrl}?${
+            mediaContainer
+                .querySelector('input[type=hidden]')
+                .value
+                .split(',')
+                .filter(String)
+                .map(value => `code[]=${value}`)
+                .join('&')
         }`;
 
         try {
@@ -96,7 +102,10 @@ export class HandleAutoComplete {
             const data = await res.json();
 
             this._addToSelectMenu(data, mediaContainer);
-            mediaContainer.querySelector(this.selectMenu)?.firstChild?.click();
+            let children = mediaContainer.querySelector(this.selectMenu)?.children
+            for (let child of children) {
+                child.click();
+            }
 
             triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.completed', data);
         } catch (error) {
