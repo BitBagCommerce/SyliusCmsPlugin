@@ -1,0 +1,54 @@
+bitbag_sylius_cms_plugin:
+    ui:
+        blocks: Блоки
+        pages: Сторінки
+        content_management: Наповнення
+        cms: Управління Наповненням
+        enabled: Вкл
+        blocks_header: Блоки
+        blocks_subheader: Управління блоками
+        pages_header: Сторінки
+        pages_subheader: Управління сторінками
+        products: Товари
+        page_related_products: Супутні товари
+        name: Назва
+        slug: Шлях
+        meta_keywords: Ключові слова (мета)
+        meta_description: Опис (мета)
+        content: Вміст
+        faq: FAQ
+        code: Код
+        contents: Містить
+        images: Зображення
+        image: Зображення
+        link: Посилання
+        faq_header: FAQ
+        faq_subheader: Управління FAQ
+        frequently_asked_questions: FAQ
+        question: Питання
+        answer: Відповідь
+        sections: Розділи
+        sections_header: Розділи
+        sections_subheader: Управління розділами
+        position: Позиція
+        channels: Канали
+        preview: Попередній перегляд
+        download: Завантажити
+        name_when_linked: Назва у списку
+        description_when_linked: Опис у списку
+        media: Медіа
+        media_header: Медіа
+        media_subheader: Управління цифровим контентом
+        type: Тип
+        file: Файл
+        alt: Альт
+        description: Опис
+        file_provider: Файл
+        image_provider: Зображення
+        video_provider: Відео
+        read_more: Детальніше
+        breadcrumb: Хлібні крихти
+        import: Імпорт
+        csv_file: CSV файл
+        successfully_imported: Дані успішно імпортовані
+        title: заголовок
