@@ -38,3 +38,9 @@ bitbag_sylius_cms_plugin_admin_upload_editor_image:
     path: /editor/upload-image
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image
+
+bitbag_sylius_cms_plugin_admin_retrieve_package_info:
+    path: /retrieve-package-info
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info
