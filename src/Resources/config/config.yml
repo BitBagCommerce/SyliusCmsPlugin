@@ -43,3 +43,11 @@ liip_imagine:
             filesystem:
                 data_root:
                     - "%kernel.project_dir%/public"
+
+sylius_ui:
+    events:
+        sylius.admin.layout.javascripts:
+            blocks:
+                version_script:
+                    template: "@BitBagSyliusCmsPlugin/Asset/_versionScript.html.twig"
+                    priority: 10
