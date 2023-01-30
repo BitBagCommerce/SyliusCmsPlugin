@@ -67,3 +67,7 @@ services:
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
             - setCacheManager: ["@liip_imagine.cache.manager"]
             - setDataManager: ["@liip_imagine.data.manager"]
+
+    bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info:
+        public: true
+        class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\RetrievePackageInfoAction
