@@ -31,3 +31,8 @@ twig:
     form_themes:
         - 'path to your configuration'
 ```
+
+## Extras
+
+Some problems explained and solved in this [issue](https://github.com/BitBagCommerce/SyliusCmsPlugin/issues/411)
+
