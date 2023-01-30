@@ -49,5 +49,5 @@ sylius_ui:
         sylius.admin.layout.javascripts:
             blocks:
                 version_script:
-                    template: "@BitBagSyliusCmsPlugin/Asset/_versionScript.html.twig"
-                    priority: 10
+                    template: "@BitBagSyliusCmsPlugin/Asset/_cmsVersionScript.html.twig"
+                    priority: 30
