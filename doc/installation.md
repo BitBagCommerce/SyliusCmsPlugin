@@ -126,11 +126,20 @@ Any other approach, that will allow cms pages to read this value in js, under "r
 ```bash
 $ composer install
 $ cd tests/Application
+```
+Copy file `package.json.~1.XX.0.dist` to `package.json` where `~1.XX.0` is the Sylius version you are using.
+
+```bash
+$ cp package.json.~1.12.0.dist package.json
+```
+
+```bash
 $ yarn install
-$ yarn run gulp
-$ bin/console assets:install public -e test
-$ bin/console doctrine:schema:create -e test
-$ bin/console server:run 127.0.0.1:8080 -d public -e test
+$ yarn encore dev
+$ APP_ENV=test bin/console assets:install
+$ APP_ENV=test bin/console doctrine:schema:create
+$ APP_ENV=test symfony server:start --port=8080 -d
+$ cd ../..
 $ open http://localhost:8080
 $ vendor/bin/behat
 $ vendor/bin/phpspec run
