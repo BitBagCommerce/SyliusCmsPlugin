@@ -33,8 +33,9 @@ Feature: Managing cms pages
     @ui
     Scenario: Updating page with image
         Given there is a page in the store
+        And there is an existing "image" media with "aston-martin" code
         When I want to edit this page
         And I fill "Code, Content" fields
-        And I upload the "aston_martin_db_11.jpg" image
+        And I choose "aston-martin" media as image
         And I update it
         Then I should be notified that the page was updated

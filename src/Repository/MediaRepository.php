@@ -18,10 +18,11 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class MediaRepository extends EntityRepository implements MediaRepositoryInterface
 {
-    public function createListQueryBuilder(): QueryBuilder
+    public function createListQueryBuilder(string $locale): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
+            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->setParameter('locale', $locale)
         ;
     }
 

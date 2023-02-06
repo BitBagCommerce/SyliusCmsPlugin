@@ -13,15 +13,17 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
+use BitBag\SyliusCmsPlugin\Entity\Media;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageImage;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -51,8 +53,8 @@ final class PageContext implements Context
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /** @var ImageUploaderInterface */
-    private $imageUploader;
+    /** @var MediaUploaderInterface */
+    private $mediaUploader;
 
     public function __construct(
         SharedStorageInterface $sharedStorage,
@@ -62,7 +64,8 @@ final class PageContext implements Context
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
-        ImageUploaderInterface $imageUploader
+        MediaUploaderInterface $mediaUploader
+
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
@@ -71,7 +74,7 @@ final class PageContext implements Context
         $this->entityManager = $entityManager;
         $this->productRepository = $productRepository;
         $this->sectionRepository = $sectionRepository;
-        $this->imageUploader = $imageUploader;
+        $this->mediaUploader = $mediaUploader;
     }
 
     /**
@@ -253,14 +256,17 @@ final class PageContext implements Context
         return $page;
     }
 
-    private function uploadImage(string $name): ImageInterface
+    private function uploadImage(string $name): MediaInterface
     {
-        $image = new PageImage();
+        $image = new Media();
+        $image->setCode('test');
+        $image->setType('image');
+
         $uploadedImage = new UploadedFile(__DIR__ . '/../../Resources/images/' . $name, $name);
 
         $image->setFile($uploadedImage);
 
-        $this->imageUploader->upload($image);
+        $this->mediaUploader->upload($image,'/tests/Application/Resources/images/' );
 
         return $image;
     }

@@ -32,8 +32,7 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         MediaRepositoryInterface $mediaRepository,
         ChannelContextInterface $channelContext,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->mediaRepository = $mediaRepository;
         $this->channelContext = $channelContext;
         $this->logger = $logger;

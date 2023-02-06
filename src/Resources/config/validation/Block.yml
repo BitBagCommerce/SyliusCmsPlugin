@@ -15,5 +15,9 @@ BitBag\SyliusCmsPlugin\Entity\Block:
                 minMessage: 'bitbag_sylius_cms_plugin.block.code.min_length'
                 maxMessage: 'bitbag_sylius_cms_plugin.block.code.max_length'
                 groups: ['bitbag']
+            - Regex:
+                  pattern: '/^[\w-]*$/'
+                  message: 'bitbag_sylius_cms_plugin.block.code.regex'
+                  groups: [ 'bitbag' ]
         translations:
             - Valid: ~

@@ -64,10 +64,13 @@ final class MediaController extends ResourceController
 
         $mediaPath = $this->getParameter('sylius_core.public_dir') . '/' . $media->getPath();
         $mediaFile = new File($mediaPath);
-        $mediaName = $media->getName() . '.' . $mediaFile->guessExtension();
+        $mediaName = $media->getDownloadName() . '.' . $mediaFile->guessExtension();
         $response = new BinaryFileResponse($mediaPath);
 
-        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $mediaName);
+        $response->setContentDisposition(
+            $request->get('disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT),
+            $mediaName
+        );
         $response->headers->set('Content-Type', $media->getMimeType());
 
         return $response;

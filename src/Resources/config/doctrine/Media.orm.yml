@@ -30,6 +30,15 @@ BitBag\SyliusCmsPlugin\Entity\Media:
         enabled:
             column: enabled
             type: boolean
+        width:
+            column: width
+            type: integer
+            nullable: true
+        height:
+            column: height
+            type: integer
+            nullable: true
+
     manyToMany:
         sections:
             targetEntity: BitBag\SyliusCmsPlugin\Entity\SectionInterface

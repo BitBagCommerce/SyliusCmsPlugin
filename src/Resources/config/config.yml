@@ -1,9 +1,11 @@
 imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services.yml" }
 
 parameters:
+    sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
 
 jms_serializer:
@@ -22,3 +24,17 @@ knp_gaufrette:
     filesystems:
         bitbag_sylius_cms_plugin_media:
             adapter: "%bitbag_sylius_cms_plugin.uploader.filesystem%"
+
+sylius_ui:
+    events:
+        sylius.admin.layout.javascripts:
+            blocks:
+                javascripts:
+                    template: "@BitBagSyliusCmsPlugin/_javascripts.html.twig"
+                    priority: 10
+liip_imagine:
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%kernel.project_dir%/public"

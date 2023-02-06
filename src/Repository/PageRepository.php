@@ -103,9 +103,9 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByProduct(ProductInterface $product, string $channelCode): array
+    public function findByProduct(ProductInterface $product, string $channelCode, ?\DateTimeInterface $date = null): array
     {
-        return $this->createQueryBuilder('o')
+        $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.channels', 'channel')
             ->where('o.enabled = true')
@@ -113,6 +113,13 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->andWhere('channel.code = :channelCode')
             ->setParameter('product', $product)
             ->setParameter('channelCode', $channelCode)
+        ;
+
+        if (!empty($date)) {
+            $this->addDateFilter($qb);
+        }
+
+        return $qb
             ->getQuery()
             ->getResult()
         ;
@@ -121,9 +128,10 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     public function findByProductAndSectionCode(
         ProductInterface $product,
         string $sectionCode,
-        string $channelCode
+        string $channelCode,
+        ?\DateTimeInterface $date = null
     ): array {
-        return $this->createQueryBuilder('o')
+        $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.sections', 'section')
             ->innerJoin('o.channels', 'channel')
@@ -134,8 +142,26 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('product', $product)
             ->setParameter('sectionCode', $sectionCode)
             ->setParameter('channelCode', $channelCode)
-            ->getQuery()
+        ;
+
+        if (!empty($date)) {
+            $this->addDateFilter($qb, $date);
+        }
+
+        return $qb->getQuery()
             ->getResult()
         ;
+    }
+
+    private function addDateFilter(QueryBuilder $qb, \DateTimeInterface $date): void
+    {
+        $qb
+            ->andWhere(
+                $qb->expr()->orX(
+                    'o.publishAt is NULL',
+                    'o.publishAt <= :date'
+                )
+            )
+            ->setParameter('date', $date);
     }
 }

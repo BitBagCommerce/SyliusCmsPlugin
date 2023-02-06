@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -47,6 +48,12 @@ class Media implements MediaInterface
 
     /** @var string */
     protected $originalPath;
+
+    /** @var int|null */
+    protected $width;
+
+    /** @var int|null */
+    protected $height;
 
     public function __construct()
     {
@@ -126,6 +133,11 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setName($name);
     }
 
+    public function getDownloadName(): string
+    {
+        return FilenameHelper::removeSlashes($this->getName() ?? $this->getCode() ?? self::DEFAULT_DOWNLOAD_NAME);
+    }
+
     public function getContent(): ?string
     {
         return $this->getMediaTranslation()->getContent();
@@ -156,6 +168,26 @@ class Media implements MediaInterface
         $this->getMediaTranslation()->setLink($link);
     }
 
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    public function setWidth(?int $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(?int $height): void
+    {
+        $this->height = $height;
+    }
+
     /**
      * @return MediaTranslationInterface|TranslationInterface
      */
@@ -168,7 +200,7 @@ class Media implements MediaInterface
     {
         return new MediaTranslation();
     }
-    
+
     public function __toString(): string
     {
         return $this->getName() ?? $this->code;

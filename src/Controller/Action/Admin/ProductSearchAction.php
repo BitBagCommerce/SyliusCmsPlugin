@@ -34,8 +34,7 @@ final class ProductSearchAction
         ProductRepositoryInterface $productRepository,
         LocaleContextInterface $localeContext,
         ViewHandler $viewHandler
-    )
-    {
+    ) {
         $this->productRepository = $productRepository;
         $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;

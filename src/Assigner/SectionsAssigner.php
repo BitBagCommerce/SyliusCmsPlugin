@@ -15,6 +15,7 @@ namespace BitBag\SyliusCmsPlugin\Assigner;
 use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Webmozart\Assert\Assert;
 
 final class SectionsAssigner implements SectionsAssignerInterface
 {
@@ -32,9 +33,8 @@ final class SectionsAssigner implements SectionsAssignerInterface
             /** @var SectionInterface $section */
             $section = $this->sectionRepository->findOneBy(['code' => $sectionCode]);
 
-            if (null !== $section) {
-                $sectionsAware->addSection($section);
-            }
+            Assert::notNull($section, sprintf('Section with %s code not found.', $sectionCode));
+            $sectionsAware->addSection($section);
         }
     }
 }

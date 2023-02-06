@@ -16,9 +16,10 @@ use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Doctrine\Common\Collections\Collection;
-use SitemapPlugin\Factory\SitemapUrlFactoryInterface;
+use SitemapPlugin\Factory\UrlFactoryInterface;
+use SitemapPlugin\Model\AlternativeUrl;
 use SitemapPlugin\Model\ChangeFrequency;
-use SitemapPlugin\Model\SitemapUrlInterface;
+use SitemapPlugin\Model\UrlInterface;
 use SitemapPlugin\Provider\UrlProviderInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -35,7 +36,7 @@ final class SectionUrlProvider implements UrlProviderInterface
     /** @var RouterInterface */
     private $router;
 
-    /** @var SitemapUrlFactoryInterface */
+    /** @var UrlFactoryInterface */
     private $sitemapUrlFactory;
 
     /** @var LocaleContextInterface */
@@ -47,7 +48,7 @@ final class SectionUrlProvider implements UrlProviderInterface
     public function __construct(
         SectionRepositoryInterface $sectionRepository,
         RouterInterface $router,
-        SitemapUrlFactoryInterface $sitemapUrlFactory,
+        UrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext
     ) {
@@ -63,7 +64,7 @@ final class SectionUrlProvider implements UrlProviderInterface
         return 'cms_sections';
     }
 
-    public function generate(): iterable
+    public function generate(ChannelInterface $channel): iterable
     {
         $urls = [];
 
@@ -101,16 +102,20 @@ final class SectionUrlProvider implements UrlProviderInterface
         })->toArray();
     }
 
-    private function createSectionUrl(SectionInterface $section): SitemapUrlInterface
+    private function createSectionUrl(SectionInterface $section): UrlInterface
     {
-        $url = $this->sitemapUrlFactory->createNew();
+        $location = $this->router->generate('bitbag_sylius_cms_plugin_shop_section_show', [
+            'code' => $section->getCode(),
+            '_locale' => $this->localeContext->getLocaleCode(),
+        ]);
+        $url = $this->sitemapUrlFactory->createNew($location);
 
         $url->setChangeFrequency(ChangeFrequency::daily());
         $url->setPriority(0.7);
 
         /** @var SectionTranslationInterface $translation */
         foreach ($this->getTranslations($section) as $translation) {
-            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
+            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation) || $translation->getLocale() === $this->localeContext->getLocaleCode()) {
                 continue;
             }
 
@@ -119,13 +124,7 @@ final class SectionUrlProvider implements UrlProviderInterface
                 '_locale' => $translation->getLocale(),
             ]);
 
-            if ($translation->getLocale() === $this->localeContext->getLocaleCode()) {
-                $url->setLocalization($location);
-
-                continue;
-            }
-
-            $url->addAlternative($location, $translation->getLocale());
+            $url->addAlternative(new AlternativeUrl($location, $translation->getLocale()));
         }
 
         return $url;

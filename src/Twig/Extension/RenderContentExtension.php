@@ -12,30 +12,16 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentRuntime;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class RenderContentExtension extends \Twig_Extension
+final class RenderContentExtension extends AbstractExtension
 {
-    /** @var ContentParserInterface */
-    private $contentParser;
-
-    public function __construct(ContentParserInterface $contentParser)
-    {
-        $this->contentParser = $contentParser;
-    }
-
     public function getFunctions(): array
     {
         return [
-            new \Twig_Function('bitbag_cms_render_content', [$this, 'renderContent'], ['is_safe' => ['html']]),
+            new TwigFunction('bitbag_cms_render_content', [RenderContentRuntime::class, 'renderContent'], ['is_safe' => ['html']]),
         ];
-    }
-
-    public function renderContent(ContentableInterface $contentableResource): string
-    {
-        $content = (string) html_entity_decode((string) $contentableResource->getContent(), ENT_QUOTES);
-
-        return $this->contentParser->parse($content);
     }
 }

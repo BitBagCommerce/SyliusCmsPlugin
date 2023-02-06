@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
-use Behat\Mink\Driver\Selenium2Driver;
+use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\WysiwygHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -44,7 +43,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillContent(string $content): void
     {
-        WysiwygHelper::fillContent($this->getSession(), $this->getDocument(), $content);
+        $this->getDocument()->fillField('Content', $content);
     }
 
     public function disable(): void
@@ -54,7 +53,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function associateSections(array $sectionsNames): void
     {
-        Assert::isInstanceOf($this->getDriver(), Selenium2Driver::class);
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $dropdown = $this->getElement('association_dropdown_section');
         $dropdown->click();
