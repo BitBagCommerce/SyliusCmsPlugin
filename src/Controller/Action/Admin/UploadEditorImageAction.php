@@ -64,7 +64,7 @@ final class UploadEditorImageAction
 
     private function isValidImage(UploadedFile $image): bool
     {
-        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']);
+        return in_array($image->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp']);
     }
 
     private function createMedia(UploadedFile $image): MediaInterface
