@@ -13,6 +13,7 @@
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^1.1|^2.0",
         "sylius/sylius": "^1.9",
+        "sylius/admin-api-bundle": "^1.9",
         "instaclick/php-webdriver": "^1.4",
         "dmore/behat-chrome-extension": "^1.3",
         "dmore/chrome-mink-driver": "^2.7"
