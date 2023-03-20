@@ -69,5 +69,15 @@
             "spec\\BitBag\\SyliusCmsPlugin\\": "spec/"
         },
         "classmap": ["tests/Application/Kernel.php"]
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/thanks": true,
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
+            "symfony/flex": true
+        },
+        "sort-packages": true
     }
 }
