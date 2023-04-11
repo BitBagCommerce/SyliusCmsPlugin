@@ -14,7 +14,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
 
