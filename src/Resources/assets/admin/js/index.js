@@ -4,7 +4,7 @@ if (document.querySelector('[data-bb-target="cms-import"]')) {
     new HandleCsvUpload().init();
 }
 
-if (document.querySelectorAll('[data-bb-target="cms-slug-update"]')?.length > 0) {
+if (document.querySelectorAll('[data-bb-target="cms-slug-update"]').length > 0) {
     new HandleSlugUpdate().init();
 }
 
