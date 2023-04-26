@@ -4,7 +4,7 @@
 1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
 
 ```bash
-$ composer require bitbag/cms-plugin
+$ composer require bitbag/cms-plugin --no-scripts
 ```
 
 2. Add plugin dependencies to your `config/bundles.php` file:
@@ -88,11 +88,14 @@ you will probably need to change the extension of the imported file in
 5. Finish the installation by updating the database schema and installing assets:
 
 ```
+$ bin/console cache:clear
 $ bin/console doctrine:migrations:diff
 $ bin/console doctrine:migrations:migrate
 $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
 ```
+
+Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
 
 6. Add plugin assets to your project
 
