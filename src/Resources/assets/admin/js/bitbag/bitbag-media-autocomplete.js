@@ -102,7 +102,11 @@ export class HandleAutoComplete {
             const data = await res.json();
 
             this._addToSelectMenu(data, mediaContainer);
-            let children = mediaContainer.querySelector(this.selectMenu)?.children
+            let children = [];
+            let selectedContainer = mediaContainer.querySelector(this.selectMenu);
+            if (selectedContainer !== null) {
+                children = selectedContainer.children;
+            }
             for (let child of children) {
                 child.click();
             }
@@ -155,9 +159,11 @@ export class HandleAutoComplete {
         triggerCustomEvent(mediaContainer, 'cms.media.display.update.start');
         const selectMenu = mediaContainer.querySelector(this.selectMenu);
         selectMenu.innerHTML = '';
-        arr?.forEach((item) => {
-            selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
-        });
+        if (arr !== null) {
+            arr.forEach((item) => {
+                selectMenu.insertAdjacentHTML('beforeend', this._itemTemplate(item.path, item.code.trim()));
+            });
+        }
         triggerCustomEvent(mediaContainer, 'cms.media.display.update.end');
     }
 
