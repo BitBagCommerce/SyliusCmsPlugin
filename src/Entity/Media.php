@@ -58,6 +58,9 @@ class Media implements MediaInterface
     /** @var int|null */
     protected $height;
 
+    /** @var array */
+    public $imaginePaths = [];
+
     /** @var bool */
     protected $saveWithOriginalName = false;
 

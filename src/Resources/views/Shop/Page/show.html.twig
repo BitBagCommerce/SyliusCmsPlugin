@@ -33,7 +33,12 @@
             <div class="ui grid center aligned">
                 <div class="eight wide column">
                     {% if page.image %}
-                        <img class="page-image ui fluid image" src="{{ page.image.path }}" alt="">
+                        {% if page.image.path starts with 'data:' %}
+                            {% set src = page.image.path %}
+                        {% else %}
+                            {% set src = page.image.path|imagine_filter('sylius_large') %}
+                        {% endif %}
+                        <img class="page-image ui fluid image" src="{{ src }}" alt="">
                     {% endif %}
                 </div>
             </div>
