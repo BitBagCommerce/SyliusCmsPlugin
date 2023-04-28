@@ -8,6 +8,7 @@ sylius_resource:
                 form: BitBag\SyliusCmsPlugin\Form\Type\MediaType
                 repository: BitBag\SyliusCmsPlugin\Repository\MediaRepository
                 controller: BitBag\SyliusCmsPlugin\Controller\MediaController
+                factory: Sylius\Component\Resource\Factory\TranslatableFactory
             translation:
                 classes:
                     model: BitBag\SyliusCmsPlugin\Entity\MediaTranslation
