@@ -1,6 +1,6 @@
 # Sections
 
-With sections, you can organize your blocks and pages under some specific categories.
+With sections, you can organize your blocks and pages under specific categories.
 For instance, you can create a Blog section and display pages and blocks under it.
 
 Sections in the BitBag SyliusCmsPlugin serve as containers where various elements, such as content blocks, CMS pages,
@@ -12,7 +12,7 @@ allowing for customization and adaptation of displayed content to user preferenc
 ## Creation on the admin page:
 ### If you haven't implemented the section properly in your code yet, click here [Sections](sections.md)
 
-#### The process of creating section:
+#### The process of creating a section:
 - Access the administrator panel of the Sylius e-commerce system.
 - Navigate to the CMS section or the designated area for managing sections.
 - Select the option to create a new section.

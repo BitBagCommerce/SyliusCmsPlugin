@@ -1,6 +1,6 @@
 # Pages
 
-Pages represent a customizable web page, you can adjust to your needs in admin panel.
+Pages represent a customizable web page, you can adjust them to your needs in the admin panel.
 
 With the BitBag SyliusCmsPlugin, administrators can associate related products with CMS pages, displaying them in the designated section.
 This feature allows for targeted product recommendations and cross-selling opportunities within the content.
@@ -12,11 +12,11 @@ information and multimedia content, enhancing the overall user experience.
 ## Creation on the admin page:
 ### If you haven't implemented the pages properly in your code yet, click here [Pages](pages.md)
 
-#### The process of creating page:
+#### The process of creating a page:
 - Access the administrator panel of the Sylius e-commerce system.
 - Navigate to the CMS section or the designated area for managing pages.
 - Select the option to create a new page.
-- Fill in the required fields in the page creation form, such as the name, content and slug.
+- Fill in the required fields in the page creation form, such as the name, content, and slug.
 - Save the page after filling in the necessary details and selecting any desired associations.
 - Repeat the process to add additional pages, as needed.
 - After refreshing the store page, the newly implemented changes should now be visible.

@@ -13,7 +13,7 @@ This empowers businesses to easily adapt their store's content to meet current n
 ## What Sylius CMS Plugin provides us with
 
 When using the BitBag SyliusCmsPlugin, administrators gain access to various tiles within the admin panel, each serving a specific purpose.
-These tiles include Blocks, Media, Pages, FAQ, and Sections. 
+These tiles include Blocks, Media, Pages, FAQs, and Sections.
 
 ![Screenshot showing content management config in admin](content_management.png)
 
