@@ -24,7 +24,7 @@ By following the steps below, administrators can add sections by providing the c
 6. Repeat the process to add additional sections, as needed.
 7. After refreshing the store page, the newly implemented changes should now be visible.
 
-The mentioned form
+The mentioned form:
 
 ![Screenshot showing content management config in admin](sections_create_cms.png)
 
