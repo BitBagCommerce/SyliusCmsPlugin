@@ -25,7 +25,7 @@ By following the steps below, administrators can easily add blocks and customize
 6. Repeat the process to add additional blocks, as needed.
 7. After refreshing the store page, the newly implemented changes should now be visible.
 
-## Optional configuration
+### Optional configuration
 
 In the form, you will find additional fields, which will help you with your e-commerce related content:
 
