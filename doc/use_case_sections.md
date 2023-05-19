@@ -30,7 +30,7 @@ The mentioned form:
 
 ### Possible to achieve result on the front of the store:
 
-It's possible to attach Blocks, Media and Pages to the Sections. This makes you able to [display all](sections.md) the content attached to the single Section.
+It's possible to attach [Blocks](use_case_blocks.md), [Media](use_case_media.md) and [Pages](use_case_pages.md) to the Sections. This makes you able to [display all](sections.md) the content attached to the single Section.
 
 The image below presents you a sample result of Section rendered on the product page, to which we attached Pages to get the simple Blog result:
 
