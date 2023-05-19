@@ -1,4 +1,4 @@
-# What is and how to use SyliusCmsPlugin
+# What is and how to use Sylius CMS Plugin
 
 BitBag SyliusCmsPlugin is a plugin developed for Sylius, 
 a popular open-source e-commerce system based on Symfony. 
