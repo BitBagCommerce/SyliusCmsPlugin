@@ -37,7 +37,7 @@ The mentioned form:
 
 ![Screenshot showing content management config in admin](media_create_cms.png)
 
-## Possible to achieve result on the front of the store:
+## Result possible to achieve on the front of the store:
 
 The image below presents you a sample result of [Section](sections.md) rendered on the product page, which contains [Blocks](blocks.md) and Media (image, video and downloadable PDF file):
 
