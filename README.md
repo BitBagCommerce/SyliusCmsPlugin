@@ -33,6 +33,7 @@ Like what we do? Want to join us? Check out our job listings on our [career page
 Almost every eCommerce app has to present some content. Managing it is often done via third-party libraries like WordPress, eZ Platform, or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own, which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront, as well as pages and FAQs section.
 <img align="left" src="https://bitbag.io/wp-content/uploads/2021/01/Sylius-CMS-Plugin-Building-Block-1-1024x1024.png">
 
+- [Use Case](doc/use_case.md)
 - [Installation](doc/installation.md)
 - [Upgrading](UPGRADE.md)
 - [Blocks](doc/blocks.md)
