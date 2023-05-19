@@ -28,7 +28,7 @@ The mentioned form:
 
 ![Screenshot showing content management config in admin](sections_create_cms.png)
 
-### Possible to achieve result on the front of the store:
+## Result possible to achieve on the front of the store:
 
 It's possible to attach [Blocks](use_case_blocks.md), [Media](use_case_media.md) and [Pages](use_case_pages.md) to the Sections. This makes you able to [display all](sections.md) the content attached to the single Section.
 
