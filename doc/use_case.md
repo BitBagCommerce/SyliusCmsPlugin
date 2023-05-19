@@ -47,6 +47,7 @@ The Blocks tile allows administrators to create and manage reusable content bloc
 The Blocks can be utilized across different CMS pages, providing flexibility and consistency in content presentation. Blocks can contain text, images, videos, or any other desired content elements.
 
 ![Screenshot showing content management config in admin](blocks_cms.png)
+
 More information about Blocks you can get [here](use_case_blocks.md).
 
 ### Media
