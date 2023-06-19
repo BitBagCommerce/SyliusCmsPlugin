@@ -30,7 +30,7 @@ final class ImporterChain implements ImporterChainInterface
 
         throw new \UnexpectedValueException(sprintf(
             'Importer for %s resource was not found. Make sure getResourceCode in the importer returns proper resource name',
-            $resourceCode
+            $resourceCode,
         ));
     }
 }

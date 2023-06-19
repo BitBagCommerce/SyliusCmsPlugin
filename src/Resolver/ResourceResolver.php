@@ -29,7 +29,7 @@ final class ResourceResolver implements ResourceResolverInterface
     public function __construct(
         RepositoryInterface $repository,
         FactoryInterface $factory,
-        string $uniqueColumn
+        string $uniqueColumn,
     ) {
         $this->repository = $repository;
         $this->factory = $factory;

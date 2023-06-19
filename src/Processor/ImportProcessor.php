@@ -29,7 +29,7 @@ final class ImportProcessor implements ImportProcessorInterface
     public function __construct(
         ImporterChainInterface $importerChain,
         ReaderInterface $reader,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         $this->importerChain = $importerChain;
         $this->reader = $reader;

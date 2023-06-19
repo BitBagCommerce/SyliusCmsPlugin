@@ -23,12 +23,12 @@ interface BlockRepositoryInterface extends RepositoryInterface
     public function findBySectionCode(
         string $sectionCode,
         string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): array;
 
     public function findByProductCode(
         string $productCode,
         string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): array;
 }

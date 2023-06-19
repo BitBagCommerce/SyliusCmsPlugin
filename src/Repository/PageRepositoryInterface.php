@@ -26,7 +26,7 @@ interface PageRepositoryInterface extends RepositoryInterface
     public function findOneEnabledBySlugAndChannelCode(
         string $slug,
         ?string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): ?PageInterface;
 
     public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
@@ -36,13 +36,13 @@ interface PageRepositoryInterface extends RepositoryInterface
     public function findByProduct(
         ProductInterface $product,
         string $channelCode,
-        ?\DateTimeInterface $date
+        ?\DateTimeInterface $date,
     ): array;
 
     public function findByProductAndSectionCode(
         ProductInterface $product,
         string $sectionCode,
         string $channelCode,
-        ?\DateTimeInterface $date
+        ?\DateTimeInterface $date,
     ): array;
 }

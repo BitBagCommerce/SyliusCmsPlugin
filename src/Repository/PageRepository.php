@@ -56,7 +56,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     public function findOneEnabledBySlugAndChannelCode(
         string $slug,
         ?string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): ?PageInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -104,7 +104,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     public function findByProduct(
         ProductInterface $product,
         string $channelCode,
-        ?\DateTimeInterface $date = null
+        ?\DateTimeInterface $date = null,
     ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
@@ -130,7 +130,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ProductInterface $product,
         string $sectionCode,
         string $channelCode,
-        ?\DateTimeInterface $date = null
+        ?\DateTimeInterface $date = null,
     ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
@@ -160,9 +160,10 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->andWhere(
                 $qb->expr()->orX(
                     'o.publishAt is NULL',
-                    'o.publishAt <= :date'
-                )
+                    'o.publishAt <= :date',
+                ),
             )
-            ->setParameter('date', $date);
+            ->setParameter('date', $date)
+        ;
     }
 }

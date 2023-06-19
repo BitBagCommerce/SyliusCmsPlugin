@@ -15,7 +15,7 @@ final class RetrievePackageInfoAction
             file_get_contents(\sprintf(
                 "https://intranet.bitbag.shop/retrieve-package-info?packageName='%s'&url='%s'",
                 'bitbag/cms-plugin',
-                \sprintf('%s://%s', $request->getScheme(), $request->getHttpHost())
+                \sprintf('%s://%s', $request->getScheme(), $request->getHttpHost()),
             ));
         } catch (\Exception $exception) {
             return new Response('', Response::HTTP_BAD_REQUEST);

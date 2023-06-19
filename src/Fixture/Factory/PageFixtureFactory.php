@@ -71,7 +71,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         ChannelsAssignerInterface $channelAssigner,
         ProductRepositoryInterface $productRepository,
         LocaleContextInterface $localeContext,
-        ChannelRepositoryInterface $channelRepository
+        ChannelRepositoryInterface $channelRepository,
     ) {
         $this->pageFactory = $pageFactory;
         $this->pageTranslationFactory = $pageTranslationFactory;
@@ -108,7 +108,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function createPage(
         string $code,
         array $pageData,
-        bool $generateSlug = false
+        bool $generateSlug = false,
     ): void {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
@@ -161,7 +161,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function resolveProductsForChannels(
         PageInterface $page,
         int $limit,
-        array $channelCodes
+        array $channelCodes,
     ): void {
         foreach ($channelCodes as $channelCode) {
             /** @var ChannelInterface|null $channel */
@@ -175,12 +175,12 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function resolveProductsForChannel(
         PageInterface $page,
         int $limit,
-        ChannelInterface $channel
+        ChannelInterface $channel,
     ): void {
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),
-            $limit
+            $limit,
         );
 
         foreach ($products as $product) {

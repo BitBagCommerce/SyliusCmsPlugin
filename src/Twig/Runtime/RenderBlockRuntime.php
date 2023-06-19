@@ -30,7 +30,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
-        Environment $templatingEngine
+        Environment $templatingEngine,
     ) {
         $this->blockRepository = $blockRepository;
         $this->blockResourceResolver = $blockResourceResolver;

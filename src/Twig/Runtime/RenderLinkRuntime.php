@@ -35,7 +35,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router,
-        string $defaultTemplate
+        string $defaultTemplate,
     ) {
         $this->localeContext = $localeContext;
         $this->pageRepository = $pageRepository;
@@ -47,7 +47,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         Environment $environment,
         string $code,
         array $options = [],
-        ?string $template = null
+        ?string $template = null,
     ): string {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
 
@@ -59,7 +59,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 
     public function getLinkForCode(
         string $code,
-        array $options = []
+        array $options = [],
     ): string {
         /** @var PageInterface|null $page */
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());

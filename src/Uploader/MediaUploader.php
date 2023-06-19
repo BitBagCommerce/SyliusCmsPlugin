@@ -63,7 +63,7 @@ final class MediaUploader implements MediaUploaderInterface
         Assert::notFalse($fileContents, sprintf('File contents for file identified by id: "%s" is false', $file->getPath()));
         $this->filesystem->write(
             $mediaPath,
-            $fileContents
+            $fileContents,
         );
     }
 
@@ -79,14 +79,14 @@ final class MediaUploader implements MediaUploaderInterface
     private function expandPath(
         string $path,
         string $pathPrefix,
-        ?string $originalName = null
+        ?string $originalName = null,
     ): string {
         return sprintf(
             '%s/%s/%s/%s',
             $pathPrefix,
             substr($path, 0, 2),
             substr($path, 2, 2),
-            $originalName ?? substr($path, 4)
+            $originalName ?? substr($path, 4),
         );
     }
 

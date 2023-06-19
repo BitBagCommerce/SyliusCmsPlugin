@@ -32,7 +32,7 @@ final class GenericProvider implements ProviderInterface
         MediaUploaderInterface $uploader,
         Environment $twigEngine,
         string $template,
-        string $pathPrefix
+        string $pathPrefix,
     ) {
         $this->uploader = $uploader;
         $this->twigEngine = $twigEngine;
@@ -48,7 +48,7 @@ final class GenericProvider implements ProviderInterface
     public function render(
         MediaInterface $media,
         ?string $template = null,
-        array $options = []
+        array $options = [],
     ): string {
         return $this->twigEngine->render($template ?? $this->template, array_merge(['media' => $media], $options));
     }

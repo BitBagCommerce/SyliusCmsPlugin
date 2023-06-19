@@ -19,7 +19,7 @@ interface ProviderInterface
     public function render(
         MediaInterface $media,
         ?string $template = null,
-        array $options = []
+        array $options = [],
     ): string;
 
     public function upload(MediaInterface $media): void;

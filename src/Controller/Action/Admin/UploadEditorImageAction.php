@@ -35,7 +35,7 @@ final class UploadEditorImageAction
     public function __construct(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
-        FactoryInterface $mediaFactory
+        FactoryInterface $mediaFactory,
     ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaRepository = $mediaRepository;

@@ -42,7 +42,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        MediaRepositoryInterface $mediaRepository
+        MediaRepositoryInterface $mediaRepository,
     ) {
         parent::__construct($validator);
 

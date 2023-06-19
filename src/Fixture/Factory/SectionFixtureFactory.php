@@ -29,7 +29,7 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
     public function __construct(
         FactoryInterface $sectionFactory,
         FactoryInterface $sectionTranslationFactory,
-        SectionRepositoryInterface $sectionRepository
+        SectionRepositoryInterface $sectionRepository,
     ) {
         $this->sectionFactory = $sectionFactory;
         $this->sectionTranslationFactory = $sectionTranslationFactory;

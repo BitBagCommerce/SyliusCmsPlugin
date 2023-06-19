@@ -29,7 +29,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
     public function __construct(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->pageRepository = $pageRepository;
         $this->localeContext = $localeContext;
@@ -43,7 +43,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
         if (false === $page instanceof PageInterface) {
             $this->logger->warning(sprintf(
                 'Page with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

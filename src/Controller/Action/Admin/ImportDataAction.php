@@ -50,7 +50,7 @@ final class ImportDataAction
         RequestStack $requestStack,
         FormErrorsFlashHelperInterface $formErrorsFlashHelper,
         TranslatorInterface $translator,
-        Environment $twig
+        Environment $twig,
     ) {
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;

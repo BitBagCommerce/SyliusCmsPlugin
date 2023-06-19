@@ -48,7 +48,7 @@ final class PageUrlProvider implements UrlProviderInterface
         RouterInterface $router,
         UrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
-        ChannelContextInterface $channelContext
+        ChannelContextInterface $channelContext,
     ) {
         $this->pageRepository = $pageRepository;
         $this->router = $router;

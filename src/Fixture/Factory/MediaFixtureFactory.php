@@ -50,7 +50,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         MediaRepositoryInterface $mediaRepository,
         ProductsAssignerInterface $productsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner
+        ChannelsAssignerInterface $channelAssigner,
     ) {
         $this->mediaFactory = $mediaFactory;
         $this->mediaTranslationFactory = $mediaTranslationFactory;

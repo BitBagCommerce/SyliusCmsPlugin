@@ -35,7 +35,7 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         MediaRepositoryInterface $mediaRepository,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->mediaRepository = $mediaRepository;
         $this->localeContext = $localeContext;
@@ -49,13 +49,13 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         $media = $this->mediaRepository->findOneEnabledByCode(
             $code,
             $this->localeContext->getLocaleCode(),
-            $this->channelContext->getChannel()->getCode()
+            $this->channelContext->getChannel()->getCode(),
         );
 
         if (false === $media instanceof MediaInterface) {
             $this->logger->warning(sprintf(
                 'Media with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

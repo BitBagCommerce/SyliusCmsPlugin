@@ -23,7 +23,7 @@ final class RenderMediaRuntime implements RenderMediaRuntimeInterface
 
     public function __construct(
         MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
+        MediaResourceResolverInterface $mediaResourceResolver,
     ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaResourceResolver = $mediaResourceResolver;

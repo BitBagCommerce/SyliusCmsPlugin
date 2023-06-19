@@ -30,7 +30,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
     public function __construct(
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger,
-        ChannelContextInterface $channelContext
+        ChannelContextInterface $channelContext,
     ) {
         $this->blockRepository = $blockRepository;
         $this->logger = $logger;
@@ -46,7 +46,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         if (false === $block instanceof BlockInterface) {
             $this->logger->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

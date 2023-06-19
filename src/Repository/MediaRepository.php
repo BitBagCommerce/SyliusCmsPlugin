@@ -27,7 +27,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
     public function findOneEnabledByCode(
         string $code,
         string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): ?MediaInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -47,7 +47,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
     public function findBySectionCode(
         string $sectionCode,
         string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
@@ -68,7 +68,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
     public function findByProductCode(
         string $productCode,
         string $localeCode,
-        string $channelCode
+        string $channelCode,
     ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')

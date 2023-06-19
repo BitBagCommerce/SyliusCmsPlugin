@@ -35,7 +35,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        SectionsSorterInterface $sectionsSorter,
     ) {
         $this->pageRepository = $pageRepository;
         $this->channelContext = $channelContext;

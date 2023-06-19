@@ -65,7 +65,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         ProductsAssignerInterface $productsAssigner,
         TaxonsAssignerInterface $taxonsAssigner,
         SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner
+        ChannelsAssignerInterface $channelAssigner,
     ) {
         $this->blockFactory = $blockFactory;
         $this->blockTranslationFactory = $blockTranslationFactory;
@@ -138,7 +138,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),
-            $limit
+            $limit,
         );
         foreach ($products as $product) {
             $block->addProduct($product);

@@ -39,7 +39,7 @@ abstract class AbstractImporter implements ImporterInterface
     protected function getTranslatableColumnValue(
         string $column,
         $locale,
-        array $row
+        array $row,
     ) {
         $column = str_replace('__locale__', '_' . $locale, $column);
 

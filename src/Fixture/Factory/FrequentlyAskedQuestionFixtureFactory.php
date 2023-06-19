@@ -34,7 +34,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         FactoryInterface $frequentlyAskedQuestionFactory,
         FactoryInterface $frequentlyAskedQuestionTranslationFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        ChannelsAssignerInterface $channelAssigner
+        ChannelsAssignerInterface $channelAssigner,
     ) {
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
         $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
@@ -65,7 +65,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     private function createFrequentlyAskedQuestion(
         string $code,
         array $frequentlyAskedQuestionData,
-        int $position
+        int $position,
     ): void {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
