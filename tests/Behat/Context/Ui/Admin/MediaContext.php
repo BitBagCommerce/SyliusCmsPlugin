@@ -57,7 +57,7 @@ final class MediaContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
-        MediaRepositoryInterface $mediaRepository
+        MediaRepositoryInterface $mediaRepository,
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
@@ -125,7 +125,7 @@ final class MediaContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Media has been successfully created.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -136,7 +136,7 @@ final class MediaContext implements Context
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
             'There is an existing media with this code.',
-            false
+            false,
         ));
     }
 
@@ -150,7 +150,7 @@ final class MediaContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s cannot be blank.',
-                trim($field)
+                trim($field),
             )));
         }
     }
@@ -178,7 +178,7 @@ final class MediaContext implements Context
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s must be at least %d characters long.',
                 trim($field),
-                2
+                2,
             )));
         }
     }
@@ -193,7 +193,7 @@ final class MediaContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s can not be longer than',
-                trim($field)
+                trim($field),
             ), false));
         }
     }

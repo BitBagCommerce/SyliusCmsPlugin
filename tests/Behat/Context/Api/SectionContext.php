@@ -25,7 +25,7 @@ final class SectionContext implements Context
 
     public function __construct(
         ApiClientInterface $apiClient,
-        ResponseCheckerInterface $responseChecker
+        ResponseCheckerInterface $responseChecker,
     ) {
         $this->apiClient = $apiClient;
         $this->responseChecker = $responseChecker;
@@ -46,9 +46,9 @@ final class SectionContext implements Context
     {
         Assert::count(
             $this->responseChecker->getCollection(
-                $this->apiClient->getLastResponse()
+                $this->apiClient->getLastResponse(),
             ),
-            $count
+            $count,
         );
     }
 
@@ -71,9 +71,9 @@ final class SectionContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'name',
-                "That shouldn't exist"
+                "That shouldn't exist",
             ),
-            'Section has missing name'
+            'Section has missing name',
         );
     }
 }

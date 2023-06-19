@@ -41,7 +41,7 @@ final class PageContext implements Context
 
         Assert::notNull(
             $page,
-            sprintf('No pages has been found with code "%s".', $pageCode)
+            sprintf('No pages has been found with code "%s".', $pageCode),
         );
 
         return $page;

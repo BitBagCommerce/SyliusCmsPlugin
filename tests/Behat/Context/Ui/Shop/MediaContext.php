@@ -27,7 +27,7 @@ class MediaContext extends RawMinkContext implements Context
 
     public function __construct(
         MediaRepositoryInterface $mediaRepository,
-        HomePageInterface $blockHomePage
+        HomePageInterface $blockHomePage,
     ) {
         $this->mediaRepository = $mediaRepository;
         $this->blockHomePage = $blockHomePage;

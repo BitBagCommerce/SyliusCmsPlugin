@@ -25,7 +25,7 @@ final class FrequentlyAskedQuestionContext implements Context
 
     public function __construct(
         ApiClientInterface $apiClient,
-        ResponseCheckerInterface $responseChecker
+        ResponseCheckerInterface $responseChecker,
     ) {
         $this->apiClient = $apiClient;
         $this->responseChecker = $responseChecker;
@@ -46,9 +46,9 @@ final class FrequentlyAskedQuestionContext implements Context
     {
         Assert::count(
             $this->responseChecker->getCollection(
-                $this->apiClient->getLastResponse()
+                $this->apiClient->getLastResponse(),
             ),
-            (int) $count
+            (int) $count,
         );
     }
 
@@ -61,9 +61,9 @@ final class FrequentlyAskedQuestionContext implements Context
             $this->responseChecker->hasItemWithValue(
                 $this->apiClient->index(Resources::FAQ),
                 'code',
-                $code
+                $code,
             ),
-            sprintf('There is no question with code "%s"', $code)
+            sprintf('There is no question with code "%s"', $code),
         );
     }
 
@@ -85,9 +85,9 @@ final class FrequentlyAskedQuestionContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'question',
-                "That shouldn't exist"
+                "That shouldn't exist",
             ),
-            'Missing question'
+            'Missing question',
         );
     }
 
@@ -101,9 +101,9 @@ final class FrequentlyAskedQuestionContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'answer',
-                "That shouldn't exist"
+                "That shouldn't exist",
             ),
-            'Missing answer'
+            'Missing answer',
         );
     }
 }

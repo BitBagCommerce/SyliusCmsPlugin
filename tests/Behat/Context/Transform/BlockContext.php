@@ -41,7 +41,7 @@ final class BlockContext implements Context
 
         Assert::notNull(
             $block,
-            sprintf('No blocks has been found with code "%s".', $blockCode)
+            sprintf('No blocks has been found with code "%s".', $blockCode),
         );
 
         return $block;

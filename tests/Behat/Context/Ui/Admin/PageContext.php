@@ -57,7 +57,7 @@ final class PageContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
-        PageRepositoryInterface $pageRepository
+        PageRepositoryInterface $pageRepository,
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
@@ -225,7 +225,7 @@ final class PageContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Page has been successfully created.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -236,7 +236,7 @@ final class PageContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Page has been successfully updated.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -247,7 +247,7 @@ final class PageContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Page has been successfully deleted.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -258,7 +258,7 @@ final class PageContext implements Context
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
             'There is an existing page with this code.',
-            false
+            false,
         ));
     }
 
@@ -272,7 +272,7 @@ final class PageContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s cannot be blank.',
-                trim($field)
+                trim($field),
             )));
         }
     }
@@ -288,7 +288,7 @@ final class PageContext implements Context
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s must be at least %d characters long.',
                 trim($field),
-                2
+                2,
             )));
         }
     }
@@ -303,7 +303,7 @@ final class PageContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s can not be longer than',
-                trim($field)
+                trim($field),
             ), false));
         }
     }

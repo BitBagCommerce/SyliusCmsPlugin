@@ -18,15 +18,15 @@ final class FormHelper
     public static function fillHiddenInput(
         Session $session,
         string $id,
-        $value
+        $value,
     ): void {
         try {
             $session->executeScript(
                 sprintf(
                     "document.getElementById('%s').value = '%s';",
                     $id,
-                    $value
-                )
+                    $value,
+                ),
             );
         }
         /** @noinspection PhpRedundantCatchClauseInspection */

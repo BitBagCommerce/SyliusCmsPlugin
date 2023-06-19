@@ -30,7 +30,7 @@ final class PageContext implements Context
     public function __construct(
         ShowPageInterface $showPage,
         IndexPageInterface $indexPage,
-        SharedStorageInterface $sharedStorage
+        SharedStorageInterface $sharedStorage,
     ) {
         $this->showPage = $showPage;
         $this->indexPage = $indexPage;

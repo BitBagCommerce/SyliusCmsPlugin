@@ -24,7 +24,7 @@ final class BlockContext implements Context
 
     public function __construct(
         ApiClientInterface $apiClient,
-        ResponseCheckerInterface $responseChecker
+        ResponseCheckerInterface $responseChecker,
     ) {
         $this->apiClient = $apiClient;
         $this->responseChecker = $responseChecker;
@@ -45,9 +45,9 @@ final class BlockContext implements Context
     {
         Assert::count(
             $this->responseChecker->getCollection(
-                $this->apiClient->getLastResponse()
+                $this->apiClient->getLastResponse(),
             ),
-            $count
+            $count,
         );
     }
 
@@ -61,9 +61,9 @@ final class BlockContext implements Context
             $this->responseChecker->hasItemWithValue(
                 $this->apiClient->index(Resources::BLOCKS),
                 'code',
-                $code
+                $code,
             ),
-            sprintf('There is no blocks with code "%s"', $code)
+            sprintf('There is no blocks with code "%s"', $code),
         );
     }
 
@@ -77,9 +77,9 @@ final class BlockContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'answer',
-                "That shouldn't exist"
+                "That shouldn't exist",
             ),
-            'Block has missing name'
+            'Block has missing name',
         );
     }
 
@@ -93,9 +93,9 @@ final class BlockContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'content',
-                'Hi there!'
+                'Hi there!',
             ),
-            'Block has missing content'
+            'Block has missing content',
         );
     }
 }

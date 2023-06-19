@@ -52,7 +52,7 @@ final class SectionContext implements Context
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator
+        RandomStringGeneratorInterface $randomStringGenerator,
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
@@ -147,7 +147,7 @@ final class SectionContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s cannot be blank.',
-                trim($field)
+                trim($field),
             )));
         }
     }
@@ -163,7 +163,7 @@ final class SectionContext implements Context
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s must be at least %d characters long.',
                 trim($field),
-                2
+                2,
             )));
         }
     }
@@ -178,7 +178,7 @@ final class SectionContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s can not be longer than',
-                trim($field)
+                trim($field),
             ), false));
         }
     }
@@ -190,7 +190,7 @@ final class SectionContext implements Context
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
             'There is an existing section with this code.',
-            false
+            false,
         ));
     }
 
@@ -201,7 +201,7 @@ final class SectionContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Section has been successfully created.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -212,7 +212,7 @@ final class SectionContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Section has been successfully deleted.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 

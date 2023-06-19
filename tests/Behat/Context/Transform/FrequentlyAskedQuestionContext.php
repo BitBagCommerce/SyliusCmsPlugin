@@ -21,7 +21,7 @@ final class FrequentlyAskedQuestionContext implements Context
     private $frequentlyAskedQuestionRepository;
 
     public function __construct(
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository
+        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
     ) {
         $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
@@ -38,7 +38,7 @@ final class FrequentlyAskedQuestionContext implements Context
 
         Assert::notNull(
             $faq,
-            sprintf('No FAQs has been found with code "%s".', $faqCode)
+            sprintf('No FAQs has been found with code "%s".', $faqCode),
         );
 
         return $faq;

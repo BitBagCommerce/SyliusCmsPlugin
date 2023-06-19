@@ -26,7 +26,7 @@ final class PageContext implements Context
 
     public function __construct(
         ApiClientInterface $apiClient,
-        ResponseCheckerInterface $responseChecker
+        ResponseCheckerInterface $responseChecker,
     ) {
         $this->apiClient = $apiClient;
         $this->responseChecker = $responseChecker;
@@ -47,10 +47,10 @@ final class PageContext implements Context
     {
         Assert::count(
             $this->responseChecker->getCollection(
-                $this->apiClient->getLastResponse()
+                $this->apiClient->getLastResponse(),
             ),
             $count,
-            sprintf('There is no page with name "%s"', $count)
+            sprintf('There is no page with name "%s"', $count),
         );
     }
 
@@ -64,9 +64,9 @@ final class PageContext implements Context
                 $this->apiClient->index(Resources::PAGES),
                 'en_US',
                 'name',
-                $page
+                $page,
             ),
-            sprintf('There is no page with name "%s"', $page)
+            sprintf('There is no page with name "%s"', $page),
         );
     }
 
@@ -92,9 +92,9 @@ final class PageContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'name',
-                $name
+                $name,
             ),
-            sprintf('There is no page with name "%s"', $name)
+            sprintf('There is no page with name "%s"', $name),
         );
     }
 
@@ -108,9 +108,9 @@ final class PageContext implements Context
                 $this->apiClient->getLastResponse(),
                 'en_US',
                 'content',
-                $content
+                $content,
             ),
-            sprintf('There is no page with content "%s"', $content)
+            sprintf('There is no page with content "%s"', $content),
         );
     }
 }
