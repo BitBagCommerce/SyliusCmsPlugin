@@ -16,12 +16,8 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class PageFixture extends AbstractFixture
 {
-    /** @var FixtureFactoryInterface */
-    private $pageFixtureFactory;
-
-    public function __construct(FixtureFactoryInterface $pageFixtureFactory)
+    public function __construct(private FixtureFactoryInterface $pageFixtureFactory)
     {
-        $this->pageFixtureFactory = $pageFixtureFactory;
     }
 
     public function load(array $options): void

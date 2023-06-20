@@ -28,33 +28,13 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class PageUrlProvider implements UrlProviderInterface
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var RouterInterface */
-    private $router;
-
-    /** @var UrlFactoryInterface */
-    private $sitemapUrlFactory;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        RouterInterface $router,
-        UrlFactoryInterface $sitemapUrlFactory,
-        LocaleContextInterface $localeContext,
-        ChannelContextInterface $channelContext,
+        private PageRepositoryInterface $pageRepository,
+        private RouterInterface $router,
+        private UrlFactoryInterface $sitemapUrlFactory,
+        private LocaleContextInterface $localeContext,
+        private ChannelContextInterface $channelContext,
     ) {
-        $this->pageRepository = $pageRepository;
-        $this->router = $router;
-        $this->sitemapUrlFactory = $sitemapUrlFactory;
-        $this->localeContext = $localeContext;
-        $this->channelContext = $channelContext;
     }
 
     public function getName(): string

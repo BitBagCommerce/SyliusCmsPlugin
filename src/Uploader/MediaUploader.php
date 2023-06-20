@@ -16,12 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     public function upload(MediaInterface $media, string $pathPrefix): void

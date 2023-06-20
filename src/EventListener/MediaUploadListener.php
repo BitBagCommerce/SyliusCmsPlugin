@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class MediaUploadListener
 {
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    public function __construct(MediaProviderResolverInterface $mediaProviderResolver)
+    public function __construct(private MediaProviderResolverInterface $mediaProviderResolver)
     {
-        $this->mediaProviderResolver = $mediaProviderResolver;
     }
 
     public function uploadMedia(ResourceControllerEvent $event): void

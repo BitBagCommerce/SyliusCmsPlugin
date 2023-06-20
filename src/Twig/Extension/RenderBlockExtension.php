@@ -16,12 +16,8 @@ use Twig\TwigFunction;
 
 final class RenderBlockExtension extends AbstractExtension
 {
-    /** @var RenderBlockRuntimeInterface */
-    private $blockRuntime;
-
-    public function __construct(RenderBlockRuntimeInterface $blockRuntime)
+    public function __construct(private RenderBlockRuntimeInterface $blockRuntime)
     {
-        $this->blockRuntime = $blockRuntime;
     }
 
     public function getFunctions(): array

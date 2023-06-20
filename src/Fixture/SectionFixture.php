@@ -16,12 +16,8 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class SectionFixture extends AbstractFixture
 {
-    /** @var FixtureFactoryInterface */
-    private $sectionFixtureFactory;
-
-    public function __construct(FixtureFactoryInterface $sectionFixtureFactory)
+    public function __construct(private FixtureFactoryInterface $sectionFixtureFactory)
     {
-        $this->sectionFixtureFactory = $sectionFixtureFactory;
     }
 
     public function load(array $options): void

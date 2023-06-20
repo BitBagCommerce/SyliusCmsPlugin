@@ -19,28 +19,12 @@ use Webmozart\Assert\Assert;
 
 final class MediaResourceResolver implements MediaResourceResolverInterface
 {
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LoggerInterface */
-    private $logger;
-
     public function __construct(
-        MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
-        ChannelContextInterface $channelContext,
-        LoggerInterface $logger,
+        private MediaRepositoryInterface $mediaRepository,
+        private LocaleContextInterface $localeContext,
+        private ChannelContextInterface $channelContext,
+        private LoggerInterface $logger,
     ) {
-        $this->mediaRepository = $mediaRepository;
-        $this->localeContext = $localeContext;
-        $this->channelContext = $channelContext;
-        $this->logger = $logger;
     }
 
     public function findOrLog(string $code): ?MediaInterface

@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class ChannelsAssigner implements ChannelsAssignerInterface
 {
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
-
-    public function __construct(ChannelRepositoryInterface $channelRepository)
+    public function __construct(private ChannelRepositoryInterface $channelRepository)
     {
-        $this->channelRepository = $channelRepository;
     }
 
     public function assign(ChannelsAwareInterface $channelsAware, array $channelsCodes): void

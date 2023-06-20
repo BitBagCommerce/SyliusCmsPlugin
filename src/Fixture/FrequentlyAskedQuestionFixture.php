@@ -16,12 +16,8 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class FrequentlyAskedQuestionFixture extends AbstractFixture
 {
-    /** @var FixtureFactoryInterface */
-    private $frequentlyAskedQuestionFixtureFactory;
-
-    public function __construct(FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory)
+    public function __construct(private FixtureFactoryInterface $frequentlyAskedQuestionFixtureFactory)
     {
-        $this->frequentlyAskedQuestionFixtureFactory = $frequentlyAskedQuestionFixtureFactory;
     }
 
     public function load(array $options): void

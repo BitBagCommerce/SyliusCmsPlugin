@@ -25,58 +25,18 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var FactoryInterface */
-    private $blockFactory;
-
-    /** @var FactoryInterface */
-    private $blockTranslationFactory;
-
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    /** @var TaxonsAssignerInterface */
-    private $taxonsAssigner;
-
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
     public function __construct(
-        FactoryInterface $blockFactory,
-        FactoryInterface $blockTranslationFactory,
-        BlockRepositoryInterface $blockRepository,
-        ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext,
-        ProductsAssignerInterface $productsAssigner,
-        TaxonsAssignerInterface $taxonsAssigner,
-        SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner,
+        private FactoryInterface $blockFactory,
+        private FactoryInterface $blockTranslationFactory,
+        private BlockRepositoryInterface $blockRepository,
+        private ProductRepositoryInterface $productRepository,
+        private ChannelContextInterface $channelContext,
+        private LocaleContextInterface $localeContext,
+        private ProductsAssignerInterface $productsAssigner,
+        private TaxonsAssignerInterface $taxonsAssigner,
+        private SectionsAssignerInterface $sectionsAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
     ) {
-        $this->blockFactory = $blockFactory;
-        $this->blockTranslationFactory = $blockTranslationFactory;
-        $this->blockRepository = $blockRepository;
-        $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
-        $this->productsAssigner = $productsAssigner;
-        $this->taxonsAssigner = $taxonsAssigner;
-        $this->sectionsAssigner = $sectionsAssigner;
-        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void

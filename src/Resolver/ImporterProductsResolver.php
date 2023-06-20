@@ -15,12 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
 
 final class ImporterProductsResolver implements ImporterProductsResolverInterface
 {
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    public function __construct(ProductsAssignerInterface $productsAssigner)
+    public function __construct(private ProductsAssignerInterface $productsAssigner)
     {
-        $this->productsAssigner = $productsAssigner;
     }
 
     public function resolve(ProductsAwareInterface $productsAware, ?string $productsRow): void

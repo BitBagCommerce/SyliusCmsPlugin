@@ -21,36 +21,15 @@ use Webmozart\Assert\Assert;
 
 final class MediaImporter extends AbstractImporter implements MediaImporterInterface
 {
-    /** @var ResourceResolverInterface */
-    private $mediaResourceResolver;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ImporterSectionsResolverInterface */
-    private $importerSectionsResolver;
-
-    /** @var ImporterProductsResolverInterface */
-    private $importerProductsResolver;
-
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
     public function __construct(
-        ResourceResolverInterface $mediaResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
+        private ResourceResolverInterface $mediaResourceResolver,
+        private LocaleContextInterface $localeContext,
+        private ImporterSectionsResolverInterface $importerSectionsResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        MediaRepositoryInterface $mediaRepository,
+        private MediaRepositoryInterface $mediaRepository,
     ) {
         parent::__construct($validator);
-
-        $this->mediaResourceResolver = $mediaResourceResolver;
-        $this->localeContext = $localeContext;
-        $this->importerSectionsResolver = $importerSectionsResolver;
-        $this->importerProductsResolver = $importerProductsResolver;
-        $this->mediaRepository = $mediaRepository;
     }
 
     public function import(array $row): void

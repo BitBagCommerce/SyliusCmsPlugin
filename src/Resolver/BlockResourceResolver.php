@@ -18,23 +18,11 @@ use Webmozart\Assert\Assert;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var LoggerInterface */
-    private $logger;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
     public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        LoggerInterface $logger,
-        ChannelContextInterface $channelContext,
+        private BlockRepositoryInterface $blockRepository,
+        private LoggerInterface $logger,
+        private ChannelContextInterface $channelContext,
     ) {
-        $this->blockRepository = $blockRepository;
-        $this->logger = $logger;
-        $this->channelContext = $channelContext;
     }
 
     public function findOrLog(string $code): ?BlockInterface

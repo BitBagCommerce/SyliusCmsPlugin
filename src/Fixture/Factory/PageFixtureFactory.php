@@ -31,58 +31,18 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 {
     public const CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE = 'Channel with code "%s" not found';
 
-    /** @var FactoryInterface */
-    private $pageFactory;
-
-    /** @var FactoryInterface */
-    private $pageTranslationFactory;
-
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
-
     public function __construct(
-        FactoryInterface $pageFactory,
-        FactoryInterface $pageTranslationFactory,
-        PageRepositoryInterface $pageRepository,
-        MediaProviderResolverInterface $mediaProviderResolver,
-        ProductsAssignerInterface $productsAssigner,
-        SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner,
-        ProductRepositoryInterface $productRepository,
-        LocaleContextInterface $localeContext,
-        ChannelRepositoryInterface $channelRepository,
+        private FactoryInterface $pageFactory,
+        private FactoryInterface $pageTranslationFactory,
+        private PageRepositoryInterface $pageRepository,
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private ProductsAssignerInterface $productsAssigner,
+        private SectionsAssignerInterface $sectionsAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
+        private ProductRepositoryInterface $productRepository,
+        private LocaleContextInterface $localeContext,
+        private ChannelRepositoryInterface $channelRepository,
     ) {
-        $this->pageFactory = $pageFactory;
-        $this->pageTranslationFactory = $pageTranslationFactory;
-        $this->pageRepository = $pageRepository;
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->productsAssigner = $productsAssigner;
-        $this->sectionsAssigner = $sectionsAssigner;
-        $this->channelAssigner = $channelAssigner;
-        $this->productRepository = $productRepository;
-        $this->localeContext = $localeContext;
-        $this->channelRepository = $channelRepository;
     }
 
     public function load(array $data): void

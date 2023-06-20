@@ -22,43 +22,15 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var FactoryInterface */
-    private $mediaFactory;
-
-    /** @var FactoryInterface */
-    private $mediaTranslationFactory;
-
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
     public function __construct(
-        FactoryInterface $mediaFactory,
-        FactoryInterface $mediaTranslationFactory,
-        MediaProviderResolverInterface $mediaProviderResolver,
-        MediaRepositoryInterface $mediaRepository,
-        ProductsAssignerInterface $productsAssigner,
-        SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner,
+        private FactoryInterface $mediaFactory,
+        private FactoryInterface $mediaTranslationFactory,
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private MediaRepositoryInterface $mediaRepository,
+        private ProductsAssignerInterface $productsAssigner,
+        private SectionsAssignerInterface $sectionsAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
     ) {
-        $this->mediaFactory = $mediaFactory;
-        $this->mediaTranslationFactory = $mediaTranslationFactory;
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->mediaRepository = $mediaRepository;
-        $this->productsAssigner = $productsAssigner;
-        $this->sectionsAssigner = $sectionsAssigner;
-        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void

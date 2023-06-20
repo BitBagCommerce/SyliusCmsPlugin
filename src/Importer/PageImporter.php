@@ -28,61 +28,20 @@ use Webmozart\Assert\Assert;
 
 final class PageImporter extends AbstractImporter implements PageImporterInterface
 {
-    /** @var ResourceResolverInterface */
-    private $pageResourceResolver;
-
-    /** @var ResourceResolverInterface */
-    private $sectionResolver;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ImageDownloaderInterface */
-    private $imageDownloader;
-
-    /** @var FactoryInterface */
-    private $mediaFactory;
-
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var ImporterSectionsResolverInterface */
-    private $importerSectionsResolver;
-
-    /** @var ImporterChannelsResolverInterface */
-    private $importerChannelsResolver;
-
-    /** @var ImporterProductsResolverInterface */
-    private $importerProductsResolver;
-
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
     public function __construct(
-        ResourceResolverInterface $pageResourceResolver,
-        ResourceResolverInterface $sectionResolver,
-        LocaleContextInterface $localeContext,
-        ImageDownloaderInterface $imageDownloader,
-        FactoryInterface $mediaFactory,
-        MediaProviderResolverInterface $mediaProviderResolver,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
+        private ResourceResolverInterface $pageResourceResolver,
+        private ResourceResolverInterface $sectionResolver,
+        private LocaleContextInterface $localeContext,
+        private ImageDownloaderInterface $imageDownloader,
+        private FactoryInterface $mediaFactory,
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private ImporterSectionsResolverInterface $importerSectionsResolver,
+        private ImporterChannelsResolverInterface $importerChannelsResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        EntityManagerInterface $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {
         parent::__construct($validator);
-
-        $this->pageResourceResolver = $pageResourceResolver;
-        $this->sectionResolver = $sectionResolver;
-        $this->localeContext = $localeContext;
-        $this->imageDownloader = $imageDownloader;
-        $this->mediaFactory = $mediaFactory;
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->importerSectionsResolver = $importerSectionsResolver;
-        $this->importerChannelsResolver = $importerChannelsResolver;
-        $this->importerProductsResolver = $importerProductsResolver;
-        $this->entityManager = $entityManager;
     }
 
     public function import(array $row): void

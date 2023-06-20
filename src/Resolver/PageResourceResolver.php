@@ -17,23 +17,11 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolver implements PageResourceResolverInterface
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var LoggerInterface */
-    private $logger;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
-        LoggerInterface $logger,
+        private PageRepositoryInterface $pageRepository,
+        private LocaleContextInterface $localeContext,
+        private LoggerInterface $logger,
     ) {
-        $this->pageRepository = $pageRepository;
-        $this->localeContext = $localeContext;
-        $this->logger = $logger;
     }
 
     public function findOrLog(string $code): ?PageInterface

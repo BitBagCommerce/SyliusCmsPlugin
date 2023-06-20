@@ -18,28 +18,12 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var FactoryInterface */
-    private $frequentlyAskedQuestionFactory;
-
-    /** @var FactoryInterface */
-    private $frequentlyAskedQuestionTranslationFactory;
-
-    /** @var FrequentlyAskedQuestionRepositoryInterface */
-    private $frequentlyAskedQuestionRepository;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
     public function __construct(
-        FactoryInterface $frequentlyAskedQuestionFactory,
-        FactoryInterface $frequentlyAskedQuestionTranslationFactory,
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        ChannelsAssignerInterface $channelAssigner,
+        private FactoryInterface $frequentlyAskedQuestionFactory,
+        private FactoryInterface $frequentlyAskedQuestionTranslationFactory,
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private ChannelsAssignerInterface $channelAssigner,
     ) {
-        $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
-        $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
-        $this->channelAssigner = $channelAssigner;
     }
 
     public function load(array $data): void

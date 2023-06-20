@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class ProductsAssigner implements ProductsAssignerInterface
 {
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(private ProductRepositoryInterface $productRepository)
     {
-        $this->productRepository = $productRepository;
     }
 
     public function assign(ProductsAwareInterface $productsAware, array $productsCodes): void

@@ -16,12 +16,8 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class BlockFixture extends AbstractFixture
 {
-    /** @var FixtureFactoryInterface */
-    private $blockFixtureFactory;
-
-    public function __construct(FixtureFactoryInterface $blockFixtureFactory)
+    public function __construct(private FixtureFactoryInterface $blockFixtureFactory)
     {
-        $this->blockFixtureFactory = $blockFixtureFactory;
     }
 
     public function load(array $options): void

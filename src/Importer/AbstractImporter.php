@@ -15,12 +15,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractImporter implements ImporterInterface
 {
-    /** @var ValidatorInterface */
-    private $validator;
-
-    public function __construct(ValidatorInterface $validator)
+    public function __construct(private ValidatorInterface $validator)
     {
-        $this->validator = $validator;
     }
 
     public function cleanup(): void

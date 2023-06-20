@@ -16,12 +16,8 @@ use Twig\TwigFunction;
 
 final class RenderProductPagesExtension extends AbstractExtension
 {
-    /** @var RenderProductPagesRuntimeInterface */
-    private $productPagesRuntime;
-
-    public function __construct(RenderProductPagesRuntimeInterface $productPagesRuntime)
+    public function __construct(private RenderProductPagesRuntimeInterface $productPagesRuntime)
     {
-        $this->productPagesRuntime = $productPagesRuntime;
     }
 
     public function getFunctions(): array

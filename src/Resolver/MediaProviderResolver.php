@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class MediaProviderResolver implements MediaProviderResolverInterface
 {
-    /** @var ServiceRegistryInterface */
-    private $providerRegistry;
-
-    public function __construct(ServiceRegistryInterface $providerRegistry)
+    public function __construct(private ServiceRegistryInterface $providerRegistry)
     {
-        $this->providerRegistry = $providerRegistry;
     }
 
     public function resolveProvider(MediaInterface $media): ProviderInterface

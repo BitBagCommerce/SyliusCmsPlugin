@@ -15,12 +15,8 @@ use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 
 final class ImporterChannelsResolver implements ImporterChannelsResolverInterface
 {
-    /** @var ChannelsAssignerInterface */
-    private $channelsAssigner;
-
-    public function __construct(ChannelsAssignerInterface $channelsAssigner)
+    public function __construct(private ChannelsAssignerInterface $channelsAssigner)
     {
-        $this->channelsAssigner = $channelsAssigner;
     }
 
     public function resolve(ChannelsAwareInterface $channelsAware, ?string $channelsRow): void

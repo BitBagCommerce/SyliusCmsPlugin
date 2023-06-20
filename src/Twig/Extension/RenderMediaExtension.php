@@ -16,12 +16,8 @@ use Twig\TwigFunction;
 
 final class RenderMediaExtension extends AbstractExtension
 {
-    /** @var RenderMediaRuntimeInterface */
-    private $mediaRuntime;
-
-    public function __construct(RenderMediaRuntimeInterface $mediaRuntime)
+    public function __construct(private RenderMediaRuntimeInterface $mediaRuntime)
     {
-        $this->mediaRuntime = $mediaRuntime;
     }
 
     public function getFunctions(): array

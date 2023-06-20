@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class TaxonsAssigner implements TaxonsAssignerInterface
 {
-    /** @var TaxonRepositoryInterface */
-    private $taxonRepository;
-
-    public function __construct(TaxonRepositoryInterface $taxonRepository)
+    public function __construct(private TaxonRepositoryInterface $taxonRepository)
     {
-        $this->taxonRepository = $taxonRepository;
     }
 
     public function assign(TaxonAwareInterface $taxonAware, array $taxonCodes): void
