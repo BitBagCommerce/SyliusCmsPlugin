@@ -16,12 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class ImageDownloader implements ImageDownloaderInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     public function download(string $url): UploadedFile
