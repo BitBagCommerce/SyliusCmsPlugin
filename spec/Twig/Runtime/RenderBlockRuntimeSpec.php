@@ -23,11 +23,10 @@ use Twig\Environment;
 final class RenderBlockRuntimeSpec extends ObjectBehavior
 {
     function let(
-        BlockRepositoryInterface $blockRepository,
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine
     ): void {
-        $this->beConstructedWith($blockRepository, $blockResourceResolver, $templatingEngine);
+        $this->beConstructedWith($blockResourceResolver, $templatingEngine);
     }
 
     function it_is_initializable(): void
