@@ -30,7 +30,6 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 {
     public function __construct(
         private ResourceResolverInterface $pageResourceResolver,
-        private ResourceResolverInterface $sectionResolver,
         private LocaleContextInterface $localeContext,
         private ImageDownloaderInterface $imageDownloader,
         private FactoryInterface $mediaFactory,
@@ -71,7 +70,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             $imageCode = $this->getTranslatableColumnValue(self::IMAGE_CODE_COLUMN, $locale, $row);
 
             if (null !== $url) {
-                $this->resolveImage($page, $url ?? '', $locale, $imageCode);
+                $this->resolveImage($page, $url, $locale, $imageCode);
             }
         }
 

@@ -19,7 +19,6 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function __construct(
-        private BlockRepositoryInterface $blockRepository,
         private BlockResourceResolverInterface $blockResourceResolver,
         private Environment $templatingEngine,
         ) {

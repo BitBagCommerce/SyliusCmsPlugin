@@ -25,7 +25,7 @@ final class ImageDownloader implements ImageDownloaderInterface
         $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10));
         $pathInfo = pathinfo($url);
         $extension = $pathInfo['extension'] ?? null;
-        $originalName = $pathInfo['basename'] ?? '';
+        $originalName = $pathInfo['basename'];
 
         if (null !== $extension) {
             $path .= '.' . $extension;

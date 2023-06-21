@@ -47,10 +47,13 @@ final class MediaUploader implements MediaUploaderInterface
         $file = $media->getFile();
         Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
         $mimeType = $media->getMimeType();
-        if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
-            [$width, $height] = getimagesize($file->getPathname());
-            $media->setWidth($width);
-            $media->setHeight($height);
+        if (null !== $mimeType && str_contains($mimeType, 'image')) {
+            $sizes = getimagesize($file->getPathname());
+            if (false !== $sizes){
+                [$width, $height] = $sizes;
+                $media->setWidth($width);
+                $media->setHeight($height);
+            }
         }
 
         $mediaPath = $media->getPath();
