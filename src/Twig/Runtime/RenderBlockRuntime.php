@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Twig\Environment;
 
@@ -21,7 +20,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     public function __construct(
         private BlockResourceResolverInterface $blockResourceResolver,
         private Environment $templatingEngine,
-        ) {
+    ) {
     }
 
     public function renderBlock(string $code, ?string $template = null): string

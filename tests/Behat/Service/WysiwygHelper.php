@@ -22,7 +22,7 @@ final class WysiwygHelper
         DocumentElement $document,
         string $content,
         int $iframeNumber = 1,
-    ): void {
+        ): void {
         Assert::isInstanceOf($session->getDriver(), ChromeDriver::class);
 
         $session->wait(3000);

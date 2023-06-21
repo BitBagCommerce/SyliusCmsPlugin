@@ -58,7 +58,7 @@ final class MediaContext implements Context
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
         MediaProviderResolverInterface $mediaProviderResolver,
-    ) {
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->mediaFactory = $mediaFactory;
@@ -99,7 +99,7 @@ final class MediaContext implements Context
         ?string $content = null,
         ?string $fileType = null,
         ChannelInterface $channel = null,
-    ): MediaInterface {
+        ): MediaInterface {
         /** @var MediaInterface $media */
         $media = $this->mediaFactory->createNew();
 

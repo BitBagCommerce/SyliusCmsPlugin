@@ -34,7 +34,7 @@ final class FrequentlyAskedQuestionContext implements Context
         RandomStringGeneratorInterface $randomStringGenerator,
         FactoryInterface $frequentlyAskedQuestionFactory,
         FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-    ) {
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
@@ -94,7 +94,7 @@ final class FrequentlyAskedQuestionContext implements Context
         int $position = null,
         bool $prefixQuestionWithPosition = false,
         ChannelInterface $channel = null,
-    ): FrequentlyAskedQuestionInterface {
+        ): FrequentlyAskedQuestionInterface {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 

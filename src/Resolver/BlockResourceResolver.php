@@ -22,7 +22,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         private BlockRepositoryInterface $blockRepository,
         private LoggerInterface $logger,
         private ChannelContextInterface $channelContext,
-    ) {
+        ) {
     }
 
     public function findOrLog(string $code): ?BlockInterface
