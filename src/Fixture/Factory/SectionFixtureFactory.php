@@ -27,9 +27,11 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?SectionInterface $section */
+            $section = $this->sectionRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $section = $this->sectionRepository->findOneBy(['code' => $code])
+                null !== $section
             ) {
                 $this->sectionRepository->remove($section);
             }

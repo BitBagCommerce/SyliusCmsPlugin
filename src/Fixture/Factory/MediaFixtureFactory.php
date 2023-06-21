@@ -36,9 +36,11 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?MediaInterface $media */
+            $media = $this->mediaRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $media = $this->mediaRepository->findOneBy(['code' => $code])
+                null !== $media
             ) {
                 $this->mediaRepository->remove($media);
             }

@@ -48,9 +48,11 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?PageInterface $page */
+            $page = $this->pageRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $page = $this->pageRepository->findOneBy(['code' => $code])
+                null !== $page
             ) {
                 $this->pageRepository->remove($page);
             }

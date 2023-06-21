@@ -29,9 +29,11 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
+            $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code])
+                null !== $frequentlyAskedQuestion
             ) {
                 $this->frequentlyAskedQuestionRepository->remove($frequentlyAskedQuestion);
             }

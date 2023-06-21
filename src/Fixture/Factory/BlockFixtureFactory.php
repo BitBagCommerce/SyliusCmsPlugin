@@ -42,9 +42,11 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?BlockInterface $block */
+            $block = $this->blockRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $block = $this->blockRepository->findOneBy(['code' => $code])
+                null !== $block
             ) {
                 $this->blockRepository->remove($block);
             }
