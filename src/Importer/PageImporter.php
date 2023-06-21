@@ -40,7 +40,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         private EntityManagerInterface $entityManager,
-    ) {
+        ) {
         parent::__construct($validator);
     }
 
@@ -95,7 +95,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         string $url,
         string $locale,
         string $imageCode,
-    ): void {
+        ): void {
         $downloadedImage = $this->imageDownloader->download($url);
 
         /** @var MediaInterface $image */

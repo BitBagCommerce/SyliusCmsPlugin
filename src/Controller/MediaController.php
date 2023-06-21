@@ -26,7 +26,6 @@ use Webmozart\Assert\Assert;
 final class MediaController extends ResourceController
 {
     use ResourceDataProcessingTrait;
-
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
     /** @var MediaResourceResolverInterface */

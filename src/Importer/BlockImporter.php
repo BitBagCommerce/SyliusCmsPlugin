@@ -30,7 +30,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         private BlockRepositoryInterface $blockRepository,
-    ) {
+        ) {
         parent::__construct($validator);
     }
 

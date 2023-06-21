@@ -22,17 +22,17 @@ interface MediaRepositoryInterface extends RepositoryInterface
         string $code,
         string $localeCode,
         string $channelCode,
-    ): ?MediaInterface;
+        ): ?MediaInterface;
 
     public function findBySectionCode(
         string $sectionCode,
         string $localeCode,
         string $channelCode,
-    ): array;
+        ): array;
 
     public function findByProductCode(
         string $productCode,
         string $localeCode,
         string $channelCode,
-    ): array;
+        ): array;
 }

@@ -32,7 +32,7 @@ final class TaxonSearchAction
         TaxonRepositoryInterface $taxonRepository,
         LocaleContextInterface $localeContext,
         ViewHandler $viewHandler,
-    ) {
+        ) {
         $this->taxonRepository = $taxonRepository;
         $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;

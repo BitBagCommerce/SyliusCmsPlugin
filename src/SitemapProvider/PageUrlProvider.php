@@ -34,7 +34,7 @@ final class PageUrlProvider implements UrlProviderInterface
         private UrlFactoryInterface $sitemapUrlFactory,
         private LocaleContextInterface $localeContext,
         private ChannelContextInterface $channelContext,
-    ) {
+        ) {
     }
 
     public function getName(): string

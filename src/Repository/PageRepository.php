@@ -57,7 +57,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         string $slug,
         ?string $localeCode,
         string $channelCode,
-    ): ?PageInterface {
+        ): ?PageInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.channels', 'channels')
@@ -105,7 +105,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ProductInterface $product,
         string $channelCode,
         ?\DateTimeInterface $date = null,
-    ): array {
+        ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.channels', 'channel')
@@ -131,7 +131,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         string $sectionCode,
         string $channelCode,
         ?\DateTimeInterface $date = null,
-    ): array {
+        ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
             ->innerJoin('o.sections', 'section')

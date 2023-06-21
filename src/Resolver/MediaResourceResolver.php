@@ -24,7 +24,7 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         private LocaleContextInterface $localeContext,
         private ChannelContextInterface $channelContext,
         private LoggerInterface $logger,
-    ) {
+        ) {
     }
 
     public function findOrLog(string $code): ?MediaInterface

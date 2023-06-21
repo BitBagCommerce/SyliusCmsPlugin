@@ -24,7 +24,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         private PageRepositoryInterface $pageRepository,
         private RouterInterface $router,
         private string $defaultTemplate,
-    ) {
+        ) {
     }
 
     public function renderLinkForCode(
@@ -32,7 +32,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         string $code,
         array $options = [],
         ?string $template = null,
-    ): string {
+        ): string {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
 
         return $environment->render($template ?? $this->defaultTemplate, [

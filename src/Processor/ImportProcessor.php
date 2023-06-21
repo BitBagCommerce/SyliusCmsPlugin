@@ -21,7 +21,7 @@ final class ImportProcessor implements ImportProcessorInterface
         private ImporterChainInterface $importerChain,
         private ReaderInterface $reader,
         private EntityManagerInterface $entityManager,
-    ) {
+        ) {
     }
 
     public function process(string $resourceCode, string $filePath): void

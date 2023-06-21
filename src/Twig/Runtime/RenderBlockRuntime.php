@@ -22,7 +22,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
         private BlockRepositoryInterface $blockRepository,
         private BlockResourceResolverInterface $blockResourceResolver,
         private Environment $templatingEngine,
-    ) {
+        ) {
     }
 
     public function renderBlock(string $code, ?string $template = null): string
