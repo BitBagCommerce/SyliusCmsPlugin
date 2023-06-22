@@ -18,22 +18,22 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class FrequentlyAskedQuestionSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(FrequentlyAskedQuestion::class);
     }
 
-    function it_is_a_resource(): void
+    public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_frequently_asked_question_interface(): void
+    public function it_implements_frequently_asked_question_interface(): void
     {
         $this->shouldHaveType(FrequentlyAskedQuestionInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
+    public function it_allows_access_via_properties(): void
     {
         $this->setCode('delivery_charges_for_orders');
         $this->getCode()->shouldReturn('delivery_charges_for_orders');
@@ -45,7 +45,7 @@ final class FrequentlyAskedQuestionSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(true);
     }
 
-    function it_toggles(): void
+    public function it_toggles(): void
     {
         $this->enable();
         $this->isEnabled()->shouldReturn(true);
@@ -54,7 +54,7 @@ final class FrequentlyAskedQuestionSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(false);
     }
 
-    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    public function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
     {
         $this->addChannel($firstChannel);
         $this->hasChannel($firstChannel)->shouldReturn(true);

@@ -43,9 +43,6 @@ services:
             - "@sylius.context.locale"
             - "@logger"
 
-    bitbag_sylius_cms_plugin.resolver.media_type:
-        class: BitBag\SyliusCmsPlugin\Resolver\MediaTypeResolver
-
     bitbag_sylius_cms_plugin.resolver.media_resource:
         class: BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver
         public: true

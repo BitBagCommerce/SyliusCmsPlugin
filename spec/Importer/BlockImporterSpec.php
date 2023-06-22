@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class BlockImporterSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         ResourceResolverInterface $blockResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
@@ -31,8 +31,7 @@ final class BlockImporterSpec extends ObjectBehavior
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         BlockRepositoryInterface $blockRepository
-    )
-    {
+    ) {
         $this->beConstructedWith(
             $blockResourceResolver,
             $localeContext,
@@ -44,13 +43,13 @@ final class BlockImporterSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(\BitBag\SyliusCmsPlugin\Importer\BlockImporter::class);
         $this->shouldImplement(\BitBag\SyliusCmsPlugin\Importer\BlockImporterInterface::class);
     }
 
-    function it_imports_block(
+    public function it_imports_block(
         ResourceResolverInterface $blockResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
@@ -59,9 +58,8 @@ final class BlockImporterSpec extends ObjectBehavior
         ValidatorInterface $validator,
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block
-    )
-    {
-        $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code',];
+    ) {
+        $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code'];
 
         $blockResourceResolver->getResource('block_code')->willReturn($block);
 
@@ -85,7 +83,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $this->import($row);
     }
 
-    function it_gets_resource_code()
+    public function it_gets_resource_code()
     {
         $this->getResourceCode()->shouldReturn('block');
     }

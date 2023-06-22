@@ -21,7 +21,8 @@ final class ResourceResolver implements ResourceResolverInterface
         private RepositoryInterface $repository,
         private FactoryInterface $factory,
         private string $uniqueColumn,
-        ) {
+    )
+    {
     }
 
     /**
@@ -35,10 +36,11 @@ final class ResourceResolver implements ResourceResolverInterface
             return $resource;
         }
         $callback = [$this->factory, $factoryMethod];
-        if (!is_callable($callback)) {
-            throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');
+
+        if (is_callable($callback) && method_exists($this->factory, $factoryMethod)) {
+            return call_user_func($callback);
         }
 
-        return call_user_func($callback);
+        throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');
     }
 }

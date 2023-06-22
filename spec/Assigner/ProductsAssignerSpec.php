@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssigner;
@@ -11,28 +13,27 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 final class ProductsAssignerSpec extends ObjectBehavior
 {
-    function let(ProductRepositoryInterface $productRepository): void
+    public function let(ProductRepositoryInterface $productRepository): void
     {
         $this->beConstructedWith($productRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ProductsAssigner::class);
     }
 
-    function it_implements_products_assigner_interface(): void
+    public function it_implements_products_assigner_interface(): void
     {
         $this->shouldHaveType(ProductsAssignerInterface::class);
     }
 
-    function it_assigns_products(
+    public function it_assigns_products(
         ProductRepositoryInterface $productRepository,
         ProductInterface $mugProduct,
         ProductInterface $tshirtProduct,
         ProductsAwareInterface $productsAware
-    ): void
-    {
+    ): void {
         $productRepository->findOneBy(['code' => 'mug'])->willReturn($mugProduct);
         $productRepository->findOneBy(['code' => 't-shirt'])->willReturn($tshirtProduct);
 

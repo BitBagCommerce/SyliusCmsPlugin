@@ -22,15 +22,14 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class MediaImporterSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository
-    )
-    {
+    ) {
         $this->beConstructedWith(
             $mediaResourceResolver,
             $localeContext,
@@ -41,13 +40,13 @@ final class MediaImporterSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(\BitBag\SyliusCmsPlugin\Importer\MediaImporter::class);
         $this->shouldImplement(\BitBag\SyliusCmsPlugin\Importer\MediaImporterInterface::class);
     }
 
-    function it_imports_media(
+    public function it_imports_media(
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
@@ -55,9 +54,8 @@ final class MediaImporterSpec extends ObjectBehavior
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository,
         MediaInterface $media
-    )
-    {
-        $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code',];
+    ) {
+        $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code'];
 
         $mediaResourceResolver->getResource('media_code')->willReturn($media);
         $localeContext->getLocaleCode()->willReturn('en_US');
@@ -80,7 +78,7 @@ final class MediaImporterSpec extends ObjectBehavior
         $this->import($row);
     }
 
-    function it_gets_resource_code()
+    public function it_gets_resource_code()
     {
         $this->getResourceCode()->shouldReturn('media');
     }

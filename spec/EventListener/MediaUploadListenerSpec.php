@@ -25,12 +25,12 @@ final class MediaUploadListenerSpec extends ObjectBehavior
         $this->beConstructedWith($mediaProviderResolver);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(MediaUploadListener::class);
     }
 
-    function it_does_not_upload_if_not_media_instance(
+    public function it_does_not_upload_if_not_media_instance(
         ResourceControllerEvent $event,
         MediaInterface $media,
         MediaProviderResolverInterface $mediaProviderResolver
@@ -40,7 +40,7 @@ final class MediaUploadListenerSpec extends ObjectBehavior
         $mediaProviderResolver->resolveProvider($media)->shouldNotBeCalled();
     }
 
-    function it_uploads_media(
+    public function it_uploads_media(
         ResourceControllerEvent $event,
         MediaInterface $media,
         MediaProviderResolverInterface $mediaProviderResolver,

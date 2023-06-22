@@ -17,12 +17,12 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ContentManagementMenuBuilder::class);
     }
 
-    function it_build_menu(
+    public function it_build_menu(
         MenuBuilderEvent $menuBuilderEvent,
         ItemInterface $menu,
         ItemInterface $cmsRootMenuItem

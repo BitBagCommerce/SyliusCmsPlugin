@@ -17,22 +17,22 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class SectionSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Section::class);
     }
 
-    function it_is_a_resource(): void
+    public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_section_interface(): void
+    public function it_implements_section_interface(): void
     {
         $this->shouldHaveType(SectionInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
+    public function it_allows_access_via_properties(): void
     {
         $this->setCode('blog');
         $this->getCode()->shouldReturn('blog');

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner;
@@ -11,28 +13,27 @@ use PhpSpec\ObjectBehavior;
 
 final class SectionsAssignerSpec extends ObjectBehavior
 {
-    function let(SectionRepositoryInterface $sectionRepository): void
+    public function let(SectionRepositoryInterface $sectionRepository): void
     {
         $this->beConstructedWith($sectionRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(SectionsAssigner::class);
     }
 
-    function it_implements_sections_assigner_interface(): void
+    public function it_implements_sections_assigner_interface(): void
     {
         $this->shouldHaveType(SectionsAssignerInterface::class);
     }
 
-    function it_assigns_sections(
+    public function it_assigns_sections(
         SectionRepositoryInterface $sectionRepository,
         SectionInterface $aboutSection,
         SectionInterface $blogSection,
         SectionableInterface $sectionsAware
-    ): void
-    {
+    ): void {
         $sectionRepository->findOneBy(['code' => 'about'])->willReturn($aboutSection);
         $sectionRepository->findOneBy(['code' => 'blog'])->willReturn($blogSection);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner;
@@ -11,28 +13,27 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
 final class TaxonsAssignerSpec extends ObjectBehavior
 {
-    function let(TaxonRepositoryInterface $taxonRepository): void
+    public function let(TaxonRepositoryInterface $taxonRepository): void
     {
         $this->beConstructedWith($taxonRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(TaxonsAssigner::class);
     }
 
-    function it_implements_taxons_assigner_interface(): void
+    public function it_implements_taxons_assigner_interface(): void
     {
         $this->shouldHaveType(TaxonsAssignerInterface::class);
     }
 
-    function it_assigns_taxons(
+    public function it_assigns_taxons(
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $mugsTaxon,
         TaxonInterface $stickersTaxon,
         TaxonAwareInterface $taxonsAware
-    ): void
-    {
+    ): void {
         $taxonRepository->findOneBy(['code' => 'mugs'])->willReturn($mugsTaxon);
         $taxonRepository->findOneBy(['code' => 'stickers'])->willReturn($stickersTaxon);
 

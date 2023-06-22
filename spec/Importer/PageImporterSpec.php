@@ -12,7 +12,6 @@ namespace spec\BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
@@ -20,16 +19,14 @@ use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\HttpFoundation\File\File;
 
 final class PageImporterSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         ResourceResolverInterface $pageResourceResolver,
         LocaleContextInterface $localeContext,
         ImageDownloaderInterface $imageDownloader,
@@ -40,8 +37,7 @@ final class PageImporterSpec extends ObjectBehavior
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->beConstructedWith(
             $pageResourceResolver,
             $localeContext,
@@ -56,13 +52,13 @@ final class PageImporterSpec extends ObjectBehavior
         );
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(\BitBag\SyliusCmsPlugin\Importer\PageImporter::class);
         $this->shouldImplement(\BitBag\SyliusCmsPlugin\Importer\PageImporterInterface::class);
     }
 
-    function it_imports_page_no_url(
+    public function it_imports_page_no_url(
         ResourceResolverInterface $pageResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterSectionsResolverInterface $importerSectionsResolver,
@@ -71,8 +67,7 @@ final class PageImporterSpec extends ObjectBehavior
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager,
         PageInterface $page,
-    )
-    {
+        ) {
         $row = [
             'code' => 'page_code',
             'slug_pl' => 'slug',
@@ -118,10 +113,9 @@ final class PageImporterSpec extends ObjectBehavior
         $entityManager->flush()->shouldBeCalled();
 
         $this->import($row);
-
     }
 
-    function it_gets_resource_code()
+    public function it_gets_resource_code()
     {
         $this->getResourceCode()->shouldReturn('page');
     }

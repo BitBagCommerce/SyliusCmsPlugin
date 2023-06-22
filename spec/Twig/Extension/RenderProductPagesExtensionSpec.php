@@ -17,23 +17,23 @@ use Twig\Extension\AbstractExtension;
 
 final class RenderProductPagesExtensionSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         RenderProductPagesRuntimeInterface $productPagesRuntime
     ): void {
         $this->beConstructedWith($productPagesRuntime);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderProductPagesExtension::class);
     }
 
-    function it_extends_abstract_extension(): void
+    public function it_extends_abstract_extension(): void
     {
         $this->shouldHaveType(AbstractExtension::class);
     }
 
-    function it_returns_functions(): void
+    public function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
 
