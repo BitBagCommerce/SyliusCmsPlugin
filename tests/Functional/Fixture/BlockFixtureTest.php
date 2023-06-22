@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Fixture;
+namespace Tests\BitBag\SyliusCmsPlugin\Functional\Fixture;
 
 use BitBag\SyliusCmsPlugin\Fixture\BlockFixture;
 use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;

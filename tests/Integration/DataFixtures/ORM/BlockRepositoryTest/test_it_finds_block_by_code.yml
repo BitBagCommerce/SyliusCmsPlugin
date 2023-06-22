@@ -1,0 +1,36 @@
+Sylius\Component\Addressing\Model\Country:
+  USA:
+    code: 'US'
+Sylius\Component\Currency\Model\Currency:
+  dollar:
+    code: 'USD'
+Sylius\Component\Locale\Model\Locale:
+  locale:
+    createdAt: '<dateTimeBetween("-200 days", "now")>'
+    code: 'en_US'
+Sylius\Component\Core\Model\Channel:
+  channel:
+    code: "code"
+    name: "name"
+    locales:
+      - '@locale'
+    default_locale: '@locale'
+    tax_calculation_strategy: 'order_items_based'
+    base_currency: '@dollar'
+BitBag\SyliusCmsPlugin\Entity\Block:
+  block1:
+    code: 'block1-code'
+    enabled: true
+    channels:
+      - '@channel'
+  block2:
+    code: 'block2-code'
+    enabled: true
+    channels:
+      - '@channel'
+  block3:
+    code: 'block3-code'
+    enabled: false
+    channels:
+      - '@channel'
+
