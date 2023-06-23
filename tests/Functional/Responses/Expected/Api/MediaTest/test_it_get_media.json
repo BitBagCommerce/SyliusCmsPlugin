@@ -1,0 +1,116 @@
+{
+  "@context": "/api/v2/contexts/Media",
+  "@id": "/api/v2/shop/cms-plugin/media",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/api/v2/shop/cms-plugin/media/@integer@",
+      "@type": "Media",
+      "id": "@integer@",
+      "type": "image",
+      "code": "media1-code",
+      "path": "/path/to/media1",
+      "mimeType": null,
+      "width": null,
+      "height": null,
+      "saveWithOriginalName": false,
+      "enabled": true,
+      "sections": [
+        {
+          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
+          "@type": "Section",
+          "id": "@integer@",
+          "code": "section1-code"
+        }
+      ],
+      "products": [
+        "/api/v2/shop/products/MUG_SW"
+      ],
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "translations": {
+        "en_US": {
+          "@type": "MediaTranslation",
+          "name": "translation_name_en_US",
+          "content": "translation_content_en_US",
+          "alt": null,
+          "link": "translation_link_en_US"
+        }
+      }
+    },
+    {
+      "@id": "/api/v2/shop/cms-plugin/media/@integer@",
+      "@type": "Media",
+      "id": "@integer@",
+      "type": "image",
+      "code": "media2-code",
+      "path": "/path/to/media2",
+      "mimeType": null,
+      "width": null,
+      "height": null,
+      "saveWithOriginalName": false,
+      "enabled": true,
+      "sections": [
+        {
+          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
+          "@type": "Section",
+          "id": "@integer@",
+          "code": "section2-code"
+        }
+      ],
+      "products": [
+        "/api/v2/shop/products/MUG_SW2"
+      ],
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "translations": {
+        "en_US": {
+          "@type": "MediaTranslation",
+          "name": "translation_name_en_US",
+          "content": "translation_content_en_US",
+          "alt": null,
+          "link": "translation_link_en_US"
+        }
+      }
+    },
+    {
+      "@id": "/api/v2/shop/cms-plugin/media/@integer@",
+      "@type": "Media",
+      "id": "@integer@",
+      "type": "image",
+      "code": "media3-code",
+      "path": "/path/to/media3",
+      "mimeType": null,
+      "width": null,
+      "height": null,
+      "saveWithOriginalName": false,
+      "enabled": false,
+      "sections": [
+        {
+          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
+          "@type": "Section",
+          "id": "@integer@",
+          "code": "section3-code"
+        }
+      ],
+      "products": [
+        "/api/v2/shop/products/MUG_SW3"
+      ],
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "translations": {
+        "en_US": {
+          "@type": "MediaTranslation",
+          "name": "translation_name_en_US",
+          "content": "translation_content_en_US",
+          "alt": null,
+          "link": "translation_link_en_US"
+        }
+      }
+    }
+  ],
+  "hydra:totalItems": 3
+}

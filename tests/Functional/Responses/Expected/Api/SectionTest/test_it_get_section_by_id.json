@@ -1,0 +1,7 @@
+{
+  "@context": "/api/v2/contexts/Section",
+  "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
+  "@type": "Section",
+  "id": "@integer@",
+  "code": "section1-code"
+}

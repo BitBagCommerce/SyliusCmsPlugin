@@ -1,0 +1,36 @@
+{
+  "@context": "/api/v2/contexts/Block",
+  "@id": "/api/v2/shop/cms-plugin/blocks/@integer@",
+  "@type": "Block",
+  "id": "@integer@",
+  "code": "block1-code",
+  "enabled": true,
+  "sections": [
+    {
+      "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
+      "@type": "Section",
+      "id": "@integer@",
+      "code": "section1-code"
+    }
+  ],
+  "products": [
+    "/api/v2/shop/products/MUG_SW"
+  ],
+  "channels": [
+    "/api/v2/shop/channels/code"
+  ],
+  "translations": {
+    "en_US": {
+      "@type": "BlockTranslation",
+      "name": "translation_name_en_US",
+      "content": "translation_content_en_US",
+      "link": "translation_link_en_US"
+    }
+  },
+  "taxons": [
+    {
+      "@id": "/api/v2/shop/taxons/menu_category",
+      "@type": "Taxon"
+    }
+  ]
+}
