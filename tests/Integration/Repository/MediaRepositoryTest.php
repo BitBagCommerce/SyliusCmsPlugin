@@ -9,13 +9,10 @@
 
 declare(strict_types=1);
 
-
 namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\Media;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 
 class MediaRepositoryTest extends JsonApiTestCase
@@ -29,8 +26,7 @@ class MediaRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_code.yml');
 
-        /** @var MediaRepositoryInterface $mediaRepository */
-        $mediaRepository = $this->getEntityManager()->getRepository(Media::class);
+        $mediaRepository = $this->getRepository();
 
         $media1 = $mediaRepository->findOneEnabledByCode('media1-code', 'en_US', 'code');
         $media3 = $mediaRepository->findOneEnabledByCode('media3-code', 'en_US', 'code');
@@ -43,8 +39,7 @@ class MediaRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_section_code.yml');
 
-        /** @var MediaRepositoryInterface $mediaRepository */
-        $mediaRepository = $this->getEntityManager()->getRepository(Media::class);
+        $mediaRepository = $this->getRepository();
 
         $media1 = $mediaRepository->findBySectionCode('section1-code', 'en_US', 'code');
         $media3 = $mediaRepository->findBySectionCode('section3-code', 'en_US', 'code');
@@ -57,13 +52,20 @@ class MediaRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_product_code.yml');
 
-        /** @var MediaRepositoryInterface $mediaRepository */
-        $mediaRepository = $this->getEntityManager()->getRepository(Media::class);
+        $mediaRepository = $this->getRepository();
 
         $media1_array = $mediaRepository->findByProductCode('MUG_SW', 'en_US', 'code');
         $media3_array = $mediaRepository->findByProductCode('MUG_SW3', 'en_US', 'code');
 
         self::assertNotEmpty($media1_array);
         self::assertEmpty($media3_array);
+    }
+
+    private function getRepository(): MediaRepositoryInterface
+    {
+        /** @var MediaRepositoryInterface $repository */
+        $repository = $this->getEntityManager()->getRepository(MediaInterface::class);
+
+        return $repository;
     }
 }

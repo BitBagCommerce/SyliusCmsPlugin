@@ -9,11 +9,10 @@
 
 declare(strict_types=1);
 
-
 namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\Block;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 
 class BlockRepositoryTest extends JsonApiTestCase
@@ -27,12 +26,10 @@ class BlockRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_code.yml');
 
-        /** @var BlockRepositoryInterface $blockRepostitory */
-        $blockRepostitory = $this->getEntityManager()->getRepository(Block::class);
+        $blockRepository = $this->getRepository();
 
-
-        $block1 = $blockRepostitory->findEnabledByCode('block1-code', 'code');
-        $block3 = $blockRepostitory->findEnabledByCode('block3-code', 'code');
+        $block1 = $blockRepository->findEnabledByCode('block1-code', 'code');
+        $block3 = $blockRepository->findEnabledByCode('block3-code', 'code');
 
         self::assertNotNull($block1);
         self::assertNull($block3);
@@ -42,12 +39,10 @@ class BlockRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_section_code.yml');
 
-        /** @var BlockRepositoryInterface $blockRepostitory */
-        $blockRepostitory = $this->getEntityManager()->getRepository(Block::class);
+        $blockRepository = $this->getRepository();
 
-
-        $block_array1 = $blockRepostitory->findBySectionCode('section1-code', 'en_US', 'code');
-        $block_array3 = $blockRepostitory->findBySectionCode('section3-code', 'en_US', 'code');
+        $block_array1 = $blockRepository->findBySectionCode('section1-code', 'en_US', 'code');
+        $block_array3 = $blockRepository->findBySectionCode('section3-code', 'en_US', 'code');
 
         self::assertNotEmpty($block_array1);
         self::assertEmpty($block_array3);
@@ -57,16 +52,20 @@ class BlockRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_product_code.yml');
 
-        /** @var BlockRepositoryInterface $blockRepostitory */
-        $blockRepostitory = $this->getEntityManager()->getRepository(Block::class);
+        $blockRepository = $this->getRepository();
 
-
-        $block_array1 = $blockRepostitory->findByProductCode('MUG_SW', 'en_US', 'code');
-        $block_array3 = $blockRepostitory->findByProductCode('MUG_SW3', 'en_US', 'code');
+        $block_array1 = $blockRepository->findByProductCode('MUG_SW', 'en_US', 'code');
+        $block_array3 = $blockRepository->findByProductCode('MUG_SW3', 'en_US', 'code');
 
         self::assertNotEmpty($block_array1);
         self::assertEmpty($block_array3);
     }
 
+    private function getRepository(): BlockRepositoryInterface
+    {
+        /** @var BlockRepositoryInterface $repository */
+        $repository = $this->getEntityManager()->getRepository(BlockInterface::class);
 
+        return $repository;
+    }
 }

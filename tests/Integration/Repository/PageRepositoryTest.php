@@ -9,15 +9,10 @@
 
 declare(strict_types=1);
 
-
 namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\Media;
-use BitBag\SyliusCmsPlugin\Entity\Page;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
@@ -33,8 +28,7 @@ class PageRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_code.yml');
 
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getEntityManager()->getRepository(Page::class);
+        $pageRepository = $this->getRepository();
 
         $page1_2_array = $pageRepository->findEnabled(true);
         $page3_array = $pageRepository->findEnabled(false);
@@ -47,8 +41,7 @@ class PageRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_code.yml');
 
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getEntityManager()->getRepository(Page::class);
+        $pageRepository = $this->getRepository();
 
         $page1 = $pageRepository->findOneEnabledByCode('page1-code', 'en_US');
         $page3 = $pageRepository->findOneEnabledByCode('page3-code', 'en_US');
@@ -61,8 +54,7 @@ class PageRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_section_code.yml');
 
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getEntityManager()->getRepository(Page::class);
+        $pageRepository = $this->getRepository();
 
         $page1_array = $pageRepository->findBySectionCode('section1-code', 'en_US');
         $page3_array = $pageRepository->findBySectionCode('section3-code', 'en_US');
@@ -75,8 +67,7 @@ class PageRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product.yml');
 
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getEntityManager()->getRepository(Page::class);
+        $pageRepository = $this->getRepository();
 
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->getEntityManager()->getRepository(Product::class);
@@ -97,8 +88,7 @@ class PageRepositoryTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product_and_section_code.yml');
 
-        /** @var PageRepositoryInterface $pageRepository */
-        $pageRepository = $this->getEntityManager()->getRepository(Page::class);
+        $pageRepository = $this->getRepository();
 
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->getEntityManager()->getRepository(Product::class);
@@ -108,10 +98,18 @@ class PageRepositoryTest extends JsonApiTestCase
         /** @var Product $product3 */
         $product3 = $productRepository->findOneByCode('MUG_SW3');
 
-        $page1_array = $pageRepository->findByProductAndSectionCode($product1, 'section1-code','code', null);
-        $page3_array = $pageRepository->findByProductAndSectionCode($product3, 'section3-code','code', null);
+        $page1_array = $pageRepository->findByProductAndSectionCode($product1, 'section1-code', 'code', null);
+        $page3_array = $pageRepository->findByProductAndSectionCode($product3, 'section3-code', 'code', null);
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);
+    }
+
+    private function getRepository(): PageRepositoryInterface
+    {
+        /** @var PageRepositoryInterface $repository */
+        $repository = $this->getEntityManager()->getRepository(PageInterface::class);
+
+        return $repository;
     }
 }
