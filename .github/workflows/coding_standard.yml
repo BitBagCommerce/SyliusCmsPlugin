@@ -81,3 +81,15 @@ jobs:
 
             -   name: Run ECS
                 run: vendor/bin/ecs
+
+            -   name: Failed build Slack notification
+                uses: rtCamp/action-slack-notify@v2
+                if: ${{ failure() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
+                env:
+                    SLACK_CHANNEL: ${{ secrets.FAILED_BUILD_SLACK_CHANNEL }}
+                    SLACK_COLOR: ${{ job.status }}
+                    SLACK_ICON: https://github.com/rtCamp.png?size=48
+                    SLACK_MESSAGE: ':x:'
+                    SLACK_TITLE: Failed build on ${{ github.event.repository.name }} repository
+                    SLACK_USERNAME: ${{ secrets.FAILED_BUILD_SLACK_USERNAME }}
+                    SLACK_WEBHOOK: ${{ secrets.FAILED_BUILD_SLACK_WEBHOOK }}
