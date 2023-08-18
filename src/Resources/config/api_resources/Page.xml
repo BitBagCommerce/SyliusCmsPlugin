@@ -31,6 +31,26 @@
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/pages/{id}</attribute>
             </itemOperation>
+            <itemOperation name="shop_get_page_by_slug">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/page-by-slug/{slug}</attribute>
+                <attribute name="controller">BitBag\SyliusCmsPlugin\Controller\GetPageBySlugAction</attribute>
+                <attribute name="read">false</attribute>
+                <attribute name="openapi_context">
+                    <attribute name="summary">Use slug to retrieve a page resource.</attribute>
+                    <attribute name="parameters">
+                        <attribute>
+                            <attribute name="name">slug</attribute>
+                            <attribute name="in">path</attribute>
+                            <attribute name="required">true</attribute>
+                            <attribute name="schema">
+                                <attribute name="type">string</attribute>
+                            </attribute>
+                        </attribute>
+                    </attribute>
+                </attribute>
+                <attribute name="force_eager">false</attribute>
+            </itemOperation>       
         </itemOperations>
 
         <property name="id" identifier="true" writable="false"/>
