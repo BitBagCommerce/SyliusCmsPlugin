@@ -36,8 +36,9 @@ final class GetPageBySlugAction
 
     public function __invoke(string $slug): RedirectResponse
     {
+        $request = $this->requestStack->getCurrentRequest();
         $channel = $this->channelContext->getChannel();
-        $locale = $this->localeContext->getLocaleCode();
+        $locale = ($request->headers->get('accept-language') ?? $this->localeContext->getLocaleCode());
 
         $page = $this->pageRepository->findOneEnabledBySlugAndChannelCode($slug, $locale, $channel->getCode());
 
@@ -46,8 +47,6 @@ final class GetPageBySlugAction
         }
 
         $iri = $this->iriConverter->getIriFromItem($page);
-
-        $request = $this->requestStack->getCurrentRequest();
 
         $requestQuery = $request->getQueryString();
         if (null !== $requestQuery) {
