@@ -71,3 +71,13 @@ services:
     bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info:
         public: true
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\RetrievePackageInfoAction
+
+    BitBag\SyliusCmsPlugin\Controller\GetPageBySlugAction:
+        public: true
+        class: BitBag\SyliusCmsPlugin\Controller\GetPageBySlugAction
+        arguments:
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@api_platform.iri_converter"
+            - "@request_stack"
