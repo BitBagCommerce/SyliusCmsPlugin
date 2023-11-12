@@ -31,8 +31,8 @@ final class TaxonSearchAction
     public function __construct(
         TaxonRepositoryInterface $taxonRepository,
         LocaleContextInterface $localeContext,
-        ViewHandler $viewHandler
-    ) {
+        ViewHandler $viewHandler,
+        ) {
         $this->taxonRepository = $taxonRepository;
         $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;

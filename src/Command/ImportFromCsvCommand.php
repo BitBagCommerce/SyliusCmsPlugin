@@ -18,14 +18,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class ImportFromCsvCommand extends Command
 {
-    /** @var ImportProcessorInterface */
-    private $importProcessor;
-
-    public function __construct(ImportProcessorInterface $importProcessor)
+    public function __construct(private ImportProcessorInterface $importProcessor)
     {
         parent::__construct();
-
-        $this->importProcessor = $importProcessor;
     }
 
     protected function configure(): void

@@ -17,17 +17,17 @@ use Twig\TwigFunction;
 
 final class RenderContentExtensionSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(RenderContentExtension::class);
     }
 
-    function it_extends_abstract_extension(): void
+    public function it_extends_abstract_extension(): void
     {
         $this->shouldHaveType(AbstractExtension::class);
     }
 
-    function it_returns_functions(): void
+    public function it_returns_functions(): void
     {
         $functions = $this->getFunctions();
 

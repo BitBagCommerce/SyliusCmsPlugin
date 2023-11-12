@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Parser;
 
 use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParser;
@@ -11,27 +13,26 @@ use Twig\TwigFunction;
 
 final class ContentParserSpec extends ObjectBehavior
 {
-    function let(Environment $twigEnvironment): void
+    public function let(Environment $twigEnvironment): void
     {
         $this->beConstructedWith($twigEnvironment, ['bitbag_cms_render_block']);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ContentParser::class);
     }
 
-    function it_implements_content_parser_interface(): void
+    public function it_implements_content_parser_interface(): void
     {
         $this->shouldHaveType(ContentParserInterface::class);
     }
 
-    function it_parses_string_function(
+    public function it_parses_string_function(
         Environment $twigEnvironment,
         TwigFunction $renderBlockFunction,
         RenderBlockRuntimeInterface $renderBlockRuntime
-    ): void
-    {
+    ): void {
         $twigEnvironment->getFunctions()->willReturn([
             'bitbag_cms_render_block' => $renderBlockFunction,
         ]);
@@ -44,12 +45,11 @@ final class ContentParserSpec extends ObjectBehavior
         $this->parse($input);
     }
 
-    function it_parses_string_functions(
+    public function it_parses_string_functions(
         Environment $twigEnvironment,
         TwigFunction $renderBlockFunction,
         RenderBlockRuntimeInterface $renderBlockRuntime
-    ): void
-    {
+    ): void {
         $twigEnvironment->getFunctions()->willReturn([
             'bitbag_cms_render_block' => $renderBlockFunction,
         ]);

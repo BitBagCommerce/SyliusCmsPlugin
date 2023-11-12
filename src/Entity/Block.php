@@ -17,15 +17,10 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-
     use SectionableTrait;
-
     use ProductsAwareTrait;
-
     use TaxonAwareTrait;
-
     use ChannelsAwareTrait;
-
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

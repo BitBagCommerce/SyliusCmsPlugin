@@ -16,12 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     public function upload(MediaInterface $media, string $pathPrefix): void
@@ -51,10 +47,13 @@ final class MediaUploader implements MediaUploaderInterface
         $file = $media->getFile();
         Assert::notNull($file, sprintf('File for media identified by id: "%s" is null', $media->getId()));
         $mimeType = $media->getMimeType();
-        if (null !== $mimeType && false !== strpos($mimeType, 'image')) {
-            [$width, $height] = getimagesize($file->getPathname());
-            $media->setWidth($width);
-            $media->setHeight($height);
+        if (null !== $mimeType && str_contains($mimeType, 'image')) {
+            $sizes = getimagesize($file->getPathname());
+            if (false !== $sizes) {
+                [$width, $height] = $sizes;
+                $media->setWidth($width);
+                $media->setHeight($height);
+            }
         }
 
         $mediaPath = $media->getPath();
@@ -63,7 +62,7 @@ final class MediaUploader implements MediaUploaderInterface
         Assert::notFalse($fileContents, sprintf('File contents for file identified by id: "%s" is false', $file->getPath()));
         $this->filesystem->write(
             $mediaPath,
-            $fileContents
+            $fileContents,
         );
     }
 
@@ -79,14 +78,14 @@ final class MediaUploader implements MediaUploaderInterface
     private function expandPath(
         string $path,
         string $pathPrefix,
-        ?string $originalName = null
-    ): string {
+        ?string $originalName = null,
+        ): string {
         return sprintf(
             '%s/%s/%s/%s',
             $pathPrefix,
             substr($path, 0, 2),
             substr($path, 2, 2),
-            $originalName ?? substr($path, 4)
+            $originalName ?? substr($path, 4),
         );
     }
 

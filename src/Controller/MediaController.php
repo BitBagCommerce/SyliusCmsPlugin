@@ -26,7 +26,6 @@ use Webmozart\Assert\Assert;
 final class MediaController extends ResourceController
 {
     use ResourceDataProcessingTrait;
-
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
     /** @var MediaResourceResolverInterface */
@@ -67,7 +66,7 @@ final class MediaController extends ResourceController
 
         $response->setContentDisposition(
             $request->get('disposition', ResponseHeaderBag::DISPOSITION_ATTACHMENT),
-            $mediaName
+            $mediaName,
         );
         $response->headers->set('Content-Type', $media->getMimeType());
 

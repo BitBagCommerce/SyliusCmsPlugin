@@ -17,23 +17,11 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolver implements PageResourceResolverInterface
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var LoggerInterface */
-    private $logger;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
-        LoggerInterface $logger
-    ) {
-        $this->pageRepository = $pageRepository;
-        $this->localeContext = $localeContext;
-        $this->logger = $logger;
+        private PageRepositoryInterface $pageRepository,
+        private LocaleContextInterface $localeContext,
+        private LoggerInterface $logger,
+        ) {
     }
 
     public function findOrLog(string $code): ?PageInterface
@@ -43,7 +31,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
         if (false === $page instanceof PageInterface) {
             $this->logger->warning(sprintf(
                 'Page with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

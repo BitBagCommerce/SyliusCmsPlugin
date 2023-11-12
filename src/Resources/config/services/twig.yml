@@ -15,7 +15,6 @@ services:
     bitbag_sylius_cms_plugin.twig.runtime.block:
         class: BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime
         arguments:
-            - "@bitbag_sylius_cms_plugin.repository.block"
             - "@bitbag_sylius_cms_plugin.resolver.block_resource"
             - "@twig"
         tags:

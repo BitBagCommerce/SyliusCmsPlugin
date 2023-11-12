@@ -60,8 +60,8 @@ final class PageContext implements Context
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
-        MediaUploaderInterface $mediaUploader
-    ) {
+        MediaUploaderInterface $mediaUploader,
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
         $this->pageFactory = $pageFactory;
@@ -224,8 +224,8 @@ final class PageContext implements Context
         ?string $code = null,
         ?string $name = null,
         ?string $content = null,
-        ChannelInterface $channel = null
-    ): PageInterface {
+        ChannelInterface $channel = null,
+        ): PageInterface {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
 

@@ -19,36 +19,20 @@ use Twig\Environment;
 
 final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 {
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var RouterInterface */
-    private $router;
-
-    /** @var string */
-    private $defaultTemplate;
-
     public function __construct(
-        LocaleContextInterface $localeContext,
-        PageRepositoryInterface $pageRepository,
-        RouterInterface $router,
-        string $defaultTemplate
-    ) {
-        $this->localeContext = $localeContext;
-        $this->pageRepository = $pageRepository;
-        $this->router = $router;
-        $this->defaultTemplate = $defaultTemplate;
+        private LocaleContextInterface $localeContext,
+        private PageRepositoryInterface $pageRepository,
+        private RouterInterface $router,
+        private string $defaultTemplate,
+        ) {
     }
 
     public function renderLinkForCode(
         Environment $environment,
         string $code,
         array $options = [],
-        ?string $template = null
-    ): string {
+        ?string $template = null,
+        ): string {
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
 
         return $environment->render($template ?? $this->defaultTemplate, [
@@ -59,7 +43,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 
     public function getLinkForCode(
         string $code,
-        array $options = []
+        array $options = [],
     ): string {
         /** @var PageInterface|null $page */
         $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());

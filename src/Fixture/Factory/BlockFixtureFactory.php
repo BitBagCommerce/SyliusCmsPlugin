@@ -25,66 +25,28 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var FactoryInterface */
-    private $blockFactory;
-
-    /** @var FactoryInterface */
-    private $blockTranslationFactory;
-
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    /** @var TaxonsAssignerInterface */
-    private $taxonsAssigner;
-
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
     public function __construct(
-        FactoryInterface $blockFactory,
-        FactoryInterface $blockTranslationFactory,
-        BlockRepositoryInterface $blockRepository,
-        ProductRepositoryInterface $productRepository,
-        ChannelContextInterface $channelContext,
-        LocaleContextInterface $localeContext,
-        ProductsAssignerInterface $productsAssigner,
-        TaxonsAssignerInterface $taxonsAssigner,
-        SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner
-    ) {
-        $this->blockFactory = $blockFactory;
-        $this->blockTranslationFactory = $blockTranslationFactory;
-        $this->blockRepository = $blockRepository;
-        $this->productRepository = $productRepository;
-        $this->channelContext = $channelContext;
-        $this->localeContext = $localeContext;
-        $this->productsAssigner = $productsAssigner;
-        $this->taxonsAssigner = $taxonsAssigner;
-        $this->sectionsAssigner = $sectionsAssigner;
-        $this->channelAssigner = $channelAssigner;
+        private FactoryInterface $blockFactory,
+        private FactoryInterface $blockTranslationFactory,
+        private BlockRepositoryInterface $blockRepository,
+        private ProductRepositoryInterface $productRepository,
+        private ChannelContextInterface $channelContext,
+        private LocaleContextInterface $localeContext,
+        private ProductsAssignerInterface $productsAssigner,
+        private TaxonsAssignerInterface $taxonsAssigner,
+        private SectionsAssignerInterface $sectionsAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
+        ) {
     }
 
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?BlockInterface $block */
+            $block = $this->blockRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $block = $this->blockRepository->findOneBy(['code' => $code])
+                null !== $block
             ) {
                 $this->blockRepository->remove($block);
             }
@@ -138,7 +100,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),
-            $limit
+            $limit,
         );
         foreach ($products as $product) {
             $block->addProduct($product);

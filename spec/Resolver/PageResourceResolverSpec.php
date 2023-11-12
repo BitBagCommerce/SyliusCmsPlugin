@@ -20,22 +20,25 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolverSpec extends ObjectBehavior
 {
-    function let(PageRepositoryInterface $pageRepository, LocaleContextInterface $localeContext, LoggerInterface $logger)
-    {
+    public function let(
+        PageRepositoryInterface $pageRepository,
+        LocaleContextInterface $localeContext,
+        LoggerInterface $logger
+    ) {
         $this->beConstructedWith($pageRepository, $localeContext, $logger);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(PageResourceResolver::class);
     }
 
-    function it_implements_page_resource_resolver_interface(): void
+    public function it_implements_page_resource_resolver_interface(): void
     {
         $this->shouldHaveType(PageResourceResolverInterface::class);
     }
 
-    function it_logs_warning_if_page_was_not_found(
+    public function it_logs_warning_if_page_was_not_found(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         LoggerInterface $logger
@@ -54,7 +57,7 @@ final class PageResourceResolverSpec extends ObjectBehavior
         $this->findOrLog('homepage_banner');
     }
 
-    function it_returns_page_if_found_in_database(
+    public function it_returns_page_if_found_in_database(
         PageRepositoryInterface $pageRepository,
         LocaleContextInterface $localeContext,
         PageInterface $page

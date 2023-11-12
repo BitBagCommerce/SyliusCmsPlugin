@@ -1,0 +1,62 @@
+{
+  "@context": "/api/v2/contexts/FrequentlyAskedQuestion",
+  "@id": "/api/v2/shop/cms-plugin/faq",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/api/v2/shop/cms-plugin/faq/@integer@",
+      "@type": "FrequentlyAskedQuestion",
+      "id": "@integer@",
+      "code": "faq1-code",
+      "position": 10,
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "enabled": true,
+      "translations": {
+        "en_US": {
+          "@type": "FrequentlyAskedQuestionTranslation",
+          "question": "How many days there are in one year?",
+          "answer": "It may vary depending on whether you are working on a new question"
+        }
+      }
+    },
+    {
+      "@id": "/api/v2/shop/cms-plugin/faq/@integer@",
+      "@type": "FrequentlyAskedQuestion",
+      "id": "@integer@",
+      "code": "faq2-code",
+      "position": 20,
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "enabled": true,
+      "translations": {
+        "en_US": {
+          "@type": "FrequentlyAskedQuestionTranslation",
+          "question": "Who is responsible for the translation",
+          "answer": "Translators are"
+        }
+      }
+    },
+    {
+      "@id": "/api/v2/shop/cms-plugin/faq/@integer@",
+      "@type": "FrequentlyAskedQuestion",
+      "id": "@integer@",
+      "code": "faq3-code",
+      "position": 30,
+      "channels": [
+        "/api/v2/shop/channels/code"
+      ],
+      "enabled": false,
+      "translations": {
+        "en_US": {
+          "@type": "FrequentlyAskedQuestionTranslation",
+          "question": "What is the date?",
+          "answer": "Dunno"
+        }
+      }
+    }
+  ],
+  "hydra:totalItems": 3
+}

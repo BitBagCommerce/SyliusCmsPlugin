@@ -17,23 +17,11 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class ResourceResolver implements ResourceResolverInterface
 {
-    /** @var RepositoryInterface */
-    private $repository;
-
-    /** @var FactoryInterface */
-    private $factory;
-
-    /** @var string */
-    private $uniqueColumn;
-
     public function __construct(
-        RepositoryInterface $repository,
-        FactoryInterface $factory,
-        string $uniqueColumn
-    ) {
-        $this->repository = $repository;
-        $this->factory = $factory;
-        $this->uniqueColumn = $uniqueColumn;
+        private RepositoryInterface $repository,
+        private FactoryInterface $factory,
+        private string $uniqueColumn,
+        ) {
     }
 
     /**
@@ -47,10 +35,11 @@ final class ResourceResolver implements ResourceResolverInterface
             return $resource;
         }
         $callback = [$this->factory, $factoryMethod];
-        if (!is_callable($callback)) {
-            throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');
+
+        if (is_callable($callback) && method_exists($this->factory, $factoryMethod)) {
+            return call_user_func($callback);
         }
 
-        return call_user_func($callback);
+        throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');
     }
 }

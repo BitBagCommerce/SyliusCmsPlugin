@@ -6,7 +6,6 @@ services:
         class: BitBag\SyliusCmsPlugin\Importer\PageImporter
         arguments:
             - "@bitbag_sylius_cms_plugin.resolver.resource.page"
-            - "@bitbag_sylius_cms_plugin.resolver.resource.section"
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.downloader.image"
             - "@bitbag_sylius_cms_plugin.factory.media"

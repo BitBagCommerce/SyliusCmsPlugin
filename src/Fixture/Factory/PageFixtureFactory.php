@@ -31,66 +31,28 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 {
     public const CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE = 'Channel with code "%s" not found';
 
-    /** @var FactoryInterface */
-    private $pageFactory;
-
-    /** @var FactoryInterface */
-    private $pageTranslationFactory;
-
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ProductsAssignerInterface */
-    private $productsAssigner;
-
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
-
     public function __construct(
-        FactoryInterface $pageFactory,
-        FactoryInterface $pageTranslationFactory,
-        PageRepositoryInterface $pageRepository,
-        MediaProviderResolverInterface $mediaProviderResolver,
-        ProductsAssignerInterface $productsAssigner,
-        SectionsAssignerInterface $sectionsAssigner,
-        ChannelsAssignerInterface $channelAssigner,
-        ProductRepositoryInterface $productRepository,
-        LocaleContextInterface $localeContext,
-        ChannelRepositoryInterface $channelRepository
-    ) {
-        $this->pageFactory = $pageFactory;
-        $this->pageTranslationFactory = $pageTranslationFactory;
-        $this->pageRepository = $pageRepository;
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->productsAssigner = $productsAssigner;
-        $this->sectionsAssigner = $sectionsAssigner;
-        $this->channelAssigner = $channelAssigner;
-        $this->productRepository = $productRepository;
-        $this->localeContext = $localeContext;
-        $this->channelRepository = $channelRepository;
+        private FactoryInterface $pageFactory,
+        private FactoryInterface $pageTranslationFactory,
+        private PageRepositoryInterface $pageRepository,
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private ProductsAssignerInterface $productsAssigner,
+        private SectionsAssignerInterface $sectionsAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
+        private ProductRepositoryInterface $productRepository,
+        private LocaleContextInterface $localeContext,
+        private ChannelRepositoryInterface $channelRepository,
+        ) {
     }
 
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?PageInterface $page */
+            $page = $this->pageRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $page = $this->pageRepository->findOneBy(['code' => $code])
+                null !== $page
             ) {
                 $this->pageRepository->remove($page);
             }
@@ -108,8 +70,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function createPage(
         string $code,
         array $pageData,
-        bool $generateSlug = false
-    ): void {
+        bool $generateSlug = false,
+        ): void {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
@@ -161,8 +123,8 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function resolveProductsForChannels(
         PageInterface $page,
         int $limit,
-        array $channelCodes
-    ): void {
+        array $channelCodes,
+        ): void {
         foreach ($channelCodes as $channelCode) {
             /** @var ChannelInterface|null $channel */
             $channel = $this->channelRepository->findOneByCode($channelCode);
@@ -175,12 +137,12 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     private function resolveProductsForChannel(
         PageInterface $page,
         int $limit,
-        ChannelInterface $channel
-    ): void {
+        ChannelInterface $channel,
+        ): void {
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),
-            $limit
+            $limit,
         );
 
         foreach ($products as $product) {

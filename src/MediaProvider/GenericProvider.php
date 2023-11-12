@@ -16,28 +16,12 @@ use Twig\Environment;
 
 final class GenericProvider implements ProviderInterface
 {
-    /** @var MediaUploaderInterface */
-    private $uploader;
-
-    /** @var Environment */
-    private $twigEngine;
-
-    /** @var string */
-    private $template;
-
-    /** @var string */
-    private $pathPrefix;
-
     public function __construct(
-        MediaUploaderInterface $uploader,
-        Environment $twigEngine,
-        string $template,
-        string $pathPrefix
-    ) {
-        $this->uploader = $uploader;
-        $this->twigEngine = $twigEngine;
-        $this->template = $template;
-        $this->pathPrefix = $pathPrefix;
+        private MediaUploaderInterface $uploader,
+        private Environment $twigEngine,
+        private string $template,
+        private string $pathPrefix,
+        ) {
     }
 
     public function getTemplate(): string
@@ -48,8 +32,8 @@ final class GenericProvider implements ProviderInterface
     public function render(
         MediaInterface $media,
         ?string $template = null,
-        array $options = []
-    ): string {
+        array $options = [],
+        ): string {
         return $this->twigEngine->render($template ?? $this->template, array_merge(['media' => $media], $options));
     }
 

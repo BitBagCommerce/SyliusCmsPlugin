@@ -16,12 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class ImageDownloader implements ImageDownloaderInterface
 {
-    /** @var Filesystem */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
+    public function __construct(private Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     public function download(string $url): UploadedFile
@@ -29,7 +25,7 @@ final class ImageDownloader implements ImageDownloaderInterface
         $path = rtrim(sys_get_temp_dir(), \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . md5(random_bytes(10));
         $pathInfo = pathinfo($url);
         $extension = $pathInfo['extension'] ?? null;
-        $originalName = $pathInfo['basename'] ?? '';
+        $originalName = $pathInfo['basename'];
 
         if (null !== $extension) {
             $path .= '.' . $extension;

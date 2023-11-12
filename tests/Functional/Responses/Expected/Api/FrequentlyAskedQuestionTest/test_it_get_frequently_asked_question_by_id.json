@@ -1,0 +1,19 @@
+{
+  "@context": "/api/v2/contexts/FrequentlyAskedQuestion",
+  "@id": "/api/v2/shop/cms-plugin/faq/@integer@",
+  "@type": "FrequentlyAskedQuestion",
+  "id": "@integer@",
+  "code": "faq1-code",
+  "position": 10,
+  "channels": [
+    "/api/v2/shop/channels/code"
+  ],
+  "enabled": true,
+  "translations": {
+    "en_US": {
+      "@type": "FrequentlyAskedQuestionTranslation",
+      "question": "How many days there are in one year?",
+      "answer": "It may vary depending on whether you are working on a new question"
+    }
+  }
+}

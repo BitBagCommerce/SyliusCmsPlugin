@@ -15,12 +15,8 @@ use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
 
 final class RenderContentRuntime implements RenderContentRuntimeInterface
 {
-    /** @var ContentParserInterface */
-    private $contentParser;
-
-    public function __construct(ContentParserInterface $contentParser)
+    public function __construct(private ContentParserInterface $contentParser)
     {
-        $this->contentParser = $contentParser;
     }
 
     public function renderContent(ContentableInterface $contentableResource): string

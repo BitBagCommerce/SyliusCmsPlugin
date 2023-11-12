@@ -21,22 +21,25 @@ use Sylius\Component\Core\Model\ChannelInterface;
 
 final class BlockResourceResolverSpec extends ObjectBehavior
 {
-    function let(BlockRepositoryInterface $blockRepository, LoggerInterface $logger, ChannelContextInterface $channelContext)
-    {
+    public function let(
+        BlockRepositoryInterface $blockRepository,
+        LoggerInterface $logger,
+        ChannelContextInterface $channelContext
+    ) {
         $this->beConstructedWith($blockRepository, $logger, $channelContext);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(BlockResourceResolver::class);
     }
 
-    function it_implements_block_resource_resolver_interface(): void
+    public function it_implements_block_resource_resolver_interface(): void
     {
         $this->shouldHaveType(BlockResourceResolverInterface::class);
     }
 
-    function it_logs_warning_if_block_was_not_found(
+    public function it_logs_warning_if_block_was_not_found(
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger,
         ChannelContextInterface $channelContext,
@@ -57,7 +60,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         $this->findOrLog('homepage_banner');
     }
 
-    function it_returns_block_if_found_in_database(
+    public function it_returns_block_if_found_in_database(
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block,
         ChannelContextInterface $channelContext,

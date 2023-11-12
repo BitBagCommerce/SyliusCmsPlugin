@@ -18,23 +18,11 @@ use Webmozart\Assert\Assert;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
 {
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var LoggerInterface */
-    private $logger;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
     public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        LoggerInterface $logger,
-        ChannelContextInterface $channelContext
-    ) {
-        $this->blockRepository = $blockRepository;
-        $this->logger = $logger;
-        $this->channelContext = $channelContext;
+        private BlockRepositoryInterface $blockRepository,
+        private LoggerInterface $logger,
+        private ChannelContextInterface $channelContext,
+        ) {
     }
 
     public function findOrLog(string $code): ?BlockInterface
@@ -46,7 +34,7 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         if (false === $block instanceof BlockInterface) {
             $this->logger->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

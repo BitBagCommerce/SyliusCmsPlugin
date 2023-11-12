@@ -23,7 +23,6 @@ use Webmozart\Assert\Assert;
 final class PageController extends ResourceController
 {
     use ResourceDataProcessingTrait;
-
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
     /** @var PageResourceResolverInterface */

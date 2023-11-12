@@ -19,28 +19,12 @@ use Webmozart\Assert\Assert;
 
 final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterface
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var Environment */
-    private $templatingEngine;
-
-    /** @var SectionsSorterInterface */
-    private $sectionsSorter;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        ChannelContextInterface $channelContext,
-        Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
-    ) {
-        $this->pageRepository = $pageRepository;
-        $this->channelContext = $channelContext;
-        $this->templatingEngine = $templatingEngine;
-        $this->sectionsSorter = $sectionsSorter;
+        private PageRepositoryInterface $pageRepository,
+        private ChannelContextInterface $channelContext,
+        private Environment $templatingEngine,
+        private SectionsSorterInterface $sectionsSorter,
+        ) {
     }
 
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string

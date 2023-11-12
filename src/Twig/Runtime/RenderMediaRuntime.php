@@ -15,18 +15,10 @@ use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 
 final class RenderMediaRuntime implements RenderMediaRuntimeInterface
 {
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var MediaResourceResolverInterface */
-    private $mediaResourceResolver;
-
     public function __construct(
-        MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private MediaResourceResolverInterface $mediaResourceResolver,
     ) {
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->mediaResourceResolver = $mediaResourceResolver;
     }
 
     public function renderMedia(string $code, ?string $template = null): string

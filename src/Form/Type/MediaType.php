@@ -29,8 +29,8 @@ final class MediaType extends AbstractResourceType
     public function __construct(
         string $dataClass,
         array $validationGroups = [],
-        array $providers = []
-    ) {
+        array $providers = [],
+        ) {
         parent::__construct($dataClass, $validationGroups);
 
         $this->providers = $providers;

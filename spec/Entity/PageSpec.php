@@ -20,28 +20,28 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class PageSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Page::class);
     }
 
-    function it_is_a_resource(): void
+    public function it_is_a_resource(): void
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_page_interface(): void
+    public function it_implements_page_interface(): void
     {
         $this->shouldHaveType(PageInterface::class);
     }
 
-    function it_allows_access_via_properties(): void
+    public function it_allows_access_via_properties(): void
     {
         $this->setCode('homepage');
         $this->getCode()->shouldReturn('homepage');
     }
 
-    function it_toggles(): void
+    public function it_toggles(): void
     {
         $this->enable();
         $this->isEnabled()->shouldReturn(true);
@@ -50,7 +50,7 @@ final class PageSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(false);
     }
 
-    function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
+    public function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
     {
         $this->addProduct($firstProduct);
         $this->hasProduct($firstProduct)->shouldReturn(true);
@@ -62,7 +62,7 @@ final class PageSpec extends ObjectBehavior
         $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
-    function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
+    public function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
     {
         $this->addSection($firstSection);
         $this->hasSection($firstSection)->shouldReturn(true);
@@ -74,7 +74,7 @@ final class PageSpec extends ObjectBehavior
         $this->hasSection($firstSection)->shouldReturn(false);
     }
 
-    function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
+    public function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void
     {
         $this->addChannel($firstChannel);
         $this->hasChannel($firstChannel)->shouldReturn(true);
@@ -86,7 +86,7 @@ final class PageSpec extends ObjectBehavior
         $this->hasChannel($firstChannel)->shouldReturn(false);
     }
 
-    function it_is_timestampable(): void
+    public function it_is_timestampable(): void
     {
         $dateTime = new \DateTime();
 

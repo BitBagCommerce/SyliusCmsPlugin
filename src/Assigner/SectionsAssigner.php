@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class SectionsAssigner implements SectionsAssignerInterface
 {
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
-    public function __construct(SectionRepositoryInterface $sectionRepository)
+    public function __construct(private SectionRepositoryInterface $sectionRepository)
     {
-        $this->sectionRepository = $sectionRepository;
     }
 
     public function assign(SectionableInterface $sectionsAware, array $sectionsCodes): void

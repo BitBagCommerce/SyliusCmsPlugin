@@ -17,23 +17,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class ImportProcessor implements ImportProcessorInterface
 {
-    /** @var ImporterChainInterface */
-    private $importerChain;
-
-    /** @var ReaderInterface */
-    private $reader;
-
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
     public function __construct(
-        ImporterChainInterface $importerChain,
-        ReaderInterface $reader,
-        EntityManagerInterface $entityManager
-    ) {
-        $this->importerChain = $importerChain;
-        $this->reader = $reader;
-        $this->entityManager = $entityManager;
+        private ImporterChainInterface $importerChain,
+        private ReaderInterface $reader,
+        private EntityManagerInterface $entityManager,
+        ) {
     }
 
     public function process(string $resourceCode, string $filePath): void

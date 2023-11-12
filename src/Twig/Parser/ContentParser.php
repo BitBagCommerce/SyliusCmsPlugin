@@ -15,16 +15,8 @@ use Webmozart\Assert\Assert;
 
 final class ContentParser implements ContentParserInterface
 {
-    /** @var Environment */
-    private $twigEnvironment;
-
-    /** @var array */
-    private $enabledFunctions;
-
-    public function __construct(Environment $twigEnvironment, array $enabledFunctions)
+    public function __construct(private Environment $twigEnvironment, private array $enabledFunctions)
     {
-        $this->twigEnvironment = $twigEnvironment;
-        $this->enabledFunctions = $enabledFunctions;
     }
 
     public function parse(string $input): string
@@ -75,8 +67,8 @@ final class ContentParser implements ContentParserInterface
     private function callFunction(
         array $functions,
         string $functionName,
-        array $arguments
-    ): string {
+        array $arguments,
+        ): string {
         Assert::keyExists($functions, $functionName, sprintf('Function %s does not exist!', $functionName));
         /** @var \Twig_Function $function */
         $function = $functions[$functionName];

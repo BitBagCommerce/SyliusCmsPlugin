@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class UploadEditorImageActionSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
         FactoryInterface $mediaFactory
@@ -31,12 +31,12 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
         $this->beConstructedWith($mediaProviderResolver, $mediaRepository, $mediaFactory);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(UploadEditorImageAction::class);
     }
 
-    function it_uploads_media(
+    public function it_uploads_media(
         Request $request,
         FactoryInterface $mediaFactory,
         MediaInterface $media,

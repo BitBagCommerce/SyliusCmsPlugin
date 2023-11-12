@@ -1,6 +1,7 @@
 includes:
     - vendor/bitbag/coding-standard/phpstan.neon
 parameters:
+    level: 8
     reportUnmatchedIgnoredErrors: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false

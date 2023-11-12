@@ -57,8 +57,8 @@ final class BlockContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
-        BlockRepositoryInterface $blockRepository
-    ) {
+        BlockRepositoryInterface $blockRepository,
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
@@ -211,7 +211,7 @@ final class BlockContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Block has been successfully created.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -222,7 +222,7 @@ final class BlockContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Block has been successfully updated.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -233,7 +233,7 @@ final class BlockContext implements Context
     {
         $this->notificationChecker->checkNotification(
             'Block has been successfully deleted.',
-            NotificationType::success()
+            NotificationType::success(),
         );
     }
 
@@ -255,7 +255,7 @@ final class BlockContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s cannot be blank.',
-                trim($field)
+                trim($field),
             )));
         }
     }
@@ -267,7 +267,7 @@ final class BlockContext implements Context
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
             'There is an existing block with this code.',
-            false
+            false,
         ));
     }
 
@@ -281,7 +281,7 @@ final class BlockContext implements Context
         foreach ($fields as $field) {
             Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(sprintf(
                 '%s can not be longer than',
-                trim($field)
+                trim($field),
             ), false));
         }
     }

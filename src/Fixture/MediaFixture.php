@@ -16,12 +16,8 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class MediaFixture extends AbstractFixture
 {
-    /** @var FixtureFactoryInterface */
-    private $mediaFixtureFactory;
-
-    public function __construct(FixtureFactoryInterface $mediaFixtureFactory)
+    public function __construct(private FixtureFactoryInterface $mediaFixtureFactory)
     {
-        $this->mediaFixtureFactory = $mediaFixtureFactory;
     }
 
     public function load(array $options): void

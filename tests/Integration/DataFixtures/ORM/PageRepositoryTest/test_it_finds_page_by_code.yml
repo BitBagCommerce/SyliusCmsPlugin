@@ -1,0 +1,54 @@
+Sylius\Component\Addressing\Model\Country:
+  USA:
+    code: 'US'
+Sylius\Component\Currency\Model\Currency:
+  dollar:
+    code: 'USD'
+Sylius\Component\Locale\Model\Locale:
+  locale:
+    createdAt: '<dateTimeBetween("-200 days", "now")>'
+    code: 'en_US'
+Sylius\Component\Core\Model\Channel:
+  channel:
+    code: "code"
+    name: "name"
+    locales:
+      - '@locale'
+    default_locale: '@locale'
+    tax_calculation_strategy: 'order_items_based'
+    base_currency: '@dollar'
+BitBag\SyliusCmsPlugin\Entity\PageTranslation:
+  page1_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+  page2_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+  page3_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+BitBag\SyliusCmsPlugin\Entity\Page:
+  page1:
+    code: 'page1-code'
+    enabled: true
+    channels:
+      - '@channel'
+    translations:
+      - '@page1_translation'
+  page2:
+    code: 'page2-code'
+    enabled: true
+    channels:
+      - '@channel'
+    translations:
+      - '@page2_translation'
+  page3:
+    code: 'page3-code'
+    enabled: false
+    channels:
+      - '@channel'
+    translations:
+      - '@page3_translation'

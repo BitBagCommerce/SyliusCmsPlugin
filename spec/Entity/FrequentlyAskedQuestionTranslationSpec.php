@@ -18,23 +18,23 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 final class FrequentlyAskedQuestionTranslationSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(FrequentlyAskedQuestionTranslation::class);
     }
 
-    function it_is_a_resource()
+    public function it_is_a_resource()
     {
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    function it_implements_frequently_asked_question_translation_interface()
+    public function it_implements_frequently_asked_question_translation_interface()
     {
         $this->shouldHaveType(FrequentlyAskedQuestionTranslationInterface::class);
         $this->shouldHaveType(TranslationInterface::class);
     }
 
-    function it_allows_access_via_properties()
+    public function it_allows_access_via_properties()
     {
         $this->setQuestion('What are the delivery charges for orders from the Online Shop?');
         $this->getQuestion()->shouldReturn('What are the delivery charges for orders from the Online Shop?');

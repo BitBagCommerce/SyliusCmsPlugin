@@ -31,8 +31,8 @@ final class ProductSearchAction
     public function __construct(
         ProductRepositoryInterface $productRepository,
         LocaleContextInterface $localeContext,
-        ViewHandler $viewHandler
-    ) {
+        ViewHandler $viewHandler,
+        ) {
         $this->productRepository = $productRepository;
         $this->localeContext = $localeContext;
         $this->viewHandler = $viewHandler;

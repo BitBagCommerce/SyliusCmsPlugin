@@ -22,41 +22,16 @@ use Webmozart\Assert\Assert;
 
 final class BlockImporter extends AbstractImporter implements BlockImporterInterface
 {
-    /** @var ResourceResolverInterface */
-    private $blockResourceResolver;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ImporterSectionsResolverInterface */
-    private $importerSectionsResolver;
-
-    /** @var ImporterChannelsResolverInterface */
-    private $importerChannelsResolver;
-
-    /** @var ImporterProductsResolverInterface */
-    private $importerProductsResolver;
-
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
     public function __construct(
-        ResourceResolverInterface $blockResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
+        private ResourceResolverInterface $blockResourceResolver,
+        private LocaleContextInterface $localeContext,
+        private ImporterSectionsResolverInterface $importerSectionsResolver,
+        private ImporterChannelsResolverInterface $importerChannelsResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository
-    ) {
+        private BlockRepositoryInterface $blockRepository,
+        ) {
         parent::__construct($validator);
-
-        $this->blockResourceResolver = $blockResourceResolver;
-        $this->localeContext = $localeContext;
-        $this->importerSectionsResolver = $importerSectionsResolver;
-        $this->importerChannelsResolver = $importerChannelsResolver;
-        $this->importerProductsResolver = $importerProductsResolver;
-        $this->blockRepository = $blockRepository;
     }
 
     public function import(array $row): void

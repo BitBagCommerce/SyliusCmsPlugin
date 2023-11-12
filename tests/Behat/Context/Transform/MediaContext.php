@@ -26,7 +26,7 @@ final class MediaContext implements Context
 
     public function __construct(
         MediaRepositoryInterface $mediaRepositoryInterface,
-        SharedStorageInterface $sharedStorage
+        SharedStorageInterface $sharedStorage,
     ) {
         $this->mediaRepositoryInterface = $mediaRepositoryInterface;
         $this->sharedStorage = $sharedStorage;
@@ -43,12 +43,12 @@ final class MediaContext implements Context
         $media = $this->mediaRepositoryInterface->findOneEnabledByCode(
             $mediaCode,
             $this->sharedStorage->get('locale')->getCode(),
-            $this->sharedStorage->get('channel')->getCode()
+            $this->sharedStorage->get('channel')->getCode(),
         );
 
         Assert::notNull(
             $media,
-            sprintf('No media has been found with code "%s".', $mediaCode)
+            sprintf('No media has been found with code "%s".', $mediaCode),
         );
 
         return $media;

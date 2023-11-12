@@ -15,12 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
 
 final class ImporterSectionsResolver implements ImporterSectionsResolverInterface
 {
-    /** @var SectionsAssignerInterface */
-    private $sectionsAssigner;
-
-    public function __construct(SectionsAssignerInterface $sectionsAssigner)
+    public function __construct(private SectionsAssignerInterface $sectionsAssigner)
     {
-        $this->sectionsAssigner = $sectionsAssigner;
     }
 
     public function resolve(SectionableInterface $sectionable, ?string $sectionsRow): void

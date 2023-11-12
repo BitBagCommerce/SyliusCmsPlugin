@@ -18,36 +18,22 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInterface
 {
-    /** @var FactoryInterface */
-    private $frequentlyAskedQuestionFactory;
-
-    /** @var FactoryInterface */
-    private $frequentlyAskedQuestionTranslationFactory;
-
-    /** @var FrequentlyAskedQuestionRepositoryInterface */
-    private $frequentlyAskedQuestionRepository;
-
-    /** @var ChannelsAssignerInterface */
-    private $channelAssigner;
-
     public function __construct(
-        FactoryInterface $frequentlyAskedQuestionFactory,
-        FactoryInterface $frequentlyAskedQuestionTranslationFactory,
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        ChannelsAssignerInterface $channelAssigner
-    ) {
-        $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
-        $this->frequentlyAskedQuestionTranslationFactory = $frequentlyAskedQuestionTranslationFactory;
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
-        $this->channelAssigner = $channelAssigner;
+        private FactoryInterface $frequentlyAskedQuestionFactory,
+        private FactoryInterface $frequentlyAskedQuestionTranslationFactory,
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private ChannelsAssignerInterface $channelAssigner,
+        ) {
     }
 
     public function load(array $data): void
     {
         foreach ($data as $code => $fields) {
+            /** @var ?FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
+            $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code]);
             if (
                 true === $fields['remove_existing'] &&
-                null !== $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->findOneBy(['code' => $code])
+                null !== $frequentlyAskedQuestion
             ) {
                 $this->frequentlyAskedQuestionRepository->remove($frequentlyAskedQuestion);
             }
@@ -65,8 +51,8 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
     private function createFrequentlyAskedQuestion(
         string $code,
         array $frequentlyAskedQuestionData,
-        int $position
-    ): void {
+        int $position,
+        ): void {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 

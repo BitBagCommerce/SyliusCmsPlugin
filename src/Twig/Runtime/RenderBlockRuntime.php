@@ -10,31 +10,17 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Twig\Environment;
 
 final class RenderBlockRuntime implements RenderBlockRuntimeInterface
 {
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var BlockResourceResolverInterface */
-    private $blockResourceResolver;
-
-    /** @var Environment */
-    private $templatingEngine;
-
     private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        BlockResourceResolverInterface $blockResourceResolver,
-        Environment $templatingEngine
+        private BlockResourceResolverInterface $blockResourceResolver,
+        private Environment $templatingEngine,
     ) {
-        $this->blockRepository = $blockRepository;
-        $this->blockResourceResolver = $blockResourceResolver;
-        $this->templatingEngine = $templatingEngine;
     }
 
     public function renderBlock(string $code, ?string $template = null): string

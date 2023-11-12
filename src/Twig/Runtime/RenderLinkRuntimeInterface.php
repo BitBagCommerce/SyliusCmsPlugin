@@ -19,8 +19,8 @@ interface RenderLinkRuntimeInterface extends RuntimeExtensionInterface
         Environment $environment,
         string $code,
         array $options = [],
-        ?string $template = null
-    ): string;
+        ?string $template = null,
+        ): string;
 
     public function getLinkForCode(string $code, array $options = []): string;
 }

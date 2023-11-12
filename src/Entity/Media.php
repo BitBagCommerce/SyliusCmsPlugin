@@ -20,13 +20,9 @@ use Webmozart\Assert\Assert;
 class Media implements MediaInterface
 {
     use ToggleableTrait;
-
     use SectionableTrait;
-
     use ProductsAwareTrait;
-
     use ChannelsAwareTrait;
-
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

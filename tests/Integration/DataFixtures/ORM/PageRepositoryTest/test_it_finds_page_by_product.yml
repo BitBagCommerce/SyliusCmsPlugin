@@ -1,0 +1,116 @@
+Sylius\Component\Addressing\Model\Country:
+  USA:
+    code: 'US'
+Sylius\Component\Currency\Model\Currency:
+  dollar:
+    code: 'USD'
+Sylius\Component\Locale\Model\Locale:
+  locale:
+    createdAt: '<dateTimeBetween("-200 days", "now")>'
+    code: 'en_US'
+Sylius\Component\Core\Model\Channel:
+  channel:
+    code: "code"
+    name: "name"
+    locales:
+      - '@locale'
+    default_locale: '@locale'
+    tax_calculation_strategy: 'order_items_based'
+    base_currency: '@dollar'
+Sylius\Component\Taxonomy\Model\TaxonTranslation:
+  taxon_translation:
+    locale: 'en_US'
+    name: "taxon-trans"
+    slug: "taxon-slug"
+Sylius\Component\Core\Model\Taxon:
+  taxon:
+    code: "menu_category"
+    translations:
+      - '@taxon_translation'
+    enabled: true
+Sylius\Component\Core\Model\ProductTranslation:
+  first_product_US_translation:
+    name: 'test_name1'
+    slug: 'test_slug1'
+    locale: 'en_US'
+  second_product_US_translation:
+    name: 'test_name2'
+    slug: 'test_slug2'
+    locale: 'en_US'
+  third_product_US_translation:
+    name: 'test_name3'
+    slug: 'test_slug3'
+    locale: 'en_US'
+Sylius\Component\Core\Model\Product:
+  product1:
+    fallbackLocale: "en_US"
+    currentLocale: "en_US"
+    code: "MUG_SW"
+    translations:
+      - "@first_product_US_translation"
+  product2:
+    fallbackLocale: "en_US"
+    currentLocale: "en_US"
+    code: "MUG_SW2"
+    translations:
+      - "@second_product_US_translation"
+  product3:
+    fallbackLocale: "en_US"
+    currentLocale: "en_US"
+    code: "MUG_SW3"
+    translations:
+      - "@third_product_US_translation"
+Sylius\Component\Core\Model\ProductTaxon:
+  first_relation:
+    taxon: '@taxon'
+    product: '@product1'
+  second_relation:
+    taxon: '@taxon'
+    product: '@product2'
+Sylius\Component\Core\Model\ProductVariant:
+  product_variant1:
+    product: '@product1'
+    code: "code1"
+
+BitBag\SyliusCmsPlugin\Entity\PageTranslation:
+  page1_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+  page2_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+  page3_translation:
+    name: 'translation_name_en_US'
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+BitBag\SyliusCmsPlugin\Entity\Page:
+  page1:
+    code: 'page1-code'
+    enabled: true
+    products:
+      - '@product1'
+    channels:
+      - '@channel'
+    translations:
+      - '@page1_translation'
+  page2:
+    code: 'page2-code'
+    enabled: true
+    products:
+      - '@product2'
+    channels:
+      - '@channel'
+    translations:
+      - '@page2_translation'
+  page3:
+    code: 'page3-code'
+    enabled: false
+    products:
+      - '@product3'
+    channels:
+      - '@channel'
+    translations:
+      - '@page3_translation'
+

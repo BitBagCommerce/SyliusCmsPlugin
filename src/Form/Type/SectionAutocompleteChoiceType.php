@@ -30,8 +30,8 @@ final class SectionAutocompleteChoiceType extends AbstractType
     public function buildView(
         FormView $view,
         FormInterface $form,
-        array $options
-    ): void {
+        array $options,
+        ): void {
         $view->vars['remote_criteria_type'] = 'contains';
         $view->vars['remote_criteria_name'] = 'phrase';
     }

@@ -19,28 +19,12 @@ use Webmozart\Assert\Assert;
 
 final class MediaResourceResolver implements MediaResourceResolverInterface
 {
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ChannelContextInterface */
-    private $channelContext;
-
-    /** @var LoggerInterface */
-    private $logger;
-
     public function __construct(
-        MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
-        ChannelContextInterface $channelContext,
-        LoggerInterface $logger
-    ) {
-        $this->mediaRepository = $mediaRepository;
-        $this->localeContext = $localeContext;
-        $this->channelContext = $channelContext;
-        $this->logger = $logger;
+        private MediaRepositoryInterface $mediaRepository,
+        private LocaleContextInterface $localeContext,
+        private ChannelContextInterface $channelContext,
+        private LoggerInterface $logger,
+        ) {
     }
 
     public function findOrLog(string $code): ?MediaInterface
@@ -49,13 +33,13 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         $media = $this->mediaRepository->findOneEnabledByCode(
             $code,
             $this->localeContext->getLocaleCode(),
-            $this->channelContext->getChannel()->getCode()
+            $this->channelContext->getChannel()->getCode(),
         );
 
         if (false === $media instanceof MediaInterface) {
             $this->logger->warning(sprintf(
                 'Media with "%s" code was not found in the database.',
-                $code
+                $code,
             ));
 
             return null;

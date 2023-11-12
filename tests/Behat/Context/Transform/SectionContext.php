@@ -41,7 +41,7 @@ final class SectionContext implements Context
 
         Assert::notNull(
             $section,
-            sprintf('No sections has been found with code "%s".', $sectionCode)
+            sprintf('No sections has been found with code "%s".', $sectionCode),
         );
 
         return $section;
