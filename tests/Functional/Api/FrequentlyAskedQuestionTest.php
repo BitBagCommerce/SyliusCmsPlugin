@@ -35,12 +35,6 @@ class FrequentlyAskedQuestionTest extends FunctionalTestCase
         $this->assertResponse($response, 'Api/FrequentlyAskedQuestionTest/test_it_get_frequently_asked_question_by_id', Response::HTTP_OK);
     }
 
-//    public function test_blocks_response(): void{
-//        $this->client->request('GET', '/api/v2/shop/cms-plugin/faq', [], [], self::CONTENT_TYPE_HEADER);
-//        $response = $this->client->getResponse();
-//
-//        $this->assertResponse($response, 'Api/BlockTest/test_it_get_blocks', Response::HTTP_OK);
-//    }
 
     private function getRepository(): FrequentlyAskedQuestionRepositoryInterface
     {
