@@ -25,6 +25,14 @@ Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FO
 $ bin/console ckeditor:install
 ```
 
+**Note.** If you have an issue with the ckeditor not running, please try to install it using the `4.22.1` tag:
+
+```bash
+$ bin/console ckeditor:install --tag=4.22.1
+```
+
+For more information regardin `4.22.1` tag please visit the #485 issue.
+
 Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must add some configuration under the `twig.form_themes` config key:
 
 ```yaml
