@@ -97,7 +97,6 @@ you will probably need to change the extension of the imported file in
 
 ```
 $ bin/console cache:clear
-$ bin/console doctrine:migrations:diff
 $ bin/console doctrine:migrations:migrate
 $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
