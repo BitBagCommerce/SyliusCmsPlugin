@@ -79,7 +79,7 @@ export class HandleSlugUpdate {
 
     async _getValidSlug(url, value) {
         try {
-            const request = await fetch(`${url}?name=${value}`);
+            const request = await fetch(`${url}?name=${encodeURIComponent(value)}`);
             const response = await request.json();
             return response.slug;
         } catch (error) {
