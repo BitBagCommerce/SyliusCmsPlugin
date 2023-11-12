@@ -35,7 +35,6 @@ class FrequentlyAskedQuestionTest extends FunctionalTestCase
         $this->assertResponse($response, 'Api/FrequentlyAskedQuestionTest/test_it_get_frequently_asked_question_by_id', Response::HTTP_OK);
     }
 
-
     private function getRepository(): FrequentlyAskedQuestionRepositoryInterface
     {
         /** @var FrequentlyAskedQuestionRepositoryInterface $repository */
