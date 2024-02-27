@@ -2,8 +2,8 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Blöcke
         pages: Seiten
-        content_management: Content Management
-        cms: Content Management
+        content_management: Inhaltsverwaltung
+        cms: Inhaltsverwaltung
         enabled: Aktiviert
         blocks_header: Blöcke
         blocks_subheader: Blöcke verwalten
@@ -13,13 +13,44 @@ bitbag_sylius_cms_plugin:
         pages_header: Seite
         pages_subheader: Seiten verwalten
         products: Produkte
+        page_related_products: Seitenbezogene Produkte
         name: Name
         slug: Slug
+        path: Pfad
+        empty_name: Leerer Name
+        publish_at: Veröffentlichen am
+        page_will_be_publish_at: Diese Seite wird veröffentlicht am
         meta_keywords: Meta Stichwörter
         meta_description: Meta Beschreibung
         content: Inhalt
         code: Code
         contents: Inhalte
         images: Bilder
+        image: Bild
         link: Link
         title: Titel
+        csv_file: CSV-Datei
+        sections: Sektionen
+        sections_header: Sektionen
+        sections_subheader: Verwalte deine Sektionen
+        faq_subheader: Verwalte häufig gestellte Fragen
+        frequently_asked_questions: Häufig gestellte Fragen
+        question: Frage
+        answer: Antwort
+        channels: Ausgabekanäle
+        preview: Vorschau
+        download: Herunterladen
+        name_when_linked: Name bei Verknüpfung
+        description_when_linked: Beschreibung bei Verknüpfung
+        media: Medien
+        media_header: Medien
+        media_subheader: Digitale Assets verwalten
+        type: Typ
+        file: Datei
+        description: Beschreibung
+        image_provider: Bild
+        file_provider: Datei
+        read_more: Mehr lesen
+        import: Importieren
+        successfully_imported: Die Daten wurden importiert.
+        form_was_submitted_with_errors: "Das Formular wurde mit folgenden Fehlern übermittelt:"
