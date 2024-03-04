@@ -8,7 +8,7 @@ bitbag_sylius_cms_plugin_shop_media_render_template:
     path: /media-template/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden:showAction
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::showAction
         _sylius:
             template: $template
             repository:
