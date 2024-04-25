@@ -2,6 +2,7 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Blocks
         pages: Pages
+        events: Events
         content_management: Content management
         cms: Content management
         enabled: Enabled
@@ -9,6 +10,8 @@ bitbag_sylius_cms_plugin:
         blocks_subheader: Manage your blocks
         pages_header: Pages
         pages_subheader: Manage your pages
+        events_header: Events
+        events_subheader: Manage your events
         products: Products
         taxons: Taxons
         page_related_products: Page related products
@@ -58,5 +61,8 @@ bitbag_sylius_cms_plugin:
         title: Title
         empty_name: Empty name
         publish_at: Publish at
+        start_at: Start at
+        end_at: End at
+        location: Location
         page_will_be_publish_at: This page will be publish at
         save_with_original_name: Save with original name

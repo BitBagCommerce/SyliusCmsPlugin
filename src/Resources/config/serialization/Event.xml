@@ -3,7 +3,7 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
-    <class name="BitBag\SyliusCmsPlugin\Entity\Page">
+    <class name="BitBag\SyliusCmsPlugin\Entity\Event">
         <attribute name="id">
             <group>shop:cms:read</group>
         </attribute>
@@ -11,6 +11,15 @@
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="publishAt">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="startAt">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="endAt">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="location">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="products">

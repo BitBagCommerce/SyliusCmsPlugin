@@ -3,6 +3,9 @@ bitbag_sylius_cms_plugin_admin_block:
 
 bitbag_sylius_cms_plugin_admin_page:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/page.yml"
+    
+bitbag_sylius_cms_plugin_admin_event:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/event.yml"
 
 bitbag_sylius_cms_plugin_admin_frequently_asked_question:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
@@ -27,6 +30,12 @@ bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page_slug::generateAction
+        
+bitbag_sylius_cms_plugin_admin_ajax_generate_event_slug:
+    path: /event/generate-slug
+    methods: [GET]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.event_slug::generateAction
 
 bitbag_sylius_cms_plugin_admin_import_data:
     path: /import/{resourceName}

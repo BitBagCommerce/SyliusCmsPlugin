@@ -85,4 +85,21 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->getResult()
         ;
     }
+
+    public function findByPhrase(string $phrase, ?int $limit = null): iterable
+    {
+        $expr = $this->getEntityManager()->getExpressionBuilder();
+
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.translations', 'translation')
+            ->andWhere($expr->orX(
+                'translation.name LIKE :phrase',
+                'o.code LIKE :phrase',
+            ))
+            ->setParameter('phrase', '%' . $phrase . '%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

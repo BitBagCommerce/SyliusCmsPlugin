@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="BitBag\SyliusCmsPlugin\Entity\EventTranslation">
+        <attribute name="id">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="slug">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="image">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="content">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="name">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="metaKeywords">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="metaDescription">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="nameWhenLinked">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="descriptionWhenLinked">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="breadcrumb">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="title">
+            <group>shop:cms:read</group>
+        </attribute>
+    </class>
+</serializer>

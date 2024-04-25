@@ -1,0 +1,69 @@
+sylius_grid:
+    grids:
+        bitbag_sylius_cms_plugin_admin_event:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag_sylius_cms_plugin.model.event.class%"
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: ["%locale%"]
+            sorting:
+                code: asc
+            limits: [10, 25, 50]
+            fields:
+                event_image:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.image
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/event_image.html.twig"
+                code:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.code
+                    sortable: ~
+                name:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.name
+                    sortable: translation.name
+                slug:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.slug
+                    sortable: translation.slug
+                sections:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.sections
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/sections.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code]
+                sections:
+                    type: entity
+                    label: bitbag_sylius_cms_plugin.ui.sections
+                    form_options:
+                        class: "%bitbag_sylius_cms_plugin.model.section.class%"
+                        choice_label: name
+                        choice_value: code
+                    options:
+                        fields: [sections.code]
+            actions:
+                main:
+                    import:
+                        type: import
+                        options:
+                            resourceCode: event
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                bulk:
+                    delete:
+                        type: delete

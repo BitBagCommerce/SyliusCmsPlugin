@@ -5,6 +5,13 @@ services:
             - "@bitbag_sylius_cms_plugin.repository.page"
             - "@bitbag_sylius_cms_plugin.factory.page"
             - "code"
+                
+    bitbag_sylius_cms_plugin.resolver.resource.event:
+        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.event"
+            - "@bitbag_sylius_cms_plugin.factory.event"
+            - "code"
 
     bitbag_sylius_cms_plugin.resolver.resource.section:
         class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
@@ -40,6 +47,14 @@ services:
         public: true
         arguments:
             - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@sylius.context.locale"
+            - "@logger"
+                
+    bitbag_sylius_cms_plugin.resolver.event_resource:
+        class: BitBag\SyliusCmsPlugin\Resolver\EventResourceResolver
+        public: true
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.event"
             - "@sylius.context.locale"
             - "@logger"
 

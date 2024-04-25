@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="%bitbag_sylius_cms_plugin.model.event.class%" shortName="Event">
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>shop:cms:read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="denormalizationContext">
+            <attribute name="groups">
+                <attribute>shop:cms:write</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="validation_groups">sylius</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="shop_get_event">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/events</attribute>
+            </collectionOperation>
+
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="shop_get_event">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/events/{id}</attribute>
+            </itemOperation>
+            <itemOperation name="shop_get_event_by_slug">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/cms-plugin/event-by-slug/{slug}</attribute>
+                <attribute name="controller">BitBag\SyliusCmsPlugin\Controller\GetEventBySlugAction</attribute>
+                <attribute name="read">false</attribute>
+                <attribute name="openapi_context">
+                    <attribute name="summary">Use slug to retrieve a event resource.</attribute>
+                    <attribute name="parameters">
+                        <attribute>
+                            <attribute name="name">slug</attribute>
+                            <attribute name="in">path</attribute>
+                            <attribute name="required">true</attribute>
+                            <attribute name="schema">
+                                <attribute name="type">string</attribute>
+                            </attribute>
+                        </attribute>
+                    </attribute>
+                </attribute>
+                <attribute name="force_eager">false</attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" writable="false"/>
+        <property name="code" identifier="false" writable="false"/>
+        <property name="enabled" identifier="false" writable="false"/>
+        <property name="createdAt" identifier="false" writable="false"/>
+        <property name="updatedAt" identifier="false" writable="false"/>
+        <property name="publishAt" identifier="false" writable="false"/>
+        <property name="startAt" identifier="false" writable="false"/>
+        <property name="endAt" identifier="false" writable="false"/>
+        <property name="location" identifier="false" writable="false"/>
+        <property name="products" identifier="false" writable="false"/>
+        <property name="sections" identifier="false" writable="false"/>
+        <property name="channels" identifier="false" writable="false"/>
+    </resource>
+</resources>

@@ -4,6 +4,12 @@ services:
         public: true
         arguments:
             - "@sylius.generator.slug"
+                
+    bitbag_sylius_cms_plugin.controller.event_slug:
+        class: BitBag\SyliusCmsPlugin\Controller\EventSlugController
+        public: true
+        arguments:
+            - "@sylius.generator.slug"
 
     bitbag_sylius_cms_plugin.controller.action.admin.product_search:
         class: BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction
@@ -67,6 +73,16 @@ services:
             - setFormErrorsFlashHelper: ["@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash"]
             - setCacheManager: ["@liip_imagine.cache.manager"]
             - setDataManager: ["@liip_imagine.data.manager"]
+              
+    bitbag_sylius_cms_plugin.controller.event.overriden:
+        class: BitBag\SyliusCmsPlugin\Controller\EventController
+        public: true
+        parent: "bitbag_sylius_cms_plugin.controller.page"
+        calls:
+            -   setEventResourceResolver: [ "@bitbag_sylius_cms_plugin.resolver.event_resource" ]
+            -   setFormErrorsFlashHelper: [ "@bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" ]
+            -   setCacheManager: [ "@liip_imagine.cache.manager" ]
+            -   setDataManager: [ "@liip_imagine.data.manager" ]
 
     bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info:
         public: true
@@ -79,5 +95,15 @@ services:
             - "@sylius.context.channel"
             - "@sylius.context.locale"
             - "@bitbag_sylius_cms_plugin.repository.page"
+            - "@api_platform.iri_converter"
+            - "@request_stack"
+                
+    BitBag\SyliusCmsPlugin\Controller\GetEventBySlugAction:
+        public: true
+        class: BitBag\SyliusCmsPlugin\Controller\GetEventBySlugAction
+        arguments:
+            - "@sylius.context.channel"
+            - "@sylius.context.locale"
+            - "@bitbag_sylius_cms_plugin.repository.event"
             - "@api_platform.iri_converter"
             - "@request_stack"

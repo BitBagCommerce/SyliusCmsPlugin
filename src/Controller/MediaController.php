@@ -86,7 +86,7 @@ final class MediaController extends ResourceController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->setMediaLocales($media, $request);
             $this->setMediaPathIfExists($media);
             $mediaTemplate = $this->mediaProviderResolver->resolveProvider($media)->getTemplate();

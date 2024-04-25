@@ -48,6 +48,14 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
+            ->addChild('events', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_event_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.events')
+            ->setLabelAttribute('icon', 'calendar')
+        ;
+
+        $cmsRootMenuItem
             ->addChild('faq', [
                 'route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index',
             ])

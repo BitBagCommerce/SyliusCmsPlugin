@@ -1,0 +1,15 @@
+sylius_resource:
+    resources:
+        bitbag_sylius_cms_plugin.event:
+            driver: doctrine/orm
+            classes:
+                model: BitBag\SyliusCmsPlugin\Entity\Event
+                interface: BitBag\SyliusCmsPlugin\Entity\EventInterface
+                form: BitBag\SyliusCmsPlugin\Form\Type\EventType
+                repository: BitBag\SyliusCmsPlugin\Repository\EventRepository
+                controller: BitBag\SyliusCmsPlugin\Controller\EventController
+                factory: Sylius\Component\Resource\Factory\TranslatableFactory
+            translation:
+                classes:
+                    model: BitBag\SyliusCmsPlugin\Entity\EventTranslation
+                    interface: BitBag\SyliusCmsPlugin\Entity\EventTranslationInterface

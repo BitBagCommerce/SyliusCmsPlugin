@@ -38,6 +38,22 @@ services:
             - "%bitbag_sylius_cms_plugin.form.type.translation.page.validation_groups%"
         tags:
             - { name: form.type }
+                
+    bitbag_sylius_cms_plugin.form.type.event:
+        class: BitBag\SyliusCmsPlugin\Form\Type\EventType
+        arguments:
+            - "%bitbag_sylius_cms_plugin.model.event.class%"
+            - "%bitbag_sylius_cms_plugin.form.type.event.validation_groups%"
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_cms_plugin.form.type.translation.event:
+        class: BitBag\SyliusCmsPlugin\Form\Type\Translation\EventTranslationType
+        arguments:
+            - "%bitbag_sylius_cms_plugin.model.event_translation.class%"
+            - "%bitbag_sylius_cms_plugin.form.type.translation.event.validation_groups%"
+        tags:
+            - { name: form.type }
 
     bitbag_sylius_cms_plugin.form.type.frequently_asked_question:
         class: BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType

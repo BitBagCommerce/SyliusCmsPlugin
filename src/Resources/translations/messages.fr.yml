@@ -2,6 +2,7 @@ bitbag_sylius_cms_plugin:
     ui:
         blocks: Blocs
         pages: Pages
+        events: Évènements
         content_management: Gestion de contenu
         cms: Gestion de contenu
         enabled: Activée
@@ -9,6 +10,8 @@ bitbag_sylius_cms_plugin:
         blocks_subheader: Gérer vos blocs
         pages_header: Pages
         pages_subheader: Gérer vos pages
+        events_header: Évènements
+        events_subheader: Gérer vos events
         products: Produits
         page_related_products: Produits liés à la page
         name: Nom
@@ -50,6 +53,10 @@ bitbag_sylius_cms_plugin:
         breadcrumb: Fil d'Ariane
         import: Import
         csv_file: Fichier CSV
+        publish_at: Publié le
+        start_at: Commence le
+        end_at: Finit le
+        location: Localisation
         successfully_imported: Les données ont été importées.
         form_was_submitted_with_errors: "Le formulaire a les erreurs suivantes :"
         title: Titre

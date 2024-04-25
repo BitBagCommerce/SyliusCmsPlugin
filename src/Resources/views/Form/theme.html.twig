@@ -5,33 +5,7 @@
 {% endblock %}
 
 {% block bitbag_media_autocomplete_choice_row %}
-    <div 
-        class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}"
-        data-bb-target="cms-handle-autocomplete"
-    >
-        {{- form_label(form) -}}
-        <div
-            class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-            data-bb-cms-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
-            'mediaType': form.vars.media_type,
-        })}}"
-            data-bb-cms-autocomplete
-            data-bb-cms-choice-name="{{ choice_name }}"
-            data-bb-cms-choice-value="{{ choice_value }}"
-            data-bb-cms-criteria-type="{{ remote_criteria_type }}"
-            data-bb-cms-criteria-name="{{ remote_criteria_name }}"
-            data-bb-cms-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
-            data-bb-cms-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
-        >
-            {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
-            <span class="btn-delete is-hidden" data-bb-cms-delete-selected>X</span>
-            <i class="dropdown icon"></i>
-            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-bb-cms-image-select>
-            <div class="default text" data-bb-cms-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
-            <div class="menu" data-bb-cms-selection-menu></div>
-        </div>
-        {{- form_errors(form) -}}
-    </div>
+    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_media_by_phase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code')}) }}
 {% endblock %}
 
 {% block sylius_product_autocomplete_choice_row %}

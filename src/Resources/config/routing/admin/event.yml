@@ -1,0 +1,27 @@
+bitbag_sylius_cms_plugin_admin_event:
+    resource: |
+        alias: bitbag_sylius_cms_plugin.event
+        section: admin
+        templates: '@BitBagSyliusCmsPlugin/CrudUi'
+        redirect: update
+        grid: bitbag_sylius_cms_plugin_admin_event
+        except: ['show']
+        permission: true
+        vars:
+            all:
+                header: bitbag_sylius_cms_plugin.ui.events_header
+                subheader: bitbag_sylius_cms_plugin.ui.events_subheader
+                templates:
+                    form: "@BitBagSyliusCmsPlugin/Event/Crud/_form.html.twig"
+            index:
+                icon: calendar
+    type: sylius.resource
+
+bitbag_sylius_cms_plugin_admin_event_preview:
+    path: /event/preview/{id}
+    methods: [GET, POST, PUT]
+    defaults:
+        _controller: bitbag_sylius_cms_plugin.controller.event.overriden::previewAction
+        _sylius:
+            template: "@BitBagSyliusCmsPlugin/Event/preview.html.twig"
+        id: null

@@ -11,7 +11,7 @@ export class HandleSlugUpdate {
     config = {
       wrappersIndicator: 'data-bb-cms-wrapper',
       lockFieldIndicator: 'data-bb-cms-toggle-slug',
-      bbTarget: 'bitbag_sylius_cms_plugin_page',
+      bbTarget: 'bitbag_sylius_cms_plugin_event',
     }
   ) {
     this.wrappers = document.querySelectorAll(`[${config.wrappersIndicator}]`);
@@ -79,7 +79,7 @@ export class HandleSlugUpdate {
 
   async _getValidSlug(url, value) {
     try {
-      const request = await fetch(`${url}?name=${encodeURIComponent(value)}`);
+      const request = await fetch(`${url}?name=${value}`);
       const response = await request.json();
       return response.slug;
     } catch (error) {

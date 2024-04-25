@@ -49,3 +49,16 @@ bitbag_sylius_cms_plugin_admin_ajax_media_by_code:
             repository:
                 method: findBy
                 arguments: [code: $code]
+                
+bitbag_sylius_cms_plugin_admin_ajax_media_by_phase:
+    path: /ajax/media/phrase
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByPhrase
+                arguments: $phrase
