@@ -14,9 +14,9 @@ use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
@@ -49,8 +49,8 @@ final class PageContext implements Context
     /** @var SectionRepositoryInterface */
     private $sectionRepository;
 
-    /** @var MediaUploaderInterface */
-    private $mediaUploader;
+    /** @var ProviderInterface */
+    private $imageProvider;
 
     public function __construct(
         SharedStorageInterface $sharedStorage,
@@ -60,7 +60,7 @@ final class PageContext implements Context
         EntityManagerInterface $entityManager,
         ProductRepositoryInterface $productRepository,
         SectionRepositoryInterface $sectionRepository,
-        MediaUploaderInterface $mediaUploader,
+        ProviderInterface $imageProvider,
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->randomStringGenerator = $randomStringGenerator;
@@ -69,7 +69,7 @@ final class PageContext implements Context
         $this->entityManager = $entityManager;
         $this->productRepository = $productRepository;
         $this->sectionRepository = $sectionRepository;
-        $this->mediaUploader = $mediaUploader;
+        $this->imageProvider = $imageProvider;
     }
 
     /**
@@ -265,7 +265,7 @@ final class PageContext implements Context
 
         $image->setFile($uploadedImage);
 
-        $this->mediaUploader->upload($image, 'media/image');
+        $this->imageProvider->upload($image);
 
         return $image;
     }
