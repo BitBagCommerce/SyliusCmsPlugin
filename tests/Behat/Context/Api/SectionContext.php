@@ -53,8 +53,8 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Then I should see section with code :section
      * @Given I view section with code :section
+     * @Then I should see section with code :section
      */
     public function iShouldSeeSectionWithCode(SectionInterface $section): void
     {

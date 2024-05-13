@@ -79,7 +79,7 @@ final class MediaUploader implements MediaUploaderInterface
         string $path,
         string $pathPrefix,
         ?string $originalName = null,
-        ): string {
+    ): string {
         return sprintf(
             '%s/%s/%s/%s',
             $pathPrefix,

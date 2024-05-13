@@ -58,7 +58,7 @@ final class MediaContext implements Context
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         MediaRepositoryInterface $mediaRepository,
-        ) {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;
