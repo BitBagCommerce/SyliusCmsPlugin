@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Parser;
 
 use Twig\Environment;
+use Twig\TwigFunction;
 use Webmozart\Assert\Assert;
 
 final class ContentParser implements ContentParserInterface
@@ -70,7 +71,7 @@ final class ContentParser implements ContentParserInterface
         array $arguments,
         ): string {
         Assert::keyExists($functions, $functionName, sprintf('Function %s does not exist!', $functionName));
-        /** @var \Twig_Function $function */
+        /** @var TwigFunction $function */
         $function = $functions[$functionName];
         $callable = $function->getCallable();
         Assert::isArray($callable, sprintf('Function with name "%s" is not callable', $functionName));
