@@ -5,6 +5,7 @@
 !/etc/build/.gitignore
 
 tests/Application/node_modules/
+tests/Application/yarn.lock
 
 tests/Application/var/
 !tests/Application/var/.gitkeep
