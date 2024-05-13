@@ -47,6 +47,7 @@
         "symfony/debug-bundle": "^5.4 || ^6.4",
         "symfony/dotenv": "^5.4 || ^6.4",
         "symfony/intl": "^5.4 || ^6.4",
+        "symfony/runtime": "^5.4 || ^6.4",
         "symfony/web-profiler-bundle": "^5.4 || ^6.4"
     },
     "conflict": {
@@ -77,13 +78,14 @@
             "composer/package-versions-deprecated": true,
             "dealerdirect/phpcodesniffer-composer-installer": false,
             "phpstan/extension-installer": false,
-            "symfony/flex": false
+            "symfony/flex": false,
+            "symfony/runtime": true
         }
     },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    "extra": {
+        "runtime": {
+            "project_dir": "tests/Application",
+            "dotenv_path": "tests/Application/.env"
         }
     }
 }
