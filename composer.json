@@ -9,10 +9,9 @@
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "sylius/sylius": "~1.11.0 || ~1.12.0",
+        "sylius/sylius": "~1.13.0",
         "league/csv": "^9.1",
-        "friendsofsymfony/ckeditor-bundle": "^1.1 || ^2.0",
+        "friendsofsymfony/ckeditor-bundle": "^2.0",
         "instaclick/php-webdriver": "^1.4",
         "symfony/webpack-encore-bundle": "^1.12"
     },
@@ -39,16 +38,17 @@
         "phpstan/phpstan-webmozart-assert": "^1.0",
         "phpunit/phpunit": "^9.5",
         "sylius-labs/coding-standard": "^4.0",
-        "symfony/browser-kit": "^5.4 || ^6.0",
-        "symfony/debug-bundle": "^5.4 || ^6.0",
-        "symfony/dotenv": "^5.4 || ^6.0",
-        "symfony/intl": "^5.4 || ^6.0",
-        "symfony/web-profiler-bundle": "^5.4 || ^6.0",
+        "symfony/browser-kit": "^5.4 || ^6.4",
+        "symfony/debug-bundle": "^5.4 || ^6.4",
+        "symfony/dotenv": "^5.4 || ^6.4",
+        "symfony/intl": "^5.4 || ^6.4",
+        "symfony/web-profiler-bundle": "^5.4 || ^6.4",
         "league/flysystem-bundle": "2.4.0",
-        "sylius/mailer-bundle":  "^1.8 || ^2.0@beta",
-        "matthiasnoback/symfony-config-test": "^4.3",
+        "sylius/mailer-bundle":  "^2.0",
+        "matthiasnoback/symfony-config-test": "^5.1",
         "polishsymfonycommunity/symfony-mocker-container": "^1.0",
-        "twig/twig": "^2.10.0"
+        "twig/twig": "^3.10.1",
+        "rector/rector": "^1.0"
     },
     "conflict": {
         "symfony/symfony": "4.1.8",
@@ -57,7 +57,7 @@
         "symfony/routing": "4.1.8",
         "symfony/doctrine-bridge": "4.4.16"
     },
-    
+
     "suggest": {
         "stefandoorn/sitemap-plugin": "^2.0@alpha"
     },
