@@ -9,7 +9,7 @@
     "description": "CMS plugin for Sylius applications.",
     "license": "MIT",
     "require": {
-        "sylius/sylius": "~1.13.0",
+        "sylius/sylius": "~1.12.0 || ~1.13.0",
         "league/csv": "^9.1",
         "friendsofsymfony/ckeditor-bundle": "^2.0",
         "instaclick/php-webdriver": "^1.4",
