@@ -1,0 +1,13 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "build": "encore dev",
+    "build:prod": "encore production",
+    "postinstall": "semantic-ui-css-patch",
+    "lint": "yarn lint:js",
+    "watch": "encore dev --watch"
+  },
+  "devDependencies": {
+    "@sylius-ui/frontend": "^1.0"
+  }
+}
