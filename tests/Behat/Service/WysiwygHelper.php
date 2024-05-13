@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
+use Behat\Mink\Driver\PantherDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
-use Behat\Mink\Driver\PantherDriver;
 use Webmozart\Assert\Assert;
 
 final class WysiwygHelper
