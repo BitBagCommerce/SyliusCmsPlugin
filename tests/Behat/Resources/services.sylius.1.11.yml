@@ -1,8 +1,0 @@
-imports:
-    - { resource: "services/contexts.yml" }
-    - { resource: "services/pages.yml" }
-    - { resource: "services/api.sylius.1.11.yml" }
-
-services:
-    bitbag_sylius_cms_plugin.behat.random_string_generator:
-        class: Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGenerator
