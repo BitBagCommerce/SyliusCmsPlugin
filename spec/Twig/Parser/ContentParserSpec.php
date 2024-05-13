@@ -30,13 +30,12 @@ final class ContentParserSpec extends ObjectBehavior
 
     public function it_parses_string_function(
         Environment $twigEnvironment,
-        TwigFunction $renderBlockFunction,
         RenderBlockRuntimeInterface $renderBlockRuntime
     ): void {
+        $twigFunctionName = 'bitbag_cms_render_block';
         $twigEnvironment->getFunctions()->willReturn([
-            'bitbag_cms_render_block' => $renderBlockFunction,
+            $twigFunctionName => new TwigFunction($twigFunctionName, [$renderBlockRuntime->getWrappedObject(), 'renderBlock'])
         ]);
-        $renderBlockFunction->getCallable()->willReturn([$renderBlockRuntime, 'renderBlock']);
 
         $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
 
@@ -47,13 +46,13 @@ final class ContentParserSpec extends ObjectBehavior
 
     public function it_parses_string_functions(
         Environment $twigEnvironment,
-        TwigFunction $renderBlockFunction,
         RenderBlockRuntimeInterface $renderBlockRuntime
     ): void {
+
+        $twigFunctionName = 'bitbag_cms_render_block';
         $twigEnvironment->getFunctions()->willReturn([
-            'bitbag_cms_render_block' => $renderBlockFunction,
+            $twigFunctionName => new TwigFunction($twigFunctionName, [$renderBlockRuntime->getWrappedObject(), 'renderBlock'])
         ]);
-        $renderBlockFunction->getCallable()->willReturn([$renderBlockRuntime, 'renderBlock']);
 
         $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}
                   Let's render twice! {{ bitbag_cms_render_block('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
