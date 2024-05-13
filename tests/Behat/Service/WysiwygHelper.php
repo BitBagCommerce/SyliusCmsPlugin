@@ -12,7 +12,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
-use DMore\ChromeDriver\ChromeDriver;
+use Behat\Mink\Driver\PantherDriver;
 use Webmozart\Assert\Assert;
 
 final class WysiwygHelper
@@ -23,7 +23,7 @@ final class WysiwygHelper
         string $content,
         int $iframeNumber = 1,
     ): void {
-        Assert::isInstanceOf($session->getDriver(), ChromeDriver::class);
+        Assert::isInstanceOf($session->getDriver(), PantherDriver::class);
 
         $session->wait(3000);
         $session->switchToIFrame($iframeNumber);

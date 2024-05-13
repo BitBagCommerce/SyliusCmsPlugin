@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media;
 
-use DMore\ChromeDriver\ChromeDriver;
+use Behat\Mink\Driver\PantherDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Webmozart\Assert\Assert;
@@ -50,7 +50,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function associateSections(array $sectionsNames): void
     {
-        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
+        Assert::isInstanceOf($this->getDriver(), PantherDriver::class);
 
         $dropdown = $this->getElement('association_dropdown_section');
         $dropdown->click();

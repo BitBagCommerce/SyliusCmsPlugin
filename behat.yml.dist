@@ -36,6 +36,8 @@ default:
                         validate_certificate: false
                 panther:
                     panther:
+                        options:
+                            webServerDir: "%paths.base%/tests/Application/public"
                         manager_options:
                             connection_timeout_in_ms: 5000
                             request_timeout_in_ms: 120000
