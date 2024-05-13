@@ -265,7 +265,7 @@ final class PageContext implements Context
 
         $image->setFile($uploadedImage);
 
-        $this->mediaUploader->upload($image, '/tests/Application/Resources/images/');
+        $this->mediaUploader->upload($image, 'media/image');
 
         return $image;
     }
