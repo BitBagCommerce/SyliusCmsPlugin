@@ -21,15 +21,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["8.0"]
-        symfony: ["^5.4", "^6.0"]
-        sylius: ["~1.11.0", "~1.12.0"]
+        php: ["8.1"]
+        symfony: ["^5.4", "^6.4"]
+        sylius: ["~1.13.0"]
         node: ["^14.17.x"]
         mysql: ["8.0"]
-
-        exclude:
-          - sylius: ~1.11.0
-            symfony: "^6.0"
 
     env:
       APP_ENV: test
@@ -136,7 +132,7 @@ jobs:
         name: Prepare test application database
         run: |
           (cd tests/Application && bin/console doctrine:database:create -vvv)
-          (cd tests/Application && bin/console doctrine:schema:create -vvv)
+          (cd tests/Application && bin/console doctrine:migrations:migrate -n -vvv -q)
 
       -
         name: Prepare test application assets
