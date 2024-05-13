@@ -66,7 +66,7 @@ jobs:
 
             -
                 name: Run PHPStan
-                run: vendor/bin/phpstan analyse -c phpstan.neon -l 8 src/
+                run: vendor/bin/phpstan analyse -l 8 src/
 
             -   name: Run ECS
                 run: vendor/bin/ecs
