@@ -15,7 +15,5 @@
         <server name="KERNEL_CLASS" value="Tests\BitBag\SyliusCmsPlugin\Application\Kernel" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true"/>
         <server name="EXPECTED_RESPONSE_DIR" value="../Responses/Expected"/>
-        <env name="APP_SECRET" value="''" />
-        <env name="APP_ENV" value="test"/>
     </php>
 </phpunit>
