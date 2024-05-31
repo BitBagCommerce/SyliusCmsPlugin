@@ -1,10 +1,4 @@
 liip_imagine:
-    loaders:
-        default:
-            filesystem:
-                data_root:
-                    - "%sylius_core.public_dir%/media/image"
-                    - "%sylius_core.public_dir%"
     resolvers:
         default:
             web_path:

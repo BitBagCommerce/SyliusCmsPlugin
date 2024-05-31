@@ -58,7 +58,7 @@ final class PageContext implements Context
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         PageRepositoryInterface $pageRepository,
-        ) {
+    ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;

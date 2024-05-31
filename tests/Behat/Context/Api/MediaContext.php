@@ -53,8 +53,8 @@ final class MediaContext implements Context
     }
 
     /**
-     * @Then I should see media with code :media
      * @Given I view media with code :media
+     * @Then I should see media with code :media
      */
     public function iShouldSeeTheMedia(MediaInterface $media): void
     {

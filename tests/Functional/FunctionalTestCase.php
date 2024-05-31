@@ -20,7 +20,7 @@ abstract class FunctionalTestCase extends BaseJsonApiTestCase
     public function __construct(
         ?string $name = null,
         array $data = [],
-        string $dataName = ''
+        string $dataName = '',
     ) {
         parent::__construct($name, $data, $dataName);
 

@@ -36,7 +36,7 @@ final class UploadEditorImageAction
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
         FactoryInterface $mediaFactory,
-        ) {
+    ) {
         $this->mediaProviderResolver = $mediaProviderResolver;
         $this->mediaRepository = $mediaRepository;
         $this->mediaFactory = $mediaFactory;
