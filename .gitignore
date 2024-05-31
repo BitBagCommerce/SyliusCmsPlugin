@@ -4,21 +4,20 @@
 /etc/build/*
 !/etc/build/.gitignore
 
+tests/Application/node_modules/
+
+tests/Application/var/
+!tests/Application/var/.gitkeep
+
+tests/Application/web/*
+!tests/Application/web/favicon.ico
+!tests/Application/web/app.php
+!tests/Application/web/app_dev.php
+!tests/Application/web/app_test.php
+
+/tests/Application/yarn.lock
+
 /composer.lock
 
-/.phpunit.result.cache
-/phpunit.xml
-/phpstan.neon
-/phpspec.yml
-/behat.yml
-/drivers
-
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
+/etc/build/*
+!/etc/build/.gitkeep
