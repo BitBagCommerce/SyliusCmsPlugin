@@ -19,7 +19,7 @@ final class FormHelper
         Session $session,
         string $id,
         $value,
-    ): void {
+        ): void {
         try {
             $session->executeScript(
                 sprintf(

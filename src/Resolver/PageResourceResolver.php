@@ -21,7 +21,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
         private PageRepositoryInterface $pageRepository,
         private LocaleContextInterface $localeContext,
         private LoggerInterface $logger,
-    ) {
+        ) {
     }
 
     public function findOrLog(string $code): ?PageInterface

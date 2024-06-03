@@ -36,7 +36,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         private TaxonsAssignerInterface $taxonsAssigner,
         private SectionsAssignerInterface $sectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
-    ) {
+        ) {
     }
 
     public function load(array $data): void

@@ -53,7 +53,7 @@ final class FrequentlyAskedQuestionContext implements Context
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
-    ) {
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;

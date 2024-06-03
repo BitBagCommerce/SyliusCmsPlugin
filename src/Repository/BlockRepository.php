@@ -43,7 +43,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         string $sectionCode,
         string $localeCode,
         string $channelCode,
-    ): array {
+        ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
@@ -64,7 +64,7 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         string $productCode,
         string $localeCode,
         string $channelCode,
-    ): array {
+        ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.products', 'product')

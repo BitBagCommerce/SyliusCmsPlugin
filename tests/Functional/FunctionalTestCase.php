@@ -21,7 +21,7 @@ abstract class FunctionalTestCase extends BaseJsonApiTestCase
         ?string $name = null,
         array $data = [],
         string $dataName = '',
-    ) {
+        ) {
         parent::__construct($name, $data, $dataName);
 
         $this->dataFixturesPath = __DIR__ . \DIRECTORY_SEPARATOR . 'DataFixtures' . \DIRECTORY_SEPARATOR . 'ORM';

@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
 
-use DMore\ChromeDriver\ChromeDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
+use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
 final class WysiwygHelper
@@ -22,7 +22,7 @@ final class WysiwygHelper
         DocumentElement $document,
         string $content,
         int $iframeNumber = 1,
-    ): void {
+        ): void {
         Assert::isInstanceOf($session->getDriver(), ChromeDriver::class);
 
         $session->wait(3000);

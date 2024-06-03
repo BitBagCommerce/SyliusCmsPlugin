@@ -30,7 +30,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         private ProductsAssignerInterface $productsAssigner,
         private SectionsAssignerInterface $sectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
-    ) {
+        ) {
     }
 
     public function load(array $data): void

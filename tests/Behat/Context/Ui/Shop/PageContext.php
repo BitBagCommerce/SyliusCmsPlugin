@@ -31,7 +31,7 @@ final class PageContext implements Context
         ShowPageInterface $showPage,
         IndexPageInterface $indexPage,
         SharedStorageInterface $sharedStorage,
-    ) {
+        ) {
         $this->showPage = $showPage;
         $this->indexPage = $indexPage;
         $this->sharedStorage = $sharedStorage;

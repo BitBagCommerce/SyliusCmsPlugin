@@ -21,7 +21,7 @@ final class ResourceResolver implements ResourceResolverInterface
         private RepositoryInterface $repository,
         private FactoryInterface $factory,
         private string $uniqueColumn,
-    ) {
+        ) {
     }
 
     /**

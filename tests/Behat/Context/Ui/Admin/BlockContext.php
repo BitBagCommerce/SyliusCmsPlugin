@@ -58,7 +58,7 @@ final class BlockContext implements Context
         UpdatePageInterface $updatePage,
         RandomStringGeneratorInterface $randomStringGenerator,
         BlockRepositoryInterface $blockRepository,
-    ) {
+        ) {
         $this->sharedStorage = $sharedStorage;
         $this->currentPageResolver = $currentPageResolver;
         $this->notificationChecker = $notificationChecker;

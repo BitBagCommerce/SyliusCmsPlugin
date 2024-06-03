@@ -36,7 +36,7 @@ abstract class AbstractImporter implements ImporterInterface
         string $column,
         $locale,
         array $row,
-    ) {
+        ) {
         $column = str_replace('__locale__', '_' . $locale, $column);
 
         if (array_key_exists($column, $row)) {

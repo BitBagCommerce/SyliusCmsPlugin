@@ -21,7 +21,7 @@ final class SectionFixtureFactory implements FixtureFactoryInterface
         private FactoryInterface $sectionFactory,
         private FactoryInterface $sectionTranslationFactory,
         private SectionRepositoryInterface $sectionRepository,
-    ) {
+        ) {
     }
 
     public function load(array $data): void
