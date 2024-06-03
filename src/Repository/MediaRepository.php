@@ -28,7 +28,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         string $code,
         string $localeCode,
         string $channelCode,
-        ): ?MediaInterface {
+    ): ?MediaInterface {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.channels', 'channels')
@@ -48,7 +48,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         string $sectionCode,
         string $localeCode,
         string $channelCode,
-        ): array {
+    ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.sections', 'section')
@@ -69,7 +69,7 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         string $productCode,
         string $localeCode,
         string $channelCode,
-        ): array {
+    ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.products', 'product')

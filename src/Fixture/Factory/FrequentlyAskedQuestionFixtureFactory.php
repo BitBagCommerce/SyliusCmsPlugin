@@ -23,7 +23,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         private FactoryInterface $frequentlyAskedQuestionTranslationFactory,
         private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
         private ChannelsAssignerInterface $channelAssigner,
-        ) {
+    ) {
     }
 
     public function load(array $data): void
@@ -52,7 +52,7 @@ final class FrequentlyAskedQuestionFixtureFactory implements FixtureFactoryInter
         string $code,
         array $frequentlyAskedQuestionData,
         int $position,
-        ): void {
+    ): void {
         /** @var FrequentlyAskedQuestionInterface $frequentlyAskedQuestion */
         $frequentlyAskedQuestion = $this->frequentlyAskedQuestionFactory->createNew();
 

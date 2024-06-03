@@ -51,7 +51,7 @@ final class ImportDataAction
         FormErrorsFlashHelperInterface $formErrorsFlashHelper,
         TranslatorInterface $translator,
         Environment $twig,
-        ) {
+    ) {
         $this->importProcessor = $importProcessor;
         $this->formFactory = $formFactory;
         $this->requestStack = $requestStack;

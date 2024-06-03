@@ -24,7 +24,7 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         private ChannelContextInterface $channelContext,
         private Environment $templatingEngine,
         private SectionsSorterInterface $sectionsSorter,
-        ) {
+    ) {
     }
 
     public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
