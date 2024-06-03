@@ -51,7 +51,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function associateSections(array $sectionsNames): void
     {
-        Assert::isInstanceOf($this->getDriver(), PantherDriver::class);
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $dropdown = $this->getElement('association_dropdown_section');
         $dropdown->click();

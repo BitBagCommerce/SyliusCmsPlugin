@@ -40,7 +40,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         $this->getDocument()->fillField('Name', $name);
 
-        if ($this->getDriver() instanceof PantherDriver) {
+        if ($this->getDriver() instanceof ChromeDriver) {
             SlugGenerationHelper::waitForSlugGeneration($this->getSession(), $this->getElement('slug'));
         }
     }
@@ -67,7 +67,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function associateSections(array $sectionsNames): void
     {
-        Assert::isInstanceOf($this->getDriver(), PantherDriver::class);
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $dropdown = $this->getElement('association_dropdown_section');
         $dropdown->click();

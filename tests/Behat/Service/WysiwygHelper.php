@@ -23,7 +23,7 @@ final class WysiwygHelper
         string $content,
         int $iframeNumber = 1,
     ): void {
-        Assert::isInstanceOf($session->getDriver(), PantherDriver::class);
+        Assert::isInstanceOf($session->getDriver(), ChromeDriver::class);
 
         $session->wait(3000);
         $session->switchToIFrame($iframeNumber);
