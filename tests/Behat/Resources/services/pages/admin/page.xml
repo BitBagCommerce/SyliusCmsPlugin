@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
+                <argument>'bitbag_sylius_cms_plugin_admin_page_index'</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.create" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
+                <argument>'bitbag_sylius_cms_plugin_admin_page_create'</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.update" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
+                <argument>'bitbag_sylius_cms_plugin_admin_page_update'</argument>
+            </service>
+    </services>
+</container>

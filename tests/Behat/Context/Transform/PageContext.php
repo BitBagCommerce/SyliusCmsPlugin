@@ -17,16 +17,10 @@ use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
 {
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var string */
-    private $locale;
-
-    public function __construct(PageRepositoryInterface $pageRepository, string $locale = 'en_US')
-    {
-        $this->pageRepository = $pageRepository;
-        $this->locale = $locale;
+    public function __construct(
+        private PageRepositoryInterface $pageRepository,
+        private string $locale = 'en_US'
+    ) {
     }
 
     /**

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.block" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\BlockContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
+                <argument>%locale%</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.frequently_asked_question" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\FrequentlyAskedQuestionContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.frequently_asked_question" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\MediaContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+                <argument type="service" id="sylius.behat.shared_storage" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.page" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\PageContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+                <argument>%locale%</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.section" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\SectionContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+                <argument>%locale%</argument>
+            </service>
+    </services>
+</container>

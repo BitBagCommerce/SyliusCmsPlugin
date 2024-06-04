@@ -18,18 +18,10 @@ use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
 {
-    /** @var MediaRepositoryInterface */
-    private $mediaRepositoryInterface;
-
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
     public function __construct(
-        MediaRepositoryInterface $mediaRepositoryInterface,
-        SharedStorageInterface $sharedStorage,
+        private MediaRepositoryInterface $mediaRepositoryInterface,
+        private SharedStorageInterface $sharedStorage,
     ) {
-        $this->mediaRepositoryInterface = $mediaRepositoryInterface;
-        $this->sharedStorage = $sharedStorage;
     }
 
     /**

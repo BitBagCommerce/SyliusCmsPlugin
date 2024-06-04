@@ -19,23 +19,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class ProductSearchAction
 {
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ViewHandler */
-    private $viewHandler;
-
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        LocaleContextInterface $localeContext,
-        ViewHandler $viewHandler,
+        private ProductRepositoryInterface $productRepository,
+        private LocaleContextInterface $localeContext,
+        private ViewHandler $viewHandler,
     ) {
-        $this->productRepository = $productRepository;
-        $this->localeContext = $localeContext;
-        $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response

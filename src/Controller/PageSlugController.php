@@ -17,12 +17,8 @@ use Webmozart\Assert\Assert;
 
 final class PageSlugController
 {
-    /** @var SlugGeneratorInterface */
-    private $slugGenerator;
-
-    public function __construct(SlugGeneratorInterface $slugGenerator)
+    public function __construct(private SlugGeneratorInterface $slugGenerator)
     {
-        $this->slugGenerator = $slugGenerator;
     }
 
     public function generateAction(Request $request): JsonResponse

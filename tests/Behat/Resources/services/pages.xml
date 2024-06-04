@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="pages/admin.xml"/>
+        <import resource="pages/shop.xml"/>
+    </imports>
+
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.behat.page" class="FriendsOfBehat\PageObjectExtension\Page\Page">
+            <argument>behat.mink.default_session</argument>
+            <argument>behat.mink.parameters</argument>
+        </service>
+    </services>
+</container>

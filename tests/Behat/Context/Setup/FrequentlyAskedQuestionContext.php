@@ -20,29 +20,13 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
-    /** @var FactoryInterface */
-    private $frequentlyAskedQuestionFactory;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        FactoryInterface $frequentlyAskedQuestionFactory,
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private SharedStorageInterface $sharedStorage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
+        private FactoryInterface $frequentlyAskedQuestionFactory,
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->frequentlyAskedQuestionFactory = $frequentlyAskedQuestionFactory;
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
-
-    /** @var FrequentlyAskedQuestionRepositoryInterface */
-    private $frequentlyAskedQuestionRepository;
 
     /**
      * @Given the store has a frequently asked question

@@ -1,8 +1,0 @@
-imports:
-    - { resource: "pages/admin.yml" }
-    - { resource: "pages/shop.yml" }
-services:
-    bitbag_sylius_cms_plugin.behat.page:
-        class: FriendsOfBehat\PageObjectExtension\Page\Page
-        arguments:
-          [ 'behat.mink.default_session', 'behat.mink.parameters' ]

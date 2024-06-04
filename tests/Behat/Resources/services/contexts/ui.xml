@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.block" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\BlockContext">
+                <argument type="service" id="sylius.behat.shared_storage"/>
+                <argument type="service" id="sylius.behat.current_page_resolver"/>
+                <argument type="service" id="sylius.behat.notification_checker"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.block.index"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.block.create"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.block.update"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.block"/>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.page" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\PageContext">
+                <argument type="service" id="sylius.behat.shared_storage"/>
+                <argument type="service" id="sylius.behat.current_page_resolver"/>
+                <argument type="service" id="sylius.behat.notification_checker"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.page.index"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.page.create"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.page.update"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.page"/>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.ui.shop.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\MediaContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.media"/>
+            </service>
+    </services>
+</container>

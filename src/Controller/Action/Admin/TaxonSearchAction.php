@@ -19,23 +19,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class TaxonSearchAction
 {
-    /** @var TaxonRepositoryInterface */
-    private $taxonRepository;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ViewHandler */
-    private $viewHandler;
-
     public function __construct(
-        TaxonRepositoryInterface $taxonRepository,
-        LocaleContextInterface $localeContext,
-        ViewHandler $viewHandler,
+        private TaxonRepositoryInterface $taxonRepository,
+        private LocaleContextInterface $localeContext,
+        private ViewHandler $viewHandler,
     ) {
-        $this->taxonRepository = $taxonRepository;
-        $this->localeContext = $localeContext;
-        $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
