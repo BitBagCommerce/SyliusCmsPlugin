@@ -1,11 +1,10 @@
-includes:
-    - vendor/bitbag/coding-standard/phpstan.neon
 parameters:
     level: 8
     reportUnmatchedIgnoredErrors: false
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
-    excludes_analyse:
+    paths:
+        - src
+
+    excludePaths:
         # Sitemap dependent providers
         - 'src/SitemapProvider'
         - 'src/Importer/AbstractImporter'
@@ -13,5 +12,6 @@ parameters:
         - 'tests/Fixture/PageFixtureTest.php'
         - 'src/Controller/Helper'
     ignoreErrors:
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
         - '#.*NodeParentInterface.*#'
-        - '#.*PHPDoc tag @throws with type Exception|Psr\Container\ContainerExceptionInterface is not subtype of Throwable.*#'

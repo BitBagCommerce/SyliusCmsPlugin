@@ -21,7 +21,7 @@ final class GenericProvider implements ProviderInterface
         private Environment $twigEngine,
         private string $template,
         private string $pathPrefix,
-        ) {
+    ) {
     }
 
     public function getTemplate(): string
@@ -33,7 +33,7 @@ final class GenericProvider implements ProviderInterface
         MediaInterface $media,
         ?string $template = null,
         array $options = [],
-        ): string {
+    ): string {
         return $this->twigEngine->render($template ?? $this->template, array_merge(['media' => $media], $options));
     }
 

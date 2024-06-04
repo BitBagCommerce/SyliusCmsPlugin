@@ -19,8 +19,8 @@ class FrequentlyAskedQuestion implements FrequentlyAskedQuestionInterface
     use ChannelsAwareTrait;
     use ToggleableTrait,
         TranslatableTrait {
-        __construct as private initializeTranslationsCollection;
-    }
+            __construct as private initializeTranslationsCollection;
+        }
 
     /** @var int */
     protected $id;

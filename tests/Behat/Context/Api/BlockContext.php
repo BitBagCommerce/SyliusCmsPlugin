@@ -52,8 +52,8 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I should see block with code :block
      * @Given I view block with code :block
+     * @Then I should see block with code :block
      */
     public function iShouldSeeBlockWithCode(string $code): void
     {

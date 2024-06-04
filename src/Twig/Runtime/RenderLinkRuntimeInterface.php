@@ -20,7 +20,7 @@ interface RenderLinkRuntimeInterface extends RuntimeExtensionInterface
         string $code,
         array $options = [],
         ?string $template = null,
-        ): string;
+    ): string;
 
     public function getLinkForCode(string $code, array $options = []): string;
 }

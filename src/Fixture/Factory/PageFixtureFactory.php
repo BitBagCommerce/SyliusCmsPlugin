@@ -42,7 +42,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         private ProductRepositoryInterface $productRepository,
         private LocaleContextInterface $localeContext,
         private ChannelRepositoryInterface $channelRepository,
-        ) {
+    ) {
     }
 
     public function load(array $data): void
@@ -71,7 +71,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         string $code,
         array $pageData,
         bool $generateSlug = false,
-        ): void {
+    ): void {
         /** @var PageInterface $page */
         $page = $this->pageFactory->createNew();
         $products = $pageData['products'];
@@ -124,7 +124,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         PageInterface $page,
         int $limit,
         array $channelCodes,
-        ): void {
+    ): void {
         foreach ($channelCodes as $channelCode) {
             /** @var ChannelInterface|null $channel */
             $channel = $this->channelRepository->findOneByCode($channelCode);
@@ -138,7 +138,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         PageInterface $page,
         int $limit,
         ChannelInterface $channel,
-        ): void {
+    ): void {
         $products = $this->productRepository->findLatestByChannel(
             $channel,
             $this->localeContext->getLocaleCode(),

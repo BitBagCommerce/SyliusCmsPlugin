@@ -75,6 +75,6 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
             ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 }
