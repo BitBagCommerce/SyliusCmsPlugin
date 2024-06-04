@@ -19,7 +19,7 @@ final class PageContext implements Context
 {
     public function __construct(
         private PageRepositoryInterface $pageRepository,
-        private string $locale = 'en_US'
+        private string $locale = 'en_US',
     ) {
     }
 

@@ -25,7 +25,7 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private UrlGeneratorInterface $router,
-        private RequestStack $requestStack
+        private RequestStack $requestStack,
     ) {
     }
 

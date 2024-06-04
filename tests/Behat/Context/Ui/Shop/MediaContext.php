@@ -15,7 +15,6 @@ use Behat\Behat\Context\Context;
 use Behat\Mink\Element\DocumentElement;
 use Behat\MinkExtension\Context\RawMinkContext;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePageInterface;
 
 class MediaContext extends RawMinkContext implements Context
 {

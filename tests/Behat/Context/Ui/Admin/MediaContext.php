@@ -11,12 +11,10 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
-use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\CreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\IndexPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\UpdatePageInterface;

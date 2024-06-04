@@ -19,7 +19,7 @@ final class BlockContext implements Context
 {
     public function __construct(
         private BlockRepositoryInterface $blockRepository,
-        private string $locale = 'en_US'
+        private string $locale = 'en_US',
     ) {
     }
 

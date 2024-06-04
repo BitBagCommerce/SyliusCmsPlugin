@@ -19,7 +19,7 @@ final class SectionContext implements Context
 {
     public function __construct(
         private SectionRepositoryInterface $sectionRepository,
-        private string $locale = 'en_US'
+        private string $locale = 'en_US',
     ) {
     }
 

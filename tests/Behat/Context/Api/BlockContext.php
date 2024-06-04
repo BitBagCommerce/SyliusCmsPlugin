@@ -20,7 +20,7 @@ final class BlockContext implements Context
 {
     public function __construct(
         private ApiClientInterface $apiClient,
-        private ResponseCheckerInterface $responseChecker
+        private ResponseCheckerInterface $responseChecker,
     ) {
     }
 

@@ -19,7 +19,7 @@ final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 {
     public function __construct(
         private RequestStack $requestStack,
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {
     }
 
