@@ -1,0 +1,25 @@
+<serialization>
+    <class name="BitBag\SyliusCmsPlugin\Entity\Media" exclusion-policy="ALL" xml-root-name="media">
+        <property name="id" expose="true" type="integer" xml-attribute="true">
+            <groups>Autocomplete</groups>
+        </property>
+        <property name="code" expose="true" type="string">
+            <groups>Autocomplete</groups>
+        </property>
+        <property name="path" expose="true" type="string">
+            <groups>Autocomplete</groups>
+        </property>
+        <relation rel="self">
+            <href>
+                <route>bitbag_sylius_cms_plugin_shop_media_inline</route>
+                <parameters>
+                    <_locale>expr(object.getTranslation().getLocale())</_locale>
+                    <code>expr(object.getCode())</code>
+                </parameters>
+            </href>
+        </relation>
+        <virtual-property name="getName" serialized-name="name">
+            <groups>Autocomplete</groups>
+        </virtual-property>
+    </class>
+</serialization>

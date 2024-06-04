@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.menu.content_management" class="BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder">
+            <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="buildMenu" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.event_listener.media_upload" class="BitBag\SyliusCmsPlugin\EventListener\MediaUploadListener">
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
+            <tag name="kernel.event_listener" event="bitbag_sylius_cms_plugin.media.pre_create" method="uploadMedia" />
+            <tag name="kernel.event_listener" event="bitbag_sylius_cms_plugin.media.pre_update" method="uploadMedia" />
+        </service>
+
+        <service id="bitbag_sylius.event_subscriber.resource_delete" class="BitBag\SyliusCmsPlugin\EventListener\ResourceDeleteSubscriber">
+            <argument type="service" id="router" />
+            <argument type="service" id="request_stack" />
+            <tag name="kernel.event_subscriber" event="kernel.exception" />
+        </service>
+    </services>
+</container>

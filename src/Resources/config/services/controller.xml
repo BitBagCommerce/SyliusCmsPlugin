@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.controller.page_slug" class="BitBag\SyliusCmsPlugin\Controller\PageSlugController">
+            <argument type="service" id="sylius.generator.slug" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.product_search" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction">
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="fos_rest.view_handler.default" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.taxon_search" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\TaxonSearchAction">
+            <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="fos_rest.view_handler.default" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.import_data" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction">
+            <argument type="service" id="bitbag_sylius_cms_plugin.processor.import" />
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" />
+            <argument type="service" id="translator" />
+            <argument type="service" id="twig" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction">
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" class="BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelper">
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="translator" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.media.overriden" class="BitBag\SyliusCmsPlugin\Controller\MediaController" parent="bitbag_sylius_cms_plugin.controller.media">
+            <call method="setMediaProviderResolver">
+                <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
+            </call>
+            <call method="setMediaResourceResolver">
+                <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_resource" />
+            </call>
+            <call method="setFormErrorsFlashHelper">
+                <argument type="service" id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" />
+            </call>
+            <call method="setCacheManager">
+                <argument type="service" id="liip_imagine.cache.manager" />
+            </call>
+            <call method="setDataManager">
+                <argument type="service" id="liip_imagine.data.manager" />
+            </call>
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.page.overriden" class="BitBag\SyliusCmsPlugin\Controller\PageController" parent="bitbag_sylius_cms_plugin.controller.page">
+            <call method="setPageResourceResolver">
+                <argument type="service" id="bitbag_sylius_cms_plugin.resolver.page_resource" />
+            </call>
+            <call method="setFormErrorsFlashHelper">
+                <argument type="service" id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" />
+            </call>
+            <call method="setCacheManager">
+                <argument type="service" id="liip_imagine.cache.manager" />
+            </call>
+            <call method="setDataManager">
+                <argument type="service" id="liip_imagine.data.manager" />
+            </call>
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\RetrievePackageInfoAction" />
+    </services>
+</container>

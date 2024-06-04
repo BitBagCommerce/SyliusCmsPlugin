@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.importer.chain" class="BitBag\SyliusCmsPlugin\Importer\ImporterChain" />
+
+        <service id="bitbag_sylius_cms_plugin.importer.page" class="BitBag\SyliusCmsPlugin\Importer\PageImporter">
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.page" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.downloader.image" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
+            <argument type="service" id="validator" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="bitbag.cmsplugin.importer" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.importer.block" class="BitBag\SyliusCmsPlugin\Importer\BlockImporter">
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.block" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
+            <argument type="service" id="validator" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
+            <tag name="bitbag.cmsplugin.importer" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.importer.media" class="BitBag\SyliusCmsPlugin\Importer\MediaImporter">
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.media" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
+            <argument type="service" id="validator" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+            <tag name="bitbag.cmsplugin.importer" />
+        </service>
+    </services>
+</container>

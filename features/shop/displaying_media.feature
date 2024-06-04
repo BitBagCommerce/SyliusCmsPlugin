@@ -12,6 +12,6 @@ Feature: Displaying media
 
   @ui
   Scenario: Displaying media no standard template
-    And there is an existing "image" media with "media_with_parameteres" code
+    And there is an existing "image" media with "media_with_parameters" code
     When I go to the homepage
-    And I want to see a media with code "media_with_parameteres"
+    And I want to see a media with code "media_with_parameters"

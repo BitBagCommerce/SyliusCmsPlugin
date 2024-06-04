@@ -13,7 +13,7 @@ Feature: Managing frequently asked questions
         Given the store has a frequently asked question
         When I go to the frequently asked questions page
         And I delete this frequently asked question
-        Then I should be notified that the fequently asked question has been deleted
+        Then I should be notified that the frequently asked question has been deleted
         And I should see empty list of frequently asked questions
 
     @ui

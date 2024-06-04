@@ -164,7 +164,7 @@ final class FrequentlyAskedQuestionContext implements Context
     }
 
     /**
-     * @Then I should be notified that the fequently asked question has been deleted
+     * @Then I should be notified that the frequently asked question has been deleted
      */
     public function iShouldBeNotifiedThatTheFrequentlyAskedQuestionHasBeenDeleted(): void
     {

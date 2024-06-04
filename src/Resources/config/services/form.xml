@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.form.type.block" class="BitBag\SyliusCmsPlugin\Form\Type\BlockType">
+            <argument>%bitbag_sylius_cms_plugin.model.block.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.block.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.block" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.block_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.block.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.block_image" class="BitBag\SyliusCmsPlugin\Form\Type\BlockImageType">
+            <argument>BitBag\SyliusCmsPlugin\Entity\BlockImage</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.block_image.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.page" class="BitBag\SyliusCmsPlugin\Form\Type\PageType">
+            <argument>%bitbag_sylius_cms_plugin.model.page.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.page.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.page" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.page_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.page.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType">
+            <argument>%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.frequently_asked_question.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.frequently_asked_question_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.section" class="BitBag\SyliusCmsPlugin\Form\Type\SectionType">
+            <argument>%bitbag_sylius_cms_plugin.model.section.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.section.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.section" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\SectionTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.section_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.section.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.import" class="BitBag\SyliusCmsPlugin\Form\Type\ImportType">
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.media" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.media_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.media.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.media" class="BitBag\SyliusCmsPlugin\Form\Type\MediaType">
+            <argument>%bitbag_sylius_cms_plugin.model.media.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.media.validation_groups%</argument>
+            <argument>%bitbag_sylius_cms_plugin.media_providers%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.wysiwyg" class="BitBag\SyliusCmsPlugin\Form\Type\WysiwygType">
+            <argument type="service" id="router.default" />
+            <tag name="form.type" />
+        </service>
+    </services>
+
+</container>
