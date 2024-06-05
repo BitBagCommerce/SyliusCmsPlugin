@@ -5,15 +5,15 @@
         <defaults public="true" />
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_page_index'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_page_index</argument>
             </service>
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.create" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_page_create'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_page_create</argument>
             </service>
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.page.update" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_page_update'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_page_update</argument>
             </service>
     </services>
 </container>

@@ -5,15 +5,15 @@
         <defaults public="true" />
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_frequently_asked_question_index</argument>
             </service>
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.create" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_frequently_asked_question_create'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_frequently_asked_question_create</argument>
             </service>
 
             <service id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.update" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\FrequentlyAskedQuestion\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
-                <argument>'bitbag_sylius_cms_plugin_admin_frequently_asked_question_update'</argument>
+                <argument>bitbag_sylius_cms_plugin_admin_frequently_asked_question_update</argument>
             </service>
     </services>
 </container>

@@ -1,0 +1,46 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+    http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="BitBag\SyliusCmsPlugin\Entity\Block">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>code</value>
+            </option>
+            <option name="groups">
+                <value>bitbag</value>
+            </option>
+            <option name="message">bitbag_sylius_cms_plugin.block.code.unique</option>
+        </constraint>
+
+        <property name="code">
+            <constraint name="NotBlank">
+                <option name="message">bitbag_sylius_cms_plugin.block.code.not_blank</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">250</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.block.code.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.block.code.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">/^[\w-]*$/</option>
+                <option name="message">bitbag_sylius_cms_plugin.block.code.regex</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="translations">
+            <constraint name="Valid"/>
+        </property>
+    </class>
+</constraint-mapping>
