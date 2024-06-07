@@ -203,7 +203,7 @@ sylius_fixtures:
                                 - "666F_boyfriend_jeans_with_rips"
                                 - "727F_patched_cropped_jeans"
                                 - "111F_patched_jeans_with_fancy_badges"
-                            media_with_parameteres:
+                            media_with_parameters:
                                 channels:
                                 - "FASHION_WEB"
                                 type: image

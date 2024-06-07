@@ -28,48 +28,16 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class PageContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
-    /** @var FactoryInterface */
-    private $pageFactory;
-
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
-    /** @var ProviderInterface */
-    private $imageProvider;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        FactoryInterface $pageFactory,
-        PageRepositoryInterface $pageRepository,
-        EntityManagerInterface $entityManager,
-        ProductRepositoryInterface $productRepository,
-        SectionRepositoryInterface $sectionRepository,
-        ProviderInterface $imageProvider,
+        private SharedStorageInterface $sharedStorage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
+        private FactoryInterface $pageFactory,
+        private PageRepositoryInterface $pageRepository,
+        private EntityManagerInterface $entityManager,
+        private ProductRepositoryInterface $productRepository,
+        private SectionRepositoryInterface $sectionRepository,
+        private ProviderInterface $imageProvider,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->pageFactory = $pageFactory;
-        $this->pageRepository = $pageRepository;
-        $this->entityManager = $entityManager;
-        $this->productRepository = $productRepository;
-        $this->sectionRepository = $sectionRepository;
-        $this->imageProvider = $imageProvider;
     }
 
     /**

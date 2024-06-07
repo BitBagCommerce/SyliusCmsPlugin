@@ -13,60 +13,22 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class MediaContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
-    /** @var FactoryInterface */
-    private $mediaFactory;
-
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var EntityManagerInterface */
-    private $entityManager;
-
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
-
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        FactoryInterface $mediaFactory,
-        MediaRepositoryInterface $mediaRepository,
-        EntityManagerInterface $entityManager,
-        ProductRepositoryInterface $productRepository,
-        SectionRepositoryInterface $sectionRepository,
-        MediaProviderResolverInterface $mediaProviderResolver,
+        private SharedStorageInterface $sharedStorage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
+        private FactoryInterface $mediaFactory,
+        private MediaRepositoryInterface $mediaRepository,
+        private MediaProviderResolverInterface $mediaProviderResolver,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->mediaFactory = $mediaFactory;
-        $this->mediaRepository = $mediaRepository;
-        $this->entityManager = $entityManager;
-        $this->productRepository = $productRepository;
-        $this->sectionRepository = $sectionRepository;
-        $this->mediaProviderResolver = $mediaProviderResolver;
     }
 
     /**

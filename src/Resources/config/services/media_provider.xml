@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.media_provider.image" class="BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider">
+            <argument type="service" id="bitbag_sylius_cms_plugin.media_uploader" />
+            <argument type="service" id="twig" />
+            <argument>@BitBagSyliusCmsPlugin/Shop/Media/Show/image.html.twig</argument>
+            <argument>media/image</argument>
+            <tag name="bitbag_sylius_cms_plugin.media_provider" type="image" label="bitbag_sylius_cms_plugin.ui.image_provider" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.media_provider.video" class="BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider">
+            <argument type="service" id="bitbag_sylius_cms_plugin.media_uploader" />
+            <argument type="service" id="twig" />
+            <argument>@BitBagSyliusCmsPlugin/Shop/Media/Show/video.html.twig</argument>
+            <argument>media/video</argument>
+            <tag name="bitbag_sylius_cms_plugin.media_provider" type="video" label="bitbag_sylius_cms_plugin.ui.video_provider" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.media_provider.file" class="BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider">
+            <argument type="service" id="bitbag_sylius_cms_plugin.media_uploader" />
+            <argument type="service" id="twig" />
+            <argument>@BitBagSyliusCmsPlugin/Shop/Media/Show/file.html.twig</argument>
+            <argument>media/file</argument>
+            <tag name="bitbag_sylius_cms_plugin.media_provider" type="file" label="bitbag_sylius_cms_plugin.ui.file_provider" />
+        </service>
+    </services>
+</container>

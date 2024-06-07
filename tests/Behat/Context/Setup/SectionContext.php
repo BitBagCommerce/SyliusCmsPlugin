@@ -20,29 +20,13 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class SectionContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
-    /** @var FactoryInterface */
-    private $sectionFactory;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        FactoryInterface $sectionFactory,
-        SectionRepositoryInterface $sectionRepository,
+        private SharedStorageInterface $sharedStorage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
+        private FactoryInterface $sectionFactory,
+        private SectionRepositoryInterface $sectionRepository,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->sectionFactory = $sectionFactory;
-        $this->sectionRepository = $sectionRepository;
     }
-
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
 
     /**
      * @Given there is a section in the store

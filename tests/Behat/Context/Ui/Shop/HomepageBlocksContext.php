@@ -16,12 +16,8 @@ use Webmozart\Assert\Assert;
 
 final class HomepageBlocksContext implements Context
 {
-    /** @var HomePageInterface */
-    private $blockHomePage;
-
-    public function __construct(HomePageInterface $blockHomePage)
+    public function __construct(private HomePageInterface $blockHomePage)
     {
-        $this->blockHomePage = $blockHomePage;
     }
 
     /**

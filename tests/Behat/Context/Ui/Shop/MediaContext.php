@@ -15,22 +15,12 @@ use Behat\Behat\Context\Context;
 use Behat\Mink\Element\DocumentElement;
 use Behat\MinkExtension\Context\RawMinkContext;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePageInterface;
 
 class MediaContext extends RawMinkContext implements Context
 {
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var HomePageInterface */
-    private $blockHomePage;
-
     public function __construct(
-        MediaRepositoryInterface $mediaRepository,
-        HomePageInterface $blockHomePage,
+        private MediaRepositoryInterface $mediaRepository,
     ) {
-        $this->mediaRepository = $mediaRepository;
-        $this->blockHomePage = $blockHomePage;
     }
 
     /**

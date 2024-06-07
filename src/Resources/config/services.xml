@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="services/**.xml" />
+    </imports>
+
+    <parameters>
+        <parameter key="bitbag_sylius_cms_plugin.media_provider.interface">BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface</parameter>
+    </parameters>
+
+    <services>
+        <defaults public="true" />
+            <service id="bitbag_sylius_cms_plugin.reader.csv" class="BitBag\SyliusCmsPlugin\Reader\CsvReader" />
+
+            <service id="bitbag_sylius_cms_plugin.processor.import" class="BitBag\SyliusCmsPlugin\Processor\ImportProcessor">
+                <argument type="service" id="bitbag_sylius_cms_plugin.importer.chain" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.reader.csv" />
+                <argument type="service" id="doctrine.orm.entity_manager" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.command.import_from_csv" class="BitBag\SyliusCmsPlugin\Command\ImportFromCsvCommand">
+                <argument type="service" id="bitbag_sylius_cms_plugin.processor.import" />
+                <tag name="console.command" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.downloader.image" class="BitBag\SyliusCmsPlugin\Downloader\ImageDownloader">
+                <argument type="service" id="filesystem" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.registry.media_provider" class="Sylius\Component\Registry\ServiceRegistry">
+                <argument>%bitbag_sylius_cms_plugin.media_provider.interface%</argument>
+                <argument>Media provider</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.media_uploader" class="BitBag\SyliusCmsPlugin\Uploader\MediaUploader">
+                <argument type="service" id="bitbag_sylius_cms_plugin.media.filesystem" />
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.media.filesystem" class="Gaufrette\Filesystem">
+                <factory service="knp_gaufrette.filesystem_map" method="get" />
+                <argument>%bitbag_sylius_cms_plugin.uploader.filesystem%</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.sorter.sections" class="BitBag\SyliusCmsPlugin\Sorter\SectionsSorter" />
+    </services>
+</container>

@@ -23,8 +23,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ResourceDeleteSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private UrlGeneratorInterface $router, private RequestStack $requestStack)
-    {
+    public function __construct(
+        private UrlGeneratorInterface $router,
+        private RequestStack $requestStack,
+    ) {
     }
 
     public static function getSubscribedEvents(): array

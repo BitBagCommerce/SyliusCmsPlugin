@@ -14,5 +14,5 @@ use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
 
 interface SectionsAssignerInterface
 {
-    public function assign(SectionableInterface $sectionable, array $sectionsCodes): void;
+    public function assign(SectionableInterface $sectionsAware, array $sectionsCodes): void;
 }

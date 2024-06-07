@@ -26,38 +26,14 @@ use Twig\Environment;
 
 final class ImportDataAction
 {
-    /** @var ImportProcessorInterface */
-    private $importProcessor;
-
-    /** @var FormFactoryInterface */
-    private $formFactory;
-
-    /** @var RequestStack */
-    private $requestStack;
-
-    /** @var FormErrorsFlashHelperInterface */
-    private $formErrorsFlashHelper;
-
-    /** @var TranslatorInterface */
-    private $translator;
-
-    /** @var Environment */
-    private $twig;
-
     public function __construct(
-        ImportProcessorInterface $importProcessor,
-        FormFactoryInterface $formFactory,
-        RequestStack $requestStack,
-        FormErrorsFlashHelperInterface $formErrorsFlashHelper,
-        TranslatorInterface $translator,
-        Environment $twig,
+        private ImportProcessorInterface $importProcessor,
+        private FormFactoryInterface $formFactory,
+        private RequestStack $requestStack,
+        private FormErrorsFlashHelperInterface $formErrorsFlashHelper,
+        private TranslatorInterface $translator,
+        private Environment $twig,
     ) {
-        $this->importProcessor = $importProcessor;
-        $this->formFactory = $formFactory;
-        $this->requestStack = $requestStack;
-        $this->formErrorsFlashHelper = $formErrorsFlashHelper;
-        $this->translator = $translator;
-        $this->twig = $twig;
     }
 
     public function __invoke(Request $request): Response

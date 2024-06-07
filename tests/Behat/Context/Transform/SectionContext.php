@@ -17,16 +17,10 @@ use Webmozart\Assert\Assert;
 
 final class SectionContext implements Context
 {
-    /** @var SectionRepositoryInterface */
-    private $sectionRepository;
-
-    /** @var string */
-    private $locale;
-
-    public function __construct(SectionRepositoryInterface $sectionRepository, string $locale = 'en_US')
-    {
-        $this->sectionRepository = $sectionRepository;
-        $this->locale = $locale;
+    public function __construct(
+        private SectionRepositoryInterface $sectionRepository,
+        private string $locale = 'en_US',
+    ) {
     }
 
     /**

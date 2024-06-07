@@ -19,16 +19,10 @@ use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
 {
-    private ApiClientInterface $apiClient;
-
-    private ResponseCheckerInterface $responseChecker;
-
     public function __construct(
-        ApiClientInterface $apiClient,
-        ResponseCheckerInterface $responseChecker,
+        private ApiClientInterface $apiClient,
+        private ResponseCheckerInterface $responseChecker,
     ) {
-        $this->apiClient = $apiClient;
-        $this->responseChecker = $responseChecker;
     }
 
     /**

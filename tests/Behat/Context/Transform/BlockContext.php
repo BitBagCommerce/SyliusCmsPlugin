@@ -17,16 +17,10 @@ use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context
 {
-    /** @var BlockRepositoryInterface */
-    private $blockRepository;
-
-    /** @var string */
-    private $locale;
-
-    public function __construct(BlockRepositoryInterface $blockRepository, string $locale = 'en_US')
-    {
-        $this->blockRepository = $blockRepository;
-        $this->locale = $locale;
+    public function __construct(
+        private BlockRepositoryInterface $blockRepository,
+        private string $locale = 'en_US',
+    ) {
     }
 
     /**

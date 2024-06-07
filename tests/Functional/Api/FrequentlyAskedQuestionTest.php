@@ -25,7 +25,7 @@ class FrequentlyAskedQuestionTest extends FunctionalTestCase
         $this->loadFixturesFromFile('Api/FrequentlyAskedQuestionTest/frequently_asked_question.yml');
     }
 
-    public function test_block_response(): void
+    public function test_faq_response(): void
     {
         /** @var FrequentlyAskedQuestionInterface $faq */
         $faq = $this->getRepository()->findOneEnabledByCode('faq1-code');
@@ -33,6 +33,14 @@ class FrequentlyAskedQuestionTest extends FunctionalTestCase
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'Api/FrequentlyAskedQuestionTest/test_it_get_frequently_asked_question_by_id', Response::HTTP_OK);
+    }
+
+    public function test_faqs_response(): void
+    {
+        $this->client->request('GET', '/api/v2/shop/cms-plugin/faq', [], [], self::CONTENT_TYPE_HEADER);
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'Api/FrequentlyAskedQuestionTest/test_it_get_frequently_asked_questions', Response::HTTP_OK);
     }
 
     private function getRepository(): FrequentlyAskedQuestionRepositoryInterface

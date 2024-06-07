@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="services/contexts.xml"/>
+        <import resource="services/pages.xml"/>
+        <import resource="services/api.xml"/>
+    </imports>
+
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.behat.random_string_generator" class="Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGenerator"/>
+    </services>
+</container>

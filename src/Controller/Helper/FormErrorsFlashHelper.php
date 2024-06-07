@@ -17,16 +17,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
 {
-    /** @var RequestStack */
-    private $requestStack;
-
-    /** @var TranslatorInterface */
-    private $translator;
-
-    public function __construct(RequestStack $requestStack, TranslatorInterface $translator)
-    {
-        $this->requestStack = $requestStack;
-        $this->translator = $translator;
+    public function __construct(
+        private RequestStack $requestStack,
+        private TranslatorInterface $translator,
+    ) {
     }
 
     public function addFlashErrors(FormInterface $form): void

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.shop.home" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePage" parent="sylius.behat.page.shop.home" public="false">
+                <argument>sylius_shop_homepage</argument>
+            </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.shop.page.show" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPage" parent="sylius.behat.symfony_page" public="false"/>
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.shop.page.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
+
+            <service id="bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
+    </services>
+</container>

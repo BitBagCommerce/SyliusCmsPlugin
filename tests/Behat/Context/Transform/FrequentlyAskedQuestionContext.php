@@ -17,13 +17,9 @@ use Webmozart\Assert\Assert;
 
 final class FrequentlyAskedQuestionContext implements Context
 {
-    /** @var FrequentlyAskedQuestionRepositoryInterface */
-    private $frequentlyAskedQuestionRepository;
-
     public function __construct(
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
     ) {
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
 
     /**

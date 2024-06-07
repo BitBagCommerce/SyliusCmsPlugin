@@ -25,48 +25,16 @@ use Webmozart\Assert\Assert;
 
 final class PageContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var CurrentPageResolverInterface */
-    private $currentPageResolver;
-
-    /** @var NotificationCheckerInterface */
-    private $notificationChecker;
-
-    /** @var PageRepositoryInterface */
-    private $pageRepository;
-
-    /** @var IndexPageInterface */
-    private $indexPage;
-
-    /** @var CreatePageInterface */
-    private $createPage;
-
-    /** @var UpdatePageInterface */
-    private $updatePage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        IndexPageInterface $indexPage,
-        CreatePageInterface $createPage,
-        UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        PageRepositoryInterface $pageRepository,
+        private SharedStorageInterface $sharedStorage,
+        private CurrentPageResolverInterface $currentPageResolver,
+        private NotificationCheckerInterface $notificationChecker,
+        private IndexPageInterface $indexPage,
+        private CreatePageInterface $createPage,
+        private UpdatePageInterface $updatePage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
+        private PageRepositoryInterface $pageRepository,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
-        $this->indexPage = $indexPage;
-        $this->createPage = $createPage;
-        $this->updatePage = $updatePage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->pageRepository = $pageRepository;
     }
 
     /**

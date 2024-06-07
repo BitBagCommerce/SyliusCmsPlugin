@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag_sylius_cms_plugin.assigner.channels" class="BitBag\SyliusCmsPlugin\Assigner\ChannelsAssigner">
+            <argument type="service" id="sylius.repository.channel" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.assigner.products" class="BitBag\SyliusCmsPlugin\Assigner\ProductsAssigner">
+            <argument type="service" id="sylius.repository.product" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.assigner.taxons" class="BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner">
+            <argument type="service" id="sylius.repository.taxon" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.assigner.sections" class="BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+        </service>
+    </services>
+</container>

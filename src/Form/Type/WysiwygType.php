@@ -17,12 +17,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class WysiwygType extends AbstractType
 {
-    /** @var UrlGeneratorInterface */
-    private $urlGenerator;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

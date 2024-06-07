@@ -1,0 +1,95 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+    http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="BitBag\SyliusCmsPlugin\Entity\PageTranslation">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>slug</value>
+                <value>locale</value>
+            </option>
+            <option name="errorPath">slug</option>
+            <option name="groups">
+                <value>bitbag</value>
+            </option>
+            <option name="message">bitbag_sylius_cms_plugin.page.slug.unique</option>
+        </constraint>
+
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">bitbag_sylius_cms_plugin.page.name.not_blank</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">250</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.name.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.name.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="slug">
+            <constraint name="NotBlank">
+                <option name="message">bitbag_sylius_cms_plugin.page.slug.not_blank</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">250</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.slug.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.slug.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="metaKeywords">
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">1000</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_keywords.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_keywords.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="metaDescription">
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">5000</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_description.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_description.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="content">
+            <constraint name="NotBlank">
+                <option name="message">bitbag_sylius_cms_plugin.page.content.not_blank</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.content.min_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

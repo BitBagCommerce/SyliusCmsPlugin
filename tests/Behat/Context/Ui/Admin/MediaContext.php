@@ -11,12 +11,10 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
-use Sylius\Behat\Service\SharedStorageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\CreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\IndexPageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\UpdatePageInterface;
@@ -25,48 +23,14 @@ use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context
 {
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
-    /** @var CurrentPageResolverInterface */
-    private $currentPageResolver;
-
-    /** @var NotificationCheckerInterface */
-    private $notificationChecker;
-
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var IndexPageInterface */
-    private $indexPage;
-
-    /** @var CreatePageInterface */
-    private $createPage;
-
-    /** @var UpdatePageInterface */
-    private $updatePage;
-
-    /** @var RandomStringGeneratorInterface */
-    private $randomStringGenerator;
-
     public function __construct(
-        SharedStorageInterface $sharedStorage,
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        IndexPageInterface $indexPage,
-        CreatePageInterface $createPage,
-        UpdatePageInterface $updatePage,
-        RandomStringGeneratorInterface $randomStringGenerator,
-        MediaRepositoryInterface $mediaRepository,
+        private CurrentPageResolverInterface $currentPageResolver,
+        private NotificationCheckerInterface $notificationChecker,
+        private IndexPageInterface $indexPage,
+        private CreatePageInterface $createPage,
+        private UpdatePageInterface $updatePage,
+        private RandomStringGeneratorInterface $randomStringGenerator,
     ) {
-        $this->sharedStorage = $sharedStorage;
-        $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
-        $this->indexPage = $indexPage;
-        $this->createPage = $createPage;
-        $this->updatePage = $updatePage;
-        $this->randomStringGenerator = $randomStringGenerator;
-        $this->mediaRepository = $mediaRepository;
     }
 
     /**

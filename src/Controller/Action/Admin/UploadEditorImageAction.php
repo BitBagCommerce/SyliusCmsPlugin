@@ -23,23 +23,11 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 final class UploadEditorImageAction
 {
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
-
-    /** @var MediaRepositoryInterface */
-    private $mediaRepository;
-
-    /** @var FactoryInterface */
-    private $mediaFactory;
-
     public function __construct(
-        MediaProviderResolverInterface $mediaProviderResolver,
-        MediaRepositoryInterface $mediaRepository,
-        FactoryInterface $mediaFactory,
+        private MediaProviderResolverInterface $mediaProviderResolver,
+        private MediaRepositoryInterface $mediaRepository,
+        private FactoryInterface $mediaFactory,
     ) {
-        $this->mediaProviderResolver = $mediaProviderResolver;
-        $this->mediaRepository = $mediaRepository;
-        $this->mediaFactory = $mediaFactory;
     }
 
     public function __invoke(Request $request): Response
