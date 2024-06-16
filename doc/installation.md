@@ -95,9 +95,14 @@ you will probably need to change the extension of the imported file in
 
 5. Finish the installation by updating the database schema and installing assets:
 
-```
+```bash
 $ bin/console cache:clear
+
+# If you used migrations in your project...
 $ bin/console doctrine:migrations:migrate
+# ... or if you use doctrine schema tool.
+$ bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
+
 $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
 ```
