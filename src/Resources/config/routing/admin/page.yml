@@ -25,3 +25,31 @@ bitbag_sylius_cms_plugin_admin_page_preview:
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Page/preview.html.twig"
         id: null
+
+bitbag_sylius_cms_plugin_admin_ajax_page_by_name_phrase:
+    path: /ajax/pages/search
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.page::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByNamePart
+                arguments:
+                    phrase: $phrase
+                    locale: null
+
+bitbag_sylius_cms_plugin_admin_ajax_page_by_code:
+    path: /ajax/pages/code
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.page::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findBy
+                arguments: [code: $code]

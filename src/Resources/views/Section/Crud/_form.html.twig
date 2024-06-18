@@ -1,4 +1,5 @@
 {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
+{% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
 
 {{ form_errors(form) }}
 
@@ -6,6 +7,18 @@
     <div class="column">
         <div class="ui segment">
             {{ form_row(form.code) }}
+            {{ form_row(form.type) }}
+        </div>
+        <div class="ui segment section-type-items">
+            <div id="section-type-pages">
+                {{ form_row(form.pages) }}
+            </div>
+            <div id="section-type-blocks">
+                {{ form_row(form.blocks) }}
+            </div>
+            <div id="section-type-media">
+                {{ form_row(form.media) }}
+            </div>
         </div>
     </div>
 </div>

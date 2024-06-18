@@ -45,4 +45,6 @@ interface PageRepositoryInterface extends RepositoryInterface
         string $channelCode,
         ?\DateTimeInterface $date,
     ): array;
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

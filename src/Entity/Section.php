@@ -15,18 +15,24 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Section implements SectionInterface
 {
+    use PageableTrait;
+    use BlockableTrait;
+    use MediableTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
     }
 
-    /** @var int */
-    protected $id;
+    protected int $id;
 
-    /** @var string|null */
-    protected $code;
+    protected ?string $code = null;
+
+    protected ?string $type = null;
 
     public function __construct()
     {
+        $this->initializePagesCollection();
+        $this->initializeBlocksCollection();
+        $this->initializeMediaCollection();
         $this->initializeTranslationsCollection();
     }
 
@@ -43,6 +49,16 @@ class Section implements SectionInterface
     public function setCode(?string $code): void
     {
         $this->code = $code;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 
     public function getName(): ?string

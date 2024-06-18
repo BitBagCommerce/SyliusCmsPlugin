@@ -16,6 +16,8 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class SectionRepository extends EntityRepository implements SectionRepositoryInterface
 {
+    use TranslationBasedAwareTrait;
+
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -33,23 +35,6 @@ class SectionRepository extends EntityRepository implements SectionRepositoryInt
             ->getQuery()
             ->getResult()
         ;
-    }
-
-    private function createTranslationBasedQueryBuilder(?string $locale = null): QueryBuilder
-    {
-        $queryBuilder = $this->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->leftJoin('o.translations', 'translation')
-        ;
-
-        if (null !== $locale) {
-            $queryBuilder
-                ->andWhere('translation.locale = :locale')
-                ->setParameter('locale', $locale)
-            ;
-        }
-
-        return $queryBuilder;
     }
 
     public function findOneByCode(string $code, ?string $localeCode): ?SectionInterface

@@ -17,6 +17,8 @@ use Sylius\Component\Core\Model\ProductInterface;
 
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
+    use TranslationBasedAwareTrait;
+
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -164,6 +166,16 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
                 ),
             )
             ->setParameter('date', $date)
+        ;
+    }
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array
+    {
+        return $this->createTranslationBasedQueryBuilder($locale)
+            ->andWhere('translation.name LIKE :name')
+            ->setParameter('name', '%' . $phrase . '%')
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

@@ -13,5 +13,40 @@
 
         <field name="code" column="code" type="string" length="250" unique="true"/>
 
+        <field name="type" column="type" type="string" length="250" nullable="true"/>
+
+        <many-to-many field="pages" target-entity="BitBag\SyliusCmsPlugin\Entity\PageInterface">
+            <join-table name="bitbag_cms_section_pages">
+                <join-columns>
+                    <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="page_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="blocks" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockInterface">
+            <join-table name="bitbag_cms_section_blocks">
+                <join-columns>
+                    <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="media" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface">
+            <join-table name="bitbag_cms_section_media">
+                <join-columns>
+                    <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="media_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
     </mapped-superclass>
 </doctrine-mapping>

@@ -16,6 +16,8 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
+    use TranslationBasedAwareTrait;
+
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -76,6 +78,16 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('localeCode', $localeCode)
             ->setParameter('productCode', $productCode)
             ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array
+    {
+        return $this->createTranslationBasedQueryBuilder($locale)
+            ->andWhere('translation.name LIKE :name')
+            ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()
         ;

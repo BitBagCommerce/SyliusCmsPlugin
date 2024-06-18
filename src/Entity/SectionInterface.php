@@ -13,11 +13,20 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
-interface SectionInterface extends ResourceInterface, TranslatableInterface
+interface SectionInterface extends
+    ResourceInterface,
+    TranslatableInterface,
+    PageableInterface,
+    BlockableInterface,
+    MediableInterface
 {
     public function getCode(): ?string;
 
     public function setCode(?string $code): void;
+
+    public function getType(): ?string;
+
+    public function setType(?string $type): void;
 
     public function getName(): ?string;
 

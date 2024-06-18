@@ -31,4 +31,6 @@ interface BlockRepositoryInterface extends RepositoryInterface
         string $localeCode,
         string $channelCode,
     ): array;
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array;
 }
