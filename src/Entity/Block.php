@@ -17,7 +17,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-    use SectionableTrait;
+    use CollectionableTrait;
     use ProductsAwareTrait;
     use TaxonAwareTrait;
     use ChannelsAwareTrait;
@@ -28,7 +28,7 @@ class Block implements BlockInterface
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->initializeSectionsCollection();
+        $this->initializeCollectionsCollection();
         $this->initializeProductsCollection();
         $this->initializeTaxonCollection();
         $this->initializeChannelsCollection();

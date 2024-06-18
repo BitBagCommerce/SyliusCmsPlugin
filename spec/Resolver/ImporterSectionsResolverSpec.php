@@ -10,27 +10,27 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionableInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolver;
+use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 final class ImporterSectionsResolverSpec extends ObjectBehavior
 {
-    public function let(SectionsAssignerInterface $sectionsAssigner)
+    public function let(CollectionsAssignerInterface $sectionsAssigner)
     {
         $this->beConstructedWith($sectionsAssigner);
     }
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(ImporterSectionsResolver::class);
+        $this->shouldHaveType(ImporterCollectionsResolver::class);
     }
 
     public function it_resolves_sections_for_sectionable_entity(
-        SectionsAssignerInterface $sectionsAssigner,
-        SectionableInterface $sectionable
+        CollectionsAssignerInterface $sectionsAssigner,
+        CollectionableInterface $sectionable
     ) {
         $sectionsRow = 'section1, section2, section3';
         $sectionCodes = ['section1', 'section2', 'section3'];
@@ -41,8 +41,8 @@ final class ImporterSectionsResolverSpec extends ObjectBehavior
     }
 
     public function it_skips_resolution_when_sections_row_is_null(
-        SectionsAssignerInterface $sectionsAssigner,
-        SectionableInterface $sectionable
+        CollectionsAssignerInterface $sectionsAssigner,
+        CollectionableInterface $sectionable
     ) {
         $sectionsRow = null;
 

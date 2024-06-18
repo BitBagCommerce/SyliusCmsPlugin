@@ -56,8 +56,8 @@ class PageRepositoryTest extends JsonApiTestCase
 
         $pageRepository = $this->getRepository();
 
-        $page1_array = $pageRepository->findBySectionCode('section1-code', 'en_US');
-        $page3_array = $pageRepository->findBySectionCode('section3-code', 'en_US');
+        $page1_array = $pageRepository->findByCollectionCode('section1-code', 'en_US');
+        $page3_array = $pageRepository->findByCollectionCode('section3-code', 'en_US');
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);
@@ -98,8 +98,8 @@ class PageRepositoryTest extends JsonApiTestCase
         /** @var Product $product3 */
         $product3 = $productRepository->findOneByCode('MUG_SW3');
 
-        $page1_array = $pageRepository->findByProductAndSectionCode($product1, 'section1-code', 'code', null);
-        $page3_array = $pageRepository->findByProductAndSectionCode($product3, 'section3-code', 'code', null);
+        $page1_array = $pageRepository->findByProductAndCollectionCode($product1, 'section1-code', 'code', null);
+        $page3_array = $pageRepository->findByProductAndCollectionCode($product3, 'section3-code', 'code', null);
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);

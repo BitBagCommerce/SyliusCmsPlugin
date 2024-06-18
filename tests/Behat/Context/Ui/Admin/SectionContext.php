@@ -172,7 +172,7 @@ final class SectionContext implements Context
     public function iShouldBeNotifiedThatNewSectionHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
-            'Section has been successfully created.',
+            'Collection has been successfully created.',
             NotificationType::success(),
         );
     }
@@ -183,7 +183,7 @@ final class SectionContext implements Context
     public function iShouldBeNotifiedThatTheSectionHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
-            'Section has been successfully deleted.',
+            'Collection has been successfully deleted.',
             NotificationType::success(),
         );
     }

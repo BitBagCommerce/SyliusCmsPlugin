@@ -23,12 +23,12 @@ sylius_grid:
                     sortable: ~
                     options:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
-                sections:
+                collections:
                     type: twig
                     label: bitbag_sylius_cms_plugin.ui.sections
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/sections.html.twig"
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
             filters:
                 search:
                     type: string

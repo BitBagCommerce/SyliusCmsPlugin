@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
+use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorterInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,7 +31,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         PageRepositoryInterface $pageRepository,
         ChannelContextInterface $channelContext,
         Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        CollectionsSorterInterface $sectionsSorter
     ): void {
         $this->beConstructedWith($pageRepository, $channelContext, $templatingEngine, $sectionsSorter);
     }
@@ -48,42 +48,42 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
 
     public function it_renders_product_pages(
         ChannelContextInterface $channelContext,
-        ProductInterface $product,
-        ChannelInterface $channel,
+        ProductInterface        $product,
+        ChannelInterface        $channel,
         PageRepositoryInterface $pageRepository,
-        PageInterface $page,
-        SectionInterface $section,
-        Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        PageInterface           $page,
+        CollectionInterface     $section,
+        Environment             $templatingEngine,
+        CollectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
-        $page->getSections()->willReturn(new ArrayCollection([$section]));
+        $page->getCollections()->willReturn(new ArrayCollection([$section]));
         $section->getCode()->willReturn('SECTION_CODE');
         $pageRepository->findByProduct($product, 'WEB', null)->willReturn([])->shouldBeCalled();
-        $sectionsSorter->sortBySections([])->willReturn([]);
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
+        $sectionsSorter->sortByCollections([])->willReturn([]);
+        $templatingEngine->render('_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product)->shouldReturn('content');
     }
 
     public function it_renders_product_pages_with_sections(
         ChannelContextInterface $channelContext,
-        ProductInterface $product,
-        ChannelInterface $channel,
+        ProductInterface        $product,
+        ChannelInterface        $channel,
         PageRepositoryInterface $pageRepository,
-        PageInterface $page,
-        SectionInterface $section,
-        Environment $templatingEngine,
-        SectionsSorterInterface $sectionsSorter
+        PageInterface           $page,
+        CollectionInterface     $section,
+        Environment             $templatingEngine,
+        CollectionsSorterInterface $sectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
-        $page->getSections()->willReturn(new ArrayCollection([$section]));
+        $page->getCollections()->willReturn(new ArrayCollection([$section]));
         $section->getCode()->willReturn('SECTION_CODE');
-        $pageRepository->findByProductAndSectionCode($product, 'SECTION_CODE', 'WEB', null)->willReturn([])->shouldBeCalled();
-        $sectionsSorter->sortBySections([])->willReturn([]);
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', ['data' => []])->willReturn('content');
+        $pageRepository->findByProductAndCollectionCode($product, 'SECTION_CODE', 'WEB', null)->willReturn([])->shouldBeCalled();
+        $sectionsSorter->sortByCollections([])->willReturn([]);
+        $templatingEngine->render('_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product, 'SECTION_CODE')->shouldReturn('content');
     }

@@ -12,7 +12,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -77,16 +77,16 @@ final class MediaSpec extends ObjectBehavior
         $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
-    public function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
+    public function it_associates_sections(CollectionInterface $firstSection, CollectionInterface $secondSection): void
     {
-        $this->addSection($firstSection);
-        $this->hasSection($firstSection)->shouldReturn(true);
+        $this->addCollection($firstSection);
+        $this->hasCollection($firstSection)->shouldReturn(true);
 
-        $this->hasSection($secondSection)->shouldReturn(false);
+        $this->hasCollection($secondSection)->shouldReturn(false);
 
-        $this->removeSection($firstSection);
+        $this->removeCollection($firstSection);
 
-        $this->hasSection($firstSection)->shouldReturn(false);
+        $this->hasCollection($firstSection)->shouldReturn(false);
     }
 
     public function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void

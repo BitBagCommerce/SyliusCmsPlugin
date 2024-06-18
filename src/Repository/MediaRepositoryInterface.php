@@ -24,8 +24,8 @@ interface MediaRepositoryInterface extends RepositoryInterface
         string $channelCode,
     ): ?MediaInterface;
 
-    public function findBySectionCode(
-        string $sectionCode,
+    public function findByCollectionCode(
+        string $collectionCode,
         string $localeCode,
         string $channelCode,
     ): array;

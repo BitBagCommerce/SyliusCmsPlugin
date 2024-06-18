@@ -42,6 +42,6 @@
                 <argument>%bitbag_sylius_cms_plugin.uploader.filesystem%</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.sorter.sections" class="BitBag\SyliusCmsPlugin\Sorter\SectionsSorter" />
+            <service id="bitbag_sylius_cms_plugin.sorter.collections" class="BitBag\SyliusCmsPlugin\Sorter\CollectionsSorter" />
     </services>
 </container>

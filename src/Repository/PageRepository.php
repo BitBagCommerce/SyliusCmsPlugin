@@ -24,7 +24,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         return $this->createQueryBuilder('o')
             ->addSelect('translation')
             ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
-            ->leftJoin('o.sections', 'sections')
+            ->leftJoin('o.collections', 'collections')
             ->setParameter('localeCode', $localeCode)
         ;
     }
@@ -75,28 +75,28 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder
+    public function createShopListQueryBuilder(string $collectionCode, string $channelCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
-            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.collections', 'collection')
             ->innerJoin('o.channels', 'channels')
-            ->where('section.code = :sectionCode')
+            ->where('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
             ->andWhere('channels.code = :channelCode')
-            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('collectionCode', $collectionCode)
             ->setParameter('channelCode', $channelCode)
         ;
     }
 
-    public function findBySectionCode(string $sectionCode, ?string $localeCode): array
+    public function findByCollectionCode(string $collectionCode, ?string $localeCode): array
     {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.collections', 'collection')
             ->where('translation.locale = :localeCode')
-            ->andWhere('section.code = :sectionCode')
+            ->andWhere('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
-            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('collectionCode', $collectionCode)
             ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()
@@ -128,22 +128,22 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByProductAndSectionCode(
-        ProductInterface $product,
-        string $sectionCode,
-        string $channelCode,
+    public function findByProductAndCollectionCode(
+        ProductInterface    $product,
+        string              $collectionCode,
+        string              $channelCode,
         ?\DateTimeInterface $date = null,
     ): array {
         $qb = $this->createQueryBuilder('o')
             ->innerJoin('o.products', 'product')
-            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.collections', 'collection')
             ->innerJoin('o.channels', 'channel')
             ->where('o.enabled = true')
             ->andWhere('product = :product')
-            ->andWhere('section.code = :sectionCode')
+            ->andWhere('collection.code = :collectionCode')
             ->andWhere('channel.code = :channelCode')
             ->setParameter('product', $product)
-            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('collectionCode', $collectionCode)
             ->setParameter('channelCode', $channelCode)
         ;
 

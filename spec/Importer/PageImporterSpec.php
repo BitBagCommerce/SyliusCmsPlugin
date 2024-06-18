@@ -14,7 +14,7 @@ use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,16 +27,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class PageImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface $pageResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImageDownloaderInterface $imageDownloader,
-        FactoryInterface $mediaFactory,
-        MediaProviderResolverInterface $mediaProviderResolver,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        EntityManagerInterface $entityManager
+        ResourceResolverInterface            $pageResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImageDownloaderInterface             $imageDownloader,
+        FactoryInterface                     $mediaFactory,
+        MediaProviderResolverInterface       $mediaProviderResolver,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        EntityManagerInterface               $entityManager
     ) {
         $this->beConstructedWith(
             $pageResourceResolver,
@@ -59,14 +59,14 @@ final class PageImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_page_no_url(
-        ResourceResolverInterface $pageResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        EntityManagerInterface $entityManager,
-        PageInterface $page,
+        ResourceResolverInterface            $pageResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        EntityManagerInterface               $entityManager,
+        PageInterface                        $page,
         ) {
         $row = [
             'code' => 'page_code',

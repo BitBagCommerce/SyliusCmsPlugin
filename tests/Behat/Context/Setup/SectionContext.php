@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -21,10 +21,10 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class SectionContext implements Context
 {
     public function __construct(
-        private SharedStorageInterface $sharedStorage,
+        private SharedStorageInterface         $sharedStorage,
         private RandomStringGeneratorInterface $randomStringGenerator,
-        private FactoryInterface $sectionFactory,
-        private SectionRepositoryInterface $sectionRepository,
+        private FactoryInterface               $sectionFactory,
+        private CollectionRepositoryInterface  $sectionRepository,
     ) {
     }
 
@@ -70,9 +70,9 @@ final class SectionContext implements Context
         $this->saveSection($section);
     }
 
-    private function createSection(?string $code = null, string $name = null): SectionInterface
+    private function createSection(?string $code = null, string $name = null): CollectionInterface
     {
-        /** @var SectionInterface $section */
+        /** @var CollectionInterface $section */
         $section = $this->sectionFactory->createNew();
 
         if (null === $code) {
@@ -90,7 +90,7 @@ final class SectionContext implements Context
         return $section;
     }
 
-    private function saveSection(SectionInterface $section): void
+    private function saveSection(CollectionInterface $section): void
     {
         $this->sectionRepository->add($section);
         $this->sharedStorage->set('section', $section);

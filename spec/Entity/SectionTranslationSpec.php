@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionTranslation;
-use BitBag\SyliusCmsPlugin\Entity\SectionTranslationInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionTranslation;
+use BitBag\SyliusCmsPlugin\Entity\CollectionTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -20,7 +20,7 @@ final class SectionTranslationSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType(SectionTranslation::class);
+        $this->shouldHaveType(CollectionTranslation::class);
     }
 
     public function it_is_a_resource()
@@ -30,7 +30,7 @@ final class SectionTranslationSpec extends ObjectBehavior
 
     public function it_implements_frequently_asked_question_translation_interface()
     {
-        $this->shouldHaveType(SectionTranslationInterface::class);
+        $this->shouldHaveType(CollectionTranslationInterface::class);
         $this->shouldHaveType(TranslationInterface::class);
     }
 

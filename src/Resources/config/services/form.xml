@@ -46,15 +46,15 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.section" class="BitBag\SyliusCmsPlugin\Form\Type\SectionType">
-            <argument>%bitbag_sylius_cms_plugin.model.section.class%</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.section.validation_groups%</argument>
+        <service id="bitbag_sylius_cms_plugin.form.type.collection" class="BitBag\SyliusCmsPlugin\Form\Type\CollectionType">
+            <argument>%bitbag_sylius_cms_plugin.model.collection.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.collection.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.translation.section" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\SectionTranslationType">
-            <argument>%bitbag_sylius_cms_plugin.model.section_translation.class%</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.translation.section.validation_groups%</argument>
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.collection" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\CollectionTranslationType">
+            <argument>%bitbag_sylius_cms_plugin.model.collection_translation.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.translation.collection.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 

@@ -40,7 +40,7 @@
         <property name="updatedAt" identifier="false" writable="false"/>
         <property name="publishAt" identifier="false" writable="false"/>
         <property name="products" identifier="false" writable="false"/>
-        <property name="sections" identifier="false" writable="false"/>
+        <property name="collections" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>
     </resource>
 </resources>

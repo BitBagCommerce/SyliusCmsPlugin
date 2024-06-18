@@ -56,8 +56,8 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
-            ->addChild('sections', [
-                'route' => 'bitbag_sylius_cms_plugin_admin_section_index',
+            ->addChild('collections', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_collection_index',
             ])
             ->setLabel('bitbag_sylius_cms_plugin.ui.sections')
             ->setLabelAttribute('icon', 'grid layout')

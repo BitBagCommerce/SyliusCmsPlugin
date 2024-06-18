@@ -22,7 +22,7 @@ interface PageInterface extends
     TranslatableInterface,
     ToggleableInterface,
     ProductsAwareInterface,
-    SectionableInterface,
+    CollectionableInterface,
     TimestampableInterface,
     ChannelsAwareInterface,
     ContentableInterface,

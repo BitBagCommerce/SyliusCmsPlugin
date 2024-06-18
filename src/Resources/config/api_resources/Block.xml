@@ -36,7 +36,7 @@
         <property name="id" identifier="true" writable="false"/>
         <property name="code" identifier="false" writable="false"/>
         <property name="enabled" identifier="false" writable="false"/>
-        <property name="sections" identifier="false" writable="false"/>
+        <property name="collections" identifier="false" writable="false"/>
         <property name="products" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>
         <property name="taxonomies" identifier="false" writable="false"/>

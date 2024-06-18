@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
@@ -29,14 +29,14 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class PageContext implements Context
 {
     public function __construct(
-        private SharedStorageInterface $sharedStorage,
+        private SharedStorageInterface         $sharedStorage,
         private RandomStringGeneratorInterface $randomStringGenerator,
-        private FactoryInterface $pageFactory,
-        private PageRepositoryInterface $pageRepository,
-        private EntityManagerInterface $entityManager,
-        private ProductRepositoryInterface $productRepository,
-        private SectionRepositoryInterface $sectionRepository,
-        private ProviderInterface $imageProvider,
+        private FactoryInterface               $pageFactory,
+        private PageRepositoryInterface        $pageRepository,
+        private EntityManagerInterface         $entityManager,
+        private ProductRepositoryInterface     $productRepository,
+        private CollectionRepositoryInterface  $sectionRepository,
+        private ProviderInterface              $imageProvider,
     ) {
     }
 
@@ -182,7 +182,7 @@ final class PageContext implements Context
 
         /** @var PageInterface $page */
         foreach ($pages as $page) {
-            $page->addSection($section);
+            $page->addCollection($section);
         }
 
         $this->entityManager->flush();

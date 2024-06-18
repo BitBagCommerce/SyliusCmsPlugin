@@ -21,7 +21,7 @@ interface BlockInterface extends
     ToggleableInterface,
     ProductsAwareInterface,
     TaxonAwareInterface,
-    SectionableInterface,
+    CollectionableInterface,
     ChannelsAwareInterface,
     ContentableInterface
 {

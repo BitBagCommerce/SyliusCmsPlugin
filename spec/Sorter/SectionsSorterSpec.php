@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Sorter;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SectionsSorter;
-use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorter;
+use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorterInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 
@@ -23,20 +23,20 @@ final class SectionsSorterSpec extends ObjectBehavior
 {
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(SectionsSorter::class);
+        $this->shouldHaveType(CollectionsSorter::class);
     }
 
     public function it_implements_sections_sorter_interface(): void
     {
-        $this->shouldHaveType(SectionsSorterInterface::class);
+        $this->shouldHaveType(CollectionsSorterInterface::class);
     }
 
     public function it_sorts_sections_with_one_element(
         PageInterface $page,
-        SectionInterface $section
+        CollectionInterface $section
     ): void {
         $section->getCode()->willReturn('SECTION_CODE');
-        $page->getSections()->willReturn(new ArrayCollection([$section->getWrappedObject()]));
+        $page->getCollections()->willReturn(new ArrayCollection([$section->getWrappedObject()]));
 
         $this->sortBySections([$page])->shouldReturn(
             [
@@ -46,22 +46,22 @@ final class SectionsSorterSpec extends ObjectBehavior
     }
 
     public function it_sorts_sections_with_more_elements(
-        PageInterface $page1,
-        PageInterface $page2,
-        PageInterface $page3,
-        SectionInterface $section1,
-        SectionInterface $section2,
-        SectionInterface $section3
+        PageInterface       $page1,
+        PageInterface       $page2,
+        PageInterface       $page3,
+        CollectionInterface $section1,
+        CollectionInterface $section2,
+        CollectionInterface $section3
     ): void {
         $section1->getCode()->willReturn('SECTION_1_CODE');
         $section2->getCode()->willReturn('SECTION_2_CODE');
         $section3->getCode()->willReturn('SECTION_3_CODE');
 
-        $page1->getSections()->willReturn(new ArrayCollection(
+        $page1->getCollections()->willReturn(new ArrayCollection(
             [$section1->getWrappedObject(), $section3->getWrappedObject()]
         ));
-        $page2->getSections()->willReturn(new ArrayCollection([$section3->getWrappedObject()]));
-        $page3->getSections()->willReturn(new ArrayCollection(
+        $page2->getCollections()->willReturn(new ArrayCollection([$section3->getWrappedObject()]));
+        $page3->getCollections()->willReturn(new ArrayCollection(
             [$section2->getWrappedObject(), $section1->getWrappedObject()]
         ));
 
@@ -75,16 +75,16 @@ final class SectionsSorterSpec extends ObjectBehavior
     }
 
     public function it_sorts_sections_with_less_elements(
-        PageInterface $page1,
-        PageInterface $page2,
-        SectionInterface $section1,
-        SectionInterface $section2
+        PageInterface       $page1,
+        PageInterface       $page2,
+        CollectionInterface $section1,
+        CollectionInterface $section2
     ): void {
         $section1->getCode()->willReturn('SECTION_1_CODE');
         $section2->getCode()->willReturn('SECTION_2_CODE');
 
-        $page1->getSections()->willReturn(new ArrayCollection([$section1->getWrappedObject()]));
-        $page2->getSections()->willReturn(new ArrayCollection([$section2->getWrappedObject()]));
+        $page1->getCollections()->willReturn(new ArrayCollection([$section1->getWrappedObject()]));
+        $page2->getCollections()->willReturn(new ArrayCollection([$section2->getWrappedObject()]));
 
         $this->sortBySections([$page1, $page2])->shouldReturn(
             [

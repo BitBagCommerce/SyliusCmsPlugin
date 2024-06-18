@@ -13,7 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -22,12 +22,12 @@ use Webmozart\Assert\Assert;
 final class MediaImporter extends AbstractImporter implements MediaImporterInterface
 {
     public function __construct(
-        private ResourceResolverInterface $mediaResourceResolver,
-        private LocaleContextInterface $localeContext,
-        private ImporterSectionsResolverInterface $importerSectionsResolver,
-        private ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        private MediaRepositoryInterface $mediaRepository,
+        private ResourceResolverInterface            $mediaResourceResolver,
+        private LocaleContextInterface               $localeContext,
+        private ImporterCollectionsResolverInterface $importerCollectionsResolver,
+        private ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                           $validator,
+        private MediaRepositoryInterface             $mediaRepository,
     ) {
         parent::__construct($validator);
     }
@@ -51,7 +51,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
             $media->setAlt($this->getTranslatableColumnValue(self::ALT_COLUMN, $locale, $row));
         }
 
-        $this->importerSectionsResolver->resolve($media, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
+        $this->importerCollectionsResolver->resolve($media, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerProductsResolver->resolve($media, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 
         $this->validateResource($media, ['bitbag']);

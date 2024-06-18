@@ -13,7 +13,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Importer;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -23,12 +23,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class MediaImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface $mediaResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        MediaRepositoryInterface $mediaRepository
+        ResourceResolverInterface            $mediaResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        MediaRepositoryInterface             $mediaRepository
     ) {
         $this->beConstructedWith(
             $mediaResourceResolver,
@@ -47,13 +47,13 @@ final class MediaImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_media(
-        ResourceResolverInterface $mediaResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        MediaRepositoryInterface $mediaRepository,
-        MediaInterface $media
+        ResourceResolverInterface            $mediaResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        MediaRepositoryInterface             $mediaRepository,
+        MediaInterface                       $media
     ) {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code'];
 

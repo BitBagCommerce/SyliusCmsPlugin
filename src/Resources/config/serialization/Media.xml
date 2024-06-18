@@ -31,7 +31,7 @@
         <attribute name="saveWithOriginalName">
             <group>shop:cms:read</group>
         </attribute>
-        <attribute name="sections">
+        <attribute name="collections">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="products">

@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
@@ -32,16 +32,16 @@ final class PageFixtureFactory implements FixtureFactoryInterface
     public const CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE = 'Channel with code "%s" not found';
 
     public function __construct(
-        private FactoryInterface $pageFactory,
-        private FactoryInterface $pageTranslationFactory,
-        private PageRepositoryInterface $pageRepository,
+        private FactoryInterface               $pageFactory,
+        private FactoryInterface               $pageTranslationFactory,
+        private PageRepositoryInterface        $pageRepository,
         private MediaProviderResolverInterface $mediaProviderResolver,
-        private ProductsAssignerInterface $productsAssigner,
-        private SectionsAssignerInterface $sectionsAssigner,
-        private ChannelsAssignerInterface $channelAssigner,
-        private ProductRepositoryInterface $productRepository,
-        private LocaleContextInterface $localeContext,
-        private ChannelRepositoryInterface $channelRepository,
+        private ProductsAssignerInterface      $productsAssigner,
+        private CollectionsAssignerInterface   $collectionsAssigner,
+        private ChannelsAssignerInterface      $channelAssigner,
+        private ProductRepositoryInterface     $productRepository,
+        private LocaleContextInterface         $localeContext,
+        private ChannelRepositoryInterface     $channelRepository,
     ) {
     }
 
@@ -80,7 +80,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $this->resolveProductsForChannels($page, $products, $channelsCodes);
         }
 
-        $this->sectionsAssigner->assign($page, $pageData['sections']);
+        $this->collectionsAssigner->assign($page, $pageData['collections']);
         $this->productsAssigner->assign($page, $pageData['productCodes']);
         $this->channelAssigner->assign($page, $channelsCodes);
 

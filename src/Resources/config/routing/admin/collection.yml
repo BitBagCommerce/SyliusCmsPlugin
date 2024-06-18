@@ -1,0 +1,46 @@
+bitbag_sylius_cms_plugin_admin_collection:
+    resource: |
+        alias: bitbag_sylius_cms_plugin.collection
+        section: admin
+        templates: '@BitBagSyliusCmsPlugin/CrudUi'
+        redirect: update
+        grid: bitbag_sylius_cms_plugin_admin_collection
+        except: ['show']
+        permission: true
+        vars:
+            all:
+                header: bitbag_sylius_cms_plugin.ui.sections_header
+                subheader: bitbag_sylius_cms_plugin.ui.sections_subheader
+                templates:
+                    form: "@BitBagSyliusCmsPlugin/Collection/Crud/_form.html.twig"
+            index:
+                icon: grid layout
+    type: sylius.resource
+
+bitbag_sylius_cms_plugin_admin_ajax_collection_by_name_phrase:
+    path: /ajax/collections/search
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByNamePart
+                arguments:
+                    phrase: $phrase
+                    locale: null
+
+bitbag_sylius_cms_plugin_admin_ajax_collection_by_code:
+    path: /ajax/collections/code
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findBy
+                arguments: [code: $code]

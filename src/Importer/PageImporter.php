@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,16 +29,16 @@ use Webmozart\Assert\Assert;
 final class PageImporter extends AbstractImporter implements PageImporterInterface
 {
     public function __construct(
-        private ResourceResolverInterface $pageResourceResolver,
-        private LocaleContextInterface $localeContext,
-        private ImageDownloaderInterface $imageDownloader,
-        private FactoryInterface $mediaFactory,
-        private MediaProviderResolverInterface $mediaProviderResolver,
-        private ImporterSectionsResolverInterface $importerSectionsResolver,
-        private ImporterChannelsResolverInterface $importerChannelsResolver,
-        private ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        private EntityManagerInterface $entityManager,
+        private ResourceResolverInterface            $pageResourceResolver,
+        private LocaleContextInterface               $localeContext,
+        private ImageDownloaderInterface             $imageDownloader,
+        private FactoryInterface                     $mediaFactory,
+        private MediaProviderResolverInterface       $mediaProviderResolver,
+        private ImporterCollectionsResolverInterface $importerCollectionsResolver,
+        private ImporterChannelsResolverInterface    $importerChannelsResolver,
+        private ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                           $validator,
+        private EntityManagerInterface               $entityManager,
     ) {
         parent::__construct($validator);
     }
@@ -74,7 +74,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             }
         }
 
-        $this->importerSectionsResolver->resolve($page, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
+        $this->importerCollectionsResolver->resolve($page, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($page, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
         $this->importerProductsResolver->resolve($page, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 

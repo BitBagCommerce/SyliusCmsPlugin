@@ -14,7 +14,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -24,13 +24,13 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class BlockImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface $blockResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository
+        ResourceResolverInterface            $blockResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        BlockRepositoryInterface             $blockRepository
     ) {
         $this->beConstructedWith(
             $blockResourceResolver,
@@ -50,14 +50,14 @@ final class BlockImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_block(
-        ResourceResolverInterface $blockResourceResolver,
-        LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block
+        ResourceResolverInterface            $blockResourceResolver,
+        LocaleContextInterface               $localeContext,
+        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        BlockRepositoryInterface             $blockRepository,
+        BlockInterface                       $block
     ) {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code'];
 

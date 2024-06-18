@@ -1,7 +1,7 @@
 {% extends '@SyliusUi/Form/theme.html.twig' %}
 
-{% block bitbag_section_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_section_by_name_phrase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_section_by_code')}) }}
+{% block bitbag_collection_autocomplete_choice_row %}
+    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_collection_by_name_phrase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_collection_by_code')}) }}
 {% endblock %}
 
 {% block bitbag_page_autocomplete_choice_row %}

@@ -42,7 +42,7 @@ final class PageFixture extends AbstractFixture
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->integerNode('products')->defaultNull()->end()
                             ->arrayNode('productCodes')->scalarPrototype()->end()->end()
-                            ->arrayNode('sections')->scalarPrototype()->end()->end()
+                            ->arrayNode('collections')->scalarPrototype()->end()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')

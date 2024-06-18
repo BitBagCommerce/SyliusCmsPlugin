@@ -41,8 +41,8 @@ class BlockRepositoryTest extends JsonApiTestCase
 
         $blockRepository = $this->getRepository();
 
-        $block_array1 = $blockRepository->findBySectionCode('section1-code', 'en_US', 'code');
-        $block_array3 = $blockRepository->findBySectionCode('section3-code', 'en_US', 'code');
+        $block_array1 = $blockRepository->findByCollectionCode('section1-code', 'en_US', 'code');
+        $block_array3 = $blockRepository->findByCollectionCode('section3-code', 'en_US', 'code');
 
         self::assertNotEmpty($block_array1);
         self::assertEmpty($block_array3);

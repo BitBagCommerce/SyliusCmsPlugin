@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
@@ -50,7 +50,7 @@ final class SectionContext implements Context
      * @Given I view section with code :section
      * @Then I should see section with code :section
      */
-    public function iShouldSeeSectionWithCode(SectionInterface $section): void
+    public function iShouldSeeSectionWithCode(CollectionInterface $section): void
     {
         $this->apiClient->show(Resources::SECTIONS, (string) $section->getId());
     }
@@ -67,7 +67,7 @@ final class SectionContext implements Context
                 'name',
                 "That shouldn't exist",
             ),
-            'Section has missing name',
+            'Collection has missing name',
         );
     }
 }

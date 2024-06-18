@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Section;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\Collection;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -19,7 +19,7 @@ final class SectionSpec extends ObjectBehavior
 {
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(Section::class);
+        $this->shouldHaveType(Collection::class);
     }
 
     public function it_is_a_resource(): void
@@ -29,7 +29,7 @@ final class SectionSpec extends ObjectBehavior
 
     public function it_implements_section_interface(): void
     {
-        $this->shouldHaveType(SectionInterface::class);
+        $this->shouldHaveType(CollectionInterface::class);
     }
 
     public function it_allows_access_via_properties(): void

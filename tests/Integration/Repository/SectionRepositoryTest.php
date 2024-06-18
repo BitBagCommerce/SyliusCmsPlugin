@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Doctrine\ORM\QueryBuilder;
 
 class SectionRepositoryTest extends JsonApiTestCase
@@ -58,7 +58,7 @@ class SectionRepositoryTest extends JsonApiTestCase
         $localeCode = 'en_US';
         $section = $repository->findOneByCode($code, $localeCode);
 
-        self::assertInstanceOf(SectionInterface::class, $section);
+        self::assertInstanceOf(CollectionInterface::class, $section);
     }
 
     public function test_it_finds_by_codes_and_locale(): void
@@ -75,10 +75,10 @@ class SectionRepositoryTest extends JsonApiTestCase
         self::assertCount(2, $sections);
     }
 
-    private function getRepository(): SectionRepositoryInterface
+    private function getRepository(): CollectionRepositoryInterface
     {
-        /** @var SectionRepositoryInterface $repository */
-        $repository = $this->getEntityManager()->getRepository(SectionInterface::class);
+        /** @var CollectionRepositoryInterface $repository */
+        $repository = $this->getEntityManager()->getRepository(CollectionInterface::class);
 
         return $repository;
     }

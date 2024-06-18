@@ -25,8 +25,8 @@ bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
                     - $code
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
-    path: /pages/{sectionCode}
+bitbag_sylius_cms_plugin_shop_page_index_by_collection_code:
+    path: /pages/{collectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
@@ -34,26 +34,26 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
             grid: bitbag_sylius_cms_plugin_shop_page
             repository:
-                method: findBySectionCode
+                method: findByCollectionCode
                 arguments:
-                    - $sectionCode
+                    - $collectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_sylius_cms_plugin_shop_page_index_by_section_code_no_grid:
-    path: /pages/{sectionCode}/no-grid
+bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_no_grid:
+    path: /pages/{collectionCode}/no-grid
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
         _sylius:
             template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
             repository:
-                method: findBySectionCode
+                method: findByCollectionCode
                 arguments:
-                    - $sectionCode
+                    - $collectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
 
-bitbag_sylius_cms_plugin_shop_page_index_by_section_code_template:
-    path: /pages-template/{sectionCode}
+bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_template:
+    path: /pages-template/{collectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
@@ -61,7 +61,7 @@ bitbag_sylius_cms_plugin_shop_page_index_by_section_code_template:
             template: $template
             grid: bitbag_sylius_cms_plugin_shop_page
             repository:
-                method: findBySectionCode
+                method: findByCollectionCode
                 arguments:
-                    - $sectionCode
+                    - $collectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"

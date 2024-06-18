@@ -14,7 +14,7 @@ interface BlockImporterInterface extends ImporterInterface
 {
     public const CODE_COLUMN = 'code';
 
-    public const SECTIONS_COLUMN = 'sections';
+    public const COLLECTIONS_COLUMN = 'collections';
 
     public const CHANNELS_COLUMN = 'channels';
 

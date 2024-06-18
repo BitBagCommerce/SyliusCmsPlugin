@@ -41,8 +41,8 @@ class MediaRepositoryTest extends JsonApiTestCase
 
         $mediaRepository = $this->getRepository();
 
-        $media1 = $mediaRepository->findBySectionCode('section1-code', 'en_US', 'code');
-        $media3 = $mediaRepository->findBySectionCode('section3-code', 'en_US', 'code');
+        $media1 = $mediaRepository->findByCollectionCode('section1-code', 'en_US', 'code');
+        $media3 = $mediaRepository->findByCollectionCode('section3-code', 'en_US', 'code');
 
         self::assertNotEmpty($media1);
         self::assertEmpty($media3);

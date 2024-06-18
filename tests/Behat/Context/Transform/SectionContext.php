@@ -11,15 +11,15 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class SectionContext implements Context
 {
     public function __construct(
-        private SectionRepositoryInterface $sectionRepository,
-        private string $locale = 'en_US',
+        private CollectionRepositoryInterface $sectionRepository,
+        private string                        $locale = 'en_US',
     ) {
     }
 
@@ -29,7 +29,7 @@ final class SectionContext implements Context
      * @Transform /^(?:a|an) "([^"]+)"$/
      * @Transform :section
      */
-    public function getSectionByCode(string $sectionCode): SectionInterface
+    public function getSectionByCode(string $sectionCode): CollectionInterface
     {
         $section = $this->sectionRepository->findOneByCode($sectionCode, $this->locale);
 

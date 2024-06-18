@@ -10,9 +10,9 @@
             <argument>code</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.resource.section" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.section" />
+        <service id="bitbag_sylius_cms_plugin.resolver.resource.collection" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
             <argument>code</argument>
         </service>
 
@@ -51,8 +51,8 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.registry.media_provider" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_sections" class="BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolver">
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.sections" />
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_collections" class="BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolver">
+            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.resolver.importer_channels" class="BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver">

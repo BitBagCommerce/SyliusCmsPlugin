@@ -41,21 +41,21 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findBySectionCode(
-        string $sectionCode,
+    public function findByCollectionCode(
+        string $collectionCode,
         string $localeCode,
         string $channelCode,
     ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.collections', 'collection')
             ->innerJoin('o.channels', 'channels')
             ->andWhere('translation.locale = :localeCode')
-            ->andWhere('section.code = :sectionCode')
+            ->andWhere('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
             ->andWhere('channels.code = :channelCode')
             ->setParameter('localeCode', $localeCode)
-            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('collectionCode', $collectionCode)
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()

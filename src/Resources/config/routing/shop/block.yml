@@ -9,17 +9,17 @@ bitbag_sylius_cms_plugin_shop_block_render:
                 arguments:
                     - $code
 
-bitbag_sylius_cms_plugin_shop_block_index_by_section_code:
-    path: /blocks/section/{sectionCode}
+bitbag_sylius_cms_plugin_shop_block_index_by_collection_code:
+    path: /blocks/collection/{collectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
         _sylius:
             template: $template
             repository:
-                method: findBySectionCode
+                method: findByCollectionCode
                 arguments:
-                    - $sectionCode
+                    - $collectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 

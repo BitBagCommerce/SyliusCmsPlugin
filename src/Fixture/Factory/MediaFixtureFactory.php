@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
@@ -23,13 +23,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 final class MediaFixtureFactory implements FixtureFactoryInterface
 {
     public function __construct(
-        private FactoryInterface $mediaFactory,
-        private FactoryInterface $mediaTranslationFactory,
+        private FactoryInterface               $mediaFactory,
+        private FactoryInterface               $mediaTranslationFactory,
         private MediaProviderResolverInterface $mediaProviderResolver,
-        private MediaRepositoryInterface $mediaRepository,
-        private ProductsAssignerInterface $productsAssigner,
-        private SectionsAssignerInterface $sectionsAssigner,
-        private ChannelsAssignerInterface $channelAssigner,
+        private MediaRepositoryInterface       $mediaRepository,
+        private ProductsAssignerInterface      $productsAssigner,
+        private CollectionsAssignerInterface   $collectionsAssigner,
+        private ChannelsAssignerInterface      $channelAssigner,
     ) {
     }
 
@@ -78,7 +78,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
             $media->addTranslation($mediaTranslation);
         }
 
-        $this->sectionsAssigner->assign($media, $mediaData['sections']);
+        $this->collectionsAssigner->assign($media, $mediaData['collections']);
         $this->productsAssigner->assign($media, $mediaData['productCodes']);
         $this->channelAssigner->assign($media, $mediaData['channels']);
 

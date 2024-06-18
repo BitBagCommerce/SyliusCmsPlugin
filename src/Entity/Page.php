@@ -19,7 +19,7 @@ class Page implements PageInterface
 {
     use ToggleableTrait;
     use ProductsAwareTrait;
-    use SectionableTrait;
+    use CollectionableTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
     use TranslatableTrait {
@@ -38,7 +38,7 @@ class Page implements PageInterface
     public function __construct()
     {
         $this->initializeProductsCollection();
-        $this->initializeSectionsCollection();
+        $this->initializeCollectionsCollection();
         $this->initializeTranslationsCollection();
         $this->initializeChannelsCollection();
 

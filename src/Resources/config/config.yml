@@ -14,8 +14,8 @@ parameters:
     bitbag_sylius_cms_plugin.form.type.translation.page.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.frequently_asked_question.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question.validation_groups: "%bitbag_validation_group%"
-    bitbag_sylius_cms_plugin.form.type.section.validation_groups: "%bitbag_validation_group%"
-    bitbag_sylius_cms_plugin.form.type.translation.section.validation_groups: "%bitbag_validation_group%"
+    bitbag_sylius_cms_plugin.form.type.collection.validation_groups: "%bitbag_validation_group%"
+    bitbag_sylius_cms_plugin.form.type.translation.collection.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.translation.media.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.media.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media

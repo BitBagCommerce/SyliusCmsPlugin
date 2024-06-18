@@ -11,7 +11,7 @@ sylius_fixtures:
                 orm_purger: ~
                 logger: ~
             fixtures:
-                section:
+                collection:
                     options:
                         custom:
                             blog:
@@ -49,7 +49,7 @@ sylius_fixtures:
                             section_info_block:
                                 channels:
                                 - "FASHION_WEB"
-                                sections:
+                                collections:
                                 - "products"
                                 translations:
                                     en_US:
@@ -99,7 +99,7 @@ sylius_fixtures:
                             lorem_ipsum:
                                 channels:
                                 - "FASHION_WEB"
-                                sections:
+                                collections:
                                 - "homepage"
                                 translations:
                                     en_US:
@@ -191,7 +191,7 @@ sylius_fixtures:
                                 type: image
                                 path: "%fixtures_dir%/sale.jpeg"
                                 original_name: "sale.jpeg"
-                                sections:
+                                collections:
                                 - "products"
                             media_with_products:
                                 type: image
@@ -221,7 +221,7 @@ sylius_fixtures:
                                 - "FASHION_WEB"
                                 number: 14
                                 products: 5
-                                sections:
+                                collections:
                                 - "blog"
                                 translations:
                                     en_US:
@@ -248,7 +248,7 @@ sylius_fixtures:
                                 products: 5
                                 channels:
                                 - "FASHION_WEB"
-                                sections:
+                                collections:
                                 - "general"
                                 - "store"
                                 translations:
