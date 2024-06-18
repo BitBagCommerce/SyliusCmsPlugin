@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Blokken
+        block: Blok
         pages: Pagina's
+        page: Pagina
         content_management: Beheer inhoud
         cms: Beheer inhoud
         enabled: Ingeschakeld

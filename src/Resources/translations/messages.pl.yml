@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Bloki
+        block: Blok
         pages: Strony
+        page: Strona
         content_management: Zarządzanie treścią
         cms: Zarządzanie treścią
         enabled: Włączony

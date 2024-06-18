@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Blokovi
+        block: Blok
         pages: Stranice
+        page: Stranica
         content_management: Uređivanje sadržaja
         cms: Uređivanje sadržaja
         enabled: Omogućeno

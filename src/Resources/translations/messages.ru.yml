@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Блоки
+        block: Блок
         pages: Страницы
+        page: Страница
         content_management: Наполнение
         cms: Управление наполнением
         enabled: Вкл
