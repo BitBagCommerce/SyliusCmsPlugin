@@ -62,8 +62,8 @@ final class Version20240618120258 extends AbstractMigration
         $this->addSql('ALTER TABLE bitbag_cms_section_pages DROP FOREIGN KEY FK_C96225EED823E37A');
         $this->addSql('ALTER TABLE bitbag_cms_section_blocks DROP FOREIGN KEY FK_A9D9C974E9ED820C');
         $this->addSql('ALTER TABLE bitbag_cms_section_blocks DROP FOREIGN KEY FK_A9D9C974D823E37A');
-        $this->addSql('ALTER TABLE bitbag_cms_section_media DROP FOREIGN KEY FK_98406A0D823E37A');
-        $this->addSql('ALTER TABLE bitbag_cms_section_media DROP FOREIGN KEY FK_98406A0EA9FDD75');
+        $this->addSql('ALTER TABLE bitbag_cms_section_media DROP FOREIGN KEY FK_833A6197D823E37A');
+        $this->addSql('ALTER TABLE bitbag_cms_section_media DROP FOREIGN KEY FK_833A6197EA9FDD75');
 
         $this->addSql('DROP TABLE bitbag_cms_page_sections');
         $this->addSql('DROP TABLE bitbag_cms_block_sections');
@@ -128,8 +128,8 @@ final class Version20240618120258 extends AbstractMigration
         $this->addSql('ALTER TABLE bitbag_cms_section_pages ADD CONSTRAINT FK_C96225EED823E37A FOREIGN KEY (section_id) REFERENCES bitbag_cms_section (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE bitbag_cms_section_blocks ADD CONSTRAINT FK_A9D9C974E9ED820C FOREIGN KEY (block_id) REFERENCES bitbag_cms_block (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE bitbag_cms_section_blocks ADD CONSTRAINT FK_A9D9C974D823E37A FOREIGN KEY (section_id) REFERENCES bitbag_cms_section (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE bitbag_cms_section_media ADD CONSTRAINT FK_98406A0D823E37A FOREIGN KEY (section_id) REFERENCES bitbag_cms_section (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE bitbag_cms_section_media ADD CONSTRAINT FK_98406A0EA9FDD75 FOREIGN KEY (media_id) REFERENCES bitbag_cms_media (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE bitbag_cms_section_media ADD CONSTRAINT FK_833A6197D823E37A FOREIGN KEY (section_id) REFERENCES bitbag_cms_section (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE bitbag_cms_section_media ADD CONSTRAINT FK_833A6197EA9FDD75 FOREIGN KEY (media_id) REFERENCES bitbag_cms_media (id) ON DELETE CASCADE');
 
         // Restore data to the original tables
         $this->addSql('INSERT INTO bitbag_cms_section (id, code, type) SELECT id, code, type FROM bitbag_cms_collection_backup');
