@@ -40,9 +40,9 @@ interface PageRepositoryInterface extends RepositoryInterface
     ): array;
 
     public function findByProductAndCollectionCode(
-        ProductInterface    $product,
-        string              $collectionCode,
-        string              $channelCode,
+        ProductInterface $product,
+        string $collectionCode,
+        string $channelCode,
         ?\DateTimeInterface $date,
     ): array;
 

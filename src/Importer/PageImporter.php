@@ -15,8 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,16 +29,16 @@ use Webmozart\Assert\Assert;
 final class PageImporter extends AbstractImporter implements PageImporterInterface
 {
     public function __construct(
-        private ResourceResolverInterface            $pageResourceResolver,
-        private LocaleContextInterface               $localeContext,
-        private ImageDownloaderInterface             $imageDownloader,
-        private FactoryInterface                     $mediaFactory,
-        private MediaProviderResolverInterface       $mediaProviderResolver,
+        private ResourceResolverInterface $pageResourceResolver,
+        private LocaleContextInterface $localeContext,
+        private ImageDownloaderInterface $imageDownloader,
+        private FactoryInterface $mediaFactory,
+        private MediaProviderResolverInterface $mediaProviderResolver,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        private ImporterChannelsResolverInterface    $importerChannelsResolver,
-        private ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                           $validator,
-        private EntityManagerInterface               $entityManager,
+        private ImporterChannelsResolverInterface $importerChannelsResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        private EntityManagerInterface $entityManager,
     ) {
         parent::__construct($validator);
     }

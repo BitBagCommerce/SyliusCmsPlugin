@@ -20,9 +20,9 @@ use Webmozart\Assert\Assert;
 final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterface
 {
     public function __construct(
-        private PageRepositoryInterface    $pageRepository,
-        private ChannelContextInterface    $channelContext,
-        private Environment                $templatingEngine,
+        private PageRepositoryInterface $pageRepository,
+        private ChannelContextInterface $channelContext,
+        private Environment $templatingEngine,
         private CollectionsSorterInterface $collectionsSorter,
     ) {
     }

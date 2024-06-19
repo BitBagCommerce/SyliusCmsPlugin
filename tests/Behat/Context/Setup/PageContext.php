@@ -15,8 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
@@ -29,14 +29,14 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class PageContext implements Context
 {
     public function __construct(
-        private SharedStorageInterface         $sharedStorage,
+        private SharedStorageInterface $sharedStorage,
         private RandomStringGeneratorInterface $randomStringGenerator,
-        private FactoryInterface               $pageFactory,
-        private PageRepositoryInterface        $pageRepository,
-        private EntityManagerInterface         $entityManager,
-        private ProductRepositoryInterface     $productRepository,
-        private CollectionRepositoryInterface  $collectionRepository,
-        private ProviderInterface              $imageProvider,
+        private FactoryInterface $pageFactory,
+        private PageRepositoryInterface $pageRepository,
+        private EntityManagerInterface $entityManager,
+        private ProductRepositoryInterface $productRepository,
+        private CollectionRepositoryInterface $collectionRepository,
+        private ProviderInterface $imageProvider,
     ) {
     }
 

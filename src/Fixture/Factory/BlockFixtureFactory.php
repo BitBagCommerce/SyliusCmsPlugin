@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
@@ -26,16 +26,16 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 final class BlockFixtureFactory implements FixtureFactoryInterface
 {
     public function __construct(
-        private FactoryInterface             $blockFactory,
-        private FactoryInterface             $blockTranslationFactory,
-        private BlockRepositoryInterface     $blockRepository,
-        private ProductRepositoryInterface   $productRepository,
-        private ChannelContextInterface      $channelContext,
-        private LocaleContextInterface       $localeContext,
-        private ProductsAssignerInterface    $productsAssigner,
-        private TaxonsAssignerInterface      $taxonsAssigner,
+        private FactoryInterface $blockFactory,
+        private FactoryInterface $blockTranslationFactory,
+        private BlockRepositoryInterface $blockRepository,
+        private ProductRepositoryInterface $productRepository,
+        private ChannelContextInterface $channelContext,
+        private LocaleContextInterface $localeContext,
+        private ProductsAssignerInterface $productsAssigner,
+        private TaxonsAssignerInterface $taxonsAssigner,
         private CollectionsAssignerInterface $collectionsAssigner,
-        private ChannelsAssignerInterface    $channelAssigner,
+        private ChannelsAssignerInterface $channelAssigner,
     ) {
     }
 

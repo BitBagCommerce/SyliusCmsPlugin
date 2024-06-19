@@ -129,9 +129,9 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     }
 
     public function findByProductAndCollectionCode(
-        ProductInterface    $product,
-        string              $collectionCode,
-        string              $channelCode,
+        ProductInterface $product,
+        string $collectionCode,
+        string $channelCode,
         ?\DateTimeInterface $date = null,
     ): array {
         $qb = $this->createQueryBuilder('o')

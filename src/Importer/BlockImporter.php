@@ -13,8 +13,8 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -23,13 +23,13 @@ use Webmozart\Assert\Assert;
 final class BlockImporter extends AbstractImporter implements BlockImporterInterface
 {
     public function __construct(
-        private ResourceResolverInterface            $blockResourceResolver,
-        private LocaleContextInterface               $localeContext,
+        private ResourceResolverInterface $blockResourceResolver,
+        private LocaleContextInterface $localeContext,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        private ImporterChannelsResolverInterface    $importerChannelsResolver,
-        private ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                           $validator,
-        private BlockRepositoryInterface             $blockRepository,
+        private ImporterChannelsResolverInterface $importerChannelsResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        private BlockRepositoryInterface $blockRepository,
     ) {
         parent::__construct($validator);
     }

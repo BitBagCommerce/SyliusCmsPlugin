@@ -64,12 +64,15 @@ final class CollectionType extends AbstractResourceType
                 switch ($formData['type']) {
                     case self::PAGE:
                         unset($formData['blocks'], $formData['media']);
+
                         break;
                     case self::BLOCK:
                         unset($formData['pages'], $formData['media']);
+
                         break;
                     case self::MEDIA:
                         unset($formData['pages'], $formData['blocks']);
+
                         break;
                 }
 

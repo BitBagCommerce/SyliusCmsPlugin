@@ -21,10 +21,10 @@ use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 final class CollectionContext implements Context
 {
     public function __construct(
-        private SharedStorageInterface         $sharedStorage,
+        private SharedStorageInterface $sharedStorage,
         private RandomStringGeneratorInterface $randomStringGenerator,
-        private FactoryInterface               $collectionFactory,
-        private CollectionRepositoryInterface  $collectionRepository,
+        private FactoryInterface $collectionFactory,
+        private CollectionRepositoryInterface $collectionRepository,
     ) {
     }
 

@@ -18,8 +18,8 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 final class CollectionFixtureFactory implements FixtureFactoryInterface
 {
     public function __construct(
-        private FactoryInterface              $collectionFactory,
-        private FactoryInterface              $collectionTranslationFactory,
+        private FactoryInterface $collectionFactory,
+        private FactoryInterface $collectionTranslationFactory,
         private CollectionRepositoryInterface $collectionRepository,
     ) {
     }

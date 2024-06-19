@@ -12,8 +12,8 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -22,12 +22,12 @@ use Webmozart\Assert\Assert;
 final class MediaImporter extends AbstractImporter implements MediaImporterInterface
 {
     public function __construct(
-        private ResourceResolverInterface            $mediaResourceResolver,
-        private LocaleContextInterface               $localeContext,
+        private ResourceResolverInterface $mediaResourceResolver,
+        private LocaleContextInterface $localeContext,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        private ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                           $validator,
-        private MediaRepositoryInterface             $mediaRepository,
+        private ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        private MediaRepositoryInterface $mediaRepository,
     ) {
         parent::__construct($validator);
     }
