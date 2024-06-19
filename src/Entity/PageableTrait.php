@@ -15,8 +15,7 @@ use Doctrine\Common\Collections\Collection;
 
 trait PageableTrait
 {
-    /** @var Collection|PageInterface[] */
-    protected Collection|array $pages;
+    protected Collection $pages;
 
     public function initializePagesCollection(): void
     {

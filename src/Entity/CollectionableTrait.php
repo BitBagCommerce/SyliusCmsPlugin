@@ -15,8 +15,7 @@ use Doctrine\Common\Collections\Collection;
 
 trait CollectionableTrait
 {
-    /** @var Collection|CollectionInterface[] */
-    protected Collection|array $collections;
+    protected Collection $collections;
 
     public function initializeCollectionsCollection(): void
     {

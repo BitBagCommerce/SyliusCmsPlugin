@@ -15,8 +15,7 @@ use Doctrine\Common\Collections\Collection;
 
 trait BlockableTrait
 {
-    /** @var Collection|BlockInterface[] */
-    protected Collection|array $blocks;
+    protected Collection $blocks;
 
     public function initializeBlocksCollection(): void
     {

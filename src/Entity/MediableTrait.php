@@ -15,8 +15,7 @@ use Doctrine\Common\Collections\Collection;
 
 trait MediableTrait
 {
-    /** @var Collection|MediaInterface[] */
-    protected Collection|array $media;
+    protected Collection $media;
 
     public function initializeMediaCollection(): void
     {
