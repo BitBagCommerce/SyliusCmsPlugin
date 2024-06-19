@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section;
+namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;

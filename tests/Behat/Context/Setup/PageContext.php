@@ -35,7 +35,7 @@ final class PageContext implements Context
         private PageRepositoryInterface        $pageRepository,
         private EntityManagerInterface         $entityManager,
         private ProductRepositoryInterface     $productRepository,
-        private CollectionRepositoryInterface  $sectionRepository,
+        private CollectionRepositoryInterface  $collectionRepository,
         private ProviderInterface              $imageProvider,
     ) {
     }
@@ -159,30 +159,30 @@ final class PageContext implements Context
     }
 
     /**
-     * @Given this page has these sections associated with it
+     * @Given this page has these collections associated with it
      */
-    public function thisPageHasTheseSectionsAssociatedWithIt(): void
+    public function thisPageHasTheseCollectionsAssociatedWithIt(): void
     {
-        $sections = $this->sectionRepository->findAll();
+        $collections = $this->collectionRepository->findAll();
 
-        foreach ($sections as $section) {
-            $this->sharedStorage->get('page')->addSection($section);
+        foreach ($collections as $collection) {
+            $this->sharedStorage->get('page')->addCollection($collection);
         }
 
         $this->entityManager->flush();
     }
 
     /**
-     * @Given these pages have this section associated with it
+     * @Given these pages have this collection associated with it
      */
-    public function thesePagesHaveThisSectionAssociatedWithIt(): void
+    public function thesePagesHaveThisCollectionAssociatedWithIt(): void
     {
-        $section = $this->sharedStorage->get('section');
+        $collection = $this->sharedStorage->get('collection');
         $pages = $this->pageRepository->findAll();
 
         /** @var PageInterface $page */
         foreach ($pages as $page) {
-            $page->addCollection($section);
+            $page->addCollection($collection);
         }
 
         $this->entityManager->flush();

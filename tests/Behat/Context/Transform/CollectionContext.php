@@ -15,29 +15,29 @@ use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-final class SectionContext implements Context
+final class CollectionContext implements Context
 {
     public function __construct(
-        private CollectionRepositoryInterface $sectionRepository,
+        private CollectionRepositoryInterface $collectionRepository,
         private string                        $locale = 'en_US',
     ) {
     }
 
     /**
-     * @Transform /^section(?:|s) "([^"]+)"$/
-     * @Transform /^"([^"]+)" section(?:|s)$/
+     * @Transform /^collection(?:|s) "([^"]+)"$/
+     * @Transform /^"([^"]+)" collection(?:|s)$/
      * @Transform /^(?:a|an) "([^"]+)"$/
-     * @Transform :section
+     * @Transform :collection
      */
-    public function getSectionByCode(string $sectionCode): CollectionInterface
+    public function getCollectionByCode(string $collectionCode): CollectionInterface
     {
-        $section = $this->sectionRepository->findOneByCode($sectionCode, $this->locale);
+        $collection = $this->collectionRepository->findOneByCode($collectionCode, $this->locale);
 
         Assert::notNull(
-            $section,
-            sprintf('No sections has been found with code "%s".', $sectionCode),
+            $collection,
+            sprintf('No collections has been found with code "%s".', $collectionCode),
         );
 
-        return $section;
+        return $collection;
     }
 }

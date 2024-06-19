@@ -20,7 +20,7 @@ interface ShowPageInterface extends SymfonyPageInterface
 
     public function hasProducts(array $productsNames): bool;
 
-    public function hasSections(array $sectionNames): bool;
+    public function hasCollections(array $collectionNames): bool;
 
     public function hasPageLink(string $linkName): bool;
 

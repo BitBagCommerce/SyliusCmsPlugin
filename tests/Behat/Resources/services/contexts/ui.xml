@@ -36,13 +36,13 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.section" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\SectionContext">
+        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.collection" class="CollectionContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.section.index"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.section.create"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.section.update"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.collection.index"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.collection.create"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.collection.update"/>
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
         </service>
 

@@ -23,8 +23,8 @@
                 <argument>%locale%</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.transform.section" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\SectionContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+            <service id="bitbag_sylius_cms_plugin.behat.context.transform.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform\CollectionContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
                 <argument>%locale%</argument>
             </service>
     </services>

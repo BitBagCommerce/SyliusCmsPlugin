@@ -17,7 +17,7 @@ use Sylius\Behat\Client\ResponseCheckerInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
-final class SectionContext implements Context
+final class CollectionContext implements Context
 {
     public function __construct(
         private ApiClientInterface $apiClient,
@@ -26,17 +26,17 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Given /^I want to browse sections$/
+     * @Given /^I want to browse collections$/
      */
-    public function iWantToBrowseSections(): void
+    public function iWantToBrowseCollections(): void
     {
-        $this->apiClient->index(Resources::SECTIONS);
+        $this->apiClient->index(Resources::COLLECTIONS);
     }
 
     /**
-     * @Then /^I should see (\d+) sections in the list$/
+     * @Then /^I should see (\d+) collections in the list$/
      */
-    public function iShouldSeeSectionsInTheList(int $count): void
+    public function iShouldSeeCollectionsInTheList(int $count): void
     {
         Assert::count(
             $this->responseChecker->getCollection(
@@ -47,18 +47,18 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Given I view section with code :section
-     * @Then I should see section with code :section
+     * @Given I view collection with code :collection
+     * @Then I should see collection with code :collection
      */
-    public function iShouldSeeSectionWithCode(CollectionInterface $section): void
+    public function iShouldSeeCollectionWithCode(CollectionInterface $collection): void
     {
-        $this->apiClient->show(Resources::SECTIONS, (string) $section->getId());
+        $this->apiClient->show(Resources::COLLECTIONS, (string) $collection->getId());
     }
 
     /**
-     * @Then /^I should see section name$/
+     * @Then /^I should see collection name$/
      */
-    public function iShouldSeeSectionName(): void
+    public function iShouldSeeCollectionName(): void
     {
         Assert::false(
             $this->responseChecker->hasTranslation(

@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class SectionRepositoryTest extends JsonApiTestCase
+class CollectionRepositoryTest extends JsonApiTestCase
 {
     public function setUp(): void
     {
@@ -34,45 +34,45 @@ class SectionRepositoryTest extends JsonApiTestCase
         self::assertNotNull($queryBuilder->getQuery());
     }
 
-    public function test_it_finds_section_by_name_part(): void
+    public function test_it_finds_collection_by_name_part(): void
     {
-        $this->loadFixturesFromFile('SectionRepositoryTest/test_it_finds_section_by_name.yml');
+        $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_name.yml');
 
         $repository = $this->getRepository();
 
         $phrase = 'translation';
         $locale = 'en_US';
-        $sections = $repository->findByNamePart($phrase, $locale);
+        $collections = $repository->findByNamePart($phrase, $locale);
 
-        self::assertIsArray($sections);
-        self::assertCount(3, $sections);
+        self::assertIsArray($collections);
+        self::assertCount(3, $collections);
     }
 
     public function test_it_finds_one_by_code(): void
     {
-        $this->loadFixturesFromFile('SectionRepositoryTest/test_it_finds_section_by_code.yml');
+        $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_code.yml');
 
         $repository = $this->getRepository();
 
-        $code = 'section1-code';
+        $code = 'collection1-code';
         $localeCode = 'en_US';
-        $section = $repository->findOneByCode($code, $localeCode);
+        $collection = $repository->findOneByCode($code, $localeCode);
 
-        self::assertInstanceOf(CollectionInterface::class, $section);
+        self::assertInstanceOf(CollectionInterface::class, $collection);
     }
 
     public function test_it_finds_by_codes_and_locale(): void
     {
-        $this->loadFixturesFromFile('SectionRepositoryTest/test_it_finds_section_by_codes_and_locale.yml');
+        $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_codes_and_locale.yml');
 
         $repository = $this->getRepository();
 
-        $codes = 'section1-code,section2-code';
+        $codes = 'collection1-code,collection2-code';
         $localeCode = 'en_US';
-        $sections = $repository->findByCodesAndLocale($codes, $localeCode);
+        $collections = $repository->findByCodesAndLocale($codes, $localeCode);
 
-        self::assertIsArray($sections);
-        self::assertCount(2, $sections);
+        self::assertIsArray($collections);
+        self::assertCount(2, $collections);
     }
 
     private function getRepository(): CollectionRepositoryInterface

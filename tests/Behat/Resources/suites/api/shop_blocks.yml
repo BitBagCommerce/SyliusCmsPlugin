@@ -7,7 +7,7 @@ default:
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
                 - bitbag_sylius_cms_plugin.behat.context.setup.block
-                - bitbag_sylius_cms_plugin.behat.context.setup.section
+                - bitbag_sylius_cms_plugin.behat.context.setup.collection
                 - bitbag_sylius_cms_plugin.behat.context.transform.block
 
                 - bitbag_sylius_cms_plugin.behat.context.api.block

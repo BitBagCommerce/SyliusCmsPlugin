@@ -20,5 +20,5 @@ final class Resources
 
     public const PAGES = 'pages';
 
-    public const SECTIONS = 'sections';
+    public const COLLECTIONS = 'collections';
 }

@@ -44,11 +44,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @When I go to the section pages list for the :sectionCode section
+     * @When I go to the collection pages list for the :collectionCode collection
      */
-    public function iGoToTheSectionPagesListForTheSection(string $sectionCode): void
+    public function iGoToTheCollectionPagesListForTheCollection(string $collectionCode): void
     {
-        $this->indexPage->open(['sectionCode' => $sectionCode]);
+        $this->indexPage->open(['collectionCode' => $collectionCode]);
     }
 
     /**
@@ -84,11 +84,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @Then I should also see :firstSectionName and :secondSectionName sections associated with this page
+     * @Then I should also see :firstCollectionName and :secondCollectionName collections associated with this page
      */
-    public function iShouldAlsoSeeSectionsAssociatedWithThisPage(string ...$sectionsNames): void
+    public function iShouldAlsoSeeCollectionsAssociatedWithThisPage(string ...$collectionsNames): void
     {
-        Assert::true($this->showPage->hasSections($sectionsNames));
+        Assert::true($this->showPage->hasCollections($collectionsNames));
     }
 
     /**

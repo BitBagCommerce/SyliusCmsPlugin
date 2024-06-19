@@ -16,31 +16,31 @@ use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\BitBag\SyliusCmsPlugin\Functional\FunctionalTestCase;
 
-class SectionTest extends FunctionalTestCase
+class CollectionTest extends FunctionalTestCase
 {
     public const CONTENT_TYPE_HEADER = ['CONTENT_TYPE' => 'application/ld+json', 'HTTP_ACCEPT' => 'application/ld+json'];
 
     public function setUp(): void
     {
-        $this->loadFixturesFromFile('Api/SectionTest/collection.yml');
+        $this->loadFixturesFromFile('Api/CollectionTest/collection.yml');
     }
 
-    public function test_section_response(): void
+    public function test_collection_response(): void
     {
-        /** @var CollectionInterface $section */
-        $section = $this->getRepository()->findOneByCode('section1-code', 'en_US');
-        $this->client->request('GET', '/api/v2/shop/cms-plugin/sections/' . $section->getId(), [], [], self::CONTENT_TYPE_HEADER);
+        /** @var CollectionInterface $collection */
+        $collection = $this->getRepository()->findOneByCode('collection1-code', 'en_US');
+        $this->client->request('GET', '/api/v2/shop/cms-plugin/collections/' . $collection->getId(), [], [], self::CONTENT_TYPE_HEADER);
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'Api/SectionTest/test_it_get_section_by_id', Response::HTTP_OK);
+        $this->assertResponse($response, 'Api/CollectionTest/test_it_get_collection_by_id', Response::HTTP_OK);
     }
 
-    public function test_sections_response(): void
+    public function test_collections_response(): void
     {
-        $this->client->request('GET', '/api/v2/shop/cms-plugin/sections', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/api/v2/shop/cms-plugin/collections', [], [], self::CONTENT_TYPE_HEADER);
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'Api/SectionTest/test_it_get_sections', Response::HTTP_OK);
+        $this->assertResponse($response, 'Api/CollectionTest/test_it_get_collections', Response::HTTP_OK);
     }
 
     private function getRepository(): CollectionRepositoryInterface

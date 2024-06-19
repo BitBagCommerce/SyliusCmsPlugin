@@ -16,13 +16,13 @@ use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section\CreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section\IndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Section\UpdatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\CreatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\IndexPageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\UpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
-final class SectionContext implements Context
+final class CollectionContext implements Context
 {
     public function __construct(
         private SharedStorageInterface $sharedStorage,
@@ -36,39 +36,39 @@ final class SectionContext implements Context
     }
 
     /**
-     * @When I go to the sections page
+     * @When I go to the collections page
      */
-    public function iGoToTheSectionsPage(): void
+    public function iGoToTheCollectionsPage(): void
     {
         $this->indexPage->open();
     }
 
     /**
-     * @When I go to the create section page
+     * @When I go to the create collection page
      */
-    public function iGoToTheCreateSectionPage(): void
+    public function iGoToTheCreateCollectionPage(): void
     {
         $this->createPage->open();
     }
 
     /**
-     * @When I delete this section
+     * @When I delete this collection
      */
-    public function iDeleteThisSection(): void
+    public function iDeleteThisCollection(): void
     {
-        $section = $this->sharedStorage->get('section');
+        $collection = $this->sharedStorage->get('collection');
 
-        $this->indexPage->deleteSection($section->getCode());
+        $this->indexPage->deleteCollection($collection->getCode());
     }
 
     /**
-     * @When I want to edit this section
+     * @When I want to edit this collection
      */
-    public function iWantToEditThisSection(): void
+    public function iWantToEditThisCollection(): void
     {
-        $section = $this->sharedStorage->get('section');
+        $collection = $this->sharedStorage->get('collection');
 
-        $this->updatePage->open(['id' => $section->getId()]);
+        $this->updatePage->open(['id' => $collection->getId()]);
     }
 
     /**
@@ -156,20 +156,20 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Then I should be notified that there is already an existing section with provided code
+     * @Then I should be notified that there is already an existing collection with provided code
      */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingSectionWithCode(): void
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingCollectionWithCode(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            'There is an existing section with this code.',
+            'There is an existing collection with this code.',
             false,
         ));
     }
 
     /**
-     * @Then I should be notified that new section has been created
+     * @Then I should be notified that new collection has been created
      */
-    public function iShouldBeNotifiedThatNewSectionHasBeenCreated(): void
+    public function iShouldBeNotifiedThatNewCollectionHasBeenCreated(): void
     {
         $this->notificationChecker->checkNotification(
             'Collection has been successfully created.',
@@ -178,9 +178,9 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Then I should be notified that the section has been deleted
+     * @Then I should be notified that the collection has been deleted
      */
-    public function iShouldBeNotifiedThatTheSectionHasBeenDeleted(): void
+    public function iShouldBeNotifiedThatTheCollectionHasBeenDeleted(): void
     {
         $this->notificationChecker->checkNotification(
             'Collection has been successfully deleted.',
@@ -197,9 +197,9 @@ final class SectionContext implements Context
     }
 
     /**
-     * @Then I should see empty list of sections
+     * @Then I should see empty list of collections
      */
-    public function iShouldSeeEmptyListOfSections(): void
+    public function iShouldSeeEmptyListOfCollections(): void
     {
         $this->resolveCurrentPage()->isEmpty();
     }

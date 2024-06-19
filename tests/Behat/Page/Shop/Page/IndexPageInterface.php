@@ -14,7 +14,7 @@ use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 
 interface IndexPageInterface extends SymfonyPageInterface
 {
-    public function hasSectionName(string $sectionName): bool;
+    public function hasCollectionName(string $collectionName): bool;
 
     public function hasPagesNumber(int $pagesNumber): bool;
 }

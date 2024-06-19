@@ -44,13 +44,13 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
         return true;
     }
 
-    public function hasSections(array $sectionNames): bool
+    public function hasCollections(array $collectionNames): bool
     {
-        $sectionsOnPage = $this->getElement('sections')->findAll('css', 'a');
+        $collectionsOnPage = $this->getElement('collections')->findAll('css', 'a');
 
-        /** @var NodeElement $sectionOnPage */
-        foreach ($sectionsOnPage as $sectionOnPage) {
-            if (false === in_array($sectionOnPage->getText(), $sectionNames, true)) {
+        /** @var NodeElement $collectionOnPage */
+        foreach ($collectionsOnPage as $collectionOnPage) {
+            if (false === in_array($collectionOnPage->getText(), $collectionNames, true)) {
                 return false;
             }
         }
@@ -79,7 +79,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
             'name' => '.bitbag-page-name',
             'content' => '.bitbag-page-content',
             'products' => '.bitbag-page-products',
-            'sections' => '.bitbag-page-sections',
+            'collections' => '.bitbag-page-collections',
             'link' => '.bitbag-page-link',
             'page-image' => '.page-image',
         ]);

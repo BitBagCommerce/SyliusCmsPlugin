@@ -20,7 +20,7 @@
                 <argument>shop/cms-plugin</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.section" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
+            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.collection" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
                 <argument>shop/cms-plugin</argument>
             </service>
     </services>

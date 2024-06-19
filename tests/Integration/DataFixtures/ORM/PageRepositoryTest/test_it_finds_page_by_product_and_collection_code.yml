@@ -91,8 +91,8 @@ BitBag\SyliusCmsPlugin\Entity\Page:
     enabled: true
     products:
       - '@product1'
-    sections:
-      - '@section1'
+    collections:
+      - '@collection1'
     channels:
       - '@channel'
     translations:
@@ -102,8 +102,8 @@ BitBag\SyliusCmsPlugin\Entity\Page:
     enabled: true
     products:
       - '@product2'
-    sections:
-      - '@section2'
+    collections:
+      - '@collection2'
     channels:
       - '@channel'
     translations:
@@ -113,17 +113,17 @@ BitBag\SyliusCmsPlugin\Entity\Page:
     enabled: false
     products:
       - '@product3'
-    sections:
-      - '@section3'
+    collections:
+      - '@collection3'
     channels:
       - '@channel'
     translations:
       - '@page3_translation'
-BitBag\SyliusCmsPlugin\Entity\Section:
-  section1:
-    code: 'section1-code'
-  section2:
-    code: 'section2-code'
-  section3:
-    code: 'section3-code'
+BitBag\SyliusCmsPlugin\Entity\Collection:
+  collection1:
+    code: 'collection1-code'
+  collection2:
+    code: 'collection2-code'
+  collection3:
+    code: 'collection3-code'
 

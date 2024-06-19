@@ -50,14 +50,14 @@ class PageRepositoryTest extends JsonApiTestCase
         self::assertNull($page3);
     }
 
-    public function test_it_finds_enabled_page_by_section_code(): void
+    public function test_it_finds_enabled_page_by_collection_code(): void
     {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_section_code.yml');
+        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_collection_code.yml');
 
         $pageRepository = $this->getRepository();
 
-        $page1_array = $pageRepository->findByCollectionCode('section1-code', 'en_US');
-        $page3_array = $pageRepository->findByCollectionCode('section3-code', 'en_US');
+        $page1_array = $pageRepository->findByCollectionCode('collection1-code', 'en_US');
+        $page3_array = $pageRepository->findByCollectionCode('collection3-code', 'en_US');
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);
@@ -84,9 +84,9 @@ class PageRepositoryTest extends JsonApiTestCase
         self::assertEmpty($page3_array);
     }
 
-    public function test_it_finds_enabled_page_by_product_and_section_code(): void
+    public function test_it_finds_enabled_page_by_product_and_collection_code(): void
     {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product_and_section_code.yml');
+        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product_and_collection_code.yml');
 
         $pageRepository = $this->getRepository();
 
@@ -98,8 +98,8 @@ class PageRepositoryTest extends JsonApiTestCase
         /** @var Product $product3 */
         $product3 = $productRepository->findOneByCode('MUG_SW3');
 
-        $page1_array = $pageRepository->findByProductAndCollectionCode($product1, 'section1-code', 'code', null);
-        $page3_array = $pageRepository->findByProductAndCollectionCode($product3, 'section3-code', 'code', null);
+        $page1_array = $pageRepository->findByProductAndCollectionCode($product1, 'collection1-code', 'code', null);
+        $page3_array = $pageRepository->findByProductAndCollectionCode($product3, 'collection3-code', 'code', null);
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);
