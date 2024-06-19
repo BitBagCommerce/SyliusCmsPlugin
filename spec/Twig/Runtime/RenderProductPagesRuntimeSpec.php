@@ -62,7 +62,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $collection->getCode()->willReturn('COLLECTION_CODE');
         $pageRepository->findByProduct($product, 'WEB', null)->willReturn([])->shouldBeCalled();
         $collectionsSorter->sortByCollections([])->willReturn([]);
-        $templatingEngine->render('_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
+        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product)->shouldReturn('content');
     }
@@ -83,7 +83,7 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
         $collection->getCode()->willReturn('COLLECTION_CODE');
         $pageRepository->findByProductAndCollectionCode($product, 'COLLECTION_CODE', 'WEB', null)->willReturn([])->shouldBeCalled();
         $collectionsSorter->sortByCollections([])->willReturn([]);
-        $templatingEngine->render('_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
+        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesByCollection.html.twig', ['data' => []])->willReturn('content');
 
         $this->renderProductPages($product, 'COLLECTION_CODE')->shouldReturn('content');
     }
