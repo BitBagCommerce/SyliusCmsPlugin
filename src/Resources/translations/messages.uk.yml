@@ -29,9 +29,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: FAQ
         question: Питання
         answer: Відповідь
-        sections: Розділи
-        sections_header: Розділи
-        sections_subheader: Управління розділами
+        collections: Колекції
+        collections_header: Колекції
+        collections_subheader: Керуйте своїми колекціями
         position: Позиція
         channels: Канали
         preview: Попередній перегляд

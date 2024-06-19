@@ -32,7 +32,7 @@ sylius_grid:
                     sortable: translation.slug
                 collections:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.collections
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
@@ -44,7 +44,7 @@ sylius_grid:
                         fields: [code]
                 collections:
                     type: entity
-                    label: bitbag_sylius_cms_plugin.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.collections
                     form_options:
                         class: "%bitbag_sylius_cms_plugin.model.collection.class%"
                         choice_label: name

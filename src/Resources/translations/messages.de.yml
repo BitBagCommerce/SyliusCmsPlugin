@@ -32,9 +32,9 @@ bitbag_sylius_cms_plugin:
         link: Link
         title: Titel
         csv_file: CSV-Datei
-        sections: Sektionen
-        sections_header: Sektionen
-        sections_subheader: Verwalte deine Sektionen
+        collections: Sammlungen
+        collections_header: Sammlungen
+        collections_subheader: Verwalten Sie Ihre Sammlungen
         faq_subheader: Verwalte häufig gestellte Fragen
         frequently_asked_questions: Häufig gestellte Fragen
         question: Frage

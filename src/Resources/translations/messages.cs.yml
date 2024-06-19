@@ -1,5 +1,6 @@
 bitbag_sylius_cms_plugin:
     ui:
+        collections: Kolekce
         blocks: Bloky
         block: Blok
         pages: Stránky

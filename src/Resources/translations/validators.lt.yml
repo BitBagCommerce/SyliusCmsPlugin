@@ -56,9 +56,9 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: Atsakymą įvesti privaloma.
             min_length: Atsakymo ilgis turi būti bent {{ limit }} simb.
-    section:
+    collection:
         code:
-            unique: Blokų grupė su tokiu kodu jau egzistuoja.
+            unique: Yra kolekcija su šiuo kodu.
             not_blank: Kodą įvesti privaloma.
             min_length: Kodo ilgis turi būti bent {{ limit }} simb.
             max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.

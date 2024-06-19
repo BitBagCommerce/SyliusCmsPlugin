@@ -52,9 +52,9 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: La respuesta no puede ir vacía.
             min_length: La respuesta debe tener al menos {{ limit }} caracteres.
-    section:
+    collection:
         code:
-            unique: Ya existe una sección con este código.
+            unique: Ya existe una coleccion con este código.
             not_blank: El código no puede ir vacío.
             min_length: El código debe tener al menos {{ limit }} caracteres.
             max_length: El código no puede tener más de {{ limit }} caracteres.

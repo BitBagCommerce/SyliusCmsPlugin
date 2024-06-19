@@ -32,9 +32,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Najczęściej zadawane pytania
         question: Pytanie
         answer: Odpowiedź
-        sections: Sekcje
-        sections_header: Sekcje
-        sections_subheader: Zarządzaj sekcjami
+        collections: Kolekcje
+        collections_header: Kolekcje
+        collections_subheader: Zarządzaj kolekcjami
         position: Pozycja
         title: Tytuł
         empty_name: Brak nazwy

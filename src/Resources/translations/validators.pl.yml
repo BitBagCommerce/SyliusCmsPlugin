@@ -52,7 +52,7 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: Answer cannot be blank.
             min_length: Answer must be at least {{ limit }} characters long.
-    section:
+    collection:
         code:
             unique: There is an existing section with this code.
             not_blank: Code cannot be blank.

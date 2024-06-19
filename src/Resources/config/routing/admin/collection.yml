@@ -9,8 +9,8 @@ bitbag_sylius_cms_plugin_admin_collection:
         permission: true
         vars:
             all:
-                header: bitbag_sylius_cms_plugin.ui.sections_header
-                subheader: bitbag_sylius_cms_plugin.ui.sections_subheader
+                header: bitbag_sylius_cms_plugin.ui.collections_header
+                subheader: bitbag_sylius_cms_plugin.ui.collections_subheader
                 templates:
                     form: "@BitBagSyliusCmsPlugin/Collection/Crud/_form.html.twig"
             index:

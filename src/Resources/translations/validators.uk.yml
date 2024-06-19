@@ -52,9 +52,9 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: Відповідь не може бути порожньою.
             min_length: Відповідь має бути довжиною хоча б {{ limit }} знаків.
-    section:
+    collection:
         code:
-            unique: Розділ з таким кодом уже існує.
+            unique: Існує колекція з цим кодом.
             not_blank: Код не може бути порожнім.
             min_length: Код має бути довжиною хоча б {{ limit }} знаків.
             max_length: Код не може бути довшим за {{ limit }} знаків.

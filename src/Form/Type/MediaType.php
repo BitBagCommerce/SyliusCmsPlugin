@@ -53,7 +53,7 @@ final class MediaType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.file',
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
+                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [

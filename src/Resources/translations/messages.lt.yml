@@ -29,9 +29,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Dažniausiai užduodami klausimai
         question: Klausimas
         answer: Atsakymas
-        sections: Blokų grupė
-        sections_header: Blokų grupė
-        sections_subheader: Blokų grupių tvarkymas
+        collections: Kolekcijos
+        collections_header: Kolekcijos
+        collections_subheader: Tvarkykite savo kolekcijas
         position: Pozicija
         channels: Kanalai
         preview: Peržiūra

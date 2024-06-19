@@ -25,7 +25,7 @@ sylius_grid:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 collections:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.collections
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"

@@ -32,8 +32,8 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Često postavljena pitanja
         question: Pitanje
         answer: Odgovor
-        sections: Kategorije
-        sections_header: Kategorije
-        sections_subheader: Uredi kategorije
+        collections: Kolekcije
+        collections_header: Kolekcije
+        collections_subheader: Uredi kolekcije
         position: Pozicija (redosljed)
         title: Titula

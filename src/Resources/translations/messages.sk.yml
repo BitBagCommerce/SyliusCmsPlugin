@@ -29,9 +29,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Časté otázky
         question: Otázka
         answer: Odpoveď
-        sections: Sekcie
-        sections_header: Sekcie
-        sections_subheader: Spravujte vaše sekcie
+        collections: Kolekcie
+        collections_header: Kolekcie
+        collections_subheader: Spravujte své sbírky
         position: Pozícia
         channels: Kanál
         preview: Náhľad
