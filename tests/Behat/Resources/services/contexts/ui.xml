@@ -36,7 +36,7 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.collection" class="CollectionContext">
+        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\CollectionContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>

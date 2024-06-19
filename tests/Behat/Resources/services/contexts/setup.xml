@@ -29,7 +29,7 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.frequently_asked_question" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="CollectionContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\CollectionContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
