@@ -15,7 +15,7 @@ use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-final class SectionSpec extends ObjectBehavior
+final class CollectionSpec extends ObjectBehavior
 {
     public function it_is_initializable(): void
     {
@@ -27,7 +27,7 @@ final class SectionSpec extends ObjectBehavior
         $this->shouldHaveType(ResourceInterface::class);
     }
 
-    public function it_implements_section_interface(): void
+    public function it_implements_collection_interface(): void
     {
         $this->shouldHaveType(CollectionInterface::class);
     }

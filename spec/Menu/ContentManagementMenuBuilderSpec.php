@@ -52,10 +52,10 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $cmsRootMenuItem->setLabelAttribute('icon', 'help')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('sections', ['route' => 'bitbag_sylius_cms_plugin_admin_section_index'])
+            ->addChild('collections', ['route' => 'bitbag_sylius_cms_plugin_admin_collection_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.sections')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.collections')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
 
         $cmsRootMenuItem

@@ -57,16 +57,16 @@ final class BlockSpec extends ObjectBehavior
         $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
-    public function it_associates_sections(CollectionInterface $firstSection, CollectionInterface $secondSection): void
+    public function it_associates_collections(CollectionInterface $firstCollection, CollectionInterface $secondCollection): void
     {
-        $this->addCollection($firstSection);
-        $this->hasCollection($firstSection)->shouldReturn(true);
+        $this->addCollection($firstCollection);
+        $this->hasCollection($firstCollection)->shouldReturn(true);
 
-        $this->hasCollection($secondSection)->shouldReturn(false);
+        $this->hasCollection($secondCollection)->shouldReturn(false);
 
-        $this->removeCollection($firstSection);
+        $this->removeCollection($firstCollection);
 
-        $this->hasCollection($firstSection)->shouldReturn(false);
+        $this->hasCollection($firstCollection)->shouldReturn(false);
     }
 
     public function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void

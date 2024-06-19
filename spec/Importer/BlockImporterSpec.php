@@ -26,7 +26,7 @@ final class BlockImporterSpec extends ObjectBehavior
     public function let(
         ResourceResolverInterface            $blockResourceResolver,
         LocaleContextInterface               $localeContext,
-        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
         ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
@@ -35,7 +35,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $this->beConstructedWith(
             $blockResourceResolver,
             $localeContext,
-            $importerSectionsResolver,
+            $importerCollectionsResolver,
             $importerChannelsResolver,
             $importerProductsResolver,
             $validator,
@@ -52,7 +52,7 @@ final class BlockImporterSpec extends ObjectBehavior
     public function it_imports_block(
         ResourceResolverInterface            $blockResourceResolver,
         LocaleContextInterface               $localeContext,
-        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
         ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
@@ -72,7 +72,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $block->setLink('link')->shouldBeCalled();
         $block->setContent('content')->shouldBeCalled();
 
-        $importerSectionsResolver->resolve($block, null)->shouldBeCalled();
+        $importerCollectionsResolver->resolve($block, null)->shouldBeCalled();
         $importerChannelsResolver->resolve($block, null)->shouldBeCalled();
         $importerProductsResolver->resolve($block, null)->shouldBeCalled();
 

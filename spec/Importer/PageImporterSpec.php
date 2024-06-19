@@ -32,7 +32,7 @@ final class PageImporterSpec extends ObjectBehavior
         ImageDownloaderInterface             $imageDownloader,
         FactoryInterface                     $mediaFactory,
         MediaProviderResolverInterface       $mediaProviderResolver,
-        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
         ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
@@ -44,7 +44,7 @@ final class PageImporterSpec extends ObjectBehavior
             $imageDownloader,
             $mediaFactory,
             $mediaProviderResolver,
-            $importerSectionsResolver,
+            $importerCollectionsResolver,
             $importerChannelsResolver,
             $importerProductsResolver,
             $validator,
@@ -61,7 +61,7 @@ final class PageImporterSpec extends ObjectBehavior
     public function it_imports_page_no_url(
         ResourceResolverInterface            $pageResourceResolver,
         LocaleContextInterface               $localeContext,
-        ImporterCollectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
         ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
@@ -80,7 +80,7 @@ final class PageImporterSpec extends ObjectBehavior
             'breadcrumb_pl' => 'breadcrumb',
             'namewhenlinked_pl' => 'namewhenlinked',
             'descriptionwhenlinked_pl' => 'descriptionwhenlinked',
-            'sections' => 'sections',
+            'collections' => 'collections',
             'channels' => 'channels',
             'products' => 'products',
         ];
@@ -103,7 +103,7 @@ final class PageImporterSpec extends ObjectBehavior
         $page->setNameWhenLinked('namewhenlinked')->shouldBeCalled();
         $page->setDescriptionWhenLinked('descriptionwhenlinked')->shouldBeCalled();
 
-        $importerSectionsResolver->resolve($page, 'sections')->shouldBeCalled();
+        $importerCollectionsResolver->resolve($page, 'collections')->shouldBeCalled();
         $importerChannelsResolver->resolve($page, 'channels')->shouldBeCalled();
         $importerProductsResolver->resolve($page, 'products')->shouldBeCalled();
 
