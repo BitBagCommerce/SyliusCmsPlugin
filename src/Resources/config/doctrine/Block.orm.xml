@@ -15,12 +15,12 @@
         <field name="enabled" column="enabled" type="boolean"/>
 
         <many-to-many field="collections" target-entity="BitBag\SyliusCmsPlugin\Entity\CollectionInterface">
-            <join-table name="bitbag_cms_block_collections">
+            <join-table name="bitbag_cms_block_sections">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
                 <inverse-join-columns>
-                    <join-column name="collection_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                    <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
