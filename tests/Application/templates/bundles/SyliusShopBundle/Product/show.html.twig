@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    {{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_section_code', {'sectionCode' : 'products', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
+    {{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_collection_code', {'collectionCode' : 'products', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
 
     {{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
 
