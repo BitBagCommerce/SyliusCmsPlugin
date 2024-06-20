@@ -10,8 +10,8 @@ Feature: Getting data from cms pages
         And the store has "iPhone 8" and "iPhone X" products
         And there is a page in the store
         And this page has these products associated with it
-        And there are existing sections named "Blog" and "General"
-        And this page has these sections associated with it
+        And there are existing collections named "Blog" and "General"
+        And this page has these collections associated with it
         And this page has "About us" name
         And this page has "about" code
         And this page also has "about-us" slug

@@ -74,10 +74,10 @@ Feature: Adding new page
 
     @ui @javascript
     Scenario: Adding page with sections
-        Given there are existing sections named "Blog" and "Homepage"
+        Given there are existing collections named "Blog" and "Homepage"
         When I go to the create page page
         And I fill the code with "best_day_ever"
-        And I add "Blog" and "Homepage" sections to it
+        And I add "Blog" and "Homepage" collections to it
         And I fill the slug with "Slug"
         And I fill the name with "Best day ever"
         And I fill the content with "This was the best day of my life"
