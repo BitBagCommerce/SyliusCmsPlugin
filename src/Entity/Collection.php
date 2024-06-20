@@ -22,7 +22,7 @@ class Collection implements CollectionInterface
         __construct as private initializeTranslationsCollection;
     }
 
-    protected int $id;
+    protected ?int $id;
 
     protected ?string $code = null;
 
