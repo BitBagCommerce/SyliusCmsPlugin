@@ -10,10 +10,6 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="name" column="name" type="string" nullable="true"/>
-
         <field name="content" column="content" type="text" nullable="true"/>
-
-        <field name="link" column="link" type="text" nullable="true"/>
     </mapped-superclass>
 </doctrine-mapping>

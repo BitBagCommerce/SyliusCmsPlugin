@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="BitBag\SyliusCmsPlugin\Entity\BlockContent" table="bitbag_cms_block_content">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="type" type="string" />
+
+        <field name="configuration" type="json">
+            <options>
+                <option name="jsonb">true</option>
+            </options>
+        </field>
+
+        <many-to-one field="block" target-entity="BitBag\SyliusCmsPlugin\Entity\Block" inversed-by="contents">
+            <join-column name="block_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+    </mapped-superclass>
+
+</doctrine-mapping>

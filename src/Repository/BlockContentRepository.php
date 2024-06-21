@@ -8,14 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace BitBag\SyliusCmsPlugin\Repository;
 
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\TranslationInterface;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
+class BlockContentRepository extends EntityRepository
 {
-    public function getContent(): ?string;
-
-    public function setContent(?string $content): void;
 }

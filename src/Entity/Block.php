@@ -21,6 +21,7 @@ class Block implements BlockInterface
     use ProductsAwareTrait;
     use TaxonAwareTrait;
     use ChannelsAwareTrait;
+    use BlockContentAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -32,13 +33,14 @@ class Block implements BlockInterface
         $this->initializeProductsCollection();
         $this->initializeTaxonCollection();
         $this->initializeChannelsCollection();
+        $this->initializeContentsCollection();
     }
 
-    /** @var int|null */
-    protected $id;
+    protected ?int $id;
 
-    /** @var string|null */
-    protected $code;
+    protected ?string $code;
+
+    protected ?string $name;
 
     public function getId(): ?int
     {
@@ -57,17 +59,12 @@ class Block implements BlockInterface
 
     public function getName(): ?string
     {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-
-        return $blockTranslationInterface->getName();
+        return $this->name;
     }
 
     public function setName(?string $name): void
     {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-        $blockTranslationInterface->setName($name);
+        $this->name = $name;
     }
 
     public function getContent(): ?string

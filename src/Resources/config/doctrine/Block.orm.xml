@@ -12,6 +12,8 @@
 
         <field name="code" column="code" type="string" length="64" unique="true"/>
 
+        <field name="name" column="name" type="string" length="250" nullable="true"/>
+
         <field name="enabled" column="enabled" type="boolean"/>
 
         <many-to-many field="collections" target-entity="BitBag\SyliusCmsPlugin\Entity\CollectionInterface">
@@ -57,6 +59,12 @@
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
+
+        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockContent" mapped-by="block" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
 
     </mapped-superclass>
 </doctrine-mapping>

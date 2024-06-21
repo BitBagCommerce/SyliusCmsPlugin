@@ -1,0 +1,10 @@
+sylius_resource:
+  resources:
+    bitbag_sylius_cms_plugin.block_content:
+      driver: doctrine/orm
+      classes:
+        model: BitBag\SyliusCmsPlugin\Entity\BlockContent
+        interface: BitBag\SyliusCmsPlugin\Entity\BlockContentInterface
+        form: BitBag\SyliusCmsPlugin\Form\Type\BlockContentType
+        repository: BitBag\SyliusCmsPlugin\Repository\BlockContentRepository
+        factory: Sylius\Component\Resource\Factory\TranslatableFactory

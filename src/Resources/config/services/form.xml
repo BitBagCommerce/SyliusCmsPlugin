@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="bitbag_sylius_cms_plugin.block_content.action.content_text" type="constant">BitBag\SyliusCmsPlugin\Form\Type\BlockContent\BlockContentTextConfigurationType::TYPE</parameter>
+    </parameters>
+
     <services>
         <defaults public="true" />
 
         <service id="bitbag_sylius_cms_plugin.form.type.block" class="BitBag\SyliusCmsPlugin\Form\Type\BlockType">
             <argument>%bitbag_sylius_cms_plugin.model.block.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.block.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.block_content" class="BitBag\SyliusCmsPlugin\Form\Type\BlockContentType">
+            <argument>BitBag\SyliusCmsPlugin\Entity\BlockContent</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.block_content.validation_groups%</argument>
+            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.block_content.action_configuration_type" index-by="key" />
             <tag name="form.type" />
         </service>
 
@@ -79,6 +90,12 @@
             <argument type="service" id="router.default" />
             <tag name="form.type" />
         </service>
+
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\BlockContent\BlockContentTextConfigurationType">
+            <tag name="bitbag_sylius_cms_plugin.block_content.action_configuration_type" key="%bitbag_sylius_cms_plugin.block_content.action.content_text%" />
+            <tag name="form.type" />
+        </service>
+
     </services>
 
 </container>
