@@ -20,7 +20,7 @@ use Webmozart\Assert\Assert;
 class Media implements MediaInterface
 {
     use ToggleableTrait;
-    use CollectionableTrait;
+    use CollectibleTrait;
     use ProductsAwareTrait;
     use ChannelsAwareTrait;
     use TranslatableTrait {

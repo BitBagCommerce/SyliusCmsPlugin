@@ -16,7 +16,7 @@ use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class CollectionRepositoryTest extends JsonApiTestCase
+final class CollectionRepositoryTest extends JsonApiTestCase
 {
     public function setUp(): void
     {

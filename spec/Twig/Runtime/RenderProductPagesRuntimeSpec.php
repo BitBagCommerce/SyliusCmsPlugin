@@ -47,13 +47,13 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
     }
 
     public function it_renders_product_pages(
-        ChannelContextInterface    $channelContext,
-        ProductInterface           $product,
-        ChannelInterface           $channel,
-        PageRepositoryInterface    $pageRepository,
-        PageInterface              $page,
-        CollectionInterface        $collection,
-        Environment                $templatingEngine,
+        ChannelContextInterface $channelContext,
+        ProductInterface $product,
+        ChannelInterface $channel,
+        PageRepositoryInterface $pageRepository,
+        PageInterface $page,
+        CollectionInterface $collection,
+        Environment $templatingEngine,
         CollectionsSorterInterface $collectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');
@@ -68,13 +68,13 @@ final class RenderProductPagesRuntimeSpec extends ObjectBehavior
     }
 
     public function it_renders_product_pages_with_collections(
-        ChannelContextInterface    $channelContext,
-        ProductInterface           $product,
-        ChannelInterface           $channel,
-        PageRepositoryInterface    $pageRepository,
-        PageInterface              $page,
-        CollectionInterface        $collection,
-        Environment                $templatingEngine,
+        ChannelContextInterface $channelContext,
+        ProductInterface $product,
+        ChannelInterface $channel,
+        PageRepositoryInterface $pageRepository,
+        PageInterface $page,
+        CollectionInterface $collection,
+        Environment $templatingEngine,
         CollectionsSorterInterface $collectionsSorter
     ): void {
         $channel->getCode()->willReturn('WEB');

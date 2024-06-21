@@ -19,7 +19,7 @@ class Page implements PageInterface
 {
     use ToggleableTrait;
     use ProductsAwareTrait;
-    use CollectionableTrait;
+    use CollectibleTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
     use TranslatableTrait {

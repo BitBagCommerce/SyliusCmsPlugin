@@ -24,13 +24,13 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class BlockImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface            $blockResourceResolver,
-        LocaleContextInterface               $localeContext,
+        ResourceResolverInterface $blockResourceResolver,
+        LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        BlockRepositoryInterface             $blockRepository
+        ImporterChannelsResolverInterface $importerChannelsResolver,
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        BlockRepositoryInterface $blockRepository
     ) {
         $this->beConstructedWith(
             $blockResourceResolver,
@@ -50,15 +50,16 @@ final class BlockImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_block(
-        ResourceResolverInterface            $blockResourceResolver,
-        LocaleContextInterface               $localeContext,
+        ResourceResolverInterface $blockResourceResolver,
+        LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        BlockRepositoryInterface             $blockRepository,
-        BlockInterface                       $block
-    ) {
+        ImporterChannelsResolverInterface $importerChannelsResolver,
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        BlockRepositoryInterface $blockRepository,
+        BlockInterface $block
+    )
+    {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code'];
 
         $blockResourceResolver->getResource('block_code')->willReturn($block);

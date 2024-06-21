@@ -13,7 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-trait PageableTrait
+trait PagesCollectionTrait
 {
     protected Collection $pages;
 

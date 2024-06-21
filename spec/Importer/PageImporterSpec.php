@@ -27,16 +27,16 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class PageImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface            $pageResourceResolver,
-        LocaleContextInterface               $localeContext,
-        ImageDownloaderInterface             $imageDownloader,
-        FactoryInterface                     $mediaFactory,
-        MediaProviderResolverInterface       $mediaProviderResolver,
+        ResourceResolverInterface $pageResourceResolver,
+        LocaleContextInterface $localeContext,
+        ImageDownloaderInterface $imageDownloader,
+        FactoryInterface $mediaFactory,
+        MediaProviderResolverInterface $mediaProviderResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        EntityManagerInterface               $entityManager
+        ImporterChannelsResolverInterface $importerChannelsResolver,
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        EntityManagerInterface $entityManager
     ) {
         $this->beConstructedWith(
             $pageResourceResolver,
@@ -59,15 +59,16 @@ final class PageImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_page_no_url(
-        ResourceResolverInterface            $pageResourceResolver,
-        LocaleContextInterface               $localeContext,
+        ResourceResolverInterface $pageResourceResolver,
+        LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        EntityManagerInterface               $entityManager,
-        PageInterface                        $page,
-        ) {
+        ImporterChannelsResolverInterface $importerChannelsResolver,
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        EntityManagerInterface $entityManager,
+        PageInterface $page,
+    )
+    {
         $row = [
             'code' => 'page_code',
             'slug_pl' => 'slug',

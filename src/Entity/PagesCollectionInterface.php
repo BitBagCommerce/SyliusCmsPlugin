@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface PageableInterface
+interface PagesCollectionInterface
 {
     public function initializePagesCollection(): void;
 

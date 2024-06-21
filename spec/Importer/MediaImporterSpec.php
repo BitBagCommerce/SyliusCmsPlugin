@@ -23,12 +23,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class MediaImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface            $mediaResourceResolver,
-        LocaleContextInterface               $localeContext,
+        ResourceResolverInterface $mediaResourceResolver,
+        LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        MediaRepositoryInterface             $mediaRepository
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        MediaRepositoryInterface $mediaRepository
     ) {
         $this->beConstructedWith(
             $mediaResourceResolver,
@@ -47,14 +47,15 @@ final class MediaImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_media(
-        ResourceResolverInterface            $mediaResourceResolver,
-        LocaleContextInterface               $localeContext,
+        ResourceResolverInterface $mediaResourceResolver,
+        LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
-        ValidatorInterface                   $validator,
-        MediaRepositoryInterface             $mediaRepository,
-        MediaInterface                       $media
-    ) {
+        ImporterProductsResolverInterface $importerProductsResolver,
+        ValidatorInterface $validator,
+        MediaRepositoryInterface $mediaRepository,
+        MediaInterface $media
+    )
+    {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code'];
 
         $mediaResourceResolver->getResource('media_code')->willReturn($media);

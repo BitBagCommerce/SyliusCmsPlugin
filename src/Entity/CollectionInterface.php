@@ -16,7 +16,7 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 interface CollectionInterface extends
     ResourceInterface,
     TranslatableInterface,
-    PageableInterface,
+    PagesCollectionInterface,
     BlockableInterface,
     MediableInterface
 {

@@ -17,7 +17,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-    use CollectionableTrait;
+    use CollectibleTrait;
     use ProductsAwareTrait;
     use TaxonAwareTrait;
     use ChannelsAwareTrait;

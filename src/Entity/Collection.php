@@ -15,9 +15,9 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Collection implements CollectionInterface
 {
-    use PageableTrait;
+    use PagesCollectionTrait;
     use BlockableTrait;
-    use MediableTrait;
+    use MediaCollectionTrait;
     use TranslatableTrait {
         __construct as private initializeTranslationsCollection;
     }
