@@ -4,13 +4,7 @@
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
     <class name="BitBag\SyliusCmsPlugin\Entity\BlockTranslation">
-        <attribute name="name">
-            <group>shop:cms:read</group>
-        </attribute>
         <attribute name="content">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="link">
             <group>shop:cms:read</group>
         </attribute>
     </class>

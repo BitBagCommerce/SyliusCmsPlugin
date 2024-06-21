@@ -8,6 +8,7 @@ parameters:
     sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"
     bitbag_validation_group: [bitbag]
     bitbag_sylius_cms_plugin.form.type.block.validation_groups: "%bitbag_validation_group%"
+    bitbag_sylius_cms_plugin.form.type.block_content.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.translation.block.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.block_image.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.page.validation_groups: "%bitbag_validation_group%"

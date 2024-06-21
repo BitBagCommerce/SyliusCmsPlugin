@@ -11,11 +11,20 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\TranslationInterface;
 
-interface BlockTranslationInterface extends ResourceInterface, TranslationInterface
+interface BlockContentInterface extends ResourceInterface
 {
-    public function getContent(): ?string;
+    public function getId(): ?int;
 
-    public function setContent(?string $content): void;
+    public function getType(): ?string;
+
+    public function setType(?string $type): void;
+
+    public function getConfiguration(): array;
+
+    public function setConfiguration(array $configuration): void;
+
+    public function getBlock(): ?BlockInterface;
+
+    public function setBlock(?BlockInterface $block): void;
 }

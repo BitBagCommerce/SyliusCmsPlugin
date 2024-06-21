@@ -20,14 +20,6 @@ final class BlockTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
-                'required' => false,
-            ])
-            ->add('link', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.link',
-                'required' => false,
-            ])
             ->add('content', WysiwygType::class, [
                 'required' => false,
             ])

@@ -23,7 +23,8 @@ interface BlockInterface extends
     TaxonAwareInterface,
     CollectibleInterface,
     ChannelsAwareInterface,
-    ContentableInterface
+    ContentableInterface,
+    BlockContentAwareInterface
 {
     public function getCode(): ?string;
 

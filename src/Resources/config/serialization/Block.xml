@@ -28,5 +28,8 @@
         <attribute name="translations">
             <group>shop:cms:read</group>
         </attribute>
+        <attribute name="contents">
+            <group>shop:cms:read</group>
+        </attribute>
     </class>
 </serializer>

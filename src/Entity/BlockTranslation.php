@@ -18,23 +18,7 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     protected $id;
 
     /** @var string|null */
-    protected $name;
-
-    /** @var string|null */
     protected $content;
-
-    /** @var string|null */
-    protected $link;
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
-    }
 
     public function getContent(): ?string
     {
@@ -49,15 +33,5 @@ class BlockTranslation extends AbstractTranslation implements BlockTranslationIn
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(?string $link): void
-    {
-        $this->link = $link;
     }
 }
