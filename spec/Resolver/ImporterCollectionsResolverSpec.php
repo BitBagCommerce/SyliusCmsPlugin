@@ -31,8 +31,7 @@ final class ImporterCollectionsResolverSpec extends ObjectBehavior
     public function it_resolves_collections_for_collectionable_entity(
         CollectionsAssignerInterface $collectionsAssigner,
         CollectionableInterface      $collectionable
-    )
-    {
+    ) {
         $collectionsRow = 'collection1, collection2, collection3';
         $collectionsCodes = ['collection1', 'collection2', 'collection3'];
 
