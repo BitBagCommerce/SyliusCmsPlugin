@@ -25,7 +25,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         private ResourceResolverInterface $blockResourceResolver,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
-        private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         private BlockRepositoryInterface $blockRepository,
     ) {
@@ -43,7 +42,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $this->importerCollectionsResolver->resolve($block, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
-        $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 
         $this->validateResource($block, ['bitbag']);
         $this->blockRepository->add($block);
