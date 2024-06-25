@@ -65,7 +65,7 @@ final class BlockContentType extends AbstractResourceType
                 $form = $event->getForm();
                 $formData = $form->getData();
 
-                if ($formData !== null && $formData->getType() !== $data['type']) {
+                if (null !== $formData && $formData->getType() !== $data['type']) {
                     $formData->setConfiguration([]);
                 }
 
@@ -77,7 +77,7 @@ final class BlockContentType extends AbstractResourceType
     private function addConfigurationTypeToForm(FormEvent $event): void
     {
         $data = $event->getData();
-        if ($data === null) {
+        if (null === $data) {
             return;
         }
 
