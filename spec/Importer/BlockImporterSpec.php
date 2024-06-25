@@ -26,7 +26,6 @@ final class BlockImporterSpec extends ObjectBehavior
         ResourceResolverInterface            $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
         BlockRepositoryInterface             $blockRepository
     ) {
@@ -34,7 +33,6 @@ final class BlockImporterSpec extends ObjectBehavior
             $blockResourceResolver,
             $importerCollectionsResolver,
             $importerChannelsResolver,
-            $importerProductsResolver,
             $validator,
             $blockRepository
         );
@@ -50,7 +48,6 @@ final class BlockImporterSpec extends ObjectBehavior
         ResourceResolverInterface            $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface    $importerChannelsResolver,
-        ImporterProductsResolverInterface    $importerProductsResolver,
         ValidatorInterface                   $validator,
         BlockRepositoryInterface             $blockRepository,
         BlockInterface                       $block
@@ -63,7 +60,6 @@ final class BlockImporterSpec extends ObjectBehavior
 
         $importerCollectionsResolver->resolve($block, null)->shouldBeCalled();
         $importerChannelsResolver->resolve($block, null)->shouldBeCalled();
-        $importerProductsResolver->resolve($block, null)->shouldBeCalled();
 
         $validator->validate($block, null, ['bitbag'])->willReturn(new ConstraintViolationList());
 
