@@ -11,10 +11,6 @@ BitBag\SyliusCmsPlugin\Entity\Block:
       expose: true
       type: string
       groups: [Autocomplete]
-    contents:
-        expose: true
-        type: iterable
-        groups: [Default]
   virtual_properties:
     getName:
       serialized_name: name

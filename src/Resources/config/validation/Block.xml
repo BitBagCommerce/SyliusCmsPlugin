@@ -38,9 +38,5 @@
                 </option>
             </constraint>
         </property>
-
-        <property name="translations">
-            <constraint name="Valid"/>
-        </property>
     </class>
 </constraint-mapping>

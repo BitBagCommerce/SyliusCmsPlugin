@@ -5,9 +5,6 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%bitbag_sylius_cms_plugin.model.block.class%"
-                    repository:
-                        method: createListQueryBuilder
-                        arguments: ["%locale%"]
             sorting:
                 code: asc
             limits: [10, 25, 50]

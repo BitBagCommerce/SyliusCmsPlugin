@@ -22,7 +22,6 @@
 
         <service id="bitbag_sylius_cms_plugin.importer.block" class="BitBag\SyliusCmsPlugin\Importer\BlockImporter">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.block" />
-            <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />

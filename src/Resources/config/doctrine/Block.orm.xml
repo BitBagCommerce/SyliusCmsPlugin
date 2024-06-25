@@ -27,28 +27,6 @@
             </join-table>
         </many-to-many>
 
-        <many-to-many field="products" target-entity="Sylius\Component\Product\Model\ProductInterface">
-            <join-table name="bitbag_cms_block_products">
-                <join-columns>
-                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
-        <many-to-many field="taxonomies" target-entity="Sylius\Component\Taxonomy\Model\TaxonInterface">
-            <join-table name="bitbag_cms_block_taxonomies">
-                <join-columns>
-                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="taxon_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
         <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
             <join-table name="bitbag_cms_block_channels">
                 <join-columns>
@@ -60,11 +38,25 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockContent" mapped-by="block" orphan-removal="true">
+        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockContentInterface" mapped-by="block" orphan-removal="true">
             <cascade>
-                <cascade-all/>
+                <cascade-all />
             </cascade>
+            <order-by>
+                <order-by-field name="id" />
+            </order-by>
         </one-to-many>
+
+        <many-to-many field="locales" target-entity="Sylius\Component\Locale\Model\LocaleInterface">
+            <join-table name="bitbag_cms_block_locales">
+                <join-columns>
+                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="locale_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
 
     </mapped-superclass>
 </doctrine-mapping>

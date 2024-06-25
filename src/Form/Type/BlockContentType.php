@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockContentInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Sylius\Component\Promotion\Model\CatalogPromotionActionInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -32,11 +32,11 @@ final class BlockContentType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['bitbag_sylius_cms_plugin.block_content.action.' . $type] = $type;
+            $this->actionTypes['bitbag_sylius_cms_plugin.ui.block_content.type.' . $type] = $type;
         }
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $defaultActionType = current($this->actionTypes);
         $defaultActionConfigurationType = $this->actionConfigurationTypes[$defaultActionType];
@@ -83,7 +83,7 @@ final class BlockContentType extends AbstractResourceType
 
         $form = $event->getForm();
 
-        $dataType = $data instanceof CatalogPromotionActionInterface ? $data->getType() : $data['type'];
+        $dataType = $data instanceof BlockContentInterface ? $data->getType() : $data['type'];
 
         $actionConfigurationType = $this->actionConfigurationTypes[$dataType];
         $form->add('configuration', $actionConfigurationType, [
