@@ -37,3 +37,6 @@ bitbag_sylius_cms_plugin:
         collections_subheader: Uredi kolekcije
         position: Pozicija (redosljed)
         title: Titula
+        block_content:
+            type:
+                content_text: Tekst

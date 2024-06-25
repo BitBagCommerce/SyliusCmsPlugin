@@ -6,6 +6,9 @@ bitbag_sylius_cms_plugin:
         pages: Stránky
         page: Stránka
         title: Titul
+        block_content:
+            type:
+                content_text: Text
     cms:
         content_management: Obsahový management
         cms: Obsahový management

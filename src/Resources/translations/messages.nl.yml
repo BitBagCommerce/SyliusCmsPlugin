@@ -36,3 +36,6 @@ bitbag_sylius_cms_plugin:
         collections_subheader: Beheer collecties
         position: Positie
         title: Titel
+        block_content:
+            type:
+                content_text: Tekst
