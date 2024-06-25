@@ -41,21 +41,8 @@ class BlockRepositoryTest extends JsonApiTestCase
 
         $blockRepository = $this->getRepository();
 
-        $block_array1 = $blockRepository->findByCollectionCode('collection1-code', 'en_US', 'code');
-        $block_array3 = $blockRepository->findByCollectionCode('collection3-code', 'en_US', 'code');
-
-        self::assertNotEmpty($block_array1);
-        self::assertEmpty($block_array3);
-    }
-
-    public function test_it_finds_enabled_block_by_product_code(): void
-    {
-        $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_product_code.yml');
-
-        $blockRepository = $this->getRepository();
-
-        $block_array1 = $blockRepository->findByProductCode('MUG_SW', 'en_US', 'code');
-        $block_array3 = $blockRepository->findByProductCode('MUG_SW3', 'en_US', 'code');
+        $block_array1 = $blockRepository->findByCollectionCode('collection1-code', 'code');
+        $block_array3 = $blockRepository->findByCollectionCode('collection3-code', 'code');
 
         self::assertNotEmpty($block_array1);
         self::assertEmpty($block_array3);

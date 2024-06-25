@@ -17,24 +17,21 @@ use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class BlockImporterSpec extends ObjectBehavior
 {
     public function let(
-        ResourceResolverInterface $blockResourceResolver,
-        LocaleContextInterface $localeContext,
+        ResourceResolverInterface            $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        BlockRepositoryInterface             $blockRepository
     ) {
         $this->beConstructedWith(
             $blockResourceResolver,
-            $localeContext,
             $importerCollectionsResolver,
             $importerChannelsResolver,
             $importerProductsResolver,
@@ -50,28 +47,19 @@ final class BlockImporterSpec extends ObjectBehavior
     }
 
     public function it_imports_block(
-        ResourceResolverInterface $blockResourceResolver,
-        LocaleContextInterface $localeContext,
+        ResourceResolverInterface            $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
-        ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository,
-        BlockInterface $block
-    )
-    {
-        $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code'];
+        ImporterChannelsResolverInterface    $importerChannelsResolver,
+        ImporterProductsResolverInterface    $importerProductsResolver,
+        ValidatorInterface                   $validator,
+        BlockRepositoryInterface             $blockRepository,
+        BlockInterface                       $block
+    ) {
+        $row = ['name_pl' => 'name', 'code' => 'block_code'];
 
         $blockResourceResolver->getResource('block_code')->willReturn($block);
 
-        $localeContext->getLocaleCode()->willReturn('en_US');
-
         $block->setCode('block_code')->shouldBeCalled();
-        $block->setFallbackLocale('en_US')->shouldBeCalled();
-        $block->setCurrentLocale('pl')->shouldBeCalled();
-        $block->setName('name')->shouldBeCalled();
-        $block->setLink('link')->shouldBeCalled();
-        $block->setContent('content')->shouldBeCalled();
 
         $importerCollectionsResolver->resolve($block, null)->shouldBeCalled();
         $importerChannelsResolver->resolve($block, null)->shouldBeCalled();

@@ -52,22 +52,19 @@ final class BlockContext implements Context
     /**
      * @Given there is a block with :code code and :content content
      */
-    public function thereIsABlockWithCodeAndContent(string $code, string $content): void
+    public function thereIsABlockWithCodeAndContent(string $code): void
     {
-        $block = $this->createBlock($code, $content);
+        $block = $this->createBlock($code);
 
         $this->saveBlock($block);
     }
 
     private function createBlock(
         ?string $code = null,
-        ?string $content = null,
         ChannelInterface $channel = null,
     ): BlockInterface {
         /** @var BlockInterface $block */
         $block = $this->blockFactory->createNew();
-
-        $block->setCurrentLocale('en_US');
 
         if (null === $channel && $this->sharedStorage->has('channel')) {
             $channel = $this->sharedStorage->get('channel');
@@ -77,12 +74,7 @@ final class BlockContext implements Context
             $code = $this->randomStringGenerator->generate();
         }
 
-        if (null === $content) {
-            $content = $this->randomStringGenerator->generate();
-        }
-
         $block->setCode($code);
-        $block->setContent($content);
         $block->addChannel($channel);
 
         return $block;
