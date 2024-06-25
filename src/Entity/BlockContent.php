@@ -12,13 +12,13 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 final class BlockContent implements BlockContentInterface
 {
-    protected ?int $id;
+    private ?int $id;
 
-    protected ?string $type;
+    private ?string $type;
 
-    protected array $configuration = [];
+    private array $configuration = [];
 
-    protected ?BlockInterface $block = null;
+    private ?BlockInterface $block = null;
 
     public function getId(): ?int
     {
