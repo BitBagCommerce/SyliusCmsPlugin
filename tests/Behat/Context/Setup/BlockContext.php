@@ -50,7 +50,7 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Given there is a block with :code code and :content content
+     * @Given there is a block with :code code
      */
     public function thereIsABlockWithCodeAndContent(string $code): void
     {

@@ -58,4 +58,11 @@ class Block implements BlockInterface
     {
         $this->name = $name;
     }
+
+    public function getContent(): ?string
+    {
+        // TODO: empty for now for testing purposes, to be implemented in the future tasks
+        // related to the epic: https://bitbag.atlassian.net/browse/OP-312
+        return '';
+    }
 }
