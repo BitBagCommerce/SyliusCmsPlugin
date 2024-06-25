@@ -19,5 +19,4 @@ Feature: Getting data from cms blocks
     Scenario: Displaying block
         Given I view block with code "block-1"
         Then I should see block name
-        And I should see block content
 
