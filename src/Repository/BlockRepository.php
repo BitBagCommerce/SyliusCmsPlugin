@@ -16,8 +16,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
-    use TranslationBasedAwareTrait;
-
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -43,18 +41,14 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
 
     public function findByCollectionCode(
         string $collectionCode,
-        string $localeCode,
         string $channelCode,
     ): array {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.collections', 'collection')
             ->innerJoin('o.channels', 'channels')
-            ->andWhere('translation.locale = :localeCode')
             ->andWhere('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
             ->andWhere('channels.code = :channelCode')
-            ->setParameter('localeCode', $localeCode)
             ->setParameter('collectionCode', $collectionCode)
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
@@ -62,31 +56,10 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findByProductCode(
-        string $productCode,
-        string $localeCode,
-        string $channelCode,
-    ): array {
-        return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.products', 'product')
-            ->innerJoin('o.channels', 'channels')
-            ->andWhere('translation.locale = :localeCode')
-            ->andWhere('product.code = :productCode')
-            ->andWhere('o.enabled = true')
-            ->andWhere('channels.code = :channelCode')
-            ->setParameter('localeCode', $localeCode)
-            ->setParameter('productCode', $productCode)
-            ->setParameter('channelCode', $channelCode)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-    public function findByNamePart(string $phrase, ?string $locale = null): array
+    public function findByNamePart(string $phrase): array
     {
-        return $this->createTranslationBasedQueryBuilder($locale)
-            ->andWhere('translation.name LIKE :name')
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.name LIKE :name')
             ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()

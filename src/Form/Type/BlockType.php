@@ -11,15 +11,12 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\BlockTranslationType;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Valid;
-use \Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 final class BlockType extends AbstractResourceType
 {
@@ -49,19 +46,14 @@ final class BlockType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('contents', SymfonyCollectionType::class, [
-                'label' => 'sylius.ui.actions',
+            ->add('locales')
+            ->add('contents', CollectionType::class, [
+                'label' => false,
                 'entry_type' => BlockContentType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
-            ])
-            ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.contents',
-                'entry_type' => BlockTranslationType::class,
-                'validation_groups' => ['bitbag_content'],
-                'constraints' => [new Valid()],
             ])
         ;
     }

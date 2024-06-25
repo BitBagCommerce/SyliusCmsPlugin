@@ -12,21 +12,23 @@ namespace BitBag\SyliusCmsPlugin\Form\Type\BlockContent;
 
 use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormBuilderInterface;
 
 final class BlockContentTextConfigurationType extends AbstractType
 {
     public const TYPE = 'content_text';
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $resolver->setDefaults([
-            'label' => 'bitbag_sylius_cms_plugin.ui.text',
-        ]);
+        $builder
+            ->add(self::TYPE, WysiwygType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.block_content.type.content_text',
+            ])
+        ;
     }
 
-    public function getParent(): string
+    public function getBlockPrefix(): string
     {
-        return WysiwygType::class;
+        return 'bitbag_sylius_cms_plugin_block_content_text_configuration';
     }
 }

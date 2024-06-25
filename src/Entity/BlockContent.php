@@ -18,7 +18,7 @@ final class BlockContent implements BlockContentInterface
 
     protected array $configuration = [];
 
-    protected ?BlockInterface $block;
+    protected ?BlockInterface $block = null;
 
     public function getId(): ?int
     {

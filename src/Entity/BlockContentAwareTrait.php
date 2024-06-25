@@ -35,6 +35,7 @@ trait BlockContentAwareTrait
     public function addContent(BlockContentInterface $contentItem): void
     {
         if (!$this->hasContent($contentItem)) {
+            $contentItem->setBlock($this);
             $this->contents->add($contentItem);
         }
     }
@@ -43,6 +44,7 @@ trait BlockContentAwareTrait
     {
         if ($this->hasContent($contentItem)) {
             $this->contents->removeElement($contentItem);
+            $contentItem->setBlock(null);
         }
     }
 }
