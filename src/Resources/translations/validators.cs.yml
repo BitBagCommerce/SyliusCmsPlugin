@@ -59,9 +59,9 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: Odpověď nemůže být prázdná.
             min_length: Odpověď musí obsahovat alespoň {{ limit }} znaků.
-    section:
+    collection:
         code:
-            unique: Existuje již sekce s tímto kódem.
+            unique: Existuje již kolekce s tímto kódem.
             not_blank: Kód nesmí být prázdný.
             min_length: Kód musí mít alespoň {{ limit }} znaků.
             max_length: Kód nemůže být delší než {{ limit }} znaků.

@@ -14,7 +14,7 @@ use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +32,7 @@ final class PageImporterSpec extends ObjectBehavior
         ImageDownloaderInterface $imageDownloader,
         FactoryInterface $mediaFactory,
         MediaProviderResolverInterface $mediaProviderResolver,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
@@ -44,7 +44,7 @@ final class PageImporterSpec extends ObjectBehavior
             $imageDownloader,
             $mediaFactory,
             $mediaProviderResolver,
-            $importerSectionsResolver,
+            $importerCollectionsResolver,
             $importerChannelsResolver,
             $importerProductsResolver,
             $validator,
@@ -61,13 +61,14 @@ final class PageImporterSpec extends ObjectBehavior
     public function it_imports_page_no_url(
         ResourceResolverInterface $pageResourceResolver,
         LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager,
         PageInterface $page,
-        ) {
+    )
+    {
         $row = [
             'code' => 'page_code',
             'slug_pl' => 'slug',
@@ -80,7 +81,7 @@ final class PageImporterSpec extends ObjectBehavior
             'breadcrumb_pl' => 'breadcrumb',
             'namewhenlinked_pl' => 'namewhenlinked',
             'descriptionwhenlinked_pl' => 'descriptionwhenlinked',
-            'sections' => 'sections',
+            'collections' => 'collections',
             'channels' => 'channels',
             'products' => 'products',
         ];
@@ -103,7 +104,7 @@ final class PageImporterSpec extends ObjectBehavior
         $page->setNameWhenLinked('namewhenlinked')->shouldBeCalled();
         $page->setDescriptionWhenLinked('descriptionwhenlinked')->shouldBeCalled();
 
-        $importerSectionsResolver->resolve($page, 'sections')->shouldBeCalled();
+        $importerCollectionsResolver->resolve($page, 'collections')->shouldBeCalled();
         $importerChannelsResolver->resolve($page, 'channels')->shouldBeCalled();
         $importerProductsResolver->resolve($page, 'products')->shouldBeCalled();
 

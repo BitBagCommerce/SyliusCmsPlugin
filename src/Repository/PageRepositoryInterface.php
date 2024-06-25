@@ -29,9 +29,9 @@ interface PageRepositoryInterface extends RepositoryInterface
         string $channelCode,
     ): ?PageInterface;
 
-    public function createShopListQueryBuilder(string $sectionCode, string $channelCode): QueryBuilder;
+    public function createShopListQueryBuilder(string $collectionCode, string $channelCode): QueryBuilder;
 
-    public function findBySectionCode(string $sectionCode, ?string $localeCode): array;
+    public function findByCollectionCode(string $collectionCode, ?string $localeCode): array;
 
     public function findByProduct(
         ProductInterface $product,
@@ -39,10 +39,12 @@ interface PageRepositoryInterface extends RepositoryInterface
         ?\DateTimeInterface $date,
     ): array;
 
-    public function findByProductAndSectionCode(
+    public function findByProductAndCollectionCode(
         ProductInterface $product,
-        string $sectionCode,
+        string $collectionCode,
         string $channelCode,
         ?\DateTimeInterface $date,
     ): array;
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

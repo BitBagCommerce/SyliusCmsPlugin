@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Blocs
+        block: Bloc
         pages: Pages
+        page: Page
         content_management: Gestion de contenu
         cms: Gestion de contenu
         enabled: Activée
@@ -27,9 +29,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Questions fréquentes (FAQ)
         question: Question
         answer: Réponse
-        sections: Sections
-        sections_header: Sections
-        sections_subheader: Gérer vos sections
+        collections: Collections
+        collections_header: Collections
+        collections_subheader: Gérer vos collections
         position: Position
         channels: Canaux
         preview: Prévisualisation

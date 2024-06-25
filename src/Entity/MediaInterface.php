@@ -21,7 +21,7 @@ interface MediaInterface extends
     TranslatableInterface,
     ToggleableInterface,
     ProductsAwareInterface,
-    SectionableInterface,
+    CollectibleInterface,
     ChannelsAwareInterface,
     ContentableInterface
 {

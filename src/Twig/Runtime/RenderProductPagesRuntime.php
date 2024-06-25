@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SectionsSorterInterface;
+use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorterInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Twig\Environment;
@@ -23,23 +23,23 @@ final class RenderProductPagesRuntime implements RenderProductPagesRuntimeInterf
         private PageRepositoryInterface $pageRepository,
         private ChannelContextInterface $channelContext,
         private Environment $templatingEngine,
-        private SectionsSorterInterface $sectionsSorter,
+        private CollectionsSorterInterface $collectionsSorter,
     ) {
     }
 
-    public function renderProductPages(ProductInterface $product, string $sectionCode = null): string
+    public function renderProductPages(ProductInterface $product, string $collectionCode = null): string
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
         Assert::notNull($channelCode, 'Channel code for channel is null');
-        if (null !== $sectionCode) {
-            $pages = $this->pageRepository->findByProductAndSectionCode($product, $sectionCode, $channelCode, null);
+        if (null !== $collectionCode) {
+            $pages = $this->pageRepository->findByProductAndCollectionCode($product, $collectionCode, $channelCode, null);
         } else {
             $pages = $this->pageRepository->findByProduct($product, $channelCode, null);
         }
 
-        $data = $this->sectionsSorter->sortBySections($pages);
+        $data = $this->collectionsSorter->sortByCollections($pages);
 
-        return $this->templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesBySection.html.twig', [
+        return $this->templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Product/_pagesByCollection.html.twig', [
             'data' => $data,
         ]);
     }

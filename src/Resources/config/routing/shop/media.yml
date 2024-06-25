@@ -32,17 +32,17 @@ bitbag_sylius_cms_plugin_shop_media_inline:
         _controller: bitbag_sylius_cms_plugin.controller.media.overriden::downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_INLINE
 
-bitbag_sylius_cms_plugin_shop_media_index_by_section_code:
-    path: /media/section/{sectionCode}
+bitbag_sylius_cms_plugin_shop_media_index_by_collection_code:
+    path: /media/collection/{collectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
         _sylius:
             template: $template
             repository:
-                method: findBySectionCode
+                method: findByCollectionCode
                 arguments:
-                    - $sectionCode
+                    - $collectionCode
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 

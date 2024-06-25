@@ -13,8 +13,8 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -25,7 +25,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     public function __construct(
         private ResourceResolverInterface $blockResourceResolver,
         private LocaleContextInterface $localeContext,
-        private ImporterSectionsResolverInterface $importerSectionsResolver,
+        private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
         private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
@@ -52,7 +52,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
             $block->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
         }
 
-        $this->importerSectionsResolver->resolve($block, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
+        $this->importerCollectionsResolver->resolve($block, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
         $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 

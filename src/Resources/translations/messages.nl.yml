@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Blokken
+        block: Blok
         pages: Pagina's
+        page: Pagina
         content_management: Beheer inhoud
         cms: Beheer inhoud
         enabled: Ingeschakeld
@@ -29,8 +31,8 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Veelgestelde vragen
         question: Vraag
         answer: Antwoord
-        sections: Secties
-        sections_header: Secties
-        sections_subheader: Beheer secties
+        collections: Collecties
+        collections_header: Collecties
+        collections_subheader: Beheer collecties
         position: Positie
         title: Titel

@@ -5,7 +5,7 @@
         <import resource="admin/block.xml"/>
         <import resource="admin/page.xml"/>
         <import resource="admin/frequently_asked_question.xml"/>
-        <import resource="admin/section.xml"/>
+        <import resource="admin/collection.xml"/>
         <import resource="admin/media.xml"/>
     </imports>
 </container>

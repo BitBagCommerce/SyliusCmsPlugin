@@ -16,6 +16,8 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {
+    use TranslationBasedAwareTrait;
+
     public function createListQueryBuilder(string $localeCode): QueryBuilder
     {
         return $this->createQueryBuilder('o')
@@ -39,21 +41,21 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
         ;
     }
 
-    public function findBySectionCode(
-        string $sectionCode,
+    public function findByCollectionCode(
+        string $collectionCode,
         string $localeCode,
         string $channelCode,
     ): array {
         return $this->createQueryBuilder('o')
             ->leftJoin('o.translations', 'translation')
-            ->innerJoin('o.sections', 'section')
+            ->innerJoin('o.collections', 'collection')
             ->innerJoin('o.channels', 'channels')
             ->andWhere('translation.locale = :localeCode')
-            ->andWhere('section.code = :sectionCode')
+            ->andWhere('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
             ->andWhere('channels.code = :channelCode')
             ->setParameter('localeCode', $localeCode)
-            ->setParameter('sectionCode', $sectionCode)
+            ->setParameter('collectionCode', $collectionCode)
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getResult()
@@ -76,6 +78,16 @@ class BlockRepository extends EntityRepository implements BlockRepositoryInterfa
             ->setParameter('localeCode', $localeCode)
             ->setParameter('productCode', $productCode)
             ->setParameter('channelCode', $channelCode)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array
+    {
+        return $this->createTranslationBasedQueryBuilder($locale)
+            ->andWhere('translation.name LIKE :name')
+            ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()
         ;

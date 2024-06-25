@@ -13,7 +13,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Importer;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -25,7 +25,7 @@ final class MediaImporterSpec extends ObjectBehavior
     public function let(
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository
@@ -33,7 +33,7 @@ final class MediaImporterSpec extends ObjectBehavior
         $this->beConstructedWith(
             $mediaResourceResolver,
             $localeContext,
-            $importerSectionsResolver,
+            $importerCollectionsResolver,
             $importerProductsResolver,
             $validator,
             $mediaRepository,
@@ -49,12 +49,13 @@ final class MediaImporterSpec extends ObjectBehavior
     public function it_imports_media(
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository,
         MediaInterface $media
-    ) {
+    )
+    {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code'];
 
         $mediaResourceResolver->getResource('media_code')->willReturn($media);
@@ -68,7 +69,7 @@ final class MediaImporterSpec extends ObjectBehavior
         $media->setContent('content')->shouldBeCalled();
         $media->setAlt('alt')->shouldBeCalled();
 
-        $importerSectionsResolver->resolve($media, null)->shouldBeCalled();
+        $importerCollectionsResolver->resolve($media, null)->shouldBeCalled();
         $importerProductsResolver->resolve($media, null)->shouldBeCalled();
 
         $validator->validate($media, null, ['bitbag'])->willReturn(new ConstraintViolationList());

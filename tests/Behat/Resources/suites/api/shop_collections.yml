@@ -1,0 +1,14 @@
+default:
+    suites:
+        api_shop_collections:
+            contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - bitbag_sylius_cms_plugin.behat.context.setup.collection
+                - bitbag_sylius_cms_plugin.behat.context.transform.collection
+
+                - bitbag_sylius_cms_plugin.behat.context.api.collection
+            filters:
+                tags: "@shop_collections&&@api"

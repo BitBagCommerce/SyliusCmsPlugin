@@ -14,7 +14,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -26,7 +26,7 @@ final class BlockImporterSpec extends ObjectBehavior
     public function let(
         ResourceResolverInterface $blockResourceResolver,
         LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
@@ -35,7 +35,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $this->beConstructedWith(
             $blockResourceResolver,
             $localeContext,
-            $importerSectionsResolver,
+            $importerCollectionsResolver,
             $importerChannelsResolver,
             $importerProductsResolver,
             $validator,
@@ -52,13 +52,14 @@ final class BlockImporterSpec extends ObjectBehavior
     public function it_imports_block(
         ResourceResolverInterface $blockResourceResolver,
         LocaleContextInterface $localeContext,
-        ImporterSectionsResolverInterface $importerSectionsResolver,
+        ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         BlockRepositoryInterface $blockRepository,
         BlockInterface $block
-    ) {
+    )
+    {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'link_pl' => 'link', 'code' => 'block_code'];
 
         $blockResourceResolver->getResource('block_code')->willReturn($block);
@@ -72,7 +73,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $block->setLink('link')->shouldBeCalled();
         $block->setContent('content')->shouldBeCalled();
 
-        $importerSectionsResolver->resolve($block, null)->shouldBeCalled();
+        $importerCollectionsResolver->resolve($block, null)->shouldBeCalled();
         $importerChannelsResolver->resolve($block, null)->shouldBeCalled();
         $importerProductsResolver->resolve($block, null)->shouldBeCalled();
 

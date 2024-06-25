@@ -48,22 +48,22 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Content', $content);
     }
 
-    public function associateSections(array $sectionsNames): void
+    public function associateCollections(array $collectionsNames): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
-        $dropdown = $this->getElement('association_dropdown_section');
+        $dropdown = $this->getElement('association_dropdown_collection');
         $dropdown->click();
 
-        foreach ($sectionsNames as $sectionName) {
-            $dropdown->waitFor(5, function () use ($sectionName) {
-                return $this->hasElement('association_dropdown_section_item', [
-                    '%item%' => $sectionName,
+        foreach ($collectionsNames as $collectionName) {
+            $dropdown->waitFor(5, function () use ($collectionName) {
+                return $this->hasElement('association_dropdown_collection_item', [
+                    '%item%' => $collectionName,
                 ]);
             });
 
-            $item = $this->getElement('association_dropdown_section_item', [
-                '%item%' => $sectionName,
+            $item = $this->getElement('association_dropdown_collection_item', [
+                '%item%' => $collectionName,
             ]);
 
             $item->click();
@@ -73,8 +73,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'association_dropdown_section' => '.field > label:contains("Sections") ~ .sylius-autocomplete',
-            'association_dropdown_section_item' => '.field > label:contains("Sections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
+            'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }

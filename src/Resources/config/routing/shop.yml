@@ -7,8 +7,8 @@ bitbag_sylius_cms_plugin_shop_page:
 bitbag_sylius_cms_plugin_shop_frequently_asked_question:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/frequently_asked_question.yml"
 
-bitbag_sylius_cms_plugin_shop_section:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/section.yml"
+bitbag_sylius_cms_plugin_shop_collection:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/collection.yml"
 
 bitbag_sylius_cms_plugin_shop_media:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/media.yml"

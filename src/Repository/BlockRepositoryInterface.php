@@ -20,8 +20,8 @@ interface BlockRepositoryInterface extends RepositoryInterface
 
     public function findEnabledByCode(string $code, string $channelCode): ?BlockInterface;
 
-    public function findBySectionCode(
-        string $sectionCode,
+    public function findByCollectionCode(
+        string $collectionCode,
         string $localeCode,
         string $channelCode,
     ): array;
@@ -31,4 +31,6 @@ interface BlockRepositoryInterface extends RepositoryInterface
         string $localeCode,
         string $channelCode,
     ): array;
+
+    public function findByNamePart(string $phrase, ?string $locale = null): array;
 }

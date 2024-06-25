@@ -12,7 +12,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Block;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -57,16 +57,16 @@ final class BlockSpec extends ObjectBehavior
         $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
-    public function it_associates_sections(SectionInterface $firstSection, SectionInterface $secondSection): void
+    public function it_associates_collections(CollectionInterface $firstCollection, CollectionInterface $secondCollection): void
     {
-        $this->addSection($firstSection);
-        $this->hasSection($firstSection)->shouldReturn(true);
+        $this->addCollection($firstCollection);
+        $this->hasCollection($firstCollection)->shouldReturn(true);
 
-        $this->hasSection($secondSection)->shouldReturn(false);
+        $this->hasCollection($secondCollection)->shouldReturn(false);
 
-        $this->removeSection($firstSection);
+        $this->removeCollection($firstCollection);
 
-        $this->hasSection($firstSection)->shouldReturn(false);
+        $this->hasCollection($firstCollection)->shouldReturn(false);
     }
 
     public function it_associates_channels(ChannelInterface $firstChannel, ChannelInterface $secondChannel): void

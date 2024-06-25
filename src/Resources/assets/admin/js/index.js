@@ -1,4 +1,10 @@
-import {HandleCsvUpload, HandleSlugUpdate, HandlePreview, HandleAutoComplete} from './bitbag';
+import {
+    HandleCsvUpload,
+    HandleSlugUpdate,
+    HandlePreview,
+    HandleAutoComplete,
+    HandleChooseCollectionType
+} from './bitbag';
 
 if (document.querySelector('[data-bb-target="cms-import"]')) {
     new HandleCsvUpload().init();
@@ -14,4 +20,8 @@ if (document.querySelectorAll('[data-bb-cms-preview-btn]').length > 0) {
 
 if (document.querySelector('[data-bb-target="cms-handle-autocomplete"]')) {
     new HandleAutoComplete().init();
+}
+
+if (document.querySelector('.collection-type-items')) {
+    new HandleChooseCollectionType().init();
 }

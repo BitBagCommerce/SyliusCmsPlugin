@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
@@ -37,7 +37,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         private PageRepositoryInterface $pageRepository,
         private MediaProviderResolverInterface $mediaProviderResolver,
         private ProductsAssignerInterface $productsAssigner,
-        private SectionsAssignerInterface $sectionsAssigner,
+        private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
         private ProductRepositoryInterface $productRepository,
         private LocaleContextInterface $localeContext,
@@ -80,7 +80,7 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $this->resolveProductsForChannels($page, $products, $channelsCodes);
         }
 
-        $this->sectionsAssigner->assign($page, $pageData['sections']);
+        $this->collectionsAssigner->assign($page, $pageData['collections']);
         $this->productsAssigner->assign($page, $pageData['productCodes']);
         $this->channelAssigner->assign($page, $channelsCodes);
 

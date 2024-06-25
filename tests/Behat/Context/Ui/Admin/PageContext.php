@@ -162,11 +162,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @When I add :firstSection and :secondSection sections to it
+     * @When I add :firstCollection and :secondCollection collections to it
      */
-    public function iAddAndSectionsToIt(string ...$sectionsNames): void
+    public function iAddAndCollectionsToIt(string ...$collectionsNames): void
     {
-        $this->resolveCurrentPage()->associateSections($sectionsNames);
+        $this->resolveCurrentPage()->associateCollections($collectionsNames);
     }
 
     /**

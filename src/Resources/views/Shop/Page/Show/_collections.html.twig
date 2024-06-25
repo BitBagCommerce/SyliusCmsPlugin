@@ -1,0 +1,6 @@
+{% if page.collections|length > 0 %}
+	<strong> {{ 'bitbag_sylius_cms_plugin.ui.collections'|trans }}: </strong>
+	{% for collection in page.collections %}
+	    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_collection_code', {'collectionCode' : collection.code}) }}" class="ui label">{{ collection.name }}</a>
+	{% endfor %}
+{% endif %}

@@ -34,8 +34,8 @@ final class BlockType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
-            ->add('sections', SectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
+            ->add('collections', CollectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [

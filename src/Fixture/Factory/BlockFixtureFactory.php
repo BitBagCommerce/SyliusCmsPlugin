@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\SectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockTranslationInterface;
@@ -34,7 +34,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         private LocaleContextInterface $localeContext,
         private ProductsAssignerInterface $productsAssigner,
         private TaxonsAssignerInterface $taxonsAssigner,
-        private SectionsAssignerInterface $sectionsAssigner,
+        private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
     ) {
     }
@@ -71,7 +71,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
             $this->resolveProducts($block, $products);
         }
 
-        $this->sectionsAssigner->assign($block, $blockData['sections']);
+        $this->collectionsAssigner->assign($block, $blockData['collections']);
         $this->productsAssigner->assign($block, $blockData['productCodes']);
         $this->taxonsAssigner->assign($block, $blockData['taxons']);
         $this->channelAssigner->assign($block, $blockData['channels']);

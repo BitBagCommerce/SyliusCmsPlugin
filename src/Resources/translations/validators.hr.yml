@@ -52,9 +52,9 @@ bitbag_sylius_cms_plugin:
         answer:
             not_blank: Odgovor ne može biti prazan.
             min_length: Odgovor mora sadržavati minimalno {{ limit }} znaka.
-    section:
+    collection:
         code:
-            unique: Postoji kategorija sa istim kodom.
+            unique: Postoji kolekcija sa istim kodom.
             not_blank: Kod ne može biti prazan.
             min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
             max_length: Kod ne može biti duži od {{ limit }} znakova.

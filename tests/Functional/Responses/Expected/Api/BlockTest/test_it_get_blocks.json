@@ -9,12 +9,12 @@
       "id": "@integer@",
       "code": "block1-code",
       "enabled": true,
-      "sections": [
+      "collections": [
         {
-          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
-          "@type": "Section",
+          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
+          "@type": "Collection",
           "id": "@integer@",
-          "code": "section1-code"
+          "code": "collection1-code"
         }
       ],
       "products": [
@@ -44,12 +44,12 @@
       "id": "@integer@",
       "code": "block2-code",
       "enabled": true,
-      "sections": [
+      "collections": [
         {
-          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
-          "@type": "Section",
+          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
+          "@type": "Collection",
           "id": "@integer@",
-          "code": "section2-code"
+          "code": "collection2-code"
         }
       ],
       "products": [
@@ -74,12 +74,12 @@
       "id": "@integer@",
       "code": "block3-code",
       "enabled": false,
-      "sections": [
+      "collections": [
         {
-          "@id": "/api/v2/shop/cms-plugin/sections/@integer@",
-          "@type": "Section",
+          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
+          "@type": "Collection",
           "id": "@integer@",
-          "code": "section3-code"
+          "code": "collection3-code"
         }
       ],
       "products": [

@@ -30,27 +30,27 @@ sylius_grid:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.slug
                     sortable: translation.slug
-                sections:
+                collections:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.collections
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/sections.html.twig"
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
             filters:
                 search:
                     type: string
                     label: sylius.ui.search
                     options:
                         fields: [code]
-                sections:
+                collections:
                     type: entity
-                    label: bitbag_sylius_cms_plugin.ui.sections
+                    label: bitbag_sylius_cms_plugin.ui.collections
                     form_options:
-                        class: "%bitbag_sylius_cms_plugin.model.section.class%"
+                        class: "%bitbag_sylius_cms_plugin.model.collection.class%"
                         choice_label: name
                         choice_value: code
                     options:
-                        fields: [sections.code]
+                        fields: [collections.code]
             actions:
                 main:
                     import:

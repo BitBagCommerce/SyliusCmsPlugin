@@ -40,8 +40,8 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
-            ->add('sections', SectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.sections',
+            ->add('collections', CollectionAutocompleteChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
                 'multiple' => true,
             ])
             ->add('channels', ChannelChoiceType::class, [

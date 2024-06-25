@@ -18,7 +18,7 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
                 <argument type="service" id="doctrine.orm.entity_manager" />
                 <argument type="service" id="sylius.repository.product" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.media_provider.image" />
             </service>
 
@@ -29,11 +29,11 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.frequently_asked_question" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.section" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\SectionContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\CollectionContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.section" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
             </service>
 
             <service id="bitbag_sylius_cms_plugin.behat.context.setup.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\MediaContext">

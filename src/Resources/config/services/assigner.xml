@@ -16,8 +16,8 @@
             <argument type="service" id="sylius.repository.taxon" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.sections" class="BitBag\SyliusCmsPlugin\Assigner\SectionsAssigner">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.section" />
+        <service id="bitbag_sylius_cms_plugin.assigner.collections" class="BitBag\SyliusCmsPlugin\Assigner\CollectionsAssigner">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
         </service>
     </services>
 </container>

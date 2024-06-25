@@ -35,14 +35,14 @@ class BlockRepositoryTest extends JsonApiTestCase
         self::assertNull($block3);
     }
 
-    public function test_it_finds_enabled_block_by_section_code(): void
+    public function test_it_finds_enabled_block_by_collection_code(): void
     {
-        $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_section_code.yml');
+        $this->loadFixturesFromFile('BlockRepositoryTest/test_it_finds_block_by_collection_code.yml');
 
         $blockRepository = $this->getRepository();
 
-        $block_array1 = $blockRepository->findBySectionCode('section1-code', 'en_US', 'code');
-        $block_array3 = $blockRepository->findBySectionCode('section3-code', 'en_US', 'code');
+        $block_array1 = $blockRepository->findByCollectionCode('collection1-code', 'en_US', 'code');
+        $block_array3 = $blockRepository->findByCollectionCode('collection3-code', 'en_US', 'code');
 
         self::assertNotEmpty($block_array1);
         self::assertEmpty($block_array3);

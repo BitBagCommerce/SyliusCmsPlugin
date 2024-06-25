@@ -220,47 +220,47 @@ final class BlockFixtureTest extends TestCase
     /**
      * @test
      */
-    public function custom_sections_is_optional_but_must_be_scalar_array(): void
+    public function custom_collections_is_optional_but_must_be_scalar_array(): void
     {
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'sections' => ['blog', 'homepage'],
+                        'collections' => ['blog', 'homepage'],
                     ],
                 ],
             ],
-        ], 'custom.*.sections');
+        ], 'custom.*.collections');
 
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'homepage_banner' => [
-                        'sections' => [],
+                        'collections' => [],
                     ],
                 ],
             ],
-        ], 'custom.*.sections');
+        ], 'custom.*.collections');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'custom_1' => [
-                        'sections' => '',
+                        'collections' => '',
                     ],
                 ],
             ],
-        ], 'custom.*.sections');
+        ], 'custom.*.collections');
 
         $this->assertPartialConfigurationIsInvalid([
             [
                 'custom' => [
                     'custom_1' => [
-                        'section_name' => 'blog',
+                        'collection_name' => 'blog',
                     ],
                 ],
             ],
-        ], 'custom.*.sections');
+        ], 'custom.*.collections');
     }
 
     /**

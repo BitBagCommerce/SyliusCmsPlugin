@@ -15,8 +15,8 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterSectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,7 +34,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         private ImageDownloaderInterface $imageDownloader,
         private FactoryInterface $mediaFactory,
         private MediaProviderResolverInterface $mediaProviderResolver,
-        private ImporterSectionsResolverInterface $importerSectionsResolver,
+        private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
         private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
@@ -74,7 +74,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
             }
         }
 
-        $this->importerSectionsResolver->resolve($page, $this->getColumnValue(self::SECTIONS_COLUMN, $row));
+        $this->importerCollectionsResolver->resolve($page, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($page, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
         $this->importerProductsResolver->resolve($page, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 

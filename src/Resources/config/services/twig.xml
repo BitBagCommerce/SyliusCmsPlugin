@@ -43,7 +43,7 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="twig" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.sorter.sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.sorter.collections" />
             <tag name="twig.runtime" />
         </service>
 

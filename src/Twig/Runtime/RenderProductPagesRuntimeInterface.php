@@ -15,5 +15,5 @@ use Twig\Extension\RuntimeExtensionInterface;
 
 interface RenderProductPagesRuntimeInterface extends RuntimeExtensionInterface
 {
-    public function renderProductPages(ProductInterface $product, string $sectionCode = null): string;
+    public function renderProductPages(ProductInterface $product, string $collectionCode = null): string;
 }

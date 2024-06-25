@@ -14,7 +14,7 @@
 
         <field name="enabled" column="enabled" type="boolean"/>
 
-        <many-to-many field="sections" target-entity="BitBag\SyliusCmsPlugin\Entity\SectionInterface">
+        <many-to-many field="collections" target-entity="BitBag\SyliusCmsPlugin\Entity\CollectionInterface">
             <join-table name="bitbag_cms_block_sections">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>

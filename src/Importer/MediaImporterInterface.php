@@ -16,7 +16,7 @@ interface MediaImporterInterface extends ImporterInterface
 
     public const TYPE_COLUMN = 'type';
 
-    public const SECTIONS_COLUMN = 'sections';
+    public const COLLECTIONS_COLUMN = 'collections';
 
     public const CHANNELS_COLUMN = 'channels';
 

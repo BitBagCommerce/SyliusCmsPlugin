@@ -1,7 +1,9 @@
 bitbag_sylius_cms_plugin:
     ui:
         blocks: Блоки
+        block: Блок
         pages: Страницы
+        page: Страница
         content_management: Наполнение
         cms: Управление наполнением
         enabled: Вкл
@@ -27,9 +29,9 @@ bitbag_sylius_cms_plugin:
         frequently_asked_questions: Часто задаваемые вопросы
         question: Вопрос
         answer: Ответ
-        sections: Разделы
-        sections_header: Разделы
-        sections_subheader: Управление разделами
+        collections: Коллекции
+        collections_header: Коллекции
+        collections_subheader: Управляйте своими коллекциями
         position: Позиция
         channels: Каналы
         preview: Предпросмотр

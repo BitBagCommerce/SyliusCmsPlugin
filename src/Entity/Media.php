@@ -20,7 +20,7 @@ use Webmozart\Assert\Assert;
 class Media implements MediaInterface
 {
     use ToggleableTrait;
-    use SectionableTrait;
+    use CollectibleTrait;
     use ProductsAwareTrait;
     use ChannelsAwareTrait;
     use TranslatableTrait {
@@ -60,7 +60,7 @@ class Media implements MediaInterface
     public function __construct()
     {
         $this->initializeTranslationsCollection();
-        $this->initializeSectionsCollection();
+        $this->initializeCollectionsCollection();
         $this->initializeProductsCollection();
         $this->initializeChannelsCollection();
     }

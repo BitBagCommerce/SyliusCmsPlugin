@@ -16,12 +16,12 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
     public function getRouteName(): string
     {
-        return 'bitbag_sylius_cms_plugin_shop_page_index_by_section_code';
+        return 'bitbag_sylius_cms_plugin_shop_page_index_by_collection_code';
     }
 
-    public function hasSectionName(string $sectionName): bool
+    public function hasCollectionName(string $collectionName): bool
     {
-        return $sectionName === $this->getElement('section')->getText();
+        return $collectionName === $this->getElement('collection')->getText();
     }
 
     public function hasPagesNumber(int $pagesNumber): bool
@@ -34,7 +34,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'section' => '.bitbag-section-name',
+            'collection' => '.bitbag-collection-name',
             'pages' => '#bitbag-pages',
         ]);
     }

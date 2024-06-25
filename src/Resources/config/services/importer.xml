@@ -12,7 +12,7 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.downloader.image" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
             <argument type="service" id="validator" />
@@ -23,7 +23,7 @@
         <service id="bitbag_sylius_cms_plugin.importer.block" class="BitBag\SyliusCmsPlugin\Importer\BlockImporter">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.block" />
             <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
             <argument type="service" id="validator" />
@@ -34,7 +34,7 @@
         <service id="bitbag_sylius_cms_plugin.importer.media" class="BitBag\SyliusCmsPlugin\Importer\MediaImporter">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.media" />
             <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_sections" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
             <argument type="service" id="validator" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
