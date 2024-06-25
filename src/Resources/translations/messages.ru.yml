@@ -54,3 +54,6 @@ bitbag_sylius_cms_plugin:
         csv_file: CSV файл
         successfully_imported: Данные успешно импортированы
         title: заглавие
+        block_content:
+            type:
+                content_text: Текст

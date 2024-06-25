@@ -41,3 +41,6 @@ bitbag_sylius_cms_plugin:
         publish_at: Opublikuj
         page_will_be_publish_at: Strona zostanie opublikowana
         save_with_original_name: Zapisz z oryginalną nazwą
+        block_content:
+            type:
+                content_text: Tekst
