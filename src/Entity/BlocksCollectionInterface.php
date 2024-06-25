@@ -12,15 +12,15 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface MediableInterface
+interface BlocksCollectionInterface
 {
-    public function initializeMediaCollection(): void;
+    public function initializeBlocksCollection(): void;
 
-    public function getMedia(): ?Collection;
+    public function getBlocks(): ?Collection;
 
-    public function hasMedium(MediaInterface $media): bool;
+    public function hasBlock(BlockInterface $block): bool;
 
-    public function addMedium(MediaInterface $media): void;
+    public function addBlock(BlockInterface $block): void;
 
-    public function removeMedium(MediaInterface $media): void;
+    public function removeBlock(BlockInterface $block): void;
 }

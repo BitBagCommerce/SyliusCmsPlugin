@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Webmozart\Assert\Assert;
@@ -21,7 +21,7 @@ final class CollectionsAssigner implements CollectionsAssignerInterface
     {
     }
 
-    public function assign(CollectionableInterface $collectionsAware, array $collectionsCodes): void
+    public function assign(CollectibleInterface $collectionsAware, array $collectionsCodes): void
     {
         foreach ($collectionsCodes as $collectionCode) {
             /** @var CollectionInterface|null $collection */

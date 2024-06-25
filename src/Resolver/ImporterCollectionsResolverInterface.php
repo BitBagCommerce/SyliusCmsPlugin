@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 
 interface ImporterCollectionsResolverInterface
 {
-    public function resolve(CollectionableInterface $collectionable, ?string $collectionsRow): void;
+    public function resolve(CollectibleInterface $collectionable, ?string $collectionsRow): void;
 }

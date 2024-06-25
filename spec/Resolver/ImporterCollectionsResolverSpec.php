@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Resolver;
 
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -30,7 +30,7 @@ final class ImporterCollectionsResolverSpec extends ObjectBehavior
 
     public function it_resolves_collections_for_collectionable_entity(
         CollectionsAssignerInterface $collectionsAssigner,
-        CollectionableInterface $collectionable
+        CollectibleInterface $collectionable
     ) {
         $collectionsRow = 'collection1, collection2, collection3';
         $collectionsCodes = ['collection1', 'collection2', 'collection3'];
@@ -42,7 +42,7 @@ final class ImporterCollectionsResolverSpec extends ObjectBehavior
 
     public function it_skips_resolution_when_collections_row_is_null(
         CollectionsAssignerInterface $collectionsAssigner,
-        CollectionableInterface $collectionable
+        CollectibleInterface $collectionable
     )
     {
         $collectionsRow = null;

@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 
 interface CollectionsAssignerInterface
 {
-    public function assign(CollectionableInterface $collectionsAware, array $collectionsCodes): void;
+    public function assign(CollectibleInterface $collectionsAware, array $collectionsCodes): void;
 }

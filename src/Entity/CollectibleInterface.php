@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface CollectionableInterface
+interface CollectibleInterface
 {
     public function initializeCollectionsCollection(): void;
 

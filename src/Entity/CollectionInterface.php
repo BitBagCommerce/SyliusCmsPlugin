@@ -17,8 +17,8 @@ interface CollectionInterface extends
     ResourceInterface,
     TranslatableInterface,
     PagesCollectionInterface,
-    BlockableInterface,
-    MediableInterface
+    BlocksCollectionInterface,
+    MediaCollectionInterface
 {
     public function getCode(): ?string;
 

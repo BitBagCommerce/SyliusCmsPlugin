@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Resolver;
 
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 
 final class ImporterCollectionsResolver implements ImporterCollectionsResolverInterface
 {
@@ -19,7 +19,7 @@ final class ImporterCollectionsResolver implements ImporterCollectionsResolverIn
     {
     }
 
-    public function resolve(CollectionableInterface $collectionable, ?string $collectionsRow): void
+    public function resolve(CollectibleInterface $collectionable, ?string $collectionsRow): void
     {
         if (null === $collectionsRow) {
             return;

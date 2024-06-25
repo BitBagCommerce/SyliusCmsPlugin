@@ -12,7 +12,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Assigner;
 
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssigner;
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionableInterface;
+use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use PhpSpec\ObjectBehavior;
@@ -38,7 +38,7 @@ final class CollectionsAssignerSpec extends ObjectBehavior
         CollectionRepositoryInterface $collectionRepository,
         CollectionInterface $aboutCollection,
         CollectionInterface $blogCollection,
-        CollectionableInterface $collectionsAware
+        CollectibleInterface $collectionsAware
     ): void
     {
         $collectionRepository->findOneBy(['code' => 'about'])->willReturn($aboutCollection);
