@@ -18,7 +18,7 @@ Feature: Managing cms blocks
 
     @ui @javascript
     Scenario: Updating block
-        Given there is a block with "store_phone_number" code and "123456789" content
+        Given there is a block with "store_phone_number" code
         When I go to the update "store_phone_number" block page
         And I fill the content with "987654321"
         And I update it

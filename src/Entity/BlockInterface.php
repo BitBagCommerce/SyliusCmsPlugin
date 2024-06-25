@@ -20,7 +20,8 @@ interface BlockInterface extends
     CollectionableInterface,
     ChannelsAwareInterface,
     BlockContentAwareInterface,
-    LocaleAwareInterface
+    LocaleAwareInterface,
+    ContentableInterface
 {
     public function getCode(): ?string;
 
