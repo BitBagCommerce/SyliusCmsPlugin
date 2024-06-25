@@ -14,8 +14,6 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface BlockContentInterface extends ResourceInterface
 {
-    public function getId(): ?int;
-
     public function getType(): ?string;
 
     public function setType(?string $type): void;

@@ -10,15 +10,15 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-final class BlockContent implements BlockContentInterface
+class BlockContent implements BlockContentInterface
 {
-    private ?int $id;
+    protected ?int $id;
 
-    private ?string $type;
+    protected ?string $type;
 
-    private array $configuration = [];
+    protected array $configuration = [];
 
-    private ?BlockInterface $block = null;
+    protected ?BlockInterface $block = null;
 
     public function getId(): ?int
     {
