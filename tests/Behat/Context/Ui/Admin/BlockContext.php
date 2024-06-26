@@ -124,6 +124,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I fill the name with :name if the name field is empty
+     */
+    public function iFillTheNameIfItIsEmpty(string $name): void
+    {
+        $this->resolveCurrentPage()->fillNameIfItIsEmpty($name);
+    }
+
+    /**
      * @When I fill the link with :link
      */
     public function iFillTheLinkWith(string $link): void

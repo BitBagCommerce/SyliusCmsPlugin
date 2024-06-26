@@ -12,6 +12,7 @@ Feature: Adding blocks
     Scenario: Adding block
         When I go to the create block page
         And I fill the code with "store_description"
+        And I fill the name with "Store Description"
         And I add it
         Then I should be notified that the block has been created
 
@@ -20,6 +21,7 @@ Feature: Adding blocks
         Given there are existing collections named "Blog" and "Homepage"
         When I go to the create block page
         And I fill the code with "intro"
+        And I fill the name with "Intro"
         And I add "Blog" and "Homepage" collections to it
         And I add it
         Then I should be notified that the block has been created
