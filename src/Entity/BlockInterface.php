@@ -17,7 +17,7 @@ use Sylius\Component\Resource\Model\ToggleableInterface;
 interface BlockInterface extends
     ResourceInterface,
     ToggleableInterface,
-    CollectionableInterface,
+    CollectibleInterface,
     ChannelsAwareInterface,
     BlockContentAwareInterface,
     LocaleAwareInterface,

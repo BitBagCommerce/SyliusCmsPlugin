@@ -15,7 +15,7 @@ use Sylius\Component\Resource\Model\ToggleableTrait;
 class Block implements BlockInterface
 {
     use ToggleableTrait;
-    use CollectionableTrait;
+    use CollectibleTrait;
     use ChannelsAwareTrait;
     use BlockContentAwareTrait;
     use LocaleAwareTrait;
