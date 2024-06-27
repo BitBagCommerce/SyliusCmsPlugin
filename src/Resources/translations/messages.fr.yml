@@ -55,6 +55,6 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Les données ont été importées.
         form_was_submitted_with_errors: "Le formulaire a les erreurs suivantes :"
         title: Titre
-        block_content:
+        content_configuration:
             type:
                 content_text: Texte

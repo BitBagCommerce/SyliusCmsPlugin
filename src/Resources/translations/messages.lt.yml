@@ -54,6 +54,6 @@ bitbag_sylius_cms_plugin:
         csv_file: CSV failas
         successfully_imported: Duomenys sėkmingai importuoti.
         form_was_submitted_with_errors: "Forma pateikta su klaidomis:"
-        block_content:
+        content_configuration:
             type:
                 content_text: Tekstas

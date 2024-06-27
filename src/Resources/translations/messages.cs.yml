@@ -6,7 +6,7 @@ bitbag_sylius_cms_plugin:
         pages: Stránky
         page: Stránka
         title: Titul
-        block_content:
+        content_configuration:
             type:
                 content_text: Text
     cms:
