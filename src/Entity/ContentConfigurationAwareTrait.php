@@ -13,6 +13,9 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+/**
+ * @property Collection $contents
+ */
 trait ContentConfigurationAwareTrait
 {
     protected Collection $contents;
@@ -35,9 +38,10 @@ trait ContentConfigurationAwareTrait
     public function addContent(ContentConfigurationInterface $contentItem): void
     {
         if (!$this->hasContent($contentItem)) {
-            if ($this instanceof BlockInterface) {
+            /** @phpstan-var Block|Page $this */
+            if ($this instanceof Block) {
                 $contentItem->setBlock($this);
-            } elseif ($this instanceof PageInterface) {
+            } elseif ($this instanceof Page) {
                 $contentItem->setPage($this);
             }
 
@@ -50,9 +54,10 @@ trait ContentConfigurationAwareTrait
         if ($this->hasContent($contentItem)) {
             $this->contents->removeElement($contentItem);
 
-            if ($this instanceof BlockInterface) {
+            /** @phpstan-var Block|Page $this */
+            if ($this instanceof Block) {
                 $contentItem->setBlock(null);
-            } elseif ($this instanceof PageInterface) {
+            } elseif ($this instanceof Page) {
                 $contentItem->setPage(null);
             }
         }

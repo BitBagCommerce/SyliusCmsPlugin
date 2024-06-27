@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Controller;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;

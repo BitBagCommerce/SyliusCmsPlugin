@@ -53,7 +53,6 @@
         </service>
 
         <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime">
-            <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="router.default" />
             <argument>%bitbag_cms.twig.link_template%</argument>

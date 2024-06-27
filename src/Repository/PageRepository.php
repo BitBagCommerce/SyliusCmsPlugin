@@ -56,7 +56,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
             ->setParameter('channelCode', $channelCode)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 
     public function createShopListQueryBuilder(string $collectionCode, string $channelCode): QueryBuilder

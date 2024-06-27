@@ -12,7 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -20,7 +19,6 @@ use Twig\Environment;
 final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 {
     public function __construct(
-        private LocaleContextInterface $localeContext,
         private PageRepositoryInterface $pageRepository,
         private RouterInterface $router,
         private string $defaultTemplate,
