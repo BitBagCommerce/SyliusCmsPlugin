@@ -56,6 +56,6 @@ bitbag_sylius_cms_plugin:
         import: Importieren
         successfully_imported: Die Daten wurden importiert.
         form_was_submitted_with_errors: "Das Formular wurde mit folgenden Fehlern übermittelt:"
-        block_content:
+        content_configuration:
             type:
                 content_text: Inhaltstext

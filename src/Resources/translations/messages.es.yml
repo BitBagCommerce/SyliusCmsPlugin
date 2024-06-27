@@ -37,6 +37,6 @@ bitbag_sylius_cms_plugin:
         collections_subheader: Gestiona tus colecciones
         position: Posición
         title: Título
-        block_content:
+        content_configuration:
             type:
                 content_text: Texto
