@@ -23,6 +23,7 @@ interface PageRepositoryInterface extends RepositoryInterface
 
     public function findOneEnabledBySlugAndChannelCode(
         string $slug,
+        ?string $localeCode,
         string $channelCode,
     ): ?PageInterface;
 
