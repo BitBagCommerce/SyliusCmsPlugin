@@ -33,7 +33,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         array $options = [],
         ?string $template = null,
     ): string {
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
 
         return $environment->render($template ?? $this->defaultTemplate, [
             'page' => $page,
@@ -46,7 +46,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         array $options = [],
     ): string {
         /** @var PageInterface|null $page */
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
         if (null === $page) {
             throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }

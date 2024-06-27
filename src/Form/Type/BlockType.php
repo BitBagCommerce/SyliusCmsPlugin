@@ -49,7 +49,7 @@ final class BlockType extends AbstractResourceType
             ->add('locales')
             ->add('contents', CollectionType::class, [
                 'label' => false,
-                'entry_type' => BlockContentType::class,
+                'entry_type' => ContentConfigurationType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,

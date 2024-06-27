@@ -17,7 +17,7 @@ class Block implements BlockInterface
     use ToggleableTrait;
     use CollectibleTrait;
     use ChannelsAwareTrait;
-    use BlockContentAwareTrait;
+    use ContentConfigurationAwareTrait;
     use LocaleAwareTrait;
 
     public function __construct()

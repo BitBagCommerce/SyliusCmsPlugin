@@ -39,7 +39,6 @@ bitbag_sylius_cms_plugin_admin_ajax_page_by_name_phrase:
                 method: findByNamePart
                 arguments:
                     phrase: $phrase
-                    locale: null
 
 bitbag_sylius_cms_plugin_admin_ajax_page_by_code:
     path: /ajax/pages/code

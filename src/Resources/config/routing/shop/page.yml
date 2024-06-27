@@ -9,7 +9,6 @@ bitbag_sylius_cms_plugin_shop_page_show:
                 method: findOneEnabledBySlugAndChannelCode
                 arguments:
                     - $slug
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
@@ -23,7 +22,6 @@ bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
                 method: findOneEnabledByCode
                 arguments:
                     - $code
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_sylius_cms_plugin_shop_page_index_by_collection_code:
     path: /pages/{collectionCode}
@@ -37,7 +35,6 @@ bitbag_sylius_cms_plugin_shop_page_index_by_collection_code:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_no_grid:
     path: /pages/{collectionCode}/no-grid
@@ -50,7 +47,6 @@ bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_no_grid:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_template:
     path: /pages-template/{collectionCode}
@@ -64,4 +60,3 @@ bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_template:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"

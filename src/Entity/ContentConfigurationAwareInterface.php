@@ -12,15 +12,15 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface BlockContentAwareInterface
+interface ContentConfigurationAwareInterface
 {
     public function initializeContentsCollection(): void;
 
     public function getContents(): Collection;
 
-    public function hasContent(BlockContentInterface $contentItem): bool;
+    public function hasContent(ContentConfigurationInterface $contentItem): bool;
 
-    public function addContent(BlockContentInterface $contentItem): void;
+    public function addContent(ContentConfigurationInterface $contentItem): void;
 
-    public function removeContent(BlockContentInterface $contentItem): void;
+    public function removeContent(ContentConfigurationInterface $contentItem): void;
 }

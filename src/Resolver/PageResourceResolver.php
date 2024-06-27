@@ -26,7 +26,7 @@ final class PageResourceResolver implements PageResourceResolverInterface
 
     public function findOrLog(string $code): ?PageInterface
     {
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
 
         if (false === $page instanceof PageInterface) {
             $this->logger->warning(sprintf(
