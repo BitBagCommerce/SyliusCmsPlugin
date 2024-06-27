@@ -10,5 +10,14 @@
         <attribute name="slug">
             <group>shop:cms:read</group>
         </attribute>
+        <attribute name="metaKeywords">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="metaDescription">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="title">
+            <group>shop:cms:read</group>
+        </attribute>
     </class>
 </serializer>

@@ -33,12 +33,6 @@ class Page implements PageInterface
 
     protected ?string $name;
 
-    protected ?string $title;
-
-    protected ?string $metaKeywords;
-
-    protected ?string $metaDescription;
-
     protected ?\DateTimeImmutable $publishAt;
 
     public function __construct()
@@ -89,22 +83,32 @@ class Page implements PageInterface
 
     public function getMetaKeywords(): ?string
     {
-        return $this->metaKeywords;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getMetaKeywords();
     }
 
     public function setMetaKeywords(?string $metaKeywords): void
     {
-        $this->metaKeywords = $metaKeywords;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setMetaKeywords($metaKeywords);
     }
 
     public function getMetaDescription(): ?string
     {
-        return $this->metaDescription;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getMetaDescription();
     }
 
     public function setMetaDescription(?string $metaDescription): void
     {
-        $this->metaDescription = $metaDescription;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setMetaDescription($metaDescription);
     }
 
     public function getName(): ?string
@@ -119,12 +123,17 @@ class Page implements PageInterface
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTitle();
     }
 
     public function setTitle(?string $title): void
     {
-        $this->title = $title;
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTitle($title);
     }
 
     public function getPublishAt(): ?\DateTimeImmutable
