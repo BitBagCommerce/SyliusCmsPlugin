@@ -18,4 +18,16 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function getSlug(): ?string;
 
     public function setSlug(?string $slug): void;
+
+    public function getMetaKeywords(): ?string;
+
+    public function setMetaKeywords(?string $metaKeywords): void;
+
+    public function getMetaDescription(): ?string;
+
+    public function setMetaDescription(?string $metaDescription): void;
+
+    public function getTitle(): ?string;
+
+    public function setTitle(?string $title): void;
 }

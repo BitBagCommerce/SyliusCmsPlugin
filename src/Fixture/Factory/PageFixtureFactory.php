@@ -73,11 +73,11 @@ final class PageFixtureFactory implements FixtureFactoryInterface
 
             $pageTranslation->setLocale($localeCode);
             $pageTranslation->setSlug($slug);
+            $pageTranslation->setMetaKeywords($translation['meta_keywords']);
+            $pageTranslation->setMetaDescription($translation['meta_description']);
 
             $page->addTranslation($pageTranslation);
             $page->setName($translation['name']);
-            $page->setMetaKeywords($translation['meta_keywords']);
-            $page->setMetaDescription($translation['meta_description']);
         }
 
         $this->pageRepository->add($page);

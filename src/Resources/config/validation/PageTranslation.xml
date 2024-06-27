@@ -33,5 +33,29 @@
                 </option>
             </constraint>
         </property>
+
+        <property name="metaKeywords">
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">1000</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_keywords.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_keywords.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="metaDescription">
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">5000</option>
+                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_description.min_length</option>
+                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_description.max_length</option>
+                <option name="groups">
+                    <value>bitbag</value>
+                </option>
+            </constraint>
+        </property>
     </class>
 </constraint-mapping>

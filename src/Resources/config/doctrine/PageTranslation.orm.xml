@@ -11,5 +11,11 @@
         </id>
 
         <field name="slug" column="slug" type="string" nullable="true"/>
+
+        <field name="metaKeywords" column="meta_keywords" type="string" length="1000" nullable="true"/>
+
+        <field name="metaDescription" column="meta_description" type="string" length="5000" nullable="true"/>
+
+        <field name="title" column="title" type="string" nullable="true"/>
     </mapped-superclass>
 </doctrine-mapping>
