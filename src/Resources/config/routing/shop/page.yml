@@ -9,6 +9,7 @@ bitbag_sylius_cms_plugin_shop_page_show:
                 method: findOneEnabledBySlugAndChannelCode
                 arguments:
                     - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
 bitbag_sylius_cms_plugin_shop_page_show_link_by_code:

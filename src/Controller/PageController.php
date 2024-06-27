@@ -76,8 +76,6 @@ final class PageController extends ResourceController
         $page->setFallbackLocale($request->get('_locale', $defaultLocale));
         $page->setCurrentLocale($request->get('_locale', $defaultLocale));
 
-        $this->resolveImage($page);
-
         $this->formErrorsFlashHelper->addFlashErrors($form);
 
         if (!$configuration->isHtmlRequest()) {
@@ -90,22 +88,6 @@ final class PageController extends ResourceController
             'preview' => true,
             $this->metadata->getName() => $page,
         ]);
-    }
-
-    private function resolveImage(PageInterface $page): void
-    {
-        /** @var PageTranslationInterface $translation */
-        $translation = $page->getTranslation();
-
-        $image = $translation->getImage();
-
-        if (null === $image || null === $image->getPath()) {
-            return;
-        }
-        $this->setResourceMediaPath($image);
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $page->getTranslation();
-        $pageTranslationInterface->setImage($image);
     }
 
     public function setPageResourceResolver(PageResourceResolverInterface $pageResourceResolver): void
