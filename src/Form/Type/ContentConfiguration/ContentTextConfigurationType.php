@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\BlockContent;
+namespace BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration;
 
 use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class BlockContentTextConfigurationType extends AbstractType
+final class ContentTextConfigurationType extends AbstractType
 {
     public const TYPE = 'content_text';
 
@@ -22,13 +22,13 @@ final class BlockContentTextConfigurationType extends AbstractType
     {
         $builder
             ->add(self::TYPE, WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.block_content.type.content_text',
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_configuration.type.content_text',
             ])
         ;
     }
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_block_content_text_configuration';
+        return 'bitbag_sylius_cms_plugin_content_configuration_text_configuration';
     }
 }

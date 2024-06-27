@@ -2,7 +2,7 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="bitbag_sylius_cms_plugin.block_content.type.content_text" type="constant">BitBag\SyliusCmsPlugin\Form\Type\BlockContent\BlockContentTextConfigurationType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_configuration.type.content_text" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration\ContentTextConfigurationType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -14,10 +14,10 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.block_content" class="BitBag\SyliusCmsPlugin\Form\Type\BlockContentType">
-            <argument>BitBag\SyliusCmsPlugin\Entity\BlockContent</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.block_content.validation_groups%</argument>
-            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.block_content.configuration_type" index-by="key" />
+        <service id="bitbag_sylius_cms_plugin.form.type.content_configuration" class="BitBag\SyliusCmsPlugin\Form\Type\ContentConfigurationType">
+            <argument>BitBag\SyliusCmsPlugin\Entity\ContentConfiguration</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.content_configuration.validation_groups%</argument>
+            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_configuration.configuration_type" index-by="key" />
             <tag name="form.type" />
         </service>
 
@@ -85,8 +85,8 @@
             <tag name="form.type" />
         </service>
 
-        <service id="BitBag\SyliusCmsPlugin\Form\Type\BlockContent\BlockContentTextConfigurationType">
-            <tag name="bitbag_sylius_cms_plugin.block_content.configuration_type" key="%bitbag_sylius_cms_plugin.block_content.type.content_text%" />
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration\ContentTextConfigurationType">
+            <tag name="bitbag_sylius_cms_plugin.content_configuration.configuration_type" key="%bitbag_sylius_cms_plugin.content_configuration.type.content_text%" />
             <tag name="form.type" />
         </service>
 

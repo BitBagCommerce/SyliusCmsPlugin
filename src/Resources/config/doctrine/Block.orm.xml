@@ -38,7 +38,7 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockContentInterface" mapped-by="block" orphan-removal="true">
+        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface" mapped-by="block" orphan-removal="true">
             <cascade>
                 <cascade-all />
             </cascade>

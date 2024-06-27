@@ -13,7 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-trait BlockContentAwareTrait
+trait ContentConfigurationAwareTrait
 {
     protected Collection $contents;
 
@@ -27,24 +27,34 @@ trait BlockContentAwareTrait
         return $this->contents;
     }
 
-    public function hasContent(BlockContentInterface $contentItem): bool
+    public function hasContent(ContentConfigurationInterface $contentItem): bool
     {
         return $this->contents->contains($contentItem);
     }
 
-    public function addContent(BlockContentInterface $contentItem): void
+    public function addContent(ContentConfigurationInterface $contentItem): void
     {
         if (!$this->hasContent($contentItem)) {
-            $contentItem->setBlock($this);
+            if ($this instanceof BlockInterface) {
+                $contentItem->setBlock($this);
+            } elseif ($this instanceof PageInterface) {
+                $contentItem->setPage($this);
+            }
+
             $this->contents->add($contentItem);
         }
     }
 
-    public function removeContent(BlockContentInterface $contentItem): void
+    public function removeContent(ContentConfigurationInterface $contentItem): void
     {
         if ($this->hasContent($contentItem)) {
             $this->contents->removeElement($contentItem);
-            $contentItem->setBlock(null);
+
+            if ($this instanceof BlockInterface) {
+                $contentItem->setBlock(null);
+            } elseif ($this instanceof PageInterface) {
+                $contentItem->setPage(null);
+            }
         }
     }
 }

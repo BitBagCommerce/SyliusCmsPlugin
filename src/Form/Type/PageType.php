@@ -16,7 +16,9 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -29,12 +31,15 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
+            ->add('name', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+            ])
+            ->add('title', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.title',
+                'required' => false,
+            ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
-            ])
-            ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.products',
-                'multiple' => true,
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.images',
@@ -55,6 +60,23 @@ final class PageType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.publish_at',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
+                'required' => false,
+            ])
+            ->add('metaKeywords', TextareaType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.meta_keywords',
+                'required' => false,
+            ])
+            ->add('metaDescription', TextareaType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.meta_description',
+                'required' => false,
+            ])
+            ->add('locales')
+            ->add('contents', CollectionType::class, [
+                'label' => false,
+                'entry_type' => ContentConfigurationType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
                 'required' => false,
             ])
         ;

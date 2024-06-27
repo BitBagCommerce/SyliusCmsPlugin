@@ -5,19 +5,10 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%bitbag_sylius_cms_plugin.model.page.class%"
-                    repository:
-                        method: createListQueryBuilder
-                        arguments: ["%locale%"]
             sorting:
                 code: asc
             limits: [10, 25, 50]
             fields:
-                page_image:
-                    type: twig
-                    label: bitbag_sylius_cms_plugin.ui.image
-                    path: .
-                    options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/page_image.html.twig"
                 code:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.code
@@ -25,7 +16,7 @@ sylius_grid:
                 name:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.name
-                    sortable: translation.name
+                    sortable: name
                 slug:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.slug

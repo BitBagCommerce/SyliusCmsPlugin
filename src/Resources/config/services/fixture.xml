@@ -40,13 +40,8 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page_translation" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="sylius.repository.channel" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory">
