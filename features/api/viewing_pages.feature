@@ -23,5 +23,5 @@ Feature: Getting data from cms pages
 
     @api
     Scenario: Viewing a detailed page
-        Given I view page with code "about"
+        When I view page with code "about"
         Then I should see the page name "About us"
