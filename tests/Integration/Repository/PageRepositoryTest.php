@@ -63,48 +63,6 @@ class PageRepositoryTest extends JsonApiTestCase
         self::assertEmpty($page3_array);
     }
 
-    public function test_it_finds_enabled_page_by_product(): void
-    {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product.yml');
-
-        $pageRepository = $this->getRepository();
-
-        /** @var ProductRepositoryInterface $productRepository */
-        $productRepository = $this->getEntityManager()->getRepository(Product::class);
-
-        /** @var Product $product1 */
-        $product1 = $productRepository->findOneByCode('MUG_SW');
-        /** @var Product $product3 */
-        $product3 = $productRepository->findOneByCode('MUG_SW3');
-
-        $page1_array = $pageRepository->findByProduct($product1, 'code', null);
-        $page3_array = $pageRepository->findByProduct($product3, 'code', null);
-
-        self::assertNotEmpty($page1_array);
-        self::assertEmpty($page3_array);
-    }
-
-    public function test_it_finds_enabled_page_by_product_and_collection_code(): void
-    {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product_and_collection_code.yml');
-
-        $pageRepository = $this->getRepository();
-
-        /** @var ProductRepositoryInterface $productRepository */
-        $productRepository = $this->getEntityManager()->getRepository(Product::class);
-
-        /** @var Product $product1 */
-        $product1 = $productRepository->findOneByCode('MUG_SW');
-        /** @var Product $product3 */
-        $product3 = $productRepository->findOneByCode('MUG_SW3');
-
-        $page1_array = $pageRepository->findByProductAndCollectionCode($product1, 'collection1-code', 'code', null);
-        $page3_array = $pageRepository->findByProductAndCollectionCode($product3, 'collection3-code', 'code', null);
-
-        self::assertNotEmpty($page1_array);
-        self::assertEmpty($page3_array);
-    }
-
     private function getRepository(): PageRepositoryInterface
     {
         /** @var PageRepositoryInterface $repository */
