@@ -54,9 +54,8 @@ final class PageContext implements Context
     public function iShouldSeeThePage(string $page): void
     {
         Assert::true(
-            $this->responseChecker->hasItemWithTranslation(
+            $this->responseChecker->hasItemWithValue(
                 $this->apiClient->index(Resources::PAGES),
-                'en_US',
                 'name',
                 $page,
             ),
@@ -82,9 +81,8 @@ final class PageContext implements Context
     public function iShouldSeeThePageName(string $name): void
     {
         Assert::true(
-            $this->responseChecker->hasItemWithTranslation(
+            $this->responseChecker->hasItemWithValue(
                 $this->apiClient->getLastResponse(),
-                'en_US',
                 'name',
                 $name,
             ),
