@@ -191,7 +191,6 @@ final class PageContext implements Context
     private function createPage(
         ?string $code = null,
         ?string $name = null,
-        ?string $content = null,
         ChannelInterface $channel = null,
     ): PageInterface {
         /** @var PageInterface $page */
@@ -209,15 +208,10 @@ final class PageContext implements Context
             $name = $this->randomStringGenerator->generate();
         }
 
-        if (null === $content) {
-            $content = $this->randomStringGenerator->generate();
-        }
-
         $page->setCode($code);
         $page->setCurrentLocale('en_US');
         $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
-        $page->setContent($content);
         $page->addChannel($channel);
 
         return $page;
