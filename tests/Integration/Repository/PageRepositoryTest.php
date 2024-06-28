@@ -14,8 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 use ApiTestCase\JsonApiTestCase;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Core\Model\Product;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 class PageRepositoryTest extends JsonApiTestCase
 {
