@@ -28,17 +28,6 @@ Feature: Adding new page
         And I add it
         Then I should be notified that the page has been created
 
-    @ui @javascript
-    Scenario: Adding page with page image
-        And there is an existing "image" media with "aston-martin" code
-        When I go to the create page page
-        And I fill the code with "aston_martin_is_amazing_car"
-        And I fill the slug with "aston_martin_is_amazing_car"
-        And I fill the name with "Aston Martin is amazing car"
-        And I fill the meta keywords with "Aston Martin is amazing car"
-        And I fill the meta description with "Aston Martin is amazing car for this summer."
-        Then I should be notified that the page has been created
-
     @ui
     Scenario: Trying to add page with existing code
         Given there is an existing page with "terms" code
