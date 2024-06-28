@@ -35,11 +35,11 @@
 
         <property name="id" identifier="true" writable="false"/>
         <property name="code" identifier="false" writable="false"/>
+        <property name="name" identifier="false" writable="false"/>
         <property name="enabled" identifier="false" writable="false"/>
         <property name="createdAt" identifier="false" writable="false"/>
         <property name="updatedAt" identifier="false" writable="false"/>
         <property name="publishAt" identifier="false" writable="false"/>
-        <property name="products" identifier="false" writable="false"/>
         <property name="collections" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>
     </resource>
