@@ -81,7 +81,7 @@ final class PageContext implements Context
     public function iShouldSeeThePageName(string $name): void
     {
         Assert::true(
-            $this->responseChecker->hasItemWithValue(
+            $this->responseChecker->hasValue(
                 $this->apiClient->getLastResponse(),
                 'name',
                 $name,
