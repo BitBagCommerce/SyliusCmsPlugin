@@ -4,6 +4,7 @@
   "@type": "Page",
   "id": "@integer@",
   "code": "page1-code",
+  "name": "page1-name",
   "publishAt": null,
   "translations": {
     "en_US": {
