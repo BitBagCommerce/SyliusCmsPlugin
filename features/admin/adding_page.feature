@@ -14,7 +14,6 @@ Feature: Adding new page
         And I fill the code with "page_with_title"
         And I fill the slug with "page_with_title"
         And I fill the name with "page_with_title"
-        And I fill the content with "This is a page with a title set by us."
         And I add it
         Then I should be notified that the page has been created
 
@@ -26,7 +25,6 @@ Feature: Adding new page
         And I fill the name with "Top 5 outfits for this summer"
         And I fill the meta keywords with "TOP 5 summer outfit trends, outfits, Ralph Lauren"
         And I fill the meta description with "This summer is going to be hot like a pizza."
-        And I fill the content with "The best looks, trends, inspiration, and shopping picks for summer style."
         And I add it
         Then I should be notified that the page has been created
 
@@ -39,9 +37,6 @@ Feature: Adding new page
         And I fill the name with "Aston Martin is amazing car"
         And I fill the meta keywords with "Aston Martin is amazing car"
         And I fill the meta description with "Aston Martin is amazing car for this summer."
-        And I fill the content with "Aston Martin is amazing car for this summer. Buy it."
-        And I choose "aston-martin" media as image
-        And I add it
         Then I should be notified that the page has been created
 
     @ui
@@ -56,14 +51,14 @@ Feature: Adding new page
     Scenario: Adding new page with blank data
         When I go to the create page page
         And I add it
-        And I should be notified that "Code, Name, Slug, Content" fields cannot be blank
+        And I should be notified that "Code, Name, Slug" fields cannot be blank
 
     @ui
     Scenario: Trying to add a page with too short data
         When I go to the create page page
-        And I fill "Code, Name, Slug, Meta keywords, Meta description, Content" fields with 1 character
+        And I fill "Code, Name, Slug, Meta keywords, Meta description" fields with 1 character
         And I try to add it
-        Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description, Content" fields are too short
+        Then I should be notified that "Code, Name, Slug, Meta keywords, Meta description" fields are too short
 
     @ui @unstable
     Scenario: Trying to add a page with too long data
@@ -80,6 +75,5 @@ Feature: Adding new page
         And I add "Blog" and "Homepage" collections to it
         And I fill the slug with "Slug"
         And I fill the name with "Best day ever"
-        And I fill the content with "This was the best day of my life"
         And I add it
         Then I should be notified that the page has been created
