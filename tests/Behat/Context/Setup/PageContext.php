@@ -133,32 +133,6 @@ final class PageContext implements Context
     }
 
     /**
-     * @Given this page also has :content image
-     */
-    public function thisPageAlsoHasImage(string $image): void
-    {
-        $image = $this->uploadImage($image);
-
-        $this->sharedStorage->get('page')->setImage($image);
-
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @Given this page has these products associated with it
-     */
-    public function thisPageHasTheseProductsAssociatedWithIt(): void
-    {
-        $products = $this->productRepository->findAll();
-
-        foreach ($products as $product) {
-            $this->sharedStorage->get('page')->addProduct($product);
-        }
-
-        $this->entityManager->flush();
-    }
-
-    /**
      * @Given this page has these collections associated with it
      */
     public function thisPageHasTheseCollectionsAssociatedWithIt(): void
