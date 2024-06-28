@@ -10,6 +10,9 @@
         <attribute name="code">
             <group>shop:cms:read</group>
         </attribute>
+        <attribute name="name">
+            <group>shop:cms:read</group>
+        </attribute>
         <attribute name="publishAt">
             <group>shop:cms:read</group>
         </attribute>
