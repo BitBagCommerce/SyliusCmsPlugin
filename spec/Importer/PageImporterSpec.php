@@ -29,24 +29,16 @@ final class PageImporterSpec extends ObjectBehavior
     public function let(
         ResourceResolverInterface $pageResourceResolver,
         LocaleContextInterface $localeContext,
-        ImageDownloaderInterface $imageDownloader,
-        FactoryInterface $mediaFactory,
-        MediaProviderResolverInterface $mediaProviderResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ) {
         $this->beConstructedWith(
             $pageResourceResolver,
             $localeContext,
-            $imageDownloader,
-            $mediaFactory,
-            $mediaProviderResolver,
             $importerCollectionsResolver,
             $importerChannelsResolver,
-            $importerProductsResolver,
             $validator,
             $entityManager,
         );
@@ -63,7 +55,6 @@ final class PageImporterSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager,
         PageInterface $page,
@@ -99,14 +90,9 @@ final class PageImporterSpec extends ObjectBehavior
         $page->setName('name')->shouldBeCalled();
         $page->setMetaKeywords('metakeywords')->shouldBeCalled();
         $page->setMetaDescription('metadescription')->shouldBeCalled();
-        $page->setContent('content')->shouldBeCalled();
-        $page->setBreadcrumb('breadcrumb')->shouldBeCalled();
-        $page->setNameWhenLinked('namewhenlinked')->shouldBeCalled();
-        $page->setDescriptionWhenLinked('descriptionwhenlinked')->shouldBeCalled();
 
         $importerCollectionsResolver->resolve($page, 'collections')->shouldBeCalled();
         $importerChannelsResolver->resolve($page, 'channels')->shouldBeCalled();
-        $importerProductsResolver->resolve($page, 'products')->shouldBeCalled();
 
         $validator->validate($page, null, ['bitbag'])->willReturn(new ConstraintViolationList());
 

@@ -37,32 +37,14 @@ final class PageTranslationSpec extends ObjectBehavior
 
     public function it_allows_access_via_properties(MediaInterface $pageImage): void
     {
-        $this->setName('Homepage');
-        $this->getName()->shouldReturn('Homepage');
-
         $this->setSlug('homepage');
         $this->getSlug()->shouldReturn('homepage');
-
-        $this->setContent('<h1>Homepage</h1>');
-        $this->getContent()->shouldReturn('<h1>Homepage</h1>');
 
         $this->setMetaKeywords('homepage');
         $this->getMetaKeywords()->shouldReturn('homepage');
 
         $this->setMetaDescription('Description');
         $this->getMetaDescription()->shouldReturn('Description');
-
-        $this->setImage($pageImage);
-        $this->getImage()->shouldReturn($pageImage);
-
-        $this->setNameWhenLinked('name linked');
-        $this->getNameWhenLinked()->shouldReturn('name linked');
-
-        $this->setBreadcrumb('name breadcrumb');
-        $this->getBreadcrumb()->shouldReturn('name breadcrumb');
-
-        $this->setDescriptionWhenLinked('description linked');
-        $this->getDescriptionWhenLinked()->shouldReturn('description linked');
 
         $this->setTitle('title');
         $this->getTitle()->shouldReturn('title');
