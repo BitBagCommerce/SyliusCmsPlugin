@@ -40,7 +40,7 @@ class Page implements PageInterface
         $this->initializeCollectionsCollection();
         $this->initializeChannelsCollection();
         $this->initializeTranslationsCollection();
-        $this->initializeContentsCollection();
+        $this->initializeContentElementsCollection();
         $this->initializeLocalesCollection();
 
         $this->createdAt = new \DateTime();

@@ -55,6 +55,7 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Dáta boli naimportované
         form_was_submitted_with_errors: "Formulár obsahuje nasledovné chyby:"
         title: Titulok
-        content_configuration:
+        content_elements:
+            title: Obsahové prvky
             type:
-                content_text: Text
+                textarea: Textarea

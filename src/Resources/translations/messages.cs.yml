@@ -6,9 +6,10 @@ bitbag_sylius_cms_plugin:
         pages: Stránky
         page: Stránka
         title: Titul
-        content_configuration:
+        content_elements:
+            title: Obsahové prvky
             type:
-                content_text: Text
+                textarea: Textarea
     cms:
         content_management: Obsahový management
         cms: Obsahový management

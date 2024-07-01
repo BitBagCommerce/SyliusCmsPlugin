@@ -57,7 +57,7 @@ final class PageType extends AbstractResourceType
                 'required' => false,
             ])
             ->add('locales')
-            ->add('contents', CollectionType::class, [
+            ->add('contentElements', CollectionType::class, [
                 'label' => false,
                 'entry_type' => ContentConfigurationType::class,
                 'allow_add' => true,

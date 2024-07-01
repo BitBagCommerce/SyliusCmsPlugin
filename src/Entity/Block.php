@@ -24,7 +24,7 @@ class Block implements BlockInterface
     {
         $this->initializeCollectionsCollection();
         $this->initializeChannelsCollection();
-        $this->initializeContentsCollection();
+        $this->initializeContentElementsCollection();
         $this->initializeLocalesCollection();
     }
 

@@ -14,13 +14,13 @@ use Doctrine\Common\Collections\Collection;
 
 interface ContentConfigurationAwareInterface
 {
-    public function initializeContentsCollection(): void;
+    public function initializeContentElementsCollection(): void;
 
-    public function getContents(): Collection;
+    public function getContentElements(): Collection;
 
-    public function hasContent(ContentConfigurationInterface $contentItem): bool;
+    public function hasContentElement(ContentConfigurationInterface $contentElement): bool;
 
-    public function addContent(ContentConfigurationInterface $contentItem): void;
+    public function addContentElement(ContentConfigurationInterface $contentElement): void;
 
-    public function removeContent(ContentConfigurationInterface $contentItem): void;
+    public function removeContentElement(ContentConfigurationInterface $contentElement): void;
 }

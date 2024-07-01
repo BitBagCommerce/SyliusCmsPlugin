@@ -62,6 +62,7 @@ bitbag_sylius_cms_plugin:
         publish_at: Publish at
         page_will_be_publish_at: This page will be publish at
         save_with_original_name: Save with original name
-        content_configuration:
+        content_elements:
+            title: Content elements
             type:
-                content_text: Text content
+                textarea: Textarea

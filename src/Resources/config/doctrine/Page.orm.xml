@@ -49,7 +49,7 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="contents" target-entity="BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface" mapped-by="page" orphan-removal="true">
+        <one-to-many field="contentElements" target-entity="BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface" mapped-by="page" orphan-removal="true">
             <cascade>
                 <cascade-all />
             </cascade>

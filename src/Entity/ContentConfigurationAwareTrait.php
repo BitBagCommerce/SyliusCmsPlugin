@@ -14,51 +14,51 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * @property Collection $contents
+ * @property Collection $contentElements
  */
 trait ContentConfigurationAwareTrait
 {
-    protected Collection $contents;
+    protected Collection $contentElements;
 
-    public function initializeContentsCollection(): void
+    public function initializeContentElementsCollection(): void
     {
-        $this->contents = new ArrayCollection();
+        $this->contentElements = new ArrayCollection();
     }
 
-    public function getContents(): Collection
+    public function getContentElements(): Collection
     {
-        return $this->contents;
+        return $this->contentElements;
     }
 
-    public function hasContent(ContentConfigurationInterface $contentItem): bool
+    public function hasContentElement(ContentConfigurationInterface $contentElement): bool
     {
-        return $this->contents->contains($contentItem);
+        return $this->contentElements->contains($contentElement);
     }
 
-    public function addContent(ContentConfigurationInterface $contentItem): void
+    public function addContentElement(ContentConfigurationInterface $contentElement): void
     {
-        if (!$this->hasContent($contentItem)) {
+        if (!$this->hasContentElement($contentElement)) {
             /** @phpstan-var Block|Page $this */
             if ($this instanceof Block) {
-                $contentItem->setBlock($this);
+                $contentElement->setBlock($this);
             } elseif ($this instanceof Page) {
-                $contentItem->setPage($this);
+                $contentElement->setPage($this);
             }
 
-            $this->contents->add($contentItem);
+            $this->contentElements->add($contentElement);
         }
     }
 
-    public function removeContent(ContentConfigurationInterface $contentItem): void
+    public function removeContentElement(ContentConfigurationInterface $contentElement): void
     {
-        if ($this->hasContent($contentItem)) {
-            $this->contents->removeElement($contentItem);
+        if ($this->hasContentElement($contentElement)) {
+            $this->contentElements->removeElement($contentElement);
 
             /** @phpstan-var Block|Page $this */
             if ($this instanceof Block) {
-                $contentItem->setBlock(null);
+                $contentElement->setBlock(null);
             } elseif ($this instanceof Page) {
-                $contentItem->setPage(null);
+                $contentElement->setPage(null);
             }
         }
     }

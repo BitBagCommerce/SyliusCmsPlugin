@@ -32,7 +32,7 @@ final class ContentConfigurationType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['bitbag_sylius_cms_plugin.ui.content_configuration.type.' . $type] = $type;
+            $this->actionTypes['bitbag_sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
         }
     }
 

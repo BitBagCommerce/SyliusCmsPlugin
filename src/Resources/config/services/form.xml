@@ -2,7 +2,7 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="bitbag_sylius_cms_plugin.content_configuration.type.content_text" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration\ContentTextConfigurationType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.textarea" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -17,7 +17,7 @@
         <service id="bitbag_sylius_cms_plugin.form.type.content_configuration" class="BitBag\SyliusCmsPlugin\Form\Type\ContentConfigurationType">
             <argument>BitBag\SyliusCmsPlugin\Entity\ContentConfiguration</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.content_configuration.validation_groups%</argument>
-            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_configuration.configuration_type" index-by="key" />
+            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
             <tag name="form.type" />
         </service>
 
@@ -85,8 +85,8 @@
             <tag name="form.type" />
         </service>
 
-        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration\ContentTextConfigurationType">
-            <tag name="bitbag_sylius_cms_plugin.content_configuration.configuration_type" key="%bitbag_sylius_cms_plugin.content_configuration.type.content_text%" />
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.textarea%" />
             <tag name="form.type" />
         </service>
 

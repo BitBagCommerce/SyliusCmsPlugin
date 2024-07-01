@@ -8,27 +8,27 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentConfiguration;
+namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
 use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class ContentTextConfigurationType extends AbstractType
+final class TextareaContentElementType extends AbstractType
 {
-    public const TYPE = 'content_text';
+    public const TYPE = 'textarea';
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add(self::TYPE, WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_configuration.type.content_text',
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.textarea',
             ])
         ;
     }
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_configuration_text_configuration';
+        return 'bitbag_sylius_cms_plugin_content_elements_textarea';
     }
 }
