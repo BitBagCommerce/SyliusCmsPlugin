@@ -54,8 +54,8 @@ class PageRepositoryTest extends JsonApiTestCase
 
         $pageRepository = $this->getRepository();
 
-        $page1_array = $pageRepository->findByCollectionCode('collection1-code', 'en_US');
-        $page3_array = $pageRepository->findByCollectionCode('collection3-code', 'en_US');
+        $page1_array = $pageRepository->findByCollectionCode('collection1-code');
+        $page3_array = $pageRepository->findByCollectionCode('collection3-code');
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);

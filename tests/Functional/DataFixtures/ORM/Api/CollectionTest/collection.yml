@@ -20,13 +20,10 @@ Sylius\Component\Core\Model\Channel:
 BitBag\SyliusCmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
-    translations:
-      - '@collection1_translation'
+    name: 'collection1-name'
   collection2:
     code: 'collection2-code'
-    translations:
-      - '@collection2_translation'
+    name: 'collection2-name'
   collection3:
     code: 'collection3-code'
-    translations:
-      - '@collection3_translation'
+    name: 'collection3-name'
