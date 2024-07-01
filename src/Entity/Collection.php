@@ -13,21 +13,18 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 use BitBag\SyliusCmsPlugin\Entity\Trait\BlocksCollectionTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\MediaCollectionTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\PagesCollectionTrait;
-use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Collection implements CollectionInterface
 {
     use PagesCollectionTrait;
     use BlocksCollectionTrait;
     use MediaCollectionTrait;
-    use TranslatableTrait {
-        __construct as private initializeTranslationsCollection;
-    }
 
     protected ?int $id;
 
     protected ?string $code = null;
+
+    protected ?string $name = null;
 
     protected ?string $type = null;
 
@@ -36,7 +33,6 @@ class Collection implements CollectionInterface
         $this->initializePagesCollection();
         $this->initializeBlocksCollection();
         $this->initializeMediaCollection();
-        $this->initializeTranslationsCollection();
     }
 
     public function getId(): ?int
@@ -66,29 +62,11 @@ class Collection implements CollectionInterface
 
     public function getName(): ?string
     {
-        /** @var CollectionTranslationInterface $collectionTranslationInterface */
-        $collectionTranslationInterface = $this->getCollectionTranslation();
-
-        return $collectionTranslationInterface->getName();
+        return $this->name;
     }
 
     public function setName(?string $name): void
     {
-        /** @var CollectionTranslationInterface $collectionTranslationInterface */
-        $collectionTranslationInterface = $this->getCollectionTranslation();
-        $collectionTranslationInterface->setName($name);
-    }
-
-    /**
-     * @return TranslationInterface|CollectionTranslationInterface
-     */
-    protected function getCollectionTranslation(): TranslationInterface
-    {
-        return $this->getTranslation();
-    }
-
-    protected function createTranslation(): TranslationInterface
-    {
-        return new CollectionTranslation();
+        $this->name = $name;
     }
 }

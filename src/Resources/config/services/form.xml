@@ -57,12 +57,6 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.translation.collection" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\CollectionTranslationType">
-            <argument>%bitbag_sylius_cms_plugin.model.collection_translation.class%</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.translation.collection.validation_groups%</argument>
-            <tag name="form.type" />
-        </service>
-
         <service id="bitbag_sylius_cms_plugin.form.type.import" class="BitBag\SyliusCmsPlugin\Form\Type\ImportType">
             <tag name="form.type" />
         </service>

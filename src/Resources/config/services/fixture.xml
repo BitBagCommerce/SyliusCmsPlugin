@@ -53,7 +53,6 @@
 
         <service id="bitbag_sylius_cms_plugin.fixture.factory.collection" class="BitBag\SyliusCmsPlugin\Fixture\Factory\CollectionFixtureFactory">
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection_translation" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
         </service>
 

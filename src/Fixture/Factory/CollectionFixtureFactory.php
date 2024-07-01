@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -19,7 +18,6 @@ final class CollectionFixtureFactory implements FixtureFactoryInterface
 {
     public function __construct(
         private FactoryInterface $collectionFactory,
-        private FactoryInterface $collectionTranslationFactory,
         private CollectionRepositoryInterface $collectionRepository,
     ) {
     }
@@ -38,18 +36,7 @@ final class CollectionFixtureFactory implements FixtureFactoryInterface
 
             /** @var CollectionInterface $collection */
             $collection = $this->collectionFactory->createNew();
-
             $collection->setCode($code);
-
-            foreach ($fields['translations'] as $localeCode => $translation) {
-                /** @var CollectionTranslationInterface $collectionTranslation */
-                $collectionTranslation = $this->collectionTranslationFactory->createNew();
-
-                $collectionTranslation->setLocale($localeCode);
-                $collectionTranslation->setName($translation['name']);
-
-                $collection->addTranslation($collectionTranslation);
-            }
 
             $this->collectionRepository->add($collection);
         }

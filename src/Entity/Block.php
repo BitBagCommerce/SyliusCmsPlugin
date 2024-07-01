@@ -67,7 +67,7 @@ class Block implements BlockInterface
     {
         $content = '';
         foreach ($this->contentElements as $contentElement) {
-            $content .= $contentElement->getContent() . PHP_EOL;
+            $content .= $contentElement->getContent() . \PHP_EOL;
         }
 
         return $content;

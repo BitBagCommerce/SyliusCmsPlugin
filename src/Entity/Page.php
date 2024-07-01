@@ -168,7 +168,7 @@ class Page implements PageInterface
         $content = '';
         /** @var ContentConfigurationInterface $contentElement */
         foreach ($this->contentElements as $contentElement) {
-            $content .= $contentElement->getContent() . PHP_EOL;
+            $content .= $contentElement->getContent() . \PHP_EOL;
         }
 
         return $content;

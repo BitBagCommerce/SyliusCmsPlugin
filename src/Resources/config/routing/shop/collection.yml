@@ -9,7 +9,6 @@ bitbag_sylius_cms_plugin_shop_collection_show:
                 method: findOneByCode
                 arguments:
                     - $code
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
 
 bitbag_sylius_cms_plugin_shop_collection_show_codes:
     path: /collections/{codes}
@@ -19,8 +18,6 @@ bitbag_sylius_cms_plugin_shop_collection_show_codes:
         _sylius:
             template: $template
             repository:
-                method: findByCodesAndLocale
+                method: findByCodes
                 arguments:
                     - $codes
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
-
