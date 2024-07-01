@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\Trait\BlocksCollectionTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\MediaCollectionTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\PagesCollectionTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;
 

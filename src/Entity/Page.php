@@ -10,6 +10,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\LocaleAwareTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -161,8 +165,12 @@ class Page implements PageInterface
 
     public function getContent(): ?string
     {
-        // TODO: empty for now for testing purposes, to be implemented in the future tasks
-        // related to the epic: https://bitbag.atlassian.net/browse/OP-312
-        return '';
+        $content = '';
+        /** @var ContentConfigurationInterface $contentElement */
+        foreach ($this->contentElements as $contentElement) {
+            $content .= $contentElement->getContent() . PHP_EOL;
+        }
+
+        return $content;
     }
 }
