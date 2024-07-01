@@ -69,10 +69,6 @@ final class BlockController extends ResourceController
 
         /** @var BlockInterface $block */
         $block = $form->getData();
-        $defaultLocale = $this->getParameter('locale');
-
-        $block->setFallbackLocale($request->get('_locale', $defaultLocale));
-        $block->setCurrentLocale($request->get('_locale', $defaultLocale));
 
         if (!$configuration->isHtmlRequest()) {
             Assert::true(null !== $this->viewHandler);

@@ -34,6 +34,13 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->fillField('Name', $name);
     }
 
+    public function fillNameIfItIsEmpty(string $name): void
+    {
+        if (empty($this->getDocument()->findField('Name')->getValue())) {
+            $this->fillName($name);
+        }
+    }
+
     public function fillLink(string $link): void
     {
         $this->getDocument()->fillField('Link', $link);

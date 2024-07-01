@@ -18,9 +18,9 @@ Feature: Managing cms blocks
 
     @ui @javascript
     Scenario: Updating block
-        Given there is a block with "store_phone_number" code and "123456789" content
+        Given there is a block with "store_phone_number" code
         When I go to the update "store_phone_number" block page
-        And I fill the content with "987654321"
+        And I fill the name with "Store phone number" if the name field is empty
         And I update it
         Then I should be notified that the block has been successfully updated
 
@@ -28,6 +28,7 @@ Feature: Managing cms blocks
     Scenario: Disabling block
         Given there is an existing block with "bitbag_quote" code
         When I go to the update "bitbag_quote" block page
+        And I fill the name with "BitBag quote" if the name field is empty
         And I disable it
         And I update it
         Then I should be notified that the block has been successfully updated

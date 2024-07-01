@@ -20,19 +20,4 @@ bitbag_sylius_cms_plugin_shop_block_index_by_collection_code:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"
-
-bitbag_sylius_cms_plugin_shop_block_index_by_product_code:
-    path: /blocks/product/{productCode}
-    methods: [GET]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
-        _sylius:
-            template: $template
-            repository:
-                method: findByProductCode
-                arguments:
-                    - $productCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"

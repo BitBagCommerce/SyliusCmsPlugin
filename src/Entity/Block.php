@@ -11,34 +11,28 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ToggleableTrait;
-use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
 
 class Block implements BlockInterface
 {
     use ToggleableTrait;
     use CollectibleTrait;
-    use ProductsAwareTrait;
-    use TaxonAwareTrait;
     use ChannelsAwareTrait;
-    use TranslatableTrait {
-        __construct as protected initializeTranslationsCollection;
-    }
+    use BlockContentAwareTrait;
+    use LocaleAwareTrait;
 
     public function __construct()
     {
-        $this->initializeTranslationsCollection();
         $this->initializeCollectionsCollection();
-        $this->initializeProductsCollection();
-        $this->initializeTaxonCollection();
         $this->initializeChannelsCollection();
+        $this->initializeContentsCollection();
+        $this->initializeLocalesCollection();
     }
 
-    /** @var int|null */
-    protected $id;
+    protected ?int $id;
 
-    /** @var string|null */
-    protected $code;
+    protected ?string $code = null;
+
+    protected ?string $name;
 
     public function getId(): ?int
     {
@@ -57,59 +51,18 @@ class Block implements BlockInterface
 
     public function getName(): ?string
     {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-
-        return $blockTranslationInterface->getName();
+        return $this->name;
     }
 
     public function setName(?string $name): void
     {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-        $blockTranslationInterface->setName($name);
+        $this->name = $name;
     }
 
     public function getContent(): ?string
     {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-
-        return $blockTranslationInterface->getContent();
-    }
-
-    public function setContent(?string $content): void
-    {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-        $blockTranslationInterface->setContent($content);
-    }
-
-    public function getLink(): ?string
-    {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-
-        return $blockTranslationInterface->getLink();
-    }
-
-    public function setLink(?string $link): void
-    {
-        /** @var BlockTranslationInterface $blockTranslationInterface */
-        $blockTranslationInterface = $this->getBlockTranslation();
-        $blockTranslationInterface->setLink($link);
-    }
-
-    /**
-     * @return BlockTranslationInterface|TranslationInterface
-     */
-    protected function getBlockTranslation(): TranslationInterface
-    {
-        return $this->getTranslation();
-    }
-
-    protected function createTranslation(): BlockTranslationInterface
-    {
-        return new BlockTranslation();
+        // TODO: empty for now for testing purposes, to be implemented in the future tasks
+        // related to the epic: https://bitbag.atlassian.net/browse/OP-312
+        return '';
     }
 }

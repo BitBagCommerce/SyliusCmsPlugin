@@ -14,9 +14,7 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
@@ -24,10 +22,8 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 {
     public function __construct(
         private ResourceResolverInterface $blockResourceResolver,
-        private LocaleContextInterface $localeContext,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
-        private ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         private BlockRepositoryInterface $blockRepository,
     ) {
@@ -41,20 +37,10 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         Assert::notNull($code);
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
-
         $block->setCode($code);
-        $block->setFallbackLocale($this->localeContext->getLocaleCode());
-
-        foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
-            $block->setCurrentLocale($locale);
-            $block->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
-            $block->setLink($this->getTranslatableColumnValue(self::LINK_COLUMN, $locale, $row));
-            $block->setContent($this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row));
-        }
 
         $this->importerCollectionsResolver->resolve($block, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
-        $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
 
         $this->validateResource($block, ['bitbag']);
         $this->blockRepository->add($block);
@@ -63,14 +49,5 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
     public function getResourceCode(): string
     {
         return 'block';
-    }
-
-    private function getTranslatableColumns(): array
-    {
-        return [
-            self::NAME_COLUMN,
-            self::CONTENT_COLUMN,
-            self::LINK_COLUMN,
-        ];
     }
 }

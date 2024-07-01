@@ -1,34 +1,29 @@
 {% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
 {% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
 
-{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
-
-<div class="ui two column stackable grid" data-bb-target="cms-handle-preview">
+<div class="ui two column stackable grid">
     <div class="column">
         <div class="ui segment">
             {{ form_errors(form) }}
             {{ form_row(form.code) }}
+            {{ form_row(form.name) }}
             {{ form_row(form.enabled) }}
-            {{ form_row(form.products) }}
-            {{ form_row(form.taxons) }}
-            {{ form_row(form.collections) }}
             {{ form_row(form.channels) }}
-
-            <a
-                href="#"
-                class="ui labeled button icon primary bitbag-cms-resource-preview"
-                data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview') }}"
-                data-bb-cms-preview-btn
-            >
-                <i class="eye icon"></i>
-                {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
-            </a>
+            {{ form_row(form.locales) }}
+            {{ form_row(form.collections) }}
         </div>
     </div>
 </div>
 
-<div class="ui one column stackable grid">
-    <div class="column" id="bitbag-block-image">
-        {{ translationForm(form.translations, resource) }}
+<div class="ui two column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'sylius.ui.configuration'|trans }}</h4>
+            <div class="ui one column stackable grid">
+                <div class="column" id="contents">
+                    {{ form_row(form.contents) }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

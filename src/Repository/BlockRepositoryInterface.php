@@ -11,26 +11,16 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Repository;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface BlockRepositoryInterface extends RepositoryInterface
 {
-    public function createListQueryBuilder(string $localeCode): QueryBuilder;
-
     public function findEnabledByCode(string $code, string $channelCode): ?BlockInterface;
 
     public function findByCollectionCode(
         string $collectionCode,
-        string $localeCode,
         string $channelCode,
     ): array;
 
-    public function findByProductCode(
-        string $productCode,
-        string $localeCode,
-        string $channelCode,
-    ): array;
-
-    public function findByNamePart(string $phrase, ?string $locale = null): array;
+    public function findByNamePart(string $phrase): array;
 }

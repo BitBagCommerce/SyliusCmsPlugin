@@ -12,7 +12,7 @@ Feature: Adding blocks
     Scenario: Adding block
         When I go to the create block page
         And I fill the code with "store_description"
-        And I fill the content with "<p>We have the best candies on the internet!</p>"
+        And I fill the name with "Store Description"
         And I add it
         Then I should be notified that the block has been created
 
@@ -21,8 +21,8 @@ Feature: Adding blocks
         Given there are existing collections named "Blog" and "Homepage"
         When I go to the create block page
         And I fill the code with "intro"
+        And I fill the name with "Intro"
         And I add "Blog" and "Homepage" collections to it
-        And I fill the content with "Hello world!"
         And I add it
         Then I should be notified that the block has been created
 
@@ -43,7 +43,7 @@ Feature: Adding blocks
     @ui
     Scenario: Trying to add block with too long data
         When I go to the create block page
-        And I fill "Code, Name, Content" fields with 251 characters
+        And I fill "Code, Name" fields with 251 characters
         And I try to add it
         Then I should be notified that "Code, Name" fields are too long
 

@@ -7,7 +7,7 @@ Feature: Getting data from cms blocks
     Background:
         Given the store operates on a single channel in "United States"
         And there is a block in the store
-        And there is a block with "block-1" code and "Hi there!" content
+        And there is a block with "block-1" code
 
     @api
     Scenario: Browsing blocks
@@ -19,5 +19,4 @@ Feature: Getting data from cms blocks
     Scenario: Displaying block
         Given I view block with code "block-1"
         Then I should see block name
-        And I should see block content
 
