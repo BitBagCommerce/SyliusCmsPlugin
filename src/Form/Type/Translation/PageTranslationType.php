@@ -24,7 +24,7 @@ final class PageTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.slug',
             ])
             ->add('title', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.title',
+                'label' => 'bitbag_sylius_cms_plugin.ui.meta_title',
                 'required' => false,
             ])
             ->add('metaKeywords', TextareaType::class, [

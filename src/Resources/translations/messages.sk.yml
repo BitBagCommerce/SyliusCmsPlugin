@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Produkty relevantné ku stránke
         name: Meno
         slug: Slug
+        meta_title: Meta titulok
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Obsah

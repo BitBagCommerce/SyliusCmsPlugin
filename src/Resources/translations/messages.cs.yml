@@ -26,6 +26,7 @@ bitbag_sylius_cms_plugin:
         products: Produkty
         name: Název
         slug: Slug
+        meta_title: Meta titul
         meta_keywords: Meta klíčová slova
         meta_description: Meta popis
         content: Obsah

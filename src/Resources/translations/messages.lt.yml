@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Su puslapiu susiję produktai
         name: Pavadinimas
         slug: Šliužas (nuorodos dalis)
+        meta_title: Meta pavadinimas
         meta_keywords: Meta raktiniai žodžiai
         meta_description: Meta aprašymas
         content: Turinys

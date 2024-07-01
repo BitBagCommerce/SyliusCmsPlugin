@@ -22,6 +22,7 @@ bitbag_sylius_cms_plugin:
         empty_name: Leerer Name
         publish_at: Veröffentlichen am
         page_will_be_publish_at: Diese Seite wird veröffentlicht am
+        meta_title: Meta Titel
         meta_keywords: Meta Stichwörter
         meta_description: Meta Beschreibung
         content: Inhalt

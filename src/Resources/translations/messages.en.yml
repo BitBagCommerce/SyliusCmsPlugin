@@ -17,6 +17,7 @@ bitbag_sylius_cms_plugin:
         name: Name
         path: Path
         slug: Slug
+        meta_title: Meta title
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Content

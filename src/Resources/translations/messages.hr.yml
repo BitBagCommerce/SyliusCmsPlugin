@@ -18,6 +18,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Vezani proizvodi
         name: Naslov
         slug: Slug
+        meta_title: Meta naslov
         meta_keywords: Meta ključne riječi
         meta_description: Meta opis
         content: Sadržaj

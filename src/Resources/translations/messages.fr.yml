@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Produits liés à la page
         name: Nom
         slug: Slug
+        meta_title: Meta Titre
         meta_keywords: Meta Mots-clés
         meta_description: Meta Description
         content: Contenu

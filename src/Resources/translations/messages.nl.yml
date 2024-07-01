@@ -18,6 +18,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Pagina gerelateerde producten
         name: Naam
         slug: Slug
+        meta_title: Meta titel
         meta_keywords: Meta sleutelwoorden
         meta_description: Meta omschrijving
         content: Inhoud
