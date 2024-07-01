@@ -66,3 +66,4 @@ bitbag_sylius_cms_plugin:
             title: Content elements
             type:
                 textarea: Textarea
+        seo: SEO

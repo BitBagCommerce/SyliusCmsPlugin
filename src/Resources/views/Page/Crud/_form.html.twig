@@ -16,16 +16,11 @@
             {{ form_row(form.locales) }}
             {{ form_row(form.publishAt) }}
         </div>
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.seo'|trans }}</h4>
+            {{ translationFormWithSlug(form.translations, '@BitBagSyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
+        </div>
     </div>
-</div>
-
-<div class="ui one column stackable grid">
-    <div class="column" id="bitbag-block-image">
-        {{ translationFormWithSlug(form.translations, '@BitBagSyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
-    </div>
-</div>
-
-<div class="ui two column stackable grid">
     <div class="column">
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.content_elements.title'|trans }}</h4>
@@ -37,3 +32,4 @@
         </div>
     </div>
 </div>
+
