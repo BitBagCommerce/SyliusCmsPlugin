@@ -26,6 +26,15 @@ Feature: Adding blocks
         And I add it
         Then I should be notified that the block has been created
 
+    @ui @javascript
+    Scenario: Adding block with content element
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I add a textarea content element with "Welcome to our store" content
+        And I add it
+        Then I should be notified that the block has been created
+
     @ui
     Scenario: Trying to add block with existing code
         Given there is an existing block with "homepage_image" code

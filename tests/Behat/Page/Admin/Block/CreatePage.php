@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
+use Behat\Mink\Exception\ElementNotFoundException;
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
@@ -78,11 +79,31 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addTextareaContentElementWithContent(string $content): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
+
+        $addButton = $this->getElement('content_elements_add_button');
+        $addButton->click();
+
+        $addButton->waitFor(3, function (): bool {
+            return $this->hasElement('content_elements_textarea');
+        });
+
+        $textarea = $this->getElement('content_elements_textarea');
+        $textarea->setValue($content);
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
             'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
             'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_add_button' => 'h4:contains("Content elements") .field a[data-form-collection="add"]',
+            'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
         ]);
     }
 }

@@ -164,6 +164,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a textarea content element with :content content
+     */
+    public function iAddATextareaContentElementWithContent(string $content): void
+    {
+        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
