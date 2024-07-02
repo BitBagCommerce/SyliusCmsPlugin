@@ -24,6 +24,16 @@ Feature: Managing cms blocks
         And I update it
         Then I should be notified that the block has been successfully updated
 
+    @ui @javascript
+    Scenario: Updating block content element
+        Given there is a block with "store_phone_number" code and textarea content element
+        When I go to the update "store_phone_number" block page
+        And I fill the name with "Store phone number" if the name field is empty
+        And I change textarea content element value to "New content"
+        And I update it
+        Then I should be notified that the block has been successfully updated
+        And I should see "New content" in the textarea content element
+
     @ui
     Scenario: Disabling block
         Given there is an existing block with "bitbag_quote" code

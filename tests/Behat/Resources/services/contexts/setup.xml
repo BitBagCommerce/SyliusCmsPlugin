@@ -8,6 +8,7 @@
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.factory.content_configuration" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             </service>
 

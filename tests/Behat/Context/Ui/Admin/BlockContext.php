@@ -132,6 +132,22 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I change textarea content element value to :value
+     */
+    public function iChangeTextareaContentElementValueTo(string $value): void
+    {
+        $this->resolveCurrentPage()->changeTextareaContentElementValue($value);
+    }
+
+    /**
+     * @Then I should see :content in the textarea content element
+     */
+    public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
+    {
+        $this->resolveCurrentPage()->containsTextareaContentElementWithValue($content);
+    }
+
+    /**
      * @When I fill the link with :link
      */
     public function iFillTheLinkWith(string $link): void
