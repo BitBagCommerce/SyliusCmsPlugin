@@ -12,6 +12,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -25,7 +26,6 @@ final class BlockContext implements Context
         private SharedStorageInterface $sharedStorage,
         private RandomStringGeneratorInterface $randomStringGenerator,
         private FactoryInterface $blockFactory,
-        private FactoryInterface $contentConfigurationFactory,
         private BlockRepositoryInterface $blockRepository,
     ) {
     }
@@ -96,8 +96,7 @@ final class BlockContext implements Context
     {
         $block = $this->createBlock($code);
 
-        /** @var ContentConfigurationInterface $contentConfiguration */
-        $contentConfiguration = $this->contentConfigurationFactory->createNew();
+        $contentConfiguration = new ContentConfiguration();
         $contentConfiguration->setType('textarea');
         $contentConfiguration->setConfiguration(['textarea' => 'Content']);
         $contentConfiguration->setBlock($block);
