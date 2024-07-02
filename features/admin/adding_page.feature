@@ -66,3 +66,13 @@ Feature: Adding new page
         And I fill the name with "Best day ever"
         And I add it
         Then I should be notified that the page has been created
+
+    @ui @javascript
+    Scenario: Adding page with content element
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I add a textarea content element with "Welcome to our store" content
+        And I add it
+        Then I should be notified that the page has been created
