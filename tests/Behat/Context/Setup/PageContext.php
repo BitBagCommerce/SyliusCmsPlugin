@@ -53,6 +53,16 @@ final class PageContext implements Context
     }
 
     /**
+     * @Given there is a page in the store with textarea content element
+     */
+    public function thereIsAPageInTheStoreWithTextareaContentElement(): void
+    {
+        $page = $this->createPageWithTextareaContentElement();
+
+        $this->savePage($page);
+    }
+
+    /**
      * @Given there is an existing page with :name name
      */
     public function thereIsAPageWithName(string $name): void
@@ -193,9 +203,9 @@ final class PageContext implements Context
         return $page;
     }
 
-    private function createPageWithTextareaContentElement(string $code): PageInterface
+    private function createPageWithTextareaContentElement(): PageInterface
     {
-        $page = $this->createPage($code);
+        $page = $this->createPage();
 
         /** @var ContentConfigurationInterface $contentConfiguration */
         $contentConfiguration = new ContentConfiguration();
