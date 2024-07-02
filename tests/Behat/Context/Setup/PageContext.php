@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
@@ -187,6 +189,21 @@ final class PageContext implements Context
         $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
         $page->addChannel($channel);
+
+        return $page;
+    }
+
+    private function createPageWithTextareaContentElement(string $code): PageInterface
+    {
+        $page = $this->createPage($code);
+
+        /** @var ContentConfigurationInterface $contentConfiguration */
+        $contentConfiguration = new ContentConfiguration();
+        $contentConfiguration->setType('textarea');
+        $contentConfiguration->setConfiguration(['textarea' => 'Content']);
+        $contentConfiguration->setPage($page);
+
+        $page->addContentElement($contentConfiguration);
 
         return $page;
     }

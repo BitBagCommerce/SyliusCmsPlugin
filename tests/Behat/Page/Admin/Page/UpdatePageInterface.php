@@ -18,4 +18,8 @@ interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutab
     public const IMAGE_FORM_ID = 'bitbag_sylius_cms_plugin_page_translations_en_US_image';
 
     public function chooseImage(string $code): void;
+
+    public function changeTextareaContentElementValue(string $value): void;
+
+    public function containsTextareaContentElementWithValue(string $value): bool;
 }

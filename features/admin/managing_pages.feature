@@ -29,3 +29,13 @@ Feature: Managing cms pages
         And I fill "Code, Name" fields
         And I update it
         Then I should be notified that the page was updated
+
+    @ui
+    Scenario: Updating page with textarea content element
+        Given there is a page in the store
+        When I want to edit this page
+        And I fill "Code, Name" fields
+        And I change textarea content element value to "New content"
+        And I update it
+        Then I should be notified that the page was updated
+        And I should see "New content" in the textarea content element
