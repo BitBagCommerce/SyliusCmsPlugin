@@ -102,7 +102,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         return array_merge(parent::getDefinedElements(), [
             'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
             'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_add_button' => 'h4:contains("Content elements") a[data-form-collection="add"]',
+            'content_elements_add_button' => 'a[data-form-collection="add"]',
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
         ]);
     }
