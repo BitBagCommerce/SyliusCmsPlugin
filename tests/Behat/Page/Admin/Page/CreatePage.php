@@ -112,7 +112,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'slug' => '#bitbag_sylius_cms_plugin_page_translations_en_US_slug',
             'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
             'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_add_button' => '#bitbag_sylius_cms_plugin_block_contentElements a[data-form-collection="add"]',
+            'content_elements_add_button' => '#bitbag_sylius_cms_plugin_page_contentElements a[data-form-collection="add"]',
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
         ]);
     }
