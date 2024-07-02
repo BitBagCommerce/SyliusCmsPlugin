@@ -84,7 +84,6 @@ final class CollectionContext implements Context
         }
 
         $collection->setCode($code);
-        $collection->setCurrentLocale('en_US');
         $collection->setName($name);
 
         return $collection;
