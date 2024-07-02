@@ -14,7 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 use ApiTestCase\JsonApiTestCase;
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
-use Doctrine\ORM\QueryBuilder;
 
 final class CollectionRepositoryTest extends JsonApiTestCase
 {
@@ -23,26 +22,14 @@ final class CollectionRepositoryTest extends JsonApiTestCase
         parent::setUp();
     }
 
-    public function test_it_creates_list_query_builder(): void
-    {
-        $repository = $this->getRepository();
-
-        $localeCode = 'en_US';
-        $queryBuilder = $repository->createListQueryBuilder($localeCode);
-
-        self::assertInstanceOf(QueryBuilder::class, $queryBuilder);
-        self::assertNotNull($queryBuilder->getQuery());
-    }
-
     public function test_it_finds_collection_by_name_part(): void
     {
         $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_name.yml');
 
         $repository = $this->getRepository();
 
-        $phrase = 'translation';
-        $locale = 'en_US';
-        $collections = $repository->findByNamePart($phrase, $locale);
+        $phrase = 'collection';
+        $collections = $repository->findByNamePart($phrase);
 
         self::assertIsArray($collections);
         self::assertCount(3, $collections);
@@ -68,8 +55,7 @@ final class CollectionRepositoryTest extends JsonApiTestCase
         $repository = $this->getRepository();
 
         $codes = 'collection1-code,collection2-code';
-        $localeCode = 'en_US';
-        $collections = $repository->findByCodesAndLocale($codes, $localeCode);
+        $collections = $repository->findByCodes($codes);
 
         self::assertIsArray($collections);
         self::assertCount(2, $collections);

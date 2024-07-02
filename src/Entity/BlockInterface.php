@@ -19,7 +19,7 @@ interface BlockInterface extends
     ToggleableInterface,
     CollectibleInterface,
     ChannelsAwareInterface,
-    BlockContentAwareInterface,
+    ContentConfigurationAwareInterface,
     LocaleAwareInterface,
     ContentableInterface
 {

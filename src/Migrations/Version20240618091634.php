@@ -22,7 +22,6 @@ final class Version20240618091634 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE bitbag_cms_section_pages (section_id INT NOT NULL, page_id INT NOT NULL, INDEX IDX_C96225EED823E37A (section_id), INDEX IDX_C96225EEC4663E4 (page_id), PRIMARY KEY(section_id, page_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE bitbag_cms_section_blocks (section_id INT NOT NULL, block_id INT NOT NULL, INDEX IDX_A9D9C974D823E37A (section_id), INDEX IDX_A9D9C974E9ED820C (block_id), PRIMARY KEY(section_id, block_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE bitbag_cms_section_media (section_id INT NOT NULL, media_id INT NOT NULL, INDEX IDX_833A6197D823E37A (section_id), INDEX IDX_833A6197EA9FDD75 (media_id), PRIMARY KEY(section_id, media_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -37,7 +36,6 @@ final class Version20240618091634 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE bitbag_cms_section_pages DROP FOREIGN KEY FK_C96225EED823E37A');
         $this->addSql('ALTER TABLE bitbag_cms_section_pages DROP FOREIGN KEY FK_C96225EEC4663E4');
         $this->addSql('ALTER TABLE bitbag_cms_section_blocks DROP FOREIGN KEY FK_A9D9C974D823E37A');

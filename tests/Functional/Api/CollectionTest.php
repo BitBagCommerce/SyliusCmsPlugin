@@ -28,7 +28,7 @@ class CollectionTest extends FunctionalTestCase
     public function test_collection_response(): void
     {
         /** @var CollectionInterface $collection */
-        $collection = $this->getRepository()->findOneByCode('collection1-code', 'en_US');
+        $collection = $this->getRepository()->findOneByCode('collection1-code');
         $this->client->request('GET', '/api/v2/shop/cms-plugin/collections/' . $collection->getId(), [], [], self::CONTENT_TYPE_HEADER);
         $response = $this->client->getResponse();
 

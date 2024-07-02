@@ -6,9 +6,10 @@ bitbag_sylius_cms_plugin:
         pages: Stránky
         page: Stránka
         title: Titul
-        block_content:
+        content_elements:
+            title: Obsahové prvky
             type:
-                content_text: Text
+                textarea: Textarea
     cms:
         content_management: Obsahový management
         cms: Obsahový management
@@ -25,6 +26,7 @@ bitbag_sylius_cms_plugin:
         products: Produkty
         name: Název
         slug: Slug
+        meta_title: Meta titul
         meta_keywords: Meta klíčová slova
         meta_description: Meta popis
         content: Obsah

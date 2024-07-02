@@ -17,11 +17,6 @@
                             <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : page.slug}) }}">
 
                                 <div class="content">
-
-                                     {% if page.image %}
-                                        <img class="ui left floated image" src="{{ page.image.path|imagine_filter(filter|default('sylius_small')) }}" alt="">
-                                    {% endif %}
-
                                     <h3>{{ page.name }}</h3>
                                     <p>
                                         {{ page.content|striptags|length > 200 ? page.content|striptags|slice(0, 200) ~ '...' : page.content|striptags }}

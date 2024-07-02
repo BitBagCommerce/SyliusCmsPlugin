@@ -9,12 +9,8 @@
         <service id="bitbag_sylius_cms_plugin.importer.page" class="BitBag\SyliusCmsPlugin\Importer\PageImporter">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.page" />
             <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.downloader.image" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
             <argument type="service" id="validator" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="bitbag.cmsplugin.importer" />

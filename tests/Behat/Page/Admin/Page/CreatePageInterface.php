@@ -34,4 +34,6 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
     public function fillContent(string $content): void;
 
     public function associateCollections(array $collectionsNames): void;
+
+    public function addTextareaContentElementWithContent(string $content): void;
 }

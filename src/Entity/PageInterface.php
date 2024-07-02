@@ -21,12 +21,13 @@ interface PageInterface extends
     ResourceInterface,
     TranslatableInterface,
     ToggleableInterface,
-    ProductsAwareInterface,
     CollectibleInterface,
     TimestampableInterface,
     ChannelsAwareInterface,
-    ContentableInterface,
-    SlugAwareInterface
+    SlugAwareInterface,
+    ContentConfigurationAwareInterface,
+    LocaleAwareInterface,
+    ContentableInterface
 {
     public function getCode(): ?string;
 
@@ -40,25 +41,9 @@ interface PageInterface extends
 
     public function setMetaDescription(?string $metaDescription): void;
 
-    public function getContent(): ?string;
-
-    public function setContent(?string $content): void;
-
     public function getName(): ?string;
 
     public function setName(?string $name): void;
-
-    public function getNameWhenLinked(): ?string;
-
-    public function setNameWhenLinked(?string $nameWhenLinked): void;
-
-    public function getBreadcrumb(): ?string;
-
-    public function setBreadcrumb(?string $breadcrumb): void;
-
-    public function getDescriptionWhenLinked(): ?string;
-
-    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void;
 
     public function getTitle(): ?string;
 

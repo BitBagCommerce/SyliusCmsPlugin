@@ -8,8 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace BitBag\SyliusCmsPlugin\Entity\Trait;
 
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 

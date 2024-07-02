@@ -12,7 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -20,7 +19,6 @@ use Twig\Environment;
 final class RenderLinkRuntime implements RenderLinkRuntimeInterface
 {
     public function __construct(
-        private LocaleContextInterface $localeContext,
         private PageRepositoryInterface $pageRepository,
         private RouterInterface $router,
         private string $defaultTemplate,
@@ -33,7 +31,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         array $options = [],
         ?string $template = null,
     ): string {
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
 
         return $environment->render($template ?? $this->defaultTemplate, [
             'page' => $page,
@@ -46,7 +44,7 @@ final class RenderLinkRuntime implements RenderLinkRuntimeInterface
         array $options = [],
     ): string {
         /** @var PageInterface|null $page */
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
         if (null === $page) {
             throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }

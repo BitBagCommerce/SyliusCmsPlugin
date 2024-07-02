@@ -25,18 +25,10 @@
         <div class="ui breadcrumb">
             <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
             <div class="divider"> /</div>
-            <div class="active section">{{ page.breadcrumb }}</div>
+            <div class="active section">{{ page.name }}</div>
         </div>
         <div class="ui segment">
             <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
-
-            <div class="ui grid center aligned">
-                <div class="eight wide column">
-                    {% if page.image %}
-                        <img class="page-image ui fluid image" src="{{ page.image.path }}" alt="">
-                    {% endif %}
-                </div>
-            </div>
 
             <div class="ui hidden divider"></div>
 
@@ -46,14 +38,6 @@
                 {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_collections.html.twig' %}
             </div>
         </div>
-        {% if page.products|length > 0 %}
-            <h2>
-                {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
-            </h2>
-            <div class="bitbag-page-products">
-                {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
-            </div>
-        {% endif %}
     {% else %}
         {% include '@BitBagSyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
     {% endif %}

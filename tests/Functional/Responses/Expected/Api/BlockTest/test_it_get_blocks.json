@@ -20,7 +20,7 @@
       "channels": [
         "/api/v2/shop/channels/code"
       ],
-      "contents": []
+      "contentElements": []
     },
     {
       "@id": "/api/v2/shop/cms-plugin/blocks/@integer@",
@@ -39,7 +39,7 @@
       "channels": [
         "/api/v2/shop/channels/code"
       ],
-      "contents": []
+      "contentElements": []
     },
     {
       "@id": "/api/v2/shop/cms-plugin/blocks/@integer@",
@@ -58,7 +58,7 @@
       "channels": [
         "/api/v2/shop/channels/code"
       ],
-      "contents": []
+      "contentElements": []
     }
   ],
   "hydra:totalItems": 3

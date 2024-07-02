@@ -50,18 +50,6 @@ final class PageSpec extends ObjectBehavior
         $this->isEnabled()->shouldReturn(false);
     }
 
-    public function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
-    {
-        $this->addProduct($firstProduct);
-        $this->hasProduct($firstProduct)->shouldReturn(true);
-
-        $this->hasProduct($secondProduct)->shouldReturn(false);
-
-        $this->removeProduct($firstProduct);
-
-        $this->hasProduct($firstProduct)->shouldReturn(false);
-    }
-
     public function it_associates_collections(CollectionInterface $firstCollection, CollectionInterface $secondCollection): void
     {
         $this->addCollection($firstCollection);

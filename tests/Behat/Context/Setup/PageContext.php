@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
@@ -46,6 +48,16 @@ final class PageContext implements Context
     public function thereIsAPageInTheStore(): void
     {
         $page = $this->createPage();
+
+        $this->savePage($page);
+    }
+
+    /**
+     * @Given there is a page in the store with textarea content element
+     */
+    public function thereIsAPageInTheStoreWithTextareaContentElement(): void
+    {
+        $page = $this->createPageWithTextareaContentElement();
 
         $this->savePage($page);
     }
@@ -133,32 +145,6 @@ final class PageContext implements Context
     }
 
     /**
-     * @Given this page also has :content image
-     */
-    public function thisPageAlsoHasImage(string $image): void
-    {
-        $image = $this->uploadImage($image);
-
-        $this->sharedStorage->get('page')->setImage($image);
-
-        $this->entityManager->flush();
-    }
-
-    /**
-     * @Given this page has these products associated with it
-     */
-    public function thisPageHasTheseProductsAssociatedWithIt(): void
-    {
-        $products = $this->productRepository->findAll();
-
-        foreach ($products as $product) {
-            $this->sharedStorage->get('page')->addProduct($product);
-        }
-
-        $this->entityManager->flush();
-    }
-
-    /**
      * @Given this page has these collections associated with it
      */
     public function thisPageHasTheseCollectionsAssociatedWithIt(): void
@@ -191,7 +177,6 @@ final class PageContext implements Context
     private function createPage(
         ?string $code = null,
         ?string $name = null,
-        ?string $content = null,
         ChannelInterface $channel = null,
     ): PageInterface {
         /** @var PageInterface $page */
@@ -209,16 +194,26 @@ final class PageContext implements Context
             $name = $this->randomStringGenerator->generate();
         }
 
-        if (null === $content) {
-            $content = $this->randomStringGenerator->generate();
-        }
-
         $page->setCode($code);
         $page->setCurrentLocale('en_US');
         $page->setName($name);
         $page->setSlug($this->randomStringGenerator->generate());
-        $page->setContent($content);
         $page->addChannel($channel);
+
+        return $page;
+    }
+
+    private function createPageWithTextareaContentElement(): PageInterface
+    {
+        $page = $this->createPage();
+
+        /** @var ContentConfigurationInterface $contentConfiguration */
+        $contentConfiguration = new ContentConfiguration();
+        $contentConfiguration->setType('textarea');
+        $contentConfiguration->setConfiguration(['textarea' => 'Content']);
+        $contentConfiguration->setPage($page);
+
+        $page->addContentElement($contentConfiguration);
 
         return $page;
     }

@@ -35,11 +35,20 @@ export class HandleSlugUpdate {
     _handleFields() {
         this.wrappers.forEach((item) => {
             const locale = item.dataset.locale;
-            const textField = item.querySelector(`#${this.bbTarget}_translations_${locale}_name`);
-            const slugField = item.querySelector(`#${this.bbTarget}_translations_${locale}_slug`);
+
+            let textField = item.querySelector(`#${this.bbTarget}_translations_${locale}_name`);
+            if (!textField) {
+                textField = item.querySelector(`#${this.bbTarget}_name`);
+            }
+
+            let slugField = item.querySelector(`#${this.bbTarget}_translations_${locale}_slug`);
+            if (!slugField) {
+                slugField = item.querySelector(`#${this.bbTarget}_slug`);
+            }
+
             const lockField = item.querySelector(this.lockFieldIndicator);
 
-            if (!textField || !slugField || !locale) {
+            if (!textField || !slugField) {
                 return;
             }
 

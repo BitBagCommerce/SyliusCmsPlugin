@@ -138,6 +138,22 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I change textarea content element value to :value
+     */
+    public function iChangeTextareaContentElementValueTo(string $value): void
+    {
+        $this->resolveCurrentPage()->changeTextareaContentElementValue($value);
+    }
+
+    /**
+     * @Then I should see :content in the textarea content element
+     */
+    public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
+    {
+        $this->resolveCurrentPage()->containsTextareaContentElementWithValue($content);
+    }
+
+    /**
      * @When /^I fill "([^"]*)" fields with (\d+) (?:character|characters)$/
      */
     public function iFillFieldsWithCharacters(string $fields, int $length): void
@@ -167,6 +183,14 @@ final class PageContext implements Context
     public function iAddAndCollectionsToIt(string ...$collectionsNames): void
     {
         $this->resolveCurrentPage()->associateCollections($collectionsNames);
+    }
+
+    /**
+     * @When I add a textarea content element with :content content
+     */
+    public function iAddATextareaContentElementWithContent(string $content): void
+    {
+        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
     }
 
     /**

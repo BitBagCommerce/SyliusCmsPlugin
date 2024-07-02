@@ -12,6 +12,7 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -59,6 +60,16 @@ final class BlockContext implements Context
         $this->saveBlock($block);
     }
 
+    /**
+     * @Given there is a block with :code code and textarea content element
+     */
+    public function thereIsABlockWithCodeAndTextareaContentElement(string $code): void
+    {
+        $block = $this->createBlockWithTextareaContentElement($code);
+
+        $this->saveBlock($block);
+    }
+
     private function createBlock(
         ?string $code = null,
         ChannelInterface $channel = null,
@@ -76,6 +87,20 @@ final class BlockContext implements Context
 
         $block->setCode($code);
         $block->addChannel($channel);
+
+        return $block;
+    }
+
+    private function createBlockWithTextareaContentElement(string $code): BlockInterface
+    {
+        $block = $this->createBlock($code);
+
+        $contentConfiguration = new ContentConfiguration();
+        $contentConfiguration->setType('textarea');
+        $contentConfiguration->setConfiguration(['textarea' => 'Content']);
+        $contentConfiguration->setBlock($block);
+
+        $block->addContentElement($contentConfiguration);
 
         return $block;
     }

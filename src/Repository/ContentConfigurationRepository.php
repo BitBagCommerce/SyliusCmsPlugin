@@ -12,6 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-class BlockContentRepository extends EntityRepository
+class ContentConfigurationRepository extends EntityRepository
 {
 }

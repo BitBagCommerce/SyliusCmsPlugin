@@ -11,53 +11,35 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Repository;
 
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class CollectionRepository extends EntityRepository implements CollectionRepositoryInterface
 {
-    use TranslationBasedAwareTrait;
-
-    public function createListQueryBuilder(string $localeCode): QueryBuilder
+    public function findByNamePart(string $phrase): array
     {
         return $this->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
-            ->setParameter('localeCode', $localeCode)
-        ;
-    }
-
-    public function findByNamePart(string $phrase, ?string $locale = null): array
-    {
-        return $this->createTranslationBasedQueryBuilder($locale)
-            ->andWhere('translation.name LIKE :name')
+            ->andWhere('o.name LIKE :name')
             ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findOneByCode(string $code, ?string $localeCode): ?CollectionInterface
+    public function findOneByCode(string $code): ?CollectionInterface
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('translation.locale = :localeCode')
             ->andWhere('o.code = :code')
             ->setParameter('code', $code)
-            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
 
-    public function findByCodesAndLocale(string $codes, string $localeCode): array
+    public function findByCodes(string $codes): array
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('translation.locale = :localeCode')
             ->andWhere('o.code IN(:codes)')
             ->setParameter('codes', explode(',', $codes))
-            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()
         ;

@@ -27,4 +27,14 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     {
         FormHelper::fillHiddenInput($this->getSession(), self::IMAGE_FORM_ID, $code);
     }
+
+    public function changeTextareaContentElementValue(string $value): void
+    {
+        $this->getDocument()->fillField('Textarea', $value);
+    }
+
+    public function containsTextareaContentElementWithValue(string $value): bool
+    {
+        return $this->getDocument()->findField('Textarea')->getValue() === $value;
+    }
 }

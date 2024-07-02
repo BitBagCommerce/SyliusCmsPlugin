@@ -25,11 +25,10 @@ use Twig\Environment;
 final class RenderLinkRuntimeSpec extends ObjectBehavior
 {
     public function let(
-        LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         RouterInterface $router
     ): void {
-        $this->beConstructedWith($localeContext, $pageRepository, $router, 'defaultTemplate');
+        $this->beConstructedWith($pageRepository, $router, 'defaultTemplate');
     }
 
     public function it_is_initializable(): void
@@ -46,15 +45,12 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
         Environment $environment,
         PageInterface $page,
         PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext
     ): void {
         $options = [];
         $code = 'CODE';
         $template = null;
-        $localeCode = 'en_US';
 
-        $localeContext->getLocaleCode()->willReturn($localeCode);
-        $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
+        $pageRepository->findOneEnabledByCode($code)->willReturn($page);
 
         $environment->render($template ?? 'defaultTemplate', [
             'page' => $page,
@@ -66,17 +62,14 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
 
     public function it_gets_link_for_code(
         RouterInterface $router,
-        LocaleContextInterface $localeContext,
         PageRepositoryInterface $pageRepository,
         PageInterface $page
     ): void {
         $code = 'CODE';
-        $localeCode = 'en_US';
         $slug = 'SLUG';
         $options = [];
 
-        $localeContext->getLocaleCode()->willReturn($localeCode);
-        $pageRepository->findOneEnabledByCode($code, $localeCode)->willReturn($page);
+        $pageRepository->findOneEnabledByCode($code)->willReturn($page);
         $page->getSlug()->willReturn($slug);
 
         $router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn('link');

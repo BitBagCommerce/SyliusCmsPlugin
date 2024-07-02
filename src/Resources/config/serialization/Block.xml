@@ -25,10 +25,7 @@
         <attribute name="taxons">
             <group>shop:cms:read</group>
         </attribute>
-        <attribute name="translations">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="contents">
+        <attribute name="contentElements">
             <group>shop:cms:read</group>
         </attribute>
     </class>

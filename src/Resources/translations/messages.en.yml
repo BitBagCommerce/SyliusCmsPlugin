@@ -17,6 +17,7 @@ bitbag_sylius_cms_plugin:
         name: Name
         path: Path
         slug: Slug
+        meta_title: Meta title
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Content
@@ -62,6 +63,8 @@ bitbag_sylius_cms_plugin:
         publish_at: Publish at
         page_will_be_publish_at: This page will be publish at
         save_with_original_name: Save with original name
-        block_content:
+        content_elements:
+            title: Content elements
             type:
-                content_text: Text content
+                textarea: Textarea
+        seo: SEO

@@ -22,10 +22,9 @@ final class PageResourceResolverSpec extends ObjectBehavior
 {
     public function let(
         PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
         LoggerInterface $logger
     ) {
-        $this->beConstructedWith($pageRepository, $localeContext, $logger);
+        $this->beConstructedWith($pageRepository, $logger);
     }
 
     public function it_is_initializable(): void
@@ -40,11 +39,9 @@ final class PageResourceResolverSpec extends ObjectBehavior
 
     public function it_logs_warning_if_page_was_not_found(
         PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
         LoggerInterface $logger
     ) {
-        $localeContext->getLocaleCode()->willReturn('en_US');
-        $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn(null);
+        $pageRepository->findOneEnabledByCode('homepage_banner')->willReturn(null);
 
         $logger
             ->warning(sprintf(
@@ -59,11 +56,9 @@ final class PageResourceResolverSpec extends ObjectBehavior
 
     public function it_returns_page_if_found_in_database(
         PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
         PageInterface $page
     ) {
-        $localeContext->getLocaleCode()->willReturn('en_US');
-        $pageRepository->findOneEnabledByCode('homepage_banner', 'en_US')->willReturn($page);
+        $pageRepository->findOneEnabledByCode('homepage_banner')->willReturn($page);
 
         $this->findOrLog('homepage_banner')->shouldReturn($page);
     }

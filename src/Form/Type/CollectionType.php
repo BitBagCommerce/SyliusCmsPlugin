@@ -11,9 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\CollectionTranslationType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Event\PreSubmitEvent;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -34,6 +32,9 @@ final class CollectionType extends AbstractResourceType
             ->add('code', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
+            ])
+            ->add('name', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
             ])
             ->add('type', ChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.type',
@@ -56,9 +57,6 @@ final class CollectionType extends AbstractResourceType
                 'multiple' => true,
                 'media_type' => MediaInterface::IMAGE_TYPE,
             ])
-            ->add('translations', ResourceTranslationsType::class, [
-                'entry_type' => CollectionTranslationType::class,
-            ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event): void {
                 $formData = $event->getData();
                 switch ($formData['type']) {
@@ -77,8 +75,7 @@ final class CollectionType extends AbstractResourceType
                 }
 
                 $event->setData($formData);
-            })
-        ;
+            });
     }
 
     public function getBlockPrefix(): string

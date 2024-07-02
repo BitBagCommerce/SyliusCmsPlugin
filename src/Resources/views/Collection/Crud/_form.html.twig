@@ -7,6 +7,7 @@
     <div class="column">
         <div class="ui segment">
             {{ form_row(form.code) }}
+            {{ form_row(form.name) }}
             {{ form_row(form.type) }}
         </div>
         <div class="ui segment collection-type-items">
@@ -20,11 +21,5 @@
                 {{ form_row(form.media) }}
             </div>
         </div>
-    </div>
-</div>
-
-<div class="ui one column stackable grid">
-    <div class="column">
-        {{ translationForm(form.translations) }}
     </div>
 </div>

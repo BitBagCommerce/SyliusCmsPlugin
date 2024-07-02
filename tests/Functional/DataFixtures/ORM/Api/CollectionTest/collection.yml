@@ -17,26 +17,13 @@ Sylius\Component\Core\Model\Channel:
     default_locale: '@locale'
     tax_calculation_strategy: 'order_items_based'
     base_currency: '@dollar'
-BitBag\SyliusCmsPlugin\Entity\CollectionTranslation:
-  collection1_translation:
-    name: 'translation1_name_en_US'
-    locale: 'en_US'
-  collection2_translation:
-    name: 'translation2_name_en_US'
-    locale: 'en_US'
-  collection3_translation:
-    name: 'translation3_name_en_US'
-    locale: 'en_US'
 BitBag\SyliusCmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
-    translations:
-      - '@collection1_translation'
+    name: 'collection1-name'
   collection2:
     code: 'collection2-code'
-    translations:
-      - '@collection2_translation'
+    name: 'collection2-name'
   collection3:
     code: 'collection3-code'
-    translations:
-      - '@collection3_translation'
+    name: 'collection3-name'

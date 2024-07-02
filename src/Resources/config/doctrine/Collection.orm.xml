@@ -13,6 +13,8 @@
 
         <field name="code" column="code" type="string" length="250" unique="true"/>
 
+        <field name="name" column="name" type="string" length="250" nullable="true"/>
+
         <field name="type" column="type" type="string" length="250" nullable="true"/>
 
         <many-to-many field="pages" target-entity="BitBag\SyliusCmsPlugin\Entity\PageInterface">
