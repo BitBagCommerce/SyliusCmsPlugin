@@ -20,7 +20,6 @@ interface MediaInterface extends
     ResourceInterface,
     TranslatableInterface,
     ToggleableInterface,
-    ProductsAwareInterface,
     CollectibleInterface,
     ChannelsAwareInterface,
     ContentableInterface

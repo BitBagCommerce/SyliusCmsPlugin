@@ -45,6 +45,9 @@ final class MediaType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.code',
                 'disabled' => null !== $data && null !== $data->getCode(),
             ])
+            ->add('name', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+            ])
             ->add('type', ChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.type',
                 'choices' => $this->providers,
@@ -61,10 +64,6 @@ final class MediaType extends AbstractResourceType
             ])
             ->add('saveWithOriginalName', CheckboxType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.save_with_original_name',
-            ])
-            ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.products',
-                'multiple' => true,
             ])
             ->add('channels', ChannelChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.channels',

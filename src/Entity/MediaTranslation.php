@@ -14,34 +14,17 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class MediaTranslation extends AbstractTranslation implements MediaTranslationInterface
 {
-    /** @var int */
-    protected $id;
+    protected ?int $id;
 
-    /** @var string|null */
-    protected $name;
+    protected ?string $content;
 
-    /** @var string|null */
-    protected $content;
+    protected ?string $alt;
 
-    /** @var string|null */
-    protected $alt;
-
-    /** @var string|null */
-    protected $link;
+    protected ?string $link;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
     }
 
     public function getContent(): ?string

@@ -12,7 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\ProductsAwareTrait;
 use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -24,47 +23,37 @@ class Media implements MediaInterface
 {
     use ToggleableTrait;
     use CollectibleTrait;
-    use ProductsAwareTrait;
     use ChannelsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
 
-    /** @var int */
-    protected $id;
+    protected ?int $id = null;
 
-    /** @var string|null */
-    protected $type;
+    protected ?string $type;
 
-    /** @var string|null */
-    protected $code;
+    protected ?string $code = null;
 
-    /** @var string|null */
-    protected $path;
+    protected ?string $name;
 
-    /** @var UploadedFile|null */
-    protected $file;
+    protected ?string $path = null;
 
-    /** @var string|null */
-    protected $mimeType;
+    protected ?UploadedFile $file = null;
 
-    /** @var string */
-    protected $originalPath;
+    protected ?string $mimeType;
 
-    /** @var int|null */
-    protected $width;
+    protected string $originalPath;
 
-    /** @var int|null */
-    protected $height;
+    protected ?int $width;
 
-    /** @var bool */
-    protected $saveWithOriginalName = false;
+    protected ?int $height;
+
+    protected bool $saveWithOriginalName = false;
 
     public function __construct()
     {
         $this->initializeTranslationsCollection();
         $this->initializeCollectionsCollection();
-        $this->initializeProductsCollection();
         $this->initializeChannelsCollection();
     }
 
@@ -91,6 +80,16 @@ class Media implements MediaInterface
     public function setCode(?string $code): void
     {
         $this->code = $code;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
     }
 
     public function getPath(): ?string
@@ -126,21 +125,6 @@ class Media implements MediaInterface
     public function setMimeType(?string $mimeType): void
     {
         $this->mimeType = $mimeType;
-    }
-
-    public function getName(): ?string
-    {
-        /** @var MediaTranslationInterface $mediaTranslationInterface */
-        $mediaTranslationInterface = $this->getMediaTranslation();
-
-        return $mediaTranslationInterface->getName();
-    }
-
-    public function setName(?string $name): void
-    {
-        /** @var MediaTranslationInterface $mediaTranslationInterface */
-        $mediaTranslationInterface = $this->getMediaTranslation();
-        $mediaTranslationInterface->setName($name);
     }
 
     public function getDownloadName(): string
