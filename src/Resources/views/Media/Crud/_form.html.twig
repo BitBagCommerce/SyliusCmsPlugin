@@ -16,16 +16,6 @@
             {{ form_row(form.saveWithOriginalName) }}
             {{ form_row(form.collections) }}
             {{ form_row(form.channels) }}
-
-            <a
-                href="#"
-                class="ui labeled button icon primary bitbag-cms-resource-preview"
-                data-bb-cms-preview-btn
-                data-url="{{ path('bitbag_sylius_cms_plugin_admin_media_preview', {'id': form.vars.data.id}) }}"
-            >
-                <i class="eye icon"></i>
-                {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
-            </a>
         </div>
     </div>
 </div>

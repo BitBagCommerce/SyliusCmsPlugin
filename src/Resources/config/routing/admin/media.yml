@@ -17,15 +17,6 @@ bitbag_sylius_cms_plugin_admin_media:
                 icon: file
     type: sylius.resource
 
-bitbag_sylius_cms_plugin_admin_media_preview:
-    path: /media/preview/{id}
-    methods: [GET, POST, PUT]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::previewAction
-        _sylius:
-            template: "@BitBagSyliusCmsPlugin/Media/preview.html.twig"
-        id: null
-
 bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
     path: /ajax/media/search
     methods: [GET]
