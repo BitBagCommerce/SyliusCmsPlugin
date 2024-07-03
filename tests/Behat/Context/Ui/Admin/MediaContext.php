@@ -58,11 +58,11 @@ final class MediaContext implements Context
     }
 
     /**
-     * @When I fill the content with :arg1
+     * @When I fill the link content with :arg1
      */
     public function iFillTheContentWith(string $content): void
     {
-        $this->resolveCurrentPage()->fillContent($content);
+        $this->resolveCurrentPage()->fillField('Link content', $content);
     }
 
     /**
