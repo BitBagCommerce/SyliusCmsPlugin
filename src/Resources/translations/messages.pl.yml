@@ -18,6 +18,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Produkty powiązane ze stroną
         name: Nazwa
         slug: Link
+        meta_title: Tytuł meta
         meta_keywords: Słowa kluczowe
         meta_description: Opis sekcji meta
         content: Treść
@@ -41,6 +42,7 @@ bitbag_sylius_cms_plugin:
         publish_at: Opublikuj
         page_will_be_publish_at: Strona zostanie opublikowana
         save_with_original_name: Zapisz z oryginalną nazwą
-        block_content:
+        content_elements:
+            title: Elementy treści
             type:
-                content_text: Tekst
+                textarea: Textarea

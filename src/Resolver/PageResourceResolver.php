@@ -13,20 +13,18 @@ namespace BitBag\SyliusCmsPlugin\Resolver;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Psr\Log\LoggerInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolver implements PageResourceResolverInterface
 {
     public function __construct(
         private PageRepositoryInterface $pageRepository,
-        private LocaleContextInterface $localeContext,
         private LoggerInterface $logger,
     ) {
     }
 
     public function findOrLog(string $code): ?PageInterface
     {
-        $page = $this->pageRepository->findOneEnabledByCode($code, $this->localeContext->getLocaleCode());
+        $page = $this->pageRepository->findOneEnabledByCode($code);
 
         if (false === $page instanceof PageInterface) {
             $this->logger->warning(sprintf(

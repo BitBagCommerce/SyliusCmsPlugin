@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Produits liés à la page
         name: Nom
         slug: Slug
+        meta_title: Meta Titre
         meta_keywords: Meta Mots-clés
         meta_description: Meta Description
         content: Contenu
@@ -55,6 +56,7 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Les données ont été importées.
         form_was_submitted_with_errors: "Le formulaire a les erreurs suivantes :"
         title: Titre
-        block_content:
+        content_elements:
+            title: Éléments de contenu
             type:
-                content_text: Texte
+                textarea: Textarea de

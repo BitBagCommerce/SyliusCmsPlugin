@@ -10,6 +10,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
+use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\LocaleAwareTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -18,29 +22,30 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 class Page implements PageInterface
 {
     use ToggleableTrait;
-    use ProductsAwareTrait;
     use CollectibleTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
+    use ContentConfigurationAwareTrait;
+    use LocaleAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
 
-    /** @var int */
-    protected $id;
+    protected ?int $id;
 
-    /** @var string|null */
-    protected $code;
+    protected ?string $code = null;
 
-    /** @var \DateTimeImmutable|null */
-    protected $publishAt;
+    protected ?string $name;
+
+    protected ?\DateTimeImmutable $publishAt;
 
     public function __construct()
     {
-        $this->initializeProductsCollection();
         $this->initializeCollectionsCollection();
-        $this->initializeTranslationsCollection();
         $this->initializeChannelsCollection();
+        $this->initializeTranslationsCollection();
+        $this->initializeContentElementsCollection();
+        $this->initializeLocalesCollection();
 
         $this->createdAt = new \DateTime();
     }
@@ -110,94 +115,14 @@ class Page implements PageInterface
         $pageTranslationInterface->setMetaDescription($metaDescription);
     }
 
-    public function getContent(): ?string
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getContent();
-    }
-
-    public function setContent(?string $content): void
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setContent($content);
-    }
-
     public function getName(): ?string
     {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getName();
+        return $this->name;
     }
 
     public function setName(?string $name): void
     {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setName($name);
-    }
-
-    public function getNameWhenLinked(): ?string
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getNameWhenLinked();
-    }
-
-    public function setNameWhenLinked(?string $nameWhenLinked): void
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setNameWhenLinked($nameWhenLinked);
-    }
-
-    public function getDescriptionWhenLinked(): ?string
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getDescriptionWhenLinked();
-    }
-
-    public function setDescriptionWhenLinked(?string $descriptionWhenLinked): void
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setDescriptionWhenLinked($descriptionWhenLinked);
-    }
-
-    public function getBreadcrumb(): ?string
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getBreadcrumb();
-    }
-
-    public function setBreadcrumb(?string $breadcrumb): void
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setBreadcrumb($breadcrumb);
-    }
-
-    public function getImage(): ?MediaInterface
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-
-        return $pageTranslationInterface->getImage();
-    }
-
-    public function setImage(?MediaInterface $image): void
-    {
-        /** @var PageTranslationInterface $pageTranslationInterface */
-        $pageTranslationInterface = $this->getPageTranslation();
-        $pageTranslationInterface->setImage($image);
+        $this->name = $name;
     }
 
     public function getTitle(): ?string
@@ -215,6 +140,16 @@ class Page implements PageInterface
         $pageTranslationInterface->setTitle($title);
     }
 
+    public function getPublishAt(): ?\DateTimeImmutable
+    {
+        return $this->publishAt;
+    }
+
+    public function setPublishAt(?\DateTimeImmutable $publishAt): void
+    {
+        $this->publishAt = $publishAt;
+    }
+
     /**
      * @return PageTranslationInterface|TranslationInterface
      */
@@ -228,13 +163,14 @@ class Page implements PageInterface
         return new PageTranslation();
     }
 
-    public function getPublishAt(): ?\DateTimeImmutable
+    public function getContent(): ?string
     {
-        return $this->publishAt;
-    }
+        $content = '';
+        /** @var ContentConfigurationInterface $contentElement */
+        foreach ($this->contentElements as $contentElement) {
+            $content .= $contentElement->getContent() . \PHP_EOL;
+        }
 
-    public function setPublishAt(?\DateTimeImmutable $publishAt): void
-    {
-        $this->publishAt = $publishAt;
+        return $content;
     }
 }

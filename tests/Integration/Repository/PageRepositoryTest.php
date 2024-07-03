@@ -14,8 +14,6 @@ namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
 use ApiTestCase\JsonApiTestCase;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use Sylius\Component\Core\Model\Product;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 class PageRepositoryTest extends JsonApiTestCase
 {
@@ -56,50 +54,8 @@ class PageRepositoryTest extends JsonApiTestCase
 
         $pageRepository = $this->getRepository();
 
-        $page1_array = $pageRepository->findByCollectionCode('collection1-code', 'en_US');
-        $page3_array = $pageRepository->findByCollectionCode('collection3-code', 'en_US');
-
-        self::assertNotEmpty($page1_array);
-        self::assertEmpty($page3_array);
-    }
-
-    public function test_it_finds_enabled_page_by_product(): void
-    {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product.yml');
-
-        $pageRepository = $this->getRepository();
-
-        /** @var ProductRepositoryInterface $productRepository */
-        $productRepository = $this->getEntityManager()->getRepository(Product::class);
-
-        /** @var Product $product1 */
-        $product1 = $productRepository->findOneByCode('MUG_SW');
-        /** @var Product $product3 */
-        $product3 = $productRepository->findOneByCode('MUG_SW3');
-
-        $page1_array = $pageRepository->findByProduct($product1, 'code', null);
-        $page3_array = $pageRepository->findByProduct($product3, 'code', null);
-
-        self::assertNotEmpty($page1_array);
-        self::assertEmpty($page3_array);
-    }
-
-    public function test_it_finds_enabled_page_by_product_and_collection_code(): void
-    {
-        $this->loadFixturesFromFile('PageRepositoryTest/test_it_finds_page_by_product_and_collection_code.yml');
-
-        $pageRepository = $this->getRepository();
-
-        /** @var ProductRepositoryInterface $productRepository */
-        $productRepository = $this->getEntityManager()->getRepository(Product::class);
-
-        /** @var Product $product1 */
-        $product1 = $productRepository->findOneByCode('MUG_SW');
-        /** @var Product $product3 */
-        $product3 = $productRepository->findOneByCode('MUG_SW3');
-
-        $page1_array = $pageRepository->findByProductAndCollectionCode($product1, 'collection1-code', 'code', null);
-        $page3_array = $pageRepository->findByProductAndCollectionCode($product3, 'collection3-code', 'code', null);
+        $page1_array = $pageRepository->findByCollectionCode('collection1-code');
+        $page3_array = $pageRepository->findByCollectionCode('collection3-code');
 
         self::assertNotEmpty($page1_array);
         self::assertEmpty($page3_array);

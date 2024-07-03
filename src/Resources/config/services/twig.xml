@@ -34,19 +34,6 @@
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.product_pages" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderProductPagesExtension">
-            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.product_pages" />
-            <tag name="twig.extension" />
-        </service>
-
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.product_pages" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderProductPagesRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
-            <argument type="service" id="sylius.context.channel" />
-            <argument type="service" id="twig" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.sorter.collections" />
-            <tag name="twig.runtime" />
-        </service>
-
         <service id="bitbag_sylius_cms_plugin.twig.extension.render_content" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderContentExtension">
             <tag name="twig.extension" />
         </service>
@@ -66,7 +53,6 @@
         </service>
 
         <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime">
-            <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="router.default" />
             <argument>%bitbag_cms.twig.link_template%</argument>

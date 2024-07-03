@@ -10,28 +10,10 @@
         <attribute name="slug">
             <group>shop:cms:read</group>
         </attribute>
-        <attribute name="image">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="content">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="name">
-            <group>shop:cms:read</group>
-        </attribute>
         <attribute name="metaKeywords">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="metaDescription">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="nameWhenLinked">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="descriptionWhenLinked">
-            <group>shop:cms:read</group>
-        </attribute>
-        <attribute name="breadcrumb">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="title">

@@ -13,27 +13,14 @@ namespace BitBag\SyliusCmsPlugin\Repository;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Sylius\Component\Core\Model\ProductInterface;
 
 class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
     use TranslationBasedAwareTrait;
 
-    public function createListQueryBuilder(string $localeCode): QueryBuilder
-    {
-        return $this->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->leftJoin('o.translations', 'translation', 'WITH', 'translation.locale = :localeCode')
-            ->leftJoin('o.collections', 'collections')
-            ->setParameter('localeCode', $localeCode)
-        ;
-    }
-
     public function findEnabled(bool $enabled): array
     {
         return $this->createQueryBuilder('o')
-            ->addSelect('translation')
-            ->innerJoin('o.translations', 'translation')
             ->andWhere('o.enabled = :enabled')
             ->setParameter('enabled', $enabled)
             ->getQuery()
@@ -41,15 +28,12 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findOneEnabledByCode(string $code, ?string $localeCode): ?PageInterface
+    public function findOneEnabledByCode(string $code): ?PageInterface
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
-            ->where('translation.locale = :localeCode')
             ->andWhere('o.code = :code')
             ->andWhere('o.enabled = true')
             ->setParameter('code', $code)
-            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getOneOrNullResult()
         ;
@@ -88,91 +72,22 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
         ;
     }
 
-    public function findByCollectionCode(string $collectionCode, ?string $localeCode): array
+    public function findByCollectionCode(string $collectionCode): array
     {
         return $this->createQueryBuilder('o')
-            ->leftJoin('o.translations', 'translation')
             ->innerJoin('o.collections', 'collection')
-            ->where('translation.locale = :localeCode')
             ->andWhere('collection.code = :collectionCode')
             ->andWhere('o.enabled = true')
             ->setParameter('collectionCode', $collectionCode)
-            ->setParameter('localeCode', $localeCode)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findByProduct(
-        ProductInterface $product,
-        string $channelCode,
-        ?\DateTimeInterface $date = null,
-    ): array {
-        $qb = $this->createQueryBuilder('o')
-            ->innerJoin('o.products', 'product')
-            ->innerJoin('o.channels', 'channel')
-            ->where('o.enabled = true')
-            ->andWhere('product = :product')
-            ->andWhere('channel.code = :channelCode')
-            ->setParameter('product', $product)
-            ->setParameter('channelCode', $channelCode)
-        ;
-
-        if (null !== $date) {
-            $this->addDateFilter($qb, $date);
-        }
-
-        return $qb
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-    public function findByProductAndCollectionCode(
-        ProductInterface $product,
-        string $collectionCode,
-        string $channelCode,
-        ?\DateTimeInterface $date = null,
-    ): array {
-        $qb = $this->createQueryBuilder('o')
-            ->innerJoin('o.products', 'product')
-            ->innerJoin('o.collections', 'collection')
-            ->innerJoin('o.channels', 'channel')
-            ->where('o.enabled = true')
-            ->andWhere('product = :product')
-            ->andWhere('collection.code = :collectionCode')
-            ->andWhere('channel.code = :channelCode')
-            ->setParameter('product', $product)
-            ->setParameter('collectionCode', $collectionCode)
-            ->setParameter('channelCode', $channelCode)
-        ;
-
-        if (null !== $date) {
-            $this->addDateFilter($qb, $date);
-        }
-
-        return $qb->getQuery()
-            ->getResult()
-        ;
-    }
-
-    private function addDateFilter(QueryBuilder $qb, \DateTimeInterface $date): void
+    public function findByNamePart(string $phrase): array
     {
-        $qb
-            ->andWhere(
-                $qb->expr()->orX(
-                    'o.publishAt is NULL',
-                    'o.publishAt <= :date',
-                ),
-            )
-            ->setParameter('date', $date)
-        ;
-    }
-
-    public function findByNamePart(string $phrase, ?string $locale = null): array
-    {
-        return $this->createTranslationBasedQueryBuilder($locale)
-            ->andWhere('translation.name LIKE :name')
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.name LIKE :name')
             ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()

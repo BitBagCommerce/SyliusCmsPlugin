@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Produkty relevantné ku stránke
         name: Meno
         slug: Slug
+        meta_title: Meta titulok
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Obsah
@@ -55,6 +56,7 @@ bitbag_sylius_cms_plugin:
         successfully_imported: Dáta boli naimportované
         form_was_submitted_with_errors: "Formulár obsahuje nasledovné chyby:"
         title: Titulok
-        block_content:
+        content_elements:
+            title: Obsahové prvky
             type:
-                content_text: Text
+                textarea: Textarea

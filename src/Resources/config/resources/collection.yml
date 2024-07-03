@@ -7,8 +7,4 @@ sylius_resource:
                 interface: BitBag\SyliusCmsPlugin\Entity\CollectionInterface
                 form: BitBag\SyliusCmsPlugin\Form\Type\CollectionType
                 repository: BitBag\SyliusCmsPlugin\Repository\CollectionRepository
-                factory: Sylius\Component\Resource\Factory\TranslatableFactory
-            translation:
-                classes:
-                    model: BitBag\SyliusCmsPlugin\Entity\CollectionTranslation
-                    interface: BitBag\SyliusCmsPlugin\Entity\CollectionTranslationInterface
+                factory: Sylius\Component\Resource\Factory\Factory

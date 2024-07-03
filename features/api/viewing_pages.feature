@@ -9,13 +9,11 @@ Feature: Getting data from cms pages
         And there are 10 pages in the store
         And the store has "iPhone 8" and "iPhone X" products
         And there is a page in the store
-        And this page has these products associated with it
         And there are existing collections named "Blog" and "General"
         And this page has these collections associated with it
         And this page has "About us" name
         And this page has "about" code
         And this page also has "about-us" slug
-        And this page also has "We are the best!" content
 
     @api
     Scenario: Browsing defined pages
@@ -25,6 +23,5 @@ Feature: Getting data from cms pages
 
     @api
     Scenario: Viewing a detailed page
-        Given I view page with code "about"
+        When I view page with code "about"
         Then I should see the page name "About us"
-        And I should see the page content "We are the best!"

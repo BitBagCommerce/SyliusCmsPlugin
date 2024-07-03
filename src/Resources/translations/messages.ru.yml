@@ -15,6 +15,7 @@ bitbag_sylius_cms_plugin:
         page_related_products: Cопутствующие товары
         name: Имя
         slug: Путь
+        meta_title: Заголовок (мета)
         meta_keywords: Ключевые слова (мета)
         meta_description: Описание (мета)
         content: Содержимое
@@ -54,6 +55,7 @@ bitbag_sylius_cms_plugin:
         csv_file: CSV файл
         successfully_imported: Данные успешно импортированы
         title: заглавие
-        block_content:
+        content_elements:
+            title: Элементы контента
             type:
-                content_text: Текст
+                textarea: Textarea

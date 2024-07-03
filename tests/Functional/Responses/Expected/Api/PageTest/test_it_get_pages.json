@@ -8,20 +8,15 @@
       "@type": "Page",
       "id": "@integer@",
       "code": "page1-code",
+      "name": null,
       "publishAt": null,
       "translations": {
         "en_US": {
           "@type": "PageTranslation",
           "id": "@integer@",
           "slug": "translation1_slug_en_US",
-          "image": null,
-          "name": "translation_name_en_US",
-          "content": "translation_content_en_US",
           "metaKeywords": "html,application",
           "metaDescription": null,
-          "nameWhenLinked": null,
-          "descriptionWhenLinked": null,
-          "breadcrumb": "/application/translations_1",
           "title": "Amazing article1"
         }
       }
@@ -31,20 +26,15 @@
       "@type": "Page",
       "id": "@integer@",
       "code": "page2-code",
+      "name": null,
       "publishAt": null,
       "translations": {
         "en_US": {
           "@type": "PageTranslation",
           "id": "@integer@",
           "slug": "translation2_slug_en_US",
-          "image": null,
-          "name": "translation_name_en_US",
-          "content": "translation_content_en_US",
           "metaKeywords": "html,application",
           "metaDescription": null,
-          "nameWhenLinked": null,
-          "descriptionWhenLinked": null,
-          "breadcrumb": "/application/translations_2",
           "title": "Amazing article2"
         }
       }
@@ -54,20 +44,15 @@
       "@type": "Page",
       "id": "@integer@",
       "code": "page3-code",
+      "name": null,
       "publishAt": null,
       "translations": {
         "en_US": {
           "@type": "PageTranslation",
           "id": "@integer@",
           "slug": "translation3_slug_en_US",
-          "image": null,
-          "name": "translation_name_en_US",
-          "content": "translation_content_en_US",
           "metaKeywords": "html,application",
           "metaDescription": null,
-          "nameWhenLinked": null,
-          "descriptionWhenLinked": null,
-          "breadcrumb": "/application/translations_3",
           "title": "Amazing article3"
         }
       }

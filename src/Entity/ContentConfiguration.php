@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-class BlockContent implements BlockContentInterface
+use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
+
+class ContentConfiguration implements ContentConfigurationInterface
 {
     protected ?int $id;
 
@@ -19,6 +21,8 @@ class BlockContent implements BlockContentInterface
     protected array $configuration = [];
 
     protected ?BlockInterface $block = null;
+
+    protected ?PageInterface $page = null;
 
     public function getId(): ?int
     {
@@ -53,5 +57,24 @@ class BlockContent implements BlockContentInterface
     public function setBlock(?BlockInterface $block): void
     {
         $this->block = $block;
+    }
+
+    public function getPage(): ?PageInterface
+    {
+        return $this->page;
+    }
+
+    public function setPage(?PageInterface $page): void
+    {
+        $this->page = $page;
+    }
+
+    public function getContent(): ?string
+    {
+        if (TextareaContentElementType::TYPE === $this->type) {
+            return $this->configuration[TextareaContentElementType::TYPE] ?? null;
+        }
+
+        return null;
     }
 }

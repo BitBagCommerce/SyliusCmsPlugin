@@ -11,11 +11,9 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\TranslatableInterface;
 
 interface CollectionInterface extends
     ResourceInterface,
-    TranslatableInterface,
     PagesCollectionInterface,
     BlocksCollectionInterface,
     MediaCollectionInterface

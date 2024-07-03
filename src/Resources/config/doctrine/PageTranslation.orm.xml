@@ -12,27 +12,10 @@
 
         <field name="slug" column="slug" type="string" nullable="true"/>
 
-        <field name="name" column="name" type="string" nullable="true"/>
-
-        <field name="breadcrumb" column="breadcrumb" type="string" nullable="true"/>
-
-        <field name="nameWhenLinked" column="name_when_linked" type="string" nullable="true"/>
-
-        <field name="descriptionWhenLinked" column="description_when_linked" type="string" length="1000" nullable="true"/>
-
         <field name="metaKeywords" column="meta_keywords" type="string" length="1000" nullable="true"/>
 
         <field name="metaDescription" column="meta_description" type="string" length="5000" nullable="true"/>
 
-        <field name="content" column="content" type="text" nullable="true"/>
-
         <field name="title" column="title" type="string" nullable="true"/>
-
-        <many-to-one field="image" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface">
-            <cascade>
-                <cascade-persist/>
-            </cascade>
-        </many-to-one>
-
     </mapped-superclass>
 </doctrine-mapping>

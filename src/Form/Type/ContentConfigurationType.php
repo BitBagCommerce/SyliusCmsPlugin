@@ -10,14 +10,14 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockContentInterface;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-final class BlockContentType extends AbstractResourceType
+final class ContentConfigurationType extends AbstractResourceType
 {
     private array $actionTypes = [];
 
@@ -32,7 +32,7 @@ final class BlockContentType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['bitbag_sylius_cms_plugin.ui.block_content.type.' . $type] = $type;
+            $this->actionTypes['bitbag_sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
         }
     }
 
@@ -83,7 +83,7 @@ final class BlockContentType extends AbstractResourceType
 
         $form = $event->getForm();
 
-        $dataType = $data instanceof BlockContentInterface ? $data->getType() : $data['type'];
+        $dataType = $data instanceof ContentConfigurationInterface ? $data->getType() : $data['type'];
 
         $actionConfigurationType = $this->actionConfigurationTypes[$dataType];
         $form->add('configuration', $actionConfigurationType, [
@@ -93,6 +93,6 @@ final class BlockContentType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_block_content';
+        return 'bitbag_sylius_cms_plugin_content_configuration';
     }
 }

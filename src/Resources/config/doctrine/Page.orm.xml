@@ -15,6 +15,8 @@
 
         <field name="enabled" column="enabled" type="boolean"/>
 
+        <field name="name" column="name" type="string" nullable="true"/>
+
         <field name="createdAt" column="created_at" type="datetime" nullable="true">
             <gedmo:timestampable on="create"/>
         </field>
@@ -36,17 +38,6 @@
             </join-table>
         </many-to-many>
 
-        <many-to-many field="products" target-entity="Sylius\Component\Product\Model\ProductInterface">
-            <join-table name="bitbag_cms_page_products">
-                <join-columns>
-                    <join-column name="page_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
         <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
             <join-table name="bitbag_cms_page_channels">
                 <join-columns>
@@ -54,6 +45,26 @@
                 </join-columns>
                 <inverse-join-columns>
                     <join-column name="channel_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <one-to-many field="contentElements" target-entity="BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface" mapped-by="page" orphan-removal="true">
+            <cascade>
+                <cascade-all />
+            </cascade>
+            <order-by>
+                <order-by-field name="id" />
+            </order-by>
+        </one-to-many>
+
+        <many-to-many field="locales" target-entity="Sylius\Component\Locale\Model\LocaleInterface">
+            <join-table name="bitbag_cms_page_locales">
+                <join-columns>
+                    <join-column name="page_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="locale_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
                 </inverse-join-columns>
             </join-table>
         </many-to-many>

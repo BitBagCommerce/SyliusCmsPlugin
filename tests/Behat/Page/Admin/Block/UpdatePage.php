@@ -48,4 +48,14 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     {
         return $this->getDocument()->findField('Enabled')->isChecked();
     }
+
+    public function changeTextareaContentElementValue(string $value): void
+    {
+        $this->getDocument()->fillField('Textarea', $value);
+    }
+
+    public function containsTextareaContentElementWithValue(string $value): bool
+    {
+        return $this->getDocument()->findField('Textarea')->getValue() === $value;
+    }
 }

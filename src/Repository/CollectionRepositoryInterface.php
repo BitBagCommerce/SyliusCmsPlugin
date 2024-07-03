@@ -11,16 +11,13 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Repository;
 
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface CollectionRepositoryInterface extends RepositoryInterface
 {
-    public function createListQueryBuilder(string $localeCode): QueryBuilder;
+    public function findByNamePart(string $phrase): array;
 
-    public function findByNamePart(string $phrase, ?string $locale = null): array;
+    public function findOneByCode(string $code): ?CollectionInterface;
 
-    public function findOneByCode(string $code, ?string $localeCode): ?CollectionInterface;
-
-    public function findByCodesAndLocale(string $codes, string $localeCode): array;
+    public function findByCodes(string $codes): array;
 }

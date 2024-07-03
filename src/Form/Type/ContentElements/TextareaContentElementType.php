@@ -8,25 +8,27 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
+namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class CollectionTranslationType extends AbstractResourceType
+final class TextareaContentElementType extends AbstractType
 {
+    public const TYPE = 'textarea';
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+            ->add(self::TYPE, WysiwygType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.textarea',
             ])
         ;
     }
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_collection_translation';
+        return 'bitbag_sylius_cms_plugin_content_elements_textarea';
     }
 }

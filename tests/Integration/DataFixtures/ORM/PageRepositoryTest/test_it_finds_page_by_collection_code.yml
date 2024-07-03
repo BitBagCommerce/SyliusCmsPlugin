@@ -19,17 +19,11 @@ Sylius\Component\Core\Model\Channel:
     base_currency: '@dollar'
 BitBag\SyliusCmsPlugin\Entity\PageTranslation:
   page1_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
-    content: 'translation_content_en_US'
   page2_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
-    content: 'translation_content_en_US'
   page3_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
-    content: 'translation_content_en_US'
 BitBag\SyliusCmsPlugin\Entity\Page:
   page1:
     code: 'page1-code'
