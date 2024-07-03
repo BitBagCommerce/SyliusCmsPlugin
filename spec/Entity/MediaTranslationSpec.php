@@ -36,9 +36,6 @@ final class MediaTranslationSpec extends ObjectBehavior
 
     public function it_allows_access_via_properties(): void
     {
-        $this->setName('Video');
-        $this->getName()->shouldReturn('Video');
-
         $this->setContent('Lorem ipsum');
         $this->getContent()->shouldReturn('Lorem ipsum');
 

@@ -5,6 +5,7 @@
   "id": "@integer@",
   "type": "image",
   "code": "media1-code",
+  "name": "media1-name",
   "path": "/path/to/media1",
   "mimeType": null,
   "width": null,
@@ -19,16 +20,12 @@
       "code": "collection1-code"
     }
   ],
-  "products": [
-    "/api/v2/shop/products/MUG_SW"
-  ],
   "channels": [
     "/api/v2/shop/channels/code"
   ],
   "translations": {
     "en_US": {
       "@type": "MediaTranslation",
-      "name": "translation_name_en_US",
       "content": "translation_content_en_US",
       "alt": null,
       "link": "translation_link_en_US"

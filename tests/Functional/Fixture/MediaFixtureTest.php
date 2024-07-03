@@ -122,29 +122,21 @@ final class MediaFixtureTest extends TestCase
             [
                 'custom' => [
                     'media_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'name' => 'My media',
-                            ],
-                        ],
+                        'name' => 'My media',
                     ],
                 ],
             ],
-        ], 'custom.*.translations.*.name');
+        ], 'custom.*.name');
 
         $this->assertConfigurationIsValid([
             [
                 'custom' => [
                     'media_1' => [
-                        'translations' => [
-                            'en_US' => [
-                                'name' => '',
-                            ],
-                        ],
+                        'name' => '',
                     ],
                 ],
             ],
-        ], 'custom.*.translations.*.name');
+        ], 'custom.*.name');
     }
 
     /**

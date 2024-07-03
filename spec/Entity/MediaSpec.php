@@ -41,6 +41,9 @@ final class MediaSpec extends ObjectBehavior
         $this->setCode('file');
         $this->getCode()->shouldReturn('file');
 
+        $this->setName('Video');
+        $this->getName()->shouldReturn('Video');
+
         $this->setType('video');
         $this->getType()->shouldReturn('video');
 
@@ -63,18 +66,6 @@ final class MediaSpec extends ObjectBehavior
 
         $this->disable();
         $this->isEnabled()->shouldReturn(false);
-    }
-
-    public function it_associates_products(ProductInterface $firstProduct, ProductInterface $secondProduct): void
-    {
-        $this->addProduct($firstProduct);
-        $this->hasProduct($firstProduct)->shouldReturn(true);
-
-        $this->hasProduct($secondProduct)->shouldReturn(false);
-
-        $this->removeProduct($firstProduct);
-
-        $this->hasProduct($firstProduct)->shouldReturn(false);
     }
 
     public function it_associates_collections(CollectionInterface $firstCollection, CollectionInterface $secondCollection): void

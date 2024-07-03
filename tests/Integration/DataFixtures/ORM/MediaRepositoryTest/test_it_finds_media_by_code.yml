@@ -19,23 +19,21 @@ Sylius\Component\Core\Model\Channel:
     base_currency: '@dollar'
 BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
   media1_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
     content: 'translation_content_en_US'
     link: 'translation_link_en_US'
   media2_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
     content: 'translation_content_en_US'
     link: 'translation_link_en_US'
   media3_translation:
-    name: 'translation_name_en_US'
     locale: 'en_US'
     content: 'translation_content_en_US'
     link: 'translation_link_en_US'
 BitBag\SyliusCmsPlugin\Entity\Media:
   media1:
     code: 'media1-code'
+    name: 'media1-name'
     enabled: true
     type: 'image'
     path: '/path/to/media1'
@@ -45,6 +43,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
       - '@media1_translation'
   media2:
     code: 'media2-code'
+    name: 'media2-name'
     enabled: true
     type: 'image'
     path: '/path/to/media2'
@@ -54,6 +53,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
       - '@media2_translation'
   media3:
     code: 'media3-code'
+    name: 'media3-name'
     enabled: false
     type: 'image'
     path: '/path/to/media3'

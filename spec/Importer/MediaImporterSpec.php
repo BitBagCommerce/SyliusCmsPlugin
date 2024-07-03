@@ -26,7 +26,6 @@ final class MediaImporterSpec extends ObjectBehavior
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository
     ) {
@@ -34,7 +33,6 @@ final class MediaImporterSpec extends ObjectBehavior
             $mediaResourceResolver,
             $localeContext,
             $importerCollectionsResolver,
-            $importerProductsResolver,
             $validator,
             $mediaRepository,
         );
@@ -50,7 +48,6 @@ final class MediaImporterSpec extends ObjectBehavior
         ResourceResolverInterface $mediaResourceResolver,
         LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
-        ImporterProductsResolverInterface $importerProductsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository,
         MediaInterface $media
@@ -70,7 +67,6 @@ final class MediaImporterSpec extends ObjectBehavior
         $media->setAlt('alt')->shouldBeCalled();
 
         $importerCollectionsResolver->resolve($media, null)->shouldBeCalled();
-        $importerProductsResolver->resolve($media, null)->shouldBeCalled();
 
         $validator->validate($media, null, ['bitbag'])->willReturn(new ConstraintViolationList());
 
