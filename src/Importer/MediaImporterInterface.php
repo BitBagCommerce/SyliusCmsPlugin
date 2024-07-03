@@ -18,10 +18,6 @@ interface MediaImporterInterface extends ImporterInterface
 
     public const COLLECTIONS_COLUMN = 'collections';
 
-    public const CHANNELS_COLUMN = 'channels';
-
-    public const PRODUCTS_COLUMN = 'products';
-
     public const NAME_COLUMN = 'name__locale__';
 
     public const CONTENT_COLUMN = 'content__locale__';

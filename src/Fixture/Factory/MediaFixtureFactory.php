@@ -12,7 +12,6 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
@@ -27,7 +26,6 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         private FactoryInterface $mediaTranslationFactory,
         private MediaProviderResolverInterface $mediaProviderResolver,
         private MediaRepositoryInterface $mediaRepository,
-        private ProductsAssignerInterface $productsAssigner,
         private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
     ) {
@@ -61,6 +59,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         $media = $this->mediaFactory->createNew();
         $media->setType($mediaData['type']);
         $media->setCode($code);
+        $media->setName($mediaData['name']);
         $media->setEnabled($mediaData['enabled']);
         $media->setFile(new UploadedFile($mediaData['path'], $mediaData['original_name']));
 
@@ -71,7 +70,6 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
             $mediaTranslation = $this->mediaTranslationFactory->createNew();
 
             $mediaTranslation->setLocale($localeCode);
-            $mediaTranslation->setName($translation['name']);
             $mediaTranslation->setContent($translation['content']);
             $mediaTranslation->setAlt($translation['alt']);
             $mediaTranslation->setLink($translation['link']);
@@ -79,7 +77,6 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
         }
 
         $this->collectionsAssigner->assign($media, $mediaData['collections']);
-        $this->productsAssigner->assign($media, $mediaData['productCodes']);
         $this->channelAssigner->assign($media, $mediaData['channels']);
 
         $this->mediaRepository->add($media);
