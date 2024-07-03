@@ -22,13 +22,6 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.media_provider.image" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.frequently_asked_question" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\FrequentlyAskedQuestionContext">
-                <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.frequently_asked_question" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.frequently_asked_question" />
-            </service>
-
             <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\CollectionContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />

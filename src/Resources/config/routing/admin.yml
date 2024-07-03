@@ -4,9 +4,6 @@ bitbag_sylius_cms_plugin_admin_block:
 bitbag_sylius_cms_plugin_admin_page:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/page.yml"
 
-bitbag_sylius_cms_plugin_admin_frequently_asked_question:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/frequently_asked_question.yml"
-
 bitbag_sylius_cms_plugin_admin_collection:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/collection.yml"
 

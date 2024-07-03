@@ -48,14 +48,6 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
-            ->addChild('faq', [
-                'route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index',
-            ])
-            ->setLabel('bitbag_sylius_cms_plugin.ui.faq')
-            ->setLabelAttribute('icon', 'help')
-        ;
-
-        $cmsRootMenuItem
             ->addChild('collections', [
                 'route' => 'bitbag_sylius_cms_plugin_admin_collection_index',
             ])

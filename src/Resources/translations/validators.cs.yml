@@ -43,22 +43,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Obsah nemůže být prázdný.
             min_length: Obsah musí mít alespoň {{ limit }} znaků.
-    frequently_asked_question:
-        code:
-            unique: S tímto kódem již existují často kladené dotazy.
-            not_blank: Kód nesmí být prázdný.
-            min_length: Kód musí mít alespoň {{ limit }} znaků.
-            max_length: Kód nemůže být delší než {{ limit }} znaků.
-            regex: Kód se může skládat pouze z písmen, číslic, pomlček a podtržítek.
-        position:
-            unique: Na této pozici již existují často kladené dotazy.
-            not_blank: Pozice nemůže být prázdná.
-        question:
-            not_blank: Otázka nemůže být prázdná.
-            min_length: Otázka musí mít alespoň {{ limit }} znaků.
-        answer:
-            not_blank: Odpověď nemůže být prázdná.
-            min_length: Odpověď musí obsahovat alespoň {{ limit }} znaků.
     collection:
         code:
             unique: Existuje již kolekce s tímto kódem.

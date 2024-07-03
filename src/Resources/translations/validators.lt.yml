@@ -41,21 +41,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Turinį įvesti privaloma.
             min_length: Turinio ilgis turi būti bent {{ limit }} simb.
-    frequently_asked_question:
-        code:
-            unique: DUK įrašas su tokiu kodu jau egzistuoja.
-            not_blank: Kodą įvesti privaloma.
-            min_length: Kodo ilgis turi būti bent {{ limit }} simb.
-            max_length: Kodas negali būti ilgesnis nei {{ limit }} simb.
-        position:
-            unique: DUK įrašas su tokia pozicija jau egzistuoja.
-            not_blank: Poziciją įvesti privaloma.
-        question:
-            not_blank: Klausimą įvesti privaloma.
-            min_length: Klausimo ilgis turi būti bent {{ limit }} simb.
-        answer:
-            not_blank: Atsakymą įvesti privaloma.
-            min_length: Atsakymo ilgis turi būti bent {{ limit }} simb.
     collection:
         code:
             unique: Yra kolekcija su šiuo kodu.

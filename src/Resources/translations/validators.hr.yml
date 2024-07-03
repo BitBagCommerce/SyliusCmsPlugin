@@ -37,21 +37,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Sadržaj ne može biti prazan.
             min_length: Sadržaj mora sadržavati minimlano {{ limit }} znakova.
-    frequently_asked_question:
-        code:
-            unique: Postoji FAQ sa istim kodom.
-            not_blank: Kod ne može biti prazan.
-            min_length: Kod mora sadržavati minimalno {{ limit }} znaka.
-            max_length: Kod ne može biti duži od {{ limit }} znakova.
-        position:
-            unique: Postoji FAQ sa istom pozicijom.
-            not_blank: Pozicija ne može biti prazna.
-        question:
-            not_blank: Pitanje ne može biti prazno.
-            min_length: Pitanje mora sadržavati minimalno {{ limit }} znaka.
-        answer:
-            not_blank: Odgovor ne može biti prazan.
-            min_length: Odgovor mora sadržavati minimalno {{ limit }} znaka.
     collection:
         code:
             unique: Postoji kolekcija sa istim kodom.

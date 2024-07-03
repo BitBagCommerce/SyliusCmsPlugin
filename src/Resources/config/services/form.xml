@@ -39,18 +39,6 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Form\Type\FrequentlyAskedQuestionType">
-            <argument>%bitbag_sylius_cms_plugin.model.frequently_asked_question.class%</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.frequently_asked_question.validation_groups%</argument>
-            <tag name="form.type" />
-        </service>
-
-        <service id="bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\FrequentlyAskedQuestionTranslationType">
-            <argument>%bitbag_sylius_cms_plugin.model.frequently_asked_question_translation.class%</argument>
-            <argument>%bitbag_sylius_cms_plugin.form.type.translation.frequently_asked_question.validation_groups%</argument>
-            <tag name="form.type" />
-        </service>
-
         <service id="bitbag_sylius_cms_plugin.form.type.collection" class="BitBag\SyliusCmsPlugin\Form\Type\CollectionType">
             <argument>%bitbag_sylius_cms_plugin.model.collection.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.collection.validation_groups%</argument>

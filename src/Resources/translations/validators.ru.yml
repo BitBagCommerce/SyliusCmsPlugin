@@ -37,21 +37,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Содержимое не может быть пустым.
             min_length: Содержимое должно быть длиной хотя бы {{ limit }} знаков.
-    frequently_asked_question:
-        code:
-            unique: FAQ с таким кодом уже существует.
-            not_blank: Код не может быть пустым.
-            min_length: Код должен быть длиной хотя бы {{ limit }} знаков.
-            max_length: Код не может быть длиннее {{ limit }} знаков.
-        position:
-            unique: FAQ с такой позицией уже существет.
-            not_blank: Позиция не может быть пустой.
-        question:
-            not_blank: Вопрос не может быть пустым.
-            min_length: Вопрос должен быть длиной хотя бы {{ limit }} знаков.
-        answer:
-            not_blank: Ответ не может быть пустым.
-            min_length: Ответ должен быть длиной хотя бы {{ limit }} знаков.
     collection:
         code:
             unique: Существует существующая коллекция с этим кодом.
