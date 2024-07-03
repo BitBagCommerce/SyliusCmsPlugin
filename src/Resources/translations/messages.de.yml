@@ -31,6 +31,7 @@ bitbag_sylius_cms_plugin:
         images: Bilder
         image: Bild
         link: Link
+        link_content: Link-Inhalt
         title: Titel
         csv_file: CSV-Datei
         collections: Sammlungen

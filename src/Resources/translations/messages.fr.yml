@@ -25,6 +25,7 @@ bitbag_sylius_cms_plugin:
         images: Images
         image: Image
         link: Link
+        link_content: Contenu du lien
         faq_header: FAQ
         faq_subheader: Gérer votre FAQ
         frequently_asked_questions: Questions fréquentes (FAQ)

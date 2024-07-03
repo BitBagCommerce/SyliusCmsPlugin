@@ -28,6 +28,7 @@ bitbag_sylius_cms_plugin:
         images: Slike
         image: Slika
         link: Poveznica (link)
+        link_content: Sadržaj poveznice (linka)
         faq_header: FAQ
         faq_subheader: Uredi često postavljena pitanja
         frequently_asked_questions: Često postavljena pitanja

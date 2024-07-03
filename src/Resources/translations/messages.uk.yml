@@ -25,6 +25,7 @@ bitbag_sylius_cms_plugin:
         images: Зображення
         image: Зображення
         link: Посилання
+        link_content: Вміст посилання
         faq_header: FAQ
         faq_subheader: Управління FAQ
         frequently_asked_questions: FAQ

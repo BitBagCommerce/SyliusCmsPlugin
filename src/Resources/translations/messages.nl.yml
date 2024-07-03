@@ -27,6 +27,7 @@ bitbag_sylius_cms_plugin:
         contents: Inhoud
         images: Afbeeldingen
         link: Link
+        link_content: Link inhoud
         faq_header: Veelgestelde vragen
         faq_subheader: Beheer veelgestelde vragen
         frequently_asked_questions: Veelgestelde vragen

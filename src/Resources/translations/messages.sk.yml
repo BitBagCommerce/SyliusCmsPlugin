@@ -25,6 +25,7 @@ bitbag_sylius_cms_plugin:
         images: Obrázky
         image: Obrázok
         link: Odkaz
+        link_content: Obsah odkazu
         faq_header: FAQ
         faq_subheader: Spravujte vaše časté otázky
         frequently_asked_questions: Časté otázky
