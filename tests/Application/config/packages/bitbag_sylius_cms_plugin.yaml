@@ -66,12 +66,12 @@ sylius_fixtures:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
                                 original_name: "homepage_header.jpeg"
+                                name: |
+                                    <a href="/en_US/page/about">This is a linked title</a>
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
                                     en_US:
-                                        name: |
-                                            <a href="/en_US/page/about">This is a linked title</a>
                                         alt: Homepage image media
                                         content: |
                                             <h3>Media description</h3>
@@ -84,12 +84,12 @@ sylius_fixtures:
                                 type: video
                                 path: "%fixtures_dir%/homepage_video.mp4"
                                 original_name: "homepage_video.mp4"
+                                name: |
+                                    Homepage video media
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
                                     en_US:
-                                        name: |
-                                            Homepage video media
                                         alt: Homepage video
                                         content: |
                                             <h3>Media description</h3>
@@ -102,11 +102,11 @@ sylius_fixtures:
                                 type: file
                                 path: "%fixtures_dir%/BitBagOffer.pdf"
                                 original_name: "BitBagOffer.pdf"
+                                name: Homepage PDF media
                                 channels:
                                 - "FASHION_WEB"
                                 translations:
                                     en_US:
-                                        name: Homepage PDF media
                                         alt: BitBag offer
                                         content: |
                                             <h3>File description</h3>
@@ -144,9 +144,9 @@ sylius_fixtures:
                                 type: image
                                 path: "%fixtures_dir%/homepage_header.jpeg"
                                 original_name: "homepage_header.jpeg"
+                                name: Custom media template
                                 translations:
                                     en_US:
-                                        name: Custom media template
                                         content: "This is a custom media template to edit for your needs or create a completely new one."
                 page:
                     options:

@@ -24,6 +24,7 @@ bitbag_sylius_cms_plugin:
         images: Изображения
         image: Изображение
         link: Ссылка
+        link_content: Содержимое ссылки
         question: Вопрос
         answer: Ответ
         collections: Коллекции

@@ -26,6 +26,7 @@ bitbag_sylius_cms_plugin:
         contents: Inhoud
         images: Afbeeldingen
         link: Link
+        link_content: Link inhoud
         question: Vraag
         answer: Antwoord
         collections: Collecties

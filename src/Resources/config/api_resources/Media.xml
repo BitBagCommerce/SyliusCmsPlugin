@@ -43,7 +43,6 @@
         <property name="height" identifier="false" writable="false"/>
         <property name="saveWithOriginalName" identifier="false" writable="false"/>
         <property name="collections" identifier="false" writable="false"/>
-        <property name="products" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>
     </resource>
 </resources>

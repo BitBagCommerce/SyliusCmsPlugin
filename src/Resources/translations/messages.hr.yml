@@ -27,6 +27,7 @@ bitbag_sylius_cms_plugin:
         images: Slike
         image: Slika
         link: Poveznica (link)
+        link_content: Sadržaj poveznice (linka)
         question: Pitanje
         answer: Odgovor
         collections: Kolekcije

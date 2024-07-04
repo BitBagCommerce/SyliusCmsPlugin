@@ -24,6 +24,7 @@ bitbag_sylius_cms_plugin:
         images: Obrázky
         image: Obrázok
         link: Odkaz
+        link_content: Obsah odkazu
         question: Otázka
         answer: Odpoveď
         collections: Kolekcie

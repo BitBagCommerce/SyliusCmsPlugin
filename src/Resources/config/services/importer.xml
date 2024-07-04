@@ -29,7 +29,6 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.media" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
             <argument type="service" id="validator" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <tag name="bitbag.cmsplugin.importer" />

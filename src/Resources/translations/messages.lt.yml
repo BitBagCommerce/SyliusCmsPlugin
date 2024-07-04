@@ -24,6 +24,7 @@ bitbag_sylius_cms_plugin:
         images: Paveikslai
         image: Paveikslas
         link: Nuoroda
+        link_content: Nuorodos turinys
         question: Klausimas
         answer: Atsakymas
         collections: Kolekcijos

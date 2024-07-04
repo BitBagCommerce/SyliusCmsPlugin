@@ -48,19 +48,6 @@ class MediaRepositoryTest extends JsonApiTestCase
         self::assertEmpty($media3);
     }
 
-    public function test_it_finds_enabled_media_by_product_code(): void
-    {
-        $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_product_code.yml');
-
-        $mediaRepository = $this->getRepository();
-
-        $media1_array = $mediaRepository->findByProductCode('MUG_SW', 'en_US', 'code');
-        $media3_array = $mediaRepository->findByProductCode('MUG_SW3', 'en_US', 'code');
-
-        self::assertNotEmpty($media1_array);
-        self::assertEmpty($media3_array);
-    }
-
     private function getRepository(): MediaRepositoryInterface
     {
         /** @var MediaRepositoryInterface $repository */

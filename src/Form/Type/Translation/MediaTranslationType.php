@@ -20,10 +20,6 @@ final class MediaTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
-                'required' => false,
-            ])
             ->add('alt', TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.alt',
                 'required' => false,
@@ -32,7 +28,10 @@ final class MediaTranslationType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.link',
                 'required' => false,
             ])
-            ->add('content', WysiwygType::class, ['required' => false])
+            ->add('content', WysiwygType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.link_content',
+                'required' => false,
+            ])
         ;
     }
 
