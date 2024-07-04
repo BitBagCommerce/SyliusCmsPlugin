@@ -19,16 +19,12 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Meta keywords
         meta_description: Meta description
         content: Obsah
-        faq: FAQ
         code: Kód
         contents: Obsah
         images: Obrázky
         image: Obrázok
         link: Odkaz
         link_content: Obsah odkazu
-        faq_header: FAQ
-        faq_subheader: Spravujte vaše časté otázky
-        frequently_asked_questions: Časté otázky
         question: Otázka
         answer: Odpoveď
         collections: Kolekcie

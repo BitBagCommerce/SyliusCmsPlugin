@@ -14,8 +14,6 @@ final class Resources
 {
     public const BLOCKS = 'blocks';
 
-    public const FAQ = 'faq';
-
     public const MEDIA = 'media';
 
     public const PAGES = 'pages';

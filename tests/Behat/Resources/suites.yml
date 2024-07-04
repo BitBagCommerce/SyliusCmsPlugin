@@ -1,16 +1,13 @@
 imports:
     - suites/ui/managing_blocks.yml
     - suites/ui/managing_pages.yml
-    - suites/ui/managing_frequently_asked_questions.yml
     - suites/ui/managing_collections.yml
     - suites/ui/managing_media.yml
     - suites/ui/shop_blocks.yml
     - suites/ui/shop_media.yml
     - suites/ui/shop_pages.yml
-    - suites/ui/shop_frequently_asked_questions.yml
 
     - suites/api/shop_pages.yml
-    - suites/api/shop_frequently_asked_questions.yml
     - suites/api/shop_blocks.yml
     - suites/api/shop_collections.yml
     - suites/api/shop_media.yml

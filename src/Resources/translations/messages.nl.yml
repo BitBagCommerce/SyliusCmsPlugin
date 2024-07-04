@@ -22,15 +22,11 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Meta sleutelwoorden
         meta_description: Meta omschrijving
         content: Inhoud
-        faq: Veelgestelde vragen
         code: Code
         contents: Inhoud
         images: Afbeeldingen
         link: Link
         link_content: Link inhoud
-        faq_header: Veelgestelde vragen
-        faq_subheader: Beheer veelgestelde vragen
-        frequently_asked_questions: Veelgestelde vragen
         question: Vraag
         answer: Antwoord
         collections: Collecties

@@ -19,16 +19,12 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Meta raktiniai žodžiai
         meta_description: Meta aprašymas
         content: Turinys
-        faq: DUK
         code: Kodas
         contents: Turinys
         images: Paveikslai
         image: Paveikslas
         link: Nuoroda
         link_content: Nuorodos turinys
-        faq_header: DUK
-        faq_subheader: Dažniausiai užduodamų klausimų tvarkymas
-        frequently_asked_questions: Dažniausiai užduodami klausimai
         question: Klausimas
         answer: Atsakymas
         collections: Kolekcijos

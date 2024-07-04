@@ -22,16 +22,12 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Meta ključne riječi
         meta_description: Meta opis
         content: Sadržaj
-        faq: FAQ
         code: Kod
         contents: Sadržaj
         images: Slike
         image: Slika
         link: Poveznica (link)
         link_content: Sadržaj poveznice (linka)
-        faq_header: FAQ
-        faq_subheader: Uredi često postavljena pitanja
-        frequently_asked_questions: Često postavljena pitanja
         question: Pitanje
         answer: Odgovor
         collections: Kolekcije

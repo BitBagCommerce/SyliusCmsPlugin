@@ -22,16 +22,12 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Słowa kluczowe
         meta_description: Opis sekcji meta
         content: Treść
-        faq: FAQ
         code: Kod
         contents: Treść
         images: Zdjęcia
         image: Zdjęcie
         link: Link
         link_content: Treść linka
-        faq_header: FAQ
-        faq_subheader: Zarządzaj najczęściej zadawanymi pytaniami
-        frequently_asked_questions: Najczęściej zadawane pytania
         question: Pytanie
         answer: Odpowiedź
         collections: Kolekcje

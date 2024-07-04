@@ -19,16 +19,12 @@ bitbag_sylius_cms_plugin:
         meta_keywords: Ключові слова (мета)
         meta_description: Опис (мета)
         content: Вміст
-        faq: FAQ
         code: Код
         contents: Містить
         images: Зображення
         image: Зображення
         link: Посилання
         link_content: Вміст посилання
-        faq_header: FAQ
-        faq_subheader: Управління FAQ
-        frequently_asked_questions: FAQ
         question: Питання
         answer: Відповідь
         collections: Колекції

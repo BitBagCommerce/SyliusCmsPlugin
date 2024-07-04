@@ -26,16 +26,6 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page"/>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.frequently_asked_question" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\FrequentlyAskedQuestionContext">
-            <argument type="service" id="sylius.behat.shared_storage"/>
-            <argument type="service" id="sylius.behat.current_page_resolver"/>
-            <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.index"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.create"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.frequently_asked_question.update"/>
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
-        </service>
-
         <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\CollectionContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
@@ -54,10 +44,6 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.shop.page.show"/>
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.shop.page.index"/>
             <argument type="service" id="sylius.behat.shared_storage"/>
-        </service>
-
-        <service id="bitbag_sylius_cms_plugin.behat.context.ui.shop.frequently_asked_question" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop\FrequentlyAskedQuestionContext">
-            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index"/>
         </service>
 
         <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\MediaContext">

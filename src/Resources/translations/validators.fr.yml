@@ -41,21 +41,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Le contenu ne peut pas être vide.
             min_length: Le contenu doit faire au moins {{ limit }} caractères.
-    frequently_asked_question:
-        code:
-            unique: Il existe déjà une FAQ avec ce code.
-            not_blank: Le code ne peut pas être vide.
-            min_length: Le code doit faire au moins {{ limit }} caractères.
-            max_length: Le code ne peut pas dépasser {{ limit }} caractères.
-        position:
-            unique: Il existe déjà une FAQ avec ce code.
-            not_blank: La position ne peut pas être vide.
-        question:
-            not_blank: La question ne peut pas être vide.
-            min_length: La question doit faire au moins {{ limit }} caractères.
-        answer:
-            not_blank: La réponse ne peut pas être vide.
-            min_length: La réponse doit faire au moins {{ limit }} caractères.
     collection:
         code:
             unique: Il existe déjà une collection avec ce code.
