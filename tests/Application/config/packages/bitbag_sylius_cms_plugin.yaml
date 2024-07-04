@@ -201,16 +201,3 @@ sylius_fixtures:
                                                <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                                             </ul>
                                             <p>Pellentesque habitant morbi tristique sene</p>
-                frequently_asked_question:
-                    options:
-                        custom:
-                            lorem_ipsum:
-                                channels:
-                                - "FASHION_WEB"
-                                number: 10
-                                translations:
-                                    en_US:
-                                        question: |
-                                            Estne, quaeso, inquam, sitienti in bibendo voluptas?
-                                        answer: |
-                                            Nam his libris eum malo quam reliquo ornatu villae delectari. Quid est, quod ab ea absolvi et perfici debeat? Ex quo, id quod omnes expetunt, beate vivendi ratio inveniri et comparari potest. Stoici scilicet.

@@ -12,6 +12,5 @@
 
             <service id="bitbag_sylius_cms_plugin.behat.page.shop.page.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.shop.frequently_asked_question.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\FrequentlyAskedQuestion\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
     </services>
 </container>

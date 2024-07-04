@@ -45,13 +45,6 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $cmsRootMenuItem->setLabelAttribute('icon', 'sticky note')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('faq', ['route' => 'bitbag_sylius_cms_plugin_admin_frequently_asked_question_index'])
-            ->willReturn($cmsRootMenuItem)
-        ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.faq')->willReturn($cmsRootMenuItem);
-        $cmsRootMenuItem->setLabelAttribute('icon', 'help')->shouldBeCalled();
-
-        $cmsRootMenuItem
             ->addChild('collections', ['route' => 'bitbag_sylius_cms_plugin_admin_collection_index'])
             ->willReturn($cmsRootMenuItem)
         ;

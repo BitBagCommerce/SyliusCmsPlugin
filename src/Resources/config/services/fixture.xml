@@ -14,11 +14,6 @@
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Fixture\FrequentlyAskedQuestionFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question" />
-            <tag name="sylius_fixtures.fixture" />
-        </service>
-
         <service id="bitbag_sylius_cms_plugin.fixture.collection" class="BitBag\SyliusCmsPlugin\Fixture\CollectionFixture">
             <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.collection" />
             <tag name="sylius_fixtures.fixture" />
@@ -41,13 +36,6 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page_translation" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
-        </service>
-
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.frequently_asked_question" class="BitBag\SyliusCmsPlugin\Fixture\Factory\FrequentlyAskedQuestionFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.frequently_asked_question" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.frequently_asked_question_translation" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.frequently_asked_question" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
         </service>
 

@@ -37,21 +37,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: El contenido no puede ir vacío.
             min_length: El contenido debe tener al menos {{ limit }} caracteres.
-    frequently_asked_question:
-        code:
-            unique: Ya existe una pregunta con este código.
-            not_blank: El código no puede ir vacío.
-            min_length: El código debe tener al menos {{ limit }} caracteres.
-            max_length: El código no puede tener más de {{ limit }} caracteres.
-        position:
-            unique: Ya existe una pregunta con esta posición.
-            not_blank: La posición no puede ir vacía.
-        question:
-            not_blank: La pregunta no puede ir vacía.
-            min_length: La pregunta debe tener al menos {{ limit }} caracteres.
-        answer:
-            not_blank: La respuesta no puede ir vacía.
-            min_length: La respuesta debe tener al menos {{ limit }} caracteres.
     collection:
         code:
             unique: Ya existe una coleccion con este código.

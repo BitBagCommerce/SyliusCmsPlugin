@@ -37,21 +37,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Inhoud is verplicht en mag niet leeg zijn.
             min_length: Inhoud moet minstens {{ limit }} tekens lang zijn.
-    frequently_asked_question:
-        code:
-            unique: Er bestaat al een veelgestelde vraag met deze code.
-            not_blank: Code is verplicht en mag niet leeg zijn.
-            min_length: Code moet minstens {{ limit }} tekens lang zijn.
-            max_length: Code mag niet langer zijn dan {{ limit }} tekens.
-        position:
-            unique: Er bestaat al een veelgestelde vraag met deze positie.
-            not_blank: Positie is verplicht en mag niet leeg zijn.
-        question:
-            not_blank: Vraag is verplicht en mag niet leeg zijn.
-            min_length: Vraag oet minstens {{ limit }} tekens lang zijn.
-        answer:
-            not_blank: Antwoord is verplicht en mag niet leeg zijn.
-            min_length: Antwoord moet minstens {{ limit }} tekens lang zijn.
     collection:
         code:
             unique: Er bestaat al een collectie met deze code.

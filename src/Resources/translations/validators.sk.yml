@@ -41,21 +41,6 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Obsah nesmie byť prázdny.
             min_length: Obsah musí mať najmenej {{ limit }} znakov.
-    frequently_asked_question:
-        code:
-            unique: FAQ s týmto kódom už existuje.
-            not_blank: Kód nesmie byť prázdny.
-            min_length: Kód musí mať najmenej {{ limit }} znakov.
-            max_length: Kód nesmie mať viac ako {{ limit }} znakov.
-        position:
-            unique: FAQ s touto pozíciou už existuje.
-            not_blank: Pozícia nesmie byť prázdna.
-        question:
-            not_blank: Otázka nesmie byť prázdna.
-            min_length: Otázka musí mať najmenej {{ limit }} znakov.
-        answer:
-            not_blank: Odpoveď nesmie byť prázdna.
-            min_length: Odpoveď musí mať najmenej {{ limit }} znakov.
     collection:
         code:
             unique: Kolekce s týmto kódom už existuje.

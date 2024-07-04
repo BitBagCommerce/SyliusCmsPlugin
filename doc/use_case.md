@@ -13,7 +13,7 @@ This empowers businesses to easily adapt their store's content to meet current n
 ## What Sylius CMS Plugin provides us with
 
 When using the BitBag Sylius CMS Plugin, administrators gain access to various tiles within the admin panel, each serving a specific purpose.
-These tiles include Blocks, Media, Pages, FAQs, and Sections.
+These tiles include Blocks, Media, Pages, and Sections.
 
 ## Brief overview of what each tile offers
 
@@ -27,7 +27,6 @@ Our CMS Plugin allows you to manage:
 * Blocks - separate parts for the content
 * Media - files, that can be attached to the page
 * Pages - whole pages, obtainable by the link
-* FAQ - the simple mechanism for Frequently Asked Questions function
 
 ---
 
@@ -68,20 +67,11 @@ It enables the creation of various types of pages, such as the homepage, informa
 
 More information about Pages you can get [here](use_case_pages.md).
 
-### FAQ
-The FAQ tile is specifically designed to manage frequently asked questions.
-
-Administrators can create question-and-answer pairs, categorize them, and make them available to customers on relevant pages. This helps provide clear information and addresses common queries for a seamless customer experience.
-
-![Screenshot showing content management config in admin](faq_cms.png)
-
-More information about the FAQ you can get [here](use_case_faq.md).
-
 ## Summary
 
 In summary, the BitBag Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, including [Sections](use_case_sections.md), [Blocks](use_case_blocks.md),
-[Media](use_case_media.md), [Pages](use_case_pages.md) and [FAQ](use_case_faq.md).
+[Media](use_case_media.md), [Pages](use_case_pages.md).
 
-These tiles offer functionalities for managing reusable content blocks, media assets, CMS pages, frequently asked questions,
-and page sections. Together, they enable administrators to efficiently create, edit, and organize content within the Sylius e-commerce system,
+These tiles offer functionalities for managing reusable content blocks, media assets, CMS pages and page sections. 
+Together, they enable administrators to efficiently create, edit, and organize content within the Sylius e-commerce system,
 resulting in a more engaging and personalized user experience.

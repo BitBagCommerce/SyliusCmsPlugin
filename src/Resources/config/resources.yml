@@ -2,6 +2,5 @@ imports:
     - { resource: resources/block.yml }
     - { resource: resources/content_configuration.yml }
     - { resource: resources/page.yml }
-    - { resource: resources/frequently_asked_question.yml }
     - { resource: resources/collection.yml }
     - { resource: resources/media.yml }
