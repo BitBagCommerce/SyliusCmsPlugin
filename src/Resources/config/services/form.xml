@@ -7,6 +7,7 @@
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -90,7 +91,7 @@
         </service>
 
         <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.single_media_to_code" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
             <tag name="form.type" />
         </service>
@@ -111,8 +112,10 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.single_media_to_code" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\SingleMediaToCodeTransformer">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
+            <tag name="form.type" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
