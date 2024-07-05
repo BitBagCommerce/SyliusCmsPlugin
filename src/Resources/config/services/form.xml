@@ -3,6 +3,9 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.textarea" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.single_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -18,6 +21,7 @@
             <argument>BitBag\SyliusCmsPlugin\Entity\ContentConfiguration</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.content_configuration.validation_groups%</argument>
             <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
+            <argument type="service" id="twig" />
             <tag name="form.type" />
         </service>
 
@@ -84,6 +88,30 @@
             <tag name="form.type" />
         </service>
 
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.single_media_to_code" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.multiple_media%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.heading%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.single_media_to_code" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\SingleMediaToCodeTransformer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+        </service>
     </services>
 
 </container>

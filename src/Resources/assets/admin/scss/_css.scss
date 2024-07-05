@@ -103,3 +103,11 @@
 .bitbag-media-autocomplete .search {
     cursor: pointer !important;
 }
+
+.bb-collection-item {
+    margin-bottom: 1em;
+
+    &-delete {
+        margin-top: 5px !important;
+    }
+}
