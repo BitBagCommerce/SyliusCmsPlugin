@@ -25,12 +25,12 @@ final class HeadingContentElementType extends AbstractType
             ->add('heading_type', ChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.heading_type',
                 'choices' => [
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h1' => 'h1',
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h2' => 'h2',
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h3' => 'h3',
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h4' => 'h4',
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h5' => 'h5',
-                    'bitbag_sylius_cms_plugin.ui.content_elements.heading_type.h6' => 'h6',
+                    'H1' => 'h1',
+                    'H2' => 'h2',
+                    'H3' => 'h3',
+                    'H4' => 'h4',
+                    'H5' => 'h5',
+                    'H6' => 'h6',
                 ],
                 'required' => true,
                 'empty_data' => 'h1',

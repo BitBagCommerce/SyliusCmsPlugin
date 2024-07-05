@@ -6,7 +6,7 @@
 
 $(document).ready(function() {
     $(document).on('collection-form-add', () => {
-        $('.bitbag-media-autocomplete').each((index, element) => {
+        $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
             if ($._data($(element).get(0), 'events') === undefined) {
                 $(element).autoComplete();
             }
@@ -43,6 +43,9 @@ $(document).ready(function() {
 
                 newConfigInputs.forEach(element => {
                     let newConfigInputName = element.getAttribute('name');
+                    if (!newConfigInputName) {
+                        return;
+                    }
 
                     newConfigInputName = oldConfigInputName.replace(
                         oldConfigInputName.substring(oldConfigInputName.indexOf('[configuration]') + 15),
@@ -51,12 +54,13 @@ $(document).ready(function() {
 
                     $(element).attr('name', newConfigInputName);
                     $(newConfig).find('.bitbag-media-autocomplete').autoComplete();
+                    $(newConfig).find('.sylius-autocomplete').autoComplete();
                 });
             }
         }
     });
 
-    $('.bitbag-media-autocomplete').each((index, element) => {
+    $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
         $(element).autoComplete();
     });
 
