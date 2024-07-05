@@ -20,23 +20,23 @@
         {{- form_label(form) -}}
         <div
             class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-            data-bb-cms-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
+            data-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
             'mediaType': form.vars.media_type,
         })}}"
-            data-bb-cms-autocomplete
-            data-bb-cms-choice-name="{{ choice_name }}"
-            data-bb-cms-choice-value="{{ choice_value }}"
-            data-bb-cms-criteria-type="{{ remote_criteria_type }}"
-            data-bb-cms-criteria-name="{{ remote_criteria_name }}"
-            data-bb-cms-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
-            data-bb-cms-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
+            data-autocomplete
+            data-choice-name="{{ choice_name }}"
+            data-choice-value="{{ choice_value }}"
+            data-criteria-type="{{ remote_criteria_type }}"
+            data-criteria-name="{{ remote_criteria_name }}"
+            data-load-edit-url="{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_code') }}"
+            data-name-message ="{{ 'bitbag_sylius_cms_plugin.ui.empty_name'|trans }}"
         >
             {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
-            <span class="btn-delete is-hidden" data-bb-cms-delete-selected>X</span>
+            <span class="btn-delete is-hidden" data-delete-selected>X</span>
             <i class="dropdown icon"></i>
-            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-bb-cms-image-select>
-            <div class="default text" data-bb-cms-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
-            <div class="menu" data-bb-cms-selection-menu></div>
+            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-image-select>
+            <div class="default text" data-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
+            <div class="menu" data-selection-menu></div>
         </div>
         {{- form_errors(form) -}}
     </div>
@@ -49,3 +49,58 @@
 {% block sylius_taxon_autocomplete_choice_row %}
     {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_taxon_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_taxon_by_code')}) }}
 {% endblock %}
+
+{% block collection_widget -%}
+    {% from '@SyliusResource/Macros/notification.html.twig' import error %}
+    {% import _self as self %}
+    {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %}
+
+    {% apply spaceless %}
+        <div data-form-type="collection" {{ block('widget_container_attributes') }}
+                {% if prototype is defined and allow_add %}
+                    data-prototype='{{ self.collection_item(prototype, allow_delete, button_delete_label, prototype.vars.name)|e }}'
+                    data-prototype-name='{{ prototype.vars.name }}'
+                {%- endif -%}
+        >
+            {{ error(form.vars.errors) }}
+
+            {% if prototypes|default is iterable %}
+                {% for key, subPrototype in prototypes %}
+                    <input type="hidden" data-form-prototype="{{ key }}"
+                           value="{{ self.collection_item(subPrototype, allow_delete, button_delete_label, subPrototype.vars.name)|e }}"
+                           data-subprototype-name="{{ subPrototype.vars.name }}"
+                    />
+                {% endfor %}
+            {% endif %}
+
+            <div data-form-collection="list">
+                {% for child in form %}
+                    {{ self.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
+                {% endfor %}
+            </div>
+
+            {% if prototype is defined and allow_add %}
+                <a href="#" class="ui labeled icon button" data-form-collection="add">
+                    <i class="plus square outline icon"></i>
+                    {{ button_add_label|trans }}
+                </a>
+            {% endif %}
+        </div>
+    {% endapply %}
+{%- endblock collection_widget %}
+
+{% macro collection_item(form, allow_delete, button_delete_label, index) %}
+    {% apply spaceless %}
+        <div class="bb-collection-item" data-form-collection="item" data-form-collection-index="{{ index }}">
+            <div class="ui segment ">
+                {{ form_widget(form) }}
+                {% if allow_delete %}
+                    <a href="#" data-form-collection="delete" class="ui red labeled icon button bb-collection-item-delete">
+                        <i class="trash icon"></i>
+                        {{ button_delete_label|trans }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endapply %}
+{% endmacro %}

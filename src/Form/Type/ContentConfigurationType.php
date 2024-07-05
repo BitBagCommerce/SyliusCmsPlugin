@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Twig\Environment;
 
 final class ContentConfigurationType extends AbstractResourceType
 {
@@ -27,6 +28,7 @@ final class ContentConfigurationType extends AbstractResourceType
         string $dataClass,
         array $validationGroups,
         iterable $actionConfigurationTypes,
+        private Environment $twig,
     ) {
         parent::__construct($dataClass, $validationGroups);
 
@@ -45,6 +47,18 @@ final class ContentConfigurationType extends AbstractResourceType
             ->add('type', ChoiceType::class, [
                 'label' => 'sylius.ui.type',
                 'choices' => $this->actionTypes,
+                'choice_attr' => function (?string $type) use ($builder): array {
+                    return [
+                        'data-configuration' => $this->twig->render(
+                            '@BitBagSyliusCmsPlugin/ContentConfiguration/_action.html.twig',
+                            ['field' => $builder->create(
+                                'configuration',
+                                $this->actionConfigurationTypes[$type],
+                                ['label' => false, 'csrf_protection' => false],
+                            )->getForm()->createView()],
+                        ),
+                    ];
+                },
             ])
             ->add('configuration', $defaultActionConfigurationType, [
                 'label' => false,
