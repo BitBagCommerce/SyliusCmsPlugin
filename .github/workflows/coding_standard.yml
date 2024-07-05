@@ -1,6 +1,9 @@
 name: Coding standard
 
 on:
+    push:
+        branches-ignore:
+            - 'dependabot/**'
     pull_request: ~
     release:
         types: [created]
