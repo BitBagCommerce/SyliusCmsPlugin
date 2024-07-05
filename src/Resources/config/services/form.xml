@@ -6,6 +6,7 @@
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.single_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -102,6 +103,11 @@
 
         <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.heading%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel%" />
             <tag name="form.type" />
         </service>
 
