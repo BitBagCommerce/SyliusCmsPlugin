@@ -15,6 +15,7 @@ use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 use Webmozart\Assert\Assert;
 
@@ -91,16 +92,40 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * @throws ElementNotFoundException
      */
-    public function addTextareaContentElementWithContent(string $content): void
+    public function clickOnAddContentElementButton(): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $addButton = $this->getElement('content_elements_add_button');
         $addButton->click();
 
-        $addButton->waitFor(3, function (): bool {
-            return $this->hasElement('content_elements_textarea');
+        $addButton->waitFor(2, function (): bool {
+            return $this->hasElement('content_elements_select_type');
         });
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function selectContentElement(string $contentElement): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
+
+        $select = $this->getElement('content_elements_select_type');
+        $select->selectOption($contentElement);
+        $select->waitFor(3, function () use ($contentElement): bool {
+            return $this->hasElement(
+                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement)
+            );
+        });
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addTextareaContentElementWithContent(string $content): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $textarea = $this->getElement('content_elements_textarea');
         $textarea->setValue($content);
@@ -111,22 +136,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
      */
     public function addSingleMediaContentElementWithName(string $name): void
     {
-        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
-
-        $addButton = $this->getElement('content_elements_add_button');
-        $addButton->click();
-
-        $addButton->waitFor(3, function (): bool {
-            return $this->hasElement('content_elements_select_type');
-        });
-
-        $select = $this->getElement('content_elements_select_type');
-        $select->selectOption('Single media');
-
-        $select->waitFor(3, function (): bool {
-            return $this->hasElement('content_elements_single_media_dropdown');
-        });
-
         $dropdown = $this->getElement('content_elements_single_media_dropdown');
         $dropdown->click();
 
