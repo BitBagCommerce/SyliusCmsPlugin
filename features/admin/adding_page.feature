@@ -68,11 +68,22 @@ Feature: Adding new page
         Then I should be notified that the page has been created
 
     @ui @javascript
-    Scenario: Adding page with content element
+    Scenario: Adding page with textarea content element
         When I go to the create page page
         And I fill the code with "my_page"
         And I fill the slug with "my_page"
         And I fill the name with "My page"
         And I add a textarea content element with "Welcome to our store" content
+        And I add it
+        Then I should be notified that the page has been created
+
+    @ui @javascript
+    Scenario: Adding page with single media content element
+        Given there is an existing media with "image_1" code and name "Image 1"
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I add a single media content element with name "Image 1"
         And I add it
         Then I should be notified that the page has been created

@@ -27,7 +27,7 @@ Feature: Adding blocks
         Then I should be notified that the block has been created
 
     @ui @javascript
-    Scenario: Adding block with content element
+    Scenario: Adding block with textarea content element
         When I go to the create block page
         And I fill the code with "intro"
         And I fill the name with "Intro"

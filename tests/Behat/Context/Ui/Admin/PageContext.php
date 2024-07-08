@@ -194,6 +194,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I add a single media content element with name :name
+     */
+    public function iAddASingleMediaContentElementWithName(string $name): void
+    {
+        $this->resolveCurrentPage()->addSingleMediaContentElementWithName($name);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
