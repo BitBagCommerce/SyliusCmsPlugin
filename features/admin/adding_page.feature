@@ -73,6 +73,8 @@ Feature: Adding new page
         And I fill the code with "my_page"
         And I fill the slug with "my_page"
         And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Textarea" content element
         And I add a textarea content element with "Welcome to our store" content
         And I add it
         Then I should be notified that the page has been created
@@ -84,6 +86,8 @@ Feature: Adding new page
         And I fill the code with "my_page"
         And I fill the slug with "my_page"
         And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Single media" content element
         And I add a single media content element with name "Image 1"
         And I add it
         Then I should be notified that the page has been created

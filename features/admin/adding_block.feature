@@ -31,7 +31,21 @@ Feature: Adding blocks
         When I go to the create block page
         And I fill the code with "intro"
         And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Textarea" content element
         And I add a textarea content element with "Welcome to our store" content
+        And I add it
+        Then I should be notified that the block has been created
+
+    @ui @javascript
+    Scenario: Adding block with single media content element
+        Given there is an existing media with "image_1" code and name "Image 1"
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Single media" content element
+        And I add a single media content element with name "Image 1"
         And I add it
         Then I should be notified that the block has been created
 

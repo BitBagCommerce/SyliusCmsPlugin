@@ -186,6 +186,22 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I click on Add button in Content elements section
+     */
+    public function iClickOnAddButtonInContentElementsSection(): void
+    {
+        $this->resolveCurrentPage()->clickOnAddContentElementButton();
+    }
+
+    /**
+     * @When I select :option content element
+     */
+    public function iSelectContentElement(string $option): void
+    {
+        $this->resolveCurrentPage()->selectContentElement($option);
+    }
+
+    /**
      * @When I add a textarea content element with :content content
      */
     public function iAddATextareaContentElementWithContent(string $content): void

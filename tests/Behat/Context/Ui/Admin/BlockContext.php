@@ -132,11 +132,43 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I click on Add button in Content elements section
+     */
+    public function iClickOnAddButtonInContentElementsSection(): void
+    {
+        $this->resolveCurrentPage()->clickOnAddContentElementButton();
+    }
+
+    /**
+     * @When I select :option content element
+     */
+    public function iSelectContentElement(string $option): void
+    {
+        $this->resolveCurrentPage()->selectContentElement($option);
+    }
+
+    /**
+     * @When I add a textarea content element with :content content
+     */
+    public function iAddATextareaContentElementWithContent(string $content): void
+    {
+        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
+    }
+
+    /**
      * @When I change textarea content element value to :value
      */
     public function iChangeTextareaContentElementValueTo(string $value): void
     {
         $this->resolveCurrentPage()->changeTextareaContentElementValue($value);
+    }
+
+    /**
+     * @When I add a single media content element with name :name
+     */
+    public function iAddASingleMediaContentElementWithName(string $name): void
+    {
+        $this->resolveCurrentPage()->addSingleMediaContentElementWithName($name);
     }
 
     /**
@@ -177,14 +209,6 @@ final class BlockContext implements Context
     public function iAddAndCollectionsToIt(string ...$collectionsNames): void
     {
         $this->resolveCurrentPage()->associateCollections($collectionsNames);
-    }
-
-    /**
-     * @When I add a textarea content element with :content content
-     */
-    public function iAddATextareaContentElementWithContent(string $content): void
-    {
-        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
     }
 
     /**

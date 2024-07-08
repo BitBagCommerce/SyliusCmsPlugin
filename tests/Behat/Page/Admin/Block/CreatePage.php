@@ -14,6 +14,7 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -82,19 +83,64 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * @throws ElementNotFoundException
      */
-    public function addTextareaContentElementWithContent(string $content): void
+    public function clickOnAddContentElementButton(): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $addButton = $this->getElement('content_elements_add_button');
         $addButton->click();
 
-        $addButton->waitFor(3, function (): bool {
-            return $this->hasElement('content_elements_textarea');
+        $addButton->waitFor(2, function (): bool {
+            return $this->hasElement('content_elements_select_type');
         });
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function selectContentElement(string $contentElement): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
+
+        $select = $this->getElement('content_elements_select_type');
+        $select->selectOption($contentElement);
+        $select->waitFor(3, function () use ($contentElement): bool {
+            return $this->hasElement(
+                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement)
+            );
+        });
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addTextareaContentElementWithContent(string $content): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $textarea = $this->getElement('content_elements_textarea');
         $textarea->setValue($content);
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addSingleMediaContentElementWithName(string $name): void
+    {
+        $dropdown = $this->getElement('content_elements_single_media_dropdown');
+        $dropdown->click();
+
+        $dropdown->waitFor(10, function () use ($name): bool {
+            return $this->hasElement('content_elements_single_media_dropdown_item', [
+                '%item%' => $name,
+            ]);
+        });
+
+        $item = $this->getElement('content_elements_single_media_dropdown_item', [
+            '%item%' => $name,
+        ]);
+
+        $item->click();
     }
 
     protected function getDefinedElements(): array
@@ -103,7 +149,10 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
             'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_add_button' => '#bitbag_sylius_cms_plugin_block_contentElements a[data-form-collection="add"]',
+            'content_elements_select_type' => '.field > label:contains("Type") ~ select',
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
+            'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete',
+            'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }
