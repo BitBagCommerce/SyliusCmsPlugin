@@ -106,7 +106,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $select->selectOption($contentElement);
         $select->waitFor(3, function () use ($contentElement): bool {
             return $this->hasElement(
-                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement)
+                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
             );
         });
     }
