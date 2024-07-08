@@ -106,6 +106,43 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $textarea->setValue($content);
     }
 
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addSingleMediaContentElementWithName(string $name): void
+    {
+        Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
+
+        $addButton = $this->getElement('content_elements_add_button');
+        $addButton->click();
+
+        $addButton->waitFor(3, function (): bool {
+            return $this->hasElement('content_elements_select_type');
+        });
+
+        $select = $this->getElement('content_elements_select_type');
+        $select->selectOption('Single media');
+
+        $select->waitFor(3, function (): bool {
+            return $this->hasElement('content_elements_single_media_dropdown');
+        });
+
+        $dropdown = $this->getElement('content_elements_single_media_dropdown');
+        $dropdown->click();
+
+        $dropdown->waitFor(10, function () use ($name): bool {
+            return $this->hasElement('content_elements_single_media_dropdown_item', [
+                '%item%' => $name,
+            ]);
+        });
+
+        $item = $this->getElement('content_elements_single_media_dropdown_item', [
+            '%item%' => $name,
+        ]);
+
+        $item->click();
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -113,7 +150,10 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
             'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_add_button' => '#bitbag_sylius_cms_plugin_page_contentElements a[data-form-collection="add"]',
+            'content_elements_select_type' => '.field > label:contains("Type") ~ select',
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
+            'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete',
+            'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }
