@@ -43,3 +43,11 @@ bitbag_sylius_cms_plugin:
             title: Elementi sadržaja
             type:
                 textarea: Textarea
+                single_media: Jedan medij
+                multiple_media: Više medija
+                heading: Naslov
+                products_carousel: Proizvodi u karijeslu
+                products_carousel_by_taxon: Proizvodi u karijeslu po taksonu
+                taxons_list: Lista taksona
+            heading_type: Tip naslova
+        taxon: Takson

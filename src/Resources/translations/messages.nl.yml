@@ -42,3 +42,11 @@ bitbag_sylius_cms_plugin:
             title: Inhoudselementen
             type:
                 textarea: Textarea
+                single_media: Enkel medium
+                multiple_media: Meerdere media
+                heading: Kop
+                products_carousel: Producten in carrousel
+                products_carousel_by_taxon: Producten in carrousel per taxon
+                taxons_list: Taxon lijst
+            heading_type: Kop type
+        taxon: Taxon
