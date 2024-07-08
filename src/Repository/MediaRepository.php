@@ -93,6 +93,6 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
             ->setParameter('name', '%' . $phrase . '%')
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 }

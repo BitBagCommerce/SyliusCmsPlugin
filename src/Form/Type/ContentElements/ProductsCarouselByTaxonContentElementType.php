@@ -42,6 +42,6 @@ final class ProductsCarouselByTaxonContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_'.self::TYPE;
+        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

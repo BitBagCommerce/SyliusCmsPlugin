@@ -6,7 +6,6 @@
  * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
 */
 
-
 declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
@@ -30,7 +29,7 @@ final class SingleMediaContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, MediaAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.'.self::TYPE,
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
 
@@ -41,6 +40,6 @@ final class SingleMediaContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_'.self::TYPE;
+        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

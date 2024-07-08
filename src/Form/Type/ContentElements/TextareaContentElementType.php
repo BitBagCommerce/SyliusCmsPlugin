@@ -22,13 +22,13 @@ final class TextareaContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.'.self::TYPE,
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
     }
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_'.self::TYPE;
+        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }
