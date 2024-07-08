@@ -8,6 +8,7 @@
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -115,6 +116,11 @@
         <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.taxons_list%" />
             <tag name="form.type" />
         </service>
 
