@@ -56,3 +56,11 @@ bitbag_sylius_cms_plugin:
             title: Элементы контента
             type:
                 textarea: Textarea
+                single_media: Одиночный медиа
+                multiple_media: Несколько медиа
+                heading: Заголовок
+                products_carousel: Продукты в карусели
+                products_carousel_by_taxon: Продукты в карусели по таксону
+                taxons_list: Список таксонов
+            heading_type: Тип заголовка
+        taxon: Таксон

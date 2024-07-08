@@ -56,4 +56,12 @@ bitbag_sylius_cms_plugin:
         content_elements:
             title: Éléments de contenu
             type:
-                textarea: Textarea de
+                textarea: Textarea
+                single_media: Média unique
+                multiple_media: Médias multiples
+                heading: En-tête
+                products_carousel: Produits en carrousel
+                products_carousel_by_taxon: Produits en carrousel par taxon
+                taxons_list: Liste de taxons
+            heading_type: Type d'en-tête
+        taxon: Taxon

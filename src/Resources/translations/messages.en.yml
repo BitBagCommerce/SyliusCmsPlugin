@@ -64,4 +64,12 @@ bitbag_sylius_cms_plugin:
             title: Content elements
             type:
                 textarea: Textarea
+                single_media: Single media
+                multiple_media: Multiple media
+                heading: Heading
+                products_carousel: Products carousel
+                products_carousel_by_taxon: Products carousel by Taxon
+                taxons_list: Taxons list
+            heading_type: Heading type
+        taxon: Taxon
         seo: SEO
