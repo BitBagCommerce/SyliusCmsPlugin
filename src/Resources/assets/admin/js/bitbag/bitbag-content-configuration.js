@@ -5,6 +5,15 @@
 */
 
 $(document).ready(function() {
+    let pageElements = '#bitbag_sylius_cms_plugin_page_contentElements';
+    let blockElements = '#bitbag_sylius_cms_plugin_block_contentElements';
+
+    let collectionHolder = $(pageElements).length ? pageElements : blockElements;
+
+    if (!$(collectionHolder).length) {
+        return;
+    }
+
     $(document).on('collection-form-add', () => {
         $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
             if ($._data($(element).get(0), 'events') === undefined) {
@@ -12,14 +21,14 @@ $(document).ready(function() {
             }
         });
 
-        $('#bitbag_sylius_cms_plugin_page_contentElements [data-form-collection="item"]').each((index, element) => {
+        $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {
             $(document).loadContentConfiguration(element);
         });
     });
 
     $.fn.extend({
         loadContentConfiguration(target) {
-            target.querySelector('#bitbag_sylius_cms_plugin_page_contentElements select[name*="type"]').onchange = function () {
+            target.querySelector(`${collectionHolder} select[name*="type"]`).onchange = function () {
                 const parent = this.parentElement;
                 const newConfig = document.createElement('div');
                 const selectedOption = this.selectedOptions[0];
@@ -64,11 +73,11 @@ $(document).ready(function() {
         $(element).autoComplete();
     });
 
-    $('#bitbag_sylius_cms_plugin_page_contentElements [data-form-collection="item"]').each((index, element) => {
+    $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {
         $(document).loadContentConfiguration(element);
     });
 
     $(document).loadContentConfiguration(
-        document.querySelector('#bitbag_sylius_cms_plugin_page_contentElements [data-form-collection="item"]')
+        document.querySelector(`${collectionHolder} [data-form-collection="item"]`)
     );
 });
