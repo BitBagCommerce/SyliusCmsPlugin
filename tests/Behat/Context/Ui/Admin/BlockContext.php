@@ -196,6 +196,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a taxons list content element with :firstTaxon and :secondTaxon taxonomy
+     */
+    public function iAddATaxonsListContentElementWithTaxons(string ...$taxons): void
+    {
+        $this->resolveCurrentPage()->addTaxonsListContentElementWithTaxons($taxons);
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void

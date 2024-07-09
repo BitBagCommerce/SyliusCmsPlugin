@@ -250,6 +250,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I add a taxons list content element with :firstTaxon and :secondTaxon taxonomy
+     */
+    public function iAddATaxonsListContentElementWithTaxons(string ...$taxons): void
+    {
+        $this->resolveCurrentPage()->addTaxonsListContentElementWithTaxons($taxons);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
