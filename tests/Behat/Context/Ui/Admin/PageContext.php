@@ -242,6 +242,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I add a products carousel by taxon content element with :taxon taxonomy
+     */
+    public function iAddAProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselByTaxonContentElementWithTaxon($taxon);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */

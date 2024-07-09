@@ -178,6 +178,27 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $dropdown = $this->getElement('content_elements_products_carousel_by_taxon');
+        $dropdown->click();
+
+        $dropdown->waitFor(10, function () use ($taxon): bool {
+            return $this->hasElement('content_elements_products_carousel_by_taxon_item', [
+                '%item%' => $taxon,
+            ]);
+        });
+
+        $item = $this->getElement('content_elements_products_carousel_by_taxon_item', [
+            '%item%' => $taxon,
+        ]);
+
+        $item->click();
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -192,6 +213,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'content_elements_heading_content' => '.field > label:contains("Heading") ~ input[type="text"]',
             'content_elements_products_carousel' => '.field > label:contains("Products") ~ .sylius-autocomplete',
             'content_elements_products_carousel_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_products_carousel_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
+            'content_elements_products_carousel_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }
