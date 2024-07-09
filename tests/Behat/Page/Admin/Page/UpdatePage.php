@@ -12,11 +12,13 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementTrait;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {
     use ChecksCodeImmutabilityTrait;
+    use ContainsContentElementTrait;
 
     public function fillField(string $field, string $value): void
     {
