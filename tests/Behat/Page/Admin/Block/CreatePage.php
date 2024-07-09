@@ -135,11 +135,13 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown = $this->getElement('content_elements_single_media_dropdown');
         $dropdown->click();
 
-        $dropdown->waitFor(10, function () use ($name): bool {
-            return $this->hasElement('content_elements_single_media_dropdown_item', [
-                '%item%' => $name,
-            ]);
-        });
+        Assert::true(
+            $dropdown->waitFor(10, function () use ($name): bool {
+                return $this->hasElement('content_elements_single_media_dropdown_item', [
+                    '%item%' => $name,
+                ]);
+            }),
+        );
 
         $item = $this->getElement('content_elements_single_media_dropdown_item', [
             '%item%' => $name,
