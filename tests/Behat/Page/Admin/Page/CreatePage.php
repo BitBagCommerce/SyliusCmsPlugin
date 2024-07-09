@@ -231,6 +231,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
+    /**
+     * @throws ElementNotFoundException
+     */
     public function addTaxonsListContentElementWithTaxons(array $taxons): void
     {
         $dropdown = $this->getElement('content_elements_taxons_list');
