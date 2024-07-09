@@ -67,6 +67,20 @@ final class MediaContext implements Context
         $this->saveMedia($media);
     }
 
+    /**
+     * @Given there is an existing media with names :firstMediaName and :secondMediaName
+     */
+    public function thereIsExistingMediaWithNames(string ...$mediaNames): void
+    {
+        foreach ($mediaNames as $mediaName) {
+            $media = $this->createMedia(null, $mediaName);
+
+            $this->uploadFile($media, 'aston_martin_db_11.jpg');
+
+            $this->saveMedia($media);
+        }
+    }
+
     private function createMedia(
         ?string $code = null,
         ?string $name = null,

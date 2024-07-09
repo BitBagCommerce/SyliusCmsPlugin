@@ -17,6 +17,8 @@ final class ContentElementHelper
         return match ($contentElement) {
             'Textarea' => 'content_elements_textarea',
             'Single media' => 'content_elements_single_media_dropdown',
+            'Multiple media' => 'content_elements_multiple_media_dropdown',
+            'Heading' => 'content_elements_heading',
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
     }

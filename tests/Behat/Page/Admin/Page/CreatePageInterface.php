@@ -42,4 +42,8 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
     public function addTextareaContentElementWithContent(string $content): void;
 
     public function addSingleMediaContentElementWithName(string $name): void;
+
+    public function addMultipleMediaContentElementWithNames(array $mediaNames): void;
+
+    public function addHeadingContentElementWithTypeAndContent(string $type, string $content): void;
 }

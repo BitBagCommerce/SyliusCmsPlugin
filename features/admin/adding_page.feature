@@ -91,3 +91,28 @@ Feature: Adding new page
         And I add a single media content element with name "Image 1"
         And I add it
         Then I should be notified that the page has been created
+
+    @ui @javascript
+    Scenario: Adding page with multiple media content element
+        Given there is an existing media with names "Image 1" and "Image 2"
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Multiple media" content element
+        And I add a multiple media content element with names "Image 1" and "Image 2"
+        And I add it
+        Then I should be notified that the page has been created
+
+    @ui @javascript
+    Scenario: Adding page with heading content element
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Heading" content element
+        And I add a heading content element with type "H3" and "Welcome to our store" content
+        And I add it
+        Then I should be notified that the page has been created
