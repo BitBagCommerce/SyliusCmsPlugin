@@ -90,9 +90,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $addButton = $this->getElement('content_elements_add_button');
         $addButton->click();
 
-        $addButton->waitFor(2, function (): bool {
-            return $this->hasElement('content_elements_select_type');
-        });
+        Assert::true(
+            $addButton->waitFor(3, function (): bool {
+                return $this->hasElement('content_elements_select_type');
+            })
+        );
     }
 
     /**
@@ -104,11 +106,14 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         $select = $this->getElement('content_elements_select_type');
         $select->selectOption($contentElement);
-        $select->waitFor(3, function () use ($contentElement): bool {
-            return $this->hasElement(
-                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
-            );
-        });
+
+        Assert::true(
+            $select->waitFor(3, function () use ($contentElement): bool {
+                return $this->hasElement(
+                    ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
+                );
+            })
+        );
     }
 
     /**
