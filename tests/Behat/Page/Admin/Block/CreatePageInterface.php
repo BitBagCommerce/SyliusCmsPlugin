@@ -11,9 +11,13 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
-interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
+interface CreatePageInterface extends
+    BaseCreatePageInterface,
+    ContainsErrorInterface,
+    ContainsContentElementInterface
 {
     public function fillField(string $field, string $value): void;
 
