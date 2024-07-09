@@ -50,4 +50,6 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
     public function addProductsCarouselContentElementWithProducts(array $productsNames): void;
 
     public function addProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void;
+
+    public function addTaxonsListContentElementWithTaxons(array $taxons): void;
 }

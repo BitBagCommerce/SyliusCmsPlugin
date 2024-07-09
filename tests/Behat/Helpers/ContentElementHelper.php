@@ -21,6 +21,7 @@ final class ContentElementHelper
             'Heading' => 'content_elements_heading',
             'Products carousel' => 'content_elements_products_carousel',
             'Products carousel by Taxon' => 'content_elements_products_carousel_by_taxon',
+            'Taxons list' => 'content_elements_taxons_list',
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
     }

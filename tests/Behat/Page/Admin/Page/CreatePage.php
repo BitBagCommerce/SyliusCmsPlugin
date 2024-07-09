@@ -231,6 +231,26 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
+    public function addTaxonsListContentElementWithTaxons(array $taxons): void
+    {
+        $dropdown = $this->getElement('content_elements_taxons_list');
+        $dropdown->click();
+
+        foreach ($taxons as $taxon) {
+            $dropdown->waitFor(10, function () use ($taxon): bool {
+                return $this->hasElement('content_elements_taxons_list_item', [
+                    '%item%' => $taxon,
+                ]);
+            });
+
+            $item = $this->getElement('content_elements_taxons_list_item', [
+                '%item%' => $taxon,
+            ]);
+
+            $item->click();
+        }
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -250,6 +270,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'content_elements_products_carousel_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_products_carousel_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
             'content_elements_products_carousel_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_taxons_list' => '.field > label:contains("Taxons") ~ .sylius-autocomplete',
+            'content_elements_taxons_list_item' => '.field > label:contains("Taxons") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }
