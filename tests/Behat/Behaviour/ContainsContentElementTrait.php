@@ -25,13 +25,6 @@ trait ContainsContentElementTrait
             default => $contentElement,
         };
 
-        $contentElements = $this->getDocument()->findById('bitbag_sylius_cms_plugin_block_contentElements')
-            ?? $this->getDocument()->findById('bitbag_sylius_cms_plugin_page_contentElements');
-
-        if (null === $contentElements) {
-            throw new \InvalidArgumentException('Content elements container not found');
-        }
-
-        return $contentElements->hasField($fieldName);
+        return $this->getDocument()->hasField($fieldName);
     }
 }
