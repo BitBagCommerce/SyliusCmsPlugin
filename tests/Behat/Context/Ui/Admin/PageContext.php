@@ -150,7 +150,7 @@ final class PageContext implements Context
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
     {
-        $this->resolveCurrentPage()->containsTextareaContentElementWithValue($content);
+        Assert::true($this->resolveCurrentPage()->containsTextareaContentElementWithValue($content));
     }
 
     /**
@@ -255,6 +255,14 @@ final class PageContext implements Context
     public function iAddATaxonsListContentElementWithTaxons(string ...$taxons): void
     {
         $this->resolveCurrentPage()->addTaxonsListContentElementWithTaxons($taxons);
+    }
+
+    /**
+     * @Then I should see newly created :contentElement content element in Content elements section
+     */
+    public function iShouldSeeNewlyCreatedContentElementInContentElementsSection(string $contentElement): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsContentElement($contentElement));
     }
 
     /**
