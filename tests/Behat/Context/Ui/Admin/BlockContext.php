@@ -180,6 +180,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a products carousel content element with :firstProductName and :secondProductName products
+     */
+    public function iAddAProductsCarouselContentElementWithProducts(string ...$productsNames): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselContentElementWithProducts($productsNames);
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void

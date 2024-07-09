@@ -19,6 +19,7 @@ final class ContentElementHelper
             'Single media' => 'content_elements_single_media_dropdown',
             'Multiple media' => 'content_elements_multiple_media_dropdown',
             'Heading' => 'content_elements_heading',
+            'Products carousel' => 'content_elements_products_carousel',
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
     }

@@ -155,6 +155,29 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $headingContent->setValue($content);
     }
 
+    /**
+     * @throws ElementNotFoundException
+     */
+    public function addProductsCarouselContentElementWithProducts(array $productsNames): void
+    {
+        $dropdown = $this->getElement('content_elements_products_carousel');
+        $dropdown->click();
+
+        foreach ($productsNames as $productName) {
+            $dropdown->waitFor(10, function () use ($productName): bool {
+                return $this->hasElement('content_elements_products_carousel_item', [
+                    '%item%' => $productName,
+                ]);
+            });
+
+            $item = $this->getElement('content_elements_products_carousel_item', [
+                '%item%' => $productName,
+            ]);
+
+            $item->click();
+        }
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -167,6 +190,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_heading' => '.field > label:contains("Heading type") ~ select',
             'content_elements_heading_content' => '.field > label:contains("Heading") ~ input[type="text"]',
+            'content_elements_products_carousel' => '.field > label:contains("Products") ~ .sylius-autocomplete',
+            'content_elements_products_carousel_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
     }
 }
