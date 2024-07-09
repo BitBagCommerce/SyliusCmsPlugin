@@ -129,3 +129,16 @@ Feature: Adding new page
         And I add a products carousel content element with "iPhone 8" and "iPhone X" products
         And I add it
         Then I should be notified that the page has been created
+
+    @ui @javascript
+    Scenario: Adding page with products carousel by taxon content element
+        Given the store has "Smartphones" taxonomy
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Products carousel by Taxon" content element
+        And I add a products carousel by taxon content element with "Smartphones" taxonomy
+        And I add it
+        Then I should be notified that the page has been created

@@ -20,6 +20,7 @@ final class ContentElementHelper
             'Multiple media' => 'content_elements_multiple_media_dropdown',
             'Heading' => 'content_elements_heading',
             'Products carousel' => 'content_elements_products_carousel',
+            'Products carousel by Taxon' => 'content_elements_products_carousel_by_taxon',
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
     }

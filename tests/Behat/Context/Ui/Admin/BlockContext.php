@@ -188,6 +188,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a products carousel by taxon content element with :taxon taxonomy
+     */
+    public function iAddAProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselByTaxonContentElementWithTaxon($taxon);
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
