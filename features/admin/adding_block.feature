@@ -36,6 +36,7 @@ Feature: Adding blocks
         And I add a textarea content element with "Welcome to our store" content
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Textarea" content element in Content elements section
 
     @ui @javascript
     Scenario: Adding block with single media content element
@@ -48,6 +49,7 @@ Feature: Adding blocks
         And I add a single media content element with name "Image 1"
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Single media" content element in Content elements section
 
     @ui @javascript
     Scenario: Adding block with heading content element
@@ -59,6 +61,7 @@ Feature: Adding blocks
         And I add a heading content element with type "H3" and "Welcome to our store" content
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Heading" content element in Content elements section
 
     @ui @javascript
     Scenario: Adding block with products carousel content element
@@ -71,6 +74,7 @@ Feature: Adding blocks
         And I add a products carousel content element with "iPhone 8" and "iPhone X" products
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Products carousel" content element in Content elements section
 
     @ui @javascript
     Scenario: Adding block with products carousel by taxon content element
@@ -83,6 +87,7 @@ Feature: Adding blocks
         And I add a products carousel by taxon content element with "Smartphones" taxonomy
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Products carousel by Taxon" content element in Content elements section
 
     @ui @javascript
     Scenario: Adding block with taxons list content element
@@ -95,6 +100,7 @@ Feature: Adding blocks
         And I add a taxons list content element with "Smartphones" and "Laptops" taxonomy
         And I add it
         Then I should be notified that the block has been created
+        And I should see newly created "Taxons list" content element in Content elements section
 
     @ui
     Scenario: Trying to add block with existing code
