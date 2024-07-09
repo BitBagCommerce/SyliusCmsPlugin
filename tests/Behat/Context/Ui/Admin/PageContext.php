@@ -234,6 +234,14 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I add a products carousel content element with :firstProductName and :secondProductName products
+     */
+    public function iAddAProductsCarouselContentElementWithProducts(string ...$productsNames): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselContentElementWithProducts($productsNames);
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */

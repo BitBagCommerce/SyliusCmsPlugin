@@ -39,5 +39,7 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
 
     public function addHeadingContentElementWithTypeAndContent(string $type, string $content): void;
 
+    public function addProductsCarouselContentElementWithProducts(array $productsNames): void;
+
     public function disable(): void;
 }

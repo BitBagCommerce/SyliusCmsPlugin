@@ -60,6 +60,18 @@ Feature: Adding blocks
         And I add it
         Then I should be notified that the block has been created
 
+    @ui @javascript
+    Scenario: Adding block with products carousel content element
+        Given the store has "iPhone 8" and "iPhone X" products
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Products carousel" content element
+        And I add a products carousel content element with "iPhone 8" and "iPhone X" products
+        And I add it
+        Then I should be notified that the block has been created
+
     @ui
     Scenario: Trying to add block with existing code
         Given there is an existing block with "homepage_image" code
