@@ -11,13 +11,9 @@ declare(strict_types=1);
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
-interface CreatePageInterface extends
-    BaseCreatePageInterface,
-    ContainsErrorInterface,
-    ContainsContentElementInterface
+interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {
     public const IMAGE_FORM_ID = 'bitbag_sylius_cms_plugin_page_translations_en_US_image';
 

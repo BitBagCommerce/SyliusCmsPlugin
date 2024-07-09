@@ -14,7 +14,6 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementTrait;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
@@ -23,7 +22,6 @@ use Webmozart\Assert\Assert;
 class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
-    use ContainsContentElementTrait;
 
     public function fillField(string $field, string $value): void
     {
