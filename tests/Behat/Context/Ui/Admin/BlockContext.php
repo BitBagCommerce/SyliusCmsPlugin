@@ -172,6 +172,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a heading content element with type :type and :content content
+     */
+    public function iAddAHeadingContentElementWithTypeAndContent(string $type, string $content): void
+    {
+        $this->resolveCurrentPage()->addHeadingContentElementWithTypeAndContent($type, $content);
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
