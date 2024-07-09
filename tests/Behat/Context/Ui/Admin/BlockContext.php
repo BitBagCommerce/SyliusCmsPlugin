@@ -204,6 +204,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @Then I should see newly created :contentElement content element in Content elements section
+     */
+    public function iShouldSeeNewlyCreatedContentElementInContentElementsSection(string $contentElement): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsContentElement($contentElement));
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
