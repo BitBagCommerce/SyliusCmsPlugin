@@ -60,4 +60,9 @@ class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
     {
         return $this->getDocument()->findField('Textarea')->getValue() === $value;
     }
+
+    public function deleteContentElement(): void
+    {
+        $this->getDocument()->find('css', '.bb-collection-item-delete')->click();
+    }
 }

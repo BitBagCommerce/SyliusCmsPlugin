@@ -228,6 +228,22 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I delete the content element
+     */
+    public function iDeleteTheContentElement(): void
+    {
+        $this->resolveCurrentPage()->deleteContentElement();
+    }
+
+    /**
+     * @Then I should not see :contentElement content element in the Content elements section
+     */
+    public function iShouldNotSeeContentElementInTheContentElementsSection(string $contentElement): void
+    {
+        Assert::false($this->resolveCurrentPage()->containsContentElement($contentElement));
+    }
+
+    /**
      * @When I fill the link with :link
      */
     public function iFillTheLinkWith(string $link): void

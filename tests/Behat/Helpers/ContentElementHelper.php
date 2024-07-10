@@ -25,4 +25,28 @@ final class ContentElementHelper
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
     }
+
+    public static function getExampleConfigurationByContentElement(string $contentElement): array
+    {
+        return match ($contentElement) {
+            'Textarea' => ['textarea' => 'Content'],
+            'Single media' => ['single_media' => 'homepage_header_image'],
+            'Multiple media' => ['multiple_media' => ['homepage_header_image', 'homepage_pdf']],
+            'Heading' => ['heading_type' => 'h1', 'heading' => 'Heading content'],
+            'Products carousel' => ["products_carousel" => [
+                "products" => [
+                    "Everyday_white_basic_T_Shirt",
+                    "Loose_white_designer_T_Shirt"
+                ],
+            ]],
+            'Products carousel by Taxon' => ['products_carousel_by_taxon' => 'MENU_CATEGORY'],
+            'Taxons list' => ["taxons_list" => [
+                "taxons" => [
+                    "MENU_CATEGORY",
+                    "t_shirts"
+                ],
+            ]],
+            default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
+        };
+    }
 }
