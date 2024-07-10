@@ -266,6 +266,22 @@ final class PageContext implements Context
     }
 
     /**
+     * @When I delete the content element
+     */
+    public function iDeleteTheContentElement(): void
+    {
+        $this->resolveCurrentPage()->deleteContentElement();
+    }
+
+    /**
+     * @Then I should not see :contentElement content element in the Content elements section
+     */
+    public function iShouldNotSeeContentElementInTheContentElementsSection(string $contentElement): void
+    {
+        Assert::false($this->resolveCurrentPage()->containsContentElement($contentElement));
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */
