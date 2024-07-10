@@ -35,7 +35,7 @@ trait ContainsContentElementTrait
         }
 
         return $isAutocompleteField
-            ? $contentElements->has('css', '[data-autocomplete]')
+            ? $contentElements->has('css', 'input.search')
             : $contentElements->hasField($contentElement);
     }
 }
