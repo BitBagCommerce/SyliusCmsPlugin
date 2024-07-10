@@ -31,9 +31,11 @@ trait ContainsContentElementTrait
             ?? $this->getDocument()->findById('bitbag_sylius_cms_plugin_page_contentElements');
 
         if (null === $contentElements) {
-            throw new \InvalidArgumentException('Content elements container not found');
+            throw new \InvalidArgumentException('Content elements container not found.');
         }
 
+        // Autocomplete fields doesn't have labels directly above input field, so we can't use hasField method,
+        // so we need to check if input field with search class exists instead.
         return $isAutocompleteField
             ? $contentElements->has('css', 'input.search')
             : $contentElements->hasField($contentElement);

@@ -172,6 +172,14 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a multiple media content element with names :firstMediaName and :secondMediaName
+     */
+    public function iAddAMultipleMediaContentElementWithNames(string ...$mediaNames): void
+    {
+        $this->resolveCurrentPage()->addMultipleMediaContentElementWithNames($mediaNames);
+    }
+
+    /**
      * @When I add a heading content element with type :type and :content content
      */
     public function iAddAHeadingContentElementWithTypeAndContent(string $type, string $content): void
