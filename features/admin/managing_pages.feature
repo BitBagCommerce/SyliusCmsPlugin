@@ -32,7 +32,7 @@ Feature: Managing cms pages
 
     @ui
     Scenario: Updating page with textarea content element
-        Given there is a page in the store with textarea content element
+        Given there is a page in the store with "Textarea" content element
         When I want to edit this page
         And I fill "Code, Name" fields
         And I change textarea content element value to "New content"
