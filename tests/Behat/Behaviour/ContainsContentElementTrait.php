@@ -18,13 +18,24 @@ trait ContainsContentElementTrait
 
     public function containsContentElement(string $contentElement): bool
     {
-        $fieldName = match ($contentElement) {
-            'Products carousel' => 'Products',
-            'Products carousel by taxon' => 'Taxon',
-            'Taxons list' => 'Taxons',
-            default => $contentElement,
+        $isAutocompleteField = match ($contentElement) {
+            'Single media',
+            'Multiple media',
+            'Products carousel',
+            'Products carousel by taxon',
+            'Taxons list' => true,
+            default => false,
         };
 
-        return $this->getDocument()->hasField($fieldName);
+        $contentElements = $this->getDocument()->findById('bitbag_sylius_cms_plugin_block_contentElements')
+            ?? $this->getDocument()->findById('bitbag_sylius_cms_plugin_page_contentElements');
+
+        if (null === $contentElements) {
+            throw new \InvalidArgumentException('Content elements container not found');
+        }
+
+        return $isAutocompleteField
+            ? $contentElements->has('css', '[data-autocomplete]')
+            : $contentElements->hasField($contentElement);
     }
 }

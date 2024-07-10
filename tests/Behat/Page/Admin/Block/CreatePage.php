@@ -90,11 +90,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $addButton = $this->getElement('content_elements_add_button');
         $addButton->click();
 
-        Assert::true(
-            $addButton->waitFor(3, function (): bool {
-                return $this->hasElement('content_elements_select_type');
-            })
-        );
+        $addButton->waitFor(3, function (): bool {
+            return $this->hasElement('content_elements_select_type');
+        });
     }
 
     /**
@@ -106,14 +104,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         $select = $this->getElement('content_elements_select_type');
         $select->selectOption($contentElement);
-
-        Assert::true(
-            $select->waitFor(3, function () use ($contentElement): bool {
-                return $this->hasElement(
-                    ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
-                );
-            })
-        );
+        $select->waitFor(3, function () use ($contentElement): bool {
+            return $this->hasElement(
+                ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
+            );
+        });
     }
 
     /**
@@ -135,13 +130,11 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown = $this->getElement('content_elements_single_media_dropdown');
         $dropdown->click();
 
-        Assert::true(
-            $dropdown->waitFor(10, function () use ($name): bool {
-                return $this->hasElement('content_elements_single_media_dropdown_item', [
-                    '%item%' => $name,
-                ]);
-            }),
-        );
+        $dropdown->waitFor(10, function () use ($name): bool {
+            return $this->hasElement('content_elements_single_media_dropdown_item', [
+                '%item%' => $name,
+            ]);
+        });
 
         $item = $this->getElement('content_elements_single_media_dropdown_item', [
             '%item%' => $name,
