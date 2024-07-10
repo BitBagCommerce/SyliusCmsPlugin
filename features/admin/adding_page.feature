@@ -162,3 +162,42 @@ Feature: Adding new page
         And I add it
         Then I should be notified that the page has been created
         And I should see newly created "Taxons list" content element in Content elements section
+
+    @ui @javascript
+    Scenario: Adding page with multiple content elements
+        Given there is an existing media with names "Image 1" and "Image 2"
+        And the store has "iPhone 8" and "iPhone X" products
+        And the store classifies its products as "Smartphones" and "Laptops"
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Textarea" content element
+        And I add a textarea content element with "Welcome to our store" content
+        And I click on Add button in Content elements section
+        And I select "Single media" content element
+        And I add a single media content element with name "Image 1"
+        And I click on Add button in Content elements section
+        And I select "Multiple media" content element
+        And I add a multiple media content element with names "Image 1" and "Image 2"
+        And I click on Add button in Content elements section
+        And I select "Heading" content element
+        And I add a heading content element with type "H2" and "Welcome to our store" content
+        And I click on Add button in Content elements section
+        And I select "Products carousel" content element
+        And I add a products carousel content element with "iPhone 8" and "iPhone X" products
+        And I click on Add button in Content elements section
+        And I select "Products carousel by Taxon" content element
+        And I add a products carousel by taxon content element with "Smartphones" taxonomy
+        And I click on Add button in Content elements section
+        And I select "Taxons list" content element
+        And I add a taxons list content element with "Smartphones" and "Laptops" taxonomy
+        And I add it
+        Then I should be notified that the page has been created
+        And I should see newly created "Textarea" content element in Content elements section
+        And I should see newly created "Single media" content element in Content elements section
+        And I should see newly created "Multiple media" content element in Content elements section
+        And I should see newly created "Heading" content element in Content elements section
+        And I should see newly created "Products carousel" content element in Content elements section
+        And I should see newly created "Products carousel by Taxon" content element in Content elements section

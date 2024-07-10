@@ -146,6 +146,29 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     /**
      * @throws ElementNotFoundException
      */
+    public function addMultipleMediaContentElementWithNames(array $mediaNames): void
+    {
+        $dropdown = $this->getElement('content_elements_multiple_media_dropdown');
+        $dropdown->click();
+
+        foreach ($mediaNames as $mediaName) {
+            $dropdown->waitFor(10, function () use ($mediaName): bool {
+                return $this->hasElement('content_elements_multiple_media_dropdown_item', [
+                    '%item%' => $mediaName,
+                ]);
+            });
+
+            $item = $this->getElement('content_elements_multiple_media_dropdown_item', [
+                '%item%' => $mediaName,
+            ]);
+
+            $item->click();
+        }
+    }
+
+    /**
+     * @throws ElementNotFoundException
+     */
     public function addHeadingContentElementWithTypeAndContent(string $type, string $content): void
     {
         $heading = $this->getElement('content_elements_heading');
@@ -232,6 +255,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
             'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete',
             'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_multiple_media_dropdown' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete',
+            'content_elements_multiple_media_dropdown_item' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_heading' => '.field > label:contains("Heading type") ~ select',
             'content_elements_heading_content' => '.field > label:contains("Heading") ~ input[type="text"]',
             'content_elements_products_carousel' => '.field > label:contains("Products") ~ .sylius-autocomplete',
