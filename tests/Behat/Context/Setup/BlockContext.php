@@ -97,7 +97,7 @@ final class BlockContext implements Context
         $block = $this->createBlock($code);
 
         $contentConfiguration = new ContentConfiguration();
-        $contentConfiguration->setType($contentElement);
+        $contentConfiguration->setType(mb_strtolower($contentElement));
         $contentConfiguration->setConfiguration(ContentElementHelper::getExampleConfigurationByContentElement($contentElement));
         $contentConfiguration->setBlock($block);
 
