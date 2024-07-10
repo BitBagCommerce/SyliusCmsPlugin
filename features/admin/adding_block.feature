@@ -115,6 +115,24 @@ Feature: Adding blocks
         Then I should be notified that the block has been created
         And I should see newly created "Taxons list" content element in Content elements section
 
+    @ui @javascript
+    Scenario: Adding block with two content elements
+        Given there is an existing media with names "Image 1" and "Image 2"
+        And the store classifies its products as "Smartphones" and "Laptops"
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Taxons list" content element
+        And I add a taxons list content element with "Smartphones" and "Laptops" taxonomy
+        And I click on Add button in Content elements section
+        And I select "Multiple media" content element
+        And I add a multiple media content element with names "Image 1" and "Image 2"
+        And I add it
+        Then I should be notified that the block has been created
+        And I should see newly created "Taxons list" content element in Content elements section
+        And I should see newly created "Multiple media" content element in Content elements section
+
     @ui
     Scenario: Trying to add block with existing code
         Given there is an existing block with "homepage_image" code
