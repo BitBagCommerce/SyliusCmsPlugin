@@ -9,18 +9,19 @@ sylius_grid:
                 code: asc
             limits: [10, 25, 50]
             fields:
-                code:
-                    type: string
-                    label: bitbag_sylius_cms_plugin.ui.code
-                    sortable: ~
                 name:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.name
                     sortable: name
-                slug:
+                code:
                     type: string
-                    label: bitbag_sylius_cms_plugin.ui.slug
-                    sortable: translation.slug
+                    label: bitbag_sylius_cms_plugin.ui.code
+                    sortable: ~
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 collections:
                     type: twig
                     label: bitbag_sylius_cms_plugin.ui.collections
