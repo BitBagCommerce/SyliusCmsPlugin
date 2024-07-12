@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
-use Behat\Mink\Exception\ElementNotFoundException;
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
@@ -66,7 +65,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $dropdown->click();
 
         foreach ($collectionsNames as $collectionName) {
-            $dropdown->waitFor(10, function () use ($collectionName): bool {
+            $dropdown->waitFor(5, function () use ($collectionName): bool {
                 return $this->hasElement('association_dropdown_collection_item', [
                     '%item%' => $collectionName,
                 ]);
@@ -80,9 +79,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function clickOnAddContentElementButton(): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
@@ -90,30 +86,24 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $addButton = $this->getElement('content_elements_add_button');
         $addButton->click();
 
-        $addButton->waitFor(3, function (): bool {
+        $addButton->waitFor(1, function (): bool {
             return $this->hasElement('content_elements_select_type');
         });
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function selectContentElement(string $contentElement): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
         $select = $this->getElement('content_elements_select_type');
         $select->selectOption($contentElement);
-        $select->waitFor(3, function () use ($contentElement): bool {
+        $select->waitFor(1, function () use ($contentElement): bool {
             return $this->hasElement(
                 ContentElementHelper::getDefinedElementThatShouldAppearAfterSelectContentElement($contentElement),
             );
         });
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addTextareaContentElementWithContent(string $content): void
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
@@ -122,15 +112,12 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $textarea->setValue($content);
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addSingleMediaContentElementWithName(string $name): void
     {
         $dropdown = $this->getElement('content_elements_single_media_dropdown');
         $dropdown->click();
 
-        $dropdown->waitFor(10, function () use ($name): bool {
+        $dropdown->waitFor(5, function () use ($name): bool {
             return $this->hasElement('content_elements_single_media_dropdown_item', [
                 '%item%' => $name,
             ]);
@@ -143,16 +130,13 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addMultipleMediaContentElementWithNames(array $mediaNames): void
     {
         $dropdown = $this->getElement('content_elements_multiple_media_dropdown');
         $dropdown->click();
 
         foreach ($mediaNames as $mediaName) {
-            $dropdown->waitFor(10, function () use ($mediaName): bool {
+            $dropdown->waitFor(5, function () use ($mediaName): bool {
                 return $this->hasElement('content_elements_multiple_media_dropdown_item', [
                     '%item%' => $mediaName,
                 ]);
@@ -166,9 +150,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addHeadingContentElementWithTypeAndContent(string $type, string $content): void
     {
         $heading = $this->getElement('content_elements_heading');
@@ -178,16 +159,13 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $headingContent->setValue($content);
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addProductsCarouselContentElementWithProducts(array $productsNames): void
     {
         $dropdown = $this->getElement('content_elements_products_carousel');
         $dropdown->click();
 
         foreach ($productsNames as $productName) {
-            $dropdown->waitFor(10, function () use ($productName): bool {
+            $dropdown->waitFor(5, function () use ($productName): bool {
                 return $this->hasElement('content_elements_products_carousel_item', [
                     '%item%' => $productName,
                 ]);
@@ -201,15 +179,12 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void
     {
         $dropdown = $this->getElement('content_elements_products_carousel_by_taxon');
         $dropdown->click();
 
-        $dropdown->waitFor(10, function () use ($taxon): bool {
+        $dropdown->waitFor(5, function () use ($taxon): bool {
             return $this->hasElement('content_elements_products_carousel_by_taxon_item', [
                 '%item%' => $taxon,
             ]);
@@ -222,16 +197,13 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
-    /**
-     * @throws ElementNotFoundException
-     */
     public function addTaxonsListContentElementWithTaxons(array $taxons): void
     {
         $dropdown = $this->getElement('content_elements_taxons_list');
         $dropdown->click();
 
         foreach ($taxons as $taxon) {
-            $dropdown->waitFor(10, function () use ($taxon): bool {
+            $dropdown->waitFor(5, function () use ($taxon): bool {
                 return $this->hasElement('content_elements_taxons_list_item', [
                     '%item%' => $taxon,
                 ]);

@@ -51,11 +51,16 @@ final class ContentConfigurationType extends AbstractResourceType
                     return [
                         'data-configuration' => $this->twig->render(
                             '@BitBagSyliusCmsPlugin/ContentConfiguration/_action.html.twig',
-                            ['field' => $builder->create(
-                                'configuration',
-                                $this->actionConfigurationTypes[$type],
-                                ['label' => false, 'csrf_protection' => false],
-                            )->getForm()->createView()],
+                            [
+                                'field' => $builder->create(
+                                    'configuration',
+                                    $this->actionConfigurationTypes[$type],
+                                    [
+                                        'label' => false,
+                                        'csrf_protection' => false,
+                                    ],
+                                )->getForm()->createView(),
+                            ],
                         ),
                     ];
                 },

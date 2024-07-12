@@ -23,9 +23,6 @@ final class MultipleMediaToCodesTransformer implements DataTransformerInterface
     {
     }
 
-    /**
-     * @throws \InvalidArgumentException
-     */
     public function transform($value): Collection
     {
         Assert::nullOrIsArray($value);
@@ -37,9 +34,6 @@ final class MultipleMediaToCodesTransformer implements DataTransformerInterface
         return new ArrayCollection($this->mediaRepository->findBy(['code' => $value]));
     }
 
-    /**
-     * @throws \InvalidArgumentException
-     */
     public function reverseTransform($value): array
     {
         Assert::isInstanceOf($value, Collection::class);
