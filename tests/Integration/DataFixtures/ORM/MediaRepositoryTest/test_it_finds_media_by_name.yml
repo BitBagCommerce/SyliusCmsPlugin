@@ -1,0 +1,63 @@
+Sylius\Component\Addressing\Model\Country:
+  USA:
+    code: 'US'
+Sylius\Component\Currency\Model\Currency:
+  dollar:
+    code: 'USD'
+Sylius\Component\Locale\Model\Locale:
+  locale:
+    createdAt: '<dateTimeBetween("-200 days", "now")>'
+    code: 'en_US'
+Sylius\Component\Core\Model\Channel:
+  channel:
+    code: "code"
+    name: "name"
+    locales:
+      - '@locale'
+    default_locale: '@locale'
+    tax_calculation_strategy: 'order_items_based'
+    base_currency: '@dollar'
+BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
+  media1_translation:
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+    link: 'translation_link_en_US'
+  media2_translation:
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+    link: 'translation_link_en_US'
+  media3_translation:
+    locale: 'en_US'
+    content: 'translation_content_en_US'
+    link: 'translation_link_en_US'
+BitBag\SyliusCmsPlugin\Entity\Media:
+  media1:
+    code: 'media1-code'
+    name: 'media1-name'
+    enabled: true
+    type: 'image'
+    path: '/path/to/media1'
+    channels:
+      - '@channel'
+    translations:
+      - '@media1_translation'
+  media2:
+    code: 'media2-code'
+    name: 'media2-name'
+    enabled: true
+    type: 'image'
+    path: '/path/to/media2'
+    channels:
+      - '@channel'
+    translations:
+      - '@media2_translation'
+  media3:
+    code: 'media3-code'
+    name: 'media3-name'
+    enabled: false
+    type: 'image'
+    path: '/path/to/media3'
+    channels:
+      - '@channel'
+    translations:
+      - '@media3_translation'
