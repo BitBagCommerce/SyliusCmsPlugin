@@ -48,6 +48,19 @@ class MediaRepositoryTest extends JsonApiTestCase
         self::assertEmpty($media3);
     }
 
+    public function test_it_finds_media_by_name_part(): void
+    {
+        $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_name.yml');
+
+        $repository = $this->getRepository();
+
+        $phrase = 'media';
+        $media = $repository->findByNamePart($phrase);
+
+        self::assertIsArray($media);
+        self::assertCount(3, $media);
+    }
+
     private function getRepository(): MediaRepositoryInterface
     {
         /** @var MediaRepositoryInterface $repository */
