@@ -26,13 +26,23 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Updating block textarea content element
-        Given there is a block with "store_phone_number" code and textarea content element
+        Given there is a block with "store_phone_number" code and "Textarea" content element
         When I go to the update "store_phone_number" block page
         And I fill the name with "Store phone number" if the name field is empty
         And I change textarea content element value to "New content"
         And I update it
         Then I should be notified that the block has been successfully updated
         And I should see "New content" in the textarea content element
+
+    @ui @javascript
+    Scenario: Deleting content element in block
+        Given there is a block with "store_phone_number" code and "Textarea" content element
+        When I go to the update "store_phone_number" block page
+        And I fill the name with "Store phone number" if the name field is empty
+        And I delete the content element
+        And I update it
+        Then I should be notified that the block has been successfully updated
+        And I should not see "Textarea" content element in the Content elements section
 
     @ui
     Scenario: Disabling block

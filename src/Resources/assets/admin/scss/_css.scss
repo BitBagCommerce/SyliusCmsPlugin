@@ -104,6 +104,14 @@
     cursor: pointer !important;
 }
 
+.bb-collection-item {
+    margin-bottom: 1em;
+
+    &-delete {
+        margin-top: 5px !important;
+    }
+}
+
 .cke_notifications_area {
   display: none;
 }

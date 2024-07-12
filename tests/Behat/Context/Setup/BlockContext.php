@@ -13,10 +13,12 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class BlockContext implements Context
@@ -61,11 +63,11 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Given there is a block with :code code and textarea content element
+     * @Given there is a block with :code code and :contentElement content element
      */
-    public function thereIsABlockWithCodeAndTextareaContentElement(string $code): void
+    public function thereIsABlockWithCodeAndContentElement(string $code, string $contentElement): void
     {
-        $block = $this->createBlockWithTextareaContentElement($code);
+        $block = $this->createBlockWithContentElement($code, $contentElement);
 
         $this->saveBlock($block);
     }
@@ -91,13 +93,14 @@ final class BlockContext implements Context
         return $block;
     }
 
-    private function createBlockWithTextareaContentElement(string $code): BlockInterface
+    private function createBlockWithContentElement(string $code, string $contentElement): BlockInterface
     {
         $block = $this->createBlock($code);
 
+        /** @var ContentConfigurationInterface $contentConfiguration */
         $contentConfiguration = new ContentConfiguration();
-        $contentConfiguration->setType('textarea');
-        $contentConfiguration->setConfiguration(['textarea' => 'Content']);
+        $contentConfiguration->setType(mb_strtolower($contentElement));
+        $contentConfiguration->setConfiguration(ContentElementHelper::getExampleConfigurationByContentElement($contentElement));
         $contentConfiguration->setBlock($block);
 
         $block->addContentElement($contentConfiguration);

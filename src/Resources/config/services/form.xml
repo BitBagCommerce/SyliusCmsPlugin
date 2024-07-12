@@ -3,6 +3,12 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.textarea" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.single_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -18,6 +24,7 @@
             <argument>BitBag\SyliusCmsPlugin\Entity\ContentConfiguration</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.content_configuration.validation_groups%</argument>
             <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
+            <argument type="service" id="twig" />
             <tag name="form.type" />
         </service>
 
@@ -67,11 +74,47 @@
             <tag name="form.type" />
         </service>
 
-        <service id="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.textarea" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.textarea%" />
             <tag name="form.type" />
         </service>
 
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.multiple_media%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.heading" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.heading%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.taxons_list%" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+        </service>
     </services>
 
 </container>

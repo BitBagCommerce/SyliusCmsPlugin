@@ -56,3 +56,11 @@ bitbag_sylius_cms_plugin:
             title: Turinio elementai
             type:
                 textarea: Textarea
+                single_media: Vienas medijos elementas
+                multiple_media: Kelios medijos elementai
+                heading: Antraštė
+                products_carousel: Produktų karuselė
+                products_carousel_by_taxon: Produktų karuselė pagal taksoną
+                taxons_list: Taksonų sąrašas
+            heading_type: Antraštės tipas
+        taxon: Taksonas

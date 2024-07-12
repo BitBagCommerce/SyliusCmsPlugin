@@ -6,8 +6,11 @@ default:
 
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
+                - sylius.behat.context.setup.product
+                - sylius.behat.context.setup.taxonomy
                 - bitbag_sylius_cms_plugin.behat.context.setup.block
                 - bitbag_sylius_cms_plugin.behat.context.setup.collection
+                - bitbag_sylius_cms_plugin.behat.context.setup.media
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.block
             filters:

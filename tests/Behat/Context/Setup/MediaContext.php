@@ -44,6 +44,18 @@ final class MediaContext implements Context
     }
 
     /**
+     * @Given there is an existing media with :code code and name :name
+     */
+    public function thereIsAnExistingMediaWithCodeAndName(string $code, string $name): void
+    {
+        $media = $this->createMedia($code, $name);
+
+        $this->uploadFile($media, 'aston_martin_db_11.jpg');
+
+        $this->saveMedia($media);
+    }
+
+    /**
      * @Given there is an existing :type media with :code code
      */
     public function thereIsAnExistingTypeMediaWithCode(string $type, string $code): void
@@ -53,6 +65,20 @@ final class MediaContext implements Context
         $this->uploadFile($media, 'aston_martin_db_11.jpg');
 
         $this->saveMedia($media);
+    }
+
+    /**
+     * @Given there is an existing media with names :firstMediaName and :secondMediaName
+     */
+    public function thereIsExistingMediaWithNames(string ...$mediaNames): void
+    {
+        foreach ($mediaNames as $mediaName) {
+            $media = $this->createMedia(null, $mediaName);
+
+            $this->uploadFile($media, 'aston_martin_db_11.jpg');
+
+            $this->saveMedia($media);
+        }
     }
 
     private function createMedia(

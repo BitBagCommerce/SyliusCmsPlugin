@@ -60,3 +60,11 @@ bitbag_sylius_cms_plugin:
             title: Inhalts-Elemente
             type:
                 textarea: Textarea
+                single_media: Einzelmedium
+                multiple_media: Mehrere Medien
+                heading: Überschrift
+                products_carousel: Produkte im Karussell
+                products_carousel_by_taxon: Produkte im Karussell nach Taxon
+                taxons_list: Taxon-Liste
+            heading_type: Überschrift-Typ
+        taxon: Taxon

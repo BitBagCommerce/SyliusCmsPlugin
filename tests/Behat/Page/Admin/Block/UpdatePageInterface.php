@@ -12,8 +12,12 @@ namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementInterface;
 
-interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
+interface UpdatePageInterface extends
+    BaseUpdatePageInterface,
+    ChecksCodeImmutabilityInterface,
+    ContainsContentElementInterface
 {
     public function fillName(string $name): void;
 
@@ -30,4 +34,6 @@ interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutab
     public function changeTextareaContentElementValue(string $value): void;
 
     public function containsTextareaContentElementWithValue(string $value): bool;
+
+    public function deleteContentElement(): void;
 }

@@ -26,6 +26,7 @@ use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
 use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class PageContext implements Context
@@ -53,11 +54,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @Given there is a page in the store with textarea content element
+     * @Given there is a page in the store with :contentElement content element
      */
-    public function thereIsAPageInTheStoreWithTextareaContentElement(): void
+    public function thereIsAPageInTheStoreWithTextareaContentElement(string $contentElement): void
     {
-        $page = $this->createPageWithTextareaContentElement();
+        $page = $this->createPageWithContentElement($contentElement);
 
         $this->savePage($page);
     }
@@ -203,14 +204,14 @@ final class PageContext implements Context
         return $page;
     }
 
-    private function createPageWithTextareaContentElement(): PageInterface
+    private function createPageWithContentElement(string $contentElement): PageInterface
     {
         $page = $this->createPage();
 
         /** @var ContentConfigurationInterface $contentConfiguration */
         $contentConfiguration = new ContentConfiguration();
-        $contentConfiguration->setType('textarea');
-        $contentConfiguration->setConfiguration(['textarea' => 'Content']);
+        $contentConfiguration->setType(mb_strtolower($contentElement));
+        $contentConfiguration->setConfiguration(ContentElementHelper::getExampleConfigurationByContentElement($contentElement));
         $contentConfiguration->setPage($page);
 
         $page->addContentElement($contentConfiguration);

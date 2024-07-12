@@ -32,10 +32,19 @@ Feature: Managing cms pages
 
     @ui
     Scenario: Updating page with textarea content element
-        Given there is a page in the store with textarea content element
+        Given there is a page in the store with "Textarea" content element
         When I want to edit this page
         And I fill "Code, Name" fields
         And I change textarea content element value to "New content"
         And I update it
         Then I should be notified that the page was updated
         And I should see "New content" in the textarea content element
+
+    @ui @javascript
+    Scenario: Deleting content element in page
+        Given there is a page in the store with "Textarea" content element
+        When I want to edit this page
+        And I delete the content element
+        And I update it
+        Then I should be notified that the page was updated
+        And I should not see "Textarea" content element in the Content elements section

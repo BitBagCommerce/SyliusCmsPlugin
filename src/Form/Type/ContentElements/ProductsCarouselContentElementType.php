@@ -10,19 +10,19 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
+use Sylius\Bundle\CoreBundle\Form\Type\CatalogPromotionScope\ForProductsScopeConfigurationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class TextareaContentElementType extends AbstractType
+final class ProductsCarouselContentElementType extends AbstractType
 {
-    public const TYPE = 'textarea';
+    public const TYPE = 'products_carousel';
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+            ->add(self::TYPE, ForProductsScopeConfigurationType::class, [
+                'label' => false,
             ])
         ;
     }

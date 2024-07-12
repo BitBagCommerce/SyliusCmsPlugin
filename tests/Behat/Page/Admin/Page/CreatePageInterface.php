@@ -35,5 +35,21 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
 
     public function associateCollections(array $collectionsNames): void;
 
+    public function clickOnAddContentElementButton(): void;
+
+    public function selectContentElement(string $contentElement): void;
+
     public function addTextareaContentElementWithContent(string $content): void;
+
+    public function addSingleMediaContentElementWithName(string $name): void;
+
+    public function addMultipleMediaContentElementWithNames(array $mediaNames): void;
+
+    public function addHeadingContentElementWithTypeAndContent(string $type, string $content): void;
+
+    public function addProductsCarouselContentElementWithProducts(array $productsNames): void;
+
+    public function addProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void;
+
+    public function addTaxonsListContentElementWithTaxons(array $taxons): void;
 }

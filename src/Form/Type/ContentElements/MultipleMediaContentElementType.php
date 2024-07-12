@@ -10,21 +10,29 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
+use BitBag\SyliusCmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class TextareaContentElementType extends AbstractType
+final class MultipleMediaContentElementType extends AbstractType
 {
-    public const TYPE = 'textarea';
+    public const TYPE = 'multiple_media';
+
+    public function __construct(private DataTransformerInterface $mediaToCodesTransformer)
+    {
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, WysiwygType::class, [
+            ->add(self::TYPE, MediaAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'multiple' => true,
             ])
         ;
+
+        $builder->get(self::TYPE)->addModelTransformer($this->mediaToCodesTransformer);
     }
 
     public function getBlockPrefix(): string

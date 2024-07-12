@@ -57,3 +57,11 @@ bitbag_sylius_cms_plugin:
             title: Obsahové prvky
             type:
                 textarea: Textarea
+                single_media: Jedno médium
+                multiple_media: Viacero médií
+                heading: Nadpis
+                products_carousel: Produkty v karuseli
+                products_carousel_by_taxon: Produkty v karuseli podľa taxónu
+                taxons_list: Zoznam taxónov
+            heading_type: Typ nadpisu
+        taxon: Taxón

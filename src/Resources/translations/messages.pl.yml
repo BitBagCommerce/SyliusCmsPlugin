@@ -43,3 +43,11 @@ bitbag_sylius_cms_plugin:
             title: Elementy treści
             type:
                 textarea: Textarea
+                single_media: Pojedyncze media
+                multiple_media: Wiele mediów
+                heading: Nagłówek
+                products_carousel: Karuzela produktów
+                products_carousel_by_taxon: Karuzela produktów według taksonomii
+                taxons_list: Lista taksonomii
+            heading_type: Typ nagłówka
+        taxon: Taksonomia

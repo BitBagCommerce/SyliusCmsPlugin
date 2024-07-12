@@ -10,18 +10,32 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class TextareaContentElementType extends AbstractType
+final class HeadingContentElementType extends AbstractType
 {
-    public const TYPE = 'textarea';
+    public const TYPE = 'heading';
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, WysiwygType::class, [
+            ->add('heading_type', ChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.heading_type',
+                'choices' => [
+                    'H1' => 'h1',
+                    'H2' => 'h2',
+                    'H3' => 'h3',
+                    'H4' => 'h4',
+                    'H5' => 'h5',
+                    'H6' => 'h6',
+                ],
+                'required' => true,
+                'empty_data' => 'h1',
+            ])
+            ->add(self::TYPE, TextType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;

@@ -10,21 +10,32 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
+use BitBag\SyliusCmsPlugin\Form\Type\MediaAutocompleteChoiceType;
+use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\ReversedTransformer;
 
-final class TextareaContentElementType extends AbstractType
+final class SingleMediaContentElementType extends AbstractType
 {
-    public const TYPE = 'textarea';
+    public const TYPE = 'single_media';
+
+    public function __construct(private RepositoryInterface $mediaRepository)
+    {
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, WysiwygType::class, [
+            ->add(self::TYPE, MediaAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
+
+        $builder->get(self::TYPE)->addModelTransformer(
+            new ReversedTransformer(new ResourceToIdentifierTransformer($this->mediaRepository, 'code')),
+        );
     }
 
     public function getBlockPrefix(): string

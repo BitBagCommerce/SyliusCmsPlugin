@@ -132,6 +132,30 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I click on Add button in Content elements section
+     */
+    public function iClickOnAddButtonInContentElementsSection(): void
+    {
+        $this->resolveCurrentPage()->clickOnAddContentElementButton();
+    }
+
+    /**
+     * @When I select :option content element
+     */
+    public function iSelectContentElement(string $option): void
+    {
+        $this->resolveCurrentPage()->selectContentElement($option);
+    }
+
+    /**
+     * @When I add a textarea content element with :content content
+     */
+    public function iAddATextareaContentElementWithContent(string $content): void
+    {
+        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
+    }
+
+    /**
      * @When I change textarea content element value to :value
      */
     public function iChangeTextareaContentElementValueTo(string $value): void
@@ -140,11 +164,83 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a single media content element with name :name
+     */
+    public function iAddASingleMediaContentElementWithName(string $name): void
+    {
+        $this->resolveCurrentPage()->addSingleMediaContentElementWithName($name);
+    }
+
+    /**
+     * @When I add a multiple media content element with names :firstMediaName and :secondMediaName
+     */
+    public function iAddAMultipleMediaContentElementWithNames(string ...$mediaNames): void
+    {
+        $this->resolveCurrentPage()->addMultipleMediaContentElementWithNames($mediaNames);
+    }
+
+    /**
+     * @When I add a heading content element with type :type and :content content
+     */
+    public function iAddAHeadingContentElementWithTypeAndContent(string $type, string $content): void
+    {
+        $this->resolveCurrentPage()->addHeadingContentElementWithTypeAndContent($type, $content);
+    }
+
+    /**
+     * @When I add a products carousel content element with :firstProductName and :secondProductName products
+     */
+    public function iAddAProductsCarouselContentElementWithProducts(string ...$productsNames): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselContentElementWithProducts($productsNames);
+    }
+
+    /**
+     * @When I add a products carousel by taxon content element with :taxon taxonomy
+     */
+    public function iAddAProductsCarouselByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $this->resolveCurrentPage()->addProductsCarouselByTaxonContentElementWithTaxon($taxon);
+    }
+
+    /**
+     * @When I add a taxons list content element with :firstTaxon and :secondTaxon taxonomy
+     */
+    public function iAddATaxonsListContentElementWithTaxons(string ...$taxons): void
+    {
+        $this->resolveCurrentPage()->addTaxonsListContentElementWithTaxons($taxons);
+    }
+
+    /**
+     * @Then I should see newly created :contentElement content element in Content elements section
+     */
+    public function iShouldSeeNewlyCreatedContentElementInContentElementsSection(string $contentElement): void
+    {
+        Assert::true($this->resolveCurrentPage()->containsContentElement($contentElement));
+    }
+
+    /**
      * @Then I should see :content in the textarea content element
      */
     public function iShouldSeeNewContentInTheTextareaContentElement(string $content): void
     {
         $this->resolveCurrentPage()->containsTextareaContentElementWithValue($content);
+    }
+
+    /**
+     * @When I delete the content element
+     */
+    public function iDeleteTheContentElement(): void
+    {
+        $this->resolveCurrentPage()->deleteContentElement();
+    }
+
+    /**
+     * @Then I should not see :contentElement content element in the Content elements section
+     */
+    public function iShouldNotSeeContentElementInTheContentElementsSection(string $contentElement): void
+    {
+        Assert::false($this->resolveCurrentPage()->containsContentElement($contentElement));
     }
 
     /**
@@ -177,14 +273,6 @@ final class BlockContext implements Context
     public function iAddAndCollectionsToIt(string ...$collectionsNames): void
     {
         $this->resolveCurrentPage()->associateCollections($collectionsNames);
-    }
-
-    /**
-     * @When I add a textarea content element with :content content
-     */
-    public function iAddATextareaContentElementWithContent(string $content): void
-    {
-        $this->resolveCurrentPage()->addTextareaContentElementWithContent($content);
     }
 
     /**
