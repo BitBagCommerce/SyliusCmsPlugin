@@ -30,6 +30,12 @@ sylius_grid:
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
+                channels:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.channels
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
             filters:
                 search:
                     type: string
