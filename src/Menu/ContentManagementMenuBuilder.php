@@ -24,6 +24,22 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
+            ->addChild('collections', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_collection_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.collections')
+            ->setLabelAttribute('icon', 'grid layout')
+        ;
+
+        $cmsRootMenuItem
+            ->addChild('pages', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_page_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.pages')
+            ->setLabelAttribute('icon', 'sticky note')
+        ;
+
+        $cmsRootMenuItem
             ->addChild('blocks', [
                 'route' => 'bitbag_sylius_cms_plugin_admin_block_index',
             ])
@@ -37,22 +53,6 @@ final class ContentManagementMenuBuilder
             ])
             ->setLabel('bitbag_sylius_cms_plugin.ui.media')
             ->setLabelAttribute('icon', 'file')
-        ;
-
-        $cmsRootMenuItem
-            ->addChild('pages', [
-                'route' => 'bitbag_sylius_cms_plugin_admin_page_index',
-            ])
-            ->setLabel('bitbag_sylius_cms_plugin.ui.pages')
-            ->setLabelAttribute('icon', 'sticky note')
-        ;
-
-        $cmsRootMenuItem
-            ->addChild('collections', [
-                'route' => 'bitbag_sylius_cms_plugin_admin_collection_index',
-            ])
-            ->setLabel('bitbag_sylius_cms_plugin.ui.collections')
-            ->setLabelAttribute('icon', 'grid layout')
         ;
     }
 }

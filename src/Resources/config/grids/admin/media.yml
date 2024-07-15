@@ -25,12 +25,23 @@ sylius_grid:
                     type: string
                     label: bitbag_sylius_cms_plugin.ui.code
                     sortable: ~
-                path:
-                    type: string
-                    label: bitbag_sylius_cms_plugin.ui.path
-                type:
-                    type: string
-                    label: bitbag_sylius_cms_plugin.ui.type
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+                collections:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.collections
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
+                channels:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.channels
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
             filters:
                 search:
                     type: string

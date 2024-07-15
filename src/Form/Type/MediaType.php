@@ -70,6 +70,11 @@ final class MediaType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
             ])
+            ->add('path', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.path',
+                'disabled' => true,
+                'required' => false,
+            ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => MediaTranslationType::class,
             ])

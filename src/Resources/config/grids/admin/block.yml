@@ -9,6 +9,10 @@ sylius_grid:
                 code: asc
             limits: [10, 25, 50]
             fields:
+                name:
+                    type: string
+                    label: bitbag_sylius_cms_plugin.ui.name
+                    sortable: name
                 code:
                     type: string
                     label: sylius.ui.code
@@ -26,6 +30,12 @@ sylius_grid:
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
+                channels:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.channels
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
             filters:
                 search:
                     type: string

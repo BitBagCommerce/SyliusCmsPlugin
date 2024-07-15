@@ -8,14 +8,15 @@
 <div class="ui two column stackable grid" data-bb-target="cms-handle-preview">
     <div class="column">
         <div class="ui segment">
-            {{ form_row(form.code) }}
             {{ form_row(form.name) }}
+            {{ form_row(form.code) }}
+            {{ form_row(form.enabled) }}
+            {{ form_row(form.channels) }}
+            {{ form_row(form.collections) }}
             {{ form_row(form.type) }}
             {{ form_row(form.file) }}
-            {{ form_row(form.enabled) }}
             {{ form_row(form.saveWithOriginalName) }}
-            {{ form_row(form.collections) }}
-            {{ form_row(form.channels) }}
+            {{ form_row(form.path) }}
         </div>
     </div>
 </div>
