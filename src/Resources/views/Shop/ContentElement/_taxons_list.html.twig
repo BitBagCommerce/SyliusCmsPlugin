@@ -1,5 +1,11 @@
 <div class="{{ content_element_base_class }}__taxons-list">
-    {% for taxon in taxons %}
-        {{ taxon }}
-    {% endfor %}
+    <ul class="ui bulleted list">
+        {% for taxon in taxons %}
+            <li>
+                <a href="{{ path('sylius_shop_product_index', {'slug': taxon.slug, '_locale': taxon.translation.locale}) }}">
+                    {{ taxon.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>

@@ -14,7 +14,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Strategy\ContentElementRendererStrategyInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentElementsRuntime;
 use PhpSpec\ObjectBehavior;
 

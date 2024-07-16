@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Strategy\ContentElementRendererStrategyInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 
 final class RenderContentElementsRuntime implements RenderContentElementsRuntimeInterface
 {

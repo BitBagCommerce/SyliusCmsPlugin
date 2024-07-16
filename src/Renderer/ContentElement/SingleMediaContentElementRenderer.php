@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
 
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
+use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Environment;
 
@@ -20,6 +21,7 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
     public function __construct(
         private Environment $twig,
         private RenderMediaRuntimeInterface $renderMediaRuntime,
+        private MediaRepositoryInterface $mediaRepository,
     ) {
     }
 
@@ -31,10 +33,14 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
     public function render(ContentConfigurationInterface $contentConfiguration): string
     {
         $code = $contentConfiguration->getConfiguration()['single_media'];
+        $media = [
+            'renderedContent' => $this->renderMediaRuntime->renderMedia($code),
+            'entity' => $this->mediaRepository->findOneBy(['code' => $code])
+        ];
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
-            'media' => $this->renderMediaRuntime->renderMedia($code),
+            'media' => $media,
         ]);
     }
 }

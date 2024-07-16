@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Strategy\ContentElementRendererStrategyInterface;
 use Twig\Environment;
 
 final class RenderBlockRuntime implements RenderBlockRuntimeInterface

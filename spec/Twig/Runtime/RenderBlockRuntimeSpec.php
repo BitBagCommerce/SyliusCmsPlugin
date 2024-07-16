@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Strategy\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;

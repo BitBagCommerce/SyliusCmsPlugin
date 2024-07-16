@@ -11,7 +11,9 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
 
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType;
+use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Environment;
 
@@ -20,6 +22,7 @@ final class MultipleMediaContentElementRenderer implements ContentElementRendere
     public function __construct(
         private Environment $twig,
         private RenderMediaRuntimeInterface $renderMediaRuntime,
+        private MediaRepositoryInterface $mediaRepository,
     ) {
     }
 
@@ -32,8 +35,19 @@ final class MultipleMediaContentElementRenderer implements ContentElementRendere
     {
         $media = [];
         $codes = $contentConfiguration->getConfiguration()['multiple_media'];
+
+        /** @var MediaInterface[] $mediaEntities */
+        $mediaEntities = $this->mediaRepository->findBy(['code' => $codes]);
+        $mediaEntitiesByCode = array_reduce($mediaEntities, static function(array $result, MediaInterface $media) {
+            $result[$media->getCode()] = $media;
+            return $result;
+        }, []);
+
         foreach ($codes as $code) {
-            $media[] = $this->renderMediaRuntime->renderMedia($code);
+            $media[] = [
+                'renderedContent' => $this->renderMediaRuntime->renderMedia($code),
+                'entity' => $mediaEntitiesByCode[$code],
+            ];
         }
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
