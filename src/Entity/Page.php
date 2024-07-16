@@ -162,15 +162,4 @@ class Page implements PageInterface
     {
         return new PageTranslation();
     }
-
-    public function getContent(): ?string
-    {
-        $content = '';
-        /** @var ContentConfigurationInterface $contentElement */
-        foreach ($this->contentElements as $contentElement) {
-            $content .= $contentElement->getContent() . \PHP_EOL;
-        }
-
-        return $content;
-    }
 }

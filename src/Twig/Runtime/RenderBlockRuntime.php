@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
+use BitBag\SyliusCmsPlugin\Strategy\ContentElementRendererStrategyInterface;
 use Twig\Environment;
 
 final class RenderBlockRuntime implements RenderBlockRuntimeInterface
@@ -20,6 +21,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     public function __construct(
         private BlockResourceResolverInterface $blockResourceResolver,
         private Environment $templatingEngine,
+        private ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ) {
     }
 
@@ -30,7 +32,12 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
         if (null !== $block) {
             $template = $template ?? self::DEFAULT_TEMPLATE;
 
-            return $this->templatingEngine->render($template, ['block' => $block]);
+            return $this->templatingEngine->render(
+                $template,
+                [
+                    'content' => $this->contentElementRendererStrategy->render($block),
+                ],
+            );
         }
 
         return '';

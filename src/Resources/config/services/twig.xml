@@ -20,6 +20,7 @@
         <service id="bitbag_sylius_cms_plugin.twig.runtime.block" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.block_resource" />
             <argument type="service" id="twig" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 
@@ -40,6 +41,15 @@
 
         <service id="bitbag_sylius_cms_plugin.twig.runtime.render_content" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentRuntime">
             <argument type="service" id="bitbag_sylius_cms_plugin.twig.parser.content" />
+            <tag name="twig.runtime" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.twig.extension.render_content_elements" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderContentElementsExtension">
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_content_elements" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentElementsRuntime">
+            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 

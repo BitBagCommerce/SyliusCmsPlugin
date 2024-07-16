@@ -26,8 +26,7 @@ interface PageInterface extends
     ChannelsAwareInterface,
     SlugAwareInterface,
     ContentConfigurationAwareInterface,
-    LocaleAwareInterface,
-    ContentableInterface
+    LocaleAwareInterface
 {
     public function getCode(): ?string;
 

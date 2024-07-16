@@ -62,14 +62,4 @@ class Block implements BlockInterface
     {
         $this->name = $name;
     }
-
-    public function getContent(): ?string
-    {
-        $content = '';
-        foreach ($this->contentElements as $contentElement) {
-            $content .= $contentElement->getContent() . \PHP_EOL;
-        }
-
-        return $content;
-    }
 }
