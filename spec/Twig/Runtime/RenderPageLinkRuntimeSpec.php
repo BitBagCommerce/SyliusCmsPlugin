@@ -22,7 +22,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
-final class RenderLinkRuntimeSpec extends ObjectBehavior
+final class RenderPageLinkRuntimeSpec extends ObjectBehavior
 {
     public function let(
         PageRepositoryInterface $pageRepository,

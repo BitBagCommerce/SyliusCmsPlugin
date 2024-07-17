@@ -1,0 +1,97 @@
+<?php
+
+/*
+ * This file was created by developers working at BitBag
+ * Do you need more information about us and what we do? Visit our https://bitbag.io website!
+ * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
+*/
+
+declare(strict_types=1);
+
+namespace spec\BitBag\SyliusCmsPlugin\Renderer;
+
+use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategy;
+use Doctrine\Common\Collections\ArrayCollection;
+use PhpSpec\ObjectBehavior;
+use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+
+final class ContentElementRendererStrategySpec extends ObjectBehavior
+{
+    public function let(
+        ContentParserInterface $contentParser,
+        ContentElementRendererInterface $renderer1,
+        ContentElementRendererInterface $renderer2
+    ): void
+    {
+        $this->beConstructedWith($contentParser, [$renderer1, $renderer2]);
+    }
+
+    public function it_is_initializable(): void
+    {
+        $this->shouldHaveType(ContentElementRendererStrategy::class);
+    }
+
+    public function it_implements_content_element_renderer_strategy_interface(): void
+    {
+        $this->shouldImplement(ContentElementRendererStrategyInterface::class);
+    }
+
+    public function it_renders_content_elements_using_registered_renderers(
+        ContentParserInterface $contentParser,
+        ContentElementRendererInterface $renderer1,
+        ContentElementRendererInterface $renderer2,
+        BlockInterface $block,
+        ContentConfigurationInterface $contentElement1,
+        ContentConfigurationInterface $contentElement2
+    ): void
+    {
+        $block->getContentElements()->willReturn(
+            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()])
+        );
+
+        $renderer1->supports($contentElement1)->willReturn(true);
+        $renderer1->supports($contentElement2)->willReturn(false);
+        $renderer1->render($contentElement1)->willReturn('Rendered content 1');
+        $renderer2->supports($contentElement2)->willReturn(true);
+        $renderer2->supports($contentElement1)->willReturn(false);
+        $renderer2->render($contentElement2)->willReturn('Rendered content 2');
+
+        $expectedParsedContent = 'Parsed content after rendering';
+
+        $contentParser->parse('Rendered content 1Rendered content 2')->willReturn($expectedParsedContent);
+
+        $this->render($block)->shouldReturn($expectedParsedContent);
+    }
+
+    public function it_renders_content_elements_using_registered_renderers_for_page(
+        ContentParserInterface $contentParser,
+        ContentElementRendererInterface $renderer1,
+        ContentElementRendererInterface $renderer2,
+        PageInterface $page,
+        ContentConfigurationInterface $contentElement1,
+        ContentConfigurationInterface $contentElement2
+    ): void
+    {
+        $page->getContentElements()->willReturn(
+            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()])
+        );
+
+        $renderer1->supports($contentElement1)->willReturn(true);
+        $renderer1->supports($contentElement2)->willReturn(false);
+        $renderer1->render($contentElement1)->willReturn('Rendered content 1');
+        $renderer2->supports($contentElement2)->willReturn(true);
+        $renderer2->supports($contentElement1)->willReturn(false);
+        $renderer2->render($contentElement2)->willReturn('Rendered content 2');
+
+        $expectedParsedContent = 'Parsed content after rendering';
+
+        $contentParser->parse('Rendered content 1Rendered content 2')->willReturn($expectedParsedContent);
+
+        $this->render($page)->shouldReturn($expectedParsedContent);
+    }
+}

@@ -11,18 +11,20 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
 
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
 use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use BitBag\SyliusCmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer;
+use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Twig\Environment;
 
 final class SingleMediaContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, RenderMediaRuntimeInterface $renderMediaRuntime): void
+    public function let(Environment $twig, RenderMediaRuntimeInterface $renderMediaRuntime, MediaRepositoryInterface $mediaRepository): void
     {
-        $this->beConstructedWith($twig, $renderMediaRuntime);
+        $this->beConstructedWith($twig, $renderMediaRuntime, $mediaRepository);
     }
 
     public function it_is_initializable(): void
@@ -50,7 +52,9 @@ final class SingleMediaContentElementRendererSpec extends ObjectBehavior
     public function it_renders_single_media_content_element(
         Environment $twig,
         RenderMediaRuntimeInterface $renderMediaRuntime,
-        ContentConfigurationInterface $contentConfiguration
+        MediaRepositoryInterface $mediaRepository,
+        ContentConfigurationInterface $contentConfiguration,
+        MediaInterface $media
     ): void
     {
         $contentConfiguration->getConfiguration()->willReturn([
@@ -58,10 +62,14 @@ final class SingleMediaContentElementRendererSpec extends ObjectBehavior
         ]);
 
         $renderMediaRuntime->renderMedia('media_code')->willReturn('rendered media');
+        $mediaRepository->findOneBy(['code' => 'media_code'])->willReturn($media);
 
         $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
-            'media' => 'rendered media',
+            'media' => [
+                'renderedContent' => 'rendered media',
+                'entity' => $media,
+            ],
         ])->willReturn('rendered template');
 
         $this->render($contentConfiguration)->shouldReturn('rendered template');

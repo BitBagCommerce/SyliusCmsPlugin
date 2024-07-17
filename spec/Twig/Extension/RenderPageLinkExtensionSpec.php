@@ -17,7 +17,7 @@ use PhpSpec\ObjectBehavior;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-final class RenderLinkExtensionSpec extends ObjectBehavior
+final class RenderPageLinkExtensionSpec extends ObjectBehavior
 {
     public function it_is_initializable(): void
     {
