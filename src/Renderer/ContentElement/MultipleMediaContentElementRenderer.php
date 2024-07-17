@@ -38,8 +38,9 @@ final class MultipleMediaContentElementRenderer implements ContentElementRendere
 
         /** @var MediaInterface[] $mediaEntities */
         $mediaEntities = $this->mediaRepository->findBy(['code' => $codes]);
-        $mediaEntitiesByCode = array_reduce($mediaEntities, static function(array $result, MediaInterface $media) {
+        $mediaEntitiesByCode = array_reduce($mediaEntities, static function (array $result, MediaInterface $media) {
             $result[$media->getCode()] = $media;
+
             return $result;
         }, []);
 

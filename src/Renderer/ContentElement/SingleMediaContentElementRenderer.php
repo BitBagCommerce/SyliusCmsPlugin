@@ -35,7 +35,7 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
         $code = $contentConfiguration->getConfiguration()['single_media'];
         $media = [
             'renderedContent' => $this->renderMediaRuntime->renderMedia($code),
-            'entity' => $this->mediaRepository->findOneBy(['code' => $code])
+            'entity' => $this->mediaRepository->findOneBy(['code' => $code]),
         ];
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
