@@ -58,11 +58,11 @@
             <argument>%bitbag_cms.twig.admin_functions%</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.render_link" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderLinkExtension">
+        <service id="bitbag_sylius_cms_plugin.twig.extension.render_link" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderPageLinkExtension">
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime">
+        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntime">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="router.default" />
             <argument>%bitbag_cms.twig.link_template%</argument>

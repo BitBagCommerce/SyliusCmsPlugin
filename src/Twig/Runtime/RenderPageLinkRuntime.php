@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
-final class RenderLinkRuntime implements RenderLinkRuntimeInterface
+final class RenderPageLinkRuntime implements RenderPageLinkRuntimeInterface
 {
     public function __construct(
         private PageRepositoryInterface $pageRepository,

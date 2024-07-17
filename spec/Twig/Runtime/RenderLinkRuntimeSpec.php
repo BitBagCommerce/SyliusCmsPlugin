@@ -14,8 +14,8 @@ namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntimeInterface;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntime;
+use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntimeInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -33,12 +33,12 @@ final class RenderLinkRuntimeSpec extends ObjectBehavior
 
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(RenderLinkRuntime::class);
+        $this->shouldHaveType(RenderPageLinkRuntime::class);
     }
 
     public function it_implements_render_link_runtime_interface(): void
     {
-        $this->shouldHaveType(RenderLinkRuntimeInterface::class);
+        $this->shouldHaveType(RenderPageLinkRuntimeInterface::class);
     }
 
     public function it_renders_link_for_code(
