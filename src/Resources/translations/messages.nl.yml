@@ -44,5 +44,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Producten in carrousel
                 products_carousel_by_taxon: Producten in carrousel per taxon
                 taxons_list: Taxon lijst
+                products_grid: Producten grid
+                products_grid_by_taxon: Producten grid per taxon
             heading_type: Kop type
         taxon: Taxon

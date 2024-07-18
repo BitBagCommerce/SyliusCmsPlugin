@@ -62,5 +62,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Produktų karuselė
                 products_carousel_by_taxon: Produktų karuselė pagal taksoną
                 taxons_list: Taksonų sąrašas
+                products_grid: Produktų tinklelis
+                products_grid_by_taxon: Produktų tinklelis pagal taksoną
             heading_type: Antraštės tipas
         taxon: Taksonas
