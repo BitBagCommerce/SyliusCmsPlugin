@@ -150,6 +150,34 @@ Feature: Adding new page
         And I should see newly created "Products carousel by Taxon" content element in Content elements section
 
     @ui @javascript
+    Scenario: Adding page with products grid content element
+        Given the store has "iPhone 8" and "iPhone X" products
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Products grid" content element
+        And I add a products grid content element with "iPhone 8" and "iPhone X" products
+        And I add it
+        Then I should be notified that the page has been created
+        And I should see newly created "Products grid" content element in Content elements section
+
+    @ui @javascript
+    Scenario: Adding page with products grid by taxon content element
+        Given the store has "Smartphones" taxonomy
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I click on Add button in Content elements section
+        And I select "Products grid by Taxon" content element
+        And I add a products grid by taxon content element with "Smartphones" taxonomy
+        And I add it
+        Then I should be notified that the page has been created
+        And I should see newly created "Products grid by Taxon" content element in Content elements section
+
+    @ui @javascript
     Scenario: Adding page with taxons list content element
         Given the store classifies its products as "Smartphones" and "Laptops"
         When I go to the create page page

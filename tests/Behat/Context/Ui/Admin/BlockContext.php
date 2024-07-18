@@ -204,6 +204,22 @@ final class BlockContext implements Context
     }
 
     /**
+     * @When I add a products grid content element with :firstProductName and :secondProductName products
+     */
+    public function iAddAProductsGridContentElementWithProducts(string ...$productsNames): void
+    {
+        $this->resolveCurrentPage()->addProductsGridContentElementWithProducts($productsNames);
+    }
+
+    /**
+     * @When I add a products grid by taxon content element with :taxon taxonomy
+     */
+    public function iAddAProductsGridByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $this->resolveCurrentPage()->addProductsGridByTaxonContentElementWithTaxon($taxon);
+    }
+
+    /**
      * @When I add a taxons list content element with :firstTaxon and :secondTaxon taxonomy
      */
     public function iAddATaxonsListContentElementWithTaxons(string ...$taxons): void

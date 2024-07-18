@@ -21,6 +21,8 @@ final class ContentElementHelper
             'Heading' => 'content_elements_heading',
             'Products carousel' => 'content_elements_products_carousel',
             'Products carousel by Taxon' => 'content_elements_products_carousel_by_taxon',
+            'Products grid' => 'content_elements_products_grid',
+            'Products grid by Taxon' => 'content_elements_products_grid_by_taxon',
             'Taxons list' => 'content_elements_taxons_list',
             default => throw new \InvalidArgumentException(sprintf('Content element with name "%s" does not exist.', $contentElement)),
         };
@@ -40,6 +42,13 @@ final class ContentElementHelper
                 ],
             ]],
             'Products carousel by Taxon' => ['products_carousel_by_taxon' => 'MENU_CATEGORY'],
+            'Products grid' => ['products_grid' => [
+                'products' => [
+                    'Everyday_white_basic_T_Shirt',
+                    'Loose_white_designer_T_Shirt',
+                ],
+            ]],
+            'Products grid by Taxon' => ['products_grid_by_taxon' => 'MENU_CATEGORY'],
             'Taxons list' => ['taxons_list' => [
                 'taxons' => [
                     'MENU_CATEGORY',
