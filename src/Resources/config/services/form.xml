@@ -8,6 +8,8 @@
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
     </parameters>
 
@@ -104,6 +106,17 @@
         <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon%" />
             <tag name="form.type" />
         </service>
 

@@ -46,6 +46,19 @@
             <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.renderer.content_element.products_grid" class="BitBag\SyliusCmsPlugin\Renderer\ContentElement\ProductsGridContentElementRenderer">
+            <argument type="service" id="twig" />
+            <argument type="service" id="sylius.repository.product" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.renderer.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Renderer\ContentElement\ProductsGridByTaxonContentElementRenderer">
+            <argument type="service" id="twig" />
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.renderer.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Renderer\ContentElement\TaxonsListContentElementRenderer">
             <argument type="service" id="twig" />
             <argument type="service" id="sylius.repository.taxon" />
