@@ -20,7 +20,12 @@ interface BlockInterface extends
     CollectibleInterface,
     ChannelsAwareInterface,
     ContentConfigurationAwareInterface,
-    LocaleAwareInterface
+    LocaleAwareInterface,
+    ProductsAwareInterface,
+    TaxonAwareInterface,
+    ProductsInTaxonsAwareInterface,
+    BlockTaxonAwareInterface,
+    BlockProductAwareInterface
 {
     public function getCode(): ?string;
 
