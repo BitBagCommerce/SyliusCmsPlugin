@@ -65,7 +65,7 @@ final class BlockType extends AbstractResourceType
             ->add('productsInTaxons', TaxonAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.display_for_products_in_taxons.label',
                 'multiple' => true,
-                'help' => 'bitbag_sylius_cms_plugin.ui.display_for_products_in_taxons.help'
+                'help' => 'bitbag_sylius_cms_plugin.ui.display_for_products_in_taxons.help',
             ])
             ->add('taxons', TaxonAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.display_for_taxons.label',

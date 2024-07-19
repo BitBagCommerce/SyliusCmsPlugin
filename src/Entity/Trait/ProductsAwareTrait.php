@@ -17,7 +17,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 trait ProductsAwareTrait
 {
     /** @var Collection|ProductInterface[] */
-    protected array|Collection $products;
+    protected Collection $products;
 
     public function initializeProductsCollection(): void
     {
