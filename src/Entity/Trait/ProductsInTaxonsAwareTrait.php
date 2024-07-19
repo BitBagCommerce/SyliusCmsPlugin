@@ -17,7 +17,7 @@ use Sylius\Component\Core\Model\TaxonInterface;
 trait ProductsInTaxonsAwareTrait
 {
     /** @var Collection|TaxonInterface[] */
-    protected array|Collection $productsInTaxons;
+    protected Collection $productsInTaxons;
 
     public function initializeProductsInTaxonsCollection(): void
     {
