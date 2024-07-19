@@ -85,3 +85,5 @@ In summary, the BitBag Sylius CMS Plugin provides administrators with a range of
 These tiles offer functionalities for managing reusable content blocks, media assets, CMS pages, frequently asked questions,
 and page sections. Together, they enable administrators to efficiently create, edit, and organize content within the Sylius e-commerce system,
 resulting in a more engaging and personalized user experience.
+
+If someone would like to learn even more about the plugin they can read a blogpost about this specific plugin under this [link](https://bitbag.io/pl/blog/how-to-build-a-blog-in-sylius-based-on-bitbagcmsplugin).
