@@ -12,6 +12,12 @@
             {{ form_row(form.locales) }}
             {{ form_row(form.collections) }}
         </div>
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.manage_block_display'|trans }}</h4>
+            {{ form_row(form.products) }}
+            {{ form_row(form.productsInTaxons) }}
+            {{ form_row(form.taxons) }}
+        </div>
     </div>
     <div class="column">
         <div class="ui segment">

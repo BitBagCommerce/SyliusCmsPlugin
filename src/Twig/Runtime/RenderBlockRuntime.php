@@ -12,6 +12,8 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\TaxonInterface;
 use Twig\Environment;
 
 final class RenderBlockRuntime implements RenderBlockRuntimeInterface
@@ -25,21 +27,29 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     ) {
     }
 
-    public function renderBlock(string $code, ?string $template = null): string
+    public function renderBlock(string $code, ?string $template = null, ProductInterface|TaxonInterface $context = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
-
-        if (null !== $block) {
-            $template = $template ?? self::DEFAULT_TEMPLATE;
-
-            return $this->templatingEngine->render(
-                $template,
-                [
-                    'content' => $this->contentElementRendererStrategy->render($block),
-                ],
-            );
+        if (null === $block) {
+            return '';
         }
 
-        return '';
+        if ($context instanceof TaxonInterface && false === $block->canBeDisplayedForTaxon($context)) {
+            return '';
+        }
+
+        if ($context instanceof ProductInterface &&
+            false === $block->canBeDisplayedForProduct($context) &&
+            false === $block->canBeDisplayedForProductInTaxon($context)
+        ) {
+            return '';
+        }
+
+        return $this->templatingEngine->render(
+            $template ?? self::DEFAULT_TEMPLATE,
+            [
+                'content' => $this->contentElementRendererStrategy->render($block),
+            ],
+        );
     }
 }
