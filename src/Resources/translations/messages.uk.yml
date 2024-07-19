@@ -66,3 +66,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Продукти в сітці за таксоном
             heading_type: Тип заголовка
         taxon: Таксон
+        display_for_products:
+            label: Дисплей для продуктів
+            help: Цей блок буде відображатися для вибраних продуктів
+        display_for_products_in_taxons:
+            label: Дисплей для таксонів
+            help: Цей блок відображатиметься для продуктів у вибраних таксонах. Береться лише «Основний таксон».
+        display_for_taxons:
+            label: Дисплей для таксонів
+            help: Виберіть таксони, в яких буде відображатися цей блок
+        manage_block_display: Керування відображенням блоку

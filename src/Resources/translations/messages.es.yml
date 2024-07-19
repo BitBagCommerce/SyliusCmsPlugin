@@ -49,3 +49,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Productos en cuadrícula por taxón
             heading_type: Tipo de encabezado
         taxon: Taxón
+        display_for_products:
+            label: Mostrar para productos
+            help: Seleccione productos en los que se mostrará este bloque
+        display_for_products_in_taxons:
+            label: Mostrar para productos en taxones
+            help: Este bloque se mostrará para productos en los taxones seleccionados. Solo se considera el "Taxón principal".
+        display_for_taxons:
+            label: Mostrar para taxones
+            help: Seleccione taxones en los que se mostrará este bloque
+        manage_block_display: Administrar visualización de bloques

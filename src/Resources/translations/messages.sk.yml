@@ -67,3 +67,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Produkty v mriežke podľa taxónu
             heading_type: Typ nadpisu
         taxon: Taxón
+        display_for_products:
+            label: Zobraziť pre produkty
+            help: Tento blok bude zobrazený pre vybrané produkty
+        display_for_products_in_taxons:
+            label: Zobraziť pre produkty v taxónoch
+            help: Tento blok sa zobrazí pri produktoch vo vybraných taxónoch. Zaberie sa iba „hlavný taxón“.
+        display_for_taxons:
+            label: Zobrazenie pre taxóny
+            help: Vyberte taxóny, v ktorých sa tento blok zobrazí
+        manage_block_display: Spravovať zobrazenie bloku
