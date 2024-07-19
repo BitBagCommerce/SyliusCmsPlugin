@@ -49,3 +49,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Proizvodi u mreži po taksonu
             heading_type: Tip naslova
         taxon: Takson
+        display_for_products:
+            label: Prikaz za proizvode
+            help: Ovaj blok će biti prikazan za odabrane proizvode
+        display_for_products_in_taxons:
+            label: Prikaz za proizvode u taksonima
+            help: Ovaj će blok biti prikazan za proizvode u odabranim taksonima. Uzima se samo "Glavni takson".
+        display_for_taxons:
+            label: Prikaz za takson
+            help: Odaberite taksone u kojima će se ovaj blok prikazati
+        manage_block_display: Upravljanje prikazom bloka
