@@ -16,6 +16,8 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Produkty v karuselu
                 products_carousel_by_taxon: Produkty v karuselu podle taxonu
                 taxons_list: Seznam taxonů
+                products_grid: Produkty v mřížce
+                products_grid_by_taxon: Produkty v mřížce podle taxonu
             heading_type: Typ nadpisu
         taxon: Taxon
     cms:

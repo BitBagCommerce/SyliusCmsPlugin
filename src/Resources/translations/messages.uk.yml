@@ -62,5 +62,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Продукти в каруселі
                 products_carousel_by_taxon: Продукти в каруселі за таксоном
                 taxons_list: Список таксонів
+                products_grid: Продукти в сітці
+                products_grid_by_taxon: Продукти в сітці за таксоном
             heading_type: Тип заголовка
         taxon: Таксон

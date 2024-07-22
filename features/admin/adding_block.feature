@@ -103,6 +103,32 @@ Feature: Adding blocks
         And I should see newly created "Products carousel by Taxon" content element in Content elements section
 
     @ui @javascript
+    Scenario: Adding block with products grid content element
+        Given the store has "iPhone 8" and "iPhone X" products
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Products grid" content element
+        And I add a products grid content element with "iPhone 8" and "iPhone X" products
+        And I add it
+        Then I should be notified that the block has been created
+        And I should see newly created "Products grid" content element in Content elements section
+
+    @ui @javascript
+    Scenario: Adding block with products grid by taxon content element
+        Given the store has "Smartphones" taxonomy
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I click on Add button in Content elements section
+        And I select "Products grid by Taxon" content element
+        And I add a products grid by taxon content element with "Smartphones" taxonomy
+        And I add it
+        Then I should be notified that the block has been created
+        And I should see newly created "Products grid by Taxon" content element in Content elements section
+
+    @ui @javascript
     Scenario: Adding block with taxons list content element
         Given the store classifies its products as "Smartphones" and "Laptops"
         When I go to the create block page

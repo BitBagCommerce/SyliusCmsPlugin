@@ -49,5 +49,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Karuzela produktów
                 products_carousel_by_taxon: Karuzela produktów według taksonomii
                 taxons_list: Lista taksonomii
+                products_grid: Siatka produktów
+                products_grid_by_taxon: Siatka produktów według taksonomii
             heading_type: Typ nagłówka
         taxon: Taksonomia

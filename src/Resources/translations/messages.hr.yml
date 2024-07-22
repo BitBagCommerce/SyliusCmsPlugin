@@ -45,5 +45,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Proizvodi u karijeslu
                 products_carousel_by_taxon: Proizvodi u karijeslu po taksonu
                 taxons_list: Lista taksona
+                products_grid: Proizvodi u mreži
+                products_grid_by_taxon: Proizvodi u mreži po taksonu
             heading_type: Tip naslova
         taxon: Takson

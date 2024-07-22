@@ -23,6 +23,8 @@ trait ContainsContentElementTrait
             'Multiple media',
             'Products carousel',
             'Products carousel by Taxon',
+            'Products grid',
+            'Products grid by Taxon',
             'Taxons list' => true,
             default => false,
         };

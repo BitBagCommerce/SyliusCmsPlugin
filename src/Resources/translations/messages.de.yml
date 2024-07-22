@@ -66,5 +66,7 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Produkte im Karussell
                 products_carousel_by_taxon: Produkte im Karussell nach Taxon
                 taxons_list: Taxon-Liste
+                products_grid: Produkte im Raster
+                products_grid_by_taxon: Produkte im Raster nach Taxon
             heading_type: Überschrift-Typ
         taxon: Taxon

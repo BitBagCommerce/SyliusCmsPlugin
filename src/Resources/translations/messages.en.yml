@@ -70,6 +70,8 @@ bitbag_sylius_cms_plugin:
                 products_carousel: Products carousel
                 products_carousel_by_taxon: Products carousel by Taxon
                 taxons_list: Taxons list
+                products_grid: Products grid
+                products_grid_by_taxon: Products grid by Taxon
             heading_type: Heading type
         taxon: Taxon
         seo: SEO

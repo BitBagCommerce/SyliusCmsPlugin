@@ -197,6 +197,44 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
+    public function addProductsGridContentElementWithProducts(array $productsNames): void
+    {
+        $dropdown = $this->getElement('content_elements_products_grid');
+        $dropdown->click();
+
+        foreach ($productsNames as $productName) {
+            $dropdown->waitFor(5, function () use ($productName): bool {
+                return $this->hasElement('content_elements_products_grid_item', [
+                    '%item%' => $productName,
+                ]);
+            });
+
+            $item = $this->getElement('content_elements_products_grid_item', [
+                '%item%' => $productName,
+            ]);
+
+            $item->click();
+        }
+    }
+
+    public function addProductsGridByTaxonContentElementWithTaxon(string $taxon): void
+    {
+        $dropdown = $this->getElement('content_elements_products_grid_by_taxon');
+        $dropdown->click();
+
+        $dropdown->waitFor(5, function () use ($taxon): bool {
+            return $this->hasElement('content_elements_products_grid_by_taxon_item', [
+                '%item%' => $taxon,
+            ]);
+        });
+
+        $item = $this->getElement('content_elements_products_grid_by_taxon_item', [
+            '%item%' => $taxon,
+        ]);
+
+        $item->click();
+    }
+
     public function addTaxonsListContentElementWithTaxons(array $taxons): void
     {
         $dropdown = $this->getElement('content_elements_taxons_list');
@@ -235,6 +273,10 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             'content_elements_products_carousel_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_products_carousel_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
             'content_elements_products_carousel_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_products_grid' => '.field > label:contains("Products") ~ .sylius-autocomplete',
+            'content_elements_products_grid_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_products_grid_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
+            'content_elements_products_grid_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_taxons_list' => '.field > label:contains("Taxons") ~ .sylius-autocomplete',
             'content_elements_taxons_list_item' => '.field > label:contains("Taxons") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
         ]);
