@@ -16,5 +16,8 @@
   "channels": [
     "/api/v2/shop/channels/code"
   ],
-  "contentElements": []
+  "contentElements": [],
+  "products": [],
+  "taxons": [],
+  "productsInTaxons": []
 }
