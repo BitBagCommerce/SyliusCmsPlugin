@@ -1,6 +1,6 @@
 <h2>{{ media.name|raw }}</h2>
 
-<img class="ui fluid image" src="{{ media.path }}" alt="{{ media.name }}"
+<img class="ui fluid image" src="{{ media.path }}" alt="{{ media.alt }}"
     {% if media.width is not null %} width="{{ media.width }}" {% endif %}
     {% if media.height is not null %} height="{{ media.height }}" {% endif %}
 />

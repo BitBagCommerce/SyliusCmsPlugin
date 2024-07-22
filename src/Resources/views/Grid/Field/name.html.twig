@@ -1,0 +1,4 @@
+{% set name = data.name %}
+{% if name %}
+    {{ name|length > 60 ? name|slice(0, 60) ~ '...' : name  }}
+{% endif %}

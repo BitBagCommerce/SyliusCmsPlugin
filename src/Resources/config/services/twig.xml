@@ -20,6 +20,7 @@
         <service id="bitbag_sylius_cms_plugin.twig.runtime.block" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.block_resource" />
             <argument type="service" id="twig" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 
@@ -43,16 +44,25 @@
             <tag name="twig.runtime" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.twig.extension.render_content_elements" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderContentElementsExtension">
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_content_elements" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentElementsRuntime">
+            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
+            <tag name="twig.runtime" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.twig.parser.content" class="BitBag\SyliusCmsPlugin\Twig\Parser\ContentParser">
             <argument type="service" id="twig" />
             <argument>%bitbag_cms.twig.admin_functions%</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.render_link" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderLinkExtension">
+        <service id="bitbag_sylius_cms_plugin.twig.extension.render_link" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderPageLinkExtension">
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderLinkRuntime">
+        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntime">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="router.default" />
             <argument>%bitbag_cms.twig.link_template%</argument>

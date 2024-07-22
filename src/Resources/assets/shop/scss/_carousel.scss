@@ -1,0 +1,27 @@
+.carousel-wrapper {
+    position: relative;
+
+    .carousel {
+        margin: 0 -1em;
+    }
+
+    .carousel-nav {
+        .carousel-left {
+            left: 30px;
+        }
+
+        .carousel-right {
+            right: 30px;
+        }
+
+        .carousel-left, .carousel-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .carousel-item {
+        padding: 5px 1em;
+    }
+}

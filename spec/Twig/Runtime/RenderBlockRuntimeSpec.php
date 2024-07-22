@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
 
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
 use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
@@ -23,9 +24,10 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
 {
     public function let(
         BlockResourceResolverInterface $blockResourceResolver,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ): void {
-        $this->beConstructedWith($blockResourceResolver, $templatingEngine);
+        $this->beConstructedWith($blockResourceResolver, $templatingEngine, $contentElementRendererStrategy);
     }
 
     public function it_is_initializable(): void
@@ -41,10 +43,15 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_renders_block(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', ['block' => $block])->willReturn('<div>BitBag</div>');
+        $contentElementRendererStrategy->render($block)->willReturn('rendered content');
+        $templatingEngine->render(
+            '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig',
+            ['content' => 'rendered content'],
+        )->willReturn('<div>BitBag</div>');
 
         $this->renderBlock('bitbag');
     }
@@ -52,10 +59,15 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_renders_block_with_template(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        Environment $templatingEngine
+        Environment $templatingEngine,
+        ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ): void {
         $blockResourceResolver->findOrLog('bitbag')->willReturn($block);
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig', ['block' => $block])->willReturn('<div>BitBag Other Template</div>');
+        $contentElementRendererStrategy->render($block)->willReturn('rendered content');
+        $templatingEngine->render(
+            '@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig',
+            ['content' => 'rendered content'],
+        )->willReturn('<div>BitBag Other Template</div>');
 
         $this->renderBlock('bitbag', '@BitBagSyliusCmsPlugin/Shop/Block/otherTemplate.html.twig');
     }

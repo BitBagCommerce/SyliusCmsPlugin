@@ -12,16 +12,16 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Twig\Extension\RenderLinkExtension;
+use BitBag\SyliusCmsPlugin\Twig\Extension\RenderPageLinkExtension;
 use PhpSpec\ObjectBehavior;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-final class RenderLinkExtensionSpec extends ObjectBehavior
+final class RenderPageLinkExtensionSpec extends ObjectBehavior
 {
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(RenderLinkExtension::class);
+        $this->shouldHaveType(RenderPageLinkExtension::class);
     }
 
     public function it_extends_abstract_extension(): void

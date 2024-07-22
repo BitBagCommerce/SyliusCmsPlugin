@@ -13,7 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
 use Twig\Environment;
 use Twig\Extension\RuntimeExtensionInterface;
 
-interface RenderLinkRuntimeInterface extends RuntimeExtensionInterface
+interface RenderPageLinkRuntimeInterface extends RuntimeExtensionInterface
 {
     public function renderLinkForCode(
         Environment $environment,
