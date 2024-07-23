@@ -41,6 +41,6 @@ final class CollectionMediaRenderer implements CollectionRendererInterface
 
     public function supports(CollectionInterface $collection): bool
     {
-        return $collection->getMedia()?->count() > 0;
+        return 0 < $collection->getMedia()?->count();
     }
 }

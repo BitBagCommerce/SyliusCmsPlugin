@@ -40,6 +40,6 @@ final class CollectionPagesRenderer implements CollectionRendererInterface
 
     public function supports(CollectionInterface $collection): bool
     {
-        return $collection->getPages()?->count() > 0;
+        return 0 < $collection->getPages()?->count();
     }
 }
