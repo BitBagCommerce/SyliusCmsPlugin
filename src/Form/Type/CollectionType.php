@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Event\PreSubmitEvent;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -55,7 +54,6 @@ final class CollectionType extends AbstractResourceType
             ->add('media', MediaAutocompleteChoiceType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.media',
                 'multiple' => true,
-                'media_type' => MediaInterface::IMAGE_TYPE,
             ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event): void {
                 $formData = $event->getData();
