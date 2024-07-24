@@ -5,6 +5,10 @@
 */
 
 $(document).ready(function() {
+    $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
+        $(element).autoComplete();
+    });
+
     let pageElements = '#bitbag_sylius_cms_plugin_page_contentElements';
     let blockElements = '#bitbag_sylius_cms_plugin_block_contentElements';
 
@@ -67,10 +71,6 @@ $(document).ready(function() {
                 });
             }
         }
-    });
-
-    $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
-        $(element).autoComplete();
     });
 
     $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {

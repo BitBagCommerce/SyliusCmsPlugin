@@ -64,5 +64,29 @@
             <argument type="service" id="sylius.repository.taxon" />
             <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.collection_renderer_strategy" class="BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategy">
+            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.renderer.collection" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.renderer.collection.blocks" class="BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionBlocksRenderer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.collection" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.renderer.collection.media" class="BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionMediaRenderer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.media" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.collection" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.renderer.collection.pages" class="BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionPagesRenderer">
+            <argument type="service" id="bitbag_sylius_cms_plugin.page_link_renderer" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.collection" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.page_link_renderer" class="BitBag\SyliusCmsPlugin\Renderer\PageLinkRenderer">
+            <argument type="service" id="router.default" />
+            <argument type="service" id="twig" />
+        </service>
     </services>
 </container>

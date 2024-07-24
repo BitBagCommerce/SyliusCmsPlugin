@@ -24,6 +24,18 @@
             <tag name="twig.runtime" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.twig.extension.collection" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderCollectionExtension">
+            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.collection" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.twig.runtime.collection" class="BitBag\SyliusCmsPlugin\Twig\Runtime\RenderCollectionRuntime">
+            <argument type="service" id="twig" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.collection_resource" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.collection_renderer_strategy" />
+            <tag name="twig.runtime" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.twig.extension.media" class="BitBag\SyliusCmsPlugin\Twig\Extension\RenderMediaExtension">
             <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.media" />
             <tag name="twig.extension" />
