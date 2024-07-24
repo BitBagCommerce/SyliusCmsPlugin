@@ -47,4 +47,9 @@ trait ProductsAwareTrait
             $this->products->removeElement($product);
         }
     }
+
+    public function canBeDisplayedForProduct(ProductInterface $product): bool
+    {
+        return $this->hasProduct($product);
+    }
 }

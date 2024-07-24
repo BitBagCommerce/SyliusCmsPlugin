@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity\Trait;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 
 trait ProductsInTaxonsAwareTrait
@@ -46,5 +47,15 @@ trait ProductsInTaxonsAwareTrait
         if (true === $this->hasProductsInTaxon($taxon)) {
             $this->productsInTaxons->removeElement($taxon);
         }
+    }
+
+    public function canBeDisplayedForProductInTaxon(ProductInterface $product): bool
+    {
+        $taxon = $product->getMainTaxon();
+        if (null === $taxon) {
+            return false;
+        }
+
+        return $this->hasProductsInTaxon($taxon);
     }
 }

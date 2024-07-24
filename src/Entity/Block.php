@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Trait\BlockProductAwareTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\BlockTaxonAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
@@ -31,8 +29,6 @@ class Block implements BlockInterface
     use ProductsAwareTrait;
     use TaxonAwareTrait;
     use ProductsInTaxonsAwareTrait;
-    use BlockTaxonAwareTrait;
-    use BlockProductAwareTrait;
 
     public function __construct()
     {

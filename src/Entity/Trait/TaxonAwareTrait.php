@@ -47,4 +47,9 @@ trait TaxonAwareTrait
             $this->taxons->removeElement($taxon);
         }
     }
+
+    public function canBeDisplayedForTaxon(TaxonInterface $taxon): bool
+    {
+        return $this->hasTaxon($taxon);
+    }
 }
