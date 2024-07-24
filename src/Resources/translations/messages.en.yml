@@ -75,3 +75,13 @@ bitbag_sylius_cms_plugin:
             heading_type: Heading type
         taxon: Taxon
         seo: SEO
+        display_for_products:
+            label: Display for products
+            help: Select products in which this block will be displayed
+        display_for_products_in_taxons:
+            label: Display for products in taxons
+            help: This block will be displayed for products in selected taxons. Only "Main Taxon" is taken.
+        display_for_taxons:
+            label: Display for taxons
+            help: Select taxons in which this block will be displayed
+        manage_block_display: Manage block display

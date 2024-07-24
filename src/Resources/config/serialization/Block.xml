@@ -16,13 +16,16 @@
         <attribute name="collections">
             <group>shop:cms:read</group>
         </attribute>
-        <attribute name="products">
-            <group>shop:cms:read</group>
-        </attribute>
         <attribute name="channels">
             <group>shop:cms:read</group>
         </attribute>
+        <attribute name="products">
+            <group>shop:cms:read</group>
+        </attribute>
         <attribute name="taxons">
+            <group>shop:cms:read</group>
+        </attribute>
+        <attribute name="productsInTaxons">
             <group>shop:cms:read</group>
         </attribute>
         <attribute name="contentElements">

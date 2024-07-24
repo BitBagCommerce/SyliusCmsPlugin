@@ -66,3 +66,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Produktų tinklelis pagal taksoną
             heading_type: Antraštės tipas
         taxon: Taksonas
+        display_for_products:
+            label: Rodyti produktams
+            help: Pasirinkite produktus, kuriuose šis blokas bus rodomas
+        display_for_products_in_taxons:
+            label: Rodyti produktams
+            help: Šis blokas bus rodomas produktams pasirinktuose taksonuose. Paimamas tik „Pagrindinis taksonas“.
+        display_for_taxons:
+            label: Rodyti taksonams
+            help: Pasirinkite taksonus, kuriuose šis blokas bus rodomas
+        manage_block_display: Bloko rodymo valdymas

@@ -58,5 +58,38 @@
             </join-table>
         </many-to-many>
 
+        <many-to-many field="products" target-entity="Sylius\Component\Core\Model\ProductInterface">
+            <join-table name="bitbag_cms_block_products">
+                <join-columns>
+                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="taxons" target-entity="Sylius\Component\Core\Model\TaxonInterface">
+            <join-table name="bitbag_cms_block_taxons">
+                <join-columns>
+                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="taxon_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+        <many-to-many field="productsInTaxons" target-entity="Sylius\Component\Core\Model\TaxonInterface">
+            <join-table name="bitbag_cms_block_products_in_taxons">
+                <join-columns>
+                    <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="taxon_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
     </mapped-superclass>
 </doctrine-mapping>

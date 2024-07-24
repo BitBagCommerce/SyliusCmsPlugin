@@ -17,7 +17,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 trait ProductsAwareTrait
 {
     /** @var Collection|ProductInterface[] */
-    protected $products;
+    protected Collection $products;
 
     public function initializeProductsCollection(): void
     {
@@ -46,5 +46,10 @@ trait ProductsAwareTrait
         if (true === $this->hasProduct($product)) {
             $this->products->removeElement($product);
         }
+    }
+
+    public function canBeDisplayedForProduct(ProductInterface $product): bool
+    {
+        return $this->hasProduct($product);
     }
 }

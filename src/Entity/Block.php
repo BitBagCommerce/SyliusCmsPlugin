@@ -14,6 +14,9 @@ use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\LocaleAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ProductsAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ProductsInTaxonsAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\TaxonAwareTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 
 class Block implements BlockInterface
@@ -23,6 +26,9 @@ class Block implements BlockInterface
     use ChannelsAwareTrait;
     use ContentConfigurationAwareTrait;
     use LocaleAwareTrait;
+    use ProductsAwareTrait;
+    use TaxonAwareTrait;
+    use ProductsInTaxonsAwareTrait;
 
     public function __construct()
     {
@@ -30,6 +36,9 @@ class Block implements BlockInterface
         $this->initializeChannelsCollection();
         $this->initializeContentElementsCollection();
         $this->initializeLocalesCollection();
+        $this->initializeProductsCollection();
+        $this->initializeTaxonCollection();
+        $this->initializeProductsInTaxonsCollection();
     }
 
     protected ?int $id;

@@ -50,9 +50,7 @@
         </div>
     </div>
 
-    {{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_collection_code', {'collectionCode' : 'products', 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
-
-    {{ bitbag_cms_render_block('lorem_ipsum') }}
+    {{ bitbag_cms_render_block('lorem_ipsum', null, product) }}
 
     {{ sonata_block_render_event('sylius.shop.product.show.before_tabs', {'product': product}) }}
 

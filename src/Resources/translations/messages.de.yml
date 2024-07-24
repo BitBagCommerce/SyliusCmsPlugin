@@ -70,3 +70,13 @@ bitbag_sylius_cms_plugin:
                 products_grid_by_taxon: Produkte im Raster nach Taxon
             heading_type: Überschrift-Typ
         taxon: Taxon
+        display_for_products:
+            label: Display für Produkte
+            help: Wählen Sie Produkte aus, in denen dieser Block angezeigt wird
+        display_for_products_in_taxons:
+            label: Display für Produkte in Taxons
+            help: Dieser Block wird für Produkte in ausgewählten Taxonen angezeigt. Nur „Haupttaxon“ ist belegt.
+        display_for_taxons:
+            label: Display für Taxons
+            help: Wählen Sie Taxonen aus, in denen dieser Block angezeigt wird
+        manage_block_display: Blockanzeige verwalten
