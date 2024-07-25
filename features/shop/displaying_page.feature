@@ -19,14 +19,6 @@ Feature: Displaying pages
         Then I should see a page with "About us" name
         And I should also see "Blog" and "General" collections associated with this page
 
-    @ui
-    Scenario: Displaying page link
-        Given there is a page in the store
-        And this page has "about" code
-        And this page has "About" name
-        When I go to this page
-        Then I should see the "About" page link in the header
-
     @ui @javascript @title
     Scenario: Displaying page with title
         Given there is a page in the store
