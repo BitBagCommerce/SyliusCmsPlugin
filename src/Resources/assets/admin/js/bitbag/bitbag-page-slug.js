@@ -12,12 +12,14 @@ export class HandleSlugUpdate {
             wrappersIndicator: 'data-bb-cms-wrapper',
             lockFieldIndicator: 'data-bb-cms-toggle-slug',
             bbTarget: 'bitbag_sylius_cms_plugin_page',
+            nameField: 'bitbag_sylius_cms_plugin_page_name',
         }
     ) {
         this.wrappers = document.querySelectorAll(`[${config.wrappersIndicator}]`);
         this.lockFieldIndicator = `[${config.lockFieldIndicator}]`;
         this.bbTarget = config.bbTarget;
         this.config = config;
+        this.nameField = document.getElementById(`${config.nameField}`);
     }
 
     init() {
@@ -29,6 +31,10 @@ export class HandleSlugUpdate {
             throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config key values are not valid strings');
         }
 
+        if (!this.nameField ) {
+            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate name field not found');
+        }
+
         this._handleFields();
     }
 
@@ -36,37 +42,29 @@ export class HandleSlugUpdate {
         this.wrappers.forEach((item) => {
             const locale = item.dataset.locale;
 
-            let textField = item.querySelector(`#${this.bbTarget}_translations_${locale}_name`);
-            if (!textField) {
-                textField = item.querySelector(`#${this.bbTarget}_name`);
-            }
-
             let slugField = item.querySelector(`#${this.bbTarget}_translations_${locale}_slug`);
             if (!slugField) {
                 slugField = item.querySelector(`#${this.bbTarget}_slug`);
             }
 
-            const lockField = item.querySelector(this.lockFieldIndicator);
-
-            if (!textField || !slugField) {
+            if (!slugField) {
                 return;
             }
 
             let timeout;
 
-            textField.addEventListener('input', (e) => {
+            this.nameField.addEventListener('input', (e) => {
                 e.preventDefault();
 
-                if (slugField.readOnly) {
-                    return;
+                if (!slugField.readOnly) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => {
+                        this._updateSlug(slugField, this.nameField.value);
+                    }, 1000);
                 }
-
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    this._updateSlug(slugField, textField.value);
-                }, 1000);
             });
 
+            const lockField = item.querySelector(this.lockFieldIndicator);
             if (!lockField) {
                 return;
             }

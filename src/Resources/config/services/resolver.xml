@@ -32,6 +32,8 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             <argument type="service" id="logger" />
             <argument type="service" id="sylius.context.channel" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="sylius.repository.locale" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.resolver.collection_resource" class="BitBag\SyliusCmsPlugin\Resolver\CollectionResourceResolver" public="true">

@@ -14,6 +14,9 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class BlockResourceResolver implements BlockResourceResolverInterface
@@ -22,6 +25,8 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
         private BlockRepositoryInterface $blockRepository,
         private LoggerInterface $logger,
         private ChannelContextInterface $channelContext,
+        private LocaleContextInterface $localeContext,
+        private RepositoryInterface $localeRepository,
     ) {
     }
 
@@ -35,6 +40,20 @@ final class BlockResourceResolver implements BlockResourceResolverInterface
             $this->logger->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
                 $code,
+            ));
+
+            return null;
+        }
+
+        /** @var LocaleInterface $locale */
+        $locale = $this->localeRepository->findOneBy(['code' => $this->localeContext->getLocaleCode()]);
+        Assert::notNull($locale);
+
+        if (false === $block->hasLocale($locale) && 0 !== $block->getLocales()->count()) {
+            $this->logger->warning(sprintf(
+                'Block with "%s" code was found in the database, but it does not have "%s" locale.',
+                $code,
+                $this->localeContext->getLocaleCode(),
             ));
 
             return null;
