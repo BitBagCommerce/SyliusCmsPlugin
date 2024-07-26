@@ -56,7 +56,6 @@ final class PageType extends AbstractResourceType
                 'time_widget' => 'single_text',
                 'required' => false,
             ])
-            ->add('locales')
             ->add('contentElements', CollectionType::class, [
                 'label' => false,
                 'entry_type' => ContentConfigurationType::class,

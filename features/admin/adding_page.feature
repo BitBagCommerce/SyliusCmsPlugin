@@ -40,7 +40,7 @@ Feature: Adding new page
     Scenario: Adding new page with blank data
         When I go to the create page page
         And I add it
-        And I should be notified that "Code, Name, Slug" fields cannot be blank
+        And I should be notified that "Code, Name" fields cannot be blank
 
     @ui
     Scenario: Trying to add a page with too short data

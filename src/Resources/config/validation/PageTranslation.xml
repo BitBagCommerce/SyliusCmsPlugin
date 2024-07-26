@@ -17,12 +17,6 @@
         </constraint>
 
         <property name="slug">
-            <constraint name="NotBlank">
-                <option name="message">bitbag_sylius_cms_plugin.page.slug.not_blank</option>
-                <option name="groups">
-                    <value>bitbag</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">250</option>
