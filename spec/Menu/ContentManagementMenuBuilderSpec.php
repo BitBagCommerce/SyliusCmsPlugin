@@ -57,7 +57,6 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         ;
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.templates')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'clone')->shouldBeCalled();
-        ;
 
         $cmsRootMenuItem
             ->addChild('media', ['route' => 'bitbag_sylius_cms_plugin_admin_media_index'])

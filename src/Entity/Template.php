@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-final class Template implements TemplateInterface
+class Template implements TemplateInterface
 {
     protected ?int $id;
 
