@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-interface ContentConfigurationAwareInterface
+interface ContentElementsAwareInterface
 {
     public function initializeContentElementsCollection(): void;
 

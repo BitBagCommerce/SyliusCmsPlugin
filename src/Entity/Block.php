@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ContentElementsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\LocaleAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\ProductsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\ProductsInTaxonsAwareTrait;
@@ -24,7 +24,7 @@ class Block implements BlockInterface
     use ToggleableTrait;
     use CollectibleTrait;
     use ChannelsAwareTrait;
-    use ContentConfigurationAwareTrait;
+    use ContentElementsAwareTrait;
     use LocaleAwareTrait;
     use ProductsAwareTrait;
     use TaxonAwareTrait;

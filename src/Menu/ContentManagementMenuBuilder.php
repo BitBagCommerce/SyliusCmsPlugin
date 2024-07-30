@@ -32,6 +32,14 @@ final class ContentManagementMenuBuilder
         ;
 
         $cmsRootMenuItem
+            ->addChild('templates', [
+                'route' => 'bitbag_sylius_cms_plugin_admin_template_index',
+            ])
+            ->setLabel('bitbag_sylius_cms_plugin.ui.templates')
+            ->setLabelAttribute('icon', 'clone')
+        ;
+
+        $cmsRootMenuItem
             ->addChild('pages', [
                 'route' => 'bitbag_sylius_cms_plugin_admin_page_index',
             ])

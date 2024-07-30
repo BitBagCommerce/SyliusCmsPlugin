@@ -1,0 +1,11 @@
+sylius_resource:
+    resources:
+        bitbag_sylius_cms_plugin.template:
+            driver: doctrine/orm
+            classes:
+                model: BitBag\SyliusCmsPlugin\Entity\Template
+                interface: BitBag\SyliusCmsPlugin\Entity\TemplateInterface
+                form: BitBag\SyliusCmsPlugin\Form\Type\TemplateType
+                repository: BitBag\SyliusCmsPlugin\Repository\TemplateRepository
+                factory: Sylius\Component\Resource\Factory\Factory
+                controller: BitBag\SyliusCmsPlugin\Controller\TemplateController

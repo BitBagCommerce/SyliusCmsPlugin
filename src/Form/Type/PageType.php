@@ -64,6 +64,10 @@ final class PageType extends AbstractResourceType
                 'by_reference' => false,
                 'required' => false,
             ])
+            ->add('template', TemplatePageAutocompleteChoiceType::class, [
+                'label' => false,
+                'mapped' => false,
+            ])
         ;
     }
 
