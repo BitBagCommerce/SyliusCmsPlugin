@@ -12,13 +12,13 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 final class Template implements TemplateInterface
 {
-    private ?int $id;
+    protected ?int $id;
 
-    private ?string $name;
+    protected ?string $name;
 
-    private ?string $type;
+    protected ?string $type;
 
-    private array $contentElements = [];
+    protected array $contentElements = [];
 
     public function getId(): ?int
     {
