@@ -35,3 +35,9 @@ bitbag_sylius_cms_plugin:
         content:
             not_blank: Inhalt darf nicht leer sein.
             min_length: Inhalt muss mindestens {{ limit }} Zeichen lang sein.
+    template:
+        name:
+            unique: Es gibt bereits eine Vorlage mit diesem Namen.
+            not_blank: Der Name darf nicht leer sein.
+            min_length: Der Name muss mindestens {{ limit }} Zeichen lang sein.
+            max_length: Der Name darf nicht länger als {{ limit }} Zeichen sein.

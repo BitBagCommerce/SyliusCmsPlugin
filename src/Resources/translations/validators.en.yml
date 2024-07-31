@@ -80,3 +80,9 @@ bitbag_sylius_cms_plugin:
     import:
         not_blank: Import file cannot be blank.
         invalid_format: Upload a valid CSV import file.
+    template:
+        name:
+            unique: There is an existing template with this name.
+            not_blank: Name cannot be blank.
+            min_length: Name must be at least {{ limit }} characters long.
+            max_length: Name can not be longer than {{ limit }} characters.

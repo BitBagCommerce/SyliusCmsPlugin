@@ -80,3 +80,9 @@ bitbag_sylius_cms_plugin:
     import:
         not_blank: Importovaný soubor nemůže být prázdný.
         invalid_format: Nahrajte platný CSV soubor pro import.
+    template:
+        name:
+            unique: Šablona s tímto názvem již existuje.
+            not_blank: Název nesmí být prázdný.
+            min_length: Název musí mít alespoň {{ limit }} znaků.
+            max_length: Název nesmí být delší než {{ limit }} znaků.

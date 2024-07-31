@@ -51,3 +51,9 @@ bitbag_sylius_cms_plugin:
         file:
             type_image: Przesłanego pliku nie można oznaczyć jako obraz.
             type_video: Przesłanego pliku nie można oznaczyć jako wideo.
+    template:
+        name:
+            unique: Istnieje już szablon o tej nazwie.
+            not_blank: Nazwa nie może być pusta.
+            min_length: Nazwa musi mieć co najmniej {{ limit }} znaków.
+            max_length: Nazwa nie może mieć więcej niż {{ limit }} znaków.
