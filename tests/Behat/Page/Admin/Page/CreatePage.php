@@ -264,31 +264,50 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
+    public function selectTemplate(string $templateName): void
+    {
+        $dropdown = $this->getElement('template_select_dropdown');
+        $dropdown->click();
+
+        $dropdown->waitFor(5, function () use ($templateName): bool {
+            return $this->hasElement('template_select_dropdown_item', [
+                '%item%' => $templateName,
+            ]);
+        });
+
+        $item = $this->getElement('template_select_dropdown_item', [
+            '%item%' => $templateName,
+        ]);
+
+        $item->click();
+    }
+
+    public function useTemplate(): void
+    {
+        $this->getDocument()->findLink('Use this template')->click();
+    }
+
+    public function confirmUseTemplate(): void
+    {
+        $this->getDocument()->findById('load-template-confirmation-button')->click();
+        $this->getDocument()->waitFor(2, function (): bool {
+            return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
+        });
+    }
+
     protected function getDefinedElements(): array
     {
-        return array_merge(parent::getDefinedElements(), [
-            'slug' => '#bitbag_sylius_cms_plugin_page_translations_en_US_slug',
-            'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
-            'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_add_button' => '#bitbag_sylius_cms_plugin_page_contentElements a[data-form-collection="add"]',
-            'content_elements_select_type' => '.field > label:contains("Type") ~ select',
-            'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
-            'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete',
-            'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_multiple_media_dropdown' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete',
-            'content_elements_multiple_media_dropdown_item' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_heading' => '.field > label:contains("Heading type") ~ select',
-            'content_elements_heading_content' => '.field > label:contains("Heading") ~ input[type="text"]',
-            'content_elements_products_carousel' => '.field > label:contains("Products") ~ .sylius-autocomplete',
-            'content_elements_products_carousel_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_products_carousel_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
-            'content_elements_products_carousel_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_products_grid' => '.field > label:contains("Products") ~ .sylius-autocomplete',
-            'content_elements_products_grid_item' => '.field > label:contains("Products") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_products_grid_by_taxon' => '.field > label:contains("Taxon") ~ .sylius-autocomplete',
-            'content_elements_products_grid_by_taxon_item' => '.field > label:contains("Taxon") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_taxons_list' => '.field > label:contains("Taxons") ~ .sylius-autocomplete',
-            'content_elements_taxons_list_item' => '.field > label:contains("Taxons") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-        ]);
+        return array_merge(
+            parent::getDefinedElements(),
+            ContentElementHelper::getDefinedContentElements(),
+            [
+                'slug' => '#bitbag_sylius_cms_plugin_page_translations_en_US_slug',
+                'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
+                'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+                'content_elements_add_button' => '#bitbag_sylius_cms_plugin_page_contentElements a[data-form-collection="add"]',
+                'template_select_dropdown' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete',
+                'template_select_dropdown_item' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+            ],
+        );
     }
 }

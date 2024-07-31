@@ -208,3 +208,18 @@ Feature: Adding new page
         Then I should be notified that the page has been created
         And I should see newly created "Single media" content element in Content elements section
         And I should see newly created "Multiple media" content element in Content elements section
+
+    @ui @javascript
+    Scenario: Adding page with template
+        Given there is an existing template named "Homepage" with "Page" type that contains "Textarea, Single media" content elements
+        When I go to the create page page
+        And I fill the code with "my_page"
+        And I fill the slug with "my_page"
+        And I fill the name with "My page"
+        And I select "Homepage" template
+        And I click button to use this template
+        And I confirm that I want to use this template
+        And I add it
+        Then I should be notified that the page has been created
+        And I should see newly created "Textarea" content element in Content elements section
+        And I should see newly created "Single media" content element in Content elements section

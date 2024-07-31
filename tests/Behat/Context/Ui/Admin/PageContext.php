@@ -298,6 +298,30 @@ final class PageContext implements Context
     }
 
     /**
+     * @Then I select :templateName template
+     */
+    public function iSelectTemplate(string $templateName): void
+    {
+        $this->resolveCurrentPage()->selectTemplate($templateName);
+    }
+
+    /**
+     * @Then I click button to use this template
+     */
+    public function iClickButtonToUseThisTemplate(): void
+    {
+        $this->resolveCurrentPage()->useTemplate();
+    }
+
+    /**
+     * @Then I confirm that I want to use this template
+     */
+    public function iConfirmThatIWantToUseThisTemplate(): void
+    {
+        $this->resolveCurrentPage()->confirmUseTemplate();
+    }
+
+    /**
      * @When I add it
      * @When I try to add it
      */

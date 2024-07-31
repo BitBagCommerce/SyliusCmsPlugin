@@ -36,5 +36,11 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             </service>
+
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.template" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\TemplateContext">
+                <argument type="service" id="bitbag_sylius_cms_plugin.factory.template" />
+                <argument type="service" id="sylius.behat.shared_storage" />
+                <argument type="service" id="bitbag_sylius_cms_plugin.repository.template" />
+            </service>
     </services>
 </container>

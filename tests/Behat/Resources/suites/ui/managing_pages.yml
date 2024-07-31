@@ -11,6 +11,7 @@ default:
                 - bitbag_sylius_cms_plugin.behat.context.setup.media
                 - bitbag_sylius_cms_plugin.behat.context.setup.page
                 - bitbag_sylius_cms_plugin.behat.context.setup.collection
+                - bitbag_sylius_cms_plugin.behat.context.setup.template
 
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.page
             filters:
