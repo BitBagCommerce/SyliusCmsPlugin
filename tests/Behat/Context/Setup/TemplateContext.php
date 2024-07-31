@@ -30,7 +30,7 @@ final class TemplateContext implements Context
      * @Given there is a template in the store with :name name
      * @Given there is a template in the store with :name name and :type type
      */
-    public function thereIsATemplate(string $name, ?string $type): void
+    public function thereIsATemplate(string $name, ?string $type = null): void
     {
         $template = $this->createTemplate($name, $type);
 
