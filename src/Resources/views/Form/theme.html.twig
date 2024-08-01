@@ -13,7 +13,11 @@
 {% endblock %}
 
 {% block bitbag_template_page_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_page_by_id')}) }}
+    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_by_id')}) }}
+{% endblock %}
+
+{% block bitbag_template_block_autocomplete_choice_row %}
+    {{ form_row(form, {'remote_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_block_by_name_phrase'), 'load_edit_url': path('bitbag_sylius_cms_plugin_admin_ajax_template_by_id')}) }}
 {% endblock %}
 
 {% block bitbag_media_autocomplete_choice_row %}

@@ -9,19 +9,20 @@ export class HandleTemplate {
         $(document).ready(() => {
             const cmsLoadTemplate = $('[data-bb-cms-load-template]');
             const cmsPageTemplate = $('#bitbag_sylius_cms_plugin_page_template');
+            const cmsBlockTemplate = $('#bitbag_sylius_cms_plugin_block_template');
 
             cmsLoadTemplate.on('click', function (e) {
                 e.preventDefault();
 
-                if (!cmsPageTemplate.val()) {
+                if (!cmsPageTemplate.val() && !cmsBlockTemplate.val()) {
                     return;
                 }
 
                 $('#load-template-confirmation-modal').modal('show');
             });
 
-            $('#load-template-confirmation-button').on('click', function (e) {
-                const templateId = cmsPageTemplate.val();
+            $('#load-template-confirmation-button').on('click', function () {
+                const templateId = cmsPageTemplate.val() ?? cmsBlockTemplate.val();
                 if (!templateId) {
                     return;
                 }
@@ -34,9 +35,6 @@ export class HandleTemplate {
                 $.ajax({
                     url: endpointUrl,
                     type: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
                     success: function(data) {
                         if (data.status === 'success') {
                             $('[id^="bitbag_sylius_cms_plugin_"][id$="contentElements"]')
@@ -47,7 +45,9 @@ export class HandleTemplate {
                                 $('[data-form-collection="add"]').trigger('click');
                             });
 
-                            const elements = $('[id^="bitbag_sylius_cms_plugin_page_contentElements_"][id$="_type"]');
+                            const elements = $('[id^="bitbag_sylius_cms_plugin_"][id*="_contentElements_"][id$="_type"]').filter(function() {
+                                return /_page_|_block_/.test(this.id);
+                            });
 
                             $.each(data.content, function (index, element) {
                                 elements.eq(index).val(element.type);
