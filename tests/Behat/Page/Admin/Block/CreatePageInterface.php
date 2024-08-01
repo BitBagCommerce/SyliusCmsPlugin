@@ -52,4 +52,10 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
     public function addTaxonsListContentElementWithTaxons(array $taxons): void;
 
     public function disable(): void;
+
+    public function selectTemplate(string $templateName): void;
+
+    public function useTemplate(): void;
+
+    public function confirmUseTemplate(): void;
 }
