@@ -36,6 +36,20 @@ class TemplateRepositoryTest extends JsonApiTestCase
         self::assertCount(3, $template);
     }
 
+    public function test_it_finds_template_block_by_name_part(): void
+    {
+        $this->loadFixturesFromFile('TemplateRepositoryTest/test_it_finds_template_by_name.yml');
+
+        $repository = $this->getRepository();
+
+        $phrase = 'template';
+        $type = 'block';
+        $template = $repository->findTemplatesByNamePart($phrase, $type);
+
+        self::assertIsArray($template);
+        self::assertCount(3, $template);
+    }
+
     private function getRepository(): TemplateRepositoryInterface
     {
         /** @var TemplateRepositoryInterface $repository */
