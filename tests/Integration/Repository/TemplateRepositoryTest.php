@@ -22,7 +22,7 @@ class TemplateRepositoryTest extends JsonApiTestCase
         parent::setUp();
     }
 
-    public function test_it_finds_media_by_name_part(): void
+    public function test_it_finds_template_page_by_name_part(): void
     {
         $this->loadFixturesFromFile('TemplateRepositoryTest/test_it_finds_template_by_name.yml');
 
