@@ -29,11 +29,11 @@ class Page implements PageInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    protected ?int $id;
+    protected ?int $id = null;
 
     protected ?string $code = null;
 
-    protected ?string $name;
+    protected ?string $name = null;
 
     protected ?\DateTimeImmutable $publishAt;
 

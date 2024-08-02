@@ -35,7 +35,7 @@ final class ProductsGridByTaxonContentElementRenderer implements ContentElementR
     {
         $taxonCode = $contentConfiguration->getConfiguration()['products_grid_by_taxon'];
 
-        /** @var TaxonInterface $taxon */
+        /** @var TaxonInterface|null $taxon */
         $taxon = $this->taxonRepository->findOneBy(['code' => $taxonCode]);
         if (null === $taxon) {
             return '';
