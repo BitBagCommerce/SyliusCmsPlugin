@@ -37,6 +37,10 @@ final class ProductsGridByTaxonContentElementRenderer implements ContentElementR
 
         /** @var TaxonInterface $taxon */
         $taxon = $this->taxonRepository->findOneBy(['code' => $taxonCode]);
+        if (null === $taxon) {
+            return '';
+        }
+
         $products = $this->productRepository->findByTaxon($taxon);
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [

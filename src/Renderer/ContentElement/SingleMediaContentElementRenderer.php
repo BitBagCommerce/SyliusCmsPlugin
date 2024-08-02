@@ -33,6 +33,10 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
     public function render(ContentConfigurationInterface $contentConfiguration): string
     {
         $code = $contentConfiguration->getConfiguration()['single_media'];
+        if (null === $code) {
+            return '';
+        }
+
         $media = [
             'renderedContent' => $this->renderMediaRuntime->renderMedia($code),
             'entity' => $this->mediaRepository->findOneBy(['code' => $code]),

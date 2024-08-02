@@ -33,6 +33,9 @@ final class ProductsCarouselContentElementRenderer implements ContentElementRend
         $configuration = $contentConfiguration->getConfiguration();
         $productsCodes = $configuration['products_carousel']['products'];
         $products = $this->productRepository->findBy(['code' => $productsCodes]);
+        if (empty($products)) {
+            return '';
+        }
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
