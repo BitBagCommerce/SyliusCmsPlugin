@@ -65,6 +65,11 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.media')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'file')->shouldBeCalled();
 
+        $menu->getChildren()->willReturn(['marketing' => $cmsRootMenuItem]);
+        $menu->getChild('bitbag_cms')->willReturn($cmsRootMenuItem);
+
+        $menu->setChildren(['marketing' => $cmsRootMenuItem, 'bitbag_cms' => $cmsRootMenuItem])->willReturn($menu);
+
         $this->buildMenu($menuBuilderEvent);
     }
 }
