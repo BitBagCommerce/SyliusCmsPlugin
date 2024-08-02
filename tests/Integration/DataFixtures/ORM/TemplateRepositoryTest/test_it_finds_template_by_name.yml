@@ -8,3 +8,12 @@ BitBag\SyliusCmsPlugin\Entity\Template:
     template3:
         name: 'template3-name'
         type: 'page'
+    template4:
+        name: 'template4-name'
+        type: 'block'
+    template5:
+        name: 'template5-name'
+        type: 'block'
+    template6:
+        name: 'template6-name'
+        type: 'block'

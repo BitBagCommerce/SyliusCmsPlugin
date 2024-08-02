@@ -28,6 +28,7 @@ final class TemplateType extends AbstractResourceType
                 'label' => 'bitbag_sylius_cms_plugin.ui.type',
                 'choices' => [
                     'bitbag_sylius_cms_plugin.ui.page' => 'page',
+                    'bitbag_sylius_cms_plugin.ui.block' => 'block',
                 ],
             ])
             ->add('contentElements', CollectionType::class, [
