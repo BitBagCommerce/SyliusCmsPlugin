@@ -47,3 +47,9 @@ bitbag_sylius_cms_plugin:
             not_blank: Naziv ne može biti prazan.
             min_length: Naziv mora sadržavati minimalno {{ limit }} znaka.
             max_length: Naziv mora biti duži od {{ limit }} znakova.
+    template:
+        name:
+            unique: Već postoji predložak s tim imenom.
+            not_blank: Ime ne može biti prazno.
+            min_length: Ime mora biti dugo najmanje {{ limit }} znakova.
+            max_length: Ime ne smije biti duže od {{ limit }} znakova.

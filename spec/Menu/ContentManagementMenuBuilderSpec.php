@@ -52,6 +52,13 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
 
         $cmsRootMenuItem
+            ->addChild('templates', ['route' => 'bitbag_sylius_cms_plugin_admin_template_index'])
+            ->willReturn($cmsRootMenuItem)
+        ;
+        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.templates')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabelAttribute('icon', 'clone')->shouldBeCalled();
+
+        $cmsRootMenuItem
             ->addChild('media', ['route' => 'bitbag_sylius_cms_plugin_admin_media_index'])
             ->willReturn($cmsRootMenuItem)
         ;

@@ -3,7 +3,8 @@ import {
     HandleSlugUpdate,
     HandlePreview,
     HandleAutoComplete,
-    HandleChooseCollectionType
+    HandleChooseCollectionType,
+    HandleTemplate
 } from './bitbag';
 
 if (document.querySelector('[data-bb-target="cms-import"]')) {
@@ -24,4 +25,8 @@ if (document.querySelector('[data-bb-target="cms-handle-autocomplete"]')) {
 
 if (document.querySelector('.collection-type-items')) {
     new HandleChooseCollectionType().init();
+}
+
+if (document.querySelector('[data-bb-cms-load-template]')) {
+    new HandleTemplate().init();
 }

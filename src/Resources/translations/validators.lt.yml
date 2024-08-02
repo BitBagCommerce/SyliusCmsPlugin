@@ -74,4 +74,9 @@ bitbag_sylius_cms_plugin:
     import:
         not_blank: Importuojamą failą pasirinkti privaloma.
         invalid_format: Įkeltas netinkamas failas. Pasirinkite CSV formato failą.
-
+    template:
+        name:
+            unique: Šablonas su šiuo pavadinimu jau egzistuoja.
+            not_blank: Pavadinimas negali būti tuščias.
+            min_length: Pavadinimas turi būti ne trumpesnis kaip {{ limit }} simboliai.
+            max_length: Pavadinimas negali būti ilgesnis nei {{ limit }} simboliai.

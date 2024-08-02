@@ -19,7 +19,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * @property Collection $contentElements
  */
-trait ContentConfigurationAwareTrait
+trait ContentElementsAwareTrait
 {
     protected Collection $contentElements;
 

@@ -12,7 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\ContentConfigurationAwareTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\ContentElementsAwareTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -24,7 +24,7 @@ class Page implements PageInterface
     use CollectibleTrait;
     use TimestampableTrait;
     use ChannelsAwareTrait;
-    use ContentConfigurationAwareTrait;
+    use ContentElementsAwareTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

@@ -59,5 +59,16 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media"/>
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.shop.home"/>
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.template" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\TemplateContext">
+            <argument type="service" id="sylius.behat.shared_storage"/>
+            <argument type="service" id="sylius.behat.current_page_resolver"/>
+            <argument type="service" id="sylius.behat.notification_checker"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.template.index"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.template.create"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.admin.template.update"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.template"/>
+            <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator"/>
+        </service>
     </services>
 </container>

@@ -1,0 +1,13 @@
+BitBag\SyliusCmsPlugin\Entity\Template:
+  exclusion_policy: ALL
+  xml_root_name: template
+  properties:
+    id:
+      expose: true
+      type: integer
+      xml_attribute: true
+      groups: [Autocomplete]
+  virtual_properties:
+    getName:
+      serialized_name: name
+      groups: [Autocomplete]

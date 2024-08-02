@@ -67,3 +67,9 @@ bitbag_sylius_cms_plugin:
     import:
         not_blank: Файл що імпортуються не може бути порожнім.
         invalid_format: Завантажте файл у форматі CSV.
+    template:
+        name:
+            unique: Уже існує шаблон з цією назвою.
+            not_blank: Назва не може бути порожньою.
+            min_length: Назва повинна містити не менше {{ limit }} символів.
+            max_length: Назва не може бути довшою за {{ limit }} символів.

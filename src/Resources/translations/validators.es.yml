@@ -47,3 +47,9 @@ bitbag_sylius_cms_plugin:
             not_blank: El nombre no puede ir vacío.
             min_length: El nombre debe tener al menos {{ limit }} caracteres.
             max_length: El nombre no puede tener más de {{ limit }} caracteres.
+    template:
+        name:
+            unique: Ya existe una plantilla con este nombre.
+            not_blank: El nombre no puede estar en blanco.
+            min_length: El nombre debe tener al menos {{ limit }} caracteres.
+            max_length: El nombre no puede tener más de {{ limit }} caracteres.

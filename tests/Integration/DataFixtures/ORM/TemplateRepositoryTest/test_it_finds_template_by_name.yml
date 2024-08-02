@@ -1,0 +1,10 @@
+BitBag\SyliusCmsPlugin\Entity\Template:
+    template1:
+        name: 'template1-name'
+        type: 'page'
+    template2:
+        name: 'template2-name'
+        type: 'page'
+    template3:
+        name: 'template3-name'
+        type: 'page'

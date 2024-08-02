@@ -6,5 +6,6 @@
         <import resource="admin/page.xml"/>
         <import resource="admin/collection.xml"/>
         <import resource="admin/media.xml"/>
+        <import resource="admin/template.xml"/>
     </imports>
 </container>

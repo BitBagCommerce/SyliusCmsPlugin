@@ -19,7 +19,7 @@ interface BlockInterface extends
     ToggleableInterface,
     CollectibleInterface,
     ChannelsAwareInterface,
-    ContentConfigurationAwareInterface,
+    ContentElementsAwareInterface,
     LocaleAwareInterface,
     ProductsAwareInterface,
     TaxonAwareInterface,

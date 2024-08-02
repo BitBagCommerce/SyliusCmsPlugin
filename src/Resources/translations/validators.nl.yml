@@ -47,3 +47,9 @@ bitbag_sylius_cms_plugin:
             not_blank: Naam is verplicht en mag niet leeg zijn.
             min_length: Naam moet minstens {{ limit }} tekens lang zijn.
             max_length: Naam mag niet langer zijn dan {{ limit }} tekens.
+    template:
+        name:
+            unique: Er bestaat al een sjabloon met deze naam.
+            not_blank: De naam mag niet leeg zijn.
+            min_length: De naam moet minimaal {{ limit }} tekens lang zijn.
+            max_length: De naam mag niet langer zijn dan {{ limit }} tekens.

@@ -15,6 +15,7 @@ parameters:
     bitbag_sylius_cms_plugin.form.type.collection.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.translation.media.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.form.type.media.validation_groups: "%bitbag_validation_group%"
+    bitbag_sylius_cms_plugin.form.type.template.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
 
 jms_serializer:

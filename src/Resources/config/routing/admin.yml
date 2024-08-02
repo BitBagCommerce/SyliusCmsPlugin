@@ -19,6 +19,9 @@ bitbag_sylius_cms_plugin_admin_taxon:
 bitbag_sylius_cms_plugin_admin_locale:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/locale.yml"
 
+bitbag_sylius_cms_plugin_admin_template:
+    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin/template.yml"
+
 bitbag_sylius_cms_plugin_admin_ajax_generate_page_slug:
     path: /page/generate-slug
     methods: [GET]

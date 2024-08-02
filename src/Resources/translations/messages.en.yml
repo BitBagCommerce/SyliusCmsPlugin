@@ -85,3 +85,9 @@ bitbag_sylius_cms_plugin:
             label: Display for taxons
             help: Select taxons in which this block will be displayed
         manage_block_display: Manage block display
+        templates: Templates
+        new_template: New template
+        edit_template: Edit template
+        use_page_template: Use page template
+        use_this_template: Use this template
+        load_template_confirmation_modal_text: This operation will erase current content elements configuration. Are you sure you want to proceed?

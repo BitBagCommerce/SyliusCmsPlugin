@@ -1,0 +1,42 @@
+sylius_grid:
+    grids:
+        bitbag_sylius_cms_plugin_admin_template:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag_sylius_cms_plugin.model.template.class%"
+            sorting:
+                name: asc
+            limits: [10, 25, 50]
+            fields:
+                name:
+                    type: twig
+                    label: bitbag_sylius_cms_plugin.ui.name
+                    sortable: name
+                    path: .
+                    options:
+                        template: "@BitBagSyliusCmsPlugin/Grid/Field/name.html.twig"
+                type:
+                    type: string
+                    label: sylius.ui.type
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [name]
+                enabled:
+                    type: boolean
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                bulk:
+                    delete:
+                        type: delete

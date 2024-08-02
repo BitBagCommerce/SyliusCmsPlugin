@@ -76,6 +76,17 @@
             <tag name="form.type" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.form.type.template" class="BitBag\SyliusCmsPlugin\Form\Type\TemplateType">
+            <argument>%bitbag_sylius_cms_plugin.model.template.class%</argument>
+            <argument>%bitbag_sylius_cms_plugin.form.type.template.validation_groups%</argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElementType">
+            <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
+            <tag name="form.type" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.textarea" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.textarea%" />
             <tag name="form.type" />

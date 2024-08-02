@@ -74,3 +74,9 @@ bitbag_sylius_cms_plugin:
     import:
         not_blank: Le fichier à importer ne peut pas être vide.
         invalid_format: Ceci n'est pas un fichier CSV valide.
+    template:
+        name:
+            unique: Il existe déjà un modèle avec ce nom.
+            not_blank: Le nom ne peut pas être vide.
+            min_length: Le nom doit comporter au moins {{ limit }} caractères.
+            max_length: Le nom ne peut pas dépasser {{ limit }} caractères.

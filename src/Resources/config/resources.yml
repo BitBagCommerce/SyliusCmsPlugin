@@ -4,3 +4,4 @@ imports:
     - { resource: resources/page.yml }
     - { resource: resources/collection.yml }
     - { resource: resources/media.yml }
+    - { resource: resources/template.yml }
