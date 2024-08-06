@@ -14,29 +14,19 @@ interface PageImporterInterface extends ImporterInterface
 {
     public const CODE_COLUMN = 'code';
 
-    public const COLLECTIONS_COLUMN = 'collections';
+    public const NAME_COLUMN = 'name';
+
+    public const ENABLED_COLUMN = 'enabled';
 
     public const CHANNELS_COLUMN = 'channels';
 
-    public const PRODUCTS_COLUMN = 'products';
+    public const COLLECTIONS_COLUMN = 'collections';
 
     public const SLUG_COLUMN = 'slug__locale__';
 
-    public const NAME_COLUMN = 'name__locale__';
+    public const META_TITLE_COLUMN = 'meta_title__locale__';
 
-    public const IMAGE_COLUMN = 'image__locale__';
+    public const META_KEYWORDS_COLUMN = 'meta_keywords__locale__';
 
-    public const IMAGE_CODE_COLUMN = 'imagecode__locale__';
-
-    public const META_KEYWORDS_COLUMN = 'metakeywords__locale__';
-
-    public const META_DESCRIPTION_COLUMN = 'metadescription__locale__';
-
-    public const CONTENT_COLUMN = 'content__locale__';
-
-    public const BREADCRUMB_COLUMN = 'breadcrumb__locale__';
-
-    public const NAME_WHEN_LINKED_COLUMN = 'namewhenlinked__locale__';
-
-    public const DESCRIPTION_WHEN_LINKED_COLUMN = 'descriptionwhenlinked__locale__';
+    public const META_DESCRIPTION_COLUMN = 'meta_description__locale__';
 }

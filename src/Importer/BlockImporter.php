@@ -14,6 +14,10 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterLocalesResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsInTaxonsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\ImporterTaxonsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
@@ -24,6 +28,10 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         private ResourceResolverInterface $blockResourceResolver,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
+        private ImporterLocalesResolverInterface $importerLocalesResolver,
+        private ImporterProductsResolverInterface $importerProductsResolver,
+        private ImporterTaxonsResolverInterface $importerTaxonsResolver,
+        private ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
         ValidatorInterface $validator,
         private BlockRepositoryInterface $blockRepository,
     ) {
@@ -38,9 +46,15 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         /** @var BlockInterface $block */
         $block = $this->blockResourceResolver->getResource($code);
         $block->setCode($code);
+        $block->setName($this->getColumnValue(self::NAME_COLUMN, $row));
+        $block->setEnabled((bool) $this->getColumnValue(self::ENABLED_COLUMN, $row));
 
         $this->importerCollectionsResolver->resolve($block, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
+        $this->importerLocalesResolver->resolve($block, $this->getColumnValue(self::LOCALES_COLUMN, $row));
+        $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
+        $this->importerTaxonsResolver->resolve($block, $this->getColumnValue(self::TAXONS_COLUMN, $row));
+        $this->importerProductsInTaxonsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_IN_TAXONS_COLUMN, $row));
 
         $this->validateResource($block, ['bitbag']);
         $this->blockRepository->add($block);

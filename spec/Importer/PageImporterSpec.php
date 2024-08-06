@@ -62,19 +62,14 @@ final class PageImporterSpec extends ObjectBehavior
     {
         $row = [
             'code' => 'page_code',
+            'name' => 'page_name',
+            'enabled' => '1',
             'slug_pl' => 'slug',
-            'name_pl' => 'name',
-            'image_pl' => null,
-            'imagecode_pl' => 'imagecode',
-            'metakeywords_pl' => 'metakeywords',
-            'metadescription_pl' => 'metadescription',
-            'content_pl' => 'content',
-            'breadcrumb_pl' => 'breadcrumb',
-            'namewhenlinked_pl' => 'namewhenlinked',
-            'descriptionwhenlinked_pl' => 'descriptionwhenlinked',
+            'meta_title_pl' => 'metatitle',
+            'meta_keywords_pl' => 'metakeywords',
+            'meta_description_pl' => 'metadescription',
             'collections' => 'collections',
             'channels' => 'channels',
-            'products' => 'products',
         ];
 
         $pageResourceResolver->getResource('page_code')->willReturn($page);
@@ -82,12 +77,14 @@ final class PageImporterSpec extends ObjectBehavior
         $localeContext->getLocaleCode()->willReturn('en_US');
 
         $page->setCode('page_code')->shouldBeCalled();
+        $page->setName('page_name')->shouldBeCalled();
+        $page->setEnabled(true)->shouldBeCalled();
         $page->setFallbackLocale('en_US')->shouldBeCalled();
 
         $page->setCurrentLocale('pl')->shouldBeCalled();
 
         $page->setSlug('slug')->shouldBeCalled();
-        $page->setName('name')->shouldBeCalled();
+        $page->setTitle('metatitle')->shouldBeCalled();
         $page->setMetaKeywords('metakeywords')->shouldBeCalled();
         $page->setMetaDescription('metadescription')->shouldBeCalled();
 

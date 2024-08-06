@@ -20,6 +20,10 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.block" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_locales" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_taxons" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" />
             <argument type="service" id="validator" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             <tag name="bitbag.cmsplugin.importer" />

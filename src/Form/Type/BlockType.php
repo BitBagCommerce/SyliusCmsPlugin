@@ -72,6 +72,10 @@ final class BlockType extends AbstractResourceType
                 'multiple' => true,
                 'help' => 'bitbag_sylius_cms_plugin.ui.display_for_taxons.help',
             ])
+            ->add('template', TemplateBlockAutocompleteChoiceType::class, [
+                'label' => false,
+                'mapped' => false,
+            ])
         ;
     }
 

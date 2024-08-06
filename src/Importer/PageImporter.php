@@ -43,11 +43,13 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
 
         $page->setCode($code);
         $page->setFallbackLocale($this->localeContext->getLocaleCode());
+        $page->setName($this->getColumnValue(self::NAME_COLUMN, $row));
+        $page->setEnabled((bool) $this->getColumnValue(self::ENABLED_COLUMN, $row));
 
         foreach ($this->getAvailableLocales($this->getTranslatableColumns(), array_keys($row)) as $locale) {
             $page->setCurrentLocale($locale);
             $page->setSlug($this->getTranslatableColumnValue(self::SLUG_COLUMN, $locale, $row));
-            $page->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
+            $page->setTitle($this->getTranslatableColumnValue(self::META_TITLE_COLUMN, $locale, $row));
             $page->setMetaKeywords($this->getTranslatableColumnValue(self::META_KEYWORDS_COLUMN, $locale, $row));
             $page->setMetaDescription($this->getTranslatableColumnValue(self::META_DESCRIPTION_COLUMN, $locale, $row));
         }
@@ -70,15 +72,9 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
     {
         return [
             self::SLUG_COLUMN,
-            self::NAME_COLUMN,
-            self::IMAGE_COLUMN,
-            self::IMAGE_CODE_COLUMN,
+            self::META_TITLE_COLUMN,
             self::META_KEYWORDS_COLUMN,
             self::META_DESCRIPTION_COLUMN,
-            self::CONTENT_COLUMN,
-            self::BREADCRUMB_COLUMN,
-            self::NAME_WHEN_LINKED_COLUMN,
-            self::DESCRIPTION_WHEN_LINKED_COLUMN,
         ];
     }
 }
