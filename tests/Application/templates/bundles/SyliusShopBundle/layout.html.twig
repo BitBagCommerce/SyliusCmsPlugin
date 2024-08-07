@@ -61,8 +61,7 @@
             }
 
             .cms-logo {
-                margin-top: 20px;
-                margin-bottom: 20px;
+                padding: 20px !important;
             }
 
             pre {
@@ -107,6 +106,11 @@
                     <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_collection_code', {'collectionCode' : 'blog'}) }}"
                        class="item">
                         Blog
+                        <span class="ui teal label">NEW</span>
+                    </a>
+                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'faq'}) }}"
+                       class="item">
+                        FAQ
                         <span class="ui teal label">NEW</span>
                     </a>
                     <a href="{{ path('sylius_admin_login') }}" class="item">

@@ -10,24 +10,24 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Fixture;
 
-use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
+use BitBag\SyliusCmsPlugin\Fixture\Factory\TemplateFixtureFactory;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-final class MediaFixture extends AbstractFixture
+final class TemplateFixture extends AbstractFixture
 {
-    public function __construct(private FixtureFactoryInterface $mediaFixtureFactory)
+    public function __construct(private TemplateFixtureFactory $templateFixtureFactory)
     {
     }
 
     public function load(array $options): void
     {
-        $this->mediaFixtureFactory->load($options['custom']);
+        $this->templateFixtureFactory->load($options['custom']);
     }
 
     public function getName(): string
     {
-        return 'media';
+        return 'template';
     }
 
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
@@ -38,19 +38,12 @@ final class MediaFixture extends AbstractFixture
                     ->arrayPrototype()
                         ->children()
                             ->booleanNode('remove_existing')->defaultTrue()->end()
-                            ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
-                            ->scalarNode('path')->isRequired()->cannotBeEmpty()->end()
-                            ->scalarNode('original_name')->isRequired()->cannotBeEmpty()->end()
-                            ->scalarNode('name')->defaultNull()->end()
-                            ->booleanNode('enabled')->defaultTrue()->end()
-                            ->arrayNode('collections')->scalarPrototype()->end()->end()
-                            ->arrayNode('channels')->scalarPrototype()->end()->end()
-                            ->arrayNode('translations')
+                            ->scalarNode('name')->end()
+                            ->scalarNode('type')->end()
+                            ->arrayNode('content_elements')
                                 ->arrayPrototype()
                                     ->children()
-                                        ->scalarNode('content')->defaultNull()->end()
-                                        ->scalarNode('alt')->defaultNull()->end()
-                                        ->scalarNode('link')->defaultNull()->end()
+                                        ->scalarNode('type')->end()
                                     ->end()
                                 ->end()
                             ->end()
