@@ -43,13 +43,7 @@ final class MediaFixtureFactory implements FixtureFactoryInterface
                 $this->mediaRepository->remove($media);
             }
 
-            if (null !== $fields['number']) {
-                for ($i = 0; $i < $fields['number']; ++$i) {
-                    $this->createMedia(md5(uniqid()), $fields);
-                }
-            } else {
-                $this->createMedia($code, $fields);
-            }
+            $this->createMedia($code, $fields);
         }
     }
 
