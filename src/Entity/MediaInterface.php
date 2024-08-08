@@ -22,7 +22,8 @@ interface MediaInterface extends
     ToggleableInterface,
     CollectibleInterface,
     ChannelsAwareInterface,
-    ContentableInterface
+    ContentableInterface,
+    PagesCollectionInterface
 {
     public const IMAGE_TYPE = 'image';
 

@@ -68,6 +68,18 @@ final class PageType extends AbstractResourceType
                 'label' => false,
                 'mapped' => false,
             ])
+            ->add('teaserTitle', TextType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.title',
+                'required' => false,
+            ])
+            ->add('teaserContent', WysiwygType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.content',
+                'required' => false,
+            ])
+            ->add('teaserImage', MediaImageAutocompleteChoiceType::class, [
+                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.image',
+                'required' => false,
+            ])
         ;
     }
 

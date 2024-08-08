@@ -58,5 +58,13 @@
             </order-by>
         </one-to-many>
 
+        <field name="teaserTitle" column="teaser_title" type="string" nullable="true"/>
+
+        <field name="teaserContent" column="teaser_content" type="string" nullable="true"/>
+
+        <many-to-one field="teaserImage" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface" inversed-by="pages">
+            <join-column name="teaser_image_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
     </mapped-superclass>
 </doctrine-mapping>
