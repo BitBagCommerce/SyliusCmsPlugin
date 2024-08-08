@@ -25,7 +25,8 @@ interface PageInterface extends
     TimestampableInterface,
     ChannelsAwareInterface,
     SlugAwareInterface,
-    ContentElementsAwareInterface
+    ContentElementsAwareInterface,
+    TeaserInterface
 {
     public function getCode(): ?string;
 

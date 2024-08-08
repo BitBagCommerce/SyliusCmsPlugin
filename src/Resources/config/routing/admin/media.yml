@@ -30,6 +30,7 @@ bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
                 method: findByNamePart
                 arguments:
                     phrase: $phrase
+                    mediaType: $mediaType
 
 bitbag_sylius_cms_plugin_admin_ajax_media_by_code:
     path: /ajax/media/code
