@@ -10,7 +10,13 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity\Trait;
 
+use BitBag\SyliusCmsPlugin\Entity\Block;
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use BitBag\SyliusCmsPlugin\Entity\Media;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use BitBag\SyliusCmsPlugin\Entity\Page;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -37,6 +43,15 @@ trait CollectibleTrait
     {
         if (false === $this->hasCollection($collection)) {
             $this->collections->add($collection);
+
+            /** @phpstan-var Block|Page|Media $this */
+            if ($this instanceof PageInterface) {
+                $collection->addPage($this);
+            } else if ($this instanceof BlockInterface) {
+                $collection->addBlock($this);
+            } else if ($this instanceof MediaInterface) {
+                $collection->addMedium($this);
+            }
         }
     }
 
@@ -44,6 +59,14 @@ trait CollectibleTrait
     {
         if (true === $this->hasCollection($collection)) {
             $this->collections->removeElement($collection);
+            /** @phpstan-var Block|Page|Media $this */
+            if ($this instanceof PageInterface) {
+                $collection->removePage($this);
+            } else if ($this instanceof BlockInterface) {
+                $collection->removeBlock($this);
+            } else if ($this instanceof MediaInterface) {
+                $collection->removeMedium($this);
+            }
         }
     }
 }

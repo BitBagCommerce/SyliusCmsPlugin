@@ -18,6 +18,9 @@
         <field name="type" column="type" type="string" length="250" nullable="true"/>
 
         <many-to-many field="pages" target-entity="BitBag\SyliusCmsPlugin\Entity\PageInterface">
+            <cascade>
+                <cascade-all />
+            </cascade>
             <join-table name="bitbag_cms_section_pages">
                 <join-columns>
                     <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
@@ -30,6 +33,9 @@
 
         <many-to-many field="blocks" target-entity="BitBag\SyliusCmsPlugin\Entity\BlockInterface">
             <join-table name="bitbag_cms_section_blocks">
+                <cascade>
+                    <cascade-all />
+                </cascade>
                 <join-columns>
                     <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
@@ -40,6 +46,9 @@
         </many-to-many>
 
         <many-to-many field="media" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface">
+            <cascade>
+                <cascade-all />
+            </cascade>
             <join-table name="bitbag_cms_section_media">
                 <join-columns>
                     <join-column name="section_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
