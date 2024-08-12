@@ -44,7 +44,7 @@ final class CollectionFixtureFactory implements FixtureFactoryInterface
             $collection->setType($fields['type']);
 
             foreach ($fields['page_codes'] as $pageCode) {
-                /** @var PageInterface $page */
+                /** @var PageInterface|null $page */
                 $page = $this->pageRepository->findOneBy(['code' => $pageCode]);
                 if ($page) {
                     $collection->addPage($page);

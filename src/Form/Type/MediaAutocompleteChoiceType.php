@@ -25,14 +25,11 @@ final class MediaAutocompleteChoiceType extends AbstractType
             'resource' => 'bitbag_sylius_cms_plugin.media',
             'choice_name' => 'name',
             'choice_value' => 'code',
-            'media_type' => null,
-        ]);
-
-        $resolver->setAllowedValues('media_type', [
-            MediaInterface::IMAGE_TYPE,
-            MediaInterface::FILE_TYPE,
-            MediaInterface::VIDEO_TYPE,
-            null,
+            'media_type' => [
+                MediaInterface::IMAGE_TYPE,
+                MediaInterface::FILE_TYPE,
+                MediaInterface::VIDEO_TYPE,
+            ],
         ]);
     }
 

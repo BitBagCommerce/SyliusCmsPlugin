@@ -42,6 +42,9 @@ final class PageFixture extends AbstractFixture
                             ->scalarNode('name')->end()
                             ->arrayNode('collections')->scalarPrototype()->end()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
+                            ->scalarNode('teaser_title')->defaultNull()->end()
+                            ->scalarNode('teaser_content')->defaultNull()->end()
+                            ->scalarNode('teaser_image')->defaultNull()->end()
                             ->arrayNode('translations')
                                 ->prototype('array')
                                     ->children()
@@ -53,11 +56,11 @@ final class PageFixture extends AbstractFixture
                                 ->end()
                             ->end()
                             ->arrayNode('content_elements')
-                                ->useAttributeAsKey('key') // Use keys from YAML as node names
+                                ->useAttributeAsKey('key')
                                     ->arrayPrototype()
                                         ->children()
-                                            ->scalarNode('type')->end() // "type" field at the top level of each content element
-                                            ->arrayNode('data') // "data" field containing the actual data
+                                            ->scalarNode('type')->end()
+                                            ->arrayNode('data')
                                                 ->children()
                                                     ->scalarNode('heading_type')->end()
                                                     ->scalarNode('heading')->end()
@@ -65,6 +68,8 @@ final class PageFixture extends AbstractFixture
                                                     ->scalarNode('single_media')->end()
                                                     ->scalarNode('products_carousel_by_taxon')->end()
                                                     ->scalarNode('products_grid_by_taxon')->end()
+                                                    ->scalarNode('pages_collection')->end()
+                                                    ->scalarNode('spacer')->end()
                                                     ->arrayNode('multiple_media')->scalarPrototype()->end()->end()
                                                     ->arrayNode('products_grid')
                                                         ->children()
@@ -79,13 +84,14 @@ final class PageFixture extends AbstractFixture
                                                     ->arrayNode('taxons_list')
                                                         ->children()
                                                             ->arrayNode('taxons')->scalarPrototype()->end()->end()
+                                                        ->end()
                                                     ->end()
                                                 ->end()
                                             ->end()
-                                        ->end() // End of data
+                                        ->end()
                                     ->end()
-                                ->end() // End of each content element
-                            ->end() // End of content_elements array
+                                ->end()
+                            ->end()
                         ->end()
                     ->end()
                 ->end()

@@ -22,7 +22,7 @@ final class Version20240808102216 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('ALTER TABLE bitbag_cms_page ADD teaser_image_id INT DEFAULT NULL, ADD teaser_title VARCHAR(255) DEFAULT NULL, ADD teaser_content VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE bitbag_cms_page ADD teaser_image_id INT DEFAULT NULL, ADD teaser_title VARCHAR(255) DEFAULT NULL, ADD teaser_content LONGTEXT DEFAULT NULL');
         $this->addSql('ALTER TABLE bitbag_cms_page ADD CONSTRAINT FK_18F07F1BF56F16CF FOREIGN KEY (teaser_image_id) REFERENCES bitbag_cms_media (id)');
         $this->addSql('CREATE INDEX IDX_18F07F1BF56F16CF ON bitbag_cms_page (teaser_image_id)');
     }

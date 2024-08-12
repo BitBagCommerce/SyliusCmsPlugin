@@ -38,7 +38,8 @@ final class TemplateFixtureFactory implements FixtureFactoryInterface
         }
     }
 
-    private function createPage(array $pageData): void {
+    private function createPage(array $pageData): void
+    {
         /** @var TemplateInterface $template */
         $template = $this->templateFactory->createNew();
 

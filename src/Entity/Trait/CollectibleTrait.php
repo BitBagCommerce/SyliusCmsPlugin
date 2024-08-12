@@ -47,9 +47,9 @@ trait CollectibleTrait
             /** @phpstan-var Block|Page|Media $this */
             if ($this instanceof PageInterface) {
                 $collection->addPage($this);
-            } else if ($this instanceof BlockInterface) {
+            } elseif ($this instanceof BlockInterface) {
                 $collection->addBlock($this);
-            } else if ($this instanceof MediaInterface) {
+            } elseif ($this instanceof MediaInterface) {
                 $collection->addMedium($this);
             }
         }
@@ -62,9 +62,9 @@ trait CollectibleTrait
             /** @phpstan-var Block|Page|Media $this */
             if ($this instanceof PageInterface) {
                 $collection->removePage($this);
-            } else if ($this instanceof BlockInterface) {
+            } elseif ($this instanceof BlockInterface) {
                 $collection->removeBlock($this);
-            } else if ($this instanceof MediaInterface) {
+            } elseif ($this instanceof MediaInterface) {
                 $collection->removeMedium($this);
             }
         }
