@@ -65,6 +65,17 @@
             <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.renderer.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer">
+            <argument type="service" id="twig" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.renderer.content_element.spacer" class="BitBag\SyliusCmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer">
+            <argument type="service" id="twig" />
+            <tag name="bitbag_sylius_cms_plugin.renderer.content_element" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.collection_renderer_strategy" class="BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategy">
             <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.renderer.collection" />
         </service>

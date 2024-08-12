@@ -25,6 +25,18 @@ class CollectionRepository extends EntityRepository implements CollectionReposit
         ;
     }
 
+    public function findByNamePartAndType(string $phrase, string $type): array
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.name LIKE :name')
+            ->andWhere('o.type = :type')
+            ->setParameter('name', '%' . $phrase . '%')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findOneByCode(string $code): ?CollectionInterface
     {
         return $this->createQueryBuilder('o')
