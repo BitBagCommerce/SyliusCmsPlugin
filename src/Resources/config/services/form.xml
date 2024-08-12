@@ -11,6 +11,8 @@
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType::TYPE</parameter>
         <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.pages_collection" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.spacer" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -133,6 +135,17 @@
 
         <service  id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.taxons_list%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.pages_collection%" />
+            <tag name="form.type" />
+        </service>
+
+        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.spacer" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
+            <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.spacer%" />
             <tag name="form.type" />
         </service>
 

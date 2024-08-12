@@ -24,7 +24,7 @@ final class SpacerContentElementType extends AbstractType
             ->add(self::TYPE, NumberType::class, [
                 'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE . '_height',
                 'attr' => [
-                    "min" => 0,
+                    'min' => 0,
                 ],
                 'html5' => true,
             ])
