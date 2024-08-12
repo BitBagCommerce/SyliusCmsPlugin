@@ -5,6 +5,7 @@
         <defaults public="true" />
 
         <service id="bitbag_sylius_cms_plugin.menu.content_management" class="BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder">
+            <argument type="service" id="bitbag_sylius_cms_plugin.menu.reorder" />
             <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="buildMenu" />
         </service>
 

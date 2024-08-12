@@ -11,12 +11,18 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Menu;
 
 use BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder;
+use BitBag\SyliusCmsPlugin\Menu\MenuReorderInterface;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
+    public function let(MenuReorderInterface $menuReorder): void
+    {
+        $this->beConstructedWith($menuReorder);
+    }
+
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(ContentManagementMenuBuilder::class);
