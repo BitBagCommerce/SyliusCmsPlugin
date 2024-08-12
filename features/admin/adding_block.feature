@@ -180,3 +180,16 @@ Feature: Adding blocks
         And I try to add it
         Then I should be notified that "Code, Name" fields are too long
 
+    @ui @javascript
+    Scenario: Adding block with template
+        Given there is an existing template named "Homepage" with "Block" type that contains "Textarea, Single media" content elements
+        When I go to the create block page
+        And I fill the code with "intro"
+        And I fill the name with "Intro"
+        And I select "Homepage" template
+        And I click button to use this template
+        And I confirm that I want to use this template
+        And I add it
+        Then I should be notified that the block has been created
+        And I should see newly created "Textarea" content element in Content elements section
+        And I should see newly created "Single media" content element in Content elements section

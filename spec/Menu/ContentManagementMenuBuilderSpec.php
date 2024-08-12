@@ -11,12 +11,18 @@ declare(strict_types=1);
 namespace spec\BitBag\SyliusCmsPlugin\Menu;
 
 use BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder;
+use BitBag\SyliusCmsPlugin\Menu\MenuReorderInterface;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
+    public function let(MenuReorderInterface $menuReorder): void
+    {
+        $this->beConstructedWith($menuReorder);
+    }
+
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(ContentManagementMenuBuilder::class);
@@ -64,6 +70,11 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         ;
         $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.media')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'file')->shouldBeCalled();
+
+        $menu->getChildren()->willReturn(['marketing' => $cmsRootMenuItem]);
+        $menu->getChild('bitbag_cms')->willReturn($cmsRootMenuItem);
+
+        $menu->setChildren(['marketing' => $cmsRootMenuItem, 'bitbag_cms' => $cmsRootMenuItem])->willReturn($menu);
 
         $this->buildMenu($menuBuilderEvent);
     }

@@ -255,6 +255,37 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         }
     }
 
+    public function selectTemplate(string $templateName): void
+    {
+        $dropdown = $this->getElement('template_select_dropdown');
+        $dropdown->click();
+
+        $dropdown->waitFor(5, function () use ($templateName): bool {
+            return $this->hasElement('template_select_dropdown_item', [
+                '%item%' => $templateName,
+            ]);
+        });
+
+        $item = $this->getElement('template_select_dropdown_item', [
+            '%item%' => $templateName,
+        ]);
+
+        $item->click();
+    }
+
+    public function useTemplate(): void
+    {
+        $this->getDocument()->findLink('Use this template')->click();
+    }
+
+    public function confirmUseTemplate(): void
+    {
+        $this->getDocument()->findById('load-template-confirmation-button')->click();
+        $this->getDocument()->waitFor(2, function (): bool {
+            return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
+        });
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(
@@ -264,6 +295,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
                 'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
                 'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
                 'content_elements_add_button' => '#bitbag_sylius_cms_plugin_block_contentElements a[data-form-collection="add"]',
+                'template_select_dropdown' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete',
+                'template_select_dropdown_item' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             ],
         );
     }

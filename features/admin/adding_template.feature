@@ -9,10 +9,18 @@ Feature: Adding cms templates
         And I am logged in as an administrator
 
     @ui
-    Scenario: Creating template
+    Scenario: Creating template with type page
         When I go to the create template page
         And I fill the name with "Test template"
         And I choose "Page" in Type field
+        And I add it
+        Then I should be notified that the template has been created
+
+    @ui
+    Scenario: Creating template with type block
+        When I go to the create template page
+        And I fill the name with "Test template"
+        And I choose "Block" in Type field
         And I add it
         Then I should be notified that the template has been created
 

@@ -16,7 +16,7 @@ bitbag_sylius_cms_plugin_admin_template:
     type: sylius.resource
 
 bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase:
-    path: /ajax/templates/search
+    path: /ajax/templates/page/search
     methods: [GET]
     defaults:
         _format: json
@@ -30,7 +30,22 @@ bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase:
                     phrase: $phrase
                     type: page
 
-bitbag_sylius_cms_plugin_admin_ajax_template_page_by_id:
+bitbag_sylius_cms_plugin_admin_ajax_template_block_by_name_phrase:
+    path: /ajax/templates/block/search
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.template::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findTemplatesByNamePart
+                arguments:
+                    phrase: $phrase
+                    type: block
+
+bitbag_sylius_cms_plugin_admin_ajax_template_by_id:
     path: /ajax/templates/id
     methods: [GET]
     defaults:
@@ -43,7 +58,7 @@ bitbag_sylius_cms_plugin_admin_ajax_template_page_by_id:
                 method: find
                 arguments: [id: $id]
 
-bitbag_sylius_cms_plugin_admin_ajax_template_page_content_by_id:
+bitbag_sylius_cms_plugin_admin_ajax_template_content_by_id:
     path: /ajax/templates/content/{id}
     methods: [GET]
     defaults:

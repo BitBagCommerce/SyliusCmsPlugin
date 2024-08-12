@@ -14,6 +14,10 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class ContentManagementMenuBuilder
 {
+    public function __construct(private MenuReorderInterface $menuReorder)
+    {
+    }
+
     public function buildMenu(MenuBuilderEvent $menuBuilderEvent): void
     {
         $menu = $menuBuilderEvent->getMenu();
@@ -62,5 +66,7 @@ final class ContentManagementMenuBuilder
             ->setLabel('bitbag_sylius_cms_plugin.ui.media')
             ->setLabelAttribute('icon', 'file')
         ;
+
+        $this->menuReorder->reorder($menu, 'bitbag_cms', 'marketing');
     }
 }
