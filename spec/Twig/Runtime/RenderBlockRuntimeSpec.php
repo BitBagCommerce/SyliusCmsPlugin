@@ -83,6 +83,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
 
         $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', [
             'content' => 'rendered content',
+            'context' => null,
         ])->willReturn('rendered block');
 
         $this->renderBlock('code')->shouldReturn('rendered block');
@@ -99,6 +100,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
 
         $templatingEngine->render('custom_template.html.twig', [
             'content' => 'rendered content',
+            'context' => null,
         ])->willReturn('rendered block');
 
         $this->renderBlock('code', 'custom_template.html.twig')->shouldReturn('rendered block');

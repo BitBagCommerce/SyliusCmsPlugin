@@ -6,12 +6,6 @@ Feature: Displaying media
 
   @ui
   Scenario: Displaying media
-    And there is an existing "image" media with "homepage_pdf" code
-    When I go to the homepage
-    And I want to see a media with code "homepage_pdf"
-
-  @ui
-  Scenario: Displaying media no standard template
-    And there is an existing "image" media with "media_with_parameters" code
-    When I go to the homepage
-    And I want to see a media with code "media_with_parameters"
+    And there is an existing "image" media with "blog_banner" code
+    When I go to the "blog" page
+    And I want to see a media with code "blog_banner"
