@@ -72,6 +72,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Taxons list
                 products_grid: Products grid
                 products_grid_by_taxon: Products grid by Taxon
+                pages_collection: Pages collection
+                spacer: Spacer
+                spacer_height: Spacer height in pixels
             heading_type: Heading type
         taxon: Taxon
         seo: SEO

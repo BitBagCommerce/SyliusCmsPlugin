@@ -86,11 +86,11 @@ class MediaRepository extends EntityRepository implements MediaRepositoryInterfa
         ;
     }
 
-    public function findByNamePart(string $phrase, string $mediaType): array
+    public function findByNamePart(string $phrase, array $mediaType): array
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.name LIKE :name')
-            ->andWhere('o.type = :mediaType')
+            ->andWhere('o.type IN (:mediaType)')
             ->setParameter('name', '%' . $phrase . '%')
             ->setParameter('mediaType', $mediaType)
             ->getQuery()

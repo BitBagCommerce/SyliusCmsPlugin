@@ -25,7 +25,7 @@ bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
                     - $code
 
 bitbag_sylius_cms_plugin_shop_page_index_by_collection_code:
-    path: /pages/{collectionCode}
+    path: /page/{collectionCode}
     methods: [GET]
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction

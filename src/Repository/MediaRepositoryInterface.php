@@ -35,4 +35,6 @@ interface MediaRepositoryInterface extends RepositoryInterface
         string $localeCode,
         string $channelCode,
     ): array;
+
+    public function findByNamePart(string $phrase, array $mediaType): array;
 }

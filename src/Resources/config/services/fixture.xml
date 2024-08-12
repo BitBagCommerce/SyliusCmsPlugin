@@ -44,6 +44,7 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page_translation" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
         </service>

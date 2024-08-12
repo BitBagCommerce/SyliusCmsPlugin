@@ -67,10 +67,14 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         $this->taxonsAssigner->assign($block, $blockData['taxons']);
         $this->productsInTaxonsAssigner->assign($block, $blockData['products_in_taxons']);
 
-        foreach ($blockData['content_elements'] as $type => $data) {
+        foreach ($blockData['content_elements'] as $data) {
+            $data['data'] = array_filter($data['data'], static function ($value) {
+                return !empty($value);
+            });
+
             $contentConfiguration = new ContentConfiguration();
-            $contentConfiguration->setType($type);
-            $contentConfiguration->setConfiguration($data);
+            $contentConfiguration->setType($data['type']);
+            $contentConfiguration->setConfiguration($data['data']);
             $contentConfiguration->setBlock($block);
             $block->addContentElement($contentConfiguration);
         }

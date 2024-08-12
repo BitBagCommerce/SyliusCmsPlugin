@@ -13,19 +13,20 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
+use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
 {
-    public const CHANNEL_WITH_CODE_NOT_FOUND_MESSAGE = 'Channel with code "%s" not found';
-
     public function __construct(
         private FactoryInterface $pageFactory,
         private FactoryInterface $pageTranslationFactory,
         private PageRepositoryInterface $pageRepository,
+        private MediaRepositoryInterface $mediaRepository,
         private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
     ) {
@@ -61,6 +62,15 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $page->setName($pageData['name']);
         $page->setEnabled($pageData['enabled']);
 
+        /** @var MediaInterface|null $mediaImage */
+        $mediaImage = $this->mediaRepository->findOneBy(['code' => $pageData['teaser_image']]);
+        if ($mediaImage) {
+            $page->setTeaserImage($mediaImage);
+        }
+
+        $page->setTeaserTitle($pageData['teaser_title']);
+        $page->setTeaserContent($pageData['teaser_content']);
+
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */
             $pageTranslation = $this->pageTranslationFactory->createNew();
@@ -76,7 +86,10 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         }
 
         foreach ($pageData['content_elements'] as $data) {
-            dd($data);
+            $data['data'] = array_filter($data['data'], static function ($value) {
+                return !empty($value);
+            });
+
             $contentConfiguration = new ContentConfiguration();
             $contentConfiguration->setType($data['type']);
             $contentConfiguration->setConfiguration($data['data']);

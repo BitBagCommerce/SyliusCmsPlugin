@@ -27,17 +27,18 @@
             <div class="divider"> /</div>
             <div class="active section">{{ page.name }}</div>
         </div>
-        <div class="ui segment">
-            <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
+        <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
 
-            <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
 
-            <div class="bitbag-page-content">{{ bitbag_cms_render_content_elements(page) }}</div>
+        <div class="bitbag-page-content">{{ bitbag_cms_render_content_elements(page) }}</div>
+
+        {% if page.collections is not empty %}
             <div class="ui dividing header"></div>
             <div class="bitbag-page-collections">
                 {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_collections.html.twig' %}
             </div>
-        </div>
+        {% endif %}
     {% else %}
         {% include '@BitBagSyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
     {% endif %}
