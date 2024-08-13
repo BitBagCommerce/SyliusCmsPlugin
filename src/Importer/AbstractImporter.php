@@ -25,11 +25,7 @@ abstract class AbstractImporter implements ImporterInterface
 
     protected function getColumnValue(string $column, array $row)
     {
-        if (array_key_exists($column, $row)) {
-            return $row[$column];
-        }
-
-        return null;
+        return $row[$column] ?? null;
     }
 
     protected function getTranslatableColumnValue(
@@ -39,11 +35,7 @@ abstract class AbstractImporter implements ImporterInterface
     ) {
         $column = str_replace('__locale__', '_' . $locale, $column);
 
-        if (array_key_exists($column, $row)) {
-            return $row[$column];
-        }
-
-        return null;
+        return $row[$column] ?? null;
     }
 
     protected function getAvailableLocales(array $translatableColumns, array $columns): array
@@ -54,7 +46,7 @@ abstract class AbstractImporter implements ImporterInterface
             $translatableColumn = str_replace('__locale__', '_', $translatableColumn);
 
             foreach ($columns as $column) {
-                if (0 === strpos($column, $translatableColumn)) {
+                if (str_starts_with($column, $translatableColumn)) {
                     $locales[] = str_replace($translatableColumn, '', $column);
                 }
             }

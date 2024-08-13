@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -30,7 +30,7 @@ final class ImporterProductsResolverSpec extends ObjectBehavior
 
     public function it_resolves_products_for_products_aware(
         ProductsAssignerInterface $productsAssigner,
-        ProductsAwareInterface $productsAware
+        ProductsAwareInterface $productsAware,
     ) {
         $productsRow = 'product1, product2, product3';
         $productsCodes = ['product1', 'product2', 'product3'];
@@ -42,7 +42,7 @@ final class ImporterProductsResolverSpec extends ObjectBehavior
 
     public function it_skips_resolution_when_products_row_is_null(
         ProductsAssignerInterface $productsAssigner,
-        ProductsAwareInterface $productsAware
+        ProductsAwareInterface $productsAware,
     ) {
         $productsRow = null;
 

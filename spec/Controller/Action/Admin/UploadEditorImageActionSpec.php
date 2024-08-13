@@ -26,7 +26,7 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
     public function let(
         MediaProviderResolverInterface $mediaProviderResolver,
         MediaRepositoryInterface $mediaRepository,
-        FactoryInterface $mediaFactory
+        FactoryInterface $mediaFactory,
     ) {
         $this->beConstructedWith($mediaProviderResolver, $mediaRepository, $mediaFactory);
     }
@@ -43,7 +43,7 @@ final class UploadEditorImageActionSpec extends ObjectBehavior
         FileBag $fileBag,
         MediaProviderResolverInterface $mediaProviderResolver,
         ProviderInterface $provider,
-        MediaRepositoryInterface $mediaRepository
+        MediaRepositoryInterface $mediaRepository,
     ): void {
         $uploadedFile = new UploadedFile(__DIR__ . '/../../../../tests/Behat/Resources/images/aston_martin_db_11.jpg', 'aston_martin_db_11.jpg');
 

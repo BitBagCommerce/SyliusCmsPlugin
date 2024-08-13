@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
@@ -26,7 +26,7 @@ final class ImporterChannelsResolver implements ImporterChannelsResolverInterfac
         }
 
         $channelsCodes = explode(',', $channelsRow);
-        $channelsCodes = array_map(function (string $element): string {
+        $channelsCodes = array_map(static function (string $element): string {
             return trim($element);
         }, $channelsCodes);
 

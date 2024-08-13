@@ -27,7 +27,7 @@ final class MediaResourceResolverSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext,
         LoggerInterface $logger,
-        ) {
+    ) {
         $this->beConstructedWith($mediaRepository, $localeContext, $channelContext, $logger);
     }
 
@@ -47,7 +47,7 @@ final class MediaResourceResolverSpec extends ObjectBehavior
         ChannelContextInterface $channelContext,
         MediaInterface $media,
         ChannelInterface $channel,
-        ) {
+    ) {
         $code = 'media_code';
         $localeCode = 'en_US';
         $channelCode = 'ecommerce';
@@ -67,7 +67,7 @@ final class MediaResourceResolverSpec extends ObjectBehavior
         ChannelContextInterface $channelContext,
         LoggerInterface $logger,
         ChannelInterface $channel,
-        ) {
+    ) {
         $code = 'non_existing_code';
         $localeCode = 'en_US';
         $channelCode = 'ecommerce';

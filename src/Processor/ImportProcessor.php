@@ -24,16 +24,16 @@ final class ImportProcessor implements ImportProcessorInterface
     ) {
     }
 
-    public function process(string $resourceCode, string $filePath): void
+    public function process(string $resourceName, string $filePath): void
     {
-        $importer = $this->importerChain->getImporterForResource($resourceCode);
+        $importer = $this->importerChain->getImporterForResource($resourceName);
         $data = $this->reader->read($filePath);
 
         foreach ($data as $index => $row) {
             try {
                 $importer->import($row);
             } catch (\Exception $exception) {
-                $index += 1;
+                ++$index;
 
                 throw new ImportFailedException($exception->getMessage(), $index);
             }

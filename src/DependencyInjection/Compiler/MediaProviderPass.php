@@ -26,7 +26,7 @@ final class MediaProviderPass implements CompilerPassInterface
         $providers = [];
 
         foreach ($container->findTaggedServiceIds('bitbag_sylius_cms_plugin.media_provider') as $id => $attributes) {
-            if (!isset($attributes[0]['type']) || !isset($attributes[0]['label'])) {
+            if (!isset($attributes[0]['type'], $attributes[0]['label'])) {
                 throw new \InvalidArgumentException('Tagged media provider needs to have `type` and `label` attribute.');
             }
 

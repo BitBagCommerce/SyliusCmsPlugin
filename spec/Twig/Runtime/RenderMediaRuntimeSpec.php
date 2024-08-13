@@ -24,7 +24,7 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
 {
     public function let(
         MediaProviderResolverInterface $mediaProviderResolver,
-        MediaResourceResolverInterface $mediaResourceResolver
+        MediaResourceResolverInterface $mediaResourceResolver,
     ): void {
         $this->beConstructedWith($mediaProviderResolver, $mediaResourceResolver);
     }
@@ -43,7 +43,7 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
         MediaResourceResolverInterface $mediaResourceResolver,
         MediaProviderResolverInterface $mediaProviderResolver,
         ProviderInterface $provider,
-        MediaInterface $media
+        MediaInterface $media,
     ): void {
         $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
         $provider->render($media, null)->willReturn('content');

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
+use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 
-interface ImporterLocalesResolverInterface
+interface ImporterProductsInTaxonsResolverInterface
 {
-    public function resolve(LocaleAwareInterface $localesAware, ?string $localesRow): void;
+    public function resolve(ProductsInTaxonsAwareInterface $productsInTaxonsAware, ?string $taxonsRow): void;
 }

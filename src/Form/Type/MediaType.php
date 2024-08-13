@@ -22,8 +22,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class MediaType extends AbstractResourceType
 {
-    /** @var array */
-    private $providers;
+    private array $providers;
 
     public function __construct(
         string $dataClass,

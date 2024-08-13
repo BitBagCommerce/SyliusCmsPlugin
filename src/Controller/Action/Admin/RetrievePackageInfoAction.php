@@ -12,12 +12,12 @@ final class RetrievePackageInfoAction
     public function __invoke(Request $request): Response
     {
         try {
-            $contents = file_get_contents(\sprintf(
+            file_get_contents(\sprintf(
                 "https://intranet.bitbag.shop/retrieve-package-info?packageName='%s'&url='%s'",
                 'bitbag/cms-plugin',
                 \sprintf('%s://%s', $request->getScheme(), $request->getHttpHost()),
             ));
-        } catch (\Exception $exception) {
+        } catch (\Exception) {
             return new Response('', Response::HTTP_BAD_REQUEST);
         }
 

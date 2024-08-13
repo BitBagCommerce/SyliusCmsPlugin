@@ -53,11 +53,10 @@ final class ProductsGridContentElementRendererSpec extends ObjectBehavior
         ProductRepositoryInterface $productRepository,
         ContentConfigurationInterface $contentConfiguration,
         Product $product1,
-        Product $product2
-    ): void
-    {
+        Product $product2,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'products_grid' => ['products' => ['code1', 'code2']]
+            'products_grid' => ['products' => ['code1', 'code2']],
         ]);
 
         $productRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$product1, $product2]);

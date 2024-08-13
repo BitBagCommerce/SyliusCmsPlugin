@@ -14,12 +14,12 @@ use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Importer\BlockImporter;
 use BitBag\SyliusCmsPlugin\Importer\BlockImporterInterface;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterLocalesResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsInTaxonsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterTaxonsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\ConstraintViolationList;
@@ -36,9 +36,8 @@ final class BlockImporterSpec extends ObjectBehavior
         ImporterTaxonsResolverInterface $importerTaxonsResolver,
         ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
         ValidatorInterface $validator,
-        BlockRepositoryInterface $blockRepository
-    )
-    {
+        BlockRepositoryInterface $blockRepository,
+    ) {
         $this->beConstructedWith(
             $blockResourceResolver,
             $importerCollectionsResolver,
@@ -48,7 +47,7 @@ final class BlockImporterSpec extends ObjectBehavior
             $importerTaxonsResolver,
             $importerProductsInTaxonsResolver,
             $validator,
-            $blockRepository
+            $blockRepository,
         );
     }
 
@@ -68,9 +67,8 @@ final class BlockImporterSpec extends ObjectBehavior
         ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
         ValidatorInterface $validator,
         BlockRepositoryInterface $blockRepository,
-        BlockInterface $block
-    )
-    {
+        BlockInterface $block,
+    ) {
         $row = ['name' => 'block_name', 'code' => 'block_code', 'enabled' => '1'];
 
         $blockResourceResolver->getResource('block_code')->willReturn($block);

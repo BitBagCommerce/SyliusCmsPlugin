@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
@@ -30,7 +30,7 @@ final class ImporterChannelsResolverSpec extends ObjectBehavior
 
     public function it_resolves_channels_for_channels_aware(
         ChannelsAssignerInterface $channelsAssigner,
-        ChannelsAwareInterface $channelsAware
+        ChannelsAwareInterface $channelsAware,
     ) {
         $channelsRow = 'channel1, channel2, channel3';
         $channelsCodes = ['channel1', 'channel2', 'channel3'];
@@ -42,7 +42,7 @@ final class ImporterChannelsResolverSpec extends ObjectBehavior
 
     public function it_skips_resolution_when_channels_row_is_null(
         ChannelsAssignerInterface $channelsAssigner,
-        ChannelsAwareInterface $channelsAware
+        ChannelsAwareInterface $channelsAware,
     ) {
         $channelsRow = null;
 

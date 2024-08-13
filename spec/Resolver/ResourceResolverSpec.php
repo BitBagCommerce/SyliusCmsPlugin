@@ -20,7 +20,7 @@ final class ResourceResolverSpec extends ObjectBehavior
 {
     public function let(
         RepositoryInterface $repository,
-        FactoryInterface $factory
+        FactoryInterface $factory,
     ) {
         $this->beConstructedWith($repository, $factory, 'unique_column');
     }
@@ -32,7 +32,7 @@ final class ResourceResolverSpec extends ObjectBehavior
 
     public function it_returns_existing_resource_from_repository(
         RepositoryInterface $repository,
-        ResourceInterface $resource
+        ResourceInterface $resource,
     ) {
         $identifier = 'resource_identifier';
 
@@ -44,7 +44,7 @@ final class ResourceResolverSpec extends ObjectBehavior
     public function it_creates_new_resource_using_factory(
         RepositoryInterface $repository,
         FactoryInterface $factory,
-        ResourceInterface $newResource
+        ResourceInterface $newResource,
     ) {
         $identifier = 'resource_identifier';
         $factoryMethod = 'createNew';
@@ -57,7 +57,7 @@ final class ResourceResolverSpec extends ObjectBehavior
 
     public function it_throws_exception_when_factory_method_not_callable(
         RepositoryInterface $repository,
-        FactoryInterface $factory
+        FactoryInterface $factory,
     ) {
         $identifier = 'resource_identifier';
         $factoryMethod = 'nonExistingMethod';

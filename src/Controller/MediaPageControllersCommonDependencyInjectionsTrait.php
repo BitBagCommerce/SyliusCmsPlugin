@@ -10,14 +10,11 @@ use Liip\ImagineBundle\Imagine\Data\DataManager;
 
 trait MediaPageControllersCommonDependencyInjectionsTrait
 {
-    /** @var CacheManager */
-    private $cacheManager;
+    private CacheManager $cacheManager;
 
-    /** @var DataManager */
-    private $dataManager;
+    private DataManager $dataManager;
 
-    /** @var FormErrorsFlashHelperInterface */
-    private $formErrorsFlashHelper;
+    private FormErrorsFlashHelperInterface $formErrorsFlashHelper;
 
     public function setFormErrorsFlashHelper(FormErrorsFlashHelperInterface $formErrorsFlashHelper): void
     {

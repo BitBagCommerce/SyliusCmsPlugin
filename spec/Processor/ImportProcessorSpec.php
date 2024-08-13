@@ -24,7 +24,7 @@ class ImportProcessorSpec extends ObjectBehavior
     public function let(
         ImporterChainInterface $importerChain,
         ReaderInterface $reader,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         $this->beConstructedWith($importerChain, $reader, $entityManager);
     }
@@ -38,7 +38,7 @@ class ImportProcessorSpec extends ObjectBehavior
         ImporterChainInterface $importerChain,
         ReaderInterface $reader,
         EntityManagerInterface $entityManager,
-        ImporterInterface $importer
+        ImporterInterface $importer,
     ) {
         $resourceCode = 'some_resource';
         $filePath = 'path/to/file.csv';
@@ -65,7 +65,7 @@ class ImportProcessorSpec extends ObjectBehavior
         ImporterChainInterface $importerChain,
         ReaderInterface $reader,
         EntityManagerInterface $entityManager,
-        ImporterInterface $importer
+        ImporterInterface $importer,
     ) {
         $resourceCode = 'some_resource';
         $filePath = 'path/to/file.csv';

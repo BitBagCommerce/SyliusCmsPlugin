@@ -48,11 +48,10 @@ final class TextareaContentElementRendererSpec extends ObjectBehavior
 
     public function it_renders_textarea_content_element(
         Environment $twig,
-        ContentConfigurationInterface $contentConfiguration
-    ): void
-    {
+        ContentConfigurationInterface $contentConfiguration,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'textarea' => 'Textarea content'
+            'textarea' => 'Textarea content',
         ]);
 
         $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
