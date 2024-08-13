@@ -7,7 +7,7 @@
 {% block content %}
     <div class="column">
         <div class="ui segment">
-            {% include blockTemplate %}
+            {{ bitbag_cms_render_content_elements(block) }}
         </div>
     </div>
 {% endblock %}

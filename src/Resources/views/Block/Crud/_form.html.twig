@@ -1,5 +1,7 @@
 {% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
 {% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
+
+{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
 {% include '@BitBagSyliusCmsPlugin/Modal/_loadTemplateConfirmation.html.twig' %}
 
 <div class="ui two column stackable grid">
@@ -12,6 +14,15 @@
             {{ form_row(form.channels) }}
             {{ form_row(form.locales) }}
             {{ form_row(form.collections) }}
+            <a
+                    href="#"
+                    class="ui labeled button icon primary bitbag-cms-resource-preview"
+                    data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview') }}"
+                    data-bb-cms-preview-btn
+            >
+                <i class="eye icon"></i>
+                {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
+            </a>
         </div>
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.manage_block_display'|trans }}</h4>
