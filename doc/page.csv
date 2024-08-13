@@ -1,2 +1,2 @@
-code,sections,channels,products,slug_en_US,name_en_US,image_en_US,meta_keywords_en_US,meta_description_en_US,content_en_US,breadcrumb_en_US,name_when_linked_en_US,description_when_linked_en_US
-aboutUS,,US_WEB,,about_us,About US,,About US,About US,"",,,
+code,name,enabled,collections,channels,slug_en_US,meta_title_en_US,meta_keywords_en_US,meta_description_en_US,slug_de_DE,meta_title_de_DE,meta_keywords_de_DE,meta_description_de_DE
+aboutUS,About US,1,,FASHION_WEB,about_us,Meta title en US,About US,About US,about_us,Meta title en DE,About US,About US

@@ -1,2 +1,2 @@
-code,type,name_en_US,content_en_US,sections,channels,products,image_en_US,slug_en_US
-test4,image,Test,test,"blog, general",US_WEB,"010ba66b-adee-3d6e-9d63-67c44d686db1, 01d35db9-247d-3834-b300-20483d5e34e8",https://bitbag.shop/assets/web/images/header-logo.png,https://bitbag.shop/assets/web/images/header-logo.png
+code,name,enabled,collections,locales,channels,products,products_in_taxons,taxons
+test4,Block name,1,"blog,general",,FASHION_WEB,"000F_office_grey_jeans, 007M_black_elegance_jeans","caps, t_shirts",t_shirts
