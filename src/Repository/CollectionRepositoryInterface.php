@@ -17,6 +17,8 @@ interface CollectionRepositoryInterface extends RepositoryInterface
 {
     public function findByNamePart(string $phrase): array;
 
+    public function findByNamePartAndType(string $phrase, string $type): array;
+
     public function findOneByCode(string $code): ?CollectionInterface;
 
     public function findByCodes(string $codes): array;

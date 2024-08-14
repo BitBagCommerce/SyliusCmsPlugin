@@ -72,6 +72,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Taxons list
                 products_grid: Products grid
                 products_grid_by_taxon: Products grid by Taxon
+                pages_collection: Pages collection
+                spacer: Spacer
+                spacer_height: Spacer height in pixels
             heading_type: Heading type
         taxon: Taxon
         seo: SEO
@@ -91,3 +94,9 @@ bitbag_sylius_cms_plugin:
         use_page_template: Use page template
         use_this_template: Use this template
         load_template_confirmation_modal_text: This operation will erase current content elements configuration. Are you sure you want to proceed?
+        teaser:
+            header: Teaser
+            title: Teaser Title
+            content: Teaser Content
+            image: Teaser Image
+            help: It's a small preview of the page. It is used during rendering a collection of pages.

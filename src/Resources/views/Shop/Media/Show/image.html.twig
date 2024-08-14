@@ -1,10 +1,16 @@
 <div>
-    <h2>{{ media.name|raw }}</h2>
-
+    {% if media.link %}
+        <a href="{{ media.link }}" target="_blank">
+    {% endif %}
     <img class="ui fluid image" src="{{ media.path }}" alt="{{ media.alt }}"
         {% if media.width is not null %} width="{{ media.width }}" {% endif %}
         {% if media.height is not null %} height="{{ media.height }}" {% endif %}
     />
+    {% if media.link %}
+        </a>
+    {% endif %}
 
-    <p>{{ bitbag_cms_render_content(media) }}</p>
+    {% if media.content %}
+        {{ bitbag_cms_render_content(media) }}
+    {% endif %}
 </div>

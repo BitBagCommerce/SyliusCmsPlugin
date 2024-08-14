@@ -61,8 +61,7 @@
             }
 
             .cms-logo {
-                margin-top: 20px;
-                margin-bottom: 20px;
+                padding: 20px !important;
             }
 
             pre {
@@ -103,10 +102,15 @@
                 {{ sonata_block_render_event('sylius.shop.layout.after_header') }}
 
                 <div class="ui large stackable menu">
-                    {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
-                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_index_by_collection_code', {'collectionCode' : 'blog'}) }}"
+                    {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'MENU_CATEGORY', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'blog'}) }}"
                        class="item">
                         Blog
+                        <span class="ui teal label">NEW</span>
+                    </a>
+                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'faq'}) }}"
+                       class="item">
+                        FAQ
                         <span class="ui teal label">NEW</span>
                     </a>
                     <a href="{{ path('sylius_admin_login') }}" class="item">

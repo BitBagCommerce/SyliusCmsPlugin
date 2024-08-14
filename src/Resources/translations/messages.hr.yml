@@ -47,6 +47,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Lista taksona
                 products_grid: Proizvodi u mreži
                 products_grid_by_taxon: Proizvodi u mreži po taksonu
+                pages_collection: Kolekcija stranica
+                spacer: Razmak
+                spacer_height: Visina razmaka u pikselima
             heading_type: Tip naslova
         taxon: Takson
         display_for_products:
@@ -59,3 +62,15 @@ bitbag_sylius_cms_plugin:
             label: Prikaz za takson
             help: Odaberite taksone u kojima će se ovaj blok prikazati
         manage_block_display: Upravljanje prikazom bloka
+        templates: Predlošci
+        new_template: Novi predložak
+        edit_template: Uredi predložak
+        use_page_template: Koristi predložak stranice
+        use_this_template: Koristi ovaj predložak
+        load_template_confirmation_modal_text: Ova operacija će izbrisati trenutnu konfiguraciju elemenata sadržaja. Jeste li sigurni da želite nastaviti?
+        teaser:
+            header: Pregled
+            title: Naslov pregleda
+            content: Sadržaj pregleda
+            image: Slika pregleda
+            help: Ovo je mali pregled stranice. Koristi se prilikom prikazivanja zbirke stranica.

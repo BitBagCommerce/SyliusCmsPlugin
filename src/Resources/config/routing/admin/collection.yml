@@ -31,6 +31,21 @@ bitbag_sylius_cms_plugin_admin_ajax_collection_by_name_phrase:
                 arguments:
                     phrase: $phrase
 
+bitbag_sylius_cms_plugin_admin_ajax_page_collection_by_name_phrase:
+    path: /ajax/collections/page/search
+    methods: [GET]
+    defaults:
+        _format: json
+        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByNamePartAndType
+                arguments:
+                    phrase: $phrase
+                    type: page
+
 bitbag_sylius_cms_plugin_admin_ajax_collection_by_code:
     path: /ajax/collections/code
     methods: [GET]

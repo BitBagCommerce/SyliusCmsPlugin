@@ -21,6 +21,22 @@
             </a>
         </div>
         <div class="ui segment">
+            <h4 class="ui dividing header header-with-help">
+                {{ 'bitbag_sylius_cms_plugin.ui.teaser.header'|trans }}
+                <span class="help-text">- {{ 'bitbag_sylius_cms_plugin.ui.teaser.help'|trans }}</span>
+            </h4>
+            {{ form_row(form.teaserTitle) }}
+            {{ form_row(form.teaserContent) }}
+            {{ form_row(form.teaserImage) }}
+            {% if page.teaserImage %}
+                <div class="ui image">
+                    <a href="{{ page.teaserImage.path|imagine_filter('sylius_shop_product_original') }}">
+                        <img src="{{ page.teaserImage.path|imagine_filter('sylius_admin_product_small_thumbnail') }}"/>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="ui segment">
             <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.seo'|trans }}</h4>
             {{ translationFormWithSlug(form.translations, '@BitBagSyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
         </div>

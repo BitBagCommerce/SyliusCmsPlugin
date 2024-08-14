@@ -55,7 +55,12 @@ class MediaRepositoryTest extends JsonApiTestCase
         $repository = $this->getRepository();
 
         $phrase = 'media';
-        $media = $repository->findByNamePart($phrase);
+        $types = [
+            MediaInterface::IMAGE_TYPE,
+            MediaInterface::FILE_TYPE,
+            MediaInterface::VIDEO_TYPE,
+        ];
+        $media = $repository->findByNamePart($phrase, $types);
 
         self::assertIsArray($media);
         self::assertCount(3, $media);

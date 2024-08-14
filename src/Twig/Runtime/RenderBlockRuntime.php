@@ -27,7 +27,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
     ) {
     }
 
-    public function renderBlock(string $code, ?string $template = null, ProductInterface|TaxonInterface $context = null): string
+    public function renderBlock(string $code, ?string $template = null, ProductInterface|TaxonInterface|array $context = null): string
     {
         $block = $this->blockResourceResolver->findOrLog($code);
         if (null === $block) {
@@ -49,6 +49,7 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
             $template ?? self::DEFAULT_TEMPLATE,
             [
                 'content' => $this->contentElementRendererStrategy->render($block),
+                'context' => $context,
             ],
         );
     }

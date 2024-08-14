@@ -64,6 +64,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Taksonų sąrašas
                 products_grid: Produktų tinklelis
                 products_grid_by_taxon: Produktų tinklelis pagal taksoną
+                pages_collection: Puslapių kolekcija
+                spacer: Tarpo elementas
+                spacer_height: Tarpo aukštis pikseliais
             heading_type: Antraštės tipas
         taxon: Taksonas
         display_for_products:
@@ -76,3 +79,15 @@ bitbag_sylius_cms_plugin:
             label: Rodyti taksonams
             help: Pasirinkite taksonus, kuriuose šis blokas bus rodomas
         manage_block_display: Bloko rodymo valdymas
+        templates: Šablonai
+        new_template: Naujas šablonas
+        edit_template: Redaguoti šabloną
+        use_page_template: Naudoti puslapio šabloną
+        use_this_template: Naudoti šį šabloną
+        load_template_confirmation_modal_text: Ši operacija ištrins dabartinę turinio elementų konfigūraciją. Ar tikrai norite tęsti?
+        teaser:
+            header: Anonsas
+            title: Anonso pavadinimas
+            content: Anonso turinys
+            image: Anonso nuotrauka
+            help: Tai mažas puslapio peržiūra. Ji naudojama kuriant puslapių kolekciją.

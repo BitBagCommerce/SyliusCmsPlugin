@@ -24,17 +24,27 @@
             <tag name="sylius_fixtures.fixture" />
         </service>
 
+        <service id="bitbag_sylius_cms_plugin.fixture.template" class="BitBag\SyliusCmsPlugin\Fixture\TemplateFixture">
+            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.template" />
+            <tag name="sylius_fixtures.fixture" />
+        </service>
+
         <service id="bitbag_sylius_cms_plugin.fixture.factory.block" class="BitBag\SyliusCmsPlugin\Fixture\Factory\BlockFixtureFactory">
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.locales" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.taxons" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products_in_taxons" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.fixture.factory.page" class="BitBag\SyliusCmsPlugin\Fixture\Factory\PageFixtureFactory">
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page_translation" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
         </service>
@@ -42,6 +52,7 @@
         <service id="bitbag_sylius_cms_plugin.fixture.factory.collection" class="BitBag\SyliusCmsPlugin\Fixture\Factory\CollectionFixtureFactory">
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.fixture.factory.media" class="BitBag\SyliusCmsPlugin\Fixture\Factory\MediaFixtureFactory">
@@ -51,6 +62,11 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.fixture.factory.template" class="BitBag\SyliusCmsPlugin\Fixture\Factory\TemplateFixtureFactory">
+            <argument type="service" id="bitbag_sylius_cms_plugin.factory.template" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.repository.template" />
         </service>
     </services>
 

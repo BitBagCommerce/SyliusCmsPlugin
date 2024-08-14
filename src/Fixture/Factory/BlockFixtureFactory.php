@@ -12,7 +12,12 @@ namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
 
 use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
+use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
@@ -23,6 +28,10 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         private BlockRepositoryInterface $blockRepository,
         private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
+        private LocalesAssignerInterface $localesAssigner,
+        private ProductsAssignerInterface $productsAssigner,
+        private TaxonsAssignerInterface $taxonsAssigner,
+        private ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner,
     ) {
     }
 
@@ -38,13 +47,7 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
                 $this->blockRepository->remove($block);
             }
 
-            if (null !== $fields['number']) {
-                for ($i = 0; $i < $fields['number']; ++$i) {
-                    $this->createBlock(md5(uniqid()), $fields);
-                }
-            } else {
-                $this->createBlock($code, $fields);
-            }
+            $this->createBlock($code, $fields);
         }
     }
 
@@ -53,11 +56,28 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         /** @var BlockInterface $block */
         $block = $this->blockFactory->createNew();
 
+        $block->setCode($code);
+        $block->setName($blockData['name']);
+        $block->setEnabled($blockData['enabled']);
+
         $this->collectionsAssigner->assign($block, $blockData['collections']);
         $this->channelAssigner->assign($block, $blockData['channels']);
+        $this->localesAssigner->assign($block, $blockData['locales']);
+        $this->productsAssigner->assign($block, $blockData['products']);
+        $this->taxonsAssigner->assign($block, $blockData['taxons']);
+        $this->productsInTaxonsAssigner->assign($block, $blockData['products_in_taxons']);
 
-        $block->setCode($code);
-        $block->setEnabled($blockData['enabled']);
+        foreach ($blockData['content_elements'] as $data) {
+            $data['data'] = array_filter($data['data'], static function ($value) {
+                return !empty($value);
+            });
+
+            $contentConfiguration = new ContentConfiguration();
+            $contentConfiguration->setType($data['type']);
+            $contentConfiguration->setConfiguration($data['data']);
+            $contentConfiguration->setBlock($block);
+            $block->addContentElement($contentConfiguration);
+        }
 
         $this->blockRepository->add($block);
     }

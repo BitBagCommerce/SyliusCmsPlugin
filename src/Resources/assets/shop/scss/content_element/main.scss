@@ -1,0 +1,5 @@
+@import "pages_collection";
+
+[class^="cms_content_element__"]:not(:last-child) {
+    margin-bottom: 1rem;
+}

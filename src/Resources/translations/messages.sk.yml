@@ -65,6 +65,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Zoznam taxónov
                 products_grid: Produkty v mriežke
                 products_grid_by_taxon: Produkty v mriežke podľa taxónu
+                pages_collection: Kolekcia strán
+                spacer: Medzera
+                spacer_height: Výška medzery v pixeloch
             heading_type: Typ nadpisu
         taxon: Taxón
         display_for_products:
@@ -77,3 +80,15 @@ bitbag_sylius_cms_plugin:
             label: Zobrazenie pre taxóny
             help: Vyberte taxóny, v ktorých sa tento blok zobrazí
         manage_block_display: Spravovať zobrazenie bloku
+        templates: Šablóny
+        new_template: Nová šablóna
+        edit_template: Upraviť šablónu
+        use_page_template: Použiť šablónu stránky
+        use_this_template: Použiť túto šablónu
+        load_template_confirmation_modal_text: Táto operácia vymaže aktuálnu konfiguráciu prvkov obsahu. Ste si istí, že chcete pokračovať?
+        teaser:
+            header: Ukážka
+            title: Názov ukážky
+            content: Obsah ukážky
+            image: Obrázok ukážky
+            help: Toto je malý náhľad stránky. Používa sa pri vykresľovaní zbierky stránok.

@@ -12,6 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
+use BitBag\SyliusCmsPlugin\Entity\Trait\PagesCollectionTrait;
 use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -24,6 +25,7 @@ class Media implements MediaInterface
     use ToggleableTrait;
     use CollectibleTrait;
     use ChannelsAwareTrait;
+    use PagesCollectionTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }

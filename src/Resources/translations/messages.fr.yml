@@ -65,6 +65,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Liste de taxons
                 products_grid: Produits en grille
                 products_grid_by_taxon: Produits en grille par taxon
+                pages_collection: Collection de pages
+                spacer: Espacement
+                spacer_height: Hauteur de l'espacement en pixels
             heading_type: Type d'en-tête
         taxon: Taxon
         display_for_products:
@@ -77,3 +80,15 @@ bitbag_sylius_cms_plugin:
             label: Afficher pour les taxons
             help: Ce bloc sera affiché pour les taxons sélectionnés
         manage_block_display: Gérer l'affichage du bloc
+        templates: Modèles
+        new_template: Nouveau modèle
+        edit_template: Modifier le modèle
+        use_page_template: Utiliser le modèle de page
+        use_this_template: Utiliser ce modèle
+        load_template_confirmation_modal_text: Cette opération effacera la configuration actuelle des éléments de contenu. Êtes-vous sûr de vouloir continuer ?
+        teaser:
+            header: Aperçu
+            title: Titre de l'aperçu
+            content: Contenu de l'aperçu
+            image: Image de l'aperçu
+            help: Il s'agit d'un petit aperçu de la page. Il est utilisé lors du rendu d'une collection de pages.

@@ -35,6 +35,20 @@ final class CollectionRepositoryTest extends JsonApiTestCase
         self::assertCount(3, $collections);
     }
 
+    public function test_it_finds_collection_by_name_part_and_type(): void
+    {
+        $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_name.yml');
+
+        $repository = $this->getRepository();
+
+        $phrase = 'collection';
+        $type = 'page';
+        $collections = $repository->findByNamePartAndType($phrase, $type);
+
+        self::assertIsArray($collections);
+        self::assertCount(1, $collections);
+    }
+
     public function test_it_finds_one_by_code(): void
     {
         $this->loadFixturesFromFile('CollectionRepositoryTest/test_it_finds_collection_by_code.yml');

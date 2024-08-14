@@ -3,49 +3,15 @@
 {% block content %}
     <div class="top one">
         <div class="ui center aligned segment stackable grid cms-logo">
-            <a href="https://github.com/BitBagCommerce/SyliusCmsPlugin">
-                <img class="ui image cms-logo"
-                     src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusCmsPlugin.png"
-                     alt="SyliusCmsPlugin"/>
-            </a>
+            {{ bitbag_cms_render_media('homepage_logo') }}
         </div>
-
-        <div class="ui stackable two column grid">
-            <div class="column">
-                <div class="ui fluid segment column">
-                    {{ bitbag_cms_render_media('homepage_header_image') }}
-                </div>
-            </div>
-            <div class="column">
-                <div class="ui fluid segment">
-                    {{ bitbag_cms_render_block('homepage_intro') }}
-                </div>
-                <div class="ui fluid segment">
-                    {{ bitbag_cms_render_media('homepage_pdf') }}
-                </div>
-            </div>
-        </div>
-        <div class="ui stackable two column grid">
-            <div class="column">
-                <div class="ui fluid segment">
-                    {{ bitbag_cms_render_media('homepage_video') }}
-                </div>
-            </div>
-            <div class="column">
-                <div class="ui fluid segment">
-                    {{ bitbag_cms_render_media('media_with_parameters', "examples/media_custom_template.html.twig")}}
-                </div>
-            </div>
-        </div>
+        {{ bitbag_cms_render_block('homepage_textarea') }}
+        {{ bitbag_cms_render_block('homepage_products_carousel') }}
+        {{ bitbag_cms_render_block('homepage_products_grid') }}
+        {{ bitbag_cms_render_block('homepage_taxons_list') }}
+        {{ bitbag_cms_render_block('homepage_products_carousel_by_taxon') }}
+        {{ bitbag_cms_render_block('homepage_products_grid_by_taxon') }}
     </div>
-    <div class="ui stackable one column grid">
-        <div class="column intro">
-            {{ bitbag_cms_render_block('homepage_products_info') }}
-        </div>
-    </div>
-
-    {{ render(url('sylius_shop_partial_product_index_latest', {'count': 4, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
-
     <div class="ui stackable one column grid">
         <div class="column intro promo">
             <div class="ui info message">
