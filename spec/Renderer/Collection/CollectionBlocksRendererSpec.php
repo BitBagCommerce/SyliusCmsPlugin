@@ -39,9 +39,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
         CollectionInterface $collection,
         BlockInterface $block1,
-        BlockInterface $block2
-    ): void
-    {
+        BlockInterface $block2,
+    ): void {
         $blocks = new ArrayCollection([$block1->getWrappedObject(), $block2->getWrappedObject()]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -55,9 +54,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
         CollectionInterface $collection,
         BlockInterface $block1,
-        BlockInterface $block2
-    ): void
-    {
+        BlockInterface $block2,
+    ): void {
         $blocks = new ArrayCollection([$block1->getWrappedObject(), $block2->getWrappedObject()]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -69,9 +67,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
 
     public function it_supports_collections_with_blocks(
         CollectionInterface $collection,
-        BlockInterface $block
-    ): void
-    {
+        BlockInterface $block,
+    ): void {
         $blocks = new ArrayCollection([$block]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -79,9 +76,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
     }
 
     public function it_does_not_support_empty_collections(
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $collection->getBlocks()->willReturn(new ArrayCollection());
 
         $this->supports($collection)->shouldReturn(false);
@@ -89,9 +85,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
 
     public function it_throws_exception_when_blocks_are_null(
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $collection->getBlocks()->willReturn(null);
 
         $this->shouldThrow(\InvalidArgumentException::class)

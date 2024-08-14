@@ -16,6 +16,6 @@ final class CsvReader implements ReaderInterface
 {
     public function read(string $filePath): \Iterator
     {
-        return Reader::createFromPath($filePath, 'r')->setHeaderOffset(0)->getIterator();
+        return Reader::createFromPath($filePath)->setHeaderOffset(0)->getIterator();
     }
 }

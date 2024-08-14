@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;

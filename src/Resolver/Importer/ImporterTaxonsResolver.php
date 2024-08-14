@@ -8,18 +8,18 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
+use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
+use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
 
-final class ImporterProductsInTaxonsResolver implements ImporterProductsInTaxonsResolverInterface
+final class ImporterTaxonsResolver implements ImporterTaxonsResolverInterface
 {
-    public function __construct(private ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner)
+    public function __construct(private TaxonsAssignerInterface $taxonsAssigner)
     {
     }
 
-    public function resolve(ProductsInTaxonsAwareInterface $productsInTaxonsAware, ?string $taxonsRow): void
+    public function resolve(TaxonAwareInterface $taxonsAware, ?string $taxonsRow): void
     {
         if (null === $taxonsRow) {
             return;
@@ -30,6 +30,6 @@ final class ImporterProductsInTaxonsResolver implements ImporterProductsInTaxons
             return trim($element);
         }, $taxonsCodes);
 
-        $this->productsInTaxonsAssigner->assign($productsInTaxonsAware, $taxonsCodes);
+        $this->taxonsAssigner->assign($taxonsAware, $taxonsCodes);
     }
 }

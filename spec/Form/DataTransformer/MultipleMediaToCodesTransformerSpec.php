@@ -43,9 +43,8 @@ final class MultipleMediaToCodesTransformerSpec extends ObjectBehavior
     public function it_transforms_non_empty_array_to_collection(
         MediaRepositoryInterface $mediaRepository,
         MediaInterface $media1,
-        MediaInterface $media2
-    ): void
-    {
+        MediaInterface $media2,
+    ): void {
         $mediaCodes = ['code1', 'code2'];
         $mediaRepository->findBy(['code' => $mediaCodes])->willReturn([$media1, $media2]);
 
@@ -63,9 +62,8 @@ final class MultipleMediaToCodesTransformerSpec extends ObjectBehavior
 
     public function it_reverse_transforms_collection_to_array_of_media_codes(
         MediaInterface $media1,
-        MediaInterface $media2
-    ): void
-    {
+        MediaInterface $media2,
+    ): void {
         $media1->getCode()->willReturn('code1');
         $media2->getCode()->willReturn('code2');
 

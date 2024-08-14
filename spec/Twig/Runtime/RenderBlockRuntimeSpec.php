@@ -27,7 +27,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function let(
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        ContentElementRendererStrategyInterface $contentElementRendererStrategy
+        ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ): void {
         $this->beConstructedWith($blockResourceResolver, $templatingEngine, $contentElementRendererStrategy);
     }
@@ -52,7 +52,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_returns_empty_string_when_block_not_displayable_for_taxon(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        TaxonInterface $taxon
+        TaxonInterface $taxon,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $block->canBeDisplayedForTaxon($taxon)->willReturn(false);
@@ -63,7 +63,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_returns_empty_string_when_block_not_displayable_for_product(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        ProductInterface $product
+        ProductInterface $product,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $block->canBeDisplayedForProduct($product)->willReturn(false);
@@ -76,7 +76,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        BlockInterface $block
+        BlockInterface $block,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $contentElementRendererStrategy->render($block)->willReturn('rendered content');
@@ -93,7 +93,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        BlockInterface $block
+        BlockInterface $block,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $contentElementRendererStrategy->render($block)->willReturn('rendered content');

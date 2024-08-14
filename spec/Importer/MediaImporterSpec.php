@@ -12,8 +12,7 @@ namespace spec\BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -27,7 +26,7 @@ final class MediaImporterSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ValidatorInterface $validator,
-        MediaRepositoryInterface $mediaRepository
+        MediaRepositoryInterface $mediaRepository,
     ) {
         $this->beConstructedWith(
             $mediaResourceResolver,
@@ -50,9 +49,8 @@ final class MediaImporterSpec extends ObjectBehavior
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ValidatorInterface $validator,
         MediaRepositoryInterface $mediaRepository,
-        MediaInterface $media
-    )
-    {
+        MediaInterface $media,
+    ) {
         $row = ['name_pl' => 'name', 'content_pl' => 'content', 'alt_pl' => 'alt', 'code' => 'media_code'];
 
         $mediaResourceResolver->getResource('media_code')->willReturn($media);

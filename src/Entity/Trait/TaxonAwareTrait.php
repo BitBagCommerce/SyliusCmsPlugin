@@ -16,7 +16,6 @@ use Sylius\Component\Core\Model\TaxonInterface;
 
 trait TaxonAwareTrait
 {
-    /** @var Collection|TaxonInterface[] */
     protected Collection $taxons;
 
     public function initializeTaxonCollection(): void

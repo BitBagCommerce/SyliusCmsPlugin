@@ -21,7 +21,7 @@ final class GenericProviderSpec extends ObjectBehavior
 {
     public function let(
         MediaUploaderInterface $uploader,
-        Environment $twigEngine
+        Environment $twigEngine,
     ) {
         $this->beConstructedWith($uploader, $twigEngine, '@Template', '/media/');
     }

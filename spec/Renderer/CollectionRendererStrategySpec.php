@@ -36,9 +36,8 @@ final class CollectionRendererStrategySpec extends ObjectBehavior
     public function it_renders_collection_using_supported_renderer(
         CollectionRendererInterface $renderer1,
         CollectionRendererInterface $renderer2,
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $renderer1->supports($collection)->willReturn(false);
         $renderer2->supports($collection)->willReturn(true);
         $renderer2->render($collection, null)->willReturn('rendered content');
@@ -49,9 +48,8 @@ final class CollectionRendererStrategySpec extends ObjectBehavior
     public function it_renders_collection_with_count_to_render(
         CollectionRendererInterface $renderer1,
         CollectionRendererInterface $renderer2,
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $renderer1->supports($collection)->willReturn(false);
         $renderer2->supports($collection)->willReturn(true);
         $renderer2->render($collection, 5)->willReturn('rendered content with count');
@@ -62,9 +60,8 @@ final class CollectionRendererStrategySpec extends ObjectBehavior
     public function it_returns_empty_string_when_no_renderer_supports_collection(
         CollectionRendererInterface $renderer1,
         CollectionRendererInterface $renderer2,
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $renderer1->supports($collection)->willReturn(false);
         $renderer2->supports($collection)->willReturn(false);
 

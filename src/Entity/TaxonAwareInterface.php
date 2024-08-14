@@ -17,9 +17,6 @@ interface TaxonAwareInterface
 {
     public function initializeTaxonCollection(): void;
 
-    /**
-     * @return Collection|TaxonInterface[]
-     */
     public function getTaxons(): Collection;
 
     public function hasTaxon(TaxonInterface $taxon): bool;

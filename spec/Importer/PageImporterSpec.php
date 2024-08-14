@@ -10,17 +10,13 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Downloader\ImageDownloaderInterface;
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -32,7 +28,7 @@ final class PageImporterSpec extends ObjectBehavior
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
         ValidatorInterface $validator,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
     ) {
         $this->beConstructedWith(
             $pageResourceResolver,
@@ -58,8 +54,7 @@ final class PageImporterSpec extends ObjectBehavior
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager,
         PageInterface $page,
-    )
-    {
+    ) {
         $row = [
             'code' => 'page_code',
             'name' => 'page_name',

@@ -13,7 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Importer;
 final class ImporterChain implements ImporterChainInterface
 {
     /** @var ImporterInterface[] */
-    private $importers = [];
+    private array $importers = [];
 
     public function addImporter(ImporterInterface $importer): void
     {

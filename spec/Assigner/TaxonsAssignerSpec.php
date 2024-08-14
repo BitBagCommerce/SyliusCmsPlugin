@@ -32,7 +32,7 @@ final class TaxonsAssignerSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $mugsTaxon,
         TaxonInterface $stickersTaxon,
-        TaxonAwareInterface $taxonsAware
+        TaxonAwareInterface $taxonsAware,
     ): void {
         $taxonRepository->findOneBy(['code' => 'mugs'])->willReturn($mugsTaxon);
         $taxonRepository->findOneBy(['code' => 'stickers'])->willReturn($stickersTaxon);

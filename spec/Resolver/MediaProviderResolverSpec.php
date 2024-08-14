@@ -34,7 +34,7 @@ final class MediaProviderResolverSpec extends ObjectBehavior
     public function it_resolves_provider_for_media(
         ServiceRegistryInterface $providerRegistry,
         MediaInterface $media,
-        ProviderInterface $provider
+        ProviderInterface $provider,
     ) {
         $mediaType = 'image';
         $media->getType()->willReturn($mediaType);
@@ -45,7 +45,7 @@ final class MediaProviderResolverSpec extends ObjectBehavior
     }
 
     public function it_throws_exception_when_media_type_is_null(
-        MediaInterface $media
+        MediaInterface $media,
     ) {
         $media->getType()->willReturn(null);
 
