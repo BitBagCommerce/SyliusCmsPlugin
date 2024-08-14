@@ -79,7 +79,6 @@ final class BlockController extends ResourceController
         return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
             'resource' => $block,
             $this->metadata->getName() => $block,
-            'blockTemplate' => self::BLOCK_TEMPLATE,
         ]);
     }
 }
