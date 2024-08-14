@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterProductsInTaxonsResolver;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver;
 use PhpSpec\ObjectBehavior;
 
 final class ImporterProductsInTaxonsResolverSpec extends ObjectBehavior
@@ -29,7 +29,7 @@ final class ImporterProductsInTaxonsResolverSpec extends ObjectBehavior
 
     public function it_resolves_taxons_for_products_in_taxons_aware_entity(
         ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner,
-        ProductsInTaxonsAwareInterface $productsInTaxonsAware
+        ProductsInTaxonsAwareInterface $productsInTaxonsAware,
     ) {
         $taxonsRow = 'taxon_code_1, taxon_code_2';
         $productsInTaxonsAssigner->assign($productsInTaxonsAware, ['taxon_code_1', 'taxon_code_2'])->shouldBeCalled();
@@ -39,7 +39,7 @@ final class ImporterProductsInTaxonsResolverSpec extends ObjectBehavior
 
     public function it_does_not_assign_taxons_when_taxons_row_is_null(
         ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner,
-        ProductsInTaxonsAwareInterface $productsInTaxonsAware
+        ProductsInTaxonsAwareInterface $productsInTaxonsAware,
     ) {
         $productsInTaxonsAssigner->assign($productsInTaxonsAware, [])->shouldNotBeCalled();
 

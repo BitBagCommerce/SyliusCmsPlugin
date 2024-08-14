@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\Importer;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
 use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;

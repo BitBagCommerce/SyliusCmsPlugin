@@ -106,7 +106,7 @@ final class ResourceDeleteSubscriber implements EventSubscriberInterface
 
     private function isProtectedRoute(string $route): bool
     {
-        return 0 === strpos($route, 'bitbag');
+        return str_starts_with($route, 'bitbag');
     }
 
     private function isAdminSection(array $syliusParameters): bool

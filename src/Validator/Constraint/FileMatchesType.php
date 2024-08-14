@@ -15,14 +15,11 @@ use Symfony\Component\Validator\Constraint;
 
 final class FileMatchesType extends Constraint
 {
-    /** @var string */
-    public $messageImage = 'This file cannot be uploaded as an image';
+    public string $messageImage = 'This file cannot be uploaded as an image';
 
-    /** @var string */
-    public $messageVideo = 'This file cannot be uploaded as an video';
+    public string $messageVideo = 'This file cannot be uploaded as an video';
 
-    /** @var string */
-    public $field;
+    public string $field;
 
     public function getTargets(): string
     {

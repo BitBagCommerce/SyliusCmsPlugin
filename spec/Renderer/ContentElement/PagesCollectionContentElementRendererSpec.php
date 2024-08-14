@@ -12,7 +12,6 @@ namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
 
 use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
 use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use BitBag\SyliusCmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer;
@@ -55,10 +54,9 @@ final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
         CollectionRepositoryInterface $collectionRepository,
         ContentConfigurationInterface $contentConfiguration,
         CollectionInterface $collection,
-    ): void
-    {
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'pages_collection' => 'collection_code'
+            'pages_collection' => 'collection_code',
         ]);
 
         $collectionRepository->findOneBy(['code' => 'collection_code'])->willReturn($collection);
@@ -68,7 +66,7 @@ final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
 
         $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
-            'collection' => $pagesCollection
+            'collection' => $pagesCollection,
         ])->willReturn('rendered_output');
 
         $this->render($contentConfiguration)->shouldReturn('rendered_output');

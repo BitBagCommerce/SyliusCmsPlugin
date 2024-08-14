@@ -57,11 +57,10 @@ final class ProductsGridByTaxonContentElementRendererSpec extends ObjectBehavior
         ContentConfigurationInterface $contentConfiguration,
         TaxonInterface $taxon,
         Product $product1,
-        Product $product2
-    ): void
-    {
+        Product $product2,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'products_grid_by_taxon' => 'taxon_code'
+            'products_grid_by_taxon' => 'taxon_code',
         ]);
 
         $taxonRepository->findOneBy(['code' => 'taxon_code'])->willReturn($taxon);

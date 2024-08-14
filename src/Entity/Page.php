@@ -149,9 +149,6 @@ class Page implements PageInterface
         $this->publishAt = $publishAt;
     }
 
-    /**
-     * @return PageTranslationInterface|TranslationInterface
-     */
     protected function getPageTranslation(): TranslationInterface
     {
         return $this->getTranslation();

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
@@ -26,7 +26,7 @@ final class ImporterCollectionsResolver implements ImporterCollectionsResolverIn
         }
 
         $collectionCodes = explode(',', $collectionsRow);
-        $collectionCodes = array_map(function (string $element): string {
+        $collectionCodes = array_map(static function (string $element): string {
             return trim($element);
         }, $collectionCodes);
 

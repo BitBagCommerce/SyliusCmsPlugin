@@ -209,9 +209,6 @@ class Media implements MediaInterface
         $this->saveWithOriginalName = $saveWithOriginalName;
     }
 
-    /**
-     * @return MediaTranslationInterface|TranslationInterface
-     */
     protected function getMediaTranslation(): TranslationInterface
     {
         return $this->getTranslation();

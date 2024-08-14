@@ -26,7 +26,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
 {
     public function let(
         PageRepositoryInterface $pageRepository,
-        RouterInterface $router
+        RouterInterface $router,
     ): void {
         $this->beConstructedWith($pageRepository, $router, 'defaultTemplate');
     }
@@ -63,7 +63,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
     public function it_gets_link_for_code(
         RouterInterface $router,
         PageRepositoryInterface $pageRepository,
-        PageInterface $page
+        PageInterface $page,
     ): void {
         $code = 'CODE';
         $slug = 'SLUG';
@@ -78,7 +78,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
     }
 
     public function it_returns_not_found_message_when_getting_link_for_code(
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
     ): void {
         $localeContext->getLocaleCode()->willReturn('en_US');
 

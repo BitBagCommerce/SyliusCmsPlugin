@@ -37,7 +37,7 @@ final class ResourceResolver implements ResourceResolverInterface
         $callback = [$this->factory, $factoryMethod];
 
         if (is_callable($callback) && method_exists($this->factory, $factoryMethod)) {
-            return call_user_func($callback);
+            return $callback();
         }
 
         throw new BadFunctionCallException('Provided method' . $factoryMethod . ' is not callable');

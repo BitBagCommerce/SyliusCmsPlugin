@@ -28,11 +28,9 @@ final class MediaController extends ResourceController
     use ResourceDataProcessingTrait;
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
-    /** @var MediaResourceResolverInterface */
-    private $mediaResourceResolver;
+    private MediaResourceResolverInterface $mediaResourceResolver;
 
-    /** @var MediaProviderResolverInterface */
-    private $mediaProviderResolver;
+    private MediaProviderResolverInterface $mediaProviderResolver;
 
     public const FILTER = 'sylius_admin_product_original';
 

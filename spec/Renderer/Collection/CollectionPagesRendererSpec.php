@@ -39,9 +39,8 @@ final class CollectionPagesRendererSpec extends ObjectBehavior
         PageLinkRendererInterface $pageLinkRenderer,
         CollectionInterface $collection,
         PageInterface $page1,
-        PageInterface $page2
-    ): void
-    {
+        PageInterface $page2,
+    ): void {
         $page1->getId()->willReturn(2);
         $page2->getId()->willReturn(1);
 
@@ -57,9 +56,8 @@ final class CollectionPagesRendererSpec extends ObjectBehavior
         PageLinkRendererInterface $pageLinkRenderer,
         CollectionInterface $collection,
         PageInterface $page1,
-        PageInterface $page2
-    ): void
-    {
+        PageInterface $page2,
+    ): void {
         $page1->getId()->willReturn(2);
         $page2->getId()->willReturn(1);
 
@@ -73,18 +71,16 @@ final class CollectionPagesRendererSpec extends ObjectBehavior
 
     public function it_supports_collections_with_pages(
         CollectionInterface $collection,
-        PageInterface $page
-    ): void
-    {
+        PageInterface $page,
+    ): void {
         $collection->getPages()->willReturn(new ArrayCollection([$page]));
 
         $this->supports($collection)->shouldReturn(true);
     }
 
     public function it_does_not_support_empty_collections(
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $collection->getPages()->willReturn(new ArrayCollection());
 
         $this->supports($collection)->shouldReturn(false);

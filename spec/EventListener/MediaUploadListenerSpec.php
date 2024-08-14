@@ -33,7 +33,7 @@ final class MediaUploadListenerSpec extends ObjectBehavior
     public function it_does_not_upload_if_not_media_instance(
         ResourceControllerEvent $event,
         MediaInterface $media,
-        MediaProviderResolverInterface $mediaProviderResolver
+        MediaProviderResolverInterface $mediaProviderResolver,
     ): void {
         $event->getSubject()->willReturn(Argument::any());
 
@@ -44,7 +44,7 @@ final class MediaUploadListenerSpec extends ObjectBehavior
         ResourceControllerEvent $event,
         MediaInterface $media,
         MediaProviderResolverInterface $mediaProviderResolver,
-        ProviderInterface $provider
+        ProviderInterface $provider,
     ): void {
         $event->getSubject()->willReturn($media);
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);

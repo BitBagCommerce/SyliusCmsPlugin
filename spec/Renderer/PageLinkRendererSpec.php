@@ -21,7 +21,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
 {
     public function let(
         UrlGeneratorInterface $urlGenerator,
-        Environment $twig
+        Environment $twig,
     ): void {
         $this->beConstructedWith($urlGenerator, $twig);
     }
@@ -39,7 +39,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
     public function it_renders_page_link_with_default_template(
         UrlGeneratorInterface $urlGenerator,
         Environment $twig,
-        PageInterface $page
+        PageInterface $page,
     ): void {
         $page->getSlug()->willReturn('page-slug');
         $page->getName()->willReturn('Page Name');
@@ -47,7 +47,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $urlGenerator->generate(
             'bitbag_sylius_cms_plugin_shop_page_show',
             ['slug' => 'page-slug'],
-            UrlGeneratorInterface::ABSOLUTE_URL
+            UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');
 
         $twig->render(
@@ -55,7 +55,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
             [
                 'link' => 'http://example.com/page-slug',
                 'name' => 'Page Name',
-            ]
+            ],
         )->willReturn('<a href="http://example.com/page-slug">Page Name</a>');
 
         $this->render($page)->shouldReturn('<a href="http://example.com/page-slug">Page Name</a>');
@@ -64,7 +64,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
     public function it_renders_page_link_with_custom_template(
         UrlGeneratorInterface $urlGenerator,
         Environment $twig,
-        PageInterface $page
+        PageInterface $page,
     ): void {
         $page->getSlug()->willReturn('page-slug');
         $page->getName()->willReturn('Page Name');
@@ -72,7 +72,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $urlGenerator->generate(
             'bitbag_sylius_cms_plugin_shop_page_show',
             ['slug' => 'page-slug'],
-            UrlGeneratorInterface::ABSOLUTE_URL
+            UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');
 
         $twig->render(
@@ -80,7 +80,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
             [
                 'link' => 'http://example.com/page-slug',
                 'name' => 'Page Name',
-            ]
+            ],
         )->willReturn('<a href="http://example.com/page-slug">Page Name</a>');
 
         $this->render($page, 'custom_template.html.twig')->shouldReturn('<a href="http://example.com/page-slug">Page Name</a>');
