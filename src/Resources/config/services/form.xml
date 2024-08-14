@@ -94,57 +94,57 @@
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.multiple_media%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.heading" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.heading" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.heading%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.taxons_list%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.pages_collection%" />
             <tag name="form.type" />
         </service>
 
-        <service  id="bitbag_sylius_cms_plugin.form.type.content_element.spacer" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.spacer" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.spacer%" />
             <tag name="form.type" />
         </service>

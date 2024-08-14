@@ -51,6 +51,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Lista taksonomii
                 products_grid: Siatka produktów
                 products_grid_by_taxon: Siatka produktów według taksonomii
+                pages_collection: Kolekcja stron
+                spacer: Odstęp
+                spacer_height: Wysokość odstępu w pikselach
             heading_type: Typ nagłówka
         taxon: Taksonomia
         display_for_products:
@@ -63,3 +66,15 @@ bitbag_sylius_cms_plugin:
             label: Wyświetlaj dla taksonomii
             help: Wybież taksonomie, dla których ten blok będzie wyświetlany
         manage_block_display: Zarządzaj wyświetlaniem bloku
+        templates: Szablony
+        new_template: Nowy szablon
+        edit_template: Edytuj szablon
+        use_page_template: Użyj szablonu strony
+        use_this_template: Użyj tego szablonu
+        load_template_confirmation_modal_text: Ta operacja spowoduje usunięcie bieżącej konfiguracji elementów zawartości. Czy na pewno chcesz kontynuować?
+        teaser:
+            header: Zapowiedź
+            title: Tytuł zapowiedzi
+            content: Treść zapowiedzi
+            image: Obrazek zapowiedzi
+            help: To mały podgląd strony. Używa się go podczas renderowania kolekcji stron.

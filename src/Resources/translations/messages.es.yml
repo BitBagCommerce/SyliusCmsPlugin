@@ -47,6 +47,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Lista de taxones
                 products_grid: Productos en cuadrícula
                 products_grid_by_taxon: Productos en cuadrícula por taxón
+                pages_collection: Colección de páginas
+                spacer: Separador
+                spacer_height: Altura del separador en píxeles
             heading_type: Tipo de encabezado
         taxon: Taxón
         display_for_products:
@@ -59,3 +62,15 @@ bitbag_sylius_cms_plugin:
             label: Mostrar para taxones
             help: Seleccione taxones en los que se mostrará este bloque
         manage_block_display: Administrar visualización de bloques
+        templates: Plantillas
+        new_template: Nueva plantilla
+        edit_template: Editar plantilla
+        use_page_template: Usar plantilla de página
+        use_this_template: Usar esta plantilla
+        load_template_confirmation_modal_text: Esta operación borrará la configuración actual de los elementos de contenido. ¿Está seguro de que desea continuar?
+        teaser:
+            header: Avance
+            title: Título del avance
+            content: Contenido del avance
+            image: Imagen del avance
+            help: Es una pequeña vista previa de la página. Se utiliza al renderizar una colección de páginas.

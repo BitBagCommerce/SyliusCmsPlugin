@@ -39,14 +39,7 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="pages" target-entity="BitBag\SyliusCmsPlugin\Entity\PageInterface" mapped-by="teaserImage" orphan-removal="true">
-            <cascade>
-                <cascade-all />
-            </cascade>
-            <order-by>
-                <order-by-field name="id" />
-            </order-by>
-        </one-to-many>
+        <one-to-many field="pages" target-entity="BitBag\SyliusCmsPlugin\Entity\PageInterface" mapped-by="teaserImage"/>
 
     </mapped-superclass>
 </doctrine-mapping>

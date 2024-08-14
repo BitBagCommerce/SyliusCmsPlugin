@@ -68,6 +68,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Taxon-Liste
                 products_grid: Produkte im Raster
                 products_grid_by_taxon: Produkte im Raster nach Taxon
+                pages_collection: Seitenkollektion
+                spacer: Abstandshalter
+                spacer_height: Höhe des Abstandshalters in Pixeln
             heading_type: Überschrift-Typ
         taxon: Taxon
         display_for_products:
@@ -80,3 +83,15 @@ bitbag_sylius_cms_plugin:
             label: Display für Taxons
             help: Wählen Sie Taxonen aus, in denen dieser Block angezeigt wird
         manage_block_display: Blockanzeige verwalten
+        templates: Vorlagen
+        new_template: Neue Vorlage
+        edit_template: Vorlage bearbeiten
+        use_page_template: Seitenschablone verwenden
+        use_this_template: Diese Vorlage verwenden
+        load_template_confirmation_modal_text: Dieser Vorgang wird die aktuelle Konfiguration der Inhaltselemente löschen. Sind Sie sicher, dass Sie fortfahren möchten?
+        teaser:
+            header: Vorschau
+            title: Vorschau-Titel
+            content: Vorschau-Inhalt
+            image: Vorschau-Bild
+            help: Es ist eine kleine Vorschau der Seite. Sie wird beim Rendern einer Sammlung von Seiten verwendet.

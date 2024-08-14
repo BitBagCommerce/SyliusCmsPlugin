@@ -64,6 +64,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Список таксонов
                 products_grid: Продукты в сетке
                 products_grid_by_taxon: Продукты в сетке по таксону
+                pages_collection: Коллекция страниц
+                spacer: Пробел
+                spacer_height: Высота пробела в пикселях
             heading_type: Тип заголовка
         taxon: Таксон
         display_for_products:
@@ -76,3 +79,15 @@ bitbag_sylius_cms_plugin:
             label: Отображать для таксонов
             help: Выберите таксоны, в которых будет отображаться этот блок
         manage_block_display: Управление отображением блоков
+        templates: Шаблоны
+        new_template: Новый шаблон
+        edit_template: Редактировать шаблон
+        use_page_template: Использовать шаблон страницы
+        use_this_template: Использовать этот шаблон
+        load_template_confirmation_modal_text: Эта операция удалит текущую конфигурацию элементов контента. Вы уверены, что хотите продолжить?
+        teaser:
+            header: Анонс
+            title: Заголовок анонса
+            content: Содержание анонса
+            image: Изображение анонса
+            help: Это небольшой предварительный просмотр страницы. Он используется при отображении коллекции страниц.

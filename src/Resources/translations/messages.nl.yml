@@ -46,6 +46,9 @@ bitbag_sylius_cms_plugin:
                 taxons_list: Taxon lijst
                 products_grid: Producten grid
                 products_grid_by_taxon: Producten grid per taxon
+                pages_collection: Pagina collectie
+                spacer: Afstandhouder
+                spacer_height: Hoogte van de afstandhouder in pixels
             heading_type: Kop type
         taxon: Taxon
         display_for_products:
@@ -58,3 +61,15 @@ bitbag_sylius_cms_plugin:
             label: Display voor taxons
             help: Selecteer taxonen waarin dit blok wordt weergegeven
         manage_block_display: Beheer blok weergave
+        templates: Sjablonen
+        new_template: Nieuwe sjabloon
+        edit_template: Sjabloon bewerken
+        use_page_template: Sjabloon voor pagina gebruiken
+        use_this_template: Deze sjabloon gebruiken
+        load_template_confirmation_modal_text: Deze actie zal de huidige configuratie van inhoudselementen wissen. Weet je zeker dat je verder wilt gaan?
+        teaser:
+            header: Voorbeeld
+            title: Voorbeeldtitel
+            content: Voorbeeldinhoud
+            image: Voorbeeldafbeelding
+            help: Dit is een kleine preview van de pagina. Het wordt gebruikt bij het renderen van een verzameling pagina's.

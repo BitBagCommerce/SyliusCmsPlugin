@@ -54,7 +54,7 @@
         <field name="teaserContent" column="teaser_content" type="text" nullable="true"/>
 
         <many-to-one field="teaserImage" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface" inversed-by="pages">
-            <join-column name="teaser_image_id" referenced-column-name="id" nullable="true" />
+            <join-column name="teaser_image_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
         </many-to-one>
 
     </mapped-superclass>
