@@ -42,28 +42,28 @@ export class HandlePreview {
     }
 
     _$_CKEDITOR_UPDATE_INSTANCES() {
-        [...CKEDITOR.instances].forEach((instance) => instance.updateElement());
+        Object.values(CKEDITOR.instances).forEach((instance) => instance.updateElement());
     }
 
     _resourcePreview() {
         this.button.addEventListener('click', (e) => {
             e.preventDefault();
 
-            this._$_CKEDITOR_UPDATE_INSTANCES;
+            this._$_CKEDITOR_UPDATE_INSTANCES();
             this._createPreview();
             this._$_CKEDITOR_MODAL_SHOW();
         });
         document.querySelector(`[${this.channelSelector}]`).addEventListener('change', (e) => {
             e.preventDefault();
 
-            this._$_CKEDITOR_UPDATE_INSTANCES;
+            this._$_CKEDITOR_UPDATE_INSTANCES();
             this._createPreview();
             this._$_CKEDITOR_MODAL_SHOW();
         });
         document.querySelector(`[${this.localeSelector}]`).addEventListener('change', (e) => {
             e.preventDefault();
 
-            this._$_CKEDITOR_UPDATE_INSTANCES;
+            this._$_CKEDITOR_UPDATE_INSTANCES();
             this._createPreview();
             this._$_CKEDITOR_MODAL_SHOW();
         });
