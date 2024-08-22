@@ -5,17 +5,17 @@ Content elements are used to create a page or block content that will be display
 ## General usage
 
 Currently, there are 11 predefined content elements available:
-- **Textarea** - a simple textarea with WYSIWYG editor
-- **Single media** - a single media from the media library
-- **Multiple media** - multiple media from the media library
-- **Heading** - a simple heading from h1 to h6
-- **Products carousel** - a carousel with products
-- **Products carousel by Taxon** - a carousel with products from a specific taxon
-- **Products grid** - a grid with products
-- **Products grid by Taxon** - a grid with products from a specific taxon
-- **Taxons list** - a list of taxons
-- **Pages collection** - a collection of pages
-- **Spacer** - a simple spacer with a defined height in pixels
+- **[Textarea](content_elements/textarea.md)** - a simple textarea with WYSIWYG editor
+- **[Single media](content_elements/single_media.md)** - a single media from the media library
+- **[Multiple media](content_elements/multiple_media.md)** - multiple media from the media library
+- **[Heading](content_elements/heading.md)** - a simple heading from h1 to h6
+- **[Products carousel](content_elements/products_carousel.md)** - a carousel with products
+- **[Products carousel by Taxon](content_elements/products_carousel_by_taxon.md)** - a carousel with products from a specific taxon
+- **[Products grid](content_elements/products_grid.md)** - a grid with products
+- **[Products grid by Taxon](content_elements/products_grid_by_taxon.md)** - a grid with products from a specific taxon
+- **[Taxons list](content_elements/taxons_list.md)** - a list of taxons
+- **[Pages collection](content_elements/pages_collection.md)** - a collection of pages
+- **[Spacer](content_elements/spacer.md)** - a simple spacer with a defined height in pixels
 
 Instead of rendering block or page, you can render just content elements in your twig templates using `bitbag_cms_render_content_elements([page|block])` helper extension,
 where `page` or `block` is an instance of `BitBag\SyliusCmsPlugin\Entity\PageInterface` or `BitBag\SyliusCmsPlugin\Entity\BlockInterface`.

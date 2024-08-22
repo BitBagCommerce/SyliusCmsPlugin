@@ -1,6 +1,6 @@
 # Blocks
 
-With the BitBag SyliusCmsPlugin, administrators can arrange content blocks within sections, including the product page.
+With the BitBag SyliusCmsPlugin, administrators can create and manage blocks built from content elements.
 
 This allows for customized content presentation, showcasing product features, promotions, and relevant information.
 
@@ -20,7 +20,7 @@ By following the steps below, administrators can easily add blocks and customize
 1. Please access the administrator panel of the Sylius e-commerce system.
 2. Navigate to the CMS section or the designated area for managing blocks.
 3. Locate the option to create a new block and click on it.
-4. Fill in the required fields in the block creation form, such as the code and content of the block.
+4. Fill in the required fields in the block creation form, such as the code and name.
 5. Save the block after filling in the necessary details and selecting any desired associations.
 6. Repeat the process to add additional blocks, as needed.
 7. After refreshing the store page, the newly implemented changes should now be visible.
@@ -29,9 +29,9 @@ By following the steps below, administrators can easily add blocks and customize
 
 In the form, you will find additional fields, which will help you with your e-commerce related content:
 
-- Products - You can select specific products that are associated with the block. This allows the block to be displayed on the product pages of the selected products.
-- Sections - You can choose the sections where the block should be placed. This helps in organizing and structuring the block within the relevant sections of the website.
-- Taxons - This field allows you to select specific taxonomies or categories associated with the block. By choosing relevant taxons, the block can be displayed on the pages related to those categories.
+- Display for products - You can select specific products that are associated with the block. This allows the block to be displayed on the product pages of the selected products.
+- Display for products in taxon - This field allows you to select specific taxon associated with the block. By choosing relevant taxon, the block will be displayed on the product pages related to those taxon. Only "Main Taxon" is taken.
+- Display for taxons - This field allows you to select specific taxonomies associated with the block. By choosing relevant taxons, the block can be displayed on the pages related to those taxons.
 
 The mentioned form:
 

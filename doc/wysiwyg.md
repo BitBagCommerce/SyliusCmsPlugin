@@ -9,9 +9,6 @@ is being created.
 You can use a custom [WysiwygType](../src/Form/Type/WysiwygType.php) any place you want the CKEditor to appear in.
 Take [the BlockTranslationType](../src/Form/Type/Translation/BlockTranslationType.php) as an example.
 
-**Note:**
-*In the WYSIWYG fields, you can use Twig function nesting. Read more [here](twig-functions-in-admin.md).*
-
 ## Configuration
 
 If you want to customize any behavior of the CKEditor, you have to override one of these files: [CKEditor config](../src/Resources/config/fos_ck_editor/fos_ck_editor.yml) or [CKEditor js config](../src/Resources/views/Form/ckeditor_widget.html.twig)

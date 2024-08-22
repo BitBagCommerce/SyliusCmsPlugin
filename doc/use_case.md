@@ -13,7 +13,7 @@ This empowers businesses to easily adapt their store's content to meet current n
 ## What Sylius CMS Plugin provides us with
 
 When using the BitBag Sylius CMS Plugin, administrators gain access to various tiles within the admin panel, each serving a specific purpose.
-These tiles include Blocks, Media, Pages, and Sections.
+These tiles include Collections, Templates, Pages, Blocks and Media.
 
 ## Brief overview of what each tile offers
 
@@ -23,55 +23,66 @@ In admin panel, the whole CMS functionality is located under "Content Management
 
 Our CMS Plugin allows you to manage:
 
-* Sections - the containers for blocks
-* Blocks - separate parts for the content
-* Media - files, that can be attached to the page
-* Pages - whole pages, obtainable by the link
+* **Collections** - responsible for grouping the pages/blocks/media
+* **Templates** - allows to create a template of content elements for the page or block
+* **Pages** - whole pages, obtainable by the link
+* **Blocks** - separate parts for the content, composed of the content elements
+* **Media** - images, videos, etc. that can be used in other segments of the CMS
 
 ---
 
-### Sections: 
-The Sections tile allows administrators to create and manage sections within CMS pages.
+### Collections: 
 
-Sections serve as containers for content blocks and provide a structured way to organize content.
-By utilizing sections, administrators can easily arrange and customize the layout of CMS pages to achieve the desired visual and informational structure.
+The Collections tile allows administrators to create and manage collections within CMS pages.
 
-![Screenshot showing content management config in admin](sections_cms.png)
+Collections serve as containers for blocks, pages, media and provide a structured way to organize content.
+By utilizing collections, administrators can group related content elements together, such as blog posts, product listings, or promotional banners.
 
-More information about Sections you can get [here](use_case_sections.md).
+![Screenshot showing content management config in admin](collections_cms.png)
+
+More information about Collections you can get [here](use_case_collections.md).
+
+### Templates:
+
+The Templates tile allows administrators to create and manage templates built from content elements skeletons.
+
+![Screenshot showing content management config in admin](templates_cms.png)
+
+### Pages:
+
+The Pages tile is where administrators can create, edit, and organize CMS pages.
+
+It enables the creation of various types of pages, such as the homepage, informational pages, or blog posts.
+
+![Screenshot showing content management config in admin](pages_cms.png)
+
+More information about Pages you can get [here](use_case_pages.md).
 
 ### Blocks
-The Blocks tile allows administrators to create and manage reusable content blocks.
 
-The Blocks can be utilized across different CMS pages, providing flexibility and consistency in content presentation. Blocks can contain text, images, videos, or any other desired content elements.
+The Blocks tile allows administrators to create and manage blocks built from content elements.
+
+The Blocks can be rendered in twig templates, providing flexibility and consistency in content presentation.
 
 ![Screenshot showing content management config in admin](blocks_cms.png)
 
 More information about Blocks you can get [here](use_case_blocks.md).
 
 ### Media
+
 The Media tile provides a centralized hub for managing media files within the CMS.
 
-Administrators can upload and organize images, videos, and other media assets. The files can then be easily inserted into CMS pages, enriching the content with visual elements.
+Administrators can upload and organize images, videos, and other media assets. The files can then be easily used in other parts of the CMS.
 
 ![Screenshot showing content management config in admin](media_cms.png)
 
 More information about Media you can get [here](use_case_media.md).
 
-### Pages:
-The Pages tile is where administrators can create, edit, and organize CMS pages.
-
-It enables the creation of various types of pages, such as the homepage, informational pages, or blog posts. Administrators can add content, images, and other media, customize the layout, and manage page hierarchy.
-
-![Screenshot showing content management config in admin](pages_cms.png)
-
-More information about Pages you can get [here](use_case_pages.md).
-
 ## Summary
 
-In summary, the BitBag Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, including [Sections](use_case_sections.md), [Blocks](use_case_blocks.md),
-[Media](use_case_media.md), [Pages](use_case_pages.md).
+In summary, the BitBag Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, 
+including [Collections](use_case_collections.md), [Templates](use_case_templates.md), [Pages](use_case_pages.md), [Blocks](use_case_blocks.md), [Media](use_case_media.md).
 
-These tiles offer functionalities for managing reusable content blocks, media assets, CMS pages and page sections. 
+These tiles offer functionalities for managing CMS segments. 
 Together, they enable administrators to efficiently create, edit, and organize content within the Sylius e-commerce system,
 resulting in a more engaging and personalized user experience.
