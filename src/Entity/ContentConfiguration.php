@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
-
 class ContentConfiguration implements ContentConfigurationInterface
 {
     protected ?int $id;
