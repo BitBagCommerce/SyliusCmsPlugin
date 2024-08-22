@@ -58,8 +58,6 @@ sylius_fixtures:
                                 name: "Homepage products carousel"
                                 channels:
                                     - "FASHION_WEB"
-                                collections:
-                                    - "products"
                                 locales:
                                     - "en_US"
                                 content_elements:
@@ -81,8 +79,6 @@ sylius_fixtures:
                                 name: "Homepage products carousel by Taxon"
                                 channels:
                                     - "FASHION_WEB"
-                                collections:
-                                    - "products"
                                 locales:
                                     - "en_US"
                                 content_elements:
@@ -99,8 +95,6 @@ sylius_fixtures:
                                 name: "Homepage products grid"
                                 channels:
                                     - "FASHION_WEB"
-                                collections:
-                                    - "products"
                                 content_elements:
                                     heading:
                                         type: "heading"
@@ -120,8 +114,6 @@ sylius_fixtures:
                                 name: "Homepage products grid by Taxon"
                                 channels:
                                     - "FASHION_WEB"
-                                collections:
-                                    - "products"
                                 content_elements:
                                     heading:
                                         type: "heading"
@@ -219,24 +211,6 @@ sylius_fixtures:
                                     en_US:
                                         alt: "SyliusCmsPlugin"
                                         link: "https://github.com/BitBagCommerce/SyliusCmsPlugin"
-                            homepage_header_image:
-                                type: image
-                                path: "%fixtures_dir%/homepage_header.jpeg"
-                                original_name: "homepage_header.jpeg"
-                                name: |
-                                    <a href="/en_US/page/about">This is a linked title</a>
-                                channels:
-                                    - "FASHION_WEB"
-                                translations:
-                                    en_US:
-                                        alt: Homepage image media
-                                        content: |
-                                            <h3>Media description</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            </p>
                             homepage_video:
                                 type: video
                                 path: "%fixtures_dir%/homepage_video.mp4"

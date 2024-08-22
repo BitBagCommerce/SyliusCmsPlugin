@@ -68,13 +68,4 @@ class ContentConfiguration implements ContentConfigurationInterface
     {
         $this->page = $page;
     }
-
-    public function getContent(): ?string
-    {
-        if (TextareaContentElementType::TYPE === $this->type) {
-            return $this->configuration[TextareaContentElementType::TYPE] ?? null;
-        }
-
-        return null;
-    }
 }

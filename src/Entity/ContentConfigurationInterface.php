@@ -12,9 +12,7 @@ namespace BitBag\SyliusCmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface ContentConfigurationInterface extends
-    ResourceInterface,
-    ContentableInterface
+interface ContentConfigurationInterface extends ResourceInterface
 {
     public function getType(): ?string;
 
