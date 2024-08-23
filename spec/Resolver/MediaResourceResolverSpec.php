@@ -24,11 +24,10 @@ final class MediaResourceResolverSpec extends ObjectBehavior
 {
     public function let(
         MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext,
         LoggerInterface $logger,
         ) {
-        $this->beConstructedWith($mediaRepository, $localeContext, $channelContext, $logger);
+        $this->beConstructedWith($mediaRepository, $channelContext, $logger);
     }
 
     public function it_is_initializable(): void
@@ -43,40 +42,34 @@ final class MediaResourceResolverSpec extends ObjectBehavior
 
     public function it_returns_media_when_found(
         MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext,
         MediaInterface $media,
         ChannelInterface $channel,
         ) {
         $code = 'media_code';
-        $localeCode = 'en_US';
         $channelCode = 'ecommerce';
 
         $channelContext->getChannel()->willReturn($channel);
         $channel->getCode()->willReturn($channelCode);
-        $localeContext->getLocaleCode()->willReturn($localeCode);
 
-        $mediaRepository->findOneEnabledByCode($code, $localeCode, $channelCode)->willReturn($media);
+        $mediaRepository->findOneEnabledByCode($code, $channelCode)->willReturn($media);
 
         $this->findOrLog($code)->shouldReturn($media);
     }
 
     public function it_logs_warning_and_returns_null_when_media_not_found(
         MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext,
         LoggerInterface $logger,
         ChannelInterface $channel,
         ) {
         $code = 'non_existing_code';
-        $localeCode = 'en_US';
         $channelCode = 'ecommerce';
 
         $channelContext->getChannel()->willReturn($channel);
         $channel->getCode()->willReturn($channelCode);
-        $localeContext->getLocaleCode()->willReturn($localeCode);
 
-        $mediaRepository->findOneEnabledByCode($code, $localeCode, $channelCode)->willReturn(null);
+        $mediaRepository->findOneEnabledByCode($code, $channelCode)->willReturn(null);
 
         $logger->warning(sprintf('Media with "%s" code was not found in the database.', $code))->shouldBeCalled();
 

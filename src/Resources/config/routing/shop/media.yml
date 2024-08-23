@@ -4,20 +4,6 @@ bitbag_sylius_cms_plugin_shop_media_render:
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media.overriden::renderMediaAction
 
-bitbag_sylius_cms_plugin_shop_media_render_template:
-    path: /media-template/{code}
-    methods: [GET]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::showAction
-        _sylius:
-            template: $template
-            repository:
-                method: findOneEnabledByCode
-                arguments:
-                    - $code
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"
-
 bitbag_sylius_cms_plugin_shop_media_download:
     path: /media/download/{code}
     methods: [GET]
@@ -31,31 +17,3 @@ bitbag_sylius_cms_plugin_shop_media_inline:
     defaults:
         _controller: bitbag_sylius_cms_plugin.controller.media.overriden::downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_INLINE
-
-bitbag_sylius_cms_plugin_shop_media_index_by_collection_code:
-    path: /media/collection/{collectionCode}
-    methods: [GET]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
-        _sylius:
-            template: $template
-            repository:
-                method: findByCollectionCode
-                arguments:
-                    - $collectionCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"
-
-bitbag_sylius_cms_plugin_shop_media_index_by_product_code:
-    path: /media/product/{productCode}
-    methods: [GET]
-    defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
-        _sylius:
-            template: $template
-            repository:
-                method: findByProductCode
-                arguments:
-                    - $productCode
-                    - "expr:service('sylius.context.locale').getLocaleCode()"
-                    - "expr:service('sylius.context.channel').getChannel().getCode()"

@@ -20,21 +20,8 @@ interface MediaRepositoryInterface extends RepositoryInterface
 
     public function findOneEnabledByCode(
         string $code,
-        string $localeCode,
         string $channelCode,
     ): ?MediaInterface;
-
-    public function findByCollectionCode(
-        string $collectionCode,
-        string $localeCode,
-        string $channelCode,
-    ): array;
-
-    public function findByProductCode(
-        string $productCode,
-        string $localeCode,
-        string $channelCode,
-    ): array;
 
     public function findByNamePart(string $phrase, array $mediaType): array;
 }

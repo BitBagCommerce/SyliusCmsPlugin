@@ -16,11 +16,11 @@ class MediaTranslation extends AbstractTranslation implements MediaTranslationIn
 {
     protected ?int $id;
 
-    protected ?string $content;
+    protected ?string $content = null;
 
-    protected ?string $alt;
+    protected ?string $alt = null;
 
-    protected ?string $link;
+    protected ?string $link = null;
 
     public function getId(): ?int
     {
