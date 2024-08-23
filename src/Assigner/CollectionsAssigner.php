@@ -23,11 +23,10 @@ final class CollectionsAssigner implements CollectionsAssignerInterface
 
     public function assign(CollectibleInterface $collectionsAware, array $collectionsCodes): void
     {
-        foreach ($collectionsCodes as $collectionCode) {
-            /** @var CollectionInterface|null $collection */
-            $collection = $this->collectionRepository->findOneBy(['code' => $collectionCode]);
+        $collections = $this->collectionRepository->findBy(['code' => $collectionsCodes]);
+        Assert::allIsInstanceOf($collections, CollectionInterface::class);
 
-            Assert::notNull($collection, sprintf('Collection with %s code not found.', $collectionCode));
+        foreach ($collections as $collection) {
             $collectionsAware->addCollection($collection);
         }
     }

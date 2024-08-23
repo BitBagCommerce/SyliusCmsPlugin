@@ -23,11 +23,10 @@ final class ProductsAssigner implements ProductsAssignerInterface
 
     public function assign(ProductsAwareInterface $productsAware, array $productsCodes): void
     {
-        foreach ($productsCodes as $productCode) {
-            /** @var ProductInterface|null $product */
-            $product = $this->productRepository->findOneBy(['code' => $productCode]);
+        $products = $this->productRepository->findBy(['code' => $productsCodes]);
+        Assert::allIsInstanceOf($products, ProductInterface::class);
 
-            Assert::notNull($product, sprintf('Product with %s code not found.', $productCode));
+        foreach ($products as $product) {
             $productsAware->addProduct($product);
         }
     }
