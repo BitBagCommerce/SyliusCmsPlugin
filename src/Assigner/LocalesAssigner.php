@@ -13,6 +13,7 @@ namespace BitBag\SyliusCmsPlugin\Assigner;
 use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Webmozart\Assert\Assert;
 
 final class LocalesAssigner implements LocalesAssignerInterface
 {
@@ -22,13 +23,11 @@ final class LocalesAssigner implements LocalesAssignerInterface
 
     public function assign(LocaleAwareInterface $localesAware, array $localesCodes): void
     {
-        $locales = $this->localeRepository->findAll();
+        $locales = $this->localeRepository->findBy(['code' => $localesCodes]);
+        Assert::allIsInstanceOf($locales, LocaleInterface::class);
 
-        /** @var LocaleInterface $locale */
         foreach ($locales as $locale) {
-            if (in_array($locale->getCode(), $localesCodes, true)) {
-                $localesAware->addLocale($locale);
-            }
+            $localesAware->addLocale($locale);
         }
     }
 }

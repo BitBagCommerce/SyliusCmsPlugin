@@ -23,11 +23,10 @@ final class ChannelsAssigner implements ChannelsAssignerInterface
 
     public function assign(ChannelsAwareInterface $channelsAware, array $channelsCodes): void
     {
-        foreach ($channelsCodes as $channelCode) {
-            /** @var ChannelInterface|null $channel */
-            $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
+        $channels = $this->channelRepository->findBy(['code' => $channelsCodes]);
+        Assert::allIsInstanceOf($channels, ChannelInterface::class);
 
-            Assert::notNull($channel, sprintf('Channel with %s code not found.', $channelCode));
+        foreach ($channels as $channel) {
             $channelsAware->addChannel($channel);
         }
     }

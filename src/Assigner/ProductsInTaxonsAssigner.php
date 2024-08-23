@@ -23,11 +23,10 @@ final class ProductsInTaxonsAssigner implements ProductsInTaxonsAssignerInterfac
 
     public function assign(ProductsInTaxonsAwareInterface $productsInTaxonsAware, array $taxonCodes): void
     {
-        foreach ($taxonCodes as $taxonCode) {
-            /** @var TaxonInterface|null $taxon */
-            $taxon = $this->taxonRepository->findOneBy(['code' => $taxonCode]);
+        $taxons = $this->taxonRepository->findBy(['code' => $taxonCodes]);
+        Assert::allIsInstanceOf($taxons, TaxonInterface::class);
 
-            Assert::notNull($taxon, sprintf('Taxon with %s code not found.', $taxonCode));
+        foreach ($taxons as $taxon) {
             $productsInTaxonsAware->addProductsInTaxon($taxon);
         }
     }
