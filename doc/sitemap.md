@@ -3,7 +3,7 @@
 This plugin suggests to install the Sylius sitemap plugin. The plugin is not installed automatically, but to install run:
 
 ```bash
-    $ composer require stefandoorn/sitemap-plugin ^2.0@alpha
+    $ composer require stefandoorn/sitemap-plugin ^2.2
 ``` 
 
 It's already configured after installation and contains a page & section provider. 
