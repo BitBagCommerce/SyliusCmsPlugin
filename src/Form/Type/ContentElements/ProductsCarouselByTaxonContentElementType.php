@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
+namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
 use BitBag\SyliusCmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;

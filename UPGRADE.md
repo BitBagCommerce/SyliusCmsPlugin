@@ -19,7 +19,7 @@ structure using `bin/console doctrine:migrations:diff && bin/console doctrine:mi
 use raw content in [WYSIWYG editor](doc/wysiwyg.md)
 * Chanel awareness has been added to pages, blocks, FAQs, sections and media. That being said, many
 repository methods changed their signatures. In case you customized them in your src, check 
-new signatures in interfaces under [BitBag\SyliusCmsPlugin\Repository](src/Repository) namespace
+new signatures in interfaces under [Sylius\CmsPlugin\Repository](src/Repository) namespace
 * WYSIWYG editor has been introduced. You will need to import it in your AppKernel and install 
 its assets. For more, check the [installation guide](doc/installation.md)
 * Sitemap support was added, you will need to enable extra bundle in your AppKernel. Read more

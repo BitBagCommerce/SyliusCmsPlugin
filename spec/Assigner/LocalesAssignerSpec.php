@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\LocalesAssigner;
+use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
+use Sylius\CmsPlugin\Entity\LocaleAwareInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 

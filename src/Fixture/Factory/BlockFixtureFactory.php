@@ -8,17 +8,17 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
+namespace Sylius\CmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
+use Sylius\CmsPlugin\Assigner\ProductsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\TaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\ContentConfiguration;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface

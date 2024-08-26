@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 
 interface ContentElementRendererInterface
 {

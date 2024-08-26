@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Assigner;
+namespace Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
+use Sylius\CmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Webmozart\Assert\Assert;

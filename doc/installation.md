@@ -14,7 +14,7 @@ return [
     ...
 
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
-    BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
+    Sylius\CmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
 The first line above (FOSCKEditorBundle) might have been already added during composer require command.

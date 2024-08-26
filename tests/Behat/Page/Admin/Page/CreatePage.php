@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Page;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Page;
 
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 use Sylius\Behat\Service\SlugGenerationHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\FormHelper;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Service\FormHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface

@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Assigner;
+namespace Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
+use Sylius\CmsPlugin\Entity\TaxonAwareInterface;
 
 interface TaxonsAssignerInterface
 {

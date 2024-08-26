@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRendererInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SorterById;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\PageLinkRendererInterface;
+use Sylius\CmsPlugin\Sorter\SorterById;
 use Webmozart\Assert\Assert;
 
 final class CollectionPagesRenderer implements CollectionRendererInterface

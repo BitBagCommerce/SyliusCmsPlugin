@@ -3,9 +3,9 @@ sylius_resource:
         bitbag_sylius_cms_plugin.block:
             driver: doctrine/orm
             classes:
-                model: BitBag\SyliusCmsPlugin\Entity\Block
-                interface: BitBag\SyliusCmsPlugin\Entity\BlockInterface
-                form: BitBag\SyliusCmsPlugin\Form\Type\BlockType
-                repository: BitBag\SyliusCmsPlugin\Repository\BlockRepository
-                controller: BitBag\SyliusCmsPlugin\Controller\BlockController
+                model: Sylius\CmsPlugin\Entity\Block
+                interface: Sylius\CmsPlugin\Entity\BlockInterface
+                form: Sylius\CmsPlugin\Form\Type\BlockType
+                repository: Sylius\CmsPlugin\Repository\BlockRepository
+                controller: Sylius\CmsPlugin\Controller\BlockController
                 factory: Sylius\Component\Resource\Factory\Factory

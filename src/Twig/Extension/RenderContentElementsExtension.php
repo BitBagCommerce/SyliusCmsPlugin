@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Extension;
+namespace Sylius\CmsPlugin\Twig\Extension;
 
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentElementsRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderContentElementsRuntime;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

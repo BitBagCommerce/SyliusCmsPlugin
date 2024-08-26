@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context

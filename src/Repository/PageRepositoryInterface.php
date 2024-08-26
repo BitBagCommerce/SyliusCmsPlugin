@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Repository;
+namespace Sylius\CmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\ORM\QueryBuilder;
+use Sylius\CmsPlugin\Entity\PageInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface PageRepositoryInterface extends RepositoryInterface

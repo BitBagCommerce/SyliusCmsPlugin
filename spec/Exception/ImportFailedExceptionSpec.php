@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Exception;
+namespace spec\Sylius\CmsPlugin\Exception;
 
-use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Exception\ImportFailedException;
 
 final class ImportFailedExceptionSpec extends ObjectBehavior
 {

@@ -3,13 +3,13 @@ sylius_resource:
         bitbag_sylius_cms_plugin.media:
             driver: doctrine/orm
             classes:
-                model: BitBag\SyliusCmsPlugin\Entity\Media
-                interface: BitBag\SyliusCmsPlugin\Entity\MediaInterface
-                form: BitBag\SyliusCmsPlugin\Form\Type\MediaType
-                repository: BitBag\SyliusCmsPlugin\Repository\MediaRepository
-                controller: BitBag\SyliusCmsPlugin\Controller\MediaController
+                model: Sylius\CmsPlugin\Entity\Media
+                interface: Sylius\CmsPlugin\Entity\MediaInterface
+                form: Sylius\CmsPlugin\Form\Type\MediaType
+                repository: Sylius\CmsPlugin\Repository\MediaRepository
+                controller: Sylius\CmsPlugin\Controller\MediaController
                 factory: Sylius\Component\Resource\Factory\TranslatableFactory
             translation:
                 classes:
-                    model: BitBag\SyliusCmsPlugin\Entity\MediaTranslation
-                    interface: BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface
+                    model: Sylius\CmsPlugin\Entity\MediaTranslation
+                    interface: Sylius\CmsPlugin\Entity\MediaTranslationInterface

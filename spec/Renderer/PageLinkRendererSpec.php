@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer;
+namespace spec\Sylius\CmsPlugin\Renderer;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRenderer;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRendererInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\PageLinkRenderer;
+use Sylius\CmsPlugin\Renderer\PageLinkRendererInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 

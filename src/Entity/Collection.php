@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Trait\BlocksCollectionTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\MediaCollectionTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\PagesCollectionTrait;
+use Sylius\CmsPlugin\Entity\Trait\BlocksCollectionTrait;
+use Sylius\CmsPlugin\Entity\Trait\MediaCollectionTrait;
+use Sylius\CmsPlugin\Entity\Trait\PagesCollectionTrait;
 
 class Collection implements CollectionInterface
 {

@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Functional;
+namespace Tests\Sylius\CmsPlugin\Functional;
 
 use ApiTestCase\JsonApiTestCase as BaseJsonApiTestCase;
 

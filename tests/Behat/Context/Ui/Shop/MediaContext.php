@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Element\DocumentElement;
 use Behat\MinkExtension\Context\RawMinkContext;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 
 class MediaContext extends RawMinkContext implements Context
 {

@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Menu;
+namespace spec\Sylius\CmsPlugin\Menu;
 
-use BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder;
-use BitBag\SyliusCmsPlugin\Menu\MenuReorderInterface;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
+use Sylius\CmsPlugin\Menu\ContentManagementMenuBuilder;
+use Sylius\CmsPlugin\Menu\MenuReorderInterface;
 
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\CmsPlugin\Entity\ContentableInterface;
+use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
 
 final class RenderContentRuntime implements RenderContentRuntimeInterface
 {

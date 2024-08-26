@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\DependencyInjection;
+namespace Sylius\CmsPlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -30,7 +30,7 @@ final class BitBagSyliusCmsExtension extends Extension implements PrependExtensi
 
     protected function getMigrationsNamespace(): string
     {
-        return 'BitBag\SyliusCmsPlugin\Migrations';
+        return 'Sylius\CmsPlugin\Migrations';
     }
 
     protected function getMigrationsDirectory(): string

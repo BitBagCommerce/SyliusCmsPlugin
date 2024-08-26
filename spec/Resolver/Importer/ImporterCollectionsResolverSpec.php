@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace spec\Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Entity\CollectibleInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolver;
 
 final class ImporterCollectionsResolverSpec extends ObjectBehavior
 {

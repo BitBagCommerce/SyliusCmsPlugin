@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Reader;
+namespace Sylius\CmsPlugin\Reader;
 
 use League\Csv\Reader;
 

@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 
 interface CollectionRendererInterface
 {

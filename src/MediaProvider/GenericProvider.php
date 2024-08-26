@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\MediaProvider;
+namespace Sylius\CmsPlugin\MediaProvider;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Uploader\MediaUploaderInterface;
 use Twig\Environment;
 
 final class GenericProvider implements ProviderInterface

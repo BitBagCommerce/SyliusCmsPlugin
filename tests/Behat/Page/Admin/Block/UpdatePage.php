@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsContentElementTrait;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsContentElementTrait;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface
 {

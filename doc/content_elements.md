@@ -18,7 +18,7 @@ Currently, there are 11 predefined content elements available:
 - **[Spacer](content_elements/spacer.md)** - a simple spacer with a defined height in pixels
 
 Instead of rendering block or page, you can render just content elements in your twig templates using `bitbag_cms_render_content_elements([page|block])` helper extension,
-where `page` or `block` is an instance of `BitBag\SyliusCmsPlugin\Entity\PageInterface` or `BitBag\SyliusCmsPlugin\Entity\BlockInterface`.
+where `page` or `block` is an instance of `Sylius\CmsPlugin\Entity\PageInterface` or `Sylius\CmsPlugin\Entity\BlockInterface`.
 
 ## Customization
 
@@ -73,7 +73,7 @@ services:
             - { name: 'form.type' }
 ```
 
-4. Create a new renderer class under `src/Renderer/ContentElement` location. Implement `BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface` interface.
+4. Create a new renderer class under `src/Renderer/ContentElement` location. Implement `Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface` interface.
 For example, you can create a new renderer called `TextContentElementRenderer`:
 
 ```php

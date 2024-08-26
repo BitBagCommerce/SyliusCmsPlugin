@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Entity;
+namespace spec\Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Collection;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\Collection;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class CollectionSpec extends ObjectBehavior

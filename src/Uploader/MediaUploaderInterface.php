@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Uploader;
+namespace Sylius\CmsPlugin\Uploader;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 
 interface MediaUploaderInterface
 {

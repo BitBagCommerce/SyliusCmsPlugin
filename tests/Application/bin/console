@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use Tests\BitBag\SyliusCmsPlugin\Application\Kernel;
+use Tests\Sylius\CmsPlugin\Application\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 if (!is_file(dirname(__DIR__).'/../../vendor/autoload_runtime.php')) {

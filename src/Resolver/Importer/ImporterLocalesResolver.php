@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
+use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
+use Sylius\CmsPlugin\Entity\LocaleAwareInterface;
 
 final class ImporterLocalesResolver implements ImporterLocalesResolverInterface
 {

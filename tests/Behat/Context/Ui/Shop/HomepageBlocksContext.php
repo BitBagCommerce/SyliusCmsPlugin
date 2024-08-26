@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\HomePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Shop\HomePageInterface;
 use Webmozart\Assert\Assert;
 
 final class HomepageBlocksContext implements Context

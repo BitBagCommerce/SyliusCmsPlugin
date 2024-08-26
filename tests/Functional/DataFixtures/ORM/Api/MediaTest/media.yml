@@ -72,7 +72,7 @@ Sylius\Component\Core\Model\ProductVariant:
     product: '@product1'
     code: "code1"
 
-BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
+Sylius\CmsPlugin\Entity\MediaTranslation:
   media1_translation:
     locale: 'en_US'
     content: 'translation_content_en_US'
@@ -85,7 +85,7 @@ BitBag\SyliusCmsPlugin\Entity\MediaTranslation:
     locale: 'en_US'
     content: 'translation_content_en_US'
     link: 'translation_link_en_US'
-BitBag\SyliusCmsPlugin\Entity\Media:
+Sylius\CmsPlugin\Entity\Media:
   media1:
     code: 'media1-code'
     name: 'media1-name'
@@ -122,7 +122,7 @@ BitBag\SyliusCmsPlugin\Entity\Media:
       - '@channel'
     translations:
       - '@media3_translation'
-BitBag\SyliusCmsPlugin\Entity\Collection:
+Sylius\CmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
   collection2:

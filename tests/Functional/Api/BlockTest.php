@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Functional\Api;
+namespace Tests\Sylius\CmsPlugin\Functional\Api;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\BitBag\SyliusCmsPlugin\Functional\FunctionalTestCase;
+use Tests\Sylius\CmsPlugin\Functional\FunctionalTestCase;
 
 class BlockTest extends FunctionalTestCase
 {

@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Menu;
+namespace spec\Sylius\CmsPlugin\Menu;
 
-use BitBag\SyliusCmsPlugin\Menu\MenuReorder;
-use BitBag\SyliusCmsPlugin\Menu\MenuReorderInterface;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Sylius\CmsPlugin\Menu\MenuReorder;
+use Sylius\CmsPlugin\Menu\MenuReorderInterface;
 
 final class MenuReorderSpec extends ObjectBehavior
 {

@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace spec\Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionPagesRenderer;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRendererInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionPagesRenderer;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionRendererInterface;
+use Sylius\CmsPlugin\Renderer\PageLinkRendererInterface;
 
 final class CollectionPagesRendererSpec extends ObjectBehavior
 {

@@ -3,7 +3,7 @@
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
     http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="BitBag\SyliusCmsPlugin\Entity\MediaTranslation">
+    <class name="Sylius\CmsPlugin\Entity\MediaTranslation">
         <property name="alt">
             <constraint name="Length">
                 <option name="min">2</option>

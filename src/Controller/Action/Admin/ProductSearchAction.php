@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
+namespace Sylius\CmsPlugin\Controller\Action\Admin;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;

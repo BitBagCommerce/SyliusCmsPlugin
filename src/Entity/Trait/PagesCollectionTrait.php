@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity\Trait;
+namespace Sylius\CmsPlugin\Entity\Trait;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\CmsPlugin\Entity\PageInterface;
 
 trait PagesCollectionTrait
 {

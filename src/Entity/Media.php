@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\PagesCollectionTrait;
-use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
+use Sylius\CmsPlugin\Entity\Trait\ChannelsAwareTrait;
+use Sylius\CmsPlugin\Entity\Trait\CollectibleTrait;
+use Sylius\CmsPlugin\Entity\Trait\PagesCollectionTrait;
+use Sylius\CmsPlugin\MediaProvider\FilenameHelper;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Sylius\Component\Resource\Model\TranslationInterface;

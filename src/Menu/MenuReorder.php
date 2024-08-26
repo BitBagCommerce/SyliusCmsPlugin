@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Menu;
+namespace Sylius\CmsPlugin\Menu;
 
 use Knp\Menu\ItemInterface;
 

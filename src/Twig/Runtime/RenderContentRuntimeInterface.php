@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
+use Sylius\CmsPlugin\Entity\ContentableInterface;
 use Twig\Extension\RuntimeExtensionInterface;
 
 interface RenderContentRuntimeInterface extends RuntimeExtensionInterface

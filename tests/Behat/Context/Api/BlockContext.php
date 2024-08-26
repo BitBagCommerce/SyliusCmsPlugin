@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Api;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Resources;
+use Tests\Sylius\CmsPlugin\Behat\Resources;
 use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context

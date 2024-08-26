@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Service;
+namespace Tests\Sylius\CmsPlugin\Behat\Service;
 
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;

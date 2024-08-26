@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace spec\Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolver;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\TaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\TaxonAwareInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolver;
 
 final class ImporterTaxonsResolverSpec extends ObjectBehavior
 {

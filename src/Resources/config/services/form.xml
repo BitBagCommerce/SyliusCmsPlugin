@@ -2,162 +2,158 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.textarea" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.single_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.pages_collection" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType::TYPE</parameter>
-        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.spacer" type="constant">BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.textarea" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.single_media" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.multiple_media" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.heading" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.taxons_list" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.pages_collection" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType::TYPE</parameter>
+        <parameter key="bitbag_sylius_cms_plugin.content_elements.type.spacer" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.form.type.block" class="BitBag\SyliusCmsPlugin\Form\Type\BlockType">
+        <service id="bitbag_sylius_cms_plugin.form.type.block" class="Sylius\CmsPlugin\Form\Type\BlockType">
             <argument>%bitbag_sylius_cms_plugin.model.block.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.block.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_configuration" class="BitBag\SyliusCmsPlugin\Form\Type\ContentConfigurationType">
-            <argument>BitBag\SyliusCmsPlugin\Entity\ContentConfiguration</argument>
+        <service id="bitbag_sylius_cms_plugin.form.type.content_configuration" class="Sylius\CmsPlugin\Form\Type\ContentConfigurationType">
+            <argument>Sylius\CmsPlugin\Entity\ContentConfiguration</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.content_configuration.validation_groups%</argument>
             <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
             <argument type="service" id="twig" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.block_image" class="BitBag\SyliusCmsPlugin\Form\Type\BlockImageType">
-            <argument>BitBag\SyliusCmsPlugin\Entity\BlockImage</argument>
+        <service id="bitbag_sylius_cms_plugin.form.type.block_image" class="Sylius\CmsPlugin\Form\Type\BlockImageType">
+            <argument>Sylius\CmsPlugin\Entity\BlockImage</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.block_image.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.page" class="BitBag\SyliusCmsPlugin\Form\Type\PageType">
+        <service id="bitbag_sylius_cms_plugin.form.type.page" class="Sylius\CmsPlugin\Form\Type\PageType">
             <argument>%bitbag_sylius_cms_plugin.model.page.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.page.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.translation.page" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType">
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.page" class="Sylius\CmsPlugin\Form\Type\Translation\PageTranslationType">
             <argument>%bitbag_sylius_cms_plugin.model.page_translation.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.translation.page.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.collection" class="BitBag\SyliusCmsPlugin\Form\Type\CollectionType">
+        <service id="bitbag_sylius_cms_plugin.form.type.collection" class="Sylius\CmsPlugin\Form\Type\CollectionType">
             <argument>%bitbag_sylius_cms_plugin.model.collection.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.collection.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.import" class="BitBag\SyliusCmsPlugin\Form\Type\ImportType">
+        <service id="bitbag_sylius_cms_plugin.form.type.import" class="Sylius\CmsPlugin\Form\Type\ImportType">
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.translation.media" class="BitBag\SyliusCmsPlugin\Form\Type\Translation\MediaTranslationType">
+        <service id="bitbag_sylius_cms_plugin.form.type.translation.media" class="Sylius\CmsPlugin\Form\Type\Translation\MediaTranslationType">
             <argument>%bitbag_sylius_cms_plugin.model.media_translation.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.translation.media.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.media" class="BitBag\SyliusCmsPlugin\Form\Type\MediaType">
+        <service id="bitbag_sylius_cms_plugin.form.type.media" class="Sylius\CmsPlugin\Form\Type\MediaType">
             <argument>%bitbag_sylius_cms_plugin.model.media.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.media.validation_groups%</argument>
             <argument>%bitbag_sylius_cms_plugin.media_providers%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.wysiwyg" class="BitBag\SyliusCmsPlugin\Form\Type\WysiwygType">
+        <service id="bitbag_sylius_cms_plugin.form.type.wysiwyg" class="Sylius\CmsPlugin\Form\Type\WysiwygType">
             <argument type="service" id="router.default" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.template" class="BitBag\SyliusCmsPlugin\Form\Type\TemplateType">
+        <service id="bitbag_sylius_cms_plugin.form.type.template" class="Sylius\CmsPlugin\Form\Type\TemplateType">
             <argument>%bitbag_sylius_cms_plugin.model.template.class%</argument>
             <argument>%bitbag_sylius_cms_plugin.form.type.template.validation_groups%</argument>
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element" class="Sylius\CmsPlugin\Form\Type\ContentElementType">
             <argument type="tagged_iterator" tag="bitbag_sylius_cms_plugin.content_elements.type" index-by="key" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.textarea" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.textarea" class="Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.textarea%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.multiple_media_to_codes" />
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="Sylius\CmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.multiple_media%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.heading" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.heading" class="Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.heading%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.taxons_list" class="Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.taxons_list%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.pages_collection%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.content_element.spacer" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
+        <service id="bitbag_sylius_cms_plugin.form.type.content_element.spacer" class="Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.spacer%" />
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
+        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" class="Sylius\CmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker"/>
+        <service id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" class="Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker"/>
     </services>
 
 </container>

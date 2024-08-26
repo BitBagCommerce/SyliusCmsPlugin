@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page;
 
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 

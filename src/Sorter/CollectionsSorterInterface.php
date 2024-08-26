@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Sorter;
+namespace Sylius\CmsPlugin\Sorter;
 
 interface CollectionsSorterInterface
 {
