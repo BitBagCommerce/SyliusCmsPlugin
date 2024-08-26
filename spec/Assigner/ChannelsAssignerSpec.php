@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\ChannelsAssigner;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;

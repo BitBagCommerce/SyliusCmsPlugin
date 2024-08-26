@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Resolver\CollectionResourceResolverInterface;
+use Sylius\CmsPlugin\Renderer\CollectionRendererStrategyInterface;
+use Sylius\CmsPlugin\Resolver\CollectionResourceResolverInterface;
 use Twig\Environment;
 
 final class RenderCollectionRuntime implements RenderCollectionRuntimeInterface

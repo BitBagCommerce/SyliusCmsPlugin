@@ -57,9 +57,9 @@ sylius_grid:
                     label: sylius.ui.type
                     form_options:
                         choices:
-                            sylius.ui.image: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::IMAGE_TYPE
-                            bitbag_sylius_cms_plugin.ui.file: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::FILE_TYPE
-                            bitbag_sylius_cms_plugin.ui.video: !php/const BitBag\SyliusCmsPlugin\Entity\MediaInterface::VIDEO_TYPE
+                            sylius.ui.image: !php/const Sylius\CmsPlugin\Entity\MediaInterface::IMAGE_TYPE
+                            bitbag_sylius_cms_plugin.ui.file: !php/const Sylius\CmsPlugin\Entity\MediaInterface::FILE_TYPE
+                            bitbag_sylius_cms_plugin.ui.video: !php/const Sylius\CmsPlugin\Entity\MediaInterface::VIDEO_TYPE
             actions:
                 main:
                     import:

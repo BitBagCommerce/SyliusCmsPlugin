@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Processor;
+namespace Sylius\CmsPlugin\Processor;
 
 interface ImportProcessorInterface
 {

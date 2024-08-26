@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePage as BaseUpdatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityTrait;
 use Webmozart\Assert\Assert;
 
 class UpdatePage extends BaseUpdatePage implements UpdatePageInterface

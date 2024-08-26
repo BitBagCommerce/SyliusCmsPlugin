@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
+namespace Tests\Sylius\CmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 
 class MediaRepositoryTest extends JsonApiTestCase
 {

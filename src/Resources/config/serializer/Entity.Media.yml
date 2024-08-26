@@ -1,4 +1,4 @@
-BitBag\SyliusCmsPlugin\Entity\Media:
+Sylius\CmsPlugin\Entity\Media:
     exclusion_policy: ALL
     xml_root_name: media
     properties:

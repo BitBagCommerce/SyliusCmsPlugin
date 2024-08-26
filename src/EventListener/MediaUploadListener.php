@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\EventListener;
+namespace Sylius\CmsPlugin\EventListener;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaUploadListener

@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentElementsRuntime;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderContentElementsRuntime;
 
 final class RenderContentElementsRuntimeSpec extends ObjectBehavior
 {

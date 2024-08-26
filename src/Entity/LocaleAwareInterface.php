@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace Sylius\CmsPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Locale\Model\LocaleInterface;

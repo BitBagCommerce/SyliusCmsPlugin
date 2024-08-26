@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
+namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
+use Sylius\CmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 

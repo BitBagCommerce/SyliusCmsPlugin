@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Sorter;
+namespace Sylius\CmsPlugin\Sorter;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
 use Webmozart\Assert\Assert;
 
 final class CollectionsSorter implements CollectionsSorterInterface

@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 
 final class ImporterChannelsResolver implements ImporterChannelsResolverInterface

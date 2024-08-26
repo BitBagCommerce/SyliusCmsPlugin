@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Repository;
+namespace Sylius\CmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface CollectionRepositoryInterface extends RepositoryInterface

@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver;
-use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\PageResourceResolver;
+use Sylius\CmsPlugin\Resolver\PageResourceResolverInterface;
 
 final class PageResourceResolverSpec extends ObjectBehavior
 {

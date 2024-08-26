@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
+namespace Sylius\CmsPlugin\Form\Type\Translation;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\CmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 

@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Environment;
 
 final class SingleMediaContentElementRenderer implements ContentElementRendererInterface

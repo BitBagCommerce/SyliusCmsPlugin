@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer;
+namespace spec\Sylius\CmsPlugin\Renderer;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategy;
-use BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategyInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionRendererInterface;
+use Sylius\CmsPlugin\Renderer\CollectionRendererStrategy;
+use Sylius\CmsPlugin\Renderer\CollectionRendererStrategyInterface;
 
 final class CollectionRendererStrategySpec extends ObjectBehavior
 {

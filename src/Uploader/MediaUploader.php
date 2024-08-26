@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Uploader;
+namespace Sylius\CmsPlugin\Uploader;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Gaufrette\Filesystem;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaUploader implements MediaUploaderInterface

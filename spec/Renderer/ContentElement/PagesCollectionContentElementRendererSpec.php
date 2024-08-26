@@ -8,16 +8,16 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 use Twig\Environment;
 
 final class PagesCollectionContentElementRendererSpec extends ObjectBehavior

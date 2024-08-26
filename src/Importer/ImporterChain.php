@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
 final class ImporterChain implements ImporterChainInterface
 {

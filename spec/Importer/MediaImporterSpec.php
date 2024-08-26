@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Importer;
+namespace spec\Sylius\CmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -39,8 +39,8 @@ final class MediaImporterSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\BitBag\SyliusCmsPlugin\Importer\MediaImporter::class);
-        $this->shouldImplement(\BitBag\SyliusCmsPlugin\Importer\MediaImporterInterface::class);
+        $this->shouldHaveType(\Sylius\CmsPlugin\Importer\MediaImporter::class);
+        $this->shouldImplement(\Sylius\CmsPlugin\Importer\MediaImporterInterface::class);
     }
 
     public function it_imports_media(

@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\MediaProvider;
+namespace spec\Sylius\CmsPlugin\MediaProvider;
 
-use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\MediaProvider\FilenameHelper;
 
 class FilenameHelperSpec extends ObjectBehavior
 {

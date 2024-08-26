@@ -10,15 +10,15 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
+use Sylius\CmsPlugin\Resolver\MediaResourceResolverInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 
 final class RenderMediaRuntimeSpec extends ObjectBehavior
 {

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Repository;
+namespace Sylius\CmsPlugin\Repository;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\CmsPlugin\Entity\BlockInterface;
 
 class BlockRepository extends EntityRepository implements BlockRepositoryInterface
 {

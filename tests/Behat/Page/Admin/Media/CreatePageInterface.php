@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media;
 
 use Sylius\Behat\Page\Admin\Crud\CreatePageInterface as BaseCreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsErrorInterface;
 
 interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInterface
 {

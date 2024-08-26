@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace spec\Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolver;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolver;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 
 final class ImporterChannelsResolverSpec extends ObjectBehavior

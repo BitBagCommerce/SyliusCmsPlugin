@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
+namespace Sylius\CmsPlugin\Controller\Action\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

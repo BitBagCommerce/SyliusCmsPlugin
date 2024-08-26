@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Entity;
+namespace spec\Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\Block;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 

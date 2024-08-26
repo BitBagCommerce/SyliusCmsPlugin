@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
+namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
 use Sylius\Bundle\CoreBundle\Form\Type\CatalogPromotionScope\ForTaxonsScopeConfigurationType;
 use Symfony\Component\Form\AbstractType;

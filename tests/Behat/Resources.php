@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat;
+namespace Tests\Sylius\CmsPlugin\Behat;
 
 final class Resources
 {

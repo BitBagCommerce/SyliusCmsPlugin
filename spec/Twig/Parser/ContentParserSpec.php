@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Parser;
+namespace spec\Sylius\CmsPlugin\Twig\Parser;
 
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParser;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Twig\Parser\ContentParser;
+use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use Twig\Environment;
 use Twig\TwigFunction;
 

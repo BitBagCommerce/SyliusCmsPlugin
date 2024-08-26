@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
+use Sylius\CmsPlugin\Resolver\MediaResourceResolverInterface;
 
 final class RenderMediaRuntime implements RenderMediaRuntimeInterface
 {

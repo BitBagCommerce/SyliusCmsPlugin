@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Exception;
+namespace Sylius\CmsPlugin\Exception;
 
 final class ImportFailedException extends \RuntimeException
 {

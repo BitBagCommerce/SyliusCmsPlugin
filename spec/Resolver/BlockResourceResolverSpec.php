@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\BlockResourceResolver;
+use Sylius\CmsPlugin\Resolver\BlockResourceResolverInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;

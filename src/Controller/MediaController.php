@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
+use Sylius\CmsPlugin\Resolver\MediaResourceResolverInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\File;

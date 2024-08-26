@@ -10,14 +10,14 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
+use Sylius\CmsPlugin\Resolver\BlockResourceResolverInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Twig\Environment;

@@ -22,7 +22,7 @@ jms_serializer:
     metadata:
         directories:
             bitbag-section:
-                namespace_prefix: "BitBag\\SyliusCmsPlugin"
+                namespace_prefix: "Sylius\\CmsPlugin"
                 path: "@BitBagSyliusCmsPlugin/Resources/config/serializer"
 
 knp_gaufrette:

@@ -17,14 +17,14 @@ Sylius\Component\Core\Model\Channel:
     default_locale: '@locale'
     tax_calculation_strategy: 'order_items_based'
     base_currency: '@dollar'
-BitBag\SyliusCmsPlugin\Entity\PageTranslation:
+Sylius\CmsPlugin\Entity\PageTranslation:
   page1_translation:
     locale: 'en_US'
   page2_translation:
     locale: 'en_US'
   page3_translation:
     locale: 'en_US'
-BitBag\SyliusCmsPlugin\Entity\Page:
+Sylius\CmsPlugin\Entity\Page:
   page1:
     code: 'page1-code'
     enabled: true

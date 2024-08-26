@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
@@ -16,10 +16,10 @@ use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\CreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\IndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection\UpdatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\CreatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\IndexPageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\UpdatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 final class CollectionContext implements Context

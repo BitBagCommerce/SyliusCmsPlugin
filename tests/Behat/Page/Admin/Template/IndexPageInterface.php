@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Template;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template;
 
-use BitBag\SyliusCmsPlugin\Entity\TemplateInterface;
+use Sylius\CmsPlugin\Entity\TemplateInterface;
 
 interface IndexPageInterface
 {

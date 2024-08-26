@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block;
 
 use Sylius\Behat\Page\Admin\Crud\IndexPageInterface as BaseIndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsEmptyListInterface;
 
 interface IndexPageInterface extends BaseIndexPageInterface, ContainsEmptyListInterface
 {

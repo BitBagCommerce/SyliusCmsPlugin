@@ -4,23 +4,23 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.controller.page_slug" class="BitBag\SyliusCmsPlugin\Controller\PageSlugController">
+        <service id="bitbag_sylius_cms_plugin.controller.page_slug" class="Sylius\CmsPlugin\Controller\PageSlugController">
             <argument type="service" id="sylius.generator.slug" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.action.admin.product_search" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\ProductSearchAction">
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.product_search" class="Sylius\CmsPlugin\Controller\Action\Admin\ProductSearchAction">
             <argument type="service" id="sylius.repository.product" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="fos_rest.view_handler.default" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.action.admin.taxon_search" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\TaxonSearchAction">
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.taxon_search" class="Sylius\CmsPlugin\Controller\Action\Admin\TaxonSearchAction">
             <argument type="service" id="sylius.repository.taxon" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="fos_rest.view_handler.default" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.action.admin.import_data" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\ImportDataAction">
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.import_data" class="Sylius\CmsPlugin\Controller\Action\Admin\ImportDataAction">
             <argument type="service" id="bitbag_sylius_cms_plugin.processor.import" />
             <argument type="service" id="form.factory" />
             <argument type="service" id="request_stack" />
@@ -29,18 +29,18 @@
             <argument type="service" id="twig" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\UploadEditorImageAction">
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.upload_editor_image" class="Sylius\CmsPlugin\Controller\Action\Admin\UploadEditorImageAction">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" class="BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelper">
+        <service id="bitbag_sylius_cms_plugin.controller.helper.form_errors_flash" class="Sylius\CmsPlugin\Controller\Helper\FormErrorsFlashHelper">
             <argument type="service" id="request_stack" />
             <argument type="service" id="translator" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.media.overriden" class="BitBag\SyliusCmsPlugin\Controller\MediaController" parent="bitbag_sylius_cms_plugin.controller.media">
+        <service id="bitbag_sylius_cms_plugin.controller.media.overriden" class="Sylius\CmsPlugin\Controller\MediaController" parent="bitbag_sylius_cms_plugin.controller.media">
             <call method="setMediaProviderResolver">
                 <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             </call>
@@ -58,7 +58,7 @@
             </call>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.page.overriden" class="BitBag\SyliusCmsPlugin\Controller\PageController" parent="bitbag_sylius_cms_plugin.controller.page">
+        <service id="bitbag_sylius_cms_plugin.controller.page.overriden" class="Sylius\CmsPlugin\Controller\PageController" parent="bitbag_sylius_cms_plugin.controller.page">
             <call method="setPageResourceResolver">
                 <argument type="service" id="bitbag_sylius_cms_plugin.resolver.page_resource" />
             </call>
@@ -73,6 +73,6 @@
             </call>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info" class="BitBag\SyliusCmsPlugin\Controller\Action\Admin\RetrievePackageInfoAction" />
+        <service id="bitbag_sylius_cms_plugin.controller.action.admin.retrieve_package_info" class="Sylius\CmsPlugin\Controller\Action\Admin\RetrievePackageInfoAction" />
     </services>
 </container>

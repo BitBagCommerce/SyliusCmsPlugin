@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderContentRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentableInterface;
+use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderContentRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderContentRuntimeInterface;
 
 final class RenderContentRuntimeSpec extends ObjectBehavior
 {

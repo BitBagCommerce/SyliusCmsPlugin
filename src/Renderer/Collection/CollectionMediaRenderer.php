@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Sorter\SorterById;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Sorter\SorterById;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Webmozart\Assert\Assert;
 
 final class CollectionMediaRenderer implements CollectionRendererInterface

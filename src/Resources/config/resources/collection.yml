@@ -3,8 +3,8 @@ sylius_resource:
         bitbag_sylius_cms_plugin.collection:
             driver: doctrine/orm
             classes:
-                model: BitBag\SyliusCmsPlugin\Entity\Collection
-                interface: BitBag\SyliusCmsPlugin\Entity\CollectionInterface
-                form: BitBag\SyliusCmsPlugin\Form\Type\CollectionType
-                repository: BitBag\SyliusCmsPlugin\Repository\CollectionRepository
+                model: Sylius\CmsPlugin\Entity\Collection
+                interface: Sylius\CmsPlugin\Entity\CollectionInterface
+                form: Sylius\CmsPlugin\Form\Type\CollectionType
+                repository: Sylius\CmsPlugin\Repository\CollectionRepository
                 factory: Sylius\Component\Resource\Factory\Factory

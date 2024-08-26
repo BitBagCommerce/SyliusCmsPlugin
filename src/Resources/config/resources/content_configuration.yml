@@ -3,8 +3,8 @@ sylius_resource:
     bitbag_sylius_cms_plugin.content_configuration:
       driver: doctrine/orm
       classes:
-        model: BitBag\SyliusCmsPlugin\Entity\ContentConfiguration
-        interface: BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface
-        form: BitBag\SyliusCmsPlugin\Form\Type\ContentConfigurationType
-        repository: BitBag\SyliusCmsPlugin\Repository\ContentConfigurationRepository
+        model: Sylius\CmsPlugin\Entity\ContentConfiguration
+        interface: Sylius\CmsPlugin\Entity\ContentConfigurationInterface
+        form: Sylius\CmsPlugin\Form\Type\ContentConfigurationType
+        repository: Sylius\CmsPlugin\Repository\ContentConfigurationRepository
         factory: Sylius\Component\Resource\Factory\TranslatableFactory

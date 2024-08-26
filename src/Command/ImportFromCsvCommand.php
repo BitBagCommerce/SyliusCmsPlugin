@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Command;
+namespace Sylius\CmsPlugin\Command;
 
-use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
+use Sylius\CmsPlugin\Processor\ImportProcessorInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

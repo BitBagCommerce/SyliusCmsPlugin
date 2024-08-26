@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Parser;
+namespace Sylius\CmsPlugin\Twig\Parser;
 
 use Twig\Environment;
 use Twig\TwigFunction;

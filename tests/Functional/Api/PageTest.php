@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Functional\Api;
+namespace Tests\Sylius\CmsPlugin\Functional\Api;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\BitBag\SyliusCmsPlugin\Functional\FunctionalTestCase;
+use Tests\Sylius\CmsPlugin\Functional\FunctionalTestCase;
 
 class PageTest extends FunctionalTestCase
 {

@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\HeadingContentElementRenderer;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\HeadingContentElementRenderer;
 use Twig\Environment;
 
 final class HeadingContentElementRendererSpec extends ObjectBehavior

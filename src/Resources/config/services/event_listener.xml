@@ -4,18 +4,18 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.menu.content_management" class="BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder">
+        <service id="bitbag_sylius_cms_plugin.menu.content_management" class="Sylius\CmsPlugin\Menu\ContentManagementMenuBuilder">
             <argument type="service" id="bitbag_sylius_cms_plugin.menu.reorder" />
             <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="buildMenu" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.event_listener.media_upload" class="BitBag\SyliusCmsPlugin\EventListener\MediaUploadListener">
+        <service id="bitbag_sylius_cms_plugin.event_listener.media_upload" class="Sylius\CmsPlugin\EventListener\MediaUploadListener">
             <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             <tag name="kernel.event_listener" event="bitbag_sylius_cms_plugin.media.pre_create" method="uploadMedia" />
             <tag name="kernel.event_listener" event="bitbag_sylius_cms_plugin.media.pre_update" method="uploadMedia" />
         </service>
 
-        <service id="bitbag_sylius.event_subscriber.resource_delete" class="BitBag\SyliusCmsPlugin\EventListener\ResourceDeleteSubscriber">
+        <service id="bitbag_sylius.event_subscriber.resource_delete" class="Sylius\CmsPlugin\EventListener\ResourceDeleteSubscriber">
             <argument type="service" id="router" />
             <argument type="service" id="request_stack" />
             <tag name="kernel.event_subscriber" event="kernel.exception" />

@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\DependencyInjection\Compiler;
+namespace Sylius\CmsPlugin\DependencyInjection\Compiler;
 
-use BitBag\SyliusCmsPlugin\Importer\ImporterInterface;
+use Sylius\CmsPlugin\Importer\ImporterInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Entity\CollectibleInterface;
 
 final class ImporterCollectionsResolver implements ImporterCollectionsResolverInterface
 {

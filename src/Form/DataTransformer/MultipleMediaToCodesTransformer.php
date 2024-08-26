@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\DataTransformer;
+namespace Sylius\CmsPlugin\Form\DataTransformer;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Webmozart\Assert\Assert;
 

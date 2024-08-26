@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\TemplateInterface;
-use BitBag\SyliusCmsPlugin\Repository\TemplateRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\CmsPlugin\Entity\TemplateInterface;
+use Sylius\CmsPlugin\Repository\TemplateRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
 
 final class TemplateContext implements Context
 {

@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Functional\Api;
+namespace Tests\Sylius\CmsPlugin\Functional\Api;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\BitBag\SyliusCmsPlugin\Functional\FunctionalTestCase;
+use Tests\Sylius\CmsPlugin\Functional\FunctionalTestCase;
 
 class MediaTest extends FunctionalTestCase
 {

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 
 final class ImporterProductsInTaxonsResolver implements ImporterProductsInTaxonsResolverInterface
 {

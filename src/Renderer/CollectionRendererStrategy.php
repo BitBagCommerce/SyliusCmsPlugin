@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer;
+namespace Sylius\CmsPlugin\Renderer;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionRendererInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionRendererInterface;
 
 final class CollectionRendererStrategy implements CollectionRendererStrategyInterface
 {

@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class CollectionContext implements Context
 {

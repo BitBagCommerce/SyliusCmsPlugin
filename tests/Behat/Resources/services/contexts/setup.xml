@@ -4,14 +4,14 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.block" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\BlockContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\BlockContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.page" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\PageContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\PageContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
@@ -22,14 +22,14 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.media_provider.image" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\CollectionContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\CollectionContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\MediaContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\MediaContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
@@ -37,7 +37,7 @@
                 <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.template" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup\TemplateContext">
+            <service id="bitbag_sylius_cms_plugin.behat.context.setup.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\TemplateContext">
                 <argument type="service" id="bitbag_sylius_cms_plugin.factory.template" />
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="bitbag_sylius_cms_plugin.repository.template" />

@@ -8,17 +8,17 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 

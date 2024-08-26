@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace spec\Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolver;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
+use Sylius\CmsPlugin\Entity\LocaleAwareInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolver;
 
 final class ImporterLocalesResolverSpec extends ObjectBehavior
 {

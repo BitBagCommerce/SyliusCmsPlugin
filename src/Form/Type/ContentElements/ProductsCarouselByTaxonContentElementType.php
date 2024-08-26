@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
+namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;

@@ -4,15 +4,15 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.index" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Template\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
                 <argument>bitbag_sylius_cms_plugin_admin_template_index</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.create" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Template\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
                 <argument>bitbag_sylius_cms_plugin_admin_template_create</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.update" class="Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Template\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
+            <service id="bitbag_sylius_cms_plugin.behat.page.admin.template.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
                 <argument>bitbag_sylius_cms_plugin_admin_template_update</argument>
             </service>
     </services>

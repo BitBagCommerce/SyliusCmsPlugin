@@ -72,7 +72,7 @@ Sylius\Component\Core\Model\ProductVariant:
     product: '@product1'
     code: "code1"
 
-BitBag\SyliusCmsPlugin\Entity\PageTranslation:
+Sylius\CmsPlugin\Entity\PageTranslation:
   page1_translation:
     name: 'translation_name_en_US'
     locale: 'en_US'
@@ -85,7 +85,7 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
     name: 'translation_name_en_US'
     locale: 'en_US'
     content: 'translation_content_en_US'
-BitBag\SyliusCmsPlugin\Entity\Page:
+Sylius\CmsPlugin\Entity\Page:
   page1:
     code: 'page1-code'
     enabled: true

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 
 final class CollectionResourceResolver implements CollectionResourceResolverInterface
 {

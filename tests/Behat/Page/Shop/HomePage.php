@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Shop;
 
 use Sylius\Behat\Page\Shop\HomePage as BaseHomePage;
 

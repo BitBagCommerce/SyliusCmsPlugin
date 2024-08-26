@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
+namespace Sylius\CmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
+use Sylius\CmsPlugin\Entity\TaxonAwareInterface;
 
 interface ImporterTaxonsResolverInterface
 {

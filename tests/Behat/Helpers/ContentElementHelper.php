@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Helpers;
+namespace Tests\Sylius\CmsPlugin\Behat\Helpers;
 
 final class ContentElementHelper
 {

@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
 use Twig\Environment;
 
 final class HeadingContentElementRenderer implements ContentElementRendererInterface

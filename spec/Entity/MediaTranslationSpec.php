@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Entity;
+namespace spec\Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaTranslation;
-use BitBag\SyliusCmsPlugin\Entity\MediaTranslationInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaTranslation;
+use Sylius\CmsPlugin\Entity\MediaTranslationInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 

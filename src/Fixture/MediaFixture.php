@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture;
+namespace Sylius\CmsPlugin\Fixture;
 
-use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
+use Sylius\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class MediaFixture extends AbstractFixture

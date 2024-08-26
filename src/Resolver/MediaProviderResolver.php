@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Webmozart\Assert\Assert;
 

@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\IndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Shop\Page\ShowPageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\IndexPageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\ShowPageInterface;
 use Webmozart\Assert\Assert;
 
 final class PageContext implements Context

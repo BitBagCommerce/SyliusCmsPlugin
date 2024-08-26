@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Assigner;
+namespace Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
+use Sylius\CmsPlugin\Entity\CollectibleInterface;
 
 interface CollectionsAssignerInterface
 {

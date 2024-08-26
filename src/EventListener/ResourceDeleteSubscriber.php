@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\EventListener;
+namespace Sylius\CmsPlugin\EventListener;
 
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Sylius\Component\Resource\ResourceActions;

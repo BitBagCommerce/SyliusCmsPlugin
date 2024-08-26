@@ -3,13 +3,13 @@ sylius_resource:
         bitbag_sylius_cms_plugin.page:
             driver: doctrine/orm
             classes:
-                model: BitBag\SyliusCmsPlugin\Entity\Page
-                interface: BitBag\SyliusCmsPlugin\Entity\PageInterface
-                form: BitBag\SyliusCmsPlugin\Form\Type\PageType
-                repository: BitBag\SyliusCmsPlugin\Repository\PageRepository
-                controller: BitBag\SyliusCmsPlugin\Controller\PageController
+                model: Sylius\CmsPlugin\Entity\Page
+                interface: Sylius\CmsPlugin\Entity\PageInterface
+                form: Sylius\CmsPlugin\Form\Type\PageType
+                repository: Sylius\CmsPlugin\Repository\PageRepository
+                controller: Sylius\CmsPlugin\Controller\PageController
                 factory: Sylius\Component\Resource\Factory\TranslatableFactory
             translation:
                 classes:
-                    model: BitBag\SyliusCmsPlugin\Entity\PageTranslation
-                    interface: BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface
+                    model: Sylius\CmsPlugin\Entity\PageTranslation
+                    interface: Sylius\CmsPlugin\Entity\PageTranslationInterface

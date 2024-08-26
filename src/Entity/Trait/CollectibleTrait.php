@@ -8,17 +8,17 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity\Trait;
+namespace Sylius\CmsPlugin\Entity\Trait;
 
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\Media;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Entity\Page;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\CmsPlugin\Entity\Block;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\Media;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Entity\Page;
+use Sylius\CmsPlugin\Entity\PageInterface;
 
 trait CollectibleTrait
 {

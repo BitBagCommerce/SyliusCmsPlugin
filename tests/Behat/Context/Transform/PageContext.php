@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Transform;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class PageContext implements Context

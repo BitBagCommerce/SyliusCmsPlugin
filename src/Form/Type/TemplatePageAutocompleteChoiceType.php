@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
 final class TemplatePageAutocompleteChoiceType extends AbstractTemplateAutocompleteChoiceType
 {

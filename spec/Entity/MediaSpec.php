@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Entity;
+namespace spec\Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\Media;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\Media;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

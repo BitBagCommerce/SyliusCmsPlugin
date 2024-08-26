@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
+namespace Sylius\CmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\TemplateInterface;
+use Sylius\CmsPlugin\Entity\TemplateInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 

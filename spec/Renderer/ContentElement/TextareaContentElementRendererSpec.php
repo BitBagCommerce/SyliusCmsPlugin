@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\TextareaContentElementRenderer;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\TextareaContentElementRenderer;
 use Twig\Environment;
 
 final class TextareaContentElementRendererSpec extends ObjectBehavior

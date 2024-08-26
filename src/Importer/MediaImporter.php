@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;

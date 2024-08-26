@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

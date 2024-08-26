@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Validator\Constraint;
+namespace Sylius\CmsPlugin\Validator\Constraint;
 
-use BitBag\SyliusCmsPlugin\Validator\FileMatchesTypeValidator;
+use Sylius\CmsPlugin\Validator\FileMatchesTypeValidator;
 use Symfony\Component\Validator\Constraint;
 
 final class FileMatchesType extends Constraint

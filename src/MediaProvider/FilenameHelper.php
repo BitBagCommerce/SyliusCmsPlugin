@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\MediaProvider;
+namespace Sylius\CmsPlugin\MediaProvider;
 
 final class FilenameHelper
 {

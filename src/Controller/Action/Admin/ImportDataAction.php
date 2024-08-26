@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
+namespace Sylius\CmsPlugin\Controller\Action\Admin;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
-use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
-use BitBag\SyliusCmsPlugin\Form\Type\ImportType;
-use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
+use Sylius\CmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
+use Sylius\CmsPlugin\Exception\ImportFailedException;
+use Sylius\CmsPlugin\Form\Type\ImportType;
+use Sylius\CmsPlugin\Processor\ImportProcessorInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;

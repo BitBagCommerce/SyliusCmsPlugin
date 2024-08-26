@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssigner;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 

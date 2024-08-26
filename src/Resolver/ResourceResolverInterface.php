@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace Sylius\CmsPlugin\Resolver;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 

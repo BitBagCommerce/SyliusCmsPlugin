@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller\Helper;
+namespace Sylius\CmsPlugin\Controller\Helper;
 
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;

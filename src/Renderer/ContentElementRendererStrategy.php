@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer;
+namespace Sylius\CmsPlugin\Renderer;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
 
 final class ContentElementRendererStrategy implements ContentElementRendererStrategyInterface
 {

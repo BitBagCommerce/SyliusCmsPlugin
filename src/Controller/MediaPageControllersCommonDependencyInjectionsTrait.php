@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Liip\ImagineBundle\Imagine\Data\DataManager;
+use Sylius\CmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
 
 trait MediaPageControllersCommonDependencyInjectionsTrait
 {

@@ -1,4 +1,4 @@
-BitBag\SyliusCmsPlugin\Entity\Collection:
+Sylius\CmsPlugin\Entity\Collection:
     exclusion_policy: ALL
     xml_root_name: collection
     properties:

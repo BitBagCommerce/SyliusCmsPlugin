@@ -57,13 +57,13 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "BitBag\\SyliusCmsPlugin\\": "src/",
-      "Tests\\BitBag\\SyliusCmsPlugin\\": "tests/"
+      "Sylius\\CmsPlugin\\": "src/",
+      "Tests\\Sylius\\CmsPlugin\\": "tests/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "spec\\BitBag\\SyliusCmsPlugin\\": "spec/"
+      "spec\\Sylius\\CmsPlugin\\": "spec/"
     },
     "classmap": ["tests/Application/Kernel.php"]
   },

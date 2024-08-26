@@ -8,12 +8,12 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Processor;
+namespace Sylius\CmsPlugin\Processor;
 
-use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
-use BitBag\SyliusCmsPlugin\Importer\ImporterChainInterface;
-use BitBag\SyliusCmsPlugin\Reader\ReaderInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Sylius\CmsPlugin\Exception\ImportFailedException;
+use Sylius\CmsPlugin\Importer\ImporterChainInterface;
+use Sylius\CmsPlugin\Reader\ReaderInterface;
 
 final class ImportProcessor implements ImportProcessorInterface
 {

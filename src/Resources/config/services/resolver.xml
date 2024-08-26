@@ -4,31 +4,31 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.resolver.resource.page" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.resource.page" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
             <argument>code</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.resource.collection" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.resource.collection" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
             <argument>code</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.resource.block" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.resource.block" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
             <argument>code</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.resource.media" class="BitBag\SyliusCmsPlugin\Resolver\ResourceResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.resource.media" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
             <argument>code</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.block_resource" class="BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolver" public="true">
+        <service id="bitbag_sylius_cms_plugin.resolver.block_resource" class="Sylius\CmsPlugin\Resolver\BlockResourceResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
             <argument type="service" id="logger" />
             <argument type="service" id="sylius.context.channel" />
@@ -36,48 +36,48 @@
             <argument type="service" id="sylius.repository.locale" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.collection_resource" class="BitBag\SyliusCmsPlugin\Resolver\CollectionResourceResolver" public="true">
+        <service id="bitbag_sylius_cms_plugin.resolver.collection_resource" class="Sylius\CmsPlugin\Resolver\CollectionResourceResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.page_resource" class="BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver" public="true">
+        <service id="bitbag_sylius_cms_plugin.resolver.page_resource" class="Sylius\CmsPlugin\Resolver\PageResourceResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.media_resource" class="BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver" public="true">
+        <service id="bitbag_sylius_cms_plugin.resolver.media_resource" class="Sylius\CmsPlugin\Resolver\MediaResourceResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.media_provider" class="BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver" public="true">
+        <service id="bitbag_sylius_cms_plugin.resolver.media_provider" class="Sylius\CmsPlugin\Resolver\MediaProviderResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.registry.media_provider" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_collections" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_collections" class="Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_channels" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_channels" class="Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_products" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_products" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_taxons" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.taxons" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products_in_taxons" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_locales" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_locales" class="Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.locales" />
         </service>
     </services>

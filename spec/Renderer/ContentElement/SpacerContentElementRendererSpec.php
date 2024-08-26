@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SpacerContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer;
 use Twig\Environment;
 
 final class SpacerContentElementRendererSpec extends ObjectBehavior

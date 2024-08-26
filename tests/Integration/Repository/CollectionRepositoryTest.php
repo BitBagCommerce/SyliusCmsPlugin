@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Integration\Repository;
+namespace Tests\Sylius\CmsPlugin\Integration\Repository;
 
 use ApiTestCase\JsonApiTestCase;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 
 final class CollectionRepositoryTest extends JsonApiTestCase
 {

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;

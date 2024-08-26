@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Collection;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ChecksCodeImmutabilityInterface;
 
 interface UpdatePageInterface extends BaseUpdatePageInterface, ChecksCodeImmutabilityInterface
 {

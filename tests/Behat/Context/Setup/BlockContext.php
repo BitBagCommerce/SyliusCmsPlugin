@@ -8,18 +8,18 @@
 
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\ContentConfiguration;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class BlockContext implements Context
 {

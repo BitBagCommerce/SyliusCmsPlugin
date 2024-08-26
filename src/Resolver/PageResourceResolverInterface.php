@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
 
 interface PageResourceResolverInterface
 {

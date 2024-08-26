@@ -8,16 +8,16 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Environment;
 
 final class SingleMediaContentElementRendererSpec extends ObjectBehavior

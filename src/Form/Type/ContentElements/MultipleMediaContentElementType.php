@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
+namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\Type\MediaAutocompleteChoiceType;
+use Sylius\CmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormBuilderInterface;

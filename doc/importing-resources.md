@@ -63,7 +63,7 @@ the resolver needs to create a new resource or update an existing one:
 
 ```yaml
     app.resolver.resource.product:
-        class: BitBag\SyliusCmsPlugin\Resolver\ResourceResolver
+        class: Sylius\CmsPlugin\Resolver\ResourceResolver
         arguments:
             - "@sylius.repository.product"
             - "@sylius.factory.product"
@@ -79,7 +79,7 @@ declare(strict_types=1);
 
 namespace AppBundle\Importer;
 
-use  BitBag\SyliusCmsPlugin\Importer\ImporterInterface;
+use  Sylius\CmsPlugin\Importer\ImporterInterface;
 
 interface ProductImporterInterface extends ImporterInterface
 {
@@ -99,8 +99,8 @@ declare(strict_types=1);
 
 namespace AppBundle\Importer;
 
-use BitBag\SyliusCmsPlugin\Importer\AbstractImporter;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
+use Sylius\CmsPlugin\Importer\AbstractImporter;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

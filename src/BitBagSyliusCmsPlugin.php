@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin;
+namespace Sylius\CmsPlugin;
 
-use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass;
-use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\MediaProviderPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
+use Sylius\CmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass;
+use Sylius\CmsPlugin\DependencyInjection\Compiler\MediaProviderPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
