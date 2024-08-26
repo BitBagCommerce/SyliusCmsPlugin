@@ -36,12 +36,12 @@ final class PagesCollectionContentElementRenderer implements ContentElementRende
             return '';
         }
 
-        /** @var CollectionInterface $collection */
+        /** @var CollectionInterface|null $collection */
         $collection = $this->collectionRepository->findOneBy(['code' => $code]);
 
         return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
-            'collection' => $collection->getPages(),
+            'collection' => $collection?->getPages(),
         ]);
     }
 }

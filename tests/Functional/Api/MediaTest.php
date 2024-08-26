@@ -28,7 +28,7 @@ class MediaTest extends FunctionalTestCase
     public function test_media_response(): void
     {
         /** @var MediaInterface $media */
-        $media = $this->getRepository()->findOneEnabledByCode('media1-code', 'en_US', 'code');
+        $media = $this->getRepository()->findOneEnabledByCode('media1-code', 'code');
 
         $this->client->request('GET', '/api/v2/shop/cms-plugin/media/' . $media->getId(), [], [], self::CONTENT_TYPE_HEADER);
         $response = $this->client->getResponse();
