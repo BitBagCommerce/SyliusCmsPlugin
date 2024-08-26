@@ -52,7 +52,7 @@
     "symfony/web-profiler-bundle": "^5.4 || ^6.4"
   },
   "suggest": {
-    "stefandoorn/sitemap-plugin": "^2.0@alpha"
+    "stefandoorn/sitemap-plugin": "^2.2"
   },
   "prefer-stable": true,
   "autoload": {

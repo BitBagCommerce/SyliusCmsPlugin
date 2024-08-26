@@ -19,7 +19,7 @@ return [
 ```
 The first line above (FOSCKEditorBundle) might have been already added during composer require command.
 
-Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+3. Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
 ```bash
 bin/console ckeditor:install
@@ -45,7 +45,7 @@ twig:
         - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
-3. Import required config in your `config/packages/_sylius.yaml` file:
+4. Import required config in your `config/packages/_sylius.yaml` file:
 ```yaml
 # config/packages/_sylius.yaml
 
@@ -55,7 +55,7 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
-4. Import routing in your `config/routes.yaml` file:
+5. Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
@@ -93,7 +93,7 @@ you will probably need to change the extension of the imported file in
         - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
 ```
 
-5. Finish the installation by updating the database schema and installing assets:
+6. Finish the installation by updating the database schema and installing assets:
 
 ```bash
 bin/console cache:clear
@@ -109,7 +109,7 @@ bin/console sylius:theme:assets:install --symlink
 
 Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
 
-6. Add plugin assets to your project
+7. Add plugin assets to your project
 
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
@@ -123,32 +123,12 @@ We recommend you to use Webpack (Encore), for which we have prepared four differ
 
 However, if you are not using Webpack, here are instructions on how to add optimized and compressed assets directly to your project templates:
 
-- [Non webpack solution](./01.5-non-webpack.md)
-
-7. Passing required "backend" values to "frontend"
-
-In order to make plugin finally work you need to declare "route", in admin _scripts.html.twig you can pass:
-
-```
-<script>
-    const route = "{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase')|escape('js') }}";
-</script>
-```
-
-Any other approach, that will allow cms pages to read this value in js, under "route" key, will work. 
+- [Non webpack solution](./01.5-non-webpack.md) 
 
 ## Testing & running the plugin
 ```bash
 composer install
 cd tests/Application
-```
-Copy file `package.json.~1.XX.0.dist` to `package.json` where `~1.XX.0` is the Sylius version you are using.
-
-```bash
-cp package.json.~1.12.0.dist package.json
-```
-
-```bash
 yarn install
 yarn encore dev
 APP_ENV=test bin/console assets:install
