@@ -4,7 +4,7 @@
 1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
 
 ```bash
-$ composer require bitbag/cms-plugin --no-scripts
+composer require bitbag/cms-plugin --no-scripts
 ```
 
 2. Add plugin dependencies to your `config/bundles.php` file:
@@ -22,13 +22,13 @@ The first line above (FOSCKEditorBundle) might have been already added during co
 Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
 ```bash
-$ bin/console ckeditor:install
+bin/console ckeditor:install
 ```
 
 **Note.** If you have an issue with the ckeditor not running, please try to install it using the `4.22.1` tag:
 
 ```bash
-$ bin/console ckeditor:install --tag=4.22.1
+bin/console ckeditor:install --tag=4.22.1
 ```
 
 For more information regardin `4.22.1` tag please visit the #485 issue.
@@ -96,15 +96,15 @@ you will probably need to change the extension of the imported file in
 5. Finish the installation by updating the database schema and installing assets:
 
 ```bash
-$ bin/console cache:clear
+bin/console cache:clear
 
 # If you used migrations in your project...
-$ bin/console doctrine:migrations:migrate
+bin/console doctrine:migrations:migrate
 # ... or if you use doctrine schema tool.
-$ bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
+bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
 
-$ bin/console assets:install --symlink
-$ bin/console sylius:theme:assets:install --symlink
+bin/console assets:install --symlink
+bin/console sylius:theme:assets:install --symlink
 ```
 
 Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
@@ -139,23 +139,23 @@ Any other approach, that will allow cms pages to read this value in js, under "r
 
 ## Testing & running the plugin
 ```bash
-$ composer install
-$ cd tests/Application
+composer install
+cd tests/Application
 ```
 Copy file `package.json.~1.XX.0.dist` to `package.json` where `~1.XX.0` is the Sylius version you are using.
 
 ```bash
-$ cp package.json.~1.12.0.dist package.json
+cp package.json.~1.12.0.dist package.json
 ```
 
 ```bash
-$ yarn install
-$ yarn encore dev
-$ APP_ENV=test bin/console assets:install
-$ APP_ENV=test bin/console doctrine:schema:create
-$ APP_ENV=test symfony server:start --port=8080 -d
-$ cd ../..
-$ open http://localhost:8080
-$ vendor/bin/behat
-$ vendor/bin/phpspec run
+yarn install
+yarn encore dev
+APP_ENV=test bin/console assets:install
+APP_ENV=test bin/console doctrine:schema:create
+APP_ENV=test symfony server:start --port=8080 -d
+cd ../..
+open http://localhost:8080
+vendor/bin/behat
+vendor/bin/phpspec run
 ```
