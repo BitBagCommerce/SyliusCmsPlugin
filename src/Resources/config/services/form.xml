@@ -96,12 +96,13 @@
 
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.single_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.single_media%" />
             <tag name="form.type" />
         </service>
 
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.multiple_media" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType">
-            <argument type="service" id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.multiple_media_to_codes" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.multiple_media%" />
             <tag name="form.type" />
         </service>
@@ -118,6 +119,7 @@
 
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_carousel_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_carousel_by_taxon%" />
             <tag name="form.type" />
         </service>
@@ -129,6 +131,7 @@
 
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.products_grid_by_taxon" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.products_grid_by_taxon%" />
             <tag name="form.type" />
         </service>
@@ -140,6 +143,7 @@
 
         <service id="bitbag_sylius_cms_plugin.form.type.content_element.pages_collection" class="BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" />
             <tag name="bitbag_sylius_cms_plugin.content_elements.type" key="%bitbag_sylius_cms_plugin.content_elements.type.pages_collection%" />
             <tag name="form.type" />
         </service>
@@ -149,9 +153,11 @@
             <tag name="form.type" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.form.type.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
+        <service id="bitbag_sylius_cms_plugin.form.data_transformer.multiple_media_to_codes" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.data_transformer.content_element_checker" class="BitBag\SyliusCmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker"/>
     </services>
 
 </container>
