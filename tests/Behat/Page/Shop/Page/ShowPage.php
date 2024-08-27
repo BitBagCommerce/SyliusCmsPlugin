@@ -17,7 +17,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
 {
     public function getRouteName(): string
     {
-        return 'bitbag_sylius_cms_plugin_shop_page_show';
+        return 'sylius_cms_plugin_shop_page_show';
     }
 
     public function hasName(string $name): bool

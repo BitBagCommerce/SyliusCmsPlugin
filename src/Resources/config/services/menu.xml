@@ -4,6 +4,6 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.menu.reorder" class="Sylius\CmsPlugin\Menu\MenuReorder" />
+        <service id="sylius_cms_plugin.menu.reorder" class="Sylius\CmsPlugin\Menu\MenuReorder" />
     </services>
 </container>

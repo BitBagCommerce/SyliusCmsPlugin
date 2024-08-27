@@ -21,7 +21,7 @@ final class PageCollectionAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag_sylius_cms_plugin.collection',
+            'resource' => 'sylius_cms_plugin.collection',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);
@@ -38,7 +38,7 @@ final class PageCollectionAutocompleteChoiceType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_page_collection_autocomplete_choice';
+        return 'sylius_page_collection_autocomplete_choice';
     }
 
     public function getParent(): string

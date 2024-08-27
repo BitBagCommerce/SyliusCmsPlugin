@@ -45,7 +45,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $page->getName()->willReturn('Page Name');
 
         $urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_show',
+            'sylius_cms_plugin_shop_page_show',
             ['slug' => 'page-slug'],
             UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');
@@ -70,7 +70,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $page->getName()->willReturn('Page Name');
 
         $urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_show',
+            'sylius_cms_plugin_shop_page_show',
             ['slug' => 'page-slug'],
             UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');

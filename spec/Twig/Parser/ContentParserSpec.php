@@ -15,7 +15,7 @@ final class ContentParserSpec extends ObjectBehavior
 {
     public function let(Environment $twigEnvironment): void
     {
-        $this->beConstructedWith($twigEnvironment, ['bitbag_cms_render_block']);
+        $this->beConstructedWith($twigEnvironment, ['sylius_cms_render_block']);
     }
 
     public function it_is_initializable(): void
@@ -32,12 +32,12 @@ final class ContentParserSpec extends ObjectBehavior
         Environment $twigEnvironment,
         RenderBlockRuntimeInterface $renderBlockRuntime,
     ): void {
-        $twigFunctionName = 'bitbag_cms_render_block';
+        $twigFunctionName = 'sylius_cms_render_block';
         $twigEnvironment->getFunctions()->willReturn([
             $twigFunctionName => new TwigFunction($twigFunctionName, [$renderBlockRuntime->getWrappedObject(), 'renderBlock']),
         ]);
 
-        $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
+        $input = "Let's render! {{ sylius_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
 
         $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
 
@@ -48,13 +48,13 @@ final class ContentParserSpec extends ObjectBehavior
         Environment $twigEnvironment,
         RenderBlockRuntimeInterface $renderBlockRuntime,
     ): void {
-        $twigFunctionName = 'bitbag_cms_render_block';
+        $twigFunctionName = 'sylius_cms_render_block';
         $twigEnvironment->getFunctions()->willReturn([
             $twigFunctionName => new TwigFunction($twigFunctionName, [$renderBlockRuntime->getWrappedObject(), 'renderBlock']),
         ]);
 
-        $input = "Let's render! {{ bitbag_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}
-                  Let's render twice! {{ bitbag_cms_render_block('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
+        $input = "Let's render! {{ sylius_cms_render_block('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}
+                  Let's render twice! {{ sylius_cms_render_block('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig') }}";
 
         $renderBlockRuntime->renderBlock('intro', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();
         $renderBlockRuntime->renderBlock('intro1', '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig')->shouldBeCalled();

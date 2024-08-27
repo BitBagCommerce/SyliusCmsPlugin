@@ -35,7 +35,7 @@ final class FormErrorsFlashHelper implements FormErrorsFlashHelperInterface
             $errors[] = $error->getMessage();
         }
 
-        $message = $this->translator->trans('bitbag_sylius_cms_plugin.ui.form_was_submitted_with_errors') . ' ' . rtrim(implode(' ', $errors));
+        $message = $this->translator->trans('sylius_cms_plugin.ui.form_was_submitted_with_errors') . ' ' . rtrim(implode(' ', $errors));
 
         $session = $this->requestStack->getSession()->getFlashBag();
         $session->set('error', $message);

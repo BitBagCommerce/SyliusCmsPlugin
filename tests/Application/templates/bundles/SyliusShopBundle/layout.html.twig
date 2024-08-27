@@ -103,12 +103,12 @@
 
                 <div class="ui large stackable menu">
                     {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'MENU_CATEGORY', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
-                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'blog'}) }}"
+                    <a href="{{ path('sylius_cms_plugin_shop_page_show', {'slug' : 'blog'}) }}"
                        class="item">
                         Blog
                         <span class="ui teal label">NEW</span>
                     </a>
-                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'faq'}) }}"
+                    <a href="{{ path('sylius_cms_plugin_shop_page_show', {'slug' : 'faq'}) }}"
                        class="item">
                         FAQ
                         <span class="ui teal label">NEW</span>

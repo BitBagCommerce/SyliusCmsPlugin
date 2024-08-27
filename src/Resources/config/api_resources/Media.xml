@@ -3,7 +3,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
 >
-    <resource class="%bitbag_sylius_cms_plugin.model.media.class%" shortName="Media">
+    <resource class="%sylius_cms_plugin.model.media.class%" shortName="Media">
         <attribute name="normalization_context">
             <attribute name="groups">
                 <attribute>shop:cms:read</attribute>

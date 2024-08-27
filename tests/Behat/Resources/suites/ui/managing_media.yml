@@ -7,9 +7,9 @@ default:
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.product
-                - bitbag_sylius_cms_plugin.behat.context.setup.media
-                - bitbag_sylius_cms_plugin.behat.context.setup.collection
+                - sylius_cms_plugin.behat.context.setup.media
+                - sylius_cms_plugin.behat.context.setup.collection
 
-                - bitbag_sylius_cms_plugin.behat.context.ui.admin.media
+                - sylius_cms_plugin.behat.context.ui.admin.media
             filters:
                 tags: "@managing_media&&@ui"

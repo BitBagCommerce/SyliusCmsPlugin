@@ -19,7 +19,7 @@ Sylius\CmsPlugin\Entity\Media:
         -
             rel: self
             href:
-                route: bitbag_sylius_cms_plugin_shop_media_inline
+                route: sylius_cms_plugin_shop_media_inline
                 parameters:
                     _locale: expr(object.getTranslation().getLocale())
                     code: expr(object.getCode())

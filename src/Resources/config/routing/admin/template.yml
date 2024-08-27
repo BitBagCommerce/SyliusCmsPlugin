@@ -1,11 +1,11 @@
-bitbag_sylius_cms_plugin_admin_template:
+sylius_cms_plugin_admin_template:
     resource: |
-        alias: bitbag_sylius_cms_plugin.template
+        alias: sylius_cms_plugin.template
         section: admin
         templates: '@BitBagSyliusCmsPlugin/CrudUi'
         except: ['show']
         redirect: update
-        grid: bitbag_sylius_cms_plugin_admin_template
+        grid: sylius_cms_plugin_admin_template
         permission: true
         vars:
             all:
@@ -15,12 +15,12 @@ bitbag_sylius_cms_plugin_admin_template:
                 icon: block layout
     type: sylius.resource
 
-bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase:
+sylius_cms_plugin_admin_ajax_template_page_by_name_phrase:
     path: /ajax/templates/page/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.template::indexAction
+        _controller: sylius_cms_plugin.controller.template::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -30,12 +30,12 @@ bitbag_sylius_cms_plugin_admin_ajax_template_page_by_name_phrase:
                     phrase: $phrase
                     type: page
 
-bitbag_sylius_cms_plugin_admin_ajax_template_block_by_name_phrase:
+sylius_cms_plugin_admin_ajax_template_block_by_name_phrase:
     path: /ajax/templates/block/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.template::indexAction
+        _controller: sylius_cms_plugin.controller.template::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -45,12 +45,12 @@ bitbag_sylius_cms_plugin_admin_ajax_template_block_by_name_phrase:
                     phrase: $phrase
                     type: block
 
-bitbag_sylius_cms_plugin_admin_ajax_template_by_id:
+sylius_cms_plugin_admin_ajax_template_by_id:
     path: /ajax/templates/id
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.template::indexAction
+        _controller: sylius_cms_plugin.controller.template::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -58,11 +58,11 @@ bitbag_sylius_cms_plugin_admin_ajax_template_by_id:
                 method: find
                 arguments: [id: $id]
 
-bitbag_sylius_cms_plugin_admin_ajax_template_content_by_id:
+sylius_cms_plugin_admin_ajax_template_content_by_id:
     path: /ajax/templates/content/{id}
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.template::getContentElementsAction
+        _controller: sylius_cms_plugin.controller.template::getContentElementsAction
         _sylius:
             permission: true

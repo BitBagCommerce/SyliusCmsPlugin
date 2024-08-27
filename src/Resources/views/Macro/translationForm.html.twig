@@ -13,7 +13,7 @@
                 <div class="ui content{% if 0 == loop.index0 %} active{% endif %}">
                     {% for field in translationForm %}
 
-                        {% if 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                        {% if 'sylius_media_autocomplete_choice' in field.vars.block_prefixes %}
                             {{ media.mediaWidget(field) }}
                         {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}
@@ -45,7 +45,7 @@
 
                         {% if field.vars.name == 'slug' %}
                             {% include slugFieldTemplate with { 'slugField': translationForm.slug, 'resource': resource } %}
-                        {% elseif 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                        {% elseif 'sylius_media_autocomplete_choice' in field.vars.block_prefixes %}
                             {{ media.mediaWidget(field) }}
                         {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}

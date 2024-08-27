@@ -24,7 +24,7 @@ final class RenderCollectionExtension extends AbstractExtension
     {
         return [
             new TwigFunction(
-                'bitbag_cms_render_collection',
+                'sylius_cms_render_collection',
                 [$this->collectionRuntime, 'renderCollection'],
                 ['is_safe' => ['html']],
             ),

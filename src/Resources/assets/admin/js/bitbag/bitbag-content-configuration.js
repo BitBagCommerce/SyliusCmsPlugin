@@ -1,9 +1,3 @@
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 $(document).ready(function() {
     $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
         $(element).autoComplete();
@@ -29,10 +23,9 @@ $(document).ready(function() {
         language: "en-us"
     };
 
-    let pageElements = '#bitbag_sylius_cms_plugin_page_contentElements';
-    let blockElements = '#bitbag_sylius_cms_plugin_block_contentElements';
+    let pageElements = '#sylius_cms_plugin_page_contentElements';
+    let blockElements = '#sylius_cms_plugin_block_contentElements';
     let collectionHolder = $(pageElements).length ? pageElements : blockElements;
-
     let itemElement = document.querySelector(`${collectionHolder} [data-form-collection="item"]`);
 
     if (!$(collectionHolder).length) {

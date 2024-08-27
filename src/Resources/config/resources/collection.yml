@@ -1,6 +1,6 @@
 sylius_resource:
     resources:
-        bitbag_sylius_cms_plugin.collection:
+        sylius_cms_plugin.collection:
             driver: doctrine/orm
             classes:
                 model: Sylius\CmsPlugin\Entity\Collection

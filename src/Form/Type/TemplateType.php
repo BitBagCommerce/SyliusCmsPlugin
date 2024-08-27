@@ -22,13 +22,13 @@ final class TemplateType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms_plugin.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms_plugin.ui.type',
                 'choices' => [
-                    'bitbag_sylius_cms_plugin.ui.page' => 'page',
-                    'bitbag_sylius_cms_plugin.ui.block' => 'block',
+                    'sylius_cms_plugin.ui.page' => 'page',
+                    'sylius_cms_plugin.ui.block' => 'block',
                 ],
             ])
             ->add('contentElements', CollectionType::class, [
@@ -44,6 +44,6 @@ final class TemplateType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_template';
+        return 'sylius_cms_plugin_template';
     }
 }

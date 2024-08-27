@@ -23,7 +23,7 @@ final class RenderBlockExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_block', [$this->blockRuntime, 'renderBlock'], ['is_safe' => ['html']]),
+            new TwigFunction('sylius_cms_render_block', [$this->blockRuntime, 'renderBlock'], ['is_safe' => ['html']]),
         ];
     }
 }

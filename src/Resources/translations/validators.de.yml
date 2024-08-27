@@ -1,4 +1,4 @@
-bitbag_sylius_cms_plugin:
+sylius_cms_plugin:
     block:
         image:
             mime_types: Nur PNG, SVG und JPEG Dateien sind erlaubt.

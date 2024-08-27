@@ -9,17 +9,17 @@ You can customize this plugin using:
 In order to check what services are available with this plugin, run the following command:
 
 ```bash
-$ bin/console debug:container bitbag_sylius_cms_plugin
+$ bin/console debug:container sylius_cms_plugin
 ```
 
 **Note:**
 
-*All forms are prefixed with 'bitbag_sylius_cms_plugin.form.*'*
+*All forms are prefixed with 'sylius_cms_plugin.form.*'*
 
 If you want to check what routes are available with this plugin, use:
 
 ```bash
-$ bin/console debug:router | grep bitbag_sylius_cms_plugin
+$ bin/console debug:router | grep sylius_cms_plugin
 ```
 
 To check parameters available with the plugin, execute:
@@ -31,11 +31,11 @@ $ bin/console debug:container --parameters | grep bitbag
 Customise vendor routing in the file `app/Resources/BitBagSyliusCmsPlugin/config/routing.yml` (create if not exist).
 Add:
 ```
-bitbag_sylius_cms_plugin_admin:
+sylius_cms_plugin_admin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin.yml"
     prefix: /admin
 
-bitbag_sylius_cms_plugin_shop:
+sylius_cms_plugin_shop:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
     prefix: /
 

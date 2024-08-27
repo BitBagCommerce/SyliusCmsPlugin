@@ -24,9 +24,9 @@ final class WysiwygType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'bitbag_sylius_cms_plugin.ui.content',
+            'label' => 'sylius_cms_plugin.ui.content',
             'config' => [
-                'filebrowserUploadUrl' => $this->urlGenerator->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
+                'filebrowserUploadUrl' => $this->urlGenerator->generate('sylius_cms_plugin_admin_upload_editor_image'),
                 'bodyId' => 'bitbag-ckeditor',
             ],
         ]);
@@ -39,6 +39,6 @@ final class WysiwygType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_wysiwyg';
+        return 'sylius_wysiwyg';
     }
 }

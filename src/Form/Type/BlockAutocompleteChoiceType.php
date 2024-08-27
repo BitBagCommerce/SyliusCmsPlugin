@@ -21,7 +21,7 @@ final class BlockAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag_sylius_cms_plugin.block',
+            'resource' => 'sylius_cms_plugin.block',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);
@@ -38,7 +38,7 @@ final class BlockAutocompleteChoiceType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_block_autocomplete_choice';
+        return 'sylius_block_autocomplete_choice';
     }
 
     public function getParent(): string

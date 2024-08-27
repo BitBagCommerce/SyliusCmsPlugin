@@ -1,5 +1,5 @@
 {% if page != null %}
-    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', { slug: page.slug }) }}"
+    <a href="{{ path('sylius_cms_plugin_shop_page_show', { slug: page.slug }) }}"
        {% if options.attr is defined %}
             {% for attrname, attrvalue in options.attr %}
                 {{ attrname }}="{{ attrvalue }}"

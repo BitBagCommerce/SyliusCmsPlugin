@@ -1,8 +1,8 @@
 fos_ck_editor:
-    default_config: bitbag_sylius_cms_plugin
+    default_config: sylius_cms_plugin
     configs:
-        bitbag_sylius_cms_plugin:
-            toolbar: bitbag_sylius_cms_plugin
+        sylius_cms_plugin:
+            toolbar: sylius_cms_plugin
             enterMode: 3
             forcePasteAsPlainText: 'allow-word'
             allowedContent: true
@@ -20,7 +20,7 @@ fos_ck_editor:
             filename: 'plugin.js'
     toolbars:
         configs:
-            bitbag_sylius_cms_plugin:
+            sylius_cms_plugin:
                 - '@standard.clipboard'
                 - '@standard.editing'
                 - '@standard.links'

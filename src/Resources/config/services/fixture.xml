@@ -4,69 +4,69 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.fixture.block" class="Sylius\CmsPlugin\Fixture\BlockFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.block" />
+        <service id="sylius_cms_plugin.fixture.block" class="Sylius\CmsPlugin\Fixture\BlockFixture">
+            <argument type="service" id="sylius_cms_plugin.fixture.factory.block" />
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.page" class="Sylius\CmsPlugin\Fixture\PageFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.page" />
+        <service id="sylius_cms_plugin.fixture.page" class="Sylius\CmsPlugin\Fixture\PageFixture">
+            <argument type="service" id="sylius_cms_plugin.fixture.factory.page" />
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.collection" class="Sylius\CmsPlugin\Fixture\CollectionFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.collection" />
+        <service id="sylius_cms_plugin.fixture.collection" class="Sylius\CmsPlugin\Fixture\CollectionFixture">
+            <argument type="service" id="sylius_cms_plugin.fixture.factory.collection" />
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.media" class="Sylius\CmsPlugin\Fixture\MediaFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.media" />
+        <service id="sylius_cms_plugin.fixture.media" class="Sylius\CmsPlugin\Fixture\MediaFixture">
+            <argument type="service" id="sylius_cms_plugin.fixture.factory.media" />
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.template" class="Sylius\CmsPlugin\Fixture\TemplateFixture">
-            <argument type="service" id="bitbag_sylius_cms_plugin.fixture.factory.template" />
+        <service id="sylius_cms_plugin.fixture.template" class="Sylius\CmsPlugin\Fixture\TemplateFixture">
+            <argument type="service" id="sylius_cms_plugin.fixture.factory.template" />
             <tag name="sylius_fixtures.fixture" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.block" class="Sylius\CmsPlugin\Fixture\Factory\BlockFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.locales" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.taxons" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products_in_taxons" />
+        <service id="sylius_cms_plugin.fixture.factory.block" class="Sylius\CmsPlugin\Fixture\Factory\BlockFixtureFactory">
+            <argument type="service" id="sylius_cms_plugin.factory.block" />
+            <argument type="service" id="sylius_cms_plugin.repository.block" />
+            <argument type="service" id="sylius_cms_plugin.assigner.collections" />
+            <argument type="service" id="sylius_cms_plugin.assigner.channels" />
+            <argument type="service" id="sylius_cms_plugin.assigner.locales" />
+            <argument type="service" id="sylius_cms_plugin.assigner.products" />
+            <argument type="service" id="sylius_cms_plugin.assigner.taxons" />
+            <argument type="service" id="sylius_cms_plugin.assigner.products_in_taxons" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.page" class="Sylius\CmsPlugin\Fixture\Factory\PageFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.page_translation" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
+        <service id="sylius_cms_plugin.fixture.factory.page" class="Sylius\CmsPlugin\Fixture\Factory\PageFixtureFactory">
+            <argument type="service" id="sylius_cms_plugin.factory.page" />
+            <argument type="service" id="sylius_cms_plugin.factory.page_translation" />
+            <argument type="service" id="sylius_cms_plugin.repository.page" />
+            <argument type="service" id="sylius_cms_plugin.repository.media" />
+            <argument type="service" id="sylius_cms_plugin.assigner.collections" />
+            <argument type="service" id="sylius_cms_plugin.assigner.channels" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.collection" class="Sylius\CmsPlugin\Fixture\Factory\CollectionFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+        <service id="sylius_cms_plugin.fixture.factory.collection" class="Sylius\CmsPlugin\Fixture\Factory\CollectionFixtureFactory">
+            <argument type="service" id="sylius_cms_plugin.factory.collection" />
+            <argument type="service" id="sylius_cms_plugin.repository.collection" />
+            <argument type="service" id="sylius_cms_plugin.repository.page" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.media" class="Sylius\CmsPlugin\Fixture\Factory\MediaFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.media_translation" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
+        <service id="sylius_cms_plugin.fixture.factory.media" class="Sylius\CmsPlugin\Fixture\Factory\MediaFixtureFactory">
+            <argument type="service" id="sylius_cms_plugin.factory.media" />
+            <argument type="service" id="sylius_cms_plugin.factory.media_translation" />
+            <argument type="service" id="sylius_cms_plugin.resolver.media_provider" />
+            <argument type="service" id="sylius_cms_plugin.repository.media" />
+            <argument type="service" id="sylius_cms_plugin.assigner.collections" />
+            <argument type="service" id="sylius_cms_plugin.assigner.channels" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.fixture.factory.template" class="Sylius\CmsPlugin\Fixture\Factory\TemplateFixtureFactory">
-            <argument type="service" id="bitbag_sylius_cms_plugin.factory.template" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.template" />
+        <service id="sylius_cms_plugin.fixture.factory.template" class="Sylius\CmsPlugin\Fixture\Factory\TemplateFixtureFactory">
+            <argument type="service" id="sylius_cms_plugin.factory.template" />
+            <argument type="service" id="sylius_cms_plugin.repository.template" />
         </service>
     </services>
 

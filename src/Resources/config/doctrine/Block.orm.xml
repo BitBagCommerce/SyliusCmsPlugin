@@ -5,7 +5,7 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Sylius\CmsPlugin\Entity\Block" table="bitbag_cms_block">
+    <mapped-superclass name="Sylius\CmsPlugin\Entity\Block" table="sylius_cms_block">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
@@ -19,7 +19,7 @@
         <many-to-many field="collections" target-entity="Sylius\CmsPlugin\Entity\CollectionInterface" mapped-by="blocks" />
 
         <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
-            <join-table name="bitbag_cms_block_channels">
+            <join-table name="sylius_cms_block_channels">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
@@ -39,7 +39,7 @@
         </one-to-many>
 
         <many-to-many field="locales" target-entity="Sylius\Component\Locale\Model\LocaleInterface">
-            <join-table name="bitbag_cms_block_locales">
+            <join-table name="sylius_cms_block_locales">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
                 </join-columns>
@@ -50,7 +50,7 @@
         </many-to-many>
 
         <many-to-many field="products" target-entity="Sylius\Component\Core\Model\ProductInterface">
-            <join-table name="bitbag_cms_block_products">
+            <join-table name="sylius_cms_block_products">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
@@ -61,7 +61,7 @@
         </many-to-many>
 
         <many-to-many field="taxons" target-entity="Sylius\Component\Core\Model\TaxonInterface">
-            <join-table name="bitbag_cms_block_taxons">
+            <join-table name="sylius_cms_block_taxons">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
@@ -72,7 +72,7 @@
         </many-to-many>
 
         <many-to-many field="productsInTaxons" target-entity="Sylius\Component\Core\Model\TaxonInterface">
-            <join-table name="bitbag_cms_block_products_in_taxons">
+            <join-table name="sylius_cms_block_products_in_taxons">
                 <join-columns>
                     <join-column name="block_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>

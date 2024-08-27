@@ -1,24 +1,24 @@
 sylius_grid:
     grids:
-        bitbag_sylius_cms_plugin_admin_page:
+        sylius_cms_plugin_admin_page:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag_sylius_cms_plugin.model.page.class%"
+                    class: "%sylius_cms_plugin.model.page.class%"
             sorting:
                 code: asc
             limits: [10, 25, 50]
             fields:
                 name:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.name
+                    label: sylius_cms_plugin.ui.name
                     sortable: name
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/name.html.twig"
                 code:
                     type: string
-                    label: bitbag_sylius_cms_plugin.ui.code
+                    label: sylius_cms_plugin.ui.code
                     sortable: ~
                 enabled:
                     type: twig
@@ -27,13 +27,13 @@ sylius_grid:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 collections:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.collections
+                    label: sylius_cms_plugin.ui.collections
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
                 channels:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.channels
+                    label: sylius_cms_plugin.ui.channels
                     path: .
                     options:
                         template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
@@ -45,9 +45,9 @@ sylius_grid:
                         fields: [code]
                 collections:
                     type: entity
-                    label: bitbag_sylius_cms_plugin.ui.collections
+                    label: sylius_cms_plugin.ui.collections
                     form_options:
-                        class: "%bitbag_sylius_cms_plugin.model.collection.class%"
+                        class: "%sylius_cms_plugin.model.collection.class%"
                         choice_label: name
                         choice_value: code
                     options:

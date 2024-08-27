@@ -21,7 +21,7 @@ abstract class AbstractTemplateAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag_sylius_cms_plugin.template',
+            'resource' => 'sylius_cms_plugin.template',
             'choice_name' => 'name',
             'choice_value' => 'id',
         ]);

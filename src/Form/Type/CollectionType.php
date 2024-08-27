@@ -29,30 +29,30 @@ final class CollectionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms_plugin.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms_plugin.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms_plugin.ui.type',
                 'choices' => [
-                    'bitbag_sylius_cms_plugin.ui.page' => self::PAGE,
-                    'bitbag_sylius_cms_plugin.ui.block' => self::BLOCK,
-                    'bitbag_sylius_cms_plugin.ui.media' => self::MEDIA,
+                    'sylius_cms_plugin.ui.page' => self::PAGE,
+                    'sylius_cms_plugin.ui.block' => self::BLOCK,
+                    'sylius_cms_plugin.ui.media' => self::MEDIA,
                 ],
             ])
             ->add('pages', PageAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.pages',
+                'label' => 'sylius_cms_plugin.ui.pages',
                 'multiple' => true,
             ])
             ->add('blocks', BlockAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.blocks',
+                'label' => 'sylius_cms_plugin.ui.blocks',
                 'multiple' => true,
             ])
             ->add('media', MediaAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.media',
+                'label' => 'sylius_cms_plugin.ui.media',
                 'multiple' => true,
             ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event): void {
@@ -78,6 +78,6 @@ final class CollectionType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_collection';
+        return 'sylius_cms_plugin_collection';
     }
 }

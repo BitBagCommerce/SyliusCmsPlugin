@@ -4,13 +4,13 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.shop.home" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\HomePage" parent="sylius.behat.page.shop.home" public="false">
+            <service id="sylius_cms_plugin.behat.page.shop.home" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\HomePage" parent="sylius.behat.page.shop.home" public="false">
                 <argument>sylius_shop_homepage</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.shop.page.show" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\ShowPage" parent="sylius.behat.symfony_page" public="false"/>
+            <service id="sylius_cms_plugin.behat.page.shop.page.show" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\ShowPage" parent="sylius.behat.symfony_page" public="false"/>
 
-            <service id="bitbag_sylius_cms_plugin.behat.page.shop.page.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
+            <service id="sylius_cms_plugin.behat.page.shop.page.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Shop\Page\IndexPage" parent="sylius.behat.symfony_page" public="false"/>
 
     </services>
 </container>

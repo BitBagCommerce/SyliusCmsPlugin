@@ -21,18 +21,18 @@ final class PageTranslationType extends AbstractResourceType
     {
         $builder
             ->add('slug', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.slug',
+                'label' => 'sylius_cms_plugin.ui.slug',
             ])
             ->add('title', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.meta_title',
+                'label' => 'sylius_cms_plugin.ui.meta_title',
                 'required' => false,
             ])
             ->add('metaKeywords', TextareaType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.meta_keywords',
+                'label' => 'sylius_cms_plugin.ui.meta_keywords',
                 'required' => false,
             ])
             ->add('metaDescription', TextareaType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.meta_description',
+                'label' => 'sylius_cms_plugin.ui.meta_description',
                 'required' => false,
             ])
         ;
@@ -40,6 +40,6 @@ final class PageTranslationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_page_translation';
+        return 'sylius_cms_plugin_page_translation';
     }
 }

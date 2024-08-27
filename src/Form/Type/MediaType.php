@@ -40,37 +40,37 @@ final class MediaType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms_plugin.ui.code',
                 'disabled' => null !== $data && null !== $data->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms_plugin.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms_plugin.ui.type',
                 'choices' => $this->providers,
             ])
             ->add('file', FileType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.file',
+                'label' => 'sylius_cms_plugin.ui.file',
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
+                'label' => 'sylius_cms_plugin.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
+                'label' => 'sylius_cms_plugin.ui.enabled',
             ])
             ->add('saveWithOriginalName', CheckboxType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.save_with_original_name',
+                'label' => 'sylius_cms_plugin.ui.save_with_original_name',
             ])
             ->add('channels', ChannelChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'label' => 'sylius_cms_plugin.ui.channels',
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('path', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.path',
+                'label' => 'sylius_cms_plugin.ui.path',
                 'disabled' => true,
                 'required' => false,
             ])
@@ -82,6 +82,6 @@ final class MediaType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_media';
+        return 'sylius_cms_plugin_media';
     }
 }

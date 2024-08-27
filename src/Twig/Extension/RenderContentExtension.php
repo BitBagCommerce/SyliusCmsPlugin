@@ -19,7 +19,7 @@ final class RenderContentExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_content', [RenderContentRuntime::class, 'renderContent'], ['is_safe' => ['html']]),
+            new TwigFunction('sylius_cms_render_content', [RenderContentRuntime::class, 'renderContent'], ['is_safe' => ['html']]),
         ];
     }
 }

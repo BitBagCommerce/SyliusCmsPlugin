@@ -21,7 +21,7 @@ final class ImporterCompilerPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->has('bitbag_sylius_cms_plugin.importer.chain')) {
+        if (!$container->has('sylius_cms_plugin.importer.chain')) {
             return;
         }
 
@@ -31,7 +31,7 @@ final class ImporterCompilerPass implements CompilerPassInterface
         ;
 
         $taggedServices = $container->findTaggedServiceIds(self::TAG_ID);
-        $definition = $container->findDefinition('bitbag_sylius_cms_plugin.importer.chain');
+        $definition = $container->findDefinition('sylius_cms_plugin.importer.chain');
 
         foreach ($taggedServices as $id => $tags) {
             $definition->addMethodCall('addImporter', [new Reference($id)]);
