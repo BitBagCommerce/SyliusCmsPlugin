@@ -23,7 +23,7 @@ final class HeadingContentElementType extends AbstractType
     {
         $builder
             ->add('heading_type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.heading_type',
+                'label' => 'sylius_cms_plugin.ui.content_elements.heading_type',
                 'choices' => [
                     'H1' => 'h1',
                     'H2' => 'h2',
@@ -36,13 +36,13 @@ final class HeadingContentElementType extends AbstractType
                 'empty_data' => 'h1',
             ])
             ->add(self::TYPE, TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
     }
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

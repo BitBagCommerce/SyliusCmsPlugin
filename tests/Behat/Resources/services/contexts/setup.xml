@@ -4,43 +4,43 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\BlockContext">
+            <service id="sylius_cms_plugin.behat.context.setup.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\BlockContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.block" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
+                <argument type="service" id="sylius_cms_plugin.behat.random_string_generator" />
+                <argument type="service" id="sylius_cms_plugin.factory.block" />
+                <argument type="service" id="sylius_cms_plugin.repository.block" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\PageContext">
+            <service id="sylius_cms_plugin.behat.context.setup.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\PageContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.page" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+                <argument type="service" id="sylius_cms_plugin.behat.random_string_generator" />
+                <argument type="service" id="sylius_cms_plugin.factory.page" />
+                <argument type="service" id="sylius_cms_plugin.repository.page" />
                 <argument type="service" id="doctrine.orm.entity_manager" />
                 <argument type="service" id="sylius.repository.product" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.media_provider.image" />
+                <argument type="service" id="sylius_cms_plugin.repository.collection" />
+                <argument type="service" id="sylius_cms_plugin.media_provider.image" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\CollectionContext">
+            <service id="sylius_cms_plugin.behat.context.setup.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\CollectionContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.collection" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+                <argument type="service" id="sylius_cms_plugin.behat.random_string_generator" />
+                <argument type="service" id="sylius_cms_plugin.factory.collection" />
+                <argument type="service" id="sylius_cms_plugin.repository.collection" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\MediaContext">
+            <service id="sylius_cms_plugin.behat.context.setup.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\MediaContext">
                 <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.random_string_generator" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.media" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
+                <argument type="service" id="sylius_cms_plugin.behat.random_string_generator" />
+                <argument type="service" id="sylius_cms_plugin.factory.media" />
+                <argument type="service" id="sylius_cms_plugin.repository.media" />
+                <argument type="service" id="sylius_cms_plugin.resolver.media_provider" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.setup.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\TemplateContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.factory.template" />
+            <service id="sylius_cms_plugin.behat.context.setup.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\TemplateContext">
+                <argument type="service" id="sylius_cms_plugin.factory.template" />
                 <argument type="service" id="sylius.behat.shared_storage" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.repository.template" />
+                <argument type="service" id="sylius_cms_plugin.repository.template" />
             </service>
     </services>
 </container>

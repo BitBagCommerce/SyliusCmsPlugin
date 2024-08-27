@@ -14,6 +14,6 @@ final class TemplatePageAutocompleteChoiceType extends AbstractTemplateAutocompl
 {
     public function getBlockPrefix(): string
     {
-        return 'bitbag_template_page_autocomplete_choice';
+        return 'sylius_template_page_autocomplete_choice';
     }
 }

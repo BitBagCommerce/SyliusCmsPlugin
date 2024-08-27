@@ -62,7 +62,7 @@ imports:
 # config/routes.yaml
 ...
 
-bitbag_sylius_cms_plugin:
+sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
 If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions

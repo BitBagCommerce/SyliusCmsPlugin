@@ -11,8 +11,8 @@ export class HandleSlugUpdate {
         config = {
             wrappersIndicator: 'data-bb-cms-wrapper',
             lockFieldIndicator: 'data-bb-cms-toggle-slug',
-            bbTarget: 'bitbag_sylius_cms_plugin_page',
-            nameField: 'bitbag_sylius_cms_plugin_page_name',
+            bbTarget: 'sylius_cms_plugin_page',
+            nameField: 'sylius_cms_plugin_page_name',
         }
     ) {
         this.wrappers = document.querySelectorAll(`[${config.wrappersIndicator}]`);

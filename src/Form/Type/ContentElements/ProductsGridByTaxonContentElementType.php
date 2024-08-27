@@ -29,7 +29,7 @@ final class ProductsGridByTaxonContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, TaxonAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.taxon',
+                'label' => 'sylius_cms_plugin.ui.taxon',
                 'choice_value' => 'code',
                 'resource' => 'sylius.taxon',
             ])
@@ -42,6 +42,6 @@ final class ProductsGridByTaxonContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

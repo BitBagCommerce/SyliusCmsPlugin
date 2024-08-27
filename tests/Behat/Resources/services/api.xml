@@ -4,19 +4,19 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.block" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
+            <service id="sylius_cms_plugin.behat.api_platform_client.shop.block" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
                 <argument>shop/cms-plugin</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.media" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
+            <service id="sylius_cms_plugin.behat.api_platform_client.shop.media" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
                 <argument>shop/cms-plugin</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.page" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
+            <service id="sylius_cms_plugin.behat.api_platform_client.shop.page" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
                 <argument>shop/cms-plugin</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.collection" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
+            <service id="sylius_cms_plugin.behat.api_platform_client.shop.collection" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
                 <argument>shop/cms-plugin</argument>
             </service>
     </services>

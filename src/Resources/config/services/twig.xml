@@ -2,82 +2,82 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="bitbag_cms.twig.admin_functions" type="collection">
-                <parameter>bitbag_cms_render_block</parameter>
-                <parameter>bitbag_cms_render_media</parameter>
+        <parameter key="sylius_cms.twig.admin_functions" type="collection">
+                <parameter>sylius_cms_render_block</parameter>
+                <parameter>sylius_cms_render_media</parameter>
         </parameter>
-        <parameter key="bitbag_cms.twig.link_template">@BitBagSyliusCmsPlugin/Page/link.html.twig</parameter>
+        <parameter key="sylius_cms.twig.link_template">@BitBagSyliusCmsPlugin/Page/link.html.twig</parameter>
     </parameters>
 
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.block" class="Sylius\CmsPlugin\Twig\Extension\RenderBlockExtension">
-            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.block" />
+        <service id="sylius_cms_plugin.twig.extension.block" class="Sylius\CmsPlugin\Twig\Extension\RenderBlockExtension">
+            <argument type="service" id="sylius_cms_plugin.twig.runtime.block" />
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.block" class="Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.block_resource" />
+        <service id="sylius_cms_plugin.twig.runtime.block" class="Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntime">
+            <argument type="service" id="sylius_cms_plugin.resolver.block_resource" />
             <argument type="service" id="twig" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
+            <argument type="service" id="sylius_cms_plugin.content_element_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.collection" class="Sylius\CmsPlugin\Twig\Extension\RenderCollectionExtension">
-            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.collection" />
+        <service id="sylius_cms_plugin.twig.extension.collection" class="Sylius\CmsPlugin\Twig\Extension\RenderCollectionExtension">
+            <argument type="service" id="sylius_cms_plugin.twig.runtime.collection" />
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.collection" class="Sylius\CmsPlugin\Twig\Runtime\RenderCollectionRuntime">
+        <service id="sylius_cms_plugin.twig.runtime.collection" class="Sylius\CmsPlugin\Twig\Runtime\RenderCollectionRuntime">
             <argument type="service" id="twig" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.collection_resource" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.collection_renderer_strategy" />
+            <argument type="service" id="sylius_cms_plugin.resolver.collection_resource" />
+            <argument type="service" id="sylius_cms_plugin.collection_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.media" class="Sylius\CmsPlugin\Twig\Extension\RenderMediaExtension">
-            <argument type="service" id="bitbag_sylius_cms_plugin.twig.runtime.media" />
+        <service id="sylius_cms_plugin.twig.extension.media" class="Sylius\CmsPlugin\Twig\Extension\RenderMediaExtension">
+            <argument type="service" id="sylius_cms_plugin.twig.runtime.media" />
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.media" class="Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_provider" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.media_resource" />
+        <service id="sylius_cms_plugin.twig.runtime.media" class="Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntime">
+            <argument type="service" id="sylius_cms_plugin.resolver.media_provider" />
+            <argument type="service" id="sylius_cms_plugin.resolver.media_resource" />
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.render_content" class="Sylius\CmsPlugin\Twig\Extension\RenderContentExtension">
+        <service id="sylius_cms_plugin.twig.extension.render_content" class="Sylius\CmsPlugin\Twig\Extension\RenderContentExtension">
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_content" class="Sylius\CmsPlugin\Twig\Runtime\RenderContentRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.twig.parser.content" />
+        <service id="sylius_cms_plugin.twig.runtime.render_content" class="Sylius\CmsPlugin\Twig\Runtime\RenderContentRuntime">
+            <argument type="service" id="sylius_cms_plugin.twig.parser.content" />
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.render_content_elements" class="Sylius\CmsPlugin\Twig\Extension\RenderContentElementsExtension">
+        <service id="sylius_cms_plugin.twig.extension.render_content_elements" class="Sylius\CmsPlugin\Twig\Extension\RenderContentElementsExtension">
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_content_elements" class="Sylius\CmsPlugin\Twig\Runtime\RenderContentElementsRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.content_element_renderer_strategy" />
+        <service id="sylius_cms_plugin.twig.runtime.render_content_elements" class="Sylius\CmsPlugin\Twig\Runtime\RenderContentElementsRuntime">
+            <argument type="service" id="sylius_cms_plugin.content_element_renderer_strategy" />
             <tag name="twig.runtime" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.parser.content" class="Sylius\CmsPlugin\Twig\Parser\ContentParser">
+        <service id="sylius_cms_plugin.twig.parser.content" class="Sylius\CmsPlugin\Twig\Parser\ContentParser">
             <argument type="service" id="twig" />
-            <argument>%bitbag_cms.twig.admin_functions%</argument>
+            <argument>%sylius_cms.twig.admin_functions%</argument>
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.extension.render_link" class="Sylius\CmsPlugin\Twig\Extension\RenderPageLinkExtension">
+        <service id="sylius_cms_plugin.twig.extension.render_link" class="Sylius\CmsPlugin\Twig\Extension\RenderPageLinkExtension">
             <tag name="twig.extension" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.twig.runtime.render_link" class="Sylius\CmsPlugin\Twig\Runtime\RenderPageLinkRuntime">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.page" />
+        <service id="sylius_cms_plugin.twig.runtime.render_link" class="Sylius\CmsPlugin\Twig\Runtime\RenderPageLinkRuntime">
+            <argument type="service" id="sylius_cms_plugin.repository.page" />
             <argument type="service" id="router.default" />
-            <argument>%bitbag_cms.twig.link_template%</argument>
+            <argument>%sylius_cms.twig.link_template%</argument>
             <tag name="twig.runtime" />
         </service>
     </services>

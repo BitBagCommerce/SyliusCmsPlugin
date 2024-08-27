@@ -22,7 +22,7 @@ final class SpacerContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, NumberType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE . '_height',
+                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE . '_height',
                 'attr' => [
                     'min' => 0,
                 ],
@@ -33,6 +33,6 @@ final class SpacerContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

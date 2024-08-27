@@ -1,17 +1,17 @@
 sylius_grid:
     grids:
-        bitbag_sylius_cms_plugin_admin_template:
+        sylius_cms_plugin_admin_template:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag_sylius_cms_plugin.model.template.class%"
+                    class: "%sylius_cms_plugin.model.template.class%"
             sorting:
                 name: asc
             limits: [10, 25, 50]
             fields:
                 name:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.name
+                    label: sylius_cms_plugin.ui.name
                     sortable: name
                     path: .
                     options:

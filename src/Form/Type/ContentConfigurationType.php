@@ -34,7 +34,7 @@ final class ContentConfigurationType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['bitbag_sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
+            $this->actionTypes['sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
         }
     }
 
@@ -112,6 +112,6 @@ final class ContentConfigurationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_configuration';
+        return 'sylius_cms_plugin_content_configuration';
     }
 }

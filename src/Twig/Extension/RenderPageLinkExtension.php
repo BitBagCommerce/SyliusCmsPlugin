@@ -19,11 +19,11 @@ class RenderPageLinkExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_page_link', [RenderPageLinkRuntime::class, 'renderLinkForCode'], [
+            new TwigFunction('sylius_cms_render_page_link', [RenderPageLinkRuntime::class, 'renderLinkForCode'], [
                 'needs_environment' => true,
                 'is_safe' => ['html'],
             ]),
-            new TwigFunction('bitbag_cms_get_page_url', [RenderPageLinkRuntime::class, 'getLinkForCode']),
+            new TwigFunction('sylius_cms_get_page_url', [RenderPageLinkRuntime::class, 'getLinkForCode']),
         ];
     }
 }

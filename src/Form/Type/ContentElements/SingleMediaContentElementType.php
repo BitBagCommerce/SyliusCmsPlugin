@@ -29,7 +29,7 @@ final class SingleMediaContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, MediaAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
 
@@ -40,6 +40,6 @@ final class SingleMediaContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
     }
 }

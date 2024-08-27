@@ -14,11 +14,11 @@ and [Templates](doc/templates.md) docs.
 * Reordered forms/elements for functionality consistency.
 * Updated import functionality to work with the new structure.
 * Updated fixtures to work with the new structure
-* Removed `bitbag_cms_render_product_pages` twig extension.
+* Removed `sylius_cms_render_product_pages` twig extension.
 * Removed support for rendering twig functions in WYSIWYG editor.
 * Added twig extensions: 
-  * `bitbag_cms_render_collection`
-  * `bitbag_cms_render_content_elements`
+  * `sylius_cms_render_collection`
+  * `sylius_cms_render_content_elements`
 
 ## Briefly about Content Elements
 

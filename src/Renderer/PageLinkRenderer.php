@@ -30,7 +30,7 @@ final class PageLinkRenderer implements PageLinkRendererInterface
             $template ?? self::DEFAULT_TEMPLATE,
             [
                 'link' => $this->urlGenerator->generate(
-                    'bitbag_sylius_cms_plugin_shop_page_show',
+                    'sylius_cms_plugin_shop_page_show',
                     ['slug' => $page->getSlug()],
                     UrlGeneratorInterface::ABSOLUTE_URL,
                 ),

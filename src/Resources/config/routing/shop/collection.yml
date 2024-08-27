@@ -1,8 +1,8 @@
-bitbag_sylius_cms_plugin_shop_collection_show:
+sylius_cms_plugin_shop_collection_show:
     path: /collection/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.collection::showAction
+        _controller: sylius_cms_plugin.controller.collection::showAction
         _sylius:
             template: $template
             repository:
@@ -10,11 +10,11 @@ bitbag_sylius_cms_plugin_shop_collection_show:
                 arguments:
                     - $code
 
-bitbag_sylius_cms_plugin_shop_collection_show_codes:
+sylius_cms_plugin_shop_collection_show_codes:
     path: /collections/{codes}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _controller: sylius_cms_plugin.controller.collection::indexAction
         _sylius:
             template: $template
             repository:

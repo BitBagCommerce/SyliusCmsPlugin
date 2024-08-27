@@ -1,28 +1,28 @@
-bitbag_sylius_cms_plugin_admin_media:
+sylius_cms_plugin_admin_media:
     resource: |
-        alias: bitbag_sylius_cms_plugin.media
+        alias: sylius_cms_plugin.media
         section: admin
         templates: '@BitBagSyliusCmsPlugin/CrudUi'
         redirect: update
-        grid: bitbag_sylius_cms_plugin_admin_media
+        grid: sylius_cms_plugin_admin_media
         except: ['show']
         permission: true
         vars:
             all:
-                header: bitbag_sylius_cms_plugin.ui.media_header
-                subheader: bitbag_sylius_cms_plugin.ui.media_subheader
+                header: sylius_cms_plugin.ui.media_header
+                subheader: sylius_cms_plugin.ui.media_subheader
                 templates:
                     form: "@BitBagSyliusCmsPlugin/Media/Crud/_form.html.twig"
             index:
                 icon: file
     type: sylius.resource
 
-bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
+sylius_cms_plugin_admin_ajax_media_by_name_phrase:
     path: /ajax/media/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
+        _controller: sylius_cms_plugin.controller.media.overriden::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -32,12 +32,12 @@ bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase:
                     phrase: $phrase
                     mediaType: $mediaType
 
-bitbag_sylius_cms_plugin_admin_ajax_media_by_code:
+sylius_cms_plugin_admin_ajax_media_by_code:
     path: /ajax/media/code
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.media.overriden::indexAction
+        _controller: sylius_cms_plugin.controller.media.overriden::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true

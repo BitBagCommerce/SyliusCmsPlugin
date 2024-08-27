@@ -22,7 +22,7 @@ final class MediaImageAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'bitbag_sylius_cms_plugin.media',
+            'resource' => 'sylius_cms_plugin.media',
             'choice_name' => 'name',
             'choice_value' => 'code',
             'media_type' => [MediaInterface::IMAGE_TYPE],
@@ -41,7 +41,7 @@ final class MediaImageAutocompleteChoiceType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_media_autocomplete_choice';
+        return 'sylius_media_autocomplete_choice';
     }
 
     public function getParent(): string

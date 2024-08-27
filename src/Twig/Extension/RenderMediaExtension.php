@@ -23,7 +23,7 @@ final class RenderMediaExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('bitbag_cms_render_media', [$this->mediaRuntime, 'renderMedia'], ['is_safe' => ['html']]),
+            new TwigFunction('sylius_cms_render_media', [$this->mediaRuntime, 'renderMedia'], ['is_safe' => ['html']]),
         ];
     }
 }

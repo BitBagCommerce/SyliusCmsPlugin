@@ -1,4 +1,4 @@
-bitbag_sylius_cms_plugin:
+sylius_cms_plugin:
     ui:
         blocks: Blöcke
         block: Block

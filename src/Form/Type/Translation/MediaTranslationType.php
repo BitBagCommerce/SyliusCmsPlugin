@@ -21,15 +21,15 @@ final class MediaTranslationType extends AbstractResourceType
     {
         $builder
             ->add('alt', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.alt',
+                'label' => 'sylius_cms_plugin.ui.alt',
                 'required' => false,
             ])
             ->add('link', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.link',
+                'label' => 'sylius_cms_plugin.ui.link',
                 'required' => false,
             ])
             ->add('content', WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.link_content',
+                'label' => 'sylius_cms_plugin.ui.link_content',
                 'required' => false,
             ])
         ;
@@ -37,6 +37,6 @@ final class MediaTranslationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_media_translation';
+        return 'sylius_cms_plugin_media_translation';
     }
 }

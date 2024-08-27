@@ -17,7 +17,7 @@ Currently, there are 11 predefined content elements available:
 - **[Pages collection](content_elements/pages_collection.md)** - a collection of pages
 - **[Spacer](content_elements/spacer.md)** - a simple spacer with a defined height in pixels
 
-Instead of rendering block or page, you can render just content elements in your twig templates using `bitbag_cms_render_content_elements([page|block])` helper extension,
+Instead of rendering block or page, you can render just content elements in your twig templates using `sylius_cms_render_content_elements([page|block])` helper extension,
 where `page` or `block` is an instance of `Sylius\CmsPlugin\Entity\PageInterface` or `Sylius\CmsPlugin\Entity\BlockInterface`.
 
 ## Customization
@@ -48,7 +48,7 @@ final class TextContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
             ])
         ;
     }
@@ -59,17 +59,17 @@ final class TextContentElementType extends AbstractType
 
 ```yaml
 parameters:
-    bitbag_sylius_cms_plugin.content_elements.type.text: !php/const 'YourNamespace\Form\Type\ContentElements\TextContentElementType::TYPE'
+    sylius_cms_plugin.content_elements.type.text: !php/const 'YourNamespace\Form\Type\ContentElements\TextContentElementType::TYPE'
 ```
 
 3. Define form type in service container under `config/services.yml` with correct tags:
 
 ```yaml
 services:
-    bitbag_sylius_cms_plugin.form.type.content_element.text:
+    sylius_cms_plugin.form.type.content_element.text:
         class: YourNamespace\Form\Type\ContentElements\TextContentElementType
         tags:
-            - { name: 'bitbag_sylius_cms_plugin.content_elements.type', key: '%bitbag_sylius_cms_plugin.content_elements.type.text%' }
+            - { name: 'sylius_cms_plugin.content_elements.type', key: '%sylius_cms_plugin.content_elements.type.text%' }
             - { name: 'form.type' }
 ```
 
@@ -104,12 +104,12 @@ final class TextContentElementRenderer implements ContentElementRendererInterfac
 
 ```yaml
 services:
-    bitbag_sylius_cms_plugin.renderer.content_element.text:
+    sylius_cms_plugin.renderer.content_element.text:
         class: YourNamespace\Renderer\ContentElement\TextContentElementRenderer
         arguments:
             - '@twig'
         tags:
-            - { name: 'bitbag_sylius_cms_plugin.renderer.content_element' }
+            - { name: 'sylius_cms_plugin.renderer.content_element' }
 ```
 
 6. Finally, create a new template under `templates/bundles/BitBagSyliusCmsPlugin/Shop/ContentElement` location.

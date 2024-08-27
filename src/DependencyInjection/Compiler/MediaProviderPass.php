@@ -18,14 +18,14 @@ final class MediaProviderPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasDefinition('bitbag_sylius_cms_plugin.registry.media_provider')) {
+        if (!$container->hasDefinition('sylius_cms_plugin.registry.media_provider')) {
             return;
         }
 
-        $providerRegistry = $container->getDefinition('bitbag_sylius_cms_plugin.registry.media_provider');
+        $providerRegistry = $container->getDefinition('sylius_cms_plugin.registry.media_provider');
         $providers = [];
 
-        foreach ($container->findTaggedServiceIds('bitbag_sylius_cms_plugin.media_provider') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('sylius_cms_plugin.media_provider') as $id => $attributes) {
             if (!isset($attributes[0]['type'], $attributes[0]['label'])) {
                 throw new \InvalidArgumentException('Tagged media provider needs to have `type` and `label` attribute.');
             }
@@ -40,6 +40,6 @@ final class MediaProviderPass implements CompilerPassInterface
 
         ksort($providers);
 
-        $container->setParameter('bitbag_sylius_cms_plugin.media_providers', $providers);
+        $container->setParameter('sylius_cms_plugin.media_providers', $providers);
     }
 }

@@ -10,20 +10,20 @@ Or you might want to group all of your specific blocks together in a collection 
 ### Rendering the collection
 
 In the admin panel, you can create collection resources. 
-It could be rendered in your twig templates using `bitbag_cms_render_collection([collection_code])` helper extension.
+It could be rendered in your twig templates using `sylius_cms_render_collection([collection_code])` helper extension.
 
-`{{ bitbag_cms_render_collection([collection_code]) }}` function can also take two additional parameters: `countToRender` and `template`.
+`{{ sylius_cms_render_collection([collection_code]) }}` function can also take two additional parameters: `countToRender` and `template`.
 
 `countToRender` allows you to render a specific number of items from the collection. For instance:
 
 ```twig
-{{ bitbag_cms_render_collection('homepage_blocks', 3) }}
+{{ sylius_cms_render_collection('homepage_blocks', 3) }}
 ```
 
 `template` allows you to render a collection with a custom template. For instance:
 
 ```twig
-{{ bitbag_cms_render_collection('homepage_blocks', null, '@App/Some/Template/_path.html.twig') }}
+{{ sylius_cms_render_collection('homepage_blocks', null, '@App/Some/Template/_path.html.twig') }}
 ```
 
 By default, collection items are sorted by object ID parameter. If you want to change it, you can use decorator strategy.

@@ -8,8 +8,8 @@ export class HandleTemplate {
     init() {
         $(document).ready(() => {
             const cmsLoadTemplate = $('[data-bb-cms-load-template]');
-            const cmsPageTemplate = $('#bitbag_sylius_cms_plugin_page_template');
-            const cmsBlockTemplate = $('#bitbag_sylius_cms_plugin_block_template');
+            const cmsPageTemplate = $('#sylius_cms_plugin_page_template');
+            const cmsBlockTemplate = $('#sylius_cms_plugin_block_template');
 
             cmsLoadTemplate.on('click', function (e) {
                 e.preventDefault();
@@ -37,7 +37,7 @@ export class HandleTemplate {
                     type: 'GET',
                     success: function(data) {
                         if (data.status === 'success') {
-                            $('[id^="bitbag_sylius_cms_plugin_"][id$="contentElements"]')
+                            $('[id^="sylius_cms_plugin_"][id$="contentElements"]')
                                 .children('[data-form-collection="list"]')
                                 .html('');
 
@@ -45,7 +45,7 @@ export class HandleTemplate {
                                 $('[data-form-collection="add"]').trigger('click');
                             });
 
-                            const elements = $('[id^="bitbag_sylius_cms_plugin_"][id*="_contentElements_"][id$="_type"]').filter(function() {
+                            const elements = $('[id^="sylius_cms_plugin_"][id*="_contentElements_"][id$="_type"]').filter(function() {
                                 return /_page_|_block_/.test(this.id);
                             });
 

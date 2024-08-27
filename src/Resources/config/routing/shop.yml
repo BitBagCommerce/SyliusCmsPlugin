@@ -1,11 +1,11 @@
-bitbag_sylius_cms_plugin_shop_block:
+sylius_cms_plugin_shop_block:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/block.yml"
 
-bitbag_sylius_cms_plugin_shop_page:
+sylius_cms_plugin_shop_page:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/page.yml"
 
-bitbag_sylius_cms_plugin_shop_collection:
+sylius_cms_plugin_shop_collection:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/collection.yml"
 
-bitbag_sylius_cms_plugin_shop_media:
+sylius_cms_plugin_shop_media:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop/media.yml"

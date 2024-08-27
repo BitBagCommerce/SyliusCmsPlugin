@@ -31,7 +31,7 @@ final class BlockController extends ResourceController
 
         $code = $request->get('code');
         /** @var BlockResourceResolverInterface $blockResourceResolver */
-        $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
+        $blockResourceResolver = $this->get('sylius_cms_plugin.resolver.block_resource');
         $block = $blockResourceResolver->findOrLog($code);
 
         if (null === $block) {
