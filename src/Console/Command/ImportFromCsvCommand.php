@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\CmsPlugin\Command;
+namespace Sylius\CmsPlugin\Console\Command;
 
 use Sylius\CmsPlugin\Processor\ImportProcessorInterface;
 use Symfony\Component\Console\Command\Command;

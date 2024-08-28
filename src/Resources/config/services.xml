@@ -19,7 +19,7 @@
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </service>
 
-            <service id="sylius_cms_plugin.command.import_from_csv" class="Sylius\CmsPlugin\Command\ImportFromCsvCommand">
+            <service id="sylius_cms_plugin.command.import_from_csv" class="Sylius\CmsPlugin\Console\Command\ImportFromCsvCommand">
                 <argument type="service" id="sylius_cms_plugin.processor.import" />
                 <tag name="console.command" />
             </service>
