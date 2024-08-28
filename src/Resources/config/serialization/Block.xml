@@ -5,31 +5,34 @@
 >
     <class name="Sylius\CmsPlugin\Entity\Block">
         <attribute name="id">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:index</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="code">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:index</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="enabled">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:index</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="collections">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="channels">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="products">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="taxons">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="productsInTaxons">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="contentElements">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:block:read:show</group>
         </attribute>
     </class>
 </serializer>

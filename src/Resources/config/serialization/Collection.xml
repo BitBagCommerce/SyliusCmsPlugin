@@ -5,10 +5,24 @@
 >
     <class name="Sylius\CmsPlugin\Entity\Collection">
         <attribute name="id">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:collection:read:index</group>
+            <group>sylius_cms:collection:read:show</group>
         </attribute>
         <attribute name="code">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:collection:read:index</group>
+            <group>sylius_cms:collection:read:show</group>
+        </attribute>
+        <attribute name="type">
+            <group>sylius_cms:collection:read:show</group>
+        </attribute>
+        <attribute name="pages">
+            <group>sylius_cms:collection:read:show</group>
+        </attribute>
+        <attribute name="blocks">
+            <group>sylius_cms:collection:read:show</group>
+        </attribute>
+        <attribute name="media">
+            <group>sylius_cms:collection:read:show</group>
         </attribute>
     </class>
 </serializer>

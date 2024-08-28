@@ -5,43 +5,48 @@
 >
     <class name="Sylius\CmsPlugin\Entity\Media">
         <attribute name="id">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="code">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="name">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="type">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="path">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="mimeType">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="enabled">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="width">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="height">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="saveWithOriginalName">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="collections">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="channels">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="translations">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
     </class>
 </serializer>

@@ -5,13 +5,13 @@
 >
     <class name="Sylius\CmsPlugin\Entity\MediaTranslation">
         <attribute name="content">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="alt">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="link">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
     </class>
 </serializer>

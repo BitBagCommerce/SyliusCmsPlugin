@@ -5,19 +5,25 @@
 >
     <class name="Sylius\CmsPlugin\Entity\Page">
         <attribute name="id">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:index</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="code">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:index</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="name">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:index</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="publishAt">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
+        </attribute>
+        <attribute name="contentElements">
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="translations">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
     </class>
 </serializer>

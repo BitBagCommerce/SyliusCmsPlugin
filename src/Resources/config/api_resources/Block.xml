@@ -6,30 +6,36 @@
     <resource class="%sylius_cms_plugin.model.block.class%" shortName="Block">
         <attribute name="normalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:read</attribute>
+                <attribute>sylius_cms:block:read:index</attribute>
+                <attribute>sylius_cms:block:read:show</attribute>
             </attribute>
         </attribute>
 
-        <attribute name="denormalizationContext">
+        <attribute name="denormalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:write</attribute>
+                <attribute>sylius_cms:block:write</attribute>
             </attribute>
         </attribute>
 
         <attribute name="validation_groups">sylius</attribute>
 
         <collectionOperations>
-            <collectionOperation name="shop_get_block">
+            <collectionOperation name="get_block_collection">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/blocks</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:block:read:index</attribute>
+                </attribute>
             </collectionOperation>
-
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="shop_get_block">
+            <itemOperation name="get_block_item">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/blocks/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:block:read:show</attribute>
+                </attribute>
             </itemOperation>
         </itemOperations>
 

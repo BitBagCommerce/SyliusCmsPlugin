@@ -5,16 +5,19 @@
 >
     <class name="Sylius\CmsPlugin\Entity\Template">
         <attribute name="id">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:template:read:index</group>
+            <group>sylius_cms:template:read:show</group>
         </attribute>
         <attribute name="name">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:template:read:index</group>
+            <group>sylius_cms:template:read:show</group>
         </attribute>
         <attribute name="type">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:template:read:index</group>
+            <group>sylius_cms:template:read:show</group>
         </attribute>
         <attribute name="contentElements">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:template:read:show</group>
         </attribute>
     </class>
 </serializer>

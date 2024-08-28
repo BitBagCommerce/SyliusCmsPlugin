@@ -4,20 +4,17 @@
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
     <class name="Sylius\CmsPlugin\Entity\PageTranslation">
-        <attribute name="id">
-            <group>shop:cms:read</group>
-        </attribute>
         <attribute name="slug">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="metaKeywords">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="metaDescription">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
         <attribute name="title">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:page:read:show</group>
         </attribute>
     </class>
 </serializer>
