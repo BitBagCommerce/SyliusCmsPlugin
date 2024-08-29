@@ -63,6 +63,6 @@ sylius_cms_plugin_admin_ajax_template_content_by_id:
     methods: [GET]
     defaults:
         _format: json
-        _controller: sylius_cms_plugin.controller.template::getContentElementsAction
+        _controller: sylius_cms_plugin.controller.action.admin.template_content_elements::getContentElementsAction
         _sylius:
             permission: true
