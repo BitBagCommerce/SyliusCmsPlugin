@@ -7,7 +7,7 @@
 composer require bitbag/cms-plugin --no-scripts
 ```
 
-2. Add plugin dependencies to your `config/bundles.php` file:
+2. Add plugin dependencies to your `config/bundles.php` file (if not added automatically):
 
 ```php
 return [
@@ -17,7 +17,6 @@ return [
     Sylius\CmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
-The first line above (FOSCKEditorBundle) might have been already added during composer require command.
 
 3. Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
@@ -33,7 +32,7 @@ bin/console ckeditor:install --tag=4.22.1
 
 For more information regardin `4.22.1` tag please visit the #485 issue.
 
-Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must add some configuration under the `twig.form_themes` config key:
+#### If you are not using Symfony Flex, you need to add the following configuration under the `twig.form_themes` config key:
 
 ```yaml
 # Symfony 2/3: app/config/config.yml
@@ -45,7 +44,7 @@ twig:
         - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
-4. Import required config in your `config/packages/_sylius.yaml` file:
+4. If you are not using Symfony Flex, import add following configs:
 ```yaml
 # config/packages/_sylius.yaml
 
@@ -53,11 +52,7 @@ imports:
     ...
     
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
-```
 
-5. Import routing in your `config/routes.yaml` file:
-
-```yaml
 
 # config/routes.yaml
 ...
@@ -65,35 +60,8 @@ imports:
 sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
 ```
-If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions
-import optional sitemap providers:
-```yaml
-# config/services.yaml
-...
-imports:
-...
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
-```
 
-and plugin dependency to your `config/bundles.php` file:
-```php
-return [
-    ...
-
-    SitemapPlugin\SitemapPlugin::class => ['all' => true], // Sitemap support
-];
-```
-
-you will probably need to change the extension of the imported file in 
-
-```yaml
-# config/packages/sitemap_plugin.yaml
-
-    imports:
-        - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
-```
-
-6. Finish the installation by updating the database schema and installing assets:
+5. Finish the installation by updating the database schema and installing assets:
 
 ```bash
 bin/console cache:clear
@@ -109,7 +77,7 @@ bin/console sylius:theme:assets:install --symlink
 
 Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
 
-7. Add plugin assets to your project
+6. Add plugin assets to your project
 
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
