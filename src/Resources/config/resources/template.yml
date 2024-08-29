@@ -8,4 +8,3 @@ sylius_resource:
                 form: Sylius\CmsPlugin\Form\Type\TemplateType
                 repository: Sylius\CmsPlugin\Repository\TemplateRepository
                 factory: Sylius\Component\Resource\Factory\Factory
-                controller: Sylius\CmsPlugin\Controller\TemplateController

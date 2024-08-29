@@ -8,17 +8,22 @@
 
 declare(strict_types=1);
 
-namespace Sylius\CmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller\Action\Admin;
 
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\CmsPlugin\Entity\TemplateInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-final class TemplateController extends ResourceController
+final class TemplateContentElementsAction
 {
+    public function __construct(private RepositoryInterface $templateRepository)
+    {
+    }
+
     public function getContentElementsAction(int $id): JsonResponse
     {
-        $template = $this->getDoctrine()->getRepository(TemplateInterface::class)->find($id);
+        /** @var TemplateInterface|null $template */
+        $template = $this->templateRepository->find($id);
         if (null === $template) {
             return new JsonResponse([
                 'status' => 'error',

@@ -35,6 +35,10 @@
             <argument type="service" id="sylius_cms_plugin.factory.media" />
         </service>
 
+        <service id="sylius_cms_plugin.controller.action.admin.template_content_elements" class="Sylius\CmsPlugin\Controller\Action\Admin\TemplateContentElementsAction">
+            <argument type="service" id="sylius_cms_plugin.repository.template" />
+        </service>
+
         <service id="sylius_cms_plugin.controller.helper.form_errors_flash" class="Sylius\CmsPlugin\Controller\Helper\FormErrorsFlashHelper">
             <argument type="service" id="request_stack" />
             <argument type="service" id="translator" />
