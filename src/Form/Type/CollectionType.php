@@ -23,30 +23,30 @@ final class CollectionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => [
-                    'sylius_cms_plugin.ui.page' => self::PAGE,
-                    'sylius_cms_plugin.ui.block' => self::BLOCK,
-                    'sylius_cms_plugin.ui.media' => self::MEDIA,
+                    'sylius_cms.ui.page' => self::PAGE,
+                    'sylius_cms.ui.block' => self::BLOCK,
+                    'sylius_cms.ui.media' => self::MEDIA,
                 ],
             ])
             ->add('pages', PageAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.pages',
+                'label' => 'sylius_cms.ui.pages',
                 'multiple' => true,
             ])
             ->add('blocks', BlockAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.blocks',
+                'label' => 'sylius_cms.ui.blocks',
                 'multiple' => true,
             ])
             ->add('media', MediaAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.media',
+                'label' => 'sylius_cms.ui.media',
                 'multiple' => true,
             ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event): void {
@@ -72,6 +72,6 @@ final class CollectionType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_collection';
+        return 'sylius_cms_collection';
     }
 }

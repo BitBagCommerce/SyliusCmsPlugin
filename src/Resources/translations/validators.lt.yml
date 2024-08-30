@@ -1,4 +1,4 @@
-sylius_cms_plugin:
+sylius_cms:
     block:
         image:
             mime_types: Leidžiami tik PNG ir JPEG formatų failai.

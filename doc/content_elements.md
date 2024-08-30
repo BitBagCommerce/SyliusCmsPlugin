@@ -29,7 +29,7 @@ Each of the content elements has its own template that you can override.
 If you don't know how to override templates yet,
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-You can create a template under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/ContentElement` location.
+You can create a template under `app/templates/bundles/SyliusCmsPlugin/Shop/ContentElement` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/ContentElement).
 
 ### Creating a new content element
@@ -48,7 +48,7 @@ final class TextContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'label' => 'sylius_cms.ui.content_elements.type.' . self::TYPE,
             ])
         ;
     }
@@ -59,17 +59,17 @@ final class TextContentElementType extends AbstractType
 
 ```yaml
 parameters:
-    sylius_cms_plugin.content_elements.type.text: !php/const 'YourNamespace\Form\Type\ContentElements\TextContentElementType::TYPE'
+    sylius_cms.content_elements.type.text: !php/const 'YourNamespace\Form\Type\ContentElements\TextContentElementType::TYPE'
 ```
 
 3. Define form type in service container under `config/services.yml` with correct tags:
 
 ```yaml
 services:
-    sylius_cms_plugin.form.type.content_element.text:
+    sylius_cms.form.type.content_element.text:
         class: YourNamespace\Form\Type\ContentElements\TextContentElementType
         tags:
-            - { name: 'sylius_cms_plugin.content_elements.type', key: '%sylius_cms_plugin.content_elements.type.text%' }
+            - { name: 'sylius_cms.content_elements.type', key: '%sylius_cms.content_elements.type.text%' }
             - { name: 'form.type' }
 ```
 
@@ -92,7 +92,7 @@ final class TextContentElementRenderer implements ContentElementRendererInterfac
     {
         $text = $contentConfiguration->getConfiguration()['text'];
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
             'content_element' => '@YourNamespace/Shop/ContentElement/_text.html.twig',
             'text' => $text,
         ]);
@@ -104,15 +104,15 @@ final class TextContentElementRenderer implements ContentElementRendererInterfac
 
 ```yaml
 services:
-    sylius_cms_plugin.renderer.content_element.text:
+    sylius_cms.renderer.content_element.text:
         class: YourNamespace\Renderer\ContentElement\TextContentElementRenderer
         arguments:
             - '@twig'
         tags:
-            - { name: 'sylius_cms_plugin.renderer.content_element' }
+            - { name: 'sylius_cms.renderer.content_element' }
 ```
 
-6. Finally, create a new template under `templates/bundles/BitBagSyliusCmsPlugin/Shop/ContentElement` location.
+6. Finally, create a new template under `templates/bundles/SyliusCmsPlugin/Shop/ContentElement` location.
 For example, you can create a new template called `_text.html.twig`:
 
 ```twig

@@ -1,2 +1,2 @@
-sylius_cms_plugin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
+sylius_cms:
+    resource: "@SyliusCmsPlugin/Resources/config/routing.yml"

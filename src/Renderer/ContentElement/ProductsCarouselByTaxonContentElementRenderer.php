@@ -37,8 +37,8 @@ final class ProductsCarouselByTaxonContentElementRenderer implements ContentElem
 
         $products = $this->productRepository->findByTaxon($taxon);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
             'products' => $products,
         ]);
     }

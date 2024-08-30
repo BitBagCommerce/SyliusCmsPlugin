@@ -5,7 +5,7 @@ default:
                 - sylius.behat.context.hook.doctrine_orm
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
-                - sylius_cms_plugin.behat.context.setup.template
-                - sylius_cms_plugin.behat.context.ui.admin.template
+                - sylius_cms.behat.context.setup.template
+                - sylius_cms.behat.context.ui.admin.template
             filters:
                 tags: "@managing_templates&&@ui"

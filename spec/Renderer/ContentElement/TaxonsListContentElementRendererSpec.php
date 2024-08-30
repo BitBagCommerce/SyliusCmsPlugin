@@ -55,8 +55,8 @@ final class TaxonsListContentElementRendererSpec extends ObjectBehavior
 
         $taxonRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$taxon1, $taxon2]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
             'taxons' => [$taxon1, $taxon2],
         ])->willReturn('rendered template');
 

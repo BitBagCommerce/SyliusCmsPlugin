@@ -52,5 +52,5 @@ in the admin panel.
 If you don't know how to override templates yet,
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-Even if you can pass template argument to render block resource, you can change the global templates under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/Block` location.
+Even if you can pass template argument to render block resource, you can change the global templates under `app/templates/bundles/SyliusCmsPlugin/Shop/Block` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Block).

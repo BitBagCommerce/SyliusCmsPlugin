@@ -6,10 +6,10 @@ default:
 
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
-                - sylius_cms_plugin.behat.context.setup.block
-                - sylius_cms_plugin.behat.context.setup.collection
-                - sylius_cms_plugin.behat.context.transform.block
+                - sylius_cms.behat.context.setup.block
+                - sylius_cms.behat.context.setup.collection
+                - sylius_cms.behat.context.transform.block
 
-                - sylius_cms_plugin.behat.context.api.block
+                - sylius_cms.behat.context.api.block
             filters:
                 tags: "@shop_blocks&&@api"

@@ -15,7 +15,7 @@ final class BlockAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'sylius_cms_plugin.block',
+            'resource' => 'sylius_cms.block',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);

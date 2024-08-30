@@ -4,16 +4,16 @@
     <services>
         <defaults public="true" />
 
-            <service id="sylius_cms_plugin.behat.page.admin.block.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
-                <argument>sylius_cms_plugin_admin_block_index</argument>
+            <service id="sylius_cms.behat.page.admin.block.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
+                <argument>sylius_cms_admin_block_index</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.block.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
-                <argument>sylius_cms_plugin_admin_block_create</argument>
+            <service id="sylius_cms.behat.page.admin.block.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
+                <argument>sylius_cms_admin_block_create</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.block.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
-                <argument>sylius_cms_plugin_admin_block_update</argument>
+            <service id="sylius_cms.behat.page.admin.block.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
+                <argument>sylius_cms_admin_block_update</argument>
             </service>
     </services>
 </container>

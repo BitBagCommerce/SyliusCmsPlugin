@@ -36,11 +36,11 @@
         {% if page.collections is not empty %}
             <div class="ui dividing header"></div>
             <div class="bitbag-page-collections">
-                {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_collections.html.twig' %}
+                {% include '@SyliusCmsPlugin/Shop/Page/Show/_collections.html.twig' %}
             </div>
         {% endif %}
     {% else %}
-        {% include '@BitBagSyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
+        {% include '@SyliusCmsPlugin/Shop/Page/Error/_notPublished.html.twig' with {'publishAt': page.publishAt} %}
     {% endif %}
 
 {% endblock %}

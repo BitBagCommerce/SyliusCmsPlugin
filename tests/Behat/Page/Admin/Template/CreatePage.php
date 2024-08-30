@@ -60,7 +60,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             parent::getDefinedElements(),
             ContentElementHelper::getDefinedContentElements(),
             [
-                'content_elements_add_button' => '#sylius_cms_plugin_template_contentElements a[data-form-collection="add"]',
+                'content_elements_add_button' => '#sylius_cms_template_contentElements a[data-form-collection="add"]',
             ],
         );
     }

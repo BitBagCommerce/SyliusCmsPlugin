@@ -15,7 +15,7 @@ final class CollectionAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'sylius_cms_plugin.collection',
+            'resource' => 'sylius_cms.collection',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);

@@ -1,28 +1,28 @@
 sylius_grid:
     grids:
-        sylius_cms_plugin_admin_collection:
+        sylius_cms_admin_collection:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%sylius_cms_plugin.model.collection.class%"
+                    class: "%sylius_cms.model.collection.class%"
             sorting:
                 code: asc
             limits: [10, 25, 50]
             fields:
                 name:
                     type: twig
-                    label: sylius_cms_plugin.ui.name
+                    label: sylius_cms.ui.name
                     sortable: name
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/name.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/name.html.twig"
                 code:
                     type: string
-                    label: sylius_cms_plugin.ui.code
+                    label: sylius_cms.ui.code
                     sortable: ~
                 type:
                     type: string
-                    label: sylius_cms_plugin.ui.type
+                    label: sylius_cms.ui.type
                     sortable: ~
             filters:
                 search:

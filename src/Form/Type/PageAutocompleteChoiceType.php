@@ -15,7 +15,7 @@ final class PageAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'sylius_cms_plugin.page',
+            'resource' => 'sylius_cms.page',
             'choice_name' => 'name',
             'choice_value' => 'code',
         ]);

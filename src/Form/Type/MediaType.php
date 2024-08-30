@@ -34,37 +34,37 @@ final class MediaType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $data && null !== $data->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => $this->providers,
             ])
             ->add('file', FileType::class, [
-                'label' => 'sylius_cms_plugin.ui.file',
+                'label' => 'sylius_cms.ui.file',
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.collections',
+                'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'sylius_cms_plugin.ui.enabled',
+                'label' => 'sylius_cms.ui.enabled',
             ])
             ->add('saveWithOriginalName', CheckboxType::class, [
-                'label' => 'sylius_cms_plugin.ui.save_with_original_name',
+                'label' => 'sylius_cms.ui.save_with_original_name',
             ])
             ->add('channels', ChannelChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.channels',
+                'label' => 'sylius_cms.ui.channels',
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('path', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.path',
+                'label' => 'sylius_cms.ui.path',
                 'disabled' => true,
                 'required' => false,
             ])
@@ -76,6 +76,6 @@ final class MediaType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_media';
+        return 'sylius_cms_media';
     }
 }

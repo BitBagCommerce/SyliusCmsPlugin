@@ -66,8 +66,8 @@ final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
         $renderMediaRuntime->renderMedia('code1')->willReturn('rendered media 1');
         $renderMediaRuntime->renderMedia('code2')->willReturn('rendered media 2');
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
             'media' => [
                 [
                     'renderedContent' => 'rendered media 1',

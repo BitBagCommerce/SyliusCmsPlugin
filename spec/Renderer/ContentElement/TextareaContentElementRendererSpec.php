@@ -48,8 +48,8 @@ final class TextareaContentElementRendererSpec extends ObjectBehavior
             'textarea' => 'Textarea content',
         ]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
             'content' => 'Textarea content',
         ])->willReturn('rendered template');
 

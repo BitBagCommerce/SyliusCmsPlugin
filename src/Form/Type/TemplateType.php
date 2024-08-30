@@ -16,13 +16,13 @@ final class TemplateType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => [
-                    'sylius_cms_plugin.ui.page' => 'page',
-                    'sylius_cms_plugin.ui.block' => 'block',
+                    'sylius_cms.ui.page' => 'page',
+                    'sylius_cms.ui.block' => 'block',
                 ],
             ])
             ->add('contentElements', CollectionType::class, [
@@ -38,6 +38,6 @@ final class TemplateType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_template';
+        return 'sylius_cms_template';
     }
 }

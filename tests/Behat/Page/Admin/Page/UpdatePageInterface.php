@@ -13,7 +13,7 @@ interface UpdatePageInterface extends
     ChecksCodeImmutabilityInterface,
     ContainsContentElementInterface
 {
-    public const IMAGE_FORM_ID = 'sylius_cms_plugin_page_translations_en_US_image';
+    public const IMAGE_FORM_ID = 'sylius_cms_page_translations_en_US_image';
 
     public function chooseImage(string $code): void;
 

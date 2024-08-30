@@ -57,8 +57,8 @@ final class SingleMediaContentElementRendererSpec extends ObjectBehavior
         $renderMediaRuntime->renderMedia('media_code')->willReturn('rendered media');
         $mediaRepository->findOneBy(['code' => 'media_code'])->willReturn($media);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
             'media' => [
                 'renderedContent' => 'rendered media',
                 'entity' => $media,

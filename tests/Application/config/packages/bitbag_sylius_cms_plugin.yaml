@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
 
 parameters:
     fixtures_dir: "%kernel.project_dir%/Resources/fixtures"

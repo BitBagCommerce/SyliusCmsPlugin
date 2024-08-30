@@ -36,8 +36,8 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
             'entity' => $this->mediaRepository->findOneBy(['code' => $code]),
         ];
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
             'media' => $media,
         ]);
     }

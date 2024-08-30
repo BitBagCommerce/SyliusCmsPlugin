@@ -28,7 +28,7 @@ final class ContentConfigurationType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
+            $this->actionTypes['sylius_cms.ui.content_elements.type.' . $type] = $type;
         }
     }
 
@@ -44,7 +44,7 @@ final class ContentConfigurationType extends AbstractResourceType
                 'choice_attr' => function (?string $type) use ($builder): array {
                     return [
                         'data-configuration' => $this->twig->render(
-                            '@BitBagSyliusCmsPlugin/ContentConfiguration/_action.html.twig',
+                            '@SyliusCmsPlugin/ContentConfiguration/_action.html.twig',
                             [
                                 'field' => $builder->create(
                                     'configuration',
@@ -106,6 +106,6 @@ final class ContentConfigurationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_content_configuration';
+        return 'sylius_cms_content_configuration';
     }
 }

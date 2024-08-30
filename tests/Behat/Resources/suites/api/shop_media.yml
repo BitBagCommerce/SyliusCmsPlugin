@@ -7,10 +7,10 @@ default:
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.product
-                - sylius_cms_plugin.behat.context.setup.media
-                - sylius_cms_plugin.behat.context.setup.collection
-                - sylius_cms_plugin.behat.context.transform.media
+                - sylius_cms.behat.context.setup.media
+                - sylius_cms.behat.context.setup.collection
+                - sylius_cms.behat.context.transform.media
 
-                - sylius_cms_plugin.behat.context.api.media
+                - sylius_cms.behat.context.api.media
             filters:
                 tags: "@shop_media&&@api"

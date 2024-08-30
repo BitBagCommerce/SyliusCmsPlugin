@@ -10,7 +10,7 @@ use Twig\Environment;
 
 final class PageLinkRenderer implements PageLinkRendererInterface
 {
-    private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Page/link.html.twig';
+    private const DEFAULT_TEMPLATE = '@SyliusCmsPlugin/Shop/Page/link.html.twig';
 
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
@@ -24,7 +24,7 @@ final class PageLinkRenderer implements PageLinkRendererInterface
             $template ?? self::DEFAULT_TEMPLATE,
             [
                 'link' => $this->urlGenerator->generate(
-                    'sylius_cms_plugin_shop_page_show',
+                    'sylius_cms_shop_page_show',
                     ['slug' => $page->getSlug()],
                     UrlGeneratorInterface::ABSOLUTE_URL,
                 ),

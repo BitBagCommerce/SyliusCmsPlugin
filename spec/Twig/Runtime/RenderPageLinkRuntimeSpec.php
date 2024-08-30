@@ -72,7 +72,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
         $pageRepository->findOneEnabledByCode($code)->willReturn($page);
         $page->getSlug()->willReturn($slug);
 
-        $router->generate('sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn('link');
+        $router->generate('sylius_cms_shop_page_show', ['slug' => $slug])->willReturn('link');
 
         $this->getLinkForCode($code, $options)->shouldReturn('link');
     }

@@ -4,23 +4,23 @@
     <services>
         <defaults public="true" />
 
-            <service id="sylius_cms_plugin.behat.context.transform.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\BlockContext">
-                <argument type="service" id="sylius_cms_plugin.repository.block" />
+            <service id="sylius_cms.behat.context.transform.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\BlockContext">
+                <argument type="service" id="sylius_cms.repository.block" />
                 <argument>%locale%</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.context.transform.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\MediaContext">
-                <argument type="service" id="sylius_cms_plugin.repository.media" />
+            <service id="sylius_cms.behat.context.transform.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\MediaContext">
+                <argument type="service" id="sylius_cms.repository.media" />
                 <argument type="service" id="sylius.behat.shared_storage" />
             </service>
 
-            <service id="sylius_cms_plugin.behat.context.transform.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\PageContext">
-                <argument type="service" id="sylius_cms_plugin.repository.page" />
+            <service id="sylius_cms.behat.context.transform.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\PageContext">
+                <argument type="service" id="sylius_cms.repository.page" />
                 <argument>%locale%</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.context.transform.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\CollectionContext">
-                <argument type="service" id="sylius_cms_plugin.repository.collection" />
+            <service id="sylius_cms.behat.context.transform.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Transform\CollectionContext">
+                <argument type="service" id="sylius_cms.repository.collection" />
                 <argument>%locale%</argument>
             </service>
     </services>

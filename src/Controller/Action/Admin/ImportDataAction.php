@@ -49,7 +49,7 @@ final class ImportDataAction
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $flashBag->set('success', $this->translator->trans('sylius_cms_plugin.ui.successfully_imported'));
+                    $flashBag->set('success', $this->translator->trans('sylius_cms.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
                     $flashBag->set('error', $exception->getMessage());
                 }
@@ -60,7 +60,7 @@ final class ImportDataAction
             return new RedirectResponse($referer);
         }
 
-        return new Response($this->twig->render('@BitBagSyliusCmsPlugin/Grid/Form/_importForm.html.twig', [
+        return new Response($this->twig->render('@SyliusCmsPlugin/Grid/Form/_importForm.html.twig', [
             'form' => $form->createView(),
         ]));
     }

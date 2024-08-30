@@ -9,17 +9,17 @@ You can customize this plugin using:
 In order to check what services are available with this plugin, run the following command:
 
 ```bash
-$ bin/console debug:container sylius_cms_plugin
+$ bin/console debug:container sylius_cms
 ```
 
 **Note:**
 
-*All forms are prefixed with 'sylius_cms_plugin.form.*'*
+*All forms are prefixed with 'sylius_cms.form.*'*
 
 If you want to check what routes are available with this plugin, use:
 
 ```bash
-$ bin/console debug:router | grep sylius_cms_plugin
+$ bin/console debug:router | grep sylius_cms
 ```
 
 To check parameters available with the plugin, execute:
@@ -28,15 +28,15 @@ To check parameters available with the plugin, execute:
 $ bin/console debug:container --parameters | grep bitbag
 ```
 ## How to disable localised URLs?
-Customise vendor routing in the file `app/Resources/BitBagSyliusCmsPlugin/config/routing.yml` (create if not exist).
+Customise vendor routing in the file `app/Resources/SyliusCmsPlugin/config/routing.yml` (create if not exist).
 Add:
 ```
-sylius_cms_plugin_admin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin.yml"
+sylius_cms_admin:
+    resource: "@SyliusCmsPlugin/Resources/config/routing/admin.yml"
     prefix: /admin
 
-sylius_cms_plugin_shop:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
+sylius_cms_shop:
+    resource: "@SyliusCmsPlugin/Resources/config/routing/shop.yml"
     prefix: /
 
 sylius_sitemap:

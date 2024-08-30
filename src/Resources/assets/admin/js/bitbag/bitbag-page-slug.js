@@ -1,9 +1,3 @@
-/*
- This file was created by developers working at BitBag
- Do you need more information about us and what we do? Visit our https://bitbag.io website!
- We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 import triggerCustomEvent from '../../../common/js/utilities/triggerCustomEvent';
 
 export class HandleSlugUpdate {
@@ -11,8 +5,8 @@ export class HandleSlugUpdate {
         config = {
             wrappersIndicator: 'data-bb-cms-wrapper',
             lockFieldIndicator: 'data-bb-cms-toggle-slug',
-            bbTarget: 'sylius_cms_plugin_page',
-            nameField: 'sylius_cms_plugin_page_name',
+            bbTarget: 'sylius_cms_page',
+            nameField: 'sylius_cms_page_name',
         }
     ) {
         this.wrappers = document.querySelectorAll(`[${config.wrappersIndicator}]`);

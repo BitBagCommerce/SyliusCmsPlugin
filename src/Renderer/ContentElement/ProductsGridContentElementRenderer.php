@@ -28,8 +28,8 @@ final class ProductsGridContentElementRenderer implements ContentElementRenderer
         $productsCodes = $configuration['products_grid']['products'];
         $products = $this->productRepository->findBy(['code' => $productsCodes]);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
             'products' => $products,
         ]);
     }

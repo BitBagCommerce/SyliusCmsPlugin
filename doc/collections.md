@@ -35,5 +35,5 @@ You can read more about it [here](https://symfony.com/doc/current/service_contai
 
 If you don't know how to override templates yet, read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-Even if you can pass template argument to render collection resource, you can change the global templates under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/Collection` location. 
+Even if you can pass template argument to render collection resource, you can change the global templates under `app/templates/bundles/SyliusCmsPlugin/Shop/Collection` location. 
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Collection).

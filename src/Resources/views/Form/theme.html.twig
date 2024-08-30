@@ -1,27 +1,27 @@
 {% extends '@SyliusUi/Form/theme.html.twig' %}
 
 {% block sylius_collection_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_collection_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }}
 {% endblock %}
 
 {% block sylius_page_collection_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_page_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_collection_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }}
 {% endblock %}
 
 {% block sylius_page_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_page_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_page_by_code')}) }}
 {% endblock %}
 
 {% block sylius_block_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_block_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_block_by_code')}) }}
 {% endblock %}
 
 {% block sylius_template_page_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_template_by_id')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }}
 {% endblock %}
 
 {% block sylius_template_block_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_template_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_plugin_admin_ajax_template_by_id')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }}
 {% endblock %}
 
 {% block sylius_media_autocomplete_choice_row %}
@@ -32,7 +32,7 @@
         {{- form_label(form) -}}
         <div
             class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-            data-url="{{ path('sylius_cms_plugin_admin_ajax_media_by_name_phrase', {
+            data-url="{{ path('sylius_cms_admin_ajax_media_by_name_phrase', {
             'mediaType': form.vars.media_type,
         })}}"
             data-autocomplete
@@ -40,8 +40,8 @@
             data-choice-value="{{ choice_value }}"
             data-criteria-type="{{ remote_criteria_type }}"
             data-criteria-name="{{ remote_criteria_name }}"
-            data-load-edit-url="{{ path('sylius_cms_plugin_admin_ajax_media_by_code') }}"
-            data-name-message ="{{ 'sylius_cms_plugin.ui.empty_name'|trans }}"
+            data-load-edit-url="{{ path('sylius_cms_admin_ajax_media_by_code') }}"
+            data-name-message ="{{ 'sylius_cms.ui.empty_name'|trans }}"
         >
             {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
             <span class="btn-delete is-hidden" data-delete-selected>X</span>
@@ -55,11 +55,11 @@
 {% endblock %}
 
 {% block sylius_product_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_product_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_product_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_product_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_product_by_code')}) }}
 {% endblock %}
 
 {% block sylius_taxon_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_plugin_admin_ajax_taxon_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_taxon_by_code')}) }}
+    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_taxon_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_taxon_by_code')}) }}
 {% endblock %}
 
 {% block collection_widget -%}

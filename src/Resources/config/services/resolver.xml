@@ -4,81 +4,81 @@
     <services>
         <defaults public="true" />
 
-        <service id="sylius_cms_plugin.resolver.resource.page" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
-            <argument type="service" id="sylius_cms_plugin.repository.page" />
-            <argument type="service" id="sylius_cms_plugin.factory.page" />
+        <service id="sylius_cms.resolver.resource.page" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
+            <argument type="service" id="sylius_cms.repository.page" />
+            <argument type="service" id="sylius_cms.factory.page" />
             <argument>code</argument>
         </service>
 
-        <service id="sylius_cms_plugin.resolver.resource.collection" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
-            <argument type="service" id="sylius_cms_plugin.repository.collection" />
-            <argument type="service" id="sylius_cms_plugin.factory.collection" />
+        <service id="sylius_cms.resolver.resource.collection" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
+            <argument type="service" id="sylius_cms.repository.collection" />
+            <argument type="service" id="sylius_cms.factory.collection" />
             <argument>code</argument>
         </service>
 
-        <service id="sylius_cms_plugin.resolver.resource.block" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
-            <argument type="service" id="sylius_cms_plugin.repository.block" />
-            <argument type="service" id="sylius_cms_plugin.factory.block" />
+        <service id="sylius_cms.resolver.resource.block" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
+            <argument type="service" id="sylius_cms.repository.block" />
+            <argument type="service" id="sylius_cms.factory.block" />
             <argument>code</argument>
         </service>
 
-        <service id="sylius_cms_plugin.resolver.resource.media" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
-            <argument type="service" id="sylius_cms_plugin.repository.media" />
-            <argument type="service" id="sylius_cms_plugin.factory.media" />
+        <service id="sylius_cms.resolver.resource.media" class="Sylius\CmsPlugin\Resolver\ResourceResolver">
+            <argument type="service" id="sylius_cms.repository.media" />
+            <argument type="service" id="sylius_cms.factory.media" />
             <argument>code</argument>
         </service>
 
-        <service id="sylius_cms_plugin.resolver.block_resource" class="Sylius\CmsPlugin\Resolver\BlockResourceResolver" public="true">
-            <argument type="service" id="sylius_cms_plugin.repository.block" />
+        <service id="sylius_cms.resolver.block_resource" class="Sylius\CmsPlugin\Resolver\BlockResourceResolver" public="true">
+            <argument type="service" id="sylius_cms.repository.block" />
             <argument type="service" id="logger" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="sylius.repository.locale" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.collection_resource" class="Sylius\CmsPlugin\Resolver\CollectionResourceResolver" public="true">
-            <argument type="service" id="sylius_cms_plugin.repository.collection" />
+        <service id="sylius_cms.resolver.collection_resource" class="Sylius\CmsPlugin\Resolver\CollectionResourceResolver" public="true">
+            <argument type="service" id="sylius_cms.repository.collection" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.page_resource" class="Sylius\CmsPlugin\Resolver\PageResourceResolver" public="true">
-            <argument type="service" id="sylius_cms_plugin.repository.page" />
+        <service id="sylius_cms.resolver.page_resource" class="Sylius\CmsPlugin\Resolver\PageResourceResolver" public="true">
+            <argument type="service" id="sylius_cms.repository.page" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.media_resource" class="Sylius\CmsPlugin\Resolver\MediaResourceResolver" public="true">
-            <argument type="service" id="sylius_cms_plugin.repository.media" />
+        <service id="sylius_cms.resolver.media_resource" class="Sylius\CmsPlugin\Resolver\MediaResourceResolver" public="true">
+            <argument type="service" id="sylius_cms.repository.media" />
             <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="logger" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.media_provider" class="Sylius\CmsPlugin\Resolver\MediaProviderResolver" public="true">
-            <argument type="service" id="sylius_cms_plugin.registry.media_provider" />
+        <service id="sylius_cms.resolver.media_provider" class="Sylius\CmsPlugin\Resolver\MediaProviderResolver" public="true">
+            <argument type="service" id="sylius_cms.registry.media_provider" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_collections" class="Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.collections" />
+        <service id="sylius_cms.resolver.importer_collections" class="Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolver">
+            <argument type="service" id="sylius_cms.assigner.collections" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_channels" class="Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.channels" />
+        <service id="sylius_cms.resolver.importer_channels" class="Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolver">
+            <argument type="service" id="sylius_cms.assigner.channels" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_products" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.products" />
+        <service id="sylius_cms.resolver.importer_products" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolver">
+            <argument type="service" id="sylius_cms.assigner.products" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.taxons" />
+        <service id="sylius_cms.resolver.importer_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolver">
+            <argument type="service" id="sylius_cms.assigner.taxons" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_products_in_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.products_in_taxons" />
+        <service id="sylius_cms.resolver.importer_products_in_taxons" class="Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver">
+            <argument type="service" id="sylius_cms.assigner.products_in_taxons" />
         </service>
 
-        <service id="sylius_cms_plugin.resolver.importer_locales" class="Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolver">
-            <argument type="service" id="sylius_cms_plugin.assigner.locales" />
+        <service id="sylius_cms.resolver.importer_locales" class="Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolver">
+            <argument type="service" id="sylius_cms.assigner.locales" />
         </service>
     </services>
 </container>

@@ -23,21 +23,21 @@ final class BlockType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.collections',
+                'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'sylius_cms_plugin.ui.enabled',
+                'label' => 'sylius_cms.ui.enabled',
             ])
             ->add('channels', ChannelChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.channels',
+                'label' => 'sylius_cms.ui.channels',
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
@@ -52,19 +52,19 @@ final class BlockType extends AbstractResourceType
                 'required' => false,
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.display_for_products.label',
+                'label' => 'sylius_cms.ui.display_for_products.label',
                 'multiple' => true,
-                'help' => 'sylius_cms_plugin.ui.display_for_products.help',
+                'help' => 'sylius_cms.ui.display_for_products.help',
             ])
             ->add('productsInTaxons', TaxonAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.display_for_products_in_taxons.label',
+                'label' => 'sylius_cms.ui.display_for_products_in_taxons.label',
                 'multiple' => true,
-                'help' => 'sylius_cms_plugin.ui.display_for_products_in_taxons.help',
+                'help' => 'sylius_cms.ui.display_for_products_in_taxons.help',
             ])
             ->add('taxons', TaxonAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.display_for_taxons.label',
+                'label' => 'sylius_cms.ui.display_for_taxons.label',
                 'multiple' => true,
-                'help' => 'sylius_cms_plugin.ui.display_for_taxons.help',
+                'help' => 'sylius_cms.ui.display_for_taxons.help',
             ])
             ->add('template', TemplateBlockAutocompleteChoiceType::class, [
                 'label' => false,
@@ -75,6 +75,6 @@ final class BlockType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_block';
+        return 'sylius_cms_block';
     }
 }

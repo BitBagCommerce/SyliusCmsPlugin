@@ -5,7 +5,7 @@
 
 {% block content %}
     {% if resources.data|length > 0 %}
-        {{ render(path('sylius_cms_plugin_shop_collection_show', {'code' : app.request.get('collectionCode'), 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Index/_collection.html.twig'})) }}
+        {{ render(path('sylius_cms_shop_collection_show', {'code' : app.request.get('collectionCode'), 'template' : '@SyliusCmsPlugin/Shop/Page/Index/_collection.html.twig'})) }}
     {% endif %}
     <div class="ui stackable grid segment">
         <div class="ui sixteen wide column">
@@ -14,7 +14,7 @@
                 <div class="ui one column stackable grid" id="bitbag-pages">
                     {% for page in resources.data %}
                         <div class="item bitbag-page">
-                            <a href="{{ path('sylius_cms_plugin_shop_page_show', {'slug' : page.slug}) }}">
+                            <a href="{{ path('sylius_cms_shop_page_show', {'slug' : page.slug}) }}">
 
                                 <div class="content">
                                     <h3>{{ page.name }}</h3>

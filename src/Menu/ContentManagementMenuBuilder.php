@@ -18,46 +18,46 @@ final class ContentManagementMenuBuilder
 
         $cmsRootMenuItem = $menu
             ->addChild('sylius_cms')
-            ->setLabel('sylius_cms_plugin.ui.cms')
+            ->setLabel('sylius_cms.ui.cms')
         ;
 
         $cmsRootMenuItem
             ->addChild('collections', [
-                'route' => 'sylius_cms_plugin_admin_collection_index',
+                'route' => 'sylius_cms_admin_collection_index',
             ])
-            ->setLabel('sylius_cms_plugin.ui.collections')
+            ->setLabel('sylius_cms.ui.collections')
             ->setLabelAttribute('icon', 'grid layout')
         ;
 
         $cmsRootMenuItem
             ->addChild('templates', [
-                'route' => 'sylius_cms_plugin_admin_template_index',
+                'route' => 'sylius_cms_admin_template_index',
             ])
-            ->setLabel('sylius_cms_plugin.ui.templates')
+            ->setLabel('sylius_cms.ui.templates')
             ->setLabelAttribute('icon', 'clone')
         ;
 
         $cmsRootMenuItem
             ->addChild('pages', [
-                'route' => 'sylius_cms_plugin_admin_page_index',
+                'route' => 'sylius_cms_admin_page_index',
             ])
-            ->setLabel('sylius_cms_plugin.ui.pages')
+            ->setLabel('sylius_cms.ui.pages')
             ->setLabelAttribute('icon', 'sticky note')
         ;
 
         $cmsRootMenuItem
             ->addChild('blocks', [
-                'route' => 'sylius_cms_plugin_admin_block_index',
+                'route' => 'sylius_cms_admin_block_index',
             ])
-            ->setLabel('sylius_cms_plugin.ui.blocks')
+            ->setLabel('sylius_cms.ui.blocks')
             ->setLabelAttribute('icon', 'block layout')
         ;
 
         $cmsRootMenuItem
             ->addChild('media', [
-                'route' => 'sylius_cms_plugin_admin_media_index',
+                'route' => 'sylius_cms_admin_media_index',
             ])
-            ->setLabel('sylius_cms_plugin.ui.media')
+            ->setLabel('sylius_cms.ui.media')
             ->setLabelAttribute('icon', 'file')
         ;
 

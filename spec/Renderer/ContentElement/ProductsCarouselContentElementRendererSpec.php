@@ -55,8 +55,8 @@ final class ProductsCarouselContentElementRendererSpec extends ObjectBehavior
 
         $productRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$product1, $product2]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
             'products' => [$product1, $product2],
         ])->willReturn('rendered template');
 
