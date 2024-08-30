@@ -1,39 +1,38 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/resources.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services.xml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/services.xml" }
 
 parameters:
     sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"
     sylius_validation_group: [bitbag]
-    sylius_cms_plugin.form.type.block.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.content_configuration.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.block_image.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.page.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.translation.page.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.collection.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.translation.media.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.media.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.form.type.template.validation_groups: "%sylius_validation_group%"
-    sylius_cms_plugin.uploader.filesystem: sylius_cms_plugin_media
+    sylius_cms.form.type.block.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.content_configuration.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.block_image.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.page.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.translation.page.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.collection.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.translation.media.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.media.validation_groups: "%sylius_validation_group%"
+    sylius_cms.form.type.template.validation_groups: "%sylius_validation_group%"
+    sylius_cms.uploader.filesystem: sylius_cms_media
 
 jms_serializer:
     metadata:
         directories:
             bitbag-section:
                 namespace_prefix: "Sylius\\CmsPlugin"
-                path: "@BitBagSyliusCmsPlugin/Resources/config/serializer"
+                path: "@SyliusCmsPlugin/Resources/config/serializer"
 
 knp_gaufrette:
     adapters:
-        sylius_cms_plugin_media:
+        sylius_cms_media:
             local:
                 directory: "%sylius_core.public_dir%"
                 create: true
     filesystems:
-        sylius_cms_plugin_media:
-            adapter: "%sylius_cms_plugin.uploader.filesystem%"
+        sylius_cms_media:
+            adapter: "%sylius_cms.uploader.filesystem%"
 
 liip_imagine:
     loaders:
@@ -47,5 +46,5 @@ sylius_ui:
         sylius.admin.layout.javascripts:
             blocks:
                 version_script:
-                    template: "@BitBagSyliusCmsPlugin/Asset/_cmsVersionScript.html.twig"
+                    template: "@SyliusCmsPlugin/Asset/_cmsVersionScript.html.twig"
                     priority: 30

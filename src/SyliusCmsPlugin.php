@@ -10,7 +10,7 @@ use Sylius\CmsPlugin\DependencyInjection\Compiler\MediaProviderPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class BitBagSyliusCmsPlugin extends Bundle
+final class SyliusCmsPlugin extends Bundle
 {
     use SyliusPluginTrait;
 
