@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Sylius\CmsPlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
+use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
-final class BitBagSyliusCmsExtension extends Extension implements PrependExtensionInterface
+final class SyliusCmsExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     use PrependDoctrineMigrationsTrait;
 
@@ -19,6 +20,10 @@ final class BitBagSyliusCmsExtension extends Extension implements PrependExtensi
 
     public function prepend(ContainerBuilder $container): void
     {
+        $config = $this->getCurrentConfiguration($container);
+
+        $this->registerResources('sylius_cms', 'doctrine/orm', $config['resources'], $container);
+
         $this->prependDoctrineMigrations($container);
     }
 
@@ -29,11 +34,20 @@ final class BitBagSyliusCmsExtension extends Extension implements PrependExtensi
 
     protected function getMigrationsDirectory(): string
     {
-        return '@BitBagSyliusCmsPlugin/Migrations';
+        return '@SyliusCmsPlugin/Migrations';
     }
 
     protected function getNamespacesOfMigrationsExecutedBefore(): array
     {
         return ['Sylius\Bundle\CoreBundle\Migrations'];
+    }
+
+    private function getCurrentConfiguration(ContainerBuilder $container): array
+    {
+        /** @var ConfigurationInterface $configuration */
+        $configuration = $this->getConfiguration([], $container);
+        $configs = $container->getExtensionConfig($this->getAlias());
+
+        return $this->processConfiguration($configuration, $configs);
     }
 }
