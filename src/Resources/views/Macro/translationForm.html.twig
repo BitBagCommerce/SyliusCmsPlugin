@@ -1,6 +1,6 @@
 {% macro translationForm(translations, resource) %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
+    {% import '@SyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@SyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion">
@@ -29,8 +29,8 @@
 {% endmacro %}
 
 {% macro translationFormWithSlug(translations, slugFieldTemplate, resource) %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
+    {% import '@SyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@SyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion" data-bb-target="cms-slug-update">

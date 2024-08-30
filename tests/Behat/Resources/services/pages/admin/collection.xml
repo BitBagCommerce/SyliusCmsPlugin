@@ -4,16 +4,16 @@
     <services>
         <defaults public="true" />
 
-            <service id="sylius_cms_plugin.behat.page.admin.collection.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
-                <argument>sylius_cms_plugin_admin_collection_index</argument>
+            <service id="sylius_cms.behat.page.admin.collection.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
+                <argument>sylius_cms_admin_collection_index</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.collection.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
-                <argument>sylius_cms_plugin_admin_collection_create</argument>
+            <service id="sylius_cms.behat.page.admin.collection.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
+                <argument>sylius_cms_admin_collection_create</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.collection.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
-                <argument>sylius_cms_plugin_admin_collection_update</argument>
+            <service id="sylius_cms.behat.page.admin.collection.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Collection\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
+                <argument>sylius_cms_admin_collection_update</argument>
             </service>
     </services>
 </container>

@@ -37,8 +37,8 @@ final class ProductsGridByTaxonContentElementRenderer implements ContentElementR
 
         $products = $this->productRepository->findByTaxon($taxon);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
             'products' => $products,
         ]);
     }

@@ -28,8 +28,8 @@ final class TaxonsListContentElementRenderer implements ContentElementRendererIn
         $taxonsCodes = $configuration['taxons_list']['taxons'];
         $taxons = $this->taxonRepository->findBy(['code' => $taxonsCodes]);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
             'taxons' => $taxons,
         ]);
     }

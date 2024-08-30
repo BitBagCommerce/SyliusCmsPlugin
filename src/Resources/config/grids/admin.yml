@@ -1,6 +1,6 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/block.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/page.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/collection.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/media.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin/template.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin/block.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin/page.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin/collection.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin/media.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin/template.yml" }

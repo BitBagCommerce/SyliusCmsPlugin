@@ -14,7 +14,7 @@ return [
     ...
 
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
-    Sylius\CmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
+    Sylius\CmsPlugin\SyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
 
@@ -41,7 +41,7 @@ For more information regardin `4.22.1` tag please visit the #485 issue.
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-        - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
+        - '@SyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
 4. If you are not using Symfony Flex, import add following configs:
@@ -51,14 +51,14 @@ twig:
 imports:
     ...
     
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
 
 
 # config/routes.yaml
 ...
 
-sylius_cms_plugin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
+sylius_cms:
+    resource: "@SyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
 5. Finish the installation by updating the database schema and installing assets:

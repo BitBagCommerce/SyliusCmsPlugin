@@ -23,6 +23,6 @@ final class ProductsGridContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_content_elements_' . self::TYPE;
     }
 }

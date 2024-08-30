@@ -1,7 +1,7 @@
-sylius_cms_plugin_admin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/admin.yml"
+sylius_cms_admin:
+    resource: "@SyliusCmsPlugin/Resources/config/routing/admin.yml"
     prefix: '/%sylius_admin.path_name%'
 
-sylius_cms_plugin_shop:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing/shop.yml"
+sylius_cms_shop:
+    resource: "@SyliusCmsPlugin/Resources/config/routing/shop.yml"
     prefix: /{_locale}

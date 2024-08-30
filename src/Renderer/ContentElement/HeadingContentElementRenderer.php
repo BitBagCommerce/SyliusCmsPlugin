@@ -25,8 +25,8 @@ final class HeadingContentElementRenderer implements ContentElementRendererInter
         $headingType = $configuration['heading_type'];
         $headingContent = $configuration['heading'];
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
             'heading_type' => $headingType,
             'heading_content' => $headingContent,
         ]);

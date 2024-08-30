@@ -1,10 +1,10 @@
 sylius_grid:
     grids:
-        sylius_cms_plugin_admin_media:
+        sylius_cms_admin_media:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%sylius_cms_plugin.model.media.class%"
+                    class: "%sylius_cms.model.media.class%"
                     repository:
                         method: createListQueryBuilder
                         arguments: ["%locale%"]
@@ -14,20 +14,20 @@ sylius_grid:
             fields:
                 media_file:
                     type: twig
-                    label: sylius_cms_plugin.ui.preview
+                    label: sylius_cms.ui.preview
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/image_preview.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/image_preview.html.twig"
                 name:
                     type: twig
-                    label: sylius_cms_plugin.ui.name
+                    label: sylius_cms.ui.name
                     sortable: name
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/name.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/name.html.twig"
                 code:
                     type: string
-                    label: sylius_cms_plugin.ui.code
+                    label: sylius_cms.ui.code
                     sortable: ~
                 enabled:
                     type: twig
@@ -36,16 +36,16 @@ sylius_grid:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 collections:
                     type: twig
-                    label: sylius_cms_plugin.ui.collections
+                    label: sylius_cms.ui.collections
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/collections.html.twig"
                 channels:
                     type: twig
-                    label: sylius_cms_plugin.ui.channels
+                    label: sylius_cms.ui.channels
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/channels.html.twig"
             filters:
                 search:
                     type: string
@@ -58,8 +58,8 @@ sylius_grid:
                     form_options:
                         choices:
                             sylius.ui.image: !php/const Sylius\CmsPlugin\Entity\MediaInterface::IMAGE_TYPE
-                            sylius_cms_plugin.ui.file: !php/const Sylius\CmsPlugin\Entity\MediaInterface::FILE_TYPE
-                            sylius_cms_plugin.ui.video: !php/const Sylius\CmsPlugin\Entity\MediaInterface::VIDEO_TYPE
+                            sylius_cms.ui.file: !php/const Sylius\CmsPlugin\Entity\MediaInterface::FILE_TYPE
+                            sylius_cms.ui.video: !php/const Sylius\CmsPlugin\Entity\MediaInterface::VIDEO_TYPE
             actions:
                 main:
                     import:

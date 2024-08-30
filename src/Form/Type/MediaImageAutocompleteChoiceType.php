@@ -16,7 +16,7 @@ final class MediaImageAutocompleteChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'resource' => 'sylius_cms_plugin.media',
+            'resource' => 'sylius_cms.media',
             'choice_name' => 'name',
             'choice_value' => 'code',
             'media_type' => [MediaInterface::IMAGE_TYPE],

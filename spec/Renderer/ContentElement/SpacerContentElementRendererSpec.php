@@ -46,8 +46,8 @@ final class SpacerContentElementRendererSpec extends ObjectBehavior
             'spacer' => '40',
         ]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
             'spacer_height' => '40',
         ])->willReturn('rendered template');
 

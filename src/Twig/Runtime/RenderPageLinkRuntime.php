@@ -43,6 +43,6 @@ final class RenderPageLinkRuntime implements RenderPageLinkRuntimeInterface
             throw new NotFoundHttpException('Page for code "' . $code . '" not found');
         }
 
-        return $this->router->generate('sylius_cms_plugin_shop_page_show', ['slug' => $page->getSlug()]);
+        return $this->router->generate('sylius_cms_shop_page_show', ['slug' => $page->getSlug()]);
     }
 }

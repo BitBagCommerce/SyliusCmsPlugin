@@ -8,11 +8,11 @@ default:
                 - sylius.behat.context.setup.admin_security
                 - sylius.behat.context.setup.product
                 - sylius.behat.context.setup.taxonomy
-                - sylius_cms_plugin.behat.context.setup.block
-                - sylius_cms_plugin.behat.context.setup.collection
-                - sylius_cms_plugin.behat.context.setup.media
-                - sylius_cms_plugin.behat.context.setup.template
+                - sylius_cms.behat.context.setup.block
+                - sylius_cms.behat.context.setup.collection
+                - sylius_cms.behat.context.setup.media
+                - sylius_cms.behat.context.setup.template
 
-                - sylius_cms_plugin.behat.context.ui.admin.block
+                - sylius_cms.behat.context.ui.admin.block
             filters:
                 tags: "@managing_blocks&&@ui"

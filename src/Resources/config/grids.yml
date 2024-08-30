@@ -1,8 +1,8 @@
 imports:
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/admin.yml" }
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/grids/shop.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/admin.yml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/grids/shop.yml" }
 
 sylius_grid:
     templates:
         action:
-            import: "@BitBagSyliusCmsPlugin/Grid/Action/import.html.twig"
+            import: "@SyliusCmsPlugin/Grid/Action/import.html.twig"

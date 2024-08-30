@@ -23,8 +23,8 @@ final class SpacerContentElementRenderer implements ContentElementRendererInterf
     {
         $configuration = (int) $contentConfiguration->getConfiguration()['spacer'];
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
             'spacer_height' => $configuration,
         ]);
     }

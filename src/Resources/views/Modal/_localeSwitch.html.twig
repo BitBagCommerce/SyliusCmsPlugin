@@ -3,10 +3,10 @@
     {% set code = app.request.query.get('locale', selected.code) %}
 
     <div class="field">
-        <label for="sylius_cms_plugin_locale_switch" class="required">
+        <label for="sylius_cms_locale_switch" class="required">
             {{ 'sylius.ui.locale'|trans }}
         </label>
-        <select id="sylius_cms_plugin_locale_switch" data-bb-cms-locale class=" ui dropdown">
+        <select id="sylius_cms_locale_switch" data-bb-cms-locale class=" ui dropdown">
             {% for locale in locales %}
                 <option value="{{ locale.code }}" {{ locale.code is same as(code) ? 'selected' : '' }}>
                     {{ locale.name }}

@@ -81,7 +81,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $contentElementRendererStrategy->render($block)->willReturn('rendered content');
 
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', [
+        $templatingEngine->render('@SyliusCmsPlugin/Shop/Block/show.html.twig', [
             'content' => 'rendered content',
             'context' => null,
         ])->willReturn('rendered block');

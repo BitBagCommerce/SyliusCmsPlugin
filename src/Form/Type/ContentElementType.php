@@ -16,7 +16,7 @@ final class ContentElementType extends AbstractType
         private iterable $contentElementTypes,
     ) {
         foreach ($this->contentElementTypes as $type => $formType) {
-            $this->contentElements['sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
+            $this->contentElements['sylius_cms.ui.content_elements.type.' . $type] = $type;
         }
     }
 
@@ -24,7 +24,7 @@ final class ContentElementType extends AbstractType
     {
         $builder
             ->add('type', ChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => $this->contentElements,
             ])
         ;

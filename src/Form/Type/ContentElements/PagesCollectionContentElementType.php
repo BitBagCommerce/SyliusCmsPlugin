@@ -23,7 +23,7 @@ final class PagesCollectionContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, PageCollectionAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.content_elements.type.' . self::TYPE,
+                'label' => 'sylius_cms.ui.content_elements.type.' . self::TYPE,
             ])
         ;
 
@@ -34,6 +34,6 @@ final class PagesCollectionContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_content_elements_' . self::TYPE;
     }
 }

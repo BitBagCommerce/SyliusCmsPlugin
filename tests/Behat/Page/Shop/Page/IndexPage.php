@@ -10,7 +10,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
 {
     public function getRouteName(): string
     {
-        return 'sylius_cms_plugin_shop_page_index_by_collection_code';
+        return 'sylius_cms_shop_page_index_by_collection_code';
     }
 
     public function hasCollectionName(string $collectionName): bool

@@ -60,8 +60,8 @@ final class ProductsGridByTaxonContentElementRendererSpec extends ObjectBehavior
         $taxonRepository->findOneBy(['code' => 'taxon_code'])->willReturn($taxon);
         $productRepository->findByTaxon($taxon)->willReturn([$product1, $product2]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
             'products' => [$product1, $product2],
         ])->willReturn('rendered template');
 

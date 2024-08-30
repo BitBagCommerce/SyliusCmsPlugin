@@ -15,7 +15,7 @@ use Webmozart\Assert\Assert;
 
 final class BlockController extends ResourceController
 {
-    public const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+    public const BLOCK_TEMPLATE = '@SyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function renderBlockAction(Request $request): Response
     {
@@ -25,7 +25,7 @@ final class BlockController extends ResourceController
 
         $code = $request->get('code');
         /** @var BlockResourceResolverInterface $blockResourceResolver */
-        $blockResourceResolver = $this->get('sylius_cms_plugin.resolver.block_resource');
+        $blockResourceResolver = $this->get('sylius_cms.resolver.block_resource');
         $block = $blockResourceResolver->findOrLog($code);
 
         if (null === $block) {

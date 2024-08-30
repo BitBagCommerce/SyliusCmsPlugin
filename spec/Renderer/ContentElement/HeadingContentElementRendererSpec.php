@@ -47,8 +47,8 @@ final class HeadingContentElementRendererSpec extends ObjectBehavior
             'heading' => 'Sample Heading',
         ]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
             'heading_type' => 'h1',
             'heading_content' => 'Sample Heading',
         ])->willReturn('rendered template');

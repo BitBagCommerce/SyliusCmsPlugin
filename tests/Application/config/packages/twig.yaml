@@ -4,7 +4,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-        - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
+        - '@SyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 
 services:
     _defaults:

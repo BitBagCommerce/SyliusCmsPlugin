@@ -23,7 +23,7 @@ final class ProductsCarouselByTaxonContentElementType extends AbstractType
     {
         $builder
             ->add(self::TYPE, TaxonAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms_plugin.ui.taxon',
+                'label' => 'sylius_cms.ui.taxon',
                 'choice_value' => 'code',
                 'resource' => 'sylius.taxon',
             ])
@@ -36,6 +36,6 @@ final class ProductsCarouselByTaxonContentElementType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_cms_plugin_content_elements_' . self::TYPE;
+        return 'sylius_cms_content_elements_' . self::TYPE;
     }
 }

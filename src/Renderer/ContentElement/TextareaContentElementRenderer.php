@@ -21,8 +21,8 @@ final class TextareaContentElementRenderer implements ContentElementRendererInte
 
     public function render(ContentConfigurationInterface $contentConfiguration): string
     {
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
             'content' => $contentConfiguration->getConfiguration()['textarea'],
         ]);
     }

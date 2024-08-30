@@ -4,71 +4,71 @@
     <services>
         <defaults public="true" />
 
-        <service id="sylius_cms_plugin.behat.context.ui.admin.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\BlockContext">
+        <service id="sylius_cms.behat.context.ui.admin.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\BlockContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.block.index"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.block.create"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.block.update"/>
-            <argument type="service" id="sylius_cms_plugin.behat.random_string_generator"/>
-            <argument type="service" id="sylius_cms_plugin.repository.block"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.block.index"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.block.create"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.block.update"/>
+            <argument type="service" id="sylius_cms.behat.random_string_generator"/>
+            <argument type="service" id="sylius_cms.repository.block"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.admin.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\PageContext">
+        <service id="sylius_cms.behat.context.ui.admin.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\PageContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.page.index"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.page.create"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.page.update"/>
-            <argument type="service" id="sylius_cms_plugin.behat.random_string_generator"/>
-            <argument type="service" id="sylius_cms_plugin.repository.page"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.page.index"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.page.create"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.page.update"/>
+            <argument type="service" id="sylius_cms.behat.random_string_generator"/>
+            <argument type="service" id="sylius_cms.repository.page"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.admin.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\CollectionContext">
+        <service id="sylius_cms.behat.context.ui.admin.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\CollectionContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.collection.index"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.collection.create"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.collection.update"/>
-            <argument type="service" id="sylius_cms_plugin.behat.random_string_generator"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.collection.index"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.collection.create"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.collection.update"/>
+            <argument type="service" id="sylius_cms.behat.random_string_generator"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.shop.homepage_blocks" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext">
-            <argument type="service" id="sylius_cms_plugin.behat.page.shop.home"/>
+        <service id="sylius_cms.behat.context.ui.shop.homepage_blocks" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\HomepageBlocksContext">
+            <argument type="service" id="sylius_cms.behat.page.shop.home"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.shop.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\PageContext">
-            <argument type="service" id="sylius_cms_plugin.behat.page.shop.page.show"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.shop.page.index"/>
+        <service id="sylius_cms.behat.context.ui.shop.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\PageContext">
+            <argument type="service" id="sylius_cms.behat.page.shop.page.show"/>
+            <argument type="service" id="sylius_cms.behat.page.shop.page.index"/>
             <argument type="service" id="sylius.behat.shared_storage"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.admin.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\MediaContext">
+        <service id="sylius_cms.behat.context.ui.admin.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\MediaContext">
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.media.index"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.media.create"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.media.update"/>
-            <argument type="service" id="sylius_cms_plugin.behat.random_string_generator"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.media.index"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.media.create"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.media.update"/>
+            <argument type="service" id="sylius_cms.behat.random_string_generator"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.shop.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\MediaContext">
-            <argument type="service" id="sylius_cms_plugin.repository.media"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.shop.home"/>
+        <service id="sylius_cms.behat.context.ui.shop.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop\MediaContext">
+            <argument type="service" id="sylius_cms.repository.media"/>
+            <argument type="service" id="sylius_cms.behat.page.shop.home"/>
         </service>
 
-        <service id="sylius_cms_plugin.behat.context.ui.admin.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\TemplateContext">
+        <service id="sylius_cms.behat.context.ui.admin.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\TemplateContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.template.index"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.template.create"/>
-            <argument type="service" id="sylius_cms_plugin.behat.page.admin.template.update"/>
-            <argument type="service" id="sylius_cms_plugin.repository.template"/>
-            <argument type="service" id="sylius_cms_plugin.behat.random_string_generator"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.template.index"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.template.create"/>
+            <argument type="service" id="sylius_cms.behat.page.admin.template.update"/>
+            <argument type="service" id="sylius_cms.repository.template"/>
+            <argument type="service" id="sylius_cms.behat.random_string_generator"/>
         </service>
     </services>
 </container>

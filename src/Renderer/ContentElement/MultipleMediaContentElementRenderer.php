@@ -45,8 +45,8 @@ final class MultipleMediaContentElementRenderer implements ContentElementRendere
             ];
         }
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
             'media' => $media,
         ]);
     }

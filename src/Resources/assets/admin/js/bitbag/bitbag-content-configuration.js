@@ -1,12 +1,10 @@
-
-
 $(document).ready(function() {
     $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
         $(element).autoComplete();
     });
 
-    let pageElements = '#sylius_cms_plugin_page_contentElements';
-    let blockElements = '#sylius_cms_plugin_block_contentElements';
+    let pageElements = '#sylius_cms_page_contentElements';
+    let blockElements = '#sylius_cms_block_contentElements';
 
     let collectionHolder = $(pageElements).length ? pageElements : blockElements;
 

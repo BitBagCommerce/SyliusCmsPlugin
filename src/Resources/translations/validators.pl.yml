@@ -1,4 +1,4 @@
-sylius_cms_plugin:
+sylius_cms:
     block:
         image:
             mime_types: Only PNG, SVG and JPEG files are allowed.

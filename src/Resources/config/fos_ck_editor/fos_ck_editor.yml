@@ -1,8 +1,8 @@
 fos_ck_editor:
-    default_config: sylius_cms_plugin
+    default_config: sylius_cms
     configs:
-        sylius_cms_plugin:
-            toolbar: sylius_cms_plugin
+        sylius_cms:
+            toolbar: sylius_cms
             enterMode: 3
             forcePasteAsPlainText: 'allow-word'
             allowedContent: true
@@ -13,14 +13,14 @@ fos_ck_editor:
                 - "exportpdf"
     plugins:
         mediaVideo:
-            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/video/'
+            path: '/bundles/SyliusCmsPlugin/js/ckeditor-plugins/video/'
             filename: 'plugin.js'
         mediaImage:
-            path: '/bundles/bitbagsyliuscmsplugin/js/ckeditor-plugins/image/'
+            path: '/bundles/SyliusCmsPlugin/js/ckeditor-plugins/image/'
             filename: 'plugin.js'
     toolbars:
         configs:
-            sylius_cms_plugin:
+            sylius_cms:
                 - '@standard.clipboard'
                 - '@standard.editing'
                 - '@standard.links'

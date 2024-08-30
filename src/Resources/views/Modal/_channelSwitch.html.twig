@@ -3,10 +3,10 @@
     {% set code = app.request.query.get('channel', selected.code) %}
 
     <div class="field">
-        <label for="sylius_cms_plugin_channel_switch" class="required">
+        <label for="sylius_cms_channel_switch" class="required">
             {{ 'sylius.ui.channel'|trans }}
         </label>
-        <select id="sylius_cms_plugin_channel_switch" data-bb-cms-channel class=" ui dropdown">
+        <select id="sylius_cms_channel_switch" data-bb-cms-channel class=" ui dropdown">
             {% for channel in channels %}
                 <option value="{{ channel.code }}" {{ channel.code is same as(code) ? 'selected' : '' }}>
                     {{ channel.name }}

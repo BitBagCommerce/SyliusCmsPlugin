@@ -3,7 +3,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
 >
-    <resource class="%sylius_cms_plugin.model.block.class%" shortName="Block">
+    <resource class="%sylius_cms.model.block.class%" shortName="Block">
         <attribute name="normalization_context">
             <attribute name="groups">
                 <attribute>sylius_cms:block:read:index</attribute>

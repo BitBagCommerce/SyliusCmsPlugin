@@ -61,5 +61,5 @@ return [
     League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
-    Sylius\CmsPlugin\BitBagSyliusCmsPlugin::class => ['all' => true],
+    Sylius\CmsPlugin\SyliusCmsPlugin::class => ['all' => true],
 ];

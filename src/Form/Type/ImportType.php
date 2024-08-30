@@ -18,11 +18,11 @@ final class ImportType extends AbstractType
             'required' => true,
             'constraints' => [
                 new NotNull([
-                    'message' => 'sylius_cms_plugin.import.not_blank',
+                    'message' => 'sylius_cms.import.not_blank',
                 ]),
                 new File([
                     'mimeTypes' => ['text/csv', 'text/plain'],
-                    'mimeTypesMessage' => 'sylius_cms_plugin.import.invalid_format',
+                    'mimeTypesMessage' => 'sylius_cms.import.invalid_format',
                 ]),
             ],
         ]);

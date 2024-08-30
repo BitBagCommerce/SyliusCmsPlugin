@@ -1,14 +1,14 @@
-sylius_cms_plugin_shop_media_render:
+sylius_cms_shop_media_render:
     path: /media/{code}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::renderMediaAction
+        _controller: sylius_cms.controller.media.overriden::renderMediaAction
 
-sylius_cms_plugin_shop_media_render_template:
+sylius_cms_shop_media_render_template:
     path: /media-template/{code}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::showAction
+        _controller: sylius_cms.controller.media.overriden::showAction
         _sylius:
             template: $template
             repository:
@@ -18,25 +18,25 @@ sylius_cms_plugin_shop_media_render_template:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
-sylius_cms_plugin_shop_media_download:
+sylius_cms_shop_media_download:
     path: /media/download/{code}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::downloadMediaAction
+        _controller: sylius_cms.controller.media.overriden::downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_ATTACHMENT
 
-sylius_cms_plugin_shop_media_inline:
+sylius_cms_shop_media_inline:
     path: /media/inline/{code}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::downloadMediaAction
+        _controller: sylius_cms.controller.media.overriden::downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_INLINE
 
-sylius_cms_plugin_shop_media_index_by_collection_code:
+sylius_cms_shop_media_index_by_collection_code:
     path: /media/collection/{collectionCode}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::indexAction
+        _controller: sylius_cms.controller.media.overriden::indexAction
         _sylius:
             template: $template
             repository:
@@ -46,11 +46,11 @@ sylius_cms_plugin_shop_media_index_by_collection_code:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
-sylius_cms_plugin_shop_media_index_by_product_code:
+sylius_cms_shop_media_index_by_product_code:
     path: /media/product/{productCode}
     methods: [GET]
     defaults:
-        _controller: sylius_cms_plugin.controller.media.overriden::indexAction
+        _controller: sylius_cms.controller.media.overriden::indexAction
         _sylius:
             template: $template
             repository:

@@ -4,16 +4,16 @@
     <services>
         <defaults public="true" />
 
-            <service id="sylius_cms_plugin.behat.page.admin.media.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
-                <argument>sylius_cms_plugin_admin_media_index</argument>
+            <service id="sylius_cms.behat.page.admin.media.index" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\IndexPage" parent="sylius.behat.page.admin.crud.index" public="false">
+                <argument>sylius_cms_admin_media_index</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.media.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
-                <argument>sylius_cms_plugin_admin_media_create</argument>
+            <service id="sylius_cms.behat.page.admin.media.create" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\CreatePage" parent="sylius.behat.page.admin.crud.create" public="false">
+                <argument>sylius_cms_admin_media_create</argument>
             </service>
 
-            <service id="sylius_cms_plugin.behat.page.admin.media.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
-                <argument>sylius_cms_plugin_admin_media_update</argument>
+            <service id="sylius_cms.behat.page.admin.media.update" class="Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\UpdatePage" parent="sylius.behat.page.admin.crud.update" public="false">
+                <argument>sylius_cms_admin_media_update</argument>
             </service>
     </services>
 </container>

@@ -58,8 +58,8 @@ final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
         $pagesCollection = new ArrayCollection(['page1', 'page2']);
         $collection->getPages()->willReturn($pagesCollection);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
             'collection' => $pagesCollection,
         ])->willReturn('rendered_output');
 

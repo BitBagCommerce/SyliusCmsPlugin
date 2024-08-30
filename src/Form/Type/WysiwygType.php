@@ -18,9 +18,9 @@ final class WysiwygType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'sylius_cms_plugin.ui.content',
+            'label' => 'sylius_cms.ui.content',
             'config' => [
-                'filebrowserUploadUrl' => $this->urlGenerator->generate('sylius_cms_plugin_admin_upload_editor_image'),
+                'filebrowserUploadUrl' => $this->urlGenerator->generate('sylius_cms_admin_upload_editor_image'),
                 'bodyId' => 'bitbag-ckeditor',
             ],
         ]);
