@@ -1,6 +1,6 @@
 # Blocks
 
-With the BitBag SyliusCmsPlugin, administrators can create and manage blocks built from content elements.
+With the SyliusCmsPlugin, administrators can create and manage blocks built from content elements.
 
 This allows for customized content presentation, showcasing product features, promotions, and relevant information.
 

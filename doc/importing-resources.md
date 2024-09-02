@@ -38,13 +38,13 @@ As previously mentioned, in order to import a data, you need to pick specific re
 In order to import data via command, execute:
 
 ```bash
-$ bin/console bitbag:import:csv [resource code] [path/to/your/csv/file.csv]
+$ bin/console cms:import:csv [resource code] [path/to/your/csv/file.csv]
 ```
 
 For instance, if you wish to import a page, run:
 
 ```bash
-$ bin/console bitbag:import:csv page ~/Documents/pages.csv
+$ bin/console cms:import:csv page ~/Documents/pages.csv
 ```
 
 ## Importing via admin panel
@@ -180,12 +180,12 @@ final class ProductImporter extends AbstractImporter implements ProductImporterI
             - "@validator"
             - "@doctrine.orm.entity_manager"
         tags:
-            - { name: bitbag.cmsplugin.importer }
+            - { name: cms_plugin.importer }
 ```
 
 5. :tada:
 
-Now you can use the `$ bin/console bitbag:import:csv product /path/to/products.csv/file` command to upload your products.
+Now you can use the `$ bin/console cms:import:csv product /path/to/products.csv/file` command to upload your products.
 
 Read the below section to enable the import from UI feature.
 

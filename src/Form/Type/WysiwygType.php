@@ -21,7 +21,7 @@ final class WysiwygType extends AbstractType
             'label' => 'sylius_cms.ui.content',
             'config' => [
                 'filebrowserUploadUrl' => $this->urlGenerator->generate('sylius_cms_admin_upload_editor_image'),
-                'bodyId' => 'bitbag-ckeditor',
+                'bodyId' => 'cms-ckeditor',
             ],
         ]);
     }

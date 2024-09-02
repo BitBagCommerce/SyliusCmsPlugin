@@ -6,6 +6,6 @@ framework:
             admin:
                 json_manifest_path: '%kernel.project_dir%/public/build/admin/manifest.json'
             cms_shop:
-                json_manifest_path: '%kernel.project_dir%/public/build/bitbag/cms/shop/manifest.json'
+                json_manifest_path: '%kernel.project_dir%/public/build/cms/shop/manifest.json'
             cms_admin:
-                json_manifest_path: '%kernel.project_dir%/public/build/bitbag/cms/admin/manifest.json'
+                json_manifest_path: '%kernel.project_dir%/public/build/cms/admin/manifest.json'

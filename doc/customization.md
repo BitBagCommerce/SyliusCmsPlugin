@@ -25,7 +25,7 @@ $ bin/console debug:router | grep sylius_cms
 To check parameters available with the plugin, execute:
 
 ```bash
-$ bin/console debug:container --parameters | grep bitbag
+$ bin/console debug:container --parameters | grep sylius_cms
 ```
 ## How to disable localised URLs?
 Customise vendor routing in the file `app/Resources/SyliusCmsPlugin/config/routing.yml` (create if not exist).

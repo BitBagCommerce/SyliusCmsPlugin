@@ -22,7 +22,7 @@ final class WysiwygHelper
         $session->wait(3000);
         $session->switchToIFrame($iframeNumber);
 
-        $document->find('css', '#bitbag-ckeditor')->setValue($content);
+        $document->find('css', '#cms-ckeditor')->setValue($content);
 
         $session->switchToIFrame(null);
     }

@@ -31,7 +31,7 @@
     >
         {{- form_label(form) -}}
         <div
-            class="bitbag-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
+            class="cms-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
             data-url="{{ path('sylius_cms_admin_ajax_media_by_name_phrase', {
             'mediaType': form.vars.media_type,
         })}}"

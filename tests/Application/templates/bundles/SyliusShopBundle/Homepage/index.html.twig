@@ -3,7 +3,7 @@
 {% block content %}
     <div class="top one">
         <div class="ui center aligned segment stackable grid cms-logo">
-            {{ sylius_cms_render_media('homepage_logo') }}
+            {{ sylius_cms_render_media('specified_products_banner') }}
         </div>
         {{ sylius_cms_render_block('homepage_textarea') }}
         {{ sylius_cms_render_block('homepage_products_carousel') }}
@@ -11,14 +11,5 @@
         {{ sylius_cms_render_block('homepage_taxons_list') }}
         {{ sylius_cms_render_block('homepage_products_carousel_by_taxon') }}
         {{ sylius_cms_render_block('homepage_products_grid_by_taxon') }}
-    </div>
-    <div class="ui stackable one column grid">
-        <div class="column intro promo">
-            <div class="ui info message">
-                Like it? We do a lot of Sylius projects & plugins. <br/>
-                Perhaps there is something we can do for you. Visit <a href="https://bitbag.shop/">our website</a> for
-                more information.
-            </div>
-        </div>
     </div>
 {% endblock %}

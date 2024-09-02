@@ -60,7 +60,7 @@ final class MediaImporterSpec extends ObjectBehavior
 
         $importerCollectionsResolver->resolve($media, null)->shouldBeCalled();
 
-        $validator->validate($media, null, ['bitbag'])->willReturn(new ConstraintViolationList());
+        $validator->validate($media, null, ['cms'])->willReturn(new ConstraintViolationList());
 
         $mediaRepository->add($media)->shouldBeCalled();
 

@@ -45,7 +45,7 @@ final class MediaImporter extends AbstractImporter implements MediaImporterInter
 
         $this->importerCollectionsResolver->resolve($media, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
 
-        $this->validateResource($media, ['bitbag']);
+        $this->validateResource($media, ['cms']);
 
         $this->mediaRepository->add($media);
     }

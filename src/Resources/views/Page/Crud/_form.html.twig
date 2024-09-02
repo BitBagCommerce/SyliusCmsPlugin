@@ -15,7 +15,7 @@
             {{ form_row(form.channels) }}
             {{ form_row(form.collections) }}
             {{ form_row(form.publishAt) }}
-            <a href="#" data-bb-cms-preview-btn class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('sylius_cms_admin_page_preview', {'id': form.vars.data.id}) }}">
+            <a href="#" data-bb-cms-preview-btn class="ui labeled button icon primary cms-resource-preview" data-url="{{ path('sylius_cms_admin_page_preview', {'id': form.vars.data.id}) }}">
                 <i class="eye icon"></i>
                 {{ 'sylius_cms.ui.preview'|trans }}
             </a>

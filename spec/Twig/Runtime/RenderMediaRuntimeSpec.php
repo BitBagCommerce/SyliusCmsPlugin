@@ -1,13 +1,5 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.io and write us
- * an email on mikolaj.krol@bitbag.pl.
- */
-
 declare(strict_types=1);
 
 namespace spec\Sylius\CmsPlugin\Twig\Runtime;
@@ -45,10 +37,10 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
         ProviderInterface $provider,
         MediaInterface $media,
     ): void {
-        $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
+        $mediaResourceResolver->findOrLog('sylius_cms')->willReturn($media);
         $provider->render($media, null)->willReturn('content');
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
 
-        $this->renderMedia('bitbag')->shouldReturn('content');
+        $this->renderMedia('sylius_cms')->shouldReturn('content');
     }
 }

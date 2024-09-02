@@ -52,7 +52,7 @@ final class EnabledAndAvailableExtension implements QueryCollectionExtensionInte
             return;
         }
 
-        if (in_array(ToggleableInterface::class, (array) class_implements($resourceClass), true)){
+        if (in_array(ToggleableInterface::class, (array) class_implements($resourceClass), true)) {
             $queryBuilder
                 ->andWhere(sprintf('%s.enabled = :enabled', $rootAlias))
                 ->setParameter('enabled', true);

@@ -1,6 +1,6 @@
 # [![](https://bitbag.io/wp-content/uploads/2021/01/CMS.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
 
-# BitBag SyliusCMSPlugin
+# Sylius CMS Plugin
 
 ----
 

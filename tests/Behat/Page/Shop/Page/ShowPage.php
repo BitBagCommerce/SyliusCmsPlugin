@@ -70,11 +70,11 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'name' => '.bitbag-page-name',
-            'content' => '.bitbag-page-content',
-            'products' => '.bitbag-page-products',
-            'collections' => '.bitbag-page-collections',
-            'link' => '.bitbag-page-link',
+            'name' => '.cms-page-name',
+            'content' => '.cms-page-content',
+            'products' => '.cms-page-products',
+            'collections' => '.cms-page-collections',
+            'link' => '.cms-page-link',
             'page-image' => '.page-image',
         ]);
     }
