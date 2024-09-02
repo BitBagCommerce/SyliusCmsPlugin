@@ -20,7 +20,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
 
     public function hasPagesNumber(int $pagesNumber): bool
     {
-        $pagesNumberOnPage = count($this->getElement('pages')->findAll('css', '.bitbag-page'));
+        $pagesNumberOnPage = count($this->getElement('pages')->findAll('css', '.cms-page'));
 
         return $pagesNumber === $pagesNumberOnPage;
     }
@@ -28,8 +28,8 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'collection' => '.bitbag-collection-name',
-            'pages' => '#bitbag-pages',
+            'collection' => '.cms-collection-name',
+            'pages' => '#cms-pages',
         ]);
     }
 }

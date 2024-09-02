@@ -21,7 +21,7 @@ final class ImportFromCsvCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('bitbag:import:csv')
+            ->setName('cms:import:csv')
             ->setDescription('Imports a resource')
             ->setHelp('This command allows you to import resources from CSV. It takes file path and resource name as parameter.')
             ->addArgument('resource', InputArgument::REQUIRED, 'Importer resource name.')

@@ -9,13 +9,13 @@
                 <value>code</value>
             </option>
             <option name="groups">
-                <value>bitbag</value>
+                <value>cms</value>
             </option>
             <option name="message">sylius_cms.media.code.unique</option>
         </constraint>
         <constraint name="Sylius\CmsPlugin\Validator\Constraint\FileMatchesType">
             <option name="groups">
-                <value>bitbag</value>
+                <value>cms</value>
             </option>
             <option name="messageImage">sylius_cms.media.file.type_image</option>
             <option name="messageVideo">sylius_cms.media.file.type_video</option>
@@ -26,7 +26,7 @@
             <constraint name="NotBlank">
                 <option name="message">sylius_cms.media.code.not_blank</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
             <constraint name="Length">
@@ -35,14 +35,14 @@
                 <option name="minMessage">sylius_cms.media.code.min_length</option>
                 <option name="maxMessage">sylius_cms.media.code.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
             <constraint name="Regex">
                 <option name="pattern">/^[\w-]*$/</option>
                 <option name="message">sylius_cms.media.code.regex</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -50,7 +50,7 @@
         <property name="name">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
             <constraint name="Length">
@@ -59,7 +59,7 @@
                 <option name="minMessage">sylius_cms.media.name.min_length</option>
                 <option name="maxMessage">sylius_cms.media.name.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -69,7 +69,7 @@
                 <option name="expression">!(this.getPath() == null and this.getFile() == null)</option>
                 <option name="message">sylius_cms.media.file.not_blank</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -77,7 +77,7 @@
         <property name="translations">
             <constraint name="Valid">
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>

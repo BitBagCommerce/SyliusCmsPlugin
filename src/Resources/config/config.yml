@@ -5,7 +5,7 @@ imports:
 
 parameters:
     sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"
-    sylius_validation_group: [bitbag]
+    sylius_validation_group: [cms]
     sylius_cms.form.type.block.validation_groups: "%sylius_validation_group%"
     sylius_cms.form.type.content_configuration.validation_groups: "%sylius_validation_group%"
     sylius_cms.form.type.block_image.validation_groups: "%sylius_validation_group%"
@@ -20,7 +20,7 @@ parameters:
 jms_serializer:
     metadata:
         directories:
-            bitbag-section:
+            cms-section:
                 namespace_prefix: "Sylius\\CmsPlugin"
                 path: "@SyliusCmsPlugin/Resources/config/serializer"
 

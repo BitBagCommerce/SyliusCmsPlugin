@@ -80,7 +80,7 @@ final class PageImporterSpec extends ObjectBehavior
         $importerCollectionsResolver->resolve($page, 'collections')->shouldBeCalled();
         $importerChannelsResolver->resolve($page, 'channels')->shouldBeCalled();
 
-        $validator->validate($page, null, ['bitbag'])->willReturn(new ConstraintViolationList());
+        $validator->validate($page, null, ['cms'])->willReturn(new ConstraintViolationList());
 
         $entityManager->persist($page)->shouldBeCalled();
         $entityManager->flush()->shouldBeCalled();

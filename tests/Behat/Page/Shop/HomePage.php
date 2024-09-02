@@ -21,8 +21,8 @@ class HomePage extends BaseHomePage implements HomePageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'image_block' => '.bitbag-image-block',
-            'content' => '.bitbag-block',
+            'image_block' => '.cms-image-block',
+            'content' => '.cms-block',
         ]);
     }
 }

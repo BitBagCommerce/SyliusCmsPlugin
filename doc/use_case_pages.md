@@ -2,7 +2,7 @@
 
 Pages represent a customizable web page, you can adjust them to your needs in the admin panel.
 
-With the BitBag SyliusCmsPlugin, administrators can create page content using content elements section.
+With the Sylius CMS Plugin, administrators can create page content using content elements section.
 
 Additionally, administrators can set teaser image, title and content to be displayed on the pages collection listing.
 

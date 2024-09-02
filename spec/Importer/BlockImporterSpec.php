@@ -78,7 +78,7 @@ final class BlockImporterSpec extends ObjectBehavior
         $importerTaxonsResolver->resolve($block, null)->shouldBeCalled();
         $importerProductsInTaxonsResolver->resolve($block, null)->shouldBeCalled();
 
-        $validator->validate($block, null, ['bitbag'])->willReturn(new ConstraintViolationList());
+        $validator->validate($block, null, ['cms'])->willReturn(new ConstraintViolationList());
 
         $blockRepository->add($block)->shouldBeCalled();
 

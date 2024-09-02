@@ -11,7 +11,7 @@
             </option>
             <option name="errorPath">slug</option>
             <option name="groups">
-                <value>bitbag</value>
+                <value>cms</value>
             </option>
             <option name="message">sylius_cms.page.slug.unique</option>
         </constraint>
@@ -23,7 +23,7 @@
                 <option name="minMessage">sylius_cms.page.slug.min_length</option>
                 <option name="maxMessage">sylius_cms.page.slug.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -35,7 +35,7 @@
                 <option name="minMessage">sylius_cms.page.meta_keywords.min_length</option>
                 <option name="maxMessage">sylius_cms.page.meta_keywords.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -47,7 +47,7 @@
                 <option name="minMessage">sylius_cms.page.meta_description.min_length</option>
                 <option name="maxMessage">sylius_cms.page.meta_description.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>

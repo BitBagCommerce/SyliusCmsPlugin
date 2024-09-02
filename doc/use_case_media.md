@@ -2,7 +2,7 @@
 
 In this plugin, media represents digital assets, for instance, an image, a video, or a simple PDF file.
 
-The BitBag SyliusCmsPlugin enables administrators to add and display various types of media, such as images, videos, and files, in desired locations throughout the website.
+The Sylius CMS Plugin enables administrators to add and display various types of media, such as images, videos, and files, in desired locations throughout the website.
 
 This functionality allows for the seamless integration of media elements using HTML tags, providing a visually engaging experience for users.
 

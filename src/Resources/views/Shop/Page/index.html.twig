@@ -11,9 +11,9 @@
         <div class="ui sixteen wide column">
 
             {% if resources.data|length > 0 %}
-                <div class="ui one column stackable grid" id="bitbag-pages">
+                <div class="ui one column stackable grid" id="cms-pages">
                     {% for page in resources.data %}
-                        <div class="item bitbag-page">
+                        <div class="item cms-page">
                             <a href="{{ path('sylius_cms_shop_page_show', {'slug' : page.slug}) }}">
 
                                 <div class="content">

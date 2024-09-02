@@ -11,7 +11,7 @@
                 <option name="minMessage">sylius_cms.media.alt.min_length</option>
                 <option name="maxMessage">sylius_cms.media.alt.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -23,7 +23,7 @@
                 <option name="minMessage">sylius_cms.media.link.min_length</option>
                 <option name="maxMessage">sylius_cms.media.link.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -34,7 +34,7 @@
                 <option name="minMessage">sylius_cms.media.content.min_length</option>
                 <option name="maxMessage">sylius_cms.media.content.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>

@@ -200,17 +200,6 @@ sylius_fixtures:
                 media:
                     options:
                         custom:
-                            homepage_logo:
-                                type: image
-                                path: "%fixtures_dir%/homepage_logo.png"
-                                original_name: "homepage_logo.png"
-                                name: Homepage logo
-                                channels:
-                                    - "FASHION_WEB"
-                                translations:
-                                    en_US:
-                                        alt: "SyliusCmsPlugin"
-                                        link: "https://github.com/BitBagCommerce/SyliusCmsPlugin"
                             homepage_video:
                                 type: video
                                 path: "%fixtures_dir%/homepage_video.mp4"
@@ -238,7 +227,7 @@ sylius_fixtures:
                                     - "FASHION_WEB"
                                 translations:
                                     en_US:
-                                        alt: BitBag offer
+                                        alt: CMS offer
                                         content: |
                                             <h3>File description</h3>
                                             <p>

@@ -27,15 +27,15 @@
             <div class="divider"> /</div>
             <div class="active section">{{ page.name }}</div>
         </div>
-        <h1 class="ui dividing header bitbag-page-name">{{ page.name }}</h1>
+        <h1 class="ui dividing header cms-page-name">{{ page.name }}</h1>
 
         <div class="ui hidden divider"></div>
 
-        <div class="bitbag-page-content">{{ sylius_cms_render_content_elements(page) }}</div>
+        <div class="cms-page-content">{{ sylius_cms_render_content_elements(page) }}</div>
 
         {% if page.collections is not empty %}
             <div class="ui dividing header"></div>
-            <div class="bitbag-page-collections">
+            <div class="cms-page-collections">
                 {% include '@SyliusCmsPlugin/Shop/Page/Show/_collections.html.twig' %}
             </div>
         {% endif %}

@@ -1,21 +1,21 @@
-#bitbag-cms-resource-preview-modal {
+#cms-resource-preview-modal {
     height: 100%;
 }
 
-#bitbag-cms-resource-preview-modal iframe {
+#cms-resource-preview-modal iframe {
     width: 100%;
     height: 100vh;
 }
 
-#bitbag-cms-resource-preview-modal .ui.header {
+#cms-resource-preview-modal .ui.header {
     padding-bottom: 0;
 }
 
-.bitbag-cms-import .ui.action.input input[type='file'] {
+.cms-import .ui.action.input input[type='file'] {
     display: none;
 }
 
-.bitbag-cms-import .ui.action.input input[type='text'] {
+.cms-import .ui.action.input input[type='text'] {
     width: auto;
 }
 
@@ -96,11 +96,11 @@
     }
 }
 
-.bitbag-media-autocomplete .dropdown.icon {
+.cms-media-autocomplete .dropdown.icon {
     pointer-events: none;
 }
 
-.bitbag-media-autocomplete .search {
+.cms-media-autocomplete .search {
     cursor: pointer !important;
 }
 

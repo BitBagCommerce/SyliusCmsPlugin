@@ -51,7 +51,7 @@ final class PageImporter extends AbstractImporter implements PageImporterInterfa
         $this->importerCollectionsResolver->resolve($page, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($page, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
 
-        $this->validateResource($page, ['bitbag']);
+        $this->validateResource($page, ['cms']);
 
         $this->entityManager->persist($page);
         $this->entityManager->flush();

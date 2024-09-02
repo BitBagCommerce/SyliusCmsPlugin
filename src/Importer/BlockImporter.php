@@ -50,7 +50,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $this->importerTaxonsResolver->resolve($block, $this->getColumnValue(self::TAXONS_COLUMN, $row));
         $this->importerProductsInTaxonsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_IN_TAXONS_COLUMN, $row));
 
-        $this->validateResource($block, ['bitbag']);
+        $this->validateResource($block, ['cms']);
         $this->blockRepository->add($block);
     }
 
