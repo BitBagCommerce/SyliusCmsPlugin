@@ -11,7 +11,7 @@ use Sylius\CmsPlugin\Entity\Trait\TeaserTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
+use Sylius\Resource\Model\TranslationInterface;
 
 class Page implements PageInterface
 {
