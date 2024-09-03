@@ -37,8 +37,7 @@ final class ProductsInTaxonsAssignerSpec extends ObjectBehavior
         $taxon1->getCode()->willReturn('taxon_code_1');
         $taxon2->getCode()->willReturn('taxon_code_2');
 
-        $taxonRepository->findOneBy(['code' => 'taxon_code_1'])->willReturn($taxon1);
-        $taxonRepository->findOneBy(['code' => 'taxon_code_2'])->willReturn($taxon2);
+        $taxonRepository->findBy(['code' => ['taxon_code_1', 'taxon_code_2']])->willReturn([$taxon1, $taxon2]);
 
         $productsInTaxonsAware->addProductsInTaxon($taxon1)->shouldBeCalled();
         $productsInTaxonsAware->addProductsInTaxon($taxon2)->shouldBeCalled();

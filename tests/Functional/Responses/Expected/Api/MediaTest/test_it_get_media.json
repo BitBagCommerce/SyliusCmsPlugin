@@ -10,31 +10,7 @@
       "type": "image",
       "code": "media1-code",
       "name": "media1-name",
-      "path": "/path/to/media1",
-      "mimeType": null,
-      "width": null,
-      "height": null,
-      "saveWithOriginalName": false,
-      "enabled": true,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection1-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "translations": {
-        "en_US": {
-          "@type": "MediaTranslation",
-          "content": "translation_content_en_US",
-          "alt": null,
-          "link": "translation_link_en_US"
-        }
-      }
+      "enabled": true
     },
     {
       "@id": "/api/v2/shop/cms-plugin/media/@integer@",
@@ -43,31 +19,7 @@
       "type": "image",
       "code": "media2-code",
       "name": "media2-name",
-      "path": "/path/to/media2",
-      "mimeType": null,
-      "width": null,
-      "height": null,
-      "saveWithOriginalName": false,
-      "enabled": true,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection2-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "translations": {
-        "en_US": {
-          "@type": "MediaTranslation",
-          "content": "translation_content_en_US",
-          "alt": null,
-          "link": "translation_link_en_US"
-        }
-      }
+      "enabled": true
     },
     {
       "@id": "/api/v2/shop/cms-plugin/media/@integer@",
@@ -76,31 +28,7 @@
       "type": "image",
       "code": "media3-code",
       "name": "media3-name",
-      "path": "/path/to/media3",
-      "mimeType": null,
-      "width": null,
-      "height": null,
-      "saveWithOriginalName": false,
-      "enabled": false,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection3-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "translations": {
-        "en_US": {
-          "@type": "MediaTranslation",
-          "content": "translation_content_en_US",
-          "alt": null,
-          "link": "translation_link_en_US"
-        }
-      }
+      "enabled": true
     }
   ],
   "hydra:totalItems": 3

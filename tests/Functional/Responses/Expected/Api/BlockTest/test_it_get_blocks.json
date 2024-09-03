@@ -8,66 +8,24 @@
       "@type": "Block",
       "id": "@integer@",
       "code": "block1-code",
-      "enabled": true,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection1-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "contentElements": [],
-      "products": [],
-      "taxons": [],
-      "productsInTaxons": []
+      "name": "block1-name",
+      "enabled": true
     },
     {
       "@id": "/api/v2/shop/cms-plugin/blocks/@integer@",
       "@type": "Block",
       "id": "@integer@",
       "code": "block2-code",
-      "enabled": true,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection2-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "contentElements": [],
-      "products": [],
-      "taxons": [],
-      "productsInTaxons": []
+      "name": "block2-name",
+      "enabled": true
     },
     {
       "@id": "/api/v2/shop/cms-plugin/blocks/@integer@",
       "@type": "Block",
       "id": "@integer@",
       "code": "block3-code",
-      "enabled": false,
-      "collections": [
-        {
-          "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-          "@type": "Collection",
-          "id": "@integer@",
-          "code": "collection3-code"
-        }
-      ],
-      "channels": [
-        "/api/v2/shop/channels/code"
-      ],
-      "contentElements": [],
-      "products": [],
-      "taxons": [],
-      "productsInTaxons": []
+      "name": "block3-name",
+      "enabled": true
     }
   ],
   "hydra:totalItems": 3

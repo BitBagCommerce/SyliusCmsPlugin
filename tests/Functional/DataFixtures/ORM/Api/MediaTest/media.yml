@@ -113,7 +113,7 @@ Sylius\CmsPlugin\Entity\Media:
   media3:
     code: 'media3-code'
     name: 'media3-name'
-    enabled: false
+    enabled: true
     type: 'image'
     path: '/path/to/media3'
     collections:

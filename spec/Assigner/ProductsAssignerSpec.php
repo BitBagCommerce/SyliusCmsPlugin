@@ -34,8 +34,7 @@ final class ProductsAssignerSpec extends ObjectBehavior
         ProductInterface $tshirtProduct,
         ProductsAwareInterface $productsAware,
     ): void {
-        $productRepository->findOneBy(['code' => 'mug'])->willReturn($mugProduct);
-        $productRepository->findOneBy(['code' => 't-shirt'])->willReturn($tshirtProduct);
+        $productRepository->findBy(['code' => ['mug', 't-shirt']])->willReturn([$mugProduct, $tshirtProduct]);
 
         $productsAware->addProduct($mugProduct)->shouldBeCalled();
         $productsAware->addProduct($tshirtProduct)->shouldBeCalled();
