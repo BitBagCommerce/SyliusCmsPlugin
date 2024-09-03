@@ -1,0 +1,33 @@
+{% set tag = random(0, 1000) %}
+<div class="{{ content_element_base_class }}__products-carousel">
+    <div class="carousel-wrapper">
+        <div class="products-carousel products-carousel-{{ tag }}">
+            {% for product in products %}
+                <div class="products-carousel-item">
+                    {% include '@SyliusShop/Product/_box.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="products-carousel-nav">
+            <button class="products-carousel-left products-carousel-left-{{ tag }} ui huge black icon button">
+                <i class="left arrow icon"></i>
+            </button>
+            <button class="products-carousel-right products-carousel-right-{{ tag }} ui huge black icon button">
+                <i class="right arrow icon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.addEventListener('load', function () {
+        $('.products-carousel-{{ tag }}').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            prevArrow: $('.products-carousel-left-{{ tag }}'),
+            nextArrow: $('.products-carousel-right-{{ tag }}'),
+            appendArrows: false,
+        });
+    })
+</script>

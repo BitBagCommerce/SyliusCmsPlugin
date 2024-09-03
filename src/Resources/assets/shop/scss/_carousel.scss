@@ -1,27 +1,27 @@
 .carousel-wrapper {
     position: relative;
 
-    .carousel {
+    .products-carousel {
         margin: 0 -1em;
     }
 
-    .carousel-nav {
-        .carousel-left {
+    .products-carousel-nav {
+        .products-carousel-left {
             left: 30px;
         }
 
-        .carousel-right {
+        .products-carousel-right {
             right: 30px;
         }
 
-        .carousel-left, .carousel-right {
+        .products-carousel-left, .products-carousel-right {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
         }
     }
 
-    .carousel-item {
+    .products-carousel-item {
         padding: 5px 1em;
     }
 }

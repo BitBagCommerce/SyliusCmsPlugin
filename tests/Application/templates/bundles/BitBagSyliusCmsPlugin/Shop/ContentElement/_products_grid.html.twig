@@ -1,0 +1,7 @@
+<div class="{{ content_element_base_class }}__products-grid">
+    <div class="ui four doubling cards">
+        {% for product in products %}
+            {% include '@SyliusShop/Product/_box.html.twig' %}
+        {% endfor %}
+    </div>
+</div>

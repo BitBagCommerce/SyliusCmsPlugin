@@ -58,7 +58,5 @@
 
     {{ sonata_block_render_event('sylius.shop.product.show.before_associations', {'product': product}) }}
 
-    {% include '@SyliusShop/Product/Show/_associations.html.twig' %}
-
     {{ bitbag_cms_render_block('specified_products_in_taxons', null, product) }}
 {% endblock %}

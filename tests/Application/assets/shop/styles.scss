@@ -1,0 +1,23 @@
+.homepage-logo {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.homepage-sale {
+  img {
+    width: 60% !important;
+    margin: auto !important;
+    border-radius: 20px;
+  }
+}
+
+.cms_content_element__taxons-list {
+  .ui.column {
+    text-align: center;
+
+    a {
+      font-size: 14pt;
+      font-weight: bold;
+    }
+  }
+}
