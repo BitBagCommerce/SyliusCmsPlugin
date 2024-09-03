@@ -37,7 +37,7 @@ final class LocalesAssignerSpec extends ObjectBehavior
         $locale1->getCode()->willReturn('en_US');
         $locale2->getCode()->willReturn('fr_FR');
 
-        $localeRepository->findAll()->willReturn([$locale1, $locale2]);
+        $localeRepository->findBy(['code' => ['en_US', 'fr_FR']])->willReturn([$locale1, $locale2]);
 
         $localesAware->addLocale($locale1)->shouldBeCalled();
         $localesAware->addLocale($locale2)->shouldBeCalled();

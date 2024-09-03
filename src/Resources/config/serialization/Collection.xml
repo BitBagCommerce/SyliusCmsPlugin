@@ -13,6 +13,7 @@
             <group>sylius_cms:collection:read:show</group>
         </attribute>
         <attribute name="type">
+            <group>sylius_cms:collection:read:index</group>
             <group>sylius_cms:collection:read:show</group>
         </attribute>
         <attribute name="pages">

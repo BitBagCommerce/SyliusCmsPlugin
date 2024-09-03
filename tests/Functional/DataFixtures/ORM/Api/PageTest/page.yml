@@ -109,7 +109,7 @@ Sylius\CmsPlugin\Entity\Page:
       - '@page2_translation'
   page3:
     code: 'page3-code'
-    enabled: false
+    enabled: true
     collections:
       - '@collection3'
     channels:

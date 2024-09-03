@@ -74,25 +74,34 @@ Sylius\Component\Core\Model\ProductVariant:
 Sylius\CmsPlugin\Entity\Block:
   block1:
     code: 'block1-code'
+    name: 'block1-name'
     enabled: true
     collections:
       - '@collection1'
     channels:
       - '@channel'
+    locales:
+        - '@locale'
   block2:
     code: 'block2-code'
+    name: 'block2-name'
     enabled: true
     collections:
       - '@collection2'
     channels:
       - '@channel'
+    locales:
+      - '@locale'
   block3:
     code: 'block3-code'
-    enabled: false
+    name: 'block3-name'
+    enabled: true
     collections:
       - '@collection3'
     channels:
       - '@channel'
+    locales:
+      - '@locale'
 Sylius\CmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'

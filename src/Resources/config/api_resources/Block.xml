@@ -41,10 +41,14 @@
 
         <property name="id" identifier="true" writable="false"/>
         <property name="code" identifier="false" writable="false"/>
+        <property name="name" identifier="false" writable="false"/>
         <property name="enabled" identifier="false" writable="false"/>
+        <property name="channels" identifier="false" writable="false"/>
+        <property name="locales" identifier="false" writable="false"/>
         <property name="collections" identifier="false" writable="false"/>
         <property name="products" identifier="false" writable="false"/>
-        <property name="channels" identifier="false" writable="false"/>
-        <property name="taxonomies" identifier="false" writable="false"/>
+        <property name="taxons" identifier="false" writable="false"/>
+        <property name="productsInTaxons" identifier="false" writable="false"/>
+        <property name="contentElements" identifier="false" writable="false"/>
     </resource>
 </resources>

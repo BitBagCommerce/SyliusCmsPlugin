@@ -12,14 +12,21 @@
             <group>sylius_cms:block:read:index</group>
             <group>sylius_cms:block:read:show</group>
         </attribute>
+        <attribute name="name">
+            <group>sylius_cms:block:read:index</group>
+            <group>sylius_cms:block:read:show</group>
+        </attribute>
         <attribute name="enabled">
             <group>sylius_cms:block:read:index</group>
             <group>sylius_cms:block:read:show</group>
         </attribute>
-        <attribute name="collections">
+        <attribute name="channels">
             <group>sylius_cms:block:read:show</group>
         </attribute>
-        <attribute name="channels">
+        <attribute name="locales">
+            <group>sylius_cms:block:read:show</group>
+        </attribute>
+        <attribute name="collections">
             <group>sylius_cms:block:read:show</group>
         </attribute>
         <attribute name="products">

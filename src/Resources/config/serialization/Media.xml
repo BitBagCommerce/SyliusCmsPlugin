@@ -20,14 +20,14 @@
             <group>sylius_cms:media:read:index</group>
             <group>sylius_cms:media:read:show</group>
         </attribute>
+        <attribute name="enabled">
+            <group>sylius_cms:media:read:index</group>
+            <group>sylius_cms:media:read:show</group>
+        </attribute>
         <attribute name="path">
             <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="mimeType">
-            <group>sylius_cms:media:read:show</group>
-        </attribute>
-        <attribute name="enabled">
-            <group>sylius_cms:media:read:index</group>
             <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="width">
