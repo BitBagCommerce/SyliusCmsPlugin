@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
+    $('.cms-media-autocomplete, .sylius-autocomplete').each((index, element) => {
         $(element).autoComplete();
     });
 
@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
 
     $(document).on('collection-form-add', () => {
-        $('.bitbag-media-autocomplete, .sylius-autocomplete').each((index, element) => {
+        $('.cms-media-autocomplete, .sylius-autocomplete').each((index, element) => {
             if ($._data($(element).get(0), 'events') === undefined) {
                 $(element).autoComplete();
             }
@@ -60,7 +60,7 @@ $(document).ready(function() {
                     );
 
                     $(element).attr('name', newConfigInputName);
-                    $(newConfig).find('.bitbag-media-autocomplete').autoComplete();
+                    $(newConfig).find('.cms-media-autocomplete').autoComplete();
                     $(newConfig).find('.sylius-autocomplete').autoComplete();
                 });
             }

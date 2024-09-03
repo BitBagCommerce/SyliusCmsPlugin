@@ -28,7 +28,7 @@ export class HandleAutoComplete {
 
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandleAutoComplete class config is not a valid object');
+            throw new Error('Sylius CMS Plugin - HandleAutoComplete class config is not a valid object');
         }
         this.mediaContainers.forEach((mediaContainer) => {
             this._handleSavedValue(mediaContainer);
@@ -108,7 +108,7 @@ export class HandleAutoComplete {
 
             triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.completed', data);
         } catch (error) {
-            console.error(`BitBag CMS Plugin - HandleAutoComplete class error : ${error}`);
+            console.error(`Sylius CMS Plugin - HandleAutoComplete class error : ${error}`);
             triggerCustomEvent(mediaContainer, 'cms.media.saved.reload.error', error);
         } finally {
             mediaContainer.classList.remove('loading');
@@ -134,7 +134,7 @@ export class HandleAutoComplete {
 
             triggerCustomEvent(mediaContainer, 'cms.media.display.completed', data);
         } catch (error) {
-            console.error(`BitBag CMS Plugin - HandleAutoComplete class error : ${error}`);
+            console.error(`Sylius CMS Plugin - HandleAutoComplete class error : ${error}`);
             triggerCustomEvent(mediaContainer, 'cms.media.display.error', error);
         } finally {
             mediaContainer.classList.remove('loading');
