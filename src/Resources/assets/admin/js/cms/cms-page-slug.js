@@ -18,15 +18,15 @@ export class HandleSlugUpdate {
 
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config is not a valid object');
+            throw new Error('Sylius CMS Plugin - HandleSlugUpdate class config is not a valid object');
         }
 
         if (typeof this.lockFieldIndicator !== 'string' || typeof this.bbTarget !== 'string') {
-            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate class config key values are not valid strings');
+            throw new Error('Sylius CMS Plugin - HandleSlugUpdate class config key values are not valid strings');
         }
 
         if (!this.nameField ) {
-            throw new Error('Bitbag CMS Plugin - HandleSlugUpdate name field not found');
+            throw new Error('Sylius CMS Plugin - HandleSlugUpdate name field not found');
         }
 
         this._handleFields();
@@ -84,7 +84,7 @@ export class HandleSlugUpdate {
             const response = await request.json();
             return response.slug;
         } catch (error) {
-            console.error(`BitBag CMS Plugin - HandleSlugUpdate class error : ${error}`);
+            console.error(`Sylius CMS Plugin - HandleSlugUpdate class error : ${error}`);
         }
     }
 

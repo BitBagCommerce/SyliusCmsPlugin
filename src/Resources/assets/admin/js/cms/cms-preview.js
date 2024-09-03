@@ -18,14 +18,14 @@ export class HandlePreview {
     }
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandlePreview class config is not a valid object');
+            throw new Error('Sylius CMS Plugin - HandlePreview class config is not a valid object');
         }
         if (
             typeof this.localeSelector !== 'string' ||
             typeof this.channelSelector !== 'string' ||
             typeof this.modalSelector !== 'string'
         ) {
-            throw new Error('Bitbag CMS Plugin - HandlePreview class config key values are not valid strings');
+            throw new Error('Sylius CMS Plugin - HandlePreview class config key values are not valid strings');
         }
         this._resourcePreview();
     }
@@ -88,7 +88,7 @@ export class HandlePreview {
             this.modal.querySelector('iframe').src = blobUrl;
             triggerCustomEvent(this.modal, 'cms.create.preview.completed', res);
         } catch (error) {
-            console.error(`BitBag CMS Plugin - HandlePreview class error : ${error}`);
+            console.error(`Sylius CMS Plugin - HandlePreview class error : ${error}`);
             triggerCustomEvent(this.modal, 'cms.create.preview.error', error);
         } finally {
             this.modal.querySelector('.ui.loadable').classList.remove('loading');

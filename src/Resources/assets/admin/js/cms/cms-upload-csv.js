@@ -7,7 +7,7 @@ export class HandleCsvUpload {
 
     init() {
         if (typeof this.config !== 'object') {
-            throw new Error('Bitbag CMS Plugin - HandleCsvUpload class config is not a valid object');
+            throw new Error('Sylius CMS Plugin - HandleCsvUpload class config is not a valid object');
         }
 
         this._handleFields();
