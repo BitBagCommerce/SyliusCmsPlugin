@@ -19,31 +19,29 @@ $(document).ready(function() {
         extraPlugins: ["mediaVideo", "mediaImage"],
         removePlugins: ["exportpdf"],
         filebrowserUploadUrl: "/admin/editor/upload-image",
-        bodyId: "bitbag-ckeditor",
+        bodyId: "cms-ckeditor",
         language: "en-us"
     };
 
-    let pageElements = '#sylius_cms_plugin_page_contentElements';
-    let blockElements = '#sylius_cms_plugin_block_contentElements';
+    let pageElements = '#sylius_cms_page_contentElements';
+    let blockElements = '#sylius_cms_block_contentElements';
     let collectionHolder = $(pageElements).length ? pageElements : blockElements;
+
     let itemElement = document.querySelector(`${collectionHolder} [data-form-collection="item"]`);
 
     if (!$(collectionHolder).length) {
         return;
     }
-
     $(document).on('collection-form-add', () => {
         $('.cms-media-autocomplete, .sylius-autocomplete').each((index, element) => {
             if ($._data($(element).get(0), 'events') === undefined) {
                 $(element).autoComplete();
             }
         });
-
         $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {
             $(document).loadContentConfiguration(element);
         });
     });
-
     $.fn.extend({
         loadContentConfiguration(target) {
             target.querySelector(`${collectionHolder} select[name*="type"]`).onchange = function () {
@@ -51,34 +49,26 @@ $(document).ready(function() {
                 const newConfig = document.createElement('div');
                 const selectedOption = this.selectedOptions[0];
                 newConfig.innerHTML = selectedOption.getAttribute('data-configuration');
-
                 const oldConfig = parent.nextElementSibling;
-
                 parent.parentElement.replaceChild(newConfig, oldConfig);
-
                 let oldConfigInput = oldConfig.querySelector('input');
                 if (!oldConfigInput) {
                     oldConfigInput = oldConfig.querySelector('textarea');
                 }
-
                 const oldConfigInputName = oldConfigInput.getAttribute('name');
-
                 let newConfigInputs = newConfig.querySelectorAll('input');
                 if (!newConfigInputs.length) {
                     newConfigInputs = newConfig.querySelectorAll('textarea');
                 }
-
                 newConfigInputs.forEach(element => {
                     let newConfigInputName = element.getAttribute('name');
                     if (!newConfigInputName) {
                         return;
                     }
-
                     newConfigInputName = oldConfigInputName.replace(
                         oldConfigInputName.substring(oldConfigInputName.indexOf('[configuration]') + 15),
                         newConfigInputName.substring(newConfigInputName.indexOf('configuration') + 13),
                     );
-
                     $(element).attr('name', newConfigInputName);
                     $(newConfig).find('.cms-media-autocomplete').autoComplete();
                     $(newConfig).find('.sylius-autocomplete').autoComplete();
@@ -94,7 +84,6 @@ $(document).ready(function() {
             }
         }
     });
-
     $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {
         $(document).loadContentConfiguration(element);
     });

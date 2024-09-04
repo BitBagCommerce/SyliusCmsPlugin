@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
+use Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
 use Sylius\CmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;

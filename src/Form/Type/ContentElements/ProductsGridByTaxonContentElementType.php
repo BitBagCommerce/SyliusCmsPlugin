@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
-use BitBag\SyliusCmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
+use Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

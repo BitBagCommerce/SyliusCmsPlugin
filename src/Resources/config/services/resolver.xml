@@ -48,7 +48,6 @@
 
         <service id="sylius_cms.resolver.media_resource" class="Sylius\CmsPlugin\Resolver\MediaResourceResolver" public="true">
             <argument type="service" id="sylius_cms.repository.media" />
-            <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="logger" />
         </service>
