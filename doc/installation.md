@@ -114,9 +114,9 @@ Note. In some cases the `--symlink` option [may trow some errors](https://github
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
 - [Import webpack config](./01.1-webpack-config.md)*
-- [Add entry to existing config](./01.2-webpack-entry.md))
-- [Import entries in your entry.js files](./01.3-import-entry.md))
-- [Your own custom config](./01.4-custom-solution.md))
+- [Add entry to existing config](./01.2-webpack-entry.md)
+- [Import entries in your entry.js files](./01.3-import-entry.md)
+- [Your own custom config](./01.4-custom-solution.md)
 
 <small>* Default option for plugin development</small>
 

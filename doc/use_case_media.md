@@ -16,7 +16,7 @@ Currently, it supports the following media types:
 
 ## The process of creating a Media
 
-By following these steps bellow, administrators can easily add media items and customize their associations with products and sections. This provides control over where the media is displayed, ensuring it appears in the desired locations throughout the website.
+By following these steps bellow, administrators can easily add and manage media.
 
 1. Please access the administrator panel of the Sylius e-commerce system.
 2. Navigate to the CMS section or the designated area for managing media.
@@ -30,8 +30,11 @@ By following these steps bellow, administrators can easily add media items and c
 
 In the form, you will find additional fields, which will help you with your e-commerce related content:
 
-- Products - You can select specific products to associate with the media item. This ensures that the media will be displayed on the product pages of the selected products.
-- Sections - You can choose the sections where the media should be placed. This allows for precise positioning and organization of the media within the relevant sections of the website.
+- Collections - You can choose the collections where the media should be placed. This allows for precise positioning and organization of the media within the relevant collections of the website.
+- Translations:
+    - Alt - The alternative text for the media item.
+    - Link - The URL in which the media item should redirect to.
+    - Link content - Description of the media item link.
 
 The mentioned form:
 
@@ -39,7 +42,4 @@ The mentioned form:
 
 ## Result possible to achieve on the front of the store:
 
-The image below presents you a sample result of [Section](sections.md) rendered on the product page, which contains [Blocks](blocks.md) and Media (image, video and downloadable PDF file):
-
-![Screenshot showing content management config in admin](media_cms_result.png)
-
+![Screenshot showing media result in front page](media_cms_result.png)

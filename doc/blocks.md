@@ -1,9 +1,11 @@
 # Blocks
 
-Blocks represent single parts of your Sylius web app, where you can put some content hardcoded in the 
-template and change it in the future from admin panel.
+Blocks represent single parts of your Sylius web app, where you can put some content elements via the admin panel.
+Blocks can be placed on the homepage, product page, or any other page of your store.
 
 ## General usage
+
+### Rendering the block
 
 In the admin panel, you can create block resources. It could be rendered in your twig templates using `bitbag_cms_render_block([block_code])` helper extension.
 For instance, let's assume you created a block with `homepage_intro` code and want to render it on store homepage.
@@ -14,27 +16,41 @@ In your `app/Resources/views/SyliusShopBundle/Homepage/index.html.twig` file add
 
 {% block content %}
 
-# The template is not a mandatory parameter
-
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_render', {'code' : 'homepage_header_image', 'template' : '@App/Some/Template/_path.html.twig'})) }}
-
-# However, you can pass it to the `bitbag_cms_render_block` function if you wish :)
-
 {{ bitbag_cms_render_block('homepage_intro') }}
 
 {% endblock %}
 ```
 
-To render a block by the product code, you can use `route`.
+`{{ bitbag_cms_render_block([block_code]) }}` function can also take two additional parameters: `template` and `context`.
+
+`template` allows you to render a block with a custom template. For instance:
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_block_index_by_product_code', {'productCode' : product.code, 'template' : '@BitBagSyliusCmsPlugin/Shop/Block/index.html.twig'})) }}
+{{ bitbag_cms_render_block('homepage_intro', '@App/Some/Template/_path.html.twig') }}
 ```
+
+`context` allows you to pass additional variables to the block template. It can be one of three types: 
+- `ProductInterface` 
+- `TaxonInterface`
+- `array`
+ 
+For instance:
+
+```twig
+{{ bitbag_cms_render_block('homepage_intro', null, {'some_variable': 'some_value'}) }}
+{{ bitbag_cms_render_block('homepage_intro', null, product) }}
+{{ bitbag_cms_render_block('homepage_intro', null, taxon) }}
+```
+
+When you pass `ProductInterface` or `TaxonInterface` as a context, the block will be rendered only if it is assigned to the given product or taxon
+in the admin panel.
 
 ## Customization
 
-If you don't know how to override templates yet, 
+### Override block template
+
+If you don't know how to override templates yet,
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-You can create a template under `app/Resources/BitBagSyliusCmsPlugin/views/Shop/Block` location.
+Even if you can pass template argument to render block resource, you can change the global templates under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/Block` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Block).

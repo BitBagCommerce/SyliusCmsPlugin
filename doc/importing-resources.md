@@ -21,10 +21,9 @@ are validated against constraints used in the admin panel. What's more, thanks t
 Currently implemented importers support following column names, which are constants values from below table.
 
 **Note:**
-- `__locale__` suffix needs to be replaced with a specific locale configured in your admin panel.
-- `sections`, `channels` and `products` represent associations that are recognized with comma separated resource codes.
-For instance, if you want to associate three sections via the CSV file, you should fill the `sections` column with 
-`homepage, blog, delivery` value, where each value is a single section code.
+- `collections`, `channels`, `locales`, `products`, `products_in_taxons`, `taxons` represent associations that are recognized with comma separated resource codes.
+For instance, if you want to associate three collections via the CSV file, you should fill the `collections` column with 
+`homepage, blog, delivery` value, where each value is a single collection code.
 
 | Resource code | Importer columns interface                                         |
 |---------------|--------------------------------------------------------------------|

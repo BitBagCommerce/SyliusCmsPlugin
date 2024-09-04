@@ -10,12 +10,17 @@ Currently, it supports following media types:
 
 ## General usage
 
-You can render media in four ways:
+You can render media in two ways:
 
 By rendering a media code template:
 
 ```twig
 {{ bitbag_cms_render_media('media_code') }}
+```
+Function above can also take an additional parameter: `template`.
+
+```twig
+{{ bitbag_cms_render_media('media_code', '@App/templates/example.html.twig')}}
 ```
 
 Rendering a media code directly:
@@ -24,21 +29,11 @@ Rendering a media code directly:
 {{ render(path('bitbag_sylius_cms_plugin_shop_media_render', {'code' : 'file', 'template' : '@App/Some/Template/_path.html.twig'})) }}
 ```
 
-If you want to list media by specific section. Useful for displaying set of images. For example, using "gallery" section you can group set of images and display them as gallery, or even slider.
-
-```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'gallery', 'template' : '@App/Some/Template/_path.html.twig'})) }}
-```
-
-Or by providing custom twig template. Useful when you want to render media in a different template:
-
-```{{ bitbag_cms_render_media('media_code', '@App/templates/example.html.twig')}}```
-
-### Media provider
+## Media provider
 
 You can add your own media provider by adding a service with a tag named `bitbag_sylius_cms_plugin.media_provider`:
 
-```php
+```twig
 app.media_provider.audio:
     class: BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider
     arguments:
@@ -52,8 +47,8 @@ app.media_provider.audio:
 
 ## Customization
 
-If you don't know how to override templates yet, 
+If you don't know how to override templates yet,
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-You can create a template under `app/Resources/BitBagSyliusCmsPlugin/views/Shop/Media` location.
+Even if you can pass template argument to render media resource, you can change the global templates under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/Media` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Media).

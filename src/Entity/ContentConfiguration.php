@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
-
 class ContentConfiguration implements ContentConfigurationInterface
 {
     protected ?int $id;
@@ -67,14 +65,5 @@ class ContentConfiguration implements ContentConfigurationInterface
     public function setPage(?PageInterface $page): void
     {
         $this->page = $page;
-    }
-
-    public function getContent(): ?string
-    {
-        if (TextareaContentElementType::TYPE === $this->type) {
-            return $this->configuration[TextareaContentElementType::TYPE] ?? null;
-        }
-
-        return null;
     }
 }
