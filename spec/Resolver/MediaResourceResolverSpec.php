@@ -12,7 +12,6 @@ use Sylius\CmsPlugin\Resolver\MediaResourceResolver;
 use Sylius\CmsPlugin\Resolver\MediaResourceResolverInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class MediaResourceResolverSpec extends ObjectBehavior
 {
