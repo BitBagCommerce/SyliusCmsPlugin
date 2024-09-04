@@ -1,17 +1,17 @@
-sylius_cms_plugin_shop_media_render:
+sylius_cms_shop_media_render:
     path: /media/{code}
     methods: [GET]
     defaults:
         _controller: sylius_cms_plugin.controller.media.overriden::renderMediaAction
 
-sylius_cms_plugin_shop_media_download:
+sylius_cms_shop_media_download:
     path: /media/download/{code}
     methods: [GET]
     defaults:
         _controller: sylius_cms_plugin.controller.media.overriden::downloadMediaAction
         disposition: !php/const Symfony\Component\HttpFoundation\ResponseHeaderBag::DISPOSITION_ATTACHMENT
 
-sylius_cms_plugin_shop_media_inline:
+sylius_cms_shop_media_inline:
     path: /media/inline/{code}
     methods: [GET]
     defaults:
