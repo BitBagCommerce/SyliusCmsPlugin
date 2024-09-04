@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type\ContentElements;
 
+use BitBag\SyliusCmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
 use BitBag\SyliusCmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -21,8 +22,10 @@ final class SingleMediaContentElementType extends AbstractType
 {
     public const TYPE = 'single_media';
 
-    public function __construct(private RepositoryInterface $mediaRepository)
-    {
+    public function __construct(
+        private RepositoryInterface $mediaRepository,
+        private ContentElementDataTransformerChecker $contentElementDataTransformerChecker,
+    ) {
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -36,6 +39,8 @@ final class SingleMediaContentElementType extends AbstractType
         $builder->get(self::TYPE)->addModelTransformer(
             new ReversedTransformer(new ResourceToIdentifierTransformer($this->mediaRepository, 'code')),
         );
+
+        $this->contentElementDataTransformerChecker->check($builder, $this->mediaRepository, self::TYPE);
     }
 
     public function getBlockPrefix(): string

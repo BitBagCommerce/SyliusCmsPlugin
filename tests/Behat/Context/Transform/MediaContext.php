@@ -34,7 +34,6 @@ final class MediaContext implements Context
     {
         $media = $this->mediaRepositoryInterface->findOneEnabledByCode(
             $mediaCode,
-            $this->sharedStorage->get('locale')->getCode(),
             $this->sharedStorage->get('channel')->getCode(),
         );
 

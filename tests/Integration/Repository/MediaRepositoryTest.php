@@ -28,24 +28,11 @@ class MediaRepositoryTest extends JsonApiTestCase
 
         $mediaRepository = $this->getRepository();
 
-        $media1 = $mediaRepository->findOneEnabledByCode('media1-code', 'en_US', 'code');
-        $media3 = $mediaRepository->findOneEnabledByCode('media3-code', 'en_US', 'code');
+        $media1 = $mediaRepository->findOneEnabledByCode('media1-code', 'code');
+        $media3 = $mediaRepository->findOneEnabledByCode('media3-code', 'code');
 
         self::assertNotNull($media1);
         self::assertNull($media3);
-    }
-
-    public function test_it_finds_enabled_media_by_collection_code(): void
-    {
-        $this->loadFixturesFromFile('MediaRepositoryTest/test_it_finds_media_by_collection_code.yml');
-
-        $mediaRepository = $this->getRepository();
-
-        $media1 = $mediaRepository->findByCollectionCode('collection1-code', 'en_US', 'code');
-        $media3 = $mediaRepository->findByCollectionCode('collection3-code', 'en_US', 'code');
-
-        self::assertNotEmpty($media1);
-        self::assertEmpty($media3);
     }
 
     public function test_it_finds_media_by_name_part(): void

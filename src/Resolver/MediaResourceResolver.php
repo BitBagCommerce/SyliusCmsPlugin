@@ -14,14 +14,12 @@ use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaResourceResolver implements MediaResourceResolverInterface
 {
     public function __construct(
         private MediaRepositoryInterface $mediaRepository,
-        private LocaleContextInterface $localeContext,
         private ChannelContextInterface $channelContext,
         private LoggerInterface $logger,
     ) {
@@ -32,7 +30,6 @@ final class MediaResourceResolver implements MediaResourceResolverInterface
         Assert::notNull($this->channelContext->getChannel()->getCode());
         $media = $this->mediaRepository->findOneEnabledByCode(
             $code,
-            $this->localeContext->getLocaleCode(),
             $this->channelContext->getChannel()->getCode(),
         );
 

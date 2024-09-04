@@ -48,7 +48,6 @@
 
         <service id="bitbag_sylius_cms_plugin.resolver.media_resource" class="BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolver" public="true">
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-            <argument type="service" id="sylius.context.locale" />
             <argument type="service" id="sylius.context.channel" />
             <argument type="service" id="logger" />
         </service>

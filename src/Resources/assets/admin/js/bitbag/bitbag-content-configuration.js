@@ -9,10 +9,31 @@ $(document).ready(function() {
         $(element).autoComplete();
     });
 
+    const ckeditorConfig = {
+        toolbar: [
+            ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo"],
+            ["Scayt"], ["Link", "Unlink", "Anchor"],
+            ["Image", "MediaVideo", "MediaImage", "Table", "HorizontalRule", "SpecialChar"],
+            ["Maximize"], ["Source"], "/",
+            ["Bold", "Italic", "Strike", "-", "RemoveFormat"],
+            ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote"],
+            ["Styles", "Format", "About"]
+        ],
+        enterMode: 3,
+        forcePasteAsPlainText: "allow-word",
+        allowedContent: true,
+        extraPlugins: ["mediaVideo", "mediaImage"],
+        removePlugins: ["exportpdf"],
+        filebrowserUploadUrl: "/admin/editor/upload-image",
+        bodyId: "bitbag-ckeditor",
+        language: "en-us"
+    };
+
     let pageElements = '#bitbag_sylius_cms_plugin_page_contentElements';
     let blockElements = '#bitbag_sylius_cms_plugin_block_contentElements';
-
     let collectionHolder = $(pageElements).length ? pageElements : blockElements;
+
+    let itemElement = document.querySelector(`${collectionHolder} [data-form-collection="item"]`);
 
     if (!$(collectionHolder).length) {
         return;
@@ -68,6 +89,14 @@ $(document).ready(function() {
                     $(element).attr('name', newConfigInputName);
                     $(newConfig).find('.bitbag-media-autocomplete').autoComplete();
                     $(newConfig).find('.sylius-autocomplete').autoComplete();
+
+                    if (this.value === 'textarea') {
+                        const index = target.getAttribute('data-form-collection-index');
+                        const textareaId = `${collectionHolder}_${index}_configuration_textarea`;
+
+                        element.id = textareaId;
+                        CKEDITOR.replace(textareaId, ckeditorConfig);
+                    }
                 });
             }
         }
@@ -77,7 +106,7 @@ $(document).ready(function() {
         $(document).loadContentConfiguration(element);
     });
 
-    $(document).loadContentConfiguration(
-        document.querySelector(`${collectionHolder} [data-form-collection="item"]`)
-    );
+    if (itemElement) {
+        $(document).loadContentConfiguration(itemElement);
+    }
 });
