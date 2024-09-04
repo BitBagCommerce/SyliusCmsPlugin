@@ -21,7 +21,7 @@ use PhpSpec\ObjectBehavior;
 final class RenderContentRuntimeSpec extends ObjectBehavior
 {
     public function let(
-        ContentParserInterface $contentParser
+        ContentParserInterface $contentParser,
     ): void {
         $this->beConstructedWith($contentParser);
     }
@@ -38,7 +38,7 @@ final class RenderContentRuntimeSpec extends ObjectBehavior
 
     public function it_renders_content(
         ContentParserInterface $contentParser,
-        ContentableInterface $contentableResource
+        ContentableInterface $contentableResource,
     ): void {
         $contentParser->parse('content')->willReturn('content');
         $contentableResource->getContent()->willReturn('content');

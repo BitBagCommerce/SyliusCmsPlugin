@@ -31,7 +31,7 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
     public function it_build_menu(
         MenuBuilderEvent $menuBuilderEvent,
         ItemInterface $menu,
-        ItemInterface $cmsRootMenuItem
+        ItemInterface $cmsRootMenuItem,
     ): void {
         $menuBuilderEvent->getMenu()->willReturn($menu);
         $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);

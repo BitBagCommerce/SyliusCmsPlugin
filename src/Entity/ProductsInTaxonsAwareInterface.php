@@ -17,9 +17,6 @@ interface ProductsInTaxonsAwareInterface
 {
     public function initializeProductsInTaxonsCollection(): void;
 
-    /**
-     * @return Collection|TaxonInterface[]
-     */
     public function getProductsInTaxons(): Collection;
 
     public function hasProductsInTaxon(TaxonInterface $taxon): bool;

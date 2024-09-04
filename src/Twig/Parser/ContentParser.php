@@ -35,7 +35,7 @@ final class ContentParser implements ContentParserInterface
             if (null !== $arguments = $this->getFunctionArguments($function, $call)) {
                 try {
                     $functionResult = $this->callFunction($functions, $function, $arguments);
-                } catch (\Exception $exception) {
+                } catch (\Exception) {
                     $functionResult = '';
                 }
 
@@ -57,7 +57,7 @@ final class ContentParser implements ContentParserInterface
             $functionParts = explode($end, $functionParts[1]);
             $arguments = explode(',', $functionParts[0]);
 
-            return array_map(function (string $element): string {
+            return array_map(static function (string $element): string {
                 return trim(trim($element), '\'');
             }, $arguments);
         }

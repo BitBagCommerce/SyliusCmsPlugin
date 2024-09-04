@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 
-interface ImporterProductsResolverInterface
+interface ImporterChannelsResolverInterface
 {
-    public function resolve(ProductsAwareInterface $productsAware, ?string $productsRow): void;
+    public function resolve(ChannelsAwareInterface $channelsAware, ?string $channelsRow): void;
 }

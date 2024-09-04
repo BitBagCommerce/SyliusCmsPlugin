@@ -54,11 +54,10 @@ final class SingleMediaContentElementRendererSpec extends ObjectBehavior
         RenderMediaRuntimeInterface $renderMediaRuntime,
         MediaRepositoryInterface $mediaRepository,
         ContentConfigurationInterface $contentConfiguration,
-        MediaInterface $media
-    ): void
-    {
+        MediaInterface $media,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'single_media' => 'media_code'
+            'single_media' => 'media_code',
         ]);
 
         $renderMediaRuntime->renderMedia('media_code')->willReturn('rendered media');

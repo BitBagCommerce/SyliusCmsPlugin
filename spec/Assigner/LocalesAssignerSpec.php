@@ -38,7 +38,7 @@ final class LocalesAssignerSpec extends ObjectBehavior
         RepositoryInterface $localeRepository,
         LocaleAwareInterface $localesAware,
         LocaleInterface $locale1,
-        LocaleInterface $locale2
+        LocaleInterface $locale2,
     ) {
         $locale1->getCode()->willReturn('en_US');
         $locale2->getCode()->willReturn('fr_FR');

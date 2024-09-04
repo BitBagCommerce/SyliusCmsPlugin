@@ -38,7 +38,7 @@ final class ProductsInTaxonsAssignerSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         ProductsInTaxonsAwareInterface $productsInTaxonsAware,
         TaxonInterface $taxon1,
-        TaxonInterface $taxon2
+        TaxonInterface $taxon2,
     ) {
         $taxon1->getCode()->willReturn('taxon_code_1');
         $taxon2->getCode()->willReturn('taxon_code_2');

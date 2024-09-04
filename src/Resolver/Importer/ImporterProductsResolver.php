@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Resolver;
+namespace BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\ProductsAwareInterface;
@@ -26,7 +26,7 @@ final class ImporterProductsResolver implements ImporterProductsResolverInterfac
         }
 
         $productsCodes = explode(',', $productsRow);
-        $productsCodes = array_map(function (string $element): string {
+        $productsCodes = array_map(static function (string $element): string {
             return trim($element);
         }, $productsCodes);
 

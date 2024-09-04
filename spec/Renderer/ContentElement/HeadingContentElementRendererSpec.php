@@ -50,7 +50,7 @@ final class HeadingContentElementRendererSpec extends ObjectBehavior
     {
         $contentConfiguration->getConfiguration()->willReturn([
             'heading_type' => 'h1',
-            'heading' => 'Sample Heading'
+            'heading' => 'Sample Heading',
         ]);
 
         $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [

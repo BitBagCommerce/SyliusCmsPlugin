@@ -16,13 +16,12 @@ use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver;
 use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
-use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageResourceResolverSpec extends ObjectBehavior
 {
     public function let(
         PageRepositoryInterface $pageRepository,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->beConstructedWith($pageRepository, $logger);
     }
@@ -39,14 +38,14 @@ final class PageResourceResolverSpec extends ObjectBehavior
 
     public function it_logs_warning_if_page_was_not_found(
         PageRepositoryInterface $pageRepository,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $pageRepository->findOneEnabledByCode('homepage_banner')->willReturn(null);
 
         $logger
             ->warning(sprintf(
                 'Page with "%s" code was not found in the database.',
-                'homepage_banner'
+                'homepage_banner',
             ))
             ->shouldBeCalled()
         ;
@@ -56,7 +55,7 @@ final class PageResourceResolverSpec extends ObjectBehavior
 
     public function it_returns_page_if_found_in_database(
         PageRepositoryInterface $pageRepository,
-        PageInterface $page
+        PageInterface $page,
     ) {
         $pageRepository->findOneEnabledByCode('homepage_banner')->willReturn($page);
 

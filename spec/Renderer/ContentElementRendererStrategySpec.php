@@ -10,24 +10,23 @@ declare(strict_types=1);
 
 namespace spec\BitBag\SyliusCmsPlugin\Renderer;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
+use BitBag\SyliusCmsPlugin\Entity\PageInterface;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategy;
+use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
+use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use BitBag\SyliusCmsPlugin\Twig\Parser\ContentParserInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 
 final class ContentElementRendererStrategySpec extends ObjectBehavior
 {
     public function let(
         ContentParserInterface $contentParser,
         ContentElementRendererInterface $renderer1,
-        ContentElementRendererInterface $renderer2
-    ): void
-    {
+        ContentElementRendererInterface $renderer2,
+    ): void {
         $this->beConstructedWith($contentParser, [$renderer1, $renderer2]);
     }
 
@@ -47,11 +46,10 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         ContentElementRendererInterface $renderer2,
         BlockInterface $block,
         ContentConfigurationInterface $contentElement1,
-        ContentConfigurationInterface $contentElement2
-    ): void
-    {
+        ContentConfigurationInterface $contentElement2,
+    ): void {
         $block->getContentElements()->willReturn(
-            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()])
+            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()]),
         );
 
         $renderer1->supports($contentElement1)->willReturn(true);
@@ -74,11 +72,10 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         ContentElementRendererInterface $renderer2,
         PageInterface $page,
         ContentConfigurationInterface $contentElement1,
-        ContentConfigurationInterface $contentElement2
-    ): void
-    {
+        ContentConfigurationInterface $contentElement2,
+    ): void {
         $page->getContentElements()->willReturn(
-            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()])
+            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()]),
         );
 
         $renderer1->supports($contentElement1)->willReturn(true);

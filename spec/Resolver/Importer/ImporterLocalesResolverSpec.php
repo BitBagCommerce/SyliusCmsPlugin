@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\BitBag\SyliusCmsPlugin\Resolver\Importer;
 
 use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
 use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ImporterLocalesResolver;
+use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolver;
 use PhpSpec\ObjectBehavior;
 
 final class ImporterLocalesResolverSpec extends ObjectBehavior
@@ -29,7 +29,7 @@ final class ImporterLocalesResolverSpec extends ObjectBehavior
 
     public function it_resolves_locales_for_locale_aware_entity(
         LocalesAssignerInterface $localesAssigner,
-        LocaleAwareInterface $localesAware
+        LocaleAwareInterface $localesAware,
     ) {
         $localesRow = 'en_US, fr_FR';
         $localesAssigner->assign($localesAware, ['en_US', 'fr_FR'])->shouldBeCalled();
@@ -39,7 +39,7 @@ final class ImporterLocalesResolverSpec extends ObjectBehavior
 
     public function it_does_not_assign_locales_when_locales_row_is_empty(
         LocalesAssignerInterface $localesAssigner,
-        LocaleAwareInterface $localesAware
+        LocaleAwareInterface $localesAware,
     ) {
         $localesAssigner->assign($localesAware, [])->shouldNotBeCalled();
 

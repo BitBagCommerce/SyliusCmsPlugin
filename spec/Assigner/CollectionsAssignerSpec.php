@@ -38,9 +38,8 @@ final class CollectionsAssignerSpec extends ObjectBehavior
         CollectionRepositoryInterface $collectionRepository,
         CollectionInterface $aboutCollection,
         CollectionInterface $blogCollection,
-        CollectibleInterface $collectionsAware
-    ): void
-    {
+        CollectibleInterface $collectionsAware,
+    ): void {
         $collectionRepository->findOneBy(['code' => 'about'])->willReturn($aboutCollection);
         $collectionRepository->findOneBy(['code' => 'blog'])->willReturn($blogCollection);
 

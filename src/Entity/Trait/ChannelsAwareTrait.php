@@ -22,8 +22,7 @@ use Sylius\Component\Channel\Model\ChannelInterface;
 
 trait ChannelsAwareTrait
 {
-    /** @var Collection|ChannelInterface[] */
-    protected $channels;
+    protected Collection $channels;
 
     public function initializeChannelsCollection(): void
     {

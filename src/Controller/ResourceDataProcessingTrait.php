@@ -38,7 +38,7 @@ trait ResourceDataProcessingTrait
         }
         Assert::notNull($media->getMimeType());
         Assert::notNull($media->getType());
-        if (1 === preg_match("/image\//", $media->getMimeType()) && 'image' === $media->getType()) {
+        if ('image' === $media->getType() && 1 === preg_match("/image\//", $media->getMimeType())) {
             $this->setPathForImageMediaType($media);
         } else {
             $this->setPathForNonImageMediaType($media);

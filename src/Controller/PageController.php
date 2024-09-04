@@ -24,8 +24,7 @@ final class PageController extends ResourceController
     use ResourceDataProcessingTrait;
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
-    /** @var PageResourceResolverInterface */
-    private $pageResourceResolver;
+    private PageResourceResolverInterface $pageResourceResolver;
 
     public const FILTER = 'sylius_admin_product_original';
 

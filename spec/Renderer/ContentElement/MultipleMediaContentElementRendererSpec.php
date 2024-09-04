@@ -25,9 +25,8 @@ final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
     public function let(
         Environment $twig,
         RenderMediaRuntimeInterface $renderMediaRuntime,
-        MediaRepositoryInterface $mediaRepository
-    ): void
-    {
+        MediaRepositoryInterface $mediaRepository,
+    ): void {
         $this->beConstructedWith($twig, $renderMediaRuntime, $mediaRepository);
     }
 
@@ -59,11 +58,10 @@ final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
         MediaRepositoryInterface $mediaRepository,
         ContentConfigurationInterface $contentConfiguration,
         MediaInterface $media1,
-        MediaInterface $media2
-    ): void
-    {
+        MediaInterface $media2,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'multiple_media' => ['code1', 'code2']
+            'multiple_media' => ['code1', 'code2'],
         ]);
 
         $mediaRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$media1, $media2]);

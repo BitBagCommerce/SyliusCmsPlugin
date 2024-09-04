@@ -49,7 +49,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         BlockRepositoryInterface $blockRepository,
         LoggerInterface $logger,
         ChannelContextInterface $channelContext,
-        ChannelInterface $channel
+        ChannelInterface $channel,
     ) {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
@@ -58,7 +58,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         $logger
             ->warning(sprintf(
                 'Block with "%s" code was not found in the database.',
-                'homepage_banner'
+                'homepage_banner',
             ))
             ->shouldBeCalled()
         ;
@@ -74,7 +74,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
         LocaleContextInterface $localeContext,
         LocaleInterface $locale,
         RepositoryInterface $localeRepository,
-        BlockInterface $block
+        BlockInterface $block,
     ) {
         $channel->getCode()->willReturn('WEB');
         $channelContext->getChannel()->willReturn($channel);
@@ -89,7 +89,7 @@ final class BlockResourceResolverSpec extends ObjectBehavior
             ->warning(sprintf(
                 'Block with "%s" code was found in the database, but it does not have "%s" locale.',
                 'homepage_banner',
-                'en_US'
+                'en_US',
             ))
             ->shouldBeCalled()
         ;

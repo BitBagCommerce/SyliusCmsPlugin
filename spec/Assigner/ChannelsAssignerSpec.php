@@ -32,7 +32,7 @@ final class ChannelsAssignerSpec extends ObjectBehavior
         ChannelRepositoryInterface $channelRepository,
         ChannelInterface $webChannel,
         ChannelInterface $posChannel,
-        ChannelsAwareInterface $channelsAware
+        ChannelsAwareInterface $channelsAware,
     ): void {
         $channelRepository->findOneBy(['code' => 'web'])->willReturn($webChannel);
         $channelRepository->findOneBy(['code' => 'pos'])->willReturn($posChannel);

@@ -56,27 +56,27 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.registry.media_provider" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_collections" class="BitBag\SyliusCmsPlugin\Resolver\ImporterCollectionsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_collections" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.collections" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_channels" class="BitBag\SyliusCmsPlugin\Resolver\ImporterChannelsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_channels" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.channels" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_products" class="BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_products" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_taxons" class="BitBag\SyliusCmsPlugin\Resolver\ImporterTaxonsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_taxons" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.taxons" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" class="BitBag\SyliusCmsPlugin\Resolver\ImporterProductsInTaxonsResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products_in_taxons" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.resolver.importer_locales" class="BitBag\SyliusCmsPlugin\Resolver\ImporterLocalesResolver">
+        <service id="bitbag_sylius_cms_plugin.resolver.importer_locales" class="BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.locales" />
         </service>
     </services>

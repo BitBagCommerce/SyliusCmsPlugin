@@ -24,10 +24,6 @@
                 <tag name="console.command" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.downloader.image" class="BitBag\SyliusCmsPlugin\Downloader\ImageDownloader">
-                <argument type="service" id="filesystem" />
-            </service>
-
             <service id="bitbag_sylius_cms_plugin.registry.media_provider" class="Sylius\Component\Registry\ServiceRegistry">
                 <argument>%bitbag_sylius_cms_plugin.media_provider.interface%</argument>
                 <argument>Media provider</argument>

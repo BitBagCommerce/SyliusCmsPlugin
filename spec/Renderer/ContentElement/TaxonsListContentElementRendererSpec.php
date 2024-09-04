@@ -53,11 +53,10 @@ final class TaxonsListContentElementRendererSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         ContentConfigurationInterface $contentConfiguration,
         Taxon $taxon1,
-        Taxon $taxon2
-    ): void
-    {
+        Taxon $taxon2,
+    ): void {
         $contentConfiguration->getConfiguration()->willReturn([
-            'taxons_list' => ['taxons' => ['code1', 'code2']]
+            'taxons_list' => ['taxons' => ['code1', 'code2']],
         ]);
 
         $taxonRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$taxon1, $taxon2]);
