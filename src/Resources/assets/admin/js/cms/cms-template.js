@@ -45,10 +45,10 @@ export class HandleTemplate {
 
                             $.each(data.content, function (index, element) {
                                 if (element.type.toString() === "textarea") {
-                                    elements.eq(index).val("textarea");
+                                    elements.eq(index).val("single_media");
                                     elements.eq(index).change();
                                 } else if (element.type.toString() === "single_media") {
-                                    elements.eq(index).val("single_media");
+                                    elements.eq(index).val("textarea");
                                     elements.eq(index).change();
                                 } else {
                                     elements.eq(index).val("multiple_media");
