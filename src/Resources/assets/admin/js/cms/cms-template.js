@@ -40,11 +40,12 @@ export class HandleTemplate {
                             });
 
                             const elements = $('.bb-collection-item');
-                            console.log(elements);
 
                             $.each(data.content, function (index, element) {
-                                elements.eq(index).find('select:first').val(element.type);
-                                elements.eq(index).find('select:first').change();
+                                setTimeout(() => {
+                                    elements.eq(index).find('select:first').val(element.type);
+                                    elements.eq(index).find('select:first').change();
+                                }, 500);
                             });
                         } else {
                             console.error(data.message);
