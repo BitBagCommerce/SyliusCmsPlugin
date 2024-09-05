@@ -38,6 +38,7 @@ export class HandleTemplate {
                             $.each(data.content, function () {
                                 $('[data-form-collection="add"]').trigger('click');
                             });
+                            $('textarea').html('<p>' + JSON.stringify(data.content) + '</p>');
 
                             const elements = $('[id^="sylius_cms_"][id*="_contentElements_"][id$="_type"]').filter(function() {
                                 return /_page_|_block_/.test(this.id);
@@ -48,10 +49,10 @@ export class HandleTemplate {
                                     elements.eq(index).val("single_media");
                                     elements.eq(index).change();
                                 } else if (element.type.toString() === "single_media") {
-                                    elements.eq(index).val("textarea");
+                                    elements.eq(index).val("multiple_media");
                                     elements.eq(index).change();
                                 } else {
-                                    elements.eq(index).val("multiple_media");
+                                    elements.eq(index).val("spacer");
                                     elements.eq(index).change();
                                 }
                             });
