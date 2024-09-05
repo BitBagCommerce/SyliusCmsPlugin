@@ -291,7 +291,6 @@ final class BlockContext implements Context
      */
     public function iAddIt(): void
     {
-        Assert::false(true);
         $this->createPage->create();
     }
 

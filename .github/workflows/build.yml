@@ -162,7 +162,7 @@ jobs:
 
       -
         name: Run Behat
-        run: vendor/bin/behat features/admin/adding_block.feature:184 --colors --strict -vvv --no-interaction -f progress #  || vendor/bin/behat --colors --strict -vvv --no-interaction -f progress --rerun
+        run: vendor/bin/behat --colors --strict -vvv --no-interaction -f progress  || vendor/bin/behat --colors --strict -vvv --no-interaction -f progress --rerun
 
       -
         name: Upload Behat logs
