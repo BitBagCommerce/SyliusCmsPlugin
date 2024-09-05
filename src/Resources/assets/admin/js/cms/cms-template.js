@@ -38,23 +38,13 @@ export class HandleTemplate {
                             $.each(data.content, function () {
                                 $('[data-form-collection="add"]').trigger('click');
                             });
-                            $('textarea').html('<p>' + JSON.stringify(data.content) + '</p>');
 
-                            const elements = $('[id^="sylius_cms_"][id*="_contentElements_"][id$="_type"]').filter(function() {
-                                return /_page_|_block_/.test(this.id);
-                            });
+                            const elements = $('.bb-collection-item');
+                            console.log(elements);
 
                             $.each(data.content, function (index, element) {
-                                if (element.type.toString() === "textarea") {
-                                    elements.eq(index).val("single_media");
-                                    elements.eq(index).change();
-                                } else if (element.type.toString() === "single_media") {
-                                    elements.eq(index).val("multiple_media");
-                                    elements.eq(index).change();
-                                } else {
-                                    elements.eq(index).val("spacer");
-                                    elements.eq(index).change();
-                                }
+                                elements.eq(index).find('select:first').val(element.type);
+                                elements.eq(index).find('select:first').change();
                             });
                         } else {
                             console.error(data.message);
