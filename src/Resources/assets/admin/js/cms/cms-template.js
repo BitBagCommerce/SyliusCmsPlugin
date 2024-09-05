@@ -39,14 +39,13 @@ export class HandleTemplate {
                                 $('[data-form-collection="add"]').trigger('click');
                             });
 
-                            const elements = $('.bb-collection-item');
-
-                            $.each(data.content, function (index, element) {
-                                setTimeout(() => {
+                            setTimeout(() => {
+                                const elements = $('.bb-collection-item');
+                                $.each(data.content, function (index, element) {
                                     elements.eq(index).find('select:first').val(element.type);
                                     elements.eq(index).find('select:first').change();
-                                }, 200);
-                            });
+                                });
+                            }, 200);
                         } else {
                             console.error(data.message);
                         }
