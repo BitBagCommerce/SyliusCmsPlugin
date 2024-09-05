@@ -44,8 +44,7 @@ export class HandleTemplate {
                             });
 
                             $.each(data.content, function (index, element) {
-                                elements.eq(index).val(element.type);
-                                elements.eq(index).parent().add('<div>' + element.type + '</div>');
+                                elements.eq(index).val(element.type.toString());
                                 elements.eq(index).change();
                             });
                         } else {
