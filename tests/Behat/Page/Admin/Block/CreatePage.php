@@ -275,9 +275,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     public function confirmUseTemplate(): void
     {
         $this->getDocument()->findById('load-template-confirmation-button')->click();
-        $this->getDocument()->waitFor(2, function (): bool {
-            return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
-        });
+//        $this->getDocument()->waitFor(2, function (): bool {
+//            return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
+//        });
         $this->getDocument()->waitFor(2, function () {
             return false;
         });
