@@ -413,6 +413,7 @@ final class BlockContext implements Context
      */
     public function iClickButtonToUseThisTemplate(): void
     {
+        Assert::false(true);
         $this->resolveCurrentPage()->useTemplate();
     }
 
