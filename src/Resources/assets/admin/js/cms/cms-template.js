@@ -45,7 +45,7 @@ export class HandleTemplate {
                                 setTimeout(() => {
                                     elements.eq(index).find('select:first').val(element.type);
                                     elements.eq(index).find('select:first').change();
-                                }, 500);
+                                }, 200);
                             });
                         } else {
                             console.error(data.message);
