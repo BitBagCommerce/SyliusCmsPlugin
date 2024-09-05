@@ -278,6 +278,9 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->getDocument()->waitFor(2, function (): bool {
             return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
         });
+        $this->getDocument()->waitFor(2, function () {
+            return false;
+        });
     }
 
     protected function getDefinedElements(): array
