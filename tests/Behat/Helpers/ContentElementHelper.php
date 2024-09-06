@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Helpers;
+namespace Tests\Sylius\CmsPlugin\Behat\Helpers;
 
 final class ContentElementHelper
 {
@@ -64,10 +58,10 @@ final class ContentElementHelper
         return [
             'content_elements_select_type' => '.bb-collection-item:last-child .field > label:contains("Type") ~ select',
             'content_elements_textarea' => '.field > label:contains("Textarea") ~ textarea',
-            'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete',
-            'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
-            'content_elements_multiple_media_dropdown' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete',
-            'content_elements_multiple_media_dropdown_item' => '.field > label:contains("Multiple media") ~ .bitbag-media-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_single_media_dropdown' => '.field > label:contains("Single media") ~ .cms-media-autocomplete',
+            'content_elements_single_media_dropdown_item' => '.field > label:contains("Single media") ~ .cms-media-autocomplete > div.menu > div.item:contains("%item%")',
+            'content_elements_multiple_media_dropdown' => '.field > label:contains("Multiple media") ~ .cms-media-autocomplete',
+            'content_elements_multiple_media_dropdown_item' => '.field > label:contains("Multiple media") ~ .cms-media-autocomplete > div.menu > div.item:contains("%item%")',
             'content_elements_heading' => '.field > label:contains("Heading type") ~ select',
             'content_elements_heading_content' => '.field > label:contains("Heading") ~ input[type="text"]',
             'content_elements_products_carousel' => '.field > label:contains("Products") ~ .sylius-autocomplete',

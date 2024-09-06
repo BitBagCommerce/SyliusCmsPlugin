@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\LocaleAwareInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\LocalesAssigner;
+use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
+use Sylius\CmsPlugin\Entity\LocaleAwareInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
@@ -43,7 +37,7 @@ final class LocalesAssignerSpec extends ObjectBehavior
         $locale1->getCode()->willReturn('en_US');
         $locale2->getCode()->willReturn('fr_FR');
 
-        $localeRepository->findAll()->willReturn([$locale1, $locale2]);
+        $localeRepository->findBy(['code' => ['en_US', 'fr_FR']])->willReturn([$locale1, $locale2]);
 
         $localesAware->addLocale($locale1)->shouldBeCalled();
         $localesAware->addLocale($locale2)->shouldBeCalled();

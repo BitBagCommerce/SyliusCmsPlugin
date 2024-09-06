@@ -1,4 +1,4 @@
-bitbag_sylius_cms_plugin_admin_partial_locale_index:
+sylius_cms_admin_partial_locale_index:
     path: /_partial/locales
     methods: [GET]
     defaults:

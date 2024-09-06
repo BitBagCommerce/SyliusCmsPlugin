@@ -19,13 +19,13 @@ Once you created a page in the admin panel, you can render page in two ways:
 By rendering a page link template:
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@BitBagSyliusCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
+{{ render(path('sylius_cms_shop_page_show_link_by_code', {'code' : 'about', 'template' : '@SyliusCmsPlugin/Shop/Page/Show/_link.html.twig'})) }}
 ```
 
 Or rendering a page link directly:
 
 ```twig
-{{ render(path('bitbag_sylius_cms_plugin_shop_page_show', {'slug' : 'about'})) }}
+{{ render(path('sylius_cms_shop_page_show', {'slug' : 'about'})) }}
 ```
 
 ### Visiting the page
@@ -39,5 +39,5 @@ Page URL is generated based on the page slug. Full link looks like this: `domain
 If you don't know how to override templates yet,
 read [Sylius template customization guide](http://docs.sylius.org/en/latest/customization/template.html).
 
-You can create a template under `app/templates/bundles/BitBagSyliusCmsPlugin/Shop/Page` location.
+You can create a template under `app/templates/bundles/SyliusCmsPlugin/Shop/Page` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Page).

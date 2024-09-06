@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
@@ -24,10 +18,10 @@ final class WysiwygType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'bitbag_sylius_cms_plugin.ui.content',
+            'label' => 'sylius_cms.ui.content',
             'config' => [
-                'filebrowserUploadUrl' => $this->urlGenerator->generate('bitbag_sylius_cms_plugin_admin_upload_editor_image'),
-                'bodyId' => 'bitbag-ckeditor',
+                'filebrowserUploadUrl' => $this->urlGenerator->generate('sylius_cms_admin_upload_editor_image'),
+                'bodyId' => 'cms-ckeditor',
             ],
         ]);
     }
@@ -39,6 +33,6 @@ final class WysiwygType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_wysiwyg';
+        return 'sylius_wysiwyg';
     }
 }

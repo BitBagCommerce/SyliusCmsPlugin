@@ -1,24 +1,18 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\CreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\IndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Media\UpdatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\CreatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\IndexPageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Media\UpdatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 final class MediaContext implements Context

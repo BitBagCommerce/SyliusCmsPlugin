@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Form\Type\Translation\PageTranslationType;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Sylius\CmsPlugin\Form\Type\Translation\PageTranslationType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -26,32 +20,32 @@ final class PageType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
+                'label' => 'sylius_cms.ui.enabled',
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.images',
+                'label' => 'sylius_cms.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
+                'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
             ->add('channels', ChannelChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'label' => 'sylius_cms.ui.channels',
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
             ])
             ->add('publishAt', DateTimeType::class, [
                 'input' => 'datetime_immutable',
-                'label' => 'bitbag_sylius_cms_plugin.ui.publish_at',
+                'label' => 'sylius_cms.ui.publish_at',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
                 'required' => false,
@@ -69,15 +63,15 @@ final class PageType extends AbstractResourceType
                 'mapped' => false,
             ])
             ->add('teaserTitle', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.title',
+                'label' => 'sylius_cms.ui.teaser.title',
                 'required' => false,
             ])
             ->add('teaserContent', WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.content',
+                'label' => 'sylius_cms.ui.teaser.content',
                 'required' => false,
             ])
             ->add('teaserImage', MediaImageAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.teaser.image',
+                'label' => 'sylius_cms.ui.teaser.image',
                 'required' => false,
             ])
         ;
@@ -85,6 +79,6 @@ final class PageType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_page';
+        return 'sylius_cms_page';
     }
 }

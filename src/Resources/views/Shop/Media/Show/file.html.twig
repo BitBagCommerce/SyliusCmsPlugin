@@ -3,10 +3,10 @@
         <h2>{{ media.name|raw }}</h2>
     {% endif %}
 
-    <p>{{ bitbag_cms_render_content(media) }}</p>
+    <p>{{ sylius_cms_render_content(media) }}</p>
 
-    <a class="ui icon labeled primary button" href="{{ path('bitbag_sylius_cms_plugin_shop_media_download', {'code': media.code}) }}">
+    <a class="ui icon labeled primary button" href="{{ path('sylius_cms_shop_media_download', {'code': media.code}) }}">
         <i class="download icon"></i>
-        {{ 'bitbag_sylius_cms_plugin.ui.download'|trans }}
+        {{ 'sylius_cms.ui.download'|trans }}
     </a>
 </div>

@@ -17,7 +17,7 @@ Sylius\Component\Core\Model\Channel:
     default_locale: '@locale'
     tax_calculation_strategy: 'order_items_based'
     base_currency: '@dollar'
-BitBag\SyliusCmsPlugin\Entity\Block:
+Sylius\CmsPlugin\Entity\Block:
   block1:
     code: 'block1-code'
     enabled: true

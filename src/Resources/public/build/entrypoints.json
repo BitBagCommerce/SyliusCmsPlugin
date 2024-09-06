@@ -1,19 +1,19 @@
 {
   "entrypoints": {
-    "bitbag-cms-shop": {
+    "sylius-cms-shop": {
       "css": [
-        "/public/build/bitbag-cms-shop.css"
+        "/public/build/sylius-cms-shop.css"
       ],
       "js": [
-        "/public/build/bitbag-cms-shop.js"
+        "/public/build/sylius-cms-shop.js"
       ]
     },
-    "bitbag-cms-admin": {
+    "sylius-cms-admin": {
       "css": [
-        "/public/build/bitbag-cms-admin.css"
+        "/public/build/sylius-cms-admin.css"
       ],
       "js": [
-        "/public/build/bitbag-cms-admin.js"
+        "/public/build/sylius-cms-admin.js"
       ]
     }
   }

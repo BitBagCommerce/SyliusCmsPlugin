@@ -1,21 +1,15 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolver;
-use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Psr\Log\LoggerInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\PageResourceResolver;
+use Sylius\CmsPlugin\Resolver\PageResourceResolverInterface;
 
 final class PageResourceResolverSpec extends ObjectBehavior
 {

@@ -71,7 +71,7 @@ Sylius\Component\Core\Model\ProductVariant:
   product_variant1:
     product: '@product1'
     code: "code1"
-BitBag\SyliusCmsPlugin\Entity\Block:
+Sylius\CmsPlugin\Entity\Block:
   block1:
     code: 'block1-code'
     enabled: true
@@ -93,7 +93,7 @@ BitBag\SyliusCmsPlugin\Entity\Block:
       - '@collection3'
     channels:
       - '@channel'
-BitBag\SyliusCmsPlugin\Entity\Collection:
+Sylius\CmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
   collection2:

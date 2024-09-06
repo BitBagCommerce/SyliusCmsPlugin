@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Resolver\BlockResourceResolverInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +15,7 @@ use Webmozart\Assert\Assert;
 
 final class BlockController extends ResourceController
 {
-    public const BLOCK_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig';
+    public const BLOCK_TEMPLATE = '@SyliusCmsPlugin/Shop/Block/show.html.twig';
 
     public function renderBlockAction(Request $request): Response
     {
@@ -31,7 +25,7 @@ final class BlockController extends ResourceController
 
         $code = $request->get('code');
         /** @var BlockResourceResolverInterface $blockResourceResolver */
-        $blockResourceResolver = $this->get('bitbag_sylius_cms_plugin.resolver.block_resource');
+        $blockResourceResolver = $this->get('sylius_cms.resolver.block_resource');
         $block = $blockResourceResolver->findOrLog($code);
 
         if (null === $block) {

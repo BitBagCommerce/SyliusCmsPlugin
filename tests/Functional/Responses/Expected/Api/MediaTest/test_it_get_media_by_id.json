@@ -13,12 +13,7 @@
   "saveWithOriginalName": false,
   "enabled": true,
   "collections": [
-    {
-      "@id": "/api/v2/shop/cms-plugin/collections/@integer@",
-      "@type": "Collection",
-      "id": "@integer@",
-      "code": "collection1-code"
-    }
+    "/api/v2/shop/cms-plugin/collections/@integer@"
   ],
   "channels": [
     "/api/v2/shop/channels/code"

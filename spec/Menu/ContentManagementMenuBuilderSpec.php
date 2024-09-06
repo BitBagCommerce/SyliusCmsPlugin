@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Menu;
+namespace spec\Sylius\CmsPlugin\Menu;
 
-use BitBag\SyliusCmsPlugin\Menu\ContentManagementMenuBuilder;
-use BitBag\SyliusCmsPlugin\Menu\MenuReorderInterface;
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
+use Sylius\CmsPlugin\Menu\ContentManagementMenuBuilder;
+use Sylius\CmsPlugin\Menu\MenuReorderInterface;
 
 final class ContentManagementMenuBuilderSpec extends ObjectBehavior
 {
@@ -34,47 +28,47 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
         ItemInterface $cmsRootMenuItem,
     ): void {
         $menuBuilderEvent->getMenu()->willReturn($menu);
-        $menu->addChild('bitbag_cms')->willReturn($cmsRootMenuItem);
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.cms')->willReturn($cmsRootMenuItem);
+        $menu->addChild('sylius_cms')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.cms')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem
-            ->addChild('blocks', ['route' => 'bitbag_sylius_cms_plugin_admin_block_index'])
+            ->addChild('blocks', ['route' => 'sylius_cms_admin_block_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.blocks')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.blocks')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'block layout')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('pages', ['route' => 'bitbag_sylius_cms_plugin_admin_page_index'])
+            ->addChild('pages', ['route' => 'sylius_cms_admin_page_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.pages')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.pages')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'sticky note')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('collections', ['route' => 'bitbag_sylius_cms_plugin_admin_collection_index'])
+            ->addChild('collections', ['route' => 'sylius_cms_admin_collection_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.collections')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.collections')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'grid layout')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('templates', ['route' => 'bitbag_sylius_cms_plugin_admin_template_index'])
+            ->addChild('templates', ['route' => 'sylius_cms_admin_template_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.templates')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.templates')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'clone')->shouldBeCalled();
 
         $cmsRootMenuItem
-            ->addChild('media', ['route' => 'bitbag_sylius_cms_plugin_admin_media_index'])
+            ->addChild('media', ['route' => 'sylius_cms_admin_media_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('bitbag_sylius_cms_plugin.ui.media')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.media')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'file')->shouldBeCalled();
 
         $menu->getChildren()->willReturn(['marketing' => $cmsRootMenuItem]);
-        $menu->getChild('bitbag_cms')->willReturn($cmsRootMenuItem);
+        $menu->getChild('sylius_cms')->willReturn($cmsRootMenuItem);
 
-        $menu->setChildren(['marketing' => $cmsRootMenuItem, 'bitbag_cms' => $cmsRootMenuItem])->willReturn($menu);
+        $menu->setChildren(['marketing' => $cmsRootMenuItem, 'sylius_cms' => $cmsRootMenuItem])->willReturn($menu);
 
         $this->buildMenu($menuBuilderEvent);
     }

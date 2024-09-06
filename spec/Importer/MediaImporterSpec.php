@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Importer;
+namespace spec\Sylius\CmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -39,8 +33,8 @@ final class MediaImporterSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType(\BitBag\SyliusCmsPlugin\Importer\MediaImporter::class);
-        $this->shouldImplement(\BitBag\SyliusCmsPlugin\Importer\MediaImporterInterface::class);
+        $this->shouldHaveType(\Sylius\CmsPlugin\Importer\MediaImporter::class);
+        $this->shouldImplement(\Sylius\CmsPlugin\Importer\MediaImporterInterface::class);
     }
 
     public function it_imports_media(
@@ -66,7 +60,7 @@ final class MediaImporterSpec extends ObjectBehavior
 
         $importerCollectionsResolver->resolve($media, null)->shouldBeCalled();
 
-        $validator->validate($media, null, ['bitbag'])->willReturn(new ConstraintViolationList());
+        $validator->validate($media, null, ['cms'])->willReturn(new ConstraintViolationList());
 
         $mediaRepository->add($media)->shouldBeCalled();
 

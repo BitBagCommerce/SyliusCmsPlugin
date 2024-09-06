@@ -1,7 +1,7 @@
-{% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
-{% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
+{% from '@SyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
+{% form_theme form '@SyliusCmsPlugin/Form/theme.html.twig' %}
 
-{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
+{% include '@SyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
 
 {{ form_errors(form) }}
 
@@ -21,16 +21,16 @@
     </div>
     <div class="column">
         <div class="ui segment">
-            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}</h4>
+            <h4 class="ui dividing header">{{ 'sylius_cms.ui.preview'|trans }}</h4>
             {{ form_row(form.path) }}
 
             {% set type = form.type.vars.value %}
             {% if 'image' == type %}
-                {% include '@BitBagSyliusCmsPlugin/Media/Preview/_image.html.twig' with {'path': form.path.vars.value} %}
+                {% include '@SyliusCmsPlugin/Media/Preview/_image.html.twig' with {'path': form.path.vars.value} %}
             {% elseif 'video' == type %}
-                {% include '@BitBagSyliusCmsPlugin/Media/Preview/_video.html.twig' with {'path': form.path.vars.value} %}
+                {% include '@SyliusCmsPlugin/Media/Preview/_video.html.twig' with {'path': form.path.vars.value} %}
             {% elseif 'file' == type %}
-                {% include '@BitBagSyliusCmsPlugin/Media/Preview/_file.html.twig' with {'code': form.code.vars.value} %}
+                {% include '@SyliusCmsPlugin/Media/Preview/_file.html.twig' with {'code': form.code.vars.value} %}
             {% endif %}
         </div>
     </div>

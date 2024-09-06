@@ -8,54 +8,21 @@
       "@type": "Page",
       "id": "@integer@",
       "code": "page1-code",
-      "name": null,
-      "publishAt": null,
-      "translations": {
-        "en_US": {
-          "@type": "PageTranslation",
-          "id": "@integer@",
-          "slug": "translation1_slug_en_US",
-          "metaKeywords": "html,application",
-          "metaDescription": null,
-          "title": "Amazing article1"
-        }
-      }
+      "name": null
     },
     {
       "@id": "/api/v2/shop/cms-plugin/pages/@integer@",
       "@type": "Page",
       "id": "@integer@",
       "code": "page2-code",
-      "name": null,
-      "publishAt": null,
-      "translations": {
-        "en_US": {
-          "@type": "PageTranslation",
-          "id": "@integer@",
-          "slug": "translation2_slug_en_US",
-          "metaKeywords": "html,application",
-          "metaDescription": null,
-          "title": "Amazing article2"
-        }
-      }
+      "name": null
     },
     {
       "@id": "/api/v2/shop/cms-plugin/pages/@integer@",
       "@type": "Page",
       "id": "@integer@",
       "code": "page3-code",
-      "name": null,
-      "publishAt": null,
-      "translations": {
-        "en_US": {
-          "@type": "PageTranslation",
-          "id": "@integer@",
-          "slug": "translation3_slug_en_US",
-          "metaKeywords": "html,application",
-          "metaDescription": null,
-          "title": "Amazing article3"
-        }
-      }
+      "name": null
     }
   ],
   "hydra:totalItems": 3

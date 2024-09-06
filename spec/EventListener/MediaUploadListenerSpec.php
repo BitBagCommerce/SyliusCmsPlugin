@@ -1,22 +1,16 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\EventListener;
+namespace spec\Sylius\CmsPlugin\EventListener;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\EventListener\MediaUploadListener;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\EventListener\MediaUploadListener;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
 
 final class MediaUploadListenerSpec extends ObjectBehavior
 {

@@ -1,22 +1,16 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace spec\Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionBlocksRenderer;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionBlocksRenderer;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 
 final class CollectionBlocksRendererSpec extends ObjectBehavior
 {

@@ -3,15 +3,15 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
-    <class name="BitBag\SyliusCmsPlugin\Entity\MediaTranslation">
+    <class name="Sylius\CmsPlugin\Entity\MediaTranslation">
         <attribute name="content">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="alt">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
         <attribute name="link">
-            <group>shop:cms:read</group>
+            <group>sylius_cms:media:read:show</group>
         </attribute>
     </class>
 </serializer>

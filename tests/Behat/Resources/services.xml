@@ -10,6 +10,6 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.behat.random_string_generator" class="Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGenerator"/>
+        <service id="sylius_cms.behat.random_string_generator" class="Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGenerator"/>
     </services>
 </container>

@@ -6,8 +6,8 @@ default:
 
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
-                - bitbag_sylius_cms_plugin.behat.context.setup.collection
+                - sylius_cms.behat.context.setup.collection
 
-                - bitbag_sylius_cms_plugin.behat.context.ui.admin.collection
+                - sylius_cms.behat.context.ui.admin.collection
             filters:
                 tags: "@managing_collections&&@ui"

@@ -1,6 +1,6 @@
 # What is and how to use Sylius CMS Plugin
 
-BitBag Sylius CMS Plugin is a plugin developed for Sylius, 
+CMS Plugin is a plugin developed for Sylius, 
 a popular open-source e-commerce system based on Symfony. 
 The plugin enhances Sylius with advanced content management capabilities, allowing the creation,
 editing, and publication of dynamic CMS (Content Management System) pages within an e-commerce store.
@@ -12,7 +12,7 @@ This empowers businesses to easily adapt their store's content to meet current n
 
 ## What Sylius CMS Plugin provides us with
 
-When using the BitBag Sylius CMS Plugin, administrators gain access to various tiles within the admin panel, each serving a specific purpose.
+When using the Sylius CMS Plugin, administrators gain access to various tiles within the admin panel, each serving a specific purpose.
 These tiles include Collections, Templates, Pages, Blocks and Media.
 
 ## Brief overview of what each tile offers
@@ -80,7 +80,7 @@ More information about Media you can get [here](use_case_media.md).
 
 ## Summary
 
-In summary, the BitBag Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, 
+In summary, the Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, 
 including [Collections](use_case_collections.md), [Templates](use_case_templates.md), [Pages](use_case_pages.md), [Blocks](use_case_blocks.md), [Media](use_case_media.md).
 
 These tiles offer functionalities for managing CMS segments. 

@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
+namespace Sylius\CmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class CollectionFixtureFactory implements FixtureFactoryInterface

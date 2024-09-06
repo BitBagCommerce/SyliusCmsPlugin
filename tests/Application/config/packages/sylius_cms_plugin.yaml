@@ -1,0 +1,576 @@
+imports:
+    - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
+
+parameters:
+    fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                orm_purger: ~
+                logger: ~
+            fixtures:
+                collection:
+                    options:
+                        custom:
+                            blog:
+                                name: "Blog"
+                                type: "page"
+                                page_codes:
+                                    - "lorem_ipsum"
+                            general:
+                                name: "General"
+                                type: "block"
+                            store:
+                                name: "Store"
+                                type: "block"
+                            homepage:
+                                name: "Homepage"
+                                type: "page"
+                            products:
+                                name: "Products"
+                                type: "media"
+                block:
+                    options:
+                        custom:
+                            homepage_textarea:
+                                name: "Homepage textarea"
+                                channels:
+                                    - "FASHION_WEB"
+                                locales:
+                                    - "en_US"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h1"
+                                            heading: "Textarea"
+                                    textarea:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                            homepage_products_carousel:
+                                name: "Homepage products carousel"
+                                channels:
+                                    - "FASHION_WEB"
+                                locales:
+                                    - "en_US"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Products carousel"
+                                    products_carousel:
+                                        type: "products_carousel"
+                                        data:
+                                            products_carousel:
+                                                products:
+                                                    - "Everyday_white_basic_T_Shirt"
+                                                    - "Loose_white_designer_T_Shirt"
+                                                    - "Ribbed_copper_slim_fit_Tee"
+                                                    - "Sport_basic_white_T_Shirt"
+                            homepage_products_carousel_by_taxon:
+                                name: "Homepage products carousel by Taxon"
+                                channels:
+                                    - "FASHION_WEB"
+                                locales:
+                                    - "en_US"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Products carousel by Taxon"
+                                    products_carousel_by_taxon:
+                                        type: "products_carousel_by_taxon"
+                                        data:
+                                            products_carousel_by_taxon: "t_shirts"
+                            homepage_products_grid:
+                                name: "Homepage products grid"
+                                channels:
+                                    - "FASHION_WEB"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Products grid"
+                                    products_grid:
+                                        type: "products_grid"
+                                        data:
+                                            products_grid:
+                                                products:
+                                                    - "Raglan_grey_&_black_Tee"
+                                                    - "Loose_white_designer_T_Shirt"
+                                                    - "Sport_basic_white_T_Shirt"
+                                                    - "Ribbed_copper_slim_fit_Tee"
+                            homepage_products_grid_by_taxon:
+                                name: "Homepage products grid by Taxon"
+                                channels:
+                                    - "FASHION_WEB"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Products grid by Taxon"
+                                    products_grid_by_taxon:
+                                        type: "products_grid_by_taxon"
+                                        data:
+                                            products_grid_by_taxon: "caps"
+                            homepage_taxons_list:
+                                name: "Homepage taxons list"
+                                channels:
+                                    - "FASHION_WEB"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Taxons list"
+                                    taxons_list:
+                                        type: "taxons_list"
+                                        data:
+                                            taxons_list:
+                                                taxons:
+                                                    - "t_shirts"
+                                                    - "caps"
+                                                    - "dresses"
+                                                    - "jeans"
+                            taxon_t_shirts_banner:
+                                name: "T-Shirts banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                taxons:
+                                    - "t_shirts"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Image block for specified category (T-Shirts)"
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "t_shirts_banner"
+                            specified_products_banner:
+                                name: "Specified products banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                products:
+                                    - "Everyday_white_basic_T_Shirt"
+                                    - "Loose_white_designer_T_Shirt"
+                                    - "Ribbed_copper_slim_fit_Tee"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Image block for specified products"
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "specified_products_banner"
+                            specified_products_in_taxons:
+                                name: "Specified products in taxons"
+                                channels:
+                                    - "FASHION_WEB"
+                                products_in_taxons:
+                                    - "womens_t_shirts"
+                                content_elements:
+                                    heading:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Block for products in specified taxons"
+                                    products_carousel_by_taxon:
+                                        type: "products_carousel_by_taxon"
+                                        data:
+                                            products_carousel_by_taxon: "t_shirts"
+                                    products_grid_by_taxon:
+                                        type: "products_grid_by_taxon"
+                                        data:
+                                            products_grid_by_taxon: "caps"
+                media:
+                    options:
+                        custom:
+                            homepage_video:
+                                type: video
+                                path: "%fixtures_dir%/homepage_video.mp4"
+                                original_name: "homepage_video.mp4"
+                                name: |
+                                    Homepage video media
+                                channels:
+                                    - "FASHION_WEB"
+                                translations:
+                                    en_US:
+                                        alt: Homepage video
+                                        content: |
+                                            <h3>Media description</h3>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            </p>
+                            homepage_pdf:
+                                type: file
+                                path: "%fixtures_dir%/BitBagOffer.pdf"
+                                original_name: "BitBagOffer.pdf"
+                                name: Homepage PDF media
+                                channels:
+                                    - "FASHION_WEB"
+                                translations:
+                                    en_US:
+                                        alt: CMS offer
+                                        content: |
+                                            <h3>File description</h3>
+                                            <p>
+                                                The below button links to a PDF file.
+                                                Check it out! <i class="em em-slightly_smiling_face"></i>
+                                            </p>
+                            size_table:
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/size_table.jpeg"
+                                original_name: "size_table.jpeg"
+                            sale:
+                                name: "Sale"
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/sale.jpeg"
+                                original_name: "sale.jpeg"
+                                collections:
+                                    - "products"
+                            t_shirts_banner:
+                                name: "T-Shirts banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/t_shirts_banner.jpg"
+                                original_name: "t_shirts_banner.jpg"
+                                translations:
+                                    en_US:
+                                        alt: "T-Shirts banner"
+                            specified_products_banner:
+                                name: "Specified products banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/specified_products_banner.jpg"
+                                original_name: "specified_products_banner.jpg"
+                                translations:
+                                    en_US:
+                                        alt: "Specified products banner"
+                            blog_banner:
+                                name: "Blog banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/blog_banner.png"
+                                original_name: "blog_banner.png"
+                                translations:
+                                    en_US:
+                                        alt: "Blog banner"
+                            blog_post_1_header_banner:
+                                name: "Blog post 1 banner"
+                                channels:
+                                    - "FASHION_WEB"
+                                type: image
+                                path: "%fixtures_dir%/blog_post_1_header_banner.jpg"
+                                original_name: "blog_post_1_header_banner.jpg"
+                                translations:
+                                    en_US:
+                                        alt: "Blog post 1 banner"
+                page:
+                    options:
+                        custom:
+                            faq:
+                                name: "Frequently Asked Questions"
+                                channels:
+                                    - "FASHION_WEB"
+                                translations:
+                                    en_US:
+                                        slug: "faq"
+                                        meta_title: "FAQ"
+                                        meta_keywords: "faq"
+                                content_elements:
+                                    question1:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h3"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+                                    answer1:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p></p>"
+                                    question2:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h3"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+                                    answer2:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p></p>"
+                                    question3:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h3"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+                                    answer3:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p></p>"
+                                    question4:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h3"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+                                    answer4:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p></p>"
+                                    question5:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h3"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+                                    answer5:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+                            blog:
+                                name: "Blog"
+                                channels:
+                                    - "FASHION_WEB"
+                                translations:
+                                    en_US:
+                                        slug: "blog"
+                                        meta_title: "Blog"
+                                content_elements:
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "blog_banner"
+                                    textarea:
+                                        type: "textarea"
+                                        data:
+                                            textarea: "<p style='text-align: right; margin: 40px 0; font-weight: bold;'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat.</p>"
+                                    pages_collection:
+                                        type: "pages_collection"
+                                        data:
+                                            pages_collection: "blog"
+                            blog_post_1:
+                                name: "Blog post 1"
+                                channels:
+                                    - "FASHION_WEB"
+                                collections:
+                                    - "blog"
+                                teaser_title: "Blog post 1"
+                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                teaser_image: "sale"
+                                translations:
+                                    en_US:
+                                        slug: "blog-post-1"
+                                        meta_title: "Blog post 1"
+                                content_elements:
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "blog_post_1_header_banner"
+                                    spacer1:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    heading1:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text1:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                                    spacer2:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    products_grid:
+                                        type: "products_grid"
+                                        data:
+                                            products_grid:
+                                                products:
+                                                    - "Raglan_grey_&_black_Tee"
+                                                    - "Loose_white_designer_T_Shirt"
+                                                    - "Sport_basic_white_T_Shirt"
+                                                    - "Ribbed_copper_slim_fit_Tee"
+                                    heading2:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text2:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                            blog_post_2:
+                                name: "Blog post 2"
+                                channels:
+                                    - "FASHION_WEB"
+                                collections:
+                                    - "blog"
+                                teaser_title: "Blog post 2"
+                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                teaser_image: "sale"
+                                translations:
+                                    en_US:
+                                        slug: "blog-post-2"
+                                        meta_title: "Blog post 2"
+                                content_elements:
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "blog_post_1_header_banner"
+                                    spacer1:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    heading1:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text1:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                                    spacer2:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    products_grid:
+                                        type: "products_grid"
+                                        data:
+                                            products_grid:
+                                                products:
+                                                    - "Raglan_grey_&_black_Tee"
+                                                    - "Loose_white_designer_T_Shirt"
+                                                    - "Sport_basic_white_T_Shirt"
+                                                    - "Ribbed_copper_slim_fit_Tee"
+                                    heading2:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text2:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                            blog_post_3:
+                                name: "Blog post 3"
+                                channels:
+                                    - "FASHION_WEB"
+                                collections:
+                                    - "blog"
+                                teaser_title: "Blog post 3"
+                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                teaser_image: "sale"
+                                translations:
+                                    en_US:
+                                        slug: "blog-post-3"
+                                        meta_title: "Blog post 3"
+                                content_elements:
+                                    single_media:
+                                        type: "single_media"
+                                        data:
+                                            single_media: "blog_post_1_header_banner"
+                                    spacer1:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    heading1:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text1:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                                    spacer2:
+                                        type: "spacer"
+                                        data:
+                                            spacer: 30
+                                    products_grid:
+                                        type: "products_grid"
+                                        data:
+                                            products_grid:
+                                                products:
+                                                    - "Raglan_grey_&_black_Tee"
+                                                    - "Loose_white_designer_T_Shirt"
+                                                    - "Sport_basic_white_T_Shirt"
+                                                    - "Ribbed_copper_slim_fit_Tee"
+                                    heading2:
+                                        type: "heading"
+                                        data:
+                                            heading_type: "h2"
+                                            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                                    text2:
+                                        type: "textarea"
+                                        data:
+                                            textarea: |
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus metus, pellentesque feugiat dictum vitae, viverra et purus. Etiam ornare arcu eget bibendum ornare. Donec at dictum odio, venenatis imperdiet tortor. Aenean aliquam mauris id massa commodo condimentum. Praesent sit amet feugiat justo, quis dictum nulla.</p>
+                                                <p>Fusce gravida orci eu lorem pharetra viverra. Ut non posuere arcu, pellentesque tristique massa. Donec sit amet efficitur risus, a mattis sem. Pellentesque id fringilla lorem, non finibus velit.</p>
+                            about:
+                                name: "About us page"
+                                channels:
+                                    - "FASHION_WEB"
+                                collections:
+                                    - "general"
+                                    - "store"
+                                translations:
+                                    en_US:
+                                        slug: "about"
+                                        meta_title: "About us"
+                                        meta_keywords: "about, us"
+                                        meta_description: "About us page"
+                template:
+                    options:
+                        custom:
+                            homepage:
+                                name: "Page template"
+                                type: "page"
+                                content_elements:
+                                    -   type: "textarea"
+                                    -   type: "multiple_media"
+                            about:
+                                name: "Block template"
+                                type: "block"
+                                content_elements:
+                                    -   type: "heading"
+                                    -   type: "textarea"
+                                    -   type: "single_media"

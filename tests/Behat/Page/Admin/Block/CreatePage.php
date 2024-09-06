@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block;
 
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -281,8 +275,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     public function confirmUseTemplate(): void
     {
         $this->getDocument()->findById('load-template-confirmation-button')->click();
-        $this->getDocument()->waitFor(2, function (): bool {
-            return '' !== $this->getDocument()->find('css', '[data-form-collection="list"]')->getHtml();
+        $this->getDocument()->waitFor(1, function () {
+            return false;
         });
     }
 
@@ -294,7 +288,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             [
                 'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
                 'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
-                'content_elements_add_button' => '#bitbag_sylius_cms_plugin_block_contentElements a[data-form-collection="add"]',
+                'content_elements_add_button' => '#sylius_cms_block_contentElements a[data-form-collection="add"]',
                 'template_select_dropdown' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete',
                 'template_select_dropdown_item' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             ],

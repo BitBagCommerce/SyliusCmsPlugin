@@ -1,23 +1,15 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.io and write us
- * an email on mikolaj.krol@bitbag.pl.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Sorter;
+namespace spec\Sylius\CmsPlugin\Sorter;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorter;
-use BitBag\SyliusCmsPlugin\Sorter\CollectionsSorterInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Sorter\CollectionsSorter;
+use Sylius\CmsPlugin\Sorter\CollectionsSorterInterface;
 
 final class CollectionsSorterSpec extends ObjectBehavior
 {

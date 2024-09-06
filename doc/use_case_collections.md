@@ -3,7 +3,7 @@
 With collections, you can organize your blocks, pages and media under specific categories.
 For instance, you can create a Blog collection and display pages under it.
 
-Collections in the BitBag SyliusCmsPlugin serve as containers where various elements, such as content blocks, CMS pages,
+Collections in the Sylius CMS Plugin serve as containers where various elements, such as content blocks, CMS pages,
 and media, can be placed. These collections allow administrators to organize and manage the layout and presentation of content on pages.
 
 The ability to place blocks, pages, and media within collections provides full control over the appearance and structure of CMS pages,

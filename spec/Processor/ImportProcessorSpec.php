@@ -1,23 +1,16 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * You can find more information about us on https://bitbag.io and write us
- * an email on hello@bitbag.io.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Processor;
+namespace spec\Sylius\CmsPlugin\Processor;
 
-use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
-use BitBag\SyliusCmsPlugin\Importer\ImporterChainInterface;
-use BitBag\SyliusCmsPlugin\Importer\ImporterInterface;
-use BitBag\SyliusCmsPlugin\Processor\ImportProcessor;
-use BitBag\SyliusCmsPlugin\Reader\ReaderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Exception\ImportFailedException;
+use Sylius\CmsPlugin\Importer\ImporterChainInterface;
+use Sylius\CmsPlugin\Importer\ImporterInterface;
+use Sylius\CmsPlugin\Processor\ImportProcessor;
+use Sylius\CmsPlugin\Reader\ReaderInterface;
 
 class ImportProcessorSpec extends ObjectBehavior
 {

@@ -1,22 +1,16 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Renderer\CollectionRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Resolver\CollectionResourceResolverInterface;
+use Sylius\CmsPlugin\Renderer\CollectionRendererStrategyInterface;
+use Sylius\CmsPlugin\Resolver\CollectionResourceResolverInterface;
 use Twig\Environment;
 
 final class RenderCollectionRuntime implements RenderCollectionRuntimeInterface
 {
-    private const DEFAULT_TEMPLATE = '@BitBagSyliusCmsPlugin/Shop/Collection/show.html.twig';
+    private const DEFAULT_TEMPLATE = '@SyliusCmsPlugin/Shop/Collection/show.html.twig';
 
     public function __construct(
         private Environment $twig,

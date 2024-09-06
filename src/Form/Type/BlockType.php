@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
+use Sylius\CmsPlugin\Entity\BlockInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,21 +23,21 @@ final class BlockType extends AbstractResourceType
 
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $block->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.collections',
+                'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
             ->add('enabled', CheckboxType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.enabled',
+                'label' => 'sylius_cms.ui.enabled',
             ])
             ->add('channels', ChannelChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.channels',
+                'label' => 'sylius_cms.ui.channels',
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
@@ -58,19 +52,19 @@ final class BlockType extends AbstractResourceType
                 'required' => false,
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.display_for_products.label',
+                'label' => 'sylius_cms.ui.display_for_products.label',
                 'multiple' => true,
-                'help' => 'bitbag_sylius_cms_plugin.ui.display_for_products.help',
+                'help' => 'sylius_cms.ui.display_for_products.help',
             ])
             ->add('productsInTaxons', TaxonAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.display_for_products_in_taxons.label',
+                'label' => 'sylius_cms.ui.display_for_products_in_taxons.label',
                 'multiple' => true,
-                'help' => 'bitbag_sylius_cms_plugin.ui.display_for_products_in_taxons.help',
+                'help' => 'sylius_cms.ui.display_for_products_in_taxons.help',
             ])
             ->add('taxons', TaxonAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.display_for_taxons.label',
+                'label' => 'sylius_cms.ui.display_for_taxons.label',
                 'multiple' => true,
-                'help' => 'bitbag_sylius_cms_plugin.ui.display_for_taxons.help',
+                'help' => 'sylius_cms.ui.display_for_taxons.help',
             ])
             ->add('template', TemplateBlockAutocompleteChoiceType::class, [
                 'label' => false,
@@ -81,6 +75,6 @@ final class BlockType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_block';
+        return 'sylius_cms_block';
     }
 }

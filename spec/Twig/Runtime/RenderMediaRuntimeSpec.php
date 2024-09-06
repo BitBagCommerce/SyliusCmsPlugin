@@ -1,24 +1,16 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.io and write us
- * an email on mikolaj.krol@bitbag.pl.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
+use Sylius\CmsPlugin\Resolver\MediaResourceResolverInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 
 final class RenderMediaRuntimeSpec extends ObjectBehavior
 {
@@ -45,10 +37,10 @@ final class RenderMediaRuntimeSpec extends ObjectBehavior
         ProviderInterface $provider,
         MediaInterface $media,
     ): void {
-        $mediaResourceResolver->findOrLog('bitbag')->willReturn($media);
+        $mediaResourceResolver->findOrLog('sylius_cms')->willReturn($media);
         $provider->render($media, null)->willReturn('content');
         $mediaProviderResolver->resolveProvider($media)->willReturn($provider);
 
-        $this->renderMedia('bitbag')->shouldReturn('content');
+        $this->renderMedia('sylius_cms')->shouldReturn('content');
     }
 }

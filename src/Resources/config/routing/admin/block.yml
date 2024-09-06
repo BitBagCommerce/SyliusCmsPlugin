@@ -1,18 +1,18 @@
-bitbag_sylius_cms_plugin_admin_block:
+sylius_cms_admin_block:
     resource: |
-        alias: bitbag_sylius_cms_plugin.block
+        alias: sylius_cms.block
         section: admin
-        templates: '@BitBagSyliusCmsPlugin/CrudUi'
+        templates: '@SyliusCmsPlugin/CrudUi'
         except: ['show']
         redirect: update
-        grid: bitbag_sylius_cms_plugin_admin_block
+        grid: sylius_cms_admin_block
         permission: true
         vars:
             all:
-                header: bitbag_sylius_cms_plugin.ui.blocks_header
-                subheader: bitbag_sylius_cms_plugin.ui.blocks_subheader
+                header: sylius_cms.ui.blocks_header
+                subheader: sylius_cms.ui.blocks_subheader
                 templates:
-                    form: "@BitBagSyliusCmsPlugin/Block/Crud/_form.html.twig"
+                    form: "@SyliusCmsPlugin/Block/Crud/_form.html.twig"
             index:
                 icon: block layout
             route:
@@ -20,20 +20,20 @@ bitbag_sylius_cms_plugin_admin_block:
                     code: $type
     type: sylius.resource
 
-bitbag_sylius_cms_plugin_admin_block_preview:
+sylius_cms_admin_block_preview:
     path: /block/preview
     methods: [GET, POST, PUT]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block::previewAction
+        _controller: sylius_cms.controller.block::previewAction
         _sylius:
-            template: "@BitBagSyliusCmsPlugin/Block/preview.html.twig"
+            template: "@SyliusCmsPlugin/Block/preview.html.twig"
 
-bitbag_sylius_cms_plugin_admin_ajax_block_by_name_phrase:
+sylius_cms_admin_ajax_block_by_name_phrase:
     path: /ajax/blocks/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
+        _controller: sylius_cms.controller.block::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -42,12 +42,12 @@ bitbag_sylius_cms_plugin_admin_ajax_block_by_name_phrase:
                 arguments:
                     phrase: $phrase
 
-bitbag_sylius_cms_plugin_admin_ajax_block_by_code:
+sylius_cms_admin_ajax_block_by_code:
     path: /ajax/blocks/code
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
+        _controller: sylius_cms.controller.block::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true

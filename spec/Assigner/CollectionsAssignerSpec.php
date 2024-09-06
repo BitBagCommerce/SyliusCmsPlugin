@@ -1,21 +1,15 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\CollectionsAssigner;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Entity\CollectibleInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 
 final class CollectionsAssignerSpec extends ObjectBehavior
 {
@@ -40,8 +34,7 @@ final class CollectionsAssignerSpec extends ObjectBehavior
         CollectionInterface $blogCollection,
         CollectibleInterface $collectionsAware,
     ): void {
-        $collectionRepository->findOneBy(['code' => 'about'])->willReturn($aboutCollection);
-        $collectionRepository->findOneBy(['code' => 'blog'])->willReturn($blogCollection);
+        $collectionRepository->findBy(['code' => ['about', 'blog']])->willReturn([$aboutCollection, $blogCollection]);
 
         $collectionsAware->addCollection($aboutCollection)->shouldBeCalled();
         $collectionsAware->addCollection($blogCollection)->shouldBeCalled();

@@ -4,27 +4,27 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.assigner.channels" class="BitBag\SyliusCmsPlugin\Assigner\ChannelsAssigner">
+        <service id="sylius_cms.assigner.channels" class="Sylius\CmsPlugin\Assigner\ChannelsAssigner">
             <argument type="service" id="sylius.repository.channel" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.products" class="BitBag\SyliusCmsPlugin\Assigner\ProductsAssigner">
+        <service id="sylius_cms.assigner.products" class="Sylius\CmsPlugin\Assigner\ProductsAssigner">
             <argument type="service" id="sylius.repository.product" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.taxons" class="BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner">
+        <service id="sylius_cms.assigner.taxons" class="Sylius\CmsPlugin\Assigner\TaxonsAssigner">
             <argument type="service" id="sylius.repository.taxon" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.collections" class="BitBag\SyliusCmsPlugin\Assigner\CollectionsAssigner">
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.collection" />
+        <service id="sylius_cms.assigner.collections" class="Sylius\CmsPlugin\Assigner\CollectionsAssigner">
+            <argument type="service" id="sylius_cms.repository.collection" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.products_in_taxons" class="BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssigner">
+        <service id="sylius_cms.assigner.products_in_taxons" class="Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssigner">
             <argument type="service" id="sylius.repository.taxon" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.assigner.locales" class="BitBag\SyliusCmsPlugin\Assigner\LocalesAssigner">
+        <service id="sylius_cms.assigner.locales" class="Sylius\CmsPlugin\Assigner\LocalesAssigner">
             <argument type="service" id="sylius.repository.locale" />
         </service>
     </services>

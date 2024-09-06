@@ -1,4 +1,4 @@
-BitBag\SyliusCmsPlugin\Entity\Template:
+Sylius\CmsPlugin\Entity\Template:
     template1:
         name: 'template1-name'
         type: 'page'

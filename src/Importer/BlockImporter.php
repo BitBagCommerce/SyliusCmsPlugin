@@ -1,24 +1,18 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
-use BitBag\SyliusCmsPlugin\Resolver\ResourceResolverInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
+use Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
+use Sylius\CmsPlugin\Resolver\ResourceResolverInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webmozart\Assert\Assert;
 
@@ -56,7 +50,7 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         $this->importerTaxonsResolver->resolve($block, $this->getColumnValue(self::TAXONS_COLUMN, $row));
         $this->importerProductsInTaxonsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_IN_TAXONS_COLUMN, $row));
 
-        $this->validateResource($block, ['bitbag']);
+        $this->validateResource($block, ['cms']);
         $this->blockRepository->add($block);
     }
 

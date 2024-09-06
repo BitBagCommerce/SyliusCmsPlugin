@@ -3,7 +3,7 @@
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
     http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="BitBag\SyliusCmsPlugin\Entity\PageTranslation">
+    <class name="Sylius\CmsPlugin\Entity\PageTranslation">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">
                 <value>slug</value>
@@ -11,19 +11,19 @@
             </option>
             <option name="errorPath">slug</option>
             <option name="groups">
-                <value>bitbag</value>
+                <value>cms</value>
             </option>
-            <option name="message">bitbag_sylius_cms_plugin.page.slug.unique</option>
+            <option name="message">sylius_cms.page.slug.unique</option>
         </constraint>
 
         <property name="slug">
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">250</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.page.slug.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.page.slug.max_length</option>
+                <option name="minMessage">sylius_cms.page.slug.min_length</option>
+                <option name="maxMessage">sylius_cms.page.slug.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -32,10 +32,10 @@
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">1000</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_keywords.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_keywords.max_length</option>
+                <option name="minMessage">sylius_cms.page.meta_keywords.min_length</option>
+                <option name="maxMessage">sylius_cms.page.meta_keywords.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -44,10 +44,10 @@
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">5000</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.page.meta_description.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.page.meta_description.max_length</option>
+                <option name="minMessage">sylius_cms.page.meta_description.min_length</option>
+                <option name="maxMessage">sylius_cms.page.meta_description.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>

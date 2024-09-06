@@ -3,33 +3,39 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
 >
-    <resource class="%bitbag_sylius_cms_plugin.model.media.class%" shortName="Media">
+    <resource class="%sylius_cms.model.media.class%" shortName="Media">
         <attribute name="normalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:read</attribute>
+                <attribute>sylius_cms:media:read:index</attribute>
+                <attribute>sylius_cms:media:read:show</attribute>
             </attribute>
         </attribute>
 
-        <attribute name="denormalizationContext">
+        <attribute name="denormalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:write</attribute>
+                <attribute>sylius_cms:media:write</attribute>
             </attribute>
         </attribute>
 
         <attribute name="validation_groups">sylius</attribute>
 
         <collectionOperations>
-            <collectionOperation name="shop_get_media">
+            <collectionOperation name="get_media_collection">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/media</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:media:read:index</attribute>
+                </attribute>
             </collectionOperation>
-
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="shop_get_media">
+            <itemOperation name="get_media_item">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/media/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:media:read:show</attribute>
+                </attribute>
             </itemOperation>
         </itemOperations>
 

@@ -5,7 +5,7 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="BitBag\SyliusCmsPlugin\Entity\ContentConfiguration" table="bitbag_cms_content_configuration">
+    <mapped-superclass name="Sylius\CmsPlugin\Entity\ContentConfiguration" table="sylius_cms_content_configuration">
         <id name="id" type="integer">
             <generator strategy="AUTO" />
         </id>
@@ -18,11 +18,11 @@
             </options>
         </field>
 
-        <many-to-one field="block" target-entity="BitBag\SyliusCmsPlugin\Entity\Block" inversed-by="contentElements">
+        <many-to-one field="block" target-entity="Sylius\CmsPlugin\Entity\Block" inversed-by="contentElements">
             <join-column name="block_id" referenced-column-name="id" nullable="true" />
         </many-to-one>
 
-        <many-to-one field="page" target-entity="BitBag\SyliusCmsPlugin\Entity\Page" inversed-by="contentElements">
+        <many-to-one field="page" target-entity="Sylius\CmsPlugin\Entity\Page" inversed-by="contentElements">
             <join-column name="page_id" referenced-column-name="id" nullable="true" />
         </many-to-one>
     </mapped-superclass>

@@ -4,36 +4,35 @@
 1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
 
 ```bash
-$ composer require bitbag/cms-plugin --no-scripts
+composer require bitbag/cms-plugin --no-scripts
 ```
 
-2. Add plugin dependencies to your `config/bundles.php` file:
+2. Add plugin dependencies to your `config/bundles.php` file (if not added automatically):
 
 ```php
 return [
     ...
 
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
-    BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
+    Sylius\CmsPlugin\SyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
-The first line above (FOSCKEditorBundle) might have been already added during composer require command.
 
-Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+3. Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
 ```bash
-$ bin/console ckeditor:install
+bin/console ckeditor:install
 ```
 
 **Note.** If you have an issue with the ckeditor not running, please try to install it using the `4.22.1` tag:
 
 ```bash
-$ bin/console ckeditor:install --tag=4.22.1
+bin/console ckeditor:install --tag=4.22.1
 ```
 
 For more information regardin `4.22.1` tag please visit the #485 issue.
 
-Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must add some configuration under the `twig.form_themes` config key:
+#### If you are not using Symfony Flex, you need to add the following configuration under the `twig.form_themes` config key:
 
 ```yaml
 # Symfony 2/3: app/config/config.yml
@@ -42,69 +41,38 @@ Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must ad
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-        - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
+        - '@SyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
-3. Import required config in your `config/packages/_sylius.yaml` file:
+4. If you are not using Symfony Flex, import add following configs:
 ```yaml
 # config/packages/_sylius.yaml
 
 imports:
     ...
     
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
-```
+    - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
 
-4. Import routing in your `config/routes.yaml` file:
-
-```yaml
 
 # config/routes.yaml
 ...
 
-bitbag_sylius_cms_plugin:
-    resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
-```
-If You have installed https://github.com/stefandoorn/sitemap-plugin according to its installation instructions
-import optional sitemap providers:
-```yaml
-# config/services.yaml
-...
-imports:
-...
-    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/services/sitemap_provider.yml" }
-```
-
-and plugin dependency to your `config/bundles.php` file:
-```php
-return [
-    ...
-
-    SitemapPlugin\SitemapPlugin::class => ['all' => true], // Sitemap support
-];
-```
-
-you will probably need to change the extension of the imported file in 
-
-```yaml
-# config/packages/sitemap_plugin.yaml
-
-    imports:
-        - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
+sylius_cms:
+    resource: "@SyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
 5. Finish the installation by updating the database schema and installing assets:
 
 ```bash
-$ bin/console cache:clear
+bin/console cache:clear
 
 # If you used migrations in your project...
-$ bin/console doctrine:migrations:migrate
+bin/console doctrine:migrations:migrate
 # ... or if you use doctrine schema tool.
-$ bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
+bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
 
-$ bin/console assets:install --symlink
-$ bin/console sylius:theme:assets:install --symlink
+bin/console assets:install --symlink
+bin/console sylius:theme:assets:install --symlink
 ```
 
 Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
@@ -123,39 +91,19 @@ We recommend you to use Webpack (Encore), for which we have prepared four differ
 
 However, if you are not using Webpack, here are instructions on how to add optimized and compressed assets directly to your project templates:
 
-- [Non webpack solution](./01.5-non-webpack.md)
-
-7. Passing required "backend" values to "frontend"
-
-In order to make plugin finally work you need to declare "route", in admin _scripts.html.twig you can pass:
-
-```
-<script>
-    const route = "{{ path('bitbag_sylius_cms_plugin_admin_ajax_media_by_name_phrase')|escape('js') }}";
-</script>
-```
-
-Any other approach, that will allow cms pages to read this value in js, under "route" key, will work. 
+- [Non webpack solution](./01.5-non-webpack.md) 
 
 ## Testing & running the plugin
 ```bash
-$ composer install
-$ cd tests/Application
-```
-Copy file `package.json.~1.XX.0.dist` to `package.json` where `~1.XX.0` is the Sylius version you are using.
-
-```bash
-$ cp package.json.~1.12.0.dist package.json
-```
-
-```bash
-$ yarn install
-$ yarn encore dev
-$ APP_ENV=test bin/console assets:install
-$ APP_ENV=test bin/console doctrine:schema:create
-$ APP_ENV=test symfony server:start --port=8080 -d
-$ cd ../..
-$ open http://localhost:8080
-$ vendor/bin/behat
-$ vendor/bin/phpspec run
+composer install
+cd tests/Application
+yarn install
+yarn encore dev
+APP_ENV=test bin/console assets:install
+APP_ENV=test bin/console doctrine:schema:create
+APP_ENV=test symfony server:start --port=8080 -d
+cd ../..
+open http://localhost:8080
+vendor/bin/behat
+vendor/bin/phpspec run
 ```

@@ -46,8 +46,8 @@ Feature: Managing cms blocks
 
     @ui
     Scenario: Disabling block
-        Given there is an existing block with "bitbag_quote" code
-        When I go to the update "bitbag_quote" block page
+        Given there is an existing block with "sylius_quote" code
+        When I go to the update "sylius_quote" block page
         And I fill the name with "BitBag quote" if the name field is empty
         And I disable it
         And I update it

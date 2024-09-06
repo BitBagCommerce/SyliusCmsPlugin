@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer;
+namespace spec\Sylius\CmsPlugin\Renderer;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRenderer;
-use BitBag\SyliusCmsPlugin\Renderer\PageLinkRendererInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Renderer\PageLinkRenderer;
+use Sylius\CmsPlugin\Renderer\PageLinkRendererInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
@@ -45,13 +39,13 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $page->getName()->willReturn('Page Name');
 
         $urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_show',
+            'sylius_cms_shop_page_show',
             ['slug' => 'page-slug'],
             UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');
 
         $twig->render(
-            '@BitBagSyliusCmsPlugin/Shop/Page/link.html.twig',
+            '@SyliusCmsPlugin/Shop/Page/link.html.twig',
             [
                 'link' => 'http://example.com/page-slug',
                 'name' => 'Page Name',
@@ -70,7 +64,7 @@ final class PageLinkRendererSpec extends ObjectBehavior
         $page->getName()->willReturn('Page Name');
 
         $urlGenerator->generate(
-            'bitbag_sylius_cms_plugin_shop_page_show',
+            'sylius_cms_shop_page_show',
             ['slug' => 'page-slug'],
             UrlGeneratorInterface::ABSOLUTE_URL,
         )->willReturn('http://example.com/page-slug');

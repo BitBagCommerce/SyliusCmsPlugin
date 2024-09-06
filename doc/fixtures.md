@@ -9,4 +9,4 @@ read [this documentation page](http://docs.sylius.com/en/1.2/book/architecture/f
 
 ## General usage
 
-As you can see in [here](../tests/Application/config/packages/bitbag_sylius_cms_plugin.yml), cms fixtures are configured to be run under `default` suite. It means that after installing plugin all you need to do is run `bin/console sylius:fixtures:load` and all of cms fixtures will load as well.
+As you can see in [here](../tests/Application/config/packages/sylius_cms.yml), cms fixtures are configured to be run under `default` suite. It means that after installing plugin all you need to do is run `bin/console sylius:fixtures:load` and all of cms fixtures will load as well.
