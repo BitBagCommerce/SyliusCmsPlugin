@@ -187,7 +187,6 @@ Feature: Adding blocks
         And I fill the code with "intro"
         And I fill the name with "Intro"
         And I select "Homepage" template
-        And I click button to use this template
         And I confirm that I want to use this template
         And I add it
         Then I should be notified that the block has been created

@@ -217,7 +217,6 @@ Feature: Adding new page
         And I fill the slug with "my_page"
         And I fill the name with "My page"
         And I select "Homepage" template
-        And I click button to use this template
         And I confirm that I want to use this template
         And I add it
         Then I should be notified that the page has been created
