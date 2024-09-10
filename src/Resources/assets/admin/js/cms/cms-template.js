@@ -5,14 +5,16 @@ export class HandleTemplate {
             const cmsPageTemplate = $('#sylius_cms_page_template');
             const cmsBlockTemplate = $('#sylius_cms_block_template');
 
-            cmsLoadTemplate.on('click', function (e) {
-                e.preventDefault();
-
-                if (!cmsPageTemplate.val() && !cmsBlockTemplate.val()) {
-                    return;
+            cmsPageTemplate.on('change', function() {
+                if ($(this).val()) {
+                    $('#load-template-confirmation-modal').modal('show');
                 }
+            });
 
-                $('#load-template-confirmation-modal').modal('show');
+            cmsBlockTemplate.on('change', function() {
+                if ($(this).val()) {
+                    $('#load-template-confirmation-modal').modal('show');
+                }
             });
 
             $('#load-template-confirmation-button').on('click', function () {
@@ -54,6 +56,11 @@ export class HandleTemplate {
                         console.error('Error:', textStatus, errorThrown);
                     }
                 });
+            });
+
+            $('#load-template-cancel-button').on('click', function () {
+                cmsPageTemplate.val('');
+                cmsBlockTemplate.val('');
             });
         });
     }

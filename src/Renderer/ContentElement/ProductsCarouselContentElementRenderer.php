@@ -7,12 +7,10 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Twig\Environment;
 
-final class ProductsCarouselContentElementRenderer implements ContentElementRendererInterface
+final class ProductsCarouselContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private ProductRepositoryInterface $productRepository,
     ) {
     }
@@ -32,7 +30,7 @@ final class ProductsCarouselContentElementRenderer implements ContentElementRend
         }
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
+            'content_element' => $this->template,
             'products' => $products,
         ]);
     }

@@ -8,12 +8,10 @@ use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
 use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
-use Twig\Environment;
 
-final class SingleMediaContentElementRenderer implements ContentElementRendererInterface
+final class SingleMediaContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private RenderMediaRuntimeInterface $renderMediaRuntime,
         private MediaRepositoryInterface $mediaRepository,
     ) {
@@ -37,7 +35,7 @@ final class SingleMediaContentElementRenderer implements ContentElementRendererI
         ];
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
+            'content_element' => $this->template,
             'media' => $media,
         ]);
     }

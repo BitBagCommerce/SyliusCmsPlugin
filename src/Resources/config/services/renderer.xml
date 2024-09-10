@@ -6,74 +6,102 @@
 
         <service id="sylius_cms.content_element_renderer_strategy" class="Sylius\CmsPlugin\Renderer\ContentElementRendererStrategy">
             <argument type="service" id="sylius_cms.twig.parser.content" />
-            <argument type="tagged_iterator" tag="sylius_cms.renderer.content_element" />
+            <argument type="tagged_iterator" tag="sylius_cms.content_element" />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.textarea" class="Sylius\CmsPlugin\Renderer\ContentElement\TextareaContentElementRenderer">
-            <argument type="service" id="twig" />
-            <tag name="sylius_cms.renderer.content_element" />
+        <service id="sylius_cms.content_element.textarea" class="Sylius\CmsPlugin\Renderer\ContentElement\TextareaContentElementRenderer">
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.single_media" class="Sylius\CmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.single_media" class="Sylius\CmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer">
             <argument type="service" id="sylius_cms.twig.runtime.media" />
             <argument type="service" id="sylius_cms.repository.media" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.multiple_media" class="Sylius\CmsPlugin\Renderer\ContentElement\MultipleMediaContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.multiple_media" class="Sylius\CmsPlugin\Renderer\ContentElement\MultipleMediaContentElementRenderer">
             <argument type="service" id="sylius_cms.twig.runtime.media" />
             <argument type="service" id="sylius_cms.repository.media" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.heading" class="Sylius\CmsPlugin\Renderer\ContentElement\HeadingContentElementRenderer">
-            <argument type="service" id="twig" />
-            <tag name="sylius_cms.renderer.content_element" />
+        <service id="sylius_cms.content_element.heading" class="Sylius\CmsPlugin\Renderer\ContentElement\HeadingContentElementRenderer">
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_heading.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.products_carousel" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsCarouselContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.products_carousel" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsCarouselContentElementRenderer">
             <argument type="service" id="sylius.repository.product" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.products_carousel_by_taxon" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsCarouselByTaxonContentElementRenderer">
-            <argument type="service" id="twig" />
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="sylius.repository.taxon" />
-            <tag name="sylius_cms.renderer.content_element" />
-        </service>
-
-        <service id="sylius_cms.renderer.content_element.products_grid" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsGridContentElementRenderer">
-            <argument type="service" id="twig" />
-            <argument type="service" id="sylius.repository.product" />
-            <tag name="sylius_cms.renderer.content_element" />
-        </service>
-
-        <service id="sylius_cms.renderer.content_element.products_grid_by_taxon" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsGridByTaxonContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.products_carousel_by_taxon" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsCarouselByTaxonContentElementRenderer">
             <argument type="service" id="sylius.repository.product" />
             <argument type="service" id="sylius.repository.taxon" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.taxons_list" class="Sylius\CmsPlugin\Renderer\ContentElement\TaxonsListContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.products_grid" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsGridContentElementRenderer">
+            <argument type="service" id="sylius.repository.product" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType"
+            />
+        </service>
+
+        <service id="sylius_cms.content_element.products_grid_by_taxon" class="Sylius\CmsPlugin\Renderer\ContentElement\ProductsGridByTaxonContentElementRenderer">
+            <argument type="service" id="sylius.repository.product" />
             <argument type="service" id="sylius.repository.taxon" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.pages_collection" class="Sylius\CmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer">
-            <argument type="service" id="twig" />
+        <service id="sylius_cms.content_element.taxons_list" class="Sylius\CmsPlugin\Renderer\ContentElement\TaxonsListContentElementRenderer">
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType"
+            />
+        </service>
+
+        <service id="sylius_cms.content_element.pages_collection" class="Sylius\CmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer">
             <argument type="service" id="sylius_cms.repository.collection" />
-            <tag name="sylius_cms.renderer.content_element" />
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig"
+            />
         </service>
 
-        <service id="sylius_cms.renderer.content_element.spacer" class="Sylius\CmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer">
-            <argument type="service" id="twig" />
-            <tag name="sylius_cms.renderer.content_element" />
+        <service id="sylius_cms.content_element.spacer" class="Sylius\CmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer">
+            <tag
+                name="sylius_cms.content_element"
+                template="@SyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig"
+                form_type="Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType"
+            />
         </service>
 
         <service id="sylius_cms.collection_renderer_strategy" class="Sylius\CmsPlugin\Renderer\CollectionRendererStrategy">

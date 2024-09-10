@@ -276,11 +276,6 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
         $item->click();
     }
 
-    public function useTemplate(): void
-    {
-        $this->getDocument()->findLink('Use this template')->click();
-    }
-
     public function confirmUseTemplate(): void
     {
         $this->getDocument()->findById('load-template-confirmation-button')->click();

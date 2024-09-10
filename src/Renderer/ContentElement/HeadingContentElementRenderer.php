@@ -6,14 +6,9 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
-use Twig\Environment;
 
-final class HeadingContentElementRenderer implements ContentElementRendererInterface
+final class HeadingContentElementRenderer extends AbstractContentElement
 {
-    public function __construct(private Environment $twig)
-    {
-    }
-
     public function supports(ContentConfigurationInterface $contentConfiguration): bool
     {
         return HeadingContentElementType::TYPE === $contentConfiguration->getType();
@@ -26,7 +21,7 @@ final class HeadingContentElementRenderer implements ContentElementRendererInter
         $headingContent = $configuration['heading'];
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
+            'content_element' => $this->template,
             'heading_type' => $headingType,
             'heading_content' => $headingContent,
         ]);

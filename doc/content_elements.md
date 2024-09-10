@@ -55,34 +55,36 @@ final class TextContentElementType extends AbstractType
 }
 ```
 
-2. Define constant parameter in `config/parameters.yaml` or yours any other `yaml` file:
+2. If your form type have constructor with some arguments, define constant parameter in `config/parameters.yaml` or yours any other `yaml` file:
 
 ```yaml
 parameters:
     sylius_cms.content_elements.type.text: !php/const 'YourNamespace\Form\Type\ContentElements\TextContentElementType::TYPE'
 ```
 
-3. Define form type in service container under `config/services.yml` with correct tags:
+If your form type doesn't have any constructor arguments, you can skip this step, because compiler pass will automatically define it for you.
+
+
+3. If your form type have constructor with some arguments, you must define form type in service container under `config/services.yml` with correct tags:
 
 ```yaml
 services:
     sylius_cms.form.type.content_element.text:
         class: YourNamespace\Form\Type\ContentElements\TextContentElementType
+        arguments: [...]
         tags:
             - { name: 'sylius_cms.content_elements.type', key: '%sylius_cms.content_elements.type.text%' }
             - { name: 'form.type' }
 ```
 
-4. Create a new renderer class under `src/Renderer/ContentElement` location. Implement `Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface` interface.
+If your form type doesn't have any constructor arguments, you can skip this step, because compiler pass will automatically register it for you.
+
+4. Create a new renderer class under `src/Renderer/ContentElement` location. Extend `Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement` class.
 For example, you can create a new renderer called `TextContentElementRenderer`:
 
 ```php
-final class TextContentElementRenderer implements ContentElementRendererInterface
+final class TextContentElementRenderer extends AbstractContentElement
 {
-    public function __construct(private Environment $twig)
-    {
-    }
-
     public function supports(ContentConfigurationInterface $contentConfiguration): bool
     {
         return TextContentElementType::TYPE === $contentConfiguration->getType();
@@ -93,7 +95,7 @@ final class TextContentElementRenderer implements ContentElementRendererInterfac
         $text = $contentConfiguration->getConfiguration()['text'];
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@YourNamespace/Shop/ContentElement/_text.html.twig',
+            'content_element' => $this->template,
             'text' => $text,
         ]);
     }
@@ -109,8 +111,14 @@ services:
         arguments:
             - '@twig'
         tags:
-            - { name: 'sylius_cms.renderer.content_element' }
+            - { 
+                name: 'sylius_cms.renderer.content_element',
+                template: '@YourNamespace/Shop/ContentElement/_text.html.twig',
+                form_type: 'YourNamespace\Form\Type\ContentElements\TextContentElementType'
+            }
 ```
+
+Define form_type only if your form type doesn't have constructor with additional arguments.
 
 6. Finally, create a new template under `templates/bundles/SyliusCmsPlugin/Shop/ContentElement` location.
 For example, you can create a new template called `_text.html.twig`:

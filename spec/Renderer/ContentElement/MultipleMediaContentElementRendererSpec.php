@@ -8,7 +8,7 @@ use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\MultipleMediaContentElementRenderer;
 use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
@@ -17,21 +17,16 @@ use Twig\Environment;
 final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
 {
     public function let(
-        Environment $twig,
         RenderMediaRuntimeInterface $renderMediaRuntime,
         MediaRepositoryInterface $mediaRepository,
     ): void {
-        $this->beConstructedWith($twig, $renderMediaRuntime, $mediaRepository);
+        $this->beConstructedWith($renderMediaRuntime, $mediaRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(MultipleMediaContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_multiple_media_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -54,6 +49,10 @@ final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
         MediaInterface $media1,
         MediaInterface $media2,
     ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'multiple_media' => ['code1', 'code2'],
         ]);
@@ -67,7 +66,7 @@ final class MultipleMediaContentElementRendererSpec extends ObjectBehavior
         $renderMediaRuntime->renderMedia('code2')->willReturn('rendered media 2');
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
+            'content_element' => $template,
             'media' => [
                 [
                     'renderedContent' => 'rendered media 1',

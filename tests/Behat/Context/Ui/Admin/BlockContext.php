@@ -409,14 +409,6 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I click button to use this template
-     */
-    public function iClickButtonToUseThisTemplate(): void
-    {
-        $this->resolveCurrentPage()->useTemplate();
-    }
-
-    /**
      * @Then I confirm that I want to use this template
      */
     public function iConfirmThatIWantToUseThisTemplate(): void

@@ -49,7 +49,5 @@ interface CreatePageInterface extends BaseCreatePageInterface, ContainsErrorInte
 
     public function selectTemplate(string $templateName): void;
 
-    public function useTemplate(): void;
-
     public function confirmUseTemplate(): void;
 }

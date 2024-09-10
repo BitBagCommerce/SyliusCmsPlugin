@@ -9,6 +9,7 @@ use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use Sylius\CmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer;
 use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
@@ -16,19 +17,15 @@ use Twig\Environment;
 
 final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, CollectionRepositoryInterface $collectionRepository): void
+    public function let(CollectionRepositoryInterface $collectionRepository): void
     {
-        $this->beConstructedWith($twig, $collectionRepository);
+        $this->beConstructedWith($collectionRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(PagesCollectionContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_pages_collection_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -49,6 +46,10 @@ final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
         ContentConfigurationInterface $contentConfiguration,
         CollectionInterface $collection,
     ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'pages_collection' => 'collection_code',
         ]);
@@ -59,7 +60,7 @@ final class PagesCollectionContentElementRendererSpec extends ObjectBehavior
         $collection->getPages()->willReturn($pagesCollection);
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
+            'content_element' => $template,
             'collection' => $pagesCollection,
         ])->willReturn('rendered_output');
 

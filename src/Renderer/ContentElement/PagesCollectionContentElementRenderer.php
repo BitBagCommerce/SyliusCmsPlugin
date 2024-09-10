@@ -8,12 +8,10 @@ use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
 use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
-use Twig\Environment;
 
-final class PagesCollectionContentElementRenderer implements ContentElementRendererInterface
+final class PagesCollectionContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private CollectionRepositoryInterface $collectionRepository,
     ) {
     }
@@ -34,7 +32,7 @@ final class PagesCollectionContentElementRenderer implements ContentElementRende
         $collection = $this->collectionRepository->findOneBy(['code' => $code]);
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
+            'content_element' => $this->template,
             'collection' => $collection?->getPages(),
         ]);
     }
