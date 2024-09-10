@@ -7,12 +7,10 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Twig\Environment;
 
-final class ProductsGridContentElementRenderer implements ContentElementRendererInterface
+final class ProductsGridContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private ProductRepositoryInterface $productRepository,
     ) {
     }
@@ -29,7 +27,7 @@ final class ProductsGridContentElementRenderer implements ContentElementRenderer
         $products = $this->productRepository->findBy(['code' => $productsCodes]);
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+            'content_element' => $this->template,
             'products' => $products,
         ]);
     }

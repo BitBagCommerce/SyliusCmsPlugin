@@ -6,14 +6,9 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType;
-use Twig\Environment;
 
-final class SpacerContentElementRenderer implements ContentElementRendererInterface
+final class SpacerContentElementRenderer extends AbstractContentElement
 {
-    public function __construct(private Environment $twig)
-    {
-    }
-
     public function supports(ContentConfigurationInterface $contentConfiguration): bool
     {
         return SpacerContentElementType::TYPE === $contentConfiguration->getType();
@@ -24,7 +19,7 @@ final class SpacerContentElementRenderer implements ContentElementRendererInterf
         $configuration = (int) $contentConfiguration->getConfiguration()['spacer'];
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
+            'content_element' => $this->template,
             'spacer_height' => $configuration,
         ]);
     }

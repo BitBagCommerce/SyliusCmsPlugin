@@ -9,12 +9,10 @@ use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElement
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Twig\Environment;
 
-final class ProductsGridByTaxonContentElementRenderer implements ContentElementRendererInterface
+final class ProductsGridByTaxonContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private ProductRepositoryInterface $productRepository,
         private TaxonRepositoryInterface $taxonRepository,
     ) {
@@ -38,7 +36,7 @@ final class ProductsGridByTaxonContentElementRenderer implements ContentElementR
         $products = $this->productRepository->findByTaxon($taxon);
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+            'content_element' => $this->template,
             'products' => $products,
         ]);
     }

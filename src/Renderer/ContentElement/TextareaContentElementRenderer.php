@@ -6,14 +6,9 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
-use Twig\Environment;
 
-final class TextareaContentElementRenderer implements ContentElementRendererInterface
+final class TextareaContentElementRenderer extends AbstractContentElement
 {
-    public function __construct(private Environment $twig)
-    {
-    }
-
     public function supports(ContentConfigurationInterface $contentConfiguration): bool
     {
         return TextareaContentElementType::TYPE === $contentConfiguration->getType();
@@ -22,7 +17,7 @@ final class TextareaContentElementRenderer implements ContentElementRendererInte
     public function render(ContentConfigurationInterface $contentConfiguration): string
     {
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
+            'content_element' => $this->template,
             'content' => $contentConfiguration->getConfiguration()['textarea'],
         ]);
     }

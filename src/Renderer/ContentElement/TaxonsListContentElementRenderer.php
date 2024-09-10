@@ -7,12 +7,10 @@ namespace Sylius\CmsPlugin\Renderer\ContentElement;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Twig\Environment;
 
-final class TaxonsListContentElementRenderer implements ContentElementRendererInterface
+final class TaxonsListContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private TaxonRepositoryInterface $taxonRepository,
     ) {
     }
@@ -29,7 +27,7 @@ final class TaxonsListContentElementRenderer implements ContentElementRendererIn
         $taxons = $this->taxonRepository->findBy(['code' => $taxonsCodes]);
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
+            'content_element' => $this->template,
             'taxons' => $taxons,
         ]);
     }

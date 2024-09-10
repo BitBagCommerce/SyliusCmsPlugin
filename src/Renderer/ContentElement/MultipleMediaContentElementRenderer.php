@@ -9,12 +9,10 @@ use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType;
 use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
-use Twig\Environment;
 
-final class MultipleMediaContentElementRenderer implements ContentElementRendererInterface
+final class MultipleMediaContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private RenderMediaRuntimeInterface $renderMediaRuntime,
         private MediaRepositoryInterface $mediaRepository,
     ) {
@@ -46,7 +44,7 @@ final class MultipleMediaContentElementRenderer implements ContentElementRendere
         }
 
         return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_multiple_media.html.twig',
+            'content_element' => $this->template,
             'media' => $media,
         ]);
     }

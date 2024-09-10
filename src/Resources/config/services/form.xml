@@ -2,17 +2,11 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="sylius_cms.content_elements.type.textarea" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType::TYPE</parameter>
         <parameter key="sylius_cms.content_elements.type.single_media" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType::TYPE</parameter>
         <parameter key="sylius_cms.content_elements.type.multiple_media" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\MultipleMediaContentElementType::TYPE</parameter>
-        <parameter key="sylius_cms.content_elements.type.heading" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType::TYPE</parameter>
-        <parameter key="sylius_cms.content_elements.type.products_carousel" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType::TYPE</parameter>
         <parameter key="sylius_cms.content_elements.type.products_carousel_by_taxon" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType::TYPE</parameter>
-        <parameter key="sylius_cms.content_elements.type.products_grid" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType::TYPE</parameter>
         <parameter key="sylius_cms.content_elements.type.products_grid_by_taxon" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridByTaxonContentElementType::TYPE</parameter>
-        <parameter key="sylius_cms.content_elements.type.taxons_list" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType::TYPE</parameter>
         <parameter key="sylius_cms.content_elements.type.pages_collection" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType::TYPE</parameter>
-        <parameter key="sylius_cms.content_elements.type.spacer" type="constant">Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType::TYPE</parameter>
     </parameters>
 
     <services>
@@ -83,11 +77,6 @@
             <tag name="form.type" />
         </service>
 
-        <service id="sylius_cms.form.type.content_element.textarea" class="Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.textarea%" />
-            <tag name="form.type" />
-        </service>
-
         <service id="sylius_cms.form.type.content_element.single_media" class="Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType">
             <argument type="service" id="sylius_cms.repository.media" />
             <argument type="service" id="sylius_cms.form.data_transformer.content_element_checker" />
@@ -101,25 +90,10 @@
             <tag name="form.type" />
         </service>
 
-        <service id="sylius_cms.form.type.content_element.heading" class="Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.heading%" />
-            <tag name="form.type" />
-        </service>
-
-        <service id="sylius_cms.form.type.content_element.products_carousel" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.products_carousel%" />
-            <tag name="form.type" />
-        </service>
-
         <service id="sylius_cms.form.type.content_element.products_carousel_by_taxon" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType">
             <argument type="service" id="sylius.repository.taxon" />
             <argument type="service" id="sylius_cms.form.data_transformer.content_element_checker" />
             <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.products_carousel_by_taxon%" />
-            <tag name="form.type" />
-        </service>
-
-        <service id="sylius_cms.form.type.content_element.products_grid" class="Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.products_grid%" />
             <tag name="form.type" />
         </service>
 
@@ -130,20 +104,10 @@
             <tag name="form.type" />
         </service>
 
-        <service id="sylius_cms.form.type.content_element.taxons_list" class="Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.taxons_list%" />
-            <tag name="form.type" />
-        </service>
-
         <service id="sylius_cms.form.type.content_element.pages_collection" class="Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType">
             <argument type="service" id="sylius_cms.repository.collection" />
             <argument type="service" id="sylius_cms.form.data_transformer.content_element_checker" />
             <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.pages_collection%" />
-            <tag name="form.type" />
-        </service>
-
-        <service id="sylius_cms.form.type.content_element.spacer" class="Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType">
-            <tag name="sylius_cms.content_elements.type" key="%sylius_cms.content_elements.type.spacer%" />
             <tag name="form.type" />
         </service>
 
