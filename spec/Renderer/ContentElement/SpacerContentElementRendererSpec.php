@@ -7,25 +7,16 @@ namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\SpacerContentElementType;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\SpacerContentElementRenderer;
 use Twig\Environment;
 
 final class SpacerContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig): void
-    {
-        $this->beConstructedWith($twig);
-    }
-
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(SpacerContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_spacer_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -42,12 +33,16 @@ final class SpacerContentElementRendererSpec extends ObjectBehavior
 
     public function it_renders_spacer_content_element(Environment $twig, ContentConfigurationInterface $contentConfiguration): void
     {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'spacer' => '40',
         ]);
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_spacer.html.twig',
+            'content_element' => $template,
             'spacer_height' => '40',
         ])->willReturn('rendered template');
 

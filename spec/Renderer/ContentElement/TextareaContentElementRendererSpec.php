@@ -7,25 +7,16 @@ namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\TextareaContentElementRenderer;
 use Twig\Environment;
 
 final class TextareaContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig): void
-    {
-        $this->beConstructedWith($twig);
-    }
-
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(TextareaContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_textarea_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -44,12 +35,16 @@ final class TextareaContentElementRendererSpec extends ObjectBehavior
         Environment $twig,
         ContentConfigurationInterface $contentConfiguration,
     ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'textarea' => 'Textarea content',
         ]);
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_textarea.html.twig',
+            'content_element' => $template,
             'content' => 'Textarea content',
         ])->willReturn('rendered template');
 

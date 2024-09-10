@@ -7,7 +7,7 @@ namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsCarouselByTaxonContentElementType;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\ProductsCarouselByTaxonContentElementRenderer;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\TaxonInterface;
@@ -17,19 +17,15 @@ use Twig\Environment;
 
 final class ProductsCarouselByTaxonContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, ProductRepositoryInterface $productRepository, TaxonRepositoryInterface $taxonRepository): void
+    public function let(ProductRepositoryInterface $productRepository, TaxonRepositoryInterface $taxonRepository): void
     {
-        $this->beConstructedWith($twig, $productRepository, $taxonRepository);
+        $this->beConstructedWith($productRepository, $taxonRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(ProductsCarouselByTaxonContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_products_carousel_by_taxon_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -53,6 +49,10 @@ final class ProductsCarouselByTaxonContentElementRendererSpec extends ObjectBeha
         Product $product1,
         Product $product2,
     ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'products_carousel_by_taxon' => 'taxon_code',
         ]);
@@ -61,7 +61,7 @@ final class ProductsCarouselByTaxonContentElementRendererSpec extends ObjectBeha
         $productRepository->findByTaxon($taxon)->willReturn([$product1, $product2]);
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_products_carousel.html.twig',
+            'content_element' => $template,
             'products' => [$product1, $product2],
         ])->willReturn('rendered template');
 

@@ -7,25 +7,16 @@ namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 use PhpSpec\ObjectBehavior;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\HeadingContentElementType;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
 use Sylius\CmsPlugin\Renderer\ContentElement\HeadingContentElementRenderer;
 use Twig\Environment;
 
 final class HeadingContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig): void
-    {
-        $this->beConstructedWith($twig);
-    }
-
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(HeadingContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_heading_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -42,13 +33,17 @@ final class HeadingContentElementRendererSpec extends ObjectBehavior
 
     public function it_renders_heading_content_element(Environment $twig, ContentConfigurationInterface $contentConfiguration): void
     {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
             'heading_type' => 'h1',
             'heading' => 'Sample Heading',
         ]);
 
         $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@SyliusCmsPlugin/Shop/ContentElement/_heading.html.twig',
+            'content_element' => $template,
             'heading_type' => 'h1',
             'heading_content' => 'Sample Heading',
         ])->willReturn('rendered template');
