@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Sylius\CmsPlugin\Entity;
 
+use Sylius\CmsPlugin\Entity\Trait\TeaserTrait;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class PageTranslation extends AbstractTranslation implements PageTranslationInterface
 {
+    use TeaserTrait;
+
     protected ?int $id;
 
     protected ?string $slug = null;

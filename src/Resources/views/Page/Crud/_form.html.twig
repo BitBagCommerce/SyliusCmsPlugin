@@ -1,4 +1,4 @@
-{% from '@SyliusCmsPlugin/Macro/translationForm.html.twig' import translationFormWithSlug %}
+{% from '@SyliusCmsPlugin/Macro/translationForm.html.twig' import translationFormWithSlug, translationForm %}
 {% form_theme form '@SyliusCmsPlugin/Form/theme.html.twig' %}
 
 {% include '@SyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
@@ -25,20 +25,18 @@
                 {{ 'sylius_cms.ui.teaser.header'|trans }}
                 <span class="help-text">- {{ 'sylius_cms.ui.teaser.help'|trans }}</span>
             </h4>
-            {{ form_row(form.teaserTitle) }}
-            {{ form_row(form.teaserContent) }}
-            {{ form_row(form.teaserImage) }}
-            {% if page.teaserImage %}
-                <div class="ui image">
-                    <a href="{{ page.teaserImage.path|imagine_filter('sylius_shop_product_original') }}">
-                        <img src="{{ page.teaserImage.path|imagine_filter('sylius_admin_product_small_thumbnail') }}"/>
-                    </a>
-                </div>
-            {% endif %}
+            {{ translationForm(
+                translation_form_reduce(form.translations, ['teaserTitle', 'teaserContent', 'teaserImage']),
+                page
+            ) }}
         </div>
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'sylius_cms.ui.seo'|trans }}</h4>
-            {{ translationFormWithSlug(form.translations, '@SyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
+            {{ translationFormWithSlug(
+                translation_form_reduce(form.translations, ['title', 'slug', 'metaKeywords', 'metaDescription']),
+                '@SyliusCmsPlugin/Page/Crud/_slugField.html.twig',
+                page
+            ) }}
         </div>
     </div>
     <div class="column">
