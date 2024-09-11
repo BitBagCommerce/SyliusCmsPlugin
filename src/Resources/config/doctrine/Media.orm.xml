@@ -39,7 +39,7 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="pages" target-entity="Sylius\CmsPlugin\Entity\PageInterface" mapped-by="teaserImage"/>
+        <one-to-many field="pages" target-entity="Sylius\CmsPlugin\Entity\PageTranslationInterface" mapped-by="teaserImage"/>
 
     </mapped-superclass>
 </doctrine-mapping>
