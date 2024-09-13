@@ -6,6 +6,7 @@
 
         <service id="sylius_cms.content_element_renderer_strategy" class="Sylius\CmsPlugin\Renderer\ContentElementRendererStrategy">
             <argument type="service" id="sylius_cms.twig.parser.content" />
+            <argument type="service" id="sylius.context.locale" />
             <argument type="tagged_iterator" tag="sylius_cms.content_element" />
         </service>
 

@@ -5,6 +5,11 @@ export class HandleTemplate {
             const cmsPageTemplate = $('#sylius_cms_page_template');
             const cmsBlockTemplate = $('#sylius_cms_block_template');
 
+            let locales = [];
+            $('.locale-selector option').each(function() {
+                locales.push($(this).val());
+            });
+
             cmsPageTemplate.on('change', function() {
                 if ($(this).val()) {
                     $('#load-template-confirmation-modal').modal('show');
@@ -38,15 +43,31 @@ export class HandleTemplate {
                                 .html('');
 
                             $.each(data.content, function () {
-                                $('[data-form-collection="add"]').trigger('click');
+                                locales.forEach(function (locale) {
+                                    $('[data-form-collection="add"]').trigger('click');
+                                });
                             });
 
                             const elements = $('.bb-collection-item');
+                            let idx = 0;
                             $.each(data.content, function (index, element) {
-                                setTimeout(() => {
-                                    elements.eq(index).find('select:first').val(element.type);
-                                    elements.eq(index).find('select:first').change();
-                                }, 300);
+                                locales.forEach(function (locale) {
+                                    elements.eq(idx).find('select:first').val(element.type);
+                                    elements.eq(idx).find('select:first').change();
+                                    elements.eq(idx).find('input[name$="[locale]"]').val(locale);
+                                    idx++;
+                                });
+                            });
+
+                            $('.content-elements-container').find('.bb-collection-item').each(function() {
+                                const $element = $(this);
+                                const elementLocale = $element.find('input[name$="[locale]"]').val();
+
+                                if (elementLocale === $('.locale-selector').val()) {
+                                    $element.show();
+                                } else {
+                                    $element.hide();
+                                }
                             });
                         } else {
                             console.error(data.message);

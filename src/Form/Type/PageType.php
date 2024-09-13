@@ -8,14 +8,35 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Sylius\CmsPlugin\Form\Type\Translation\PageTranslationType;
+use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 final class PageType extends AbstractResourceType
 {
+    private array $locales = [];
+
+    public function __construct(
+        private RepositoryInterface $localeRepository,
+        string $dataClass,
+        array $validationGroups = [],
+    ) {
+        parent::__construct($dataClass, $validationGroups);
+
+        /** @var LocaleInterface[] $locales */
+        $locales = $this->localeRepository->findAll();
+        foreach ($locales as $locale) {
+            $this->locales[$locale->getName()] = $locale->getCode();
+        }
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -57,12 +78,46 @@ final class PageType extends AbstractResourceType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'attr' => [
+                    'class' => 'content-elements-container',
+                ],
             ])
             ->add('template', TemplatePageAutocompleteChoiceType::class, [
                 'label' => false,
                 'mapped' => false,
             ])
+            ->add('locale', ChoiceType::class, [
+                'choices' => $this->locales,
+                'mapped' => false,
+                'label' => 'sylius.ui.locale',
+                'attr' => [
+                    'class' => 'locale-selector',
+                ]
+            ])
         ;
+
+        self::addContentElementLocaleListener($builder);
+    }
+
+    public static function addContentElementLocaleListener(FormBuilderInterface $builder): void
+    {
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $data = $event->getData();
+            $selectedLocale = $data['locale'] ?? null;
+
+            if (isset($data['contentElements'])) {
+                foreach ($data['contentElements'] as &$contentElement) {
+                    if (empty($contentElement['locale'])) {
+                        $contentElement['locale'] = $selectedLocale;
+                    }
+                }
+            }
+
+            $event->setData($data);
+        });
     }
 
     public function getBlockPrefix(): string

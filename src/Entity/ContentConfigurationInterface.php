@@ -16,6 +16,10 @@ interface ContentConfigurationInterface extends ResourceInterface
 
     public function setConfiguration(array $configuration): void;
 
+    public function getLocale(): ?string;
+
+    public function setLocale(?string $locale): void;
+
     public function getBlock(): ?BlockInterface;
 
     public function setBlock(?BlockInterface $block): void;

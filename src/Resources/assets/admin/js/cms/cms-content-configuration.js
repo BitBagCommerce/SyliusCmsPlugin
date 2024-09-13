@@ -1,4 +1,32 @@
 $(document).ready(function() {
+    const localeSelector = $('.locale-selector');
+    const contentElementsContainer = $('.content-elements-container');
+
+    function updateContentElementsVisibility() {
+        const selectedLocale = localeSelector.val();
+
+        contentElementsContainer.find('.bb-collection-item').each(function() {
+            const $element = $(this);
+            const elementLocale = $element.find('input[name$="[locale]"]').val();
+
+            if (elementLocale === selectedLocale) {
+                $element.show();
+            } else {
+                $element.hide();
+            }
+        });
+    }
+
+    localeSelector.on('change', function() {
+        updateContentElementsVisibility();
+    });
+
+    contentElementsContainer.on('contentElementAdded', function() {
+        updateContentElementsVisibility();
+    });
+
+    updateContentElementsVisibility();
+
     $('.cms-media-autocomplete, .sylius-autocomplete').each((index, element) => {
         $(element).autoComplete();
     });
@@ -32,15 +60,19 @@ $(document).ready(function() {
     if (!$(collectionHolder).length) {
         return;
     }
+
     $(document).on('collection-form-add', () => {
         $('.cms-media-autocomplete, .sylius-autocomplete').each((index, element) => {
             if ($._data($(element).get(0), 'events') === undefined) {
                 $(element).autoComplete();
             }
         });
+
         $(`${collectionHolder} [data-form-collection="item"]`).each((index, element) => {
             $(document).loadContentConfiguration(element);
         });
+
+        $('.bb-collection-item:last-child').find('input[name$="[locale]"]').val(localeSelector.val());
     });
     $.fn.extend({
         loadContentConfiguration(target) {

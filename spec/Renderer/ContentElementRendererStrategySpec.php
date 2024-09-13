@@ -10,23 +10,18 @@ use Sylius\CmsPlugin\Entity\BlockInterface;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Entity\PageInterface;
 use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategy;
 use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class ContentElementRendererStrategySpec extends ObjectBehavior
 {
     public function let(
         ContentParserInterface $contentParser,
-        ContentElementRendererInterface $renderer1,
-        ContentElementRendererInterface $renderer2,
+        LocaleContextInterface $localeContext,
+        ContentElementRendererInterface $renderer
     ): void {
-        $this->beConstructedWith($contentParser, [$renderer1, $renderer2]);
-    }
-
-    public function it_is_initializable(): void
-    {
-        $this->shouldHaveType(ContentElementRendererStrategy::class);
+        $this->beConstructedWith($contentParser, $localeContext, [$renderer]);
     }
 
     public function it_implements_content_element_renderer_strategy_interface(): void
@@ -34,55 +29,59 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         $this->shouldImplement(ContentElementRendererStrategyInterface::class);
     }
 
-    public function it_renders_content_elements_using_registered_renderers(
-        ContentParserInterface $contentParser,
-        ContentElementRendererInterface $renderer1,
-        ContentElementRendererInterface $renderer2,
-        BlockInterface $block,
-        ContentConfigurationInterface $contentElement1,
-        ContentConfigurationInterface $contentElement2,
+    public function it_renders_a_page_content_element_correctly(
+        PageInterface $page,
+        ContentConfigurationInterface $contentElement,
+        LocaleContextInterface $localeContext,
+        ContentElementRendererInterface $renderer,
+        ContentParserInterface $contentParser
     ): void {
-        $block->getContentElements()->willReturn(
-            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()]),
-        );
+        $page->getContentElements()->willReturn(new ArrayCollection([$contentElement->getWrappedObject()]));
+        $localeContext->getLocaleCode()->willReturn('en_US');
+        $contentElement->getLocale()->willReturn('en_US');
 
-        $renderer1->supports($contentElement1)->willReturn(true);
-        $renderer1->supports($contentElement2)->willReturn(false);
-        $renderer1->render($contentElement1)->willReturn('Rendered content 1');
-        $renderer2->supports($contentElement2)->willReturn(true);
-        $renderer2->supports($contentElement1)->willReturn(false);
-        $renderer2->render($contentElement2)->willReturn('Rendered content 2');
+        $renderer->supports($contentElement)->willReturn(true);
+        $renderer->render($contentElement)->willReturn('&lt;p&gt;Hello World&lt;/p&gt;');
 
-        $expectedParsedContent = 'Parsed content after rendering';
+        $contentParser->parse('<p>Hello World</p>')->willReturn('<p>Hello World</p>');
 
-        $contentParser->parse('Rendered content 1Rendered content 2')->willReturn($expectedParsedContent);
-
-        $this->render($block)->shouldReturn($expectedParsedContent);
+        $this->render($page)->shouldReturn('<p>Hello World</p>');
     }
 
-    public function it_renders_content_elements_using_registered_renderers_for_page(
-        ContentParserInterface $contentParser,
-        ContentElementRendererInterface $renderer1,
-        ContentElementRendererInterface $renderer2,
-        PageInterface $page,
-        ContentConfigurationInterface $contentElement1,
-        ContentConfigurationInterface $contentElement2,
+    public function it_skips_content_element_with_non_matching_locale(
+        BlockInterface $block,
+        ContentConfigurationInterface $contentElement,
+        LocaleContextInterface $localeContext,
+        ContentParserInterface $contentParser
     ): void {
-        $page->getContentElements()->willReturn(
-            new ArrayCollection([$contentElement1->getWrappedObject(), $contentElement2->getWrappedObject()]),
-        );
+        $block->getContentElements()->willReturn(new ArrayCollection([$contentElement]));
+        $localeContext->getLocaleCode()->willReturn('en_US');
+        $contentElement->getLocale()->willReturn('fr_FR');
 
-        $renderer1->supports($contentElement1)->willReturn(true);
-        $renderer1->supports($contentElement2)->willReturn(false);
-        $renderer1->render($contentElement1)->willReturn('Rendered content 1');
-        $renderer2->supports($contentElement2)->willReturn(true);
-        $renderer2->supports($contentElement1)->willReturn(false);
-        $renderer2->render($contentElement2)->willReturn('Rendered content 2');
+        $contentParser->parse('')->willReturn('');
 
-        $expectedParsedContent = 'Parsed content after rendering';
+        $this->render($block)->shouldReturn('');
+    }
 
-        $contentParser->parse('Rendered content 1Rendered content 2')->willReturn($expectedParsedContent);
+    public function it_renders_only_supported_content_elements(
+        BlockInterface $block,
+        ContentConfigurationInterface $supportedElement,
+        ContentConfigurationInterface $unsupportedElement,
+        LocaleContextInterface $localeContext,
+        ContentElementRendererInterface $renderer,
+        ContentParserInterface $contentParser
+    ): void {
+        $block->getContentElements()->willReturn(new ArrayCollection([$supportedElement->getWrappedObject(), $unsupportedElement->getWrappedObject()]));
+        $localeContext->getLocaleCode()->willReturn('en_US');
+        $supportedElement->getLocale()->willReturn('en_US');
+        $unsupportedElement->getLocale()->willReturn('en_US');
 
-        $this->render($page)->shouldReturn($expectedParsedContent);
+        $renderer->supports($supportedElement)->willReturn(true);
+        $renderer->render($supportedElement)->willReturn('&lt;p&gt;Supported&lt;/p&gt;');
+        $renderer->supports($unsupportedElement)->willReturn(false);
+
+        $contentParser->parse('<p>Supported</p>')->willReturn('<p>Supported</p>');
+
+        $this->render($block)->shouldReturn('<p>Supported</p>');
     }
 }

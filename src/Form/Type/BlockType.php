@@ -9,13 +9,32 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class BlockType extends AbstractResourceType
 {
+    private array $locales = [];
+
+    public function __construct(
+        private RepositoryInterface $localeRepository,
+        string $dataClass,
+        array $validationGroups = [],
+    ) {
+        parent::__construct($dataClass, $validationGroups);
+
+        /** @var LocaleInterface[] $locales */
+        $locales = $this->localeRepository->findAll();
+        foreach ($locales as $locale) {
+            $this->locales[$locale->getName()] = $locale->getCode();
+        }
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /** @var BlockInterface $block */
@@ -50,6 +69,12 @@ final class BlockType extends AbstractResourceType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'attr' => [
+                    'class' => 'content-elements-container',
+                ],
             ])
             ->add('products', ProductAutocompleteChoiceType::class, [
                 'label' => 'sylius_cms.ui.display_for_products.label',
@@ -70,7 +95,17 @@ final class BlockType extends AbstractResourceType
                 'label' => false,
                 'mapped' => false,
             ])
+            ->add('locale', ChoiceType::class, [
+                'choices' => $this->locales,
+                'mapped' => false,
+                'label' => 'sylius.ui.locale',
+                'attr' => [
+                    'class' => 'locale-selector',
+                ]
+            ])
         ;
+
+        PageType::addContentElementLocaleListener($builder);
     }
 
     public function getBlockPrefix(): string
