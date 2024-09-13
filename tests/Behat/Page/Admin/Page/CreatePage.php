@@ -113,7 +113,10 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         $iframe = $this->getDocument()->find('css', '.cke_wysiwyg_frame');
         if (null === $iframe) {
-            throw new \Exception('CKEditor iframe not found');
+            $textarea = $this->getElement('content_elements_textarea');
+            $textarea->setValue($content);
+
+            return;
         }
 
         $this->getDriver()->switchToIFrame($iframe->getAttribute('name'));
@@ -125,7 +128,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
 
         $body->setValue($content);
 
-        $this->getDriver()->switchToIFrame(null);
+        $this->getDriver()->switchToIFrame();
     }
 
     public function addSingleMediaContentElementWithName(string $name): void
