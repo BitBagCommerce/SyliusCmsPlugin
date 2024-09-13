@@ -19,10 +19,10 @@ class TranslationFormReduceRuntimeSpec extends ObjectBehavior
         FormView $form,
         FormView $localeForm,
         FormView $slugForm,
-        FormView $titleForm
+        FormView $titleForm,
     ): void {
         $form->children = [
-            'en_US' => $localeForm
+            'en_US' => $localeForm,
         ];
 
         $localeForm->children = [
@@ -56,7 +56,7 @@ class TranslationFormReduceRuntimeSpec extends ObjectBehavior
         FormView $enLocale,
         FormView $deLocale,
         FormView $slugForm,
-        FormView $titleForm
+        FormView $titleForm,
     ): void {
         $form->children = [
             'en_US' => $enLocale,
@@ -85,7 +85,7 @@ class TranslationFormReduceRuntimeSpec extends ObjectBehavior
         FormView $form,
         FormView $enLocale,
         FormView $deLocale,
-        FormView $slugForm
+        FormView $slugForm,
     ): void {
         $form->children = [
             'en_US' => $enLocale,
@@ -108,7 +108,7 @@ class TranslationFormReduceRuntimeSpec extends ObjectBehavior
         FormView $form,
         FormView $localeForm,
         FormView $slugForm,
-        FormView $titleForm
+        FormView $titleForm,
     ): void {
         $form->children = [
             'en_US' => $localeForm,

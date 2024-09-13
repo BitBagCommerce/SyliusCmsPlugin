@@ -101,7 +101,7 @@ final class BlockType extends AbstractResourceType
                 'label' => 'sylius.ui.locale',
                 'attr' => [
                     'class' => 'locale-selector',
-                ]
+                ],
             ])
         ;
 

@@ -95,7 +95,7 @@ final class PageType extends AbstractResourceType
                 'label' => 'sylius.ui.locale',
                 'attr' => [
                     'class' => 'locale-selector',
-                ]
+                ],
             ])
         ;
 

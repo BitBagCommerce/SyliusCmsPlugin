@@ -19,7 +19,7 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
     public function let(
         ContentParserInterface $contentParser,
         LocaleContextInterface $localeContext,
-        ContentElementRendererInterface $renderer
+        ContentElementRendererInterface $renderer,
     ): void {
         $this->beConstructedWith($contentParser, $localeContext, [$renderer]);
     }
@@ -34,7 +34,7 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         ContentConfigurationInterface $contentElement,
         LocaleContextInterface $localeContext,
         ContentElementRendererInterface $renderer,
-        ContentParserInterface $contentParser
+        ContentParserInterface $contentParser,
     ): void {
         $page->getContentElements()->willReturn(new ArrayCollection([$contentElement->getWrappedObject()]));
         $localeContext->getLocaleCode()->willReturn('en_US');
@@ -52,7 +52,7 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         BlockInterface $block,
         ContentConfigurationInterface $contentElement,
         LocaleContextInterface $localeContext,
-        ContentParserInterface $contentParser
+        ContentParserInterface $contentParser,
     ): void {
         $block->getContentElements()->willReturn(new ArrayCollection([$contentElement]));
         $localeContext->getLocaleCode()->willReturn('en_US');
@@ -69,7 +69,7 @@ final class ContentElementRendererStrategySpec extends ObjectBehavior
         ContentConfigurationInterface $unsupportedElement,
         LocaleContextInterface $localeContext,
         ContentElementRendererInterface $renderer,
-        ContentParserInterface $contentParser
+        ContentParserInterface $contentParser,
     ): void {
         $block->getContentElements()->willReturn(new ArrayCollection([$supportedElement->getWrappedObject(), $unsupportedElement->getWrappedObject()]));
         $localeContext->getLocaleCode()->willReturn('en_US');

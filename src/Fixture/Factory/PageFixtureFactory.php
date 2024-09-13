@@ -78,16 +78,19 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $page->addTranslation($pageTranslation);
         }
 
-        foreach ($pageData['content_elements'] as $data) {
-            $data['data'] = array_filter($data['data'], static function ($value) {
-                return !empty($value);
-            });
+        foreach ($pageData['content_elements'] as $locale => $data) {
+            foreach ($data as $contentElementData) {
+                $contentElementData['data'] = array_filter($contentElementData['data'], static function ($value) {
+                    return !empty($value);
+                });
 
-            $contentConfiguration = new ContentConfiguration();
-            $contentConfiguration->setType($data['type']);
-            $contentConfiguration->setConfiguration($data['data']);
-            $contentConfiguration->setPage($page);
-            $page->addContentElement($contentConfiguration);
+                $contentConfiguration = new ContentConfiguration();
+                $contentConfiguration->setType($contentElementData['type']);
+                $contentConfiguration->setConfiguration($contentElementData['data']);
+                $contentConfiguration->setLocale($locale);
+                $contentConfiguration->setPage($page);
+                $page->addContentElement($contentConfiguration);
+            }
         }
 
         $this->pageRepository->add($page);
