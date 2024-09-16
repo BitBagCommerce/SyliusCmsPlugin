@@ -205,6 +205,7 @@ final class PageContext implements Context
         /** @var ContentConfigurationInterface $contentConfiguration */
         $contentConfiguration = new ContentConfiguration();
         $contentConfiguration->setType(mb_strtolower($contentElement));
+        $contentConfiguration->setLocale('en_US');
         $contentConfiguration->setConfiguration(ContentElementHelper::getExampleConfigurationByContentElement($contentElement));
         $contentConfiguration->setPage($page);
 

@@ -12,6 +12,8 @@ class ContentConfiguration implements ContentConfigurationInterface
 
     protected array $configuration = [];
 
+    protected ?string $locale = null;
+
     protected ?BlockInterface $block = null;
 
     protected ?PageInterface $page = null;
@@ -39,6 +41,16 @@ class ContentConfiguration implements ContentConfigurationInterface
     public function setConfiguration(array $configuration): void
     {
         $this->configuration = $configuration;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): void
+    {
+        $this->locale = $locale;
     }
 
     public function getBlock(): ?BlockInterface

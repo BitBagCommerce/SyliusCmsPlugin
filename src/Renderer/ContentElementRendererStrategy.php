@@ -8,6 +8,7 @@ use Sylius\CmsPlugin\Entity\BlockInterface;
 use Sylius\CmsPlugin\Entity\PageInterface;
 use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use Sylius\CmsPlugin\Twig\Parser\ContentParserInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class ContentElementRendererStrategy implements ContentElementRendererStrategyInterface
 {
@@ -16,6 +17,7 @@ final class ContentElementRendererStrategy implements ContentElementRendererStra
      */
     public function __construct(
         private ContentParserInterface $contentParser,
+        private LocaleContextInterface $localeContext,
         private iterable $renderers,
     ) {
     }
@@ -25,6 +27,10 @@ final class ContentElementRendererStrategy implements ContentElementRendererStra
         $content = '';
 
         foreach ($item->getContentElements() as $contentElement) {
+            if ($contentElement->getLocale() !== $this->localeContext->getLocaleCode()) {
+                continue;
+            }
+
             foreach ($this->renderers as $renderer) {
                 if ($renderer->supports($contentElement)) {
                     $content .= html_entity_decode($renderer->render($contentElement), \ENT_QUOTES);

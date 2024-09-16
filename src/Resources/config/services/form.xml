@@ -13,6 +13,7 @@
         <defaults public="true" />
 
         <service id="sylius_cms.form.type.block" class="Sylius\CmsPlugin\Form\Type\BlockType">
+            <argument type="service" id="sylius.repository.locale" />
             <argument>%sylius_cms.model.block.class%</argument>
             <argument>%sylius_cms.form.type.block.validation_groups%</argument>
             <tag name="form.type" />
@@ -27,6 +28,7 @@
         </service>
 
         <service id="sylius_cms.form.type.page" class="Sylius\CmsPlugin\Form\Type\PageType">
+            <argument type="service" id="sylius.repository.locale" />
             <argument>%sylius_cms.model.page.class%</argument>
             <argument>%sylius_cms.form.type.page.validation_groups%</argument>
             <tag name="form.type" />

@@ -102,8 +102,24 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     {
         Assert::isInstanceOf($this->getDriver(), ChromeDriver::class);
 
-        $textarea = $this->getElement('content_elements_textarea');
-        $textarea->setValue($content);
+        $iframe = $this->getDocument()->find('css', '.cke_wysiwyg_frame');
+        if (null === $iframe) {
+            $textarea = $this->getElement('content_elements_textarea');
+            $textarea->setValue($content);
+
+            return;
+        }
+
+        $this->getDriver()->switchToIFrame($iframe->getAttribute('name'));
+
+        $body = $this->getDocument()->find('css', 'body');
+        if (null === $body) {
+            throw new \Exception('CKEditor body not found');
+        }
+
+        $body->setValue($content);
+
+        $this->getDriver()->switchToIFrame();
     }
 
     public function addSingleMediaContentElementWithName(string $name): void

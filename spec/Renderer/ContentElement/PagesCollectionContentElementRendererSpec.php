@@ -10,7 +10,6 @@ use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
 use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
-use Sylius\CmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
 use Sylius\CmsPlugin\Renderer\ContentElement\PagesCollectionContentElementRenderer;
 use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 use Twig\Environment;

@@ -43,6 +43,7 @@
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'sylius_cms.ui.content_elements.title'|trans }}</h4>
             {% include '@SyliusCmsPlugin/Template/form.html.twig' with {ajax_url: path('sylius_cms_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) } %}
+            {% include '@SyliusCmsPlugin/Locale/form.html.twig' %}
             <div class="ui one column stackable grid">
                 <div class="column">
                     {{ form_row(form.contentElements) }}

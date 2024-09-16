@@ -7,6 +7,7 @@ namespace Sylius\CmsPlugin\Form\Type;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -38,6 +39,7 @@ final class ContentConfigurationType extends AbstractResourceType
         $defaultActionConfigurationType = $this->actionConfigurationTypes[$defaultActionType];
 
         $builder
+            ->add('locale', HiddenType::class)
             ->add('type', ChoiceType::class, [
                 'label' => 'sylius.ui.type',
                 'choices' => $this->actionTypes,
