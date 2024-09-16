@@ -80,5 +80,14 @@
             <argument>%sylius_cms.twig.link_template%</argument>
             <tag name="twig.runtime" />
         </service>
+
+        <service id="sylius_cms.twig.extension.translation_form_reduce" class="Sylius\CmsPlugin\Twig\Extension\TranslationFormReduceExtension">
+            <argument type="service" id="sylius_cms.twig.runtime.translation_form_reduce" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="sylius_cms.twig.runtime.translation_form_reduce" class="Sylius\CmsPlugin\Twig\Runtime\TranslationFormReduceRuntime">
+            <tag name="twig.runtime" />
+        </service>
     </services>
 </container>

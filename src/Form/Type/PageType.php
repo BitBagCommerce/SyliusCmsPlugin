@@ -62,18 +62,6 @@ final class PageType extends AbstractResourceType
                 'label' => false,
                 'mapped' => false,
             ])
-            ->add('teaserTitle', TextType::class, [
-                'label' => 'sylius_cms.ui.teaser.title',
-                'required' => false,
-            ])
-            ->add('teaserContent', WysiwygType::class, [
-                'label' => 'sylius_cms.ui.teaser.content',
-                'required' => false,
-            ])
-            ->add('teaserImage', MediaImageAutocompleteChoiceType::class, [
-                'label' => 'sylius_cms.ui.teaser.image',
-                'required' => false,
-            ])
         ;
     }
 

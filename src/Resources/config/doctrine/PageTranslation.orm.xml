@@ -17,5 +17,13 @@
         <field name="metaDescription" column="meta_description" type="string" length="5000" nullable="true"/>
 
         <field name="title" column="title" type="string" nullable="true"/>
+
+        <field name="teaserTitle" column="teaser_title" type="string" nullable="true"/>
+
+        <field name="teaserContent" column="teaser_content" type="text" nullable="true"/>
+
+        <many-to-one field="teaserImage" target-entity="Sylius\CmsPlugin\Entity\MediaInterface" inversed-by="pages">
+            <join-column name="teaser_image_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+        </many-to-one>
     </mapped-superclass>
 </doctrine-mapping>

@@ -374,13 +374,13 @@ sylius_fixtures:
                                     - "FASHION_WEB"
                                 collections:
                                     - "blog"
-                                teaser_title: "Blog post 1"
-                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
-                                teaser_image: "sale"
                                 translations:
                                     en_US:
                                         slug: "blog-post-1"
                                         meta_title: "Blog post 1"
+                                        teaser_title: "Blog post 1"
+                                        teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                        teaser_image: "sale"
                                 content_elements:
                                     single_media:
                                         type: "single_media"
@@ -433,13 +433,13 @@ sylius_fixtures:
                                     - "FASHION_WEB"
                                 collections:
                                     - "blog"
-                                teaser_title: "Blog post 2"
-                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
-                                teaser_image: "sale"
                                 translations:
                                     en_US:
                                         slug: "blog-post-2"
                                         meta_title: "Blog post 2"
+                                        teaser_title: "Blog post 2"
+                                        teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                        teaser_image: "sale"
                                 content_elements:
                                     single_media:
                                         type: "single_media"
@@ -492,13 +492,13 @@ sylius_fixtures:
                                     - "FASHION_WEB"
                                 collections:
                                     - "blog"
-                                teaser_title: "Blog post 3"
-                                teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
-                                teaser_image: "sale"
                                 translations:
                                     en_US:
                                         slug: "blog-post-3"
                                         meta_title: "Blog post 3"
+                                        teaser_title: "Blog post 3"
+                                        teaser_content: "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie nulla ac tempus volutpat. Aenean aliquet viverra sem a feugiat. Pellentesque a sollicitudin lacus. Mauris vel dolor quis justo vestibulum posuere. Sed sagittis, ipsum a cursus porttitor, justo felis tincidunt neque, eget scelerisque lacus sapien tempor felis.</div>"
+                                        teaser_image: "sale"
                                 content_elements:
                                     single_media:
                                         type: "single_media"

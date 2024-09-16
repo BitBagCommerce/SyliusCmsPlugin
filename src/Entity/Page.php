@@ -7,7 +7,6 @@ namespace Sylius\CmsPlugin\Entity;
 use Sylius\CmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use Sylius\CmsPlugin\Entity\Trait\CollectibleTrait;
 use Sylius\CmsPlugin\Entity\Trait\ContentElementsAwareTrait;
-use Sylius\CmsPlugin\Entity\Trait\TeaserTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -20,7 +19,6 @@ class Page implements PageInterface
     use TimestampableTrait;
     use ChannelsAwareTrait;
     use ContentElementsAwareTrait;
-    use TeaserTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -106,6 +104,51 @@ class Page implements PageInterface
         /** @var PageTranslationInterface $pageTranslationInterface */
         $pageTranslationInterface = $this->getPageTranslation();
         $pageTranslationInterface->setMetaDescription($metaDescription);
+    }
+
+    public function getTeaserTitle(): ?string
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserTitle();
+    }
+
+    public function setTeaserTitle(?string $teaserTitle): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserTitle($teaserTitle);
+    }
+
+    public function getTeaserContent(): ?string
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserContent();
+    }
+
+    public function setTeaserContent(?string $teaserContent): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserContent($teaserContent);
+    }
+
+    public function getTeaserImage(): ?MediaInterface
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserImage();
+    }
+
+    public function setTeaserImage(?MediaInterface $teaserImage): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserImage($teaserImage);
     }
 
     public function getName(): ?string

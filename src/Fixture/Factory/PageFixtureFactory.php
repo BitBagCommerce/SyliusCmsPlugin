@@ -56,15 +56,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $page->setName($pageData['name']);
         $page->setEnabled($pageData['enabled']);
 
-        /** @var MediaInterface|null $mediaImage */
-        $mediaImage = $this->mediaRepository->findOneBy(['code' => $pageData['teaser_image']]);
-        if ($mediaImage) {
-            $page->setTeaserImage($mediaImage);
-        }
-
-        $page->setTeaserTitle($pageData['teaser_title']);
-        $page->setTeaserContent($pageData['teaser_content']);
-
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */
             $pageTranslation = $this->pageTranslationFactory->createNew();
@@ -75,6 +66,14 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $pageTranslation->setTitle($translation['meta_title']);
             $pageTranslation->setMetaKeywords($translation['meta_keywords']);
             $pageTranslation->setMetaDescription($translation['meta_description']);
+            $pageTranslation->setTeaserTitle($translation['teaser_title']);
+            $pageTranslation->setTeaserContent($translation['teaser_content']);
+
+            /** @var MediaInterface|null $mediaImage */
+            $mediaImage = $this->mediaRepository->findOneBy(['code' => $translation['teaser_image']]);
+            if ($mediaImage) {
+                $pageTranslation->setTeaserImage($mediaImage);
+            }
 
             $page->addTranslation($pageTranslation);
         }

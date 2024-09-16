@@ -7,7 +7,7 @@ namespace Sylius\CmsPlugin\Entity;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-interface PageTranslationInterface extends ResourceInterface, TranslationInterface
+interface PageTranslationInterface extends ResourceInterface, TranslationInterface, TeaserInterface
 {
     public function getSlug(): ?string;
 
@@ -24,4 +24,10 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function getTitle(): ?string;
 
     public function setTitle(?string $title): void;
+
+    public function getTeaserTitle(): ?string;
+
+    public function getTeaserContent(): ?string;
+
+    public function getTeaserImage(): ?MediaInterface;
 }
