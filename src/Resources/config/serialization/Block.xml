@@ -23,9 +23,6 @@
         <attribute name="channels">
             <group>sylius_cms:block:read:show</group>
         </attribute>
-        <attribute name="locales">
-            <group>sylius_cms:block:read:show</group>
-        </attribute>
         <attribute name="collections">
             <group>sylius_cms:block:read:show</group>
         </attribute>

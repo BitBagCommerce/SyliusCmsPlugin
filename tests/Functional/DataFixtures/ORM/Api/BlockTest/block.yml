@@ -80,8 +80,6 @@ Sylius\CmsPlugin\Entity\Block:
       - '@collection1'
     channels:
       - '@channel'
-    locales:
-        - '@locale'
   block2:
     code: 'block2-code'
     name: 'block2-name'
@@ -90,8 +88,6 @@ Sylius\CmsPlugin\Entity\Block:
       - '@collection2'
     channels:
       - '@channel'
-    locales:
-      - '@locale'
   block3:
     code: 'block3-code'
     name: 'block3-name'
@@ -100,8 +96,6 @@ Sylius\CmsPlugin\Entity\Block:
       - '@collection3'
     channels:
       - '@channel'
-    locales:
-      - '@locale'
 Sylius\CmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
