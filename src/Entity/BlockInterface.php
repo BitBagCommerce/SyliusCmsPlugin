@@ -14,7 +14,6 @@ interface BlockInterface extends
     CollectibleInterface,
     ChannelsAwareInterface,
     ContentElementsAwareInterface,
-    LocaleAwareInterface,
     ProductsAwareInterface,
     TaxonAwareInterface,
     ProductsInTaxonsAwareInterface,

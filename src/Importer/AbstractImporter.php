@@ -38,10 +38,12 @@ abstract class AbstractImporter implements ImporterInterface
 
         foreach ($translatableColumns as $translatableColumn) {
             $translatableColumn = str_replace('__locale__', '_', $translatableColumn);
-
             foreach ($columns as $column) {
-                if (str_starts_with($column, $translatableColumn)) {
-                    $locales[] = str_replace($translatableColumn, '', $column);
+                if (
+                    str_starts_with($column, $translatableColumn) &&
+                    preg_match('/^' . preg_quote($translatableColumn, '/') . '([a-z]{2}_[A-Z]{2})$/', $column, $matches)
+                ) {
+                    $locales[] = $matches[1];
                 }
             }
         }

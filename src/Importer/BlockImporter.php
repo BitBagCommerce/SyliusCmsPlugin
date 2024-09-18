@@ -8,7 +8,6 @@ use Sylius\CmsPlugin\Entity\BlockInterface;
 use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
-use Sylius\CmsPlugin\Resolver\Importer\ImporterLocalesResolverInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsInTaxonsResolverInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterProductsResolverInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterTaxonsResolverInterface;
@@ -22,7 +21,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
         private ResourceResolverInterface $blockResourceResolver,
         private ImporterCollectionsResolverInterface $importerCollectionsResolver,
         private ImporterChannelsResolverInterface $importerChannelsResolver,
-        private ImporterLocalesResolverInterface $importerLocalesResolver,
         private ImporterProductsResolverInterface $importerProductsResolver,
         private ImporterTaxonsResolverInterface $importerTaxonsResolver,
         private ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
@@ -45,7 +43,6 @@ final class BlockImporter extends AbstractImporter implements BlockImporterInter
 
         $this->importerCollectionsResolver->resolve($block, $this->getColumnValue(self::COLLECTIONS_COLUMN, $row));
         $this->importerChannelsResolver->resolve($block, $this->getColumnValue(self::CHANNELS_COLUMN, $row));
-        $this->importerLocalesResolver->resolve($block, $this->getColumnValue(self::LOCALES_COLUMN, $row));
         $this->importerProductsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_COLUMN, $row));
         $this->importerTaxonsResolver->resolve($block, $this->getColumnValue(self::TAXONS_COLUMN, $row));
         $this->importerProductsInTaxonsResolver->resolve($block, $this->getColumnValue(self::PRODUCTS_IN_TAXONS_COLUMN, $row));
