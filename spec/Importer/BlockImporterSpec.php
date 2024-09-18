@@ -25,7 +25,6 @@ final class BlockImporterSpec extends ObjectBehavior
         ResourceResolverInterface $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterLocalesResolverInterface $importerLocalesResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ImporterTaxonsResolverInterface $importerTaxonsResolver,
         ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
@@ -36,7 +35,6 @@ final class BlockImporterSpec extends ObjectBehavior
             $blockResourceResolver,
             $importerCollectionsResolver,
             $importerChannelsResolver,
-            $importerLocalesResolver,
             $importerProductsResolver,
             $importerTaxonsResolver,
             $importerProductsInTaxonsResolver,
@@ -55,7 +53,6 @@ final class BlockImporterSpec extends ObjectBehavior
         ResourceResolverInterface $blockResourceResolver,
         ImporterCollectionsResolverInterface $importerCollectionsResolver,
         ImporterChannelsResolverInterface $importerChannelsResolver,
-        ImporterLocalesResolverInterface $importerLocalesResolver,
         ImporterProductsResolverInterface $importerProductsResolver,
         ImporterTaxonsResolverInterface $importerTaxonsResolver,
         ImporterProductsInTaxonsResolverInterface $importerProductsInTaxonsResolver,
@@ -73,7 +70,6 @@ final class BlockImporterSpec extends ObjectBehavior
 
         $importerCollectionsResolver->resolve($block, null)->shouldBeCalled();
         $importerChannelsResolver->resolve($block, null)->shouldBeCalled();
-        $importerLocalesResolver->resolve($block, null)->shouldBeCalled();
         $importerProductsResolver->resolve($block, null)->shouldBeCalled();
         $importerTaxonsResolver->resolve($block, null)->shouldBeCalled();
         $importerProductsInTaxonsResolver->resolve($block, null)->shouldBeCalled();
