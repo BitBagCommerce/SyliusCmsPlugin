@@ -36,7 +36,7 @@ sylius_cms:
         position: Pozicija (redosljed)
         title: Titula
         content_elements:
-            title: Elementi sadržaja
+            title: Sadržaj
             type:
                 textarea: Textarea
                 single_media: Jedan medij
@@ -51,6 +51,7 @@ sylius_cms:
                 spacer: Razmak
                 spacer_height: Visina razmaka u pikselima
             heading_type: Tip naslova
+            template: Predložak elemenata sadržaja
         taxon: Takson
         display_for_products:
             label: Prikaz za proizvode
@@ -63,6 +64,8 @@ sylius_cms:
             help: Odaberite taksone u kojima će se ovaj blok prikazati
         manage_block_display: Upravljanje prikazom bloka
         templates: Predlošci
+        template: Predložak
+        content_templates: Predloške sadržaja
         new_template: Novi predložak
         edit_template: Uredi predložak
         use_page_template: Koristi predložak stranice

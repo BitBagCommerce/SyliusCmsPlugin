@@ -7,7 +7,7 @@ sylius_cms:
         page: Stránka
         title: Titul
         content_elements:
-            title: Obsahové prvky
+            title: Obsah
             type:
                 textarea: Textarea
                 single_media: Jediné médium
@@ -22,6 +22,7 @@ sylius_cms:
                 spacer: Oddělovač
                 spacer_height: Výška oddělovače v pixelech
             heading_type: Typ nadpisu
+            template: Šablona prvků obsahu
         taxon: Taxon
         display_for_products:
             label: Zobrazit pro produkty
@@ -34,6 +35,8 @@ sylius_cms:
             help: Vyberte taxony, ve kterých se bude tento blok zobrazovat
         manage_block_display: Správa zobrazení bloku
         templates: Šablony
+        template: Šablona
+        content_templates: Obsahové šablony
         new_template: Nová šablona
         edit_template: Upravit šablonu
         use_page_template: Použít šablonu stránky

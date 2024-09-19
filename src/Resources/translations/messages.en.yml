@@ -61,7 +61,7 @@ sylius_cms:
         page_will_be_publish_at: This page will be publish at
         save_with_original_name: Save with original name
         content_elements:
-            title: Content elements
+            title: Content
             type:
                 textarea: Textarea
                 single_media: Single media
@@ -76,6 +76,7 @@ sylius_cms:
                 spacer: Spacer
                 spacer_height: Spacer height in pixels
             heading_type: Heading type
+            template: Content elements template
         taxon: Taxon
         seo: SEO
         display_for_products:
@@ -89,6 +90,8 @@ sylius_cms:
             help: Select taxons in which this block will be displayed
         manage_block_display: Manage block display
         templates: Templates
+        template: Template
+        content_templates: Content Templates
         new_template: New template
         edit_template: Edit template
         use_page_template: Use page template

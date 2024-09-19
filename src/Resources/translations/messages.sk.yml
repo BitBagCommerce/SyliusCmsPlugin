@@ -54,7 +54,7 @@ sylius_cms:
         form_was_submitted_with_errors: "Formulár obsahuje nasledovné chyby:"
         title: Titulok
         content_elements:
-            title: Obsahové prvky
+            title: Obsah
             type:
                 textarea: Textarea
                 single_media: Jedno médium
@@ -69,6 +69,7 @@ sylius_cms:
                 spacer: Medzera
                 spacer_height: Výška medzery v pixeloch
             heading_type: Typ nadpisu
+            template: Šablóna prvkov obsahu
         taxon: Taxón
         display_for_products:
             label: Zobraziť pre produkty
@@ -81,6 +82,8 @@ sylius_cms:
             help: Vyberte taxóny, v ktorých sa tento blok zobrazí
         manage_block_display: Spravovať zobrazenie bloku
         templates: Šablóny
+        template: Šablóna
+        content_templates: Šablóny obsahu
         new_template: Nová šablóna
         edit_template: Upraviť šablónu
         use_page_template: Použiť šablónu stránky
