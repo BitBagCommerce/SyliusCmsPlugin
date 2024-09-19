@@ -1,9 +1,9 @@
 export class HandleTemplate {
     init() {
         $(document).ready(() => {
-            const cmsLoadTemplate = $('[data-bb-cms-load-template]');
-            const cmsPageTemplate = $('#sylius_cms_page_template');
-            const cmsBlockTemplate = $('#sylius_cms_block_template');
+            const cmsLoadTemplate = $('[data-bb-cms-load-content-template]');
+            const cmsPageTemplate = $('#sylius_cms_page_contentTemplate');
+            const cmsBlockTemplate = $('#sylius_cms_block_contentTemplate');
 
             let locales = [];
             $('.locale-selector option').each(function() {
@@ -28,7 +28,7 @@ export class HandleTemplate {
                     return;
                 }
 
-                const endpointUrl = cmsLoadTemplate.data('bb-cms-load-template').replace('REPLACE_ID', templateId);
+                const endpointUrl = cmsLoadTemplate.data('bb-cms-load-content-template').replace('REPLACE_ID', templateId);
                 if (!endpointUrl) {
                     return;
                 }
@@ -52,6 +52,7 @@ export class HandleTemplate {
                             let idx = 0;
                             $.each(data.content, function (index, element) {
                                 locales.forEach(function (locale) {
+                                    console.log(locale);
                                     elements.eq(idx).find('select:first').val(element.type);
                                     elements.eq(idx).find('select:first').change();
                                     elements.eq(idx).find('input[name$="[locale]"]').val(locale);

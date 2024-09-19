@@ -110,7 +110,10 @@ $(document).ready(function() {
                         const textareaId = `${collectionHolder}_${index}_configuration_textarea`;
 
                         element.id = textareaId;
-                        CKEDITOR.replace(textareaId, ckeditorConfig);
+
+                        if (typeof CKEDITOR !== 'undefined') {
+                            CKEDITOR.replace(textareaId, ckeditorConfig);
+                        }
                     }
                 });
             }

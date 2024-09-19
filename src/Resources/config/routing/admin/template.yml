@@ -10,7 +10,7 @@ sylius_cms_admin_template:
         vars:
             all:
                 templates:
-                    form: "@SyliusCmsPlugin/Template/Crud/_form.html.twig"
+                    form: "@SyliusCmsPlugin/ContentTemplate/Crud/_form.html.twig"
             index:
                 icon: block layout
     type: sylius.resource

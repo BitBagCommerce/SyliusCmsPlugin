@@ -300,8 +300,8 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
                 'association_dropdown_collection' => '.field > label:contains("Collections") ~ .sylius-autocomplete',
                 'association_dropdown_collection_item' => '.field > label:contains("Collections") ~ .sylius-autocomplete > div.menu > div.item:contains("%item%")',
                 'content_elements_add_button' => '#sylius_cms_block_contentElements a[data-form-collection="add"]',
-                'template_select_dropdown' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete',
-                'template_select_dropdown_item' => 'h5:contains("Use page template") ~ .column .field > .sylius-autocomplete > div.menu > div.item:contains("%item%")',
+                'template_select_dropdown' => 'h5:contains("Content elements template") ~ .column .field > .sylius-autocomplete',
+                'template_select_dropdown_item' => 'h5:contains("Content elements template") ~ .column .field > .sylius-autocomplete > div.menu > div.item:contains("%item%")',
             ],
         );
     }
