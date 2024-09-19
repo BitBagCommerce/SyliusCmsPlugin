@@ -55,7 +55,7 @@ final class ContentManagementMenuBuilderSpec extends ObjectBehavior
             ->addChild('templates', ['route' => 'sylius_cms_admin_template_index'])
             ->willReturn($cmsRootMenuItem)
         ;
-        $cmsRootMenuItem->setLabel('sylius_cms.ui.templates')->willReturn($cmsRootMenuItem);
+        $cmsRootMenuItem->setLabel('sylius_cms.ui.content_templates')->willReturn($cmsRootMenuItem);
         $cmsRootMenuItem->setLabelAttribute('icon', 'clone')->shouldBeCalled();
 
         $cmsRootMenuItem

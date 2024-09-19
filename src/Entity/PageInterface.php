@@ -38,6 +38,10 @@ interface PageInterface extends
 
     public function setName(?string $name): void;
 
+    public function getTemplate(): ?string;
+
+    public function setTemplate(?string $template): void;
+
     public function getTitle(): ?string;
 
     public function setTitle(?string $title): void;

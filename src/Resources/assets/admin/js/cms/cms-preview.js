@@ -36,9 +36,10 @@ export class HandlePreview {
     }
 
     _$_CKEDITOR_UPDATE_INSTANCES() {
-        Object.values(CKEDITOR.instances).forEach((instance) => instance.updateElement());
+        if (typeof CKEDITOR !== 'undefined') {
+            Object.values(CKEDITOR.instances).forEach((instance) => instance.updateElement());
+        }
     }
-
     _resourcePreview() {
         this.button.addEventListener('click', (e) => {
             e.preventDefault();

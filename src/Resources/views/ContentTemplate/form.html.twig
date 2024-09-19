@@ -1,0 +1,9 @@
+<div class="ui segment">
+    <h5 class="ui header">{{ 'sylius_cms.ui.content_elements.template'|trans }}</h5>
+    <div class="ui one column stackable grid">
+        <div class="column">
+            {{ form_row(form.contentTemplate) }}
+            <input type="hidden" data-bb-cms-load-template="{{ ajax_url }}">
+        </div>
+    </div>
+</div>

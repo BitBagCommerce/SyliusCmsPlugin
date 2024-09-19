@@ -8,6 +8,7 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Sylius\CmsPlugin\Form\Type\Translation\PageTranslationType;
+use Sylius\CmsPlugin\Provider\ResourceTemplateProviderInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -25,6 +26,7 @@ final class PageType extends AbstractResourceType
 
     public function __construct(
         private RepositoryInterface $localeRepository,
+        private ResourceTemplateProviderInterface $templateProvider,
         string $dataClass,
         array $validationGroups = [],
     ) {
@@ -46,6 +48,11 @@ final class PageType extends AbstractResourceType
             ])
             ->add('name', TextType::class, [
                 'label' => 'sylius_cms.ui.name',
+            ])
+            ->add('templates', ChoiceType::class, [
+                'label' => 'sylius_cms.ui.template',
+                'choices' => $this->templateProvider->getPageTemplates(),
+                'mapped' => false,
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'sylius_cms.ui.enabled',
@@ -85,7 +92,7 @@ final class PageType extends AbstractResourceType
                     'class' => 'content-elements-container',
                 ],
             ])
-            ->add('template', TemplatePageAutocompleteChoiceType::class, [
+            ->add('contentTemplate', TemplatePageAutocompleteChoiceType::class, [
                 'label' => false,
                 'mapped' => false,
             ])
@@ -100,6 +107,7 @@ final class PageType extends AbstractResourceType
         ;
 
         self::addContentElementLocaleListener($builder);
+        self::addTemplateListener($builder);
     }
 
     public static function addContentElementLocaleListener(FormBuilderInterface $builder): void
@@ -117,6 +125,26 @@ final class PageType extends AbstractResourceType
             }
 
             $event->setData($data);
+        });
+    }
+
+    public static function addTemplateListener(FormBuilderInterface $builder): void
+    {
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $form = $event->getForm();
+            $data = $event->getData();
+            $template = $data['templates'] ?? null;
+
+            $entity = $form->getData();
+            $entity->setTemplate($template);
+        });
+
+        $builder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
+            $data = $event->getData();
+            $form = $event->getForm();
+            $template = $data->getTemplate();
+
+            $form->get('templates')->setData($template);
         });
     }
 

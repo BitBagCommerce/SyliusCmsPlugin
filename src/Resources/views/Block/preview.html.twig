@@ -1,13 +1,9 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
-{% block metatags %}
-    <base href="{{ app.request.getSchemeAndHttpHost() }}">
+{% block content %}
+    {% include template %}
 {% endblock %}
 
-{% block content %}
-    <div class="column">
-        <div class="ui segment">
-            {{ sylius_cms_render_content_elements(block) }}
-        </div>
-    </div>
+{% block metatags %}
+    <base href="{{ app.request.getSchemeAndHttpHost() }}">
 {% endblock %}
