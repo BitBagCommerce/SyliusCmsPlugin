@@ -12,9 +12,9 @@ final class TemplateContext implements Context
 {
     private Filesystem $filesystem;
 
-    private string $tempConfigFile;
+    private string $tempConfigFile = '';
 
-    private string $tempTemplateFile;
+    private string $tempTemplateFile = '';
 
     public function __construct()
     {
