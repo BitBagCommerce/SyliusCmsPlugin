@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
 final class TemplateContext implements Context
 {
     private Filesystem $filesystem;
-    private $tempConfigFile;
-    private $tempTemplateFile;
+    private string $tempConfigFile;
+    private string $tempTemplateFile;
 
     public function __construct()
     {
@@ -23,7 +22,7 @@ final class TemplateContext implements Context
     /**
      * @Given there is an existing template with :template value
      */
-    public function thereIsAnExistingTemplateWithValue($template)
+    public function thereIsAnExistingTemplateWithValue($template): void
     {
         $this->tempConfigFile = __DIR__ . '/../../../Application/config/packages/sylius_cms_test.yaml';
         $config = [
