@@ -11,7 +11,9 @@ use Symfony\Component\Yaml\Yaml;
 final class TemplateContext implements Context
 {
     private Filesystem $filesystem;
+
     private string $tempConfigFile;
+
     private string $tempTemplateFile;
 
     public function __construct()
@@ -28,7 +30,7 @@ final class TemplateContext implements Context
         $config = [
             'sylius_cms' => [
                 'templates' => [
-                    'pages' => [$template]
+                    'pages' => [$template],
                 ],
             ],
         ];
@@ -47,6 +49,7 @@ final class TemplateContext implements Context
     private function getTemplateFilePath($template): string
     {
         $templatePath = str_replace('@SyliusCmsPlugin', 'Application/templates/bundles/SyliusCmsPlugin', $template);
+
         return __DIR__ . '/../../../' . $templatePath;
     }
 
