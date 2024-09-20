@@ -5,82 +5,63 @@ declare(strict_types=1);
 namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Sylius\Behat\Service\SharedStorageInterface;
-use Sylius\CmsPlugin\Entity\TemplateInterface;
-use Sylius\CmsPlugin\Repository\TemplateRepositoryInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
+use Behat\Behat\Tester\Exception\PendingException;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Yaml;
 
 final class TemplateContext implements Context
 {
-    public function __construct(
-        private FactoryInterface $templateFactory,
-        private SharedStorageInterface $sharedStorage,
-        private TemplateRepositoryInterface $templateRepository,
-    ) {
+    private Filesystem $filesystem;
+    private $tempConfigFile;
+    private $tempTemplateFile;
+
+    public function __construct()
+    {
+        $this->filesystem = new Filesystem();
     }
 
     /**
-     * @Given there is a template in the store with :name name
-     * @Given there is a template in the store with :name name and :type type
+     * @Given there is an existing template with :template value
      */
-    public function thereIsATemplate(string $name, ?string $type = null): void
+    public function thereIsAnExistingTemplateWithValue($template)
     {
-        $template = $this->createTemplate($name, $type);
+        $this->tempConfigFile = __DIR__ . '/../../../Application/config/packages/sylius_cms_test.yaml';
+        $config = [
+            'sylius_cms' => [
+                'templates' => [
+                    'pages' => [$template]
+                ],
+            ],
+        ];
 
-        $this->saveTemplate($template);
+        $this->filesystem->dumpFile($this->tempConfigFile, Yaml::dump($config));
+
+        $this->tempTemplateFile = $this->getTemplateFilePath($template);
+        $dummyTemplateContent = "<div class='custom-layout'>This is a test template for: $template</div>";
+
+        $this->filesystem->dumpFile($this->tempTemplateFile, $dummyTemplateContent);
     }
 
     /**
-     * @Given there are :firstContentElement and :secondContentElement content elements in this template
+     * Get the real template file path from the given template name.
      */
-    public function thereAreContentElementsInThisTemplate(string $firstContentElement, string $secondContentElement): void
+    private function getTemplateFilePath($template): string
     {
-        /** @var TemplateInterface $template */
-        $template = $this->sharedStorage->get('template');
-        $template->setContentElements([
-            ['type' => ContentElementHelper::getContentElementValueByName($firstContentElement)],
-            ['type' => ContentElementHelper::getContentElementValueByName($secondContentElement)],
-        ]);
-
-        $this->saveTemplate($template);
+        $templatePath = str_replace('@SyliusCmsPlugin', 'Application/templates/bundles/SyliusCmsPlugin', $template);
+        return __DIR__ . '/../../../' . $templatePath;
     }
 
     /**
-     * @Given there is an existing template named :templateName with :type type that contains :contentElements content elements
+     * @AfterScenario
      */
-    public function thereIsAnExistingTemplateThatContainsContentElements(string $templateName, string $type, string $contentElements): void
+    public function cleanup(): void
     {
-        $template = $this->createTemplate($templateName, $type);
-
-        $contentElements = explode(', ', $contentElements);
-
-        $contentElementsArray = [];
-        foreach ($contentElements as $contentElement) {
-            $contentElementsArray[] = ['type' => ContentElementHelper::getContentElementValueByName($contentElement)];
+        if ($this->tempConfigFile && file_exists($this->tempConfigFile)) {
+            $this->filesystem->remove($this->tempConfigFile);
         }
 
-        $template->setContentElements($contentElementsArray);
-
-        $this->saveTemplate($template);
-    }
-
-    private function createTemplate(string $name, ?string $type = null): TemplateInterface
-    {
-        /** @var TemplateInterface $template */
-        $template = $this->templateFactory->createNew();
-        $template->setName($name);
-
-        if (null !== $type) {
-            $template->setType($type);
+        if ($this->tempTemplateFile && file_exists($this->tempTemplateFile)) {
+            $this->filesystem->remove($this->tempTemplateFile);
         }
-
-        return $template;
-    }
-
-    private function saveTemplate(TemplateInterface $template): void
-    {
-        $this->templateRepository->add($template);
-        $this->sharedStorage->set('template', $template);
     }
 }

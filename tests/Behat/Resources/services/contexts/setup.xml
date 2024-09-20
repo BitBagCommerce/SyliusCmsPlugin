@@ -37,10 +37,12 @@
                 <argument type="service" id="sylius_cms.resolver.media_provider" />
             </service>
 
-            <service id="sylius_cms.behat.context.setup.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\TemplateContext">
+            <service id="sylius_cms.behat.context.setup.content_template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\ContentTemplateContext">
                 <argument type="service" id="sylius_cms.factory.template" />
                 <argument type="service" id="sylius.behat.shared_storage" />
                 <argument type="service" id="sylius_cms.repository.template" />
             </service>
+
+            <service id="sylius_cms.behat.context.setup.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Setup\TemplateContext" />
     </services>
 </container>

@@ -21,4 +21,6 @@ interface ShowPageInterface extends SymfonyPageInterface
     public function hasPageImage(): bool;
 
     public function hasTitle(string $title): bool;
+
+    public function hasCustomLayoutCode(): bool;
 }

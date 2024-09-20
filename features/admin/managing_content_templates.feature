@@ -1,4 +1,4 @@
-@managing_templates
+@managing_content_templates
 Feature: Managing cms templates
     In order to manage existing templates
     As an Administrator

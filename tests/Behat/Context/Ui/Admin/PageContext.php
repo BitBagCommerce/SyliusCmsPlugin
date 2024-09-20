@@ -32,7 +32,7 @@ final class PageContext implements Context
     }
 
     /**
-     * @When I go to the pages page
+     * @When I go to the cms pages page
      */
     public function iGoToTheCmsPagesPage(): void
     {
@@ -97,6 +97,14 @@ final class PageContext implements Context
     public function iFillTheNameWith(string $name): void
     {
         $this->resolveCurrentPage()->fillName($name);
+    }
+
+    /**
+     * @When I select :code channel
+     */
+    public function iSelectChannel(string $code): void
+    {
+        $this->resolveCurrentPage()->selectChannel($code);
     }
 
     /**
@@ -292,11 +300,11 @@ final class PageContext implements Context
     }
 
     /**
-     * @Then I select :templateName template
+     * @Then I select :templateName content template
      */
-    public function iSelectTemplate(string $templateName): void
+    public function iSelectContentTemplate(string $templateName): void
     {
-        $this->resolveCurrentPage()->selectTemplate($templateName);
+        $this->resolveCurrentPage()->selectContentTemplate($templateName);
     }
 
     /**
@@ -305,6 +313,14 @@ final class PageContext implements Context
     public function iConfirmThatIWantToUseThisTemplate(): void
     {
         $this->resolveCurrentPage()->confirmUseTemplate();
+    }
+
+    /**
+     * @Then I select :templateName template
+     */
+    public function iSelectTemplate(string $templateName): void
+    {
+        $this->resolveCurrentPage()->selectTemplate($templateName);
     }
 
     /**
