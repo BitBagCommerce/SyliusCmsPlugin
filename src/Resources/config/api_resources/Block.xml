@@ -44,7 +44,6 @@
         <property name="name" identifier="false" writable="false"/>
         <property name="enabled" identifier="false" writable="false"/>
         <property name="channels" identifier="false" writable="false"/>
-        <property name="locales" identifier="false" writable="false"/>
         <property name="collections" identifier="false" writable="false"/>
         <property name="products" identifier="false" writable="false"/>
         <property name="taxons" identifier="false" writable="false"/>

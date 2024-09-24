@@ -36,7 +36,6 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('collections')->scalarPrototype()->end()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
-                            ->arrayNode('locales')->scalarPrototype()->end()->end()
                             ->arrayNode('products')->scalarPrototype()->end()->end()
                             ->arrayNode('taxons')->scalarPrototype()->end()->end()
                             ->arrayNode('products_in_taxons')->scalarPrototype()->end()->end()

@@ -34,7 +34,6 @@
             <argument type="service" id="sylius_cms.repository.block" />
             <argument type="service" id="sylius_cms.assigner.collections" />
             <argument type="service" id="sylius_cms.assigner.channels" />
-            <argument type="service" id="sylius_cms.assigner.locales" />
             <argument type="service" id="sylius_cms.assigner.products" />
             <argument type="service" id="sylius_cms.assigner.taxons" />
             <argument type="service" id="sylius_cms.assigner.products_in_taxons" />

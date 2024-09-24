@@ -32,8 +32,6 @@
             <argument type="service" id="sylius_cms.repository.block" />
             <argument type="service" id="logger" />
             <argument type="service" id="sylius.context.channel" />
-            <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="sylius.repository.locale" />
         </service>
 
         <service id="sylius_cms.resolver.collection_resource" class="Sylius\CmsPlugin\Resolver\CollectionResourceResolver" public="true">

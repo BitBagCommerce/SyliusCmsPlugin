@@ -6,7 +6,6 @@ namespace Sylius\CmsPlugin\Fixture\Factory;
 
 use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
 use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
-use Sylius\CmsPlugin\Assigner\LocalesAssignerInterface;
 use Sylius\CmsPlugin\Assigner\ProductsAssignerInterface;
 use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
 use Sylius\CmsPlugin\Assigner\TaxonsAssignerInterface;
@@ -22,7 +21,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         private BlockRepositoryInterface $blockRepository,
         private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
-        private LocalesAssignerInterface $localesAssigner,
         private ProductsAssignerInterface $productsAssigner,
         private TaxonsAssignerInterface $taxonsAssigner,
         private ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner,
@@ -56,7 +54,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $this->collectionsAssigner->assign($block, $blockData['collections']);
         $this->channelAssigner->assign($block, $blockData['channels']);
-        $this->localesAssigner->assign($block, $blockData['locales']);
         $this->productsAssigner->assign($block, $blockData['products']);
         $this->taxonsAssigner->assign($block, $blockData['taxons']);
         $this->productsInTaxonsAssigner->assign($block, $blockData['products_in_taxons']);

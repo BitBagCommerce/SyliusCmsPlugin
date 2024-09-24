@@ -61,7 +61,6 @@ final class BlockType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('locales')
             ->add('contentElements', CollectionType::class, [
                 'label' => false,
                 'entry_type' => ContentConfigurationType::class,

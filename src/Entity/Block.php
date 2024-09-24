@@ -7,7 +7,6 @@ namespace Sylius\CmsPlugin\Entity;
 use Sylius\CmsPlugin\Entity\Trait\ChannelsAwareTrait;
 use Sylius\CmsPlugin\Entity\Trait\CollectibleTrait;
 use Sylius\CmsPlugin\Entity\Trait\ContentElementsAwareTrait;
-use Sylius\CmsPlugin\Entity\Trait\LocaleAwareTrait;
 use Sylius\CmsPlugin\Entity\Trait\ProductsAwareTrait;
 use Sylius\CmsPlugin\Entity\Trait\ProductsInTaxonsAwareTrait;
 use Sylius\CmsPlugin\Entity\Trait\TaxonAwareTrait;
@@ -19,7 +18,6 @@ class Block implements BlockInterface
     use CollectibleTrait;
     use ChannelsAwareTrait;
     use ContentElementsAwareTrait;
-    use LocaleAwareTrait;
     use ProductsAwareTrait;
     use TaxonAwareTrait;
     use ProductsInTaxonsAwareTrait;
@@ -29,7 +27,6 @@ class Block implements BlockInterface
         $this->initializeCollectionsCollection();
         $this->initializeChannelsCollection();
         $this->initializeContentElementsCollection();
-        $this->initializeLocalesCollection();
         $this->initializeProductsCollection();
         $this->initializeTaxonCollection();
         $this->initializeProductsInTaxonsCollection();

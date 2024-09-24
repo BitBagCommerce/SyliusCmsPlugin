@@ -38,8 +38,6 @@ sylius_fixtures:
                                 name: "Homepage textarea"
                                 channels:
                                     - "FASHION_WEB"
-                                locales:
-                                    - "en_US"
                                 content_elements:
                                     en_US:
                                         heading:
@@ -59,8 +57,6 @@ sylius_fixtures:
                                 name: "Homepage products carousel"
                                 channels:
                                     - "FASHION_WEB"
-                                locales:
-                                    - "en_US"
                                 content_elements:
                                     en_US:
                                         heading:
@@ -81,8 +77,6 @@ sylius_fixtures:
                                 name: "Homepage products carousel by Taxon"
                                 channels:
                                     - "FASHION_WEB"
-                                locales:
-                                    - "en_US"
                                 content_elements:
                                     en_US:
                                         heading:

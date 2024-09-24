@@ -35,13 +35,15 @@ abstract class AbstractImporter implements ImporterInterface
     protected function getAvailableLocales(array $translatableColumns, array $columns): array
     {
         $locales = [];
-
         foreach ($translatableColumns as $translatableColumn) {
             $translatableColumn = str_replace('__locale__', '_', $translatableColumn);
-
             foreach ($columns as $column) {
                 if (str_starts_with($column, $translatableColumn)) {
-                    $locales[] = str_replace($translatableColumn, '', $column);
+                    $localePart = substr($column, strlen($translatableColumn));
+
+                    if (preg_match('/^[a-z]{2}(_[A-Z]{2})?$/', $localePart)) {
+                        $locales[] = $localePart;
+                    }
                 }
             }
         }
