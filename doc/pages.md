@@ -41,3 +41,7 @@ read [Sylius template customization guide](http://docs.sylius.org/en/latest/cust
 
 You can create a template under `app/templates/bundles/SyliusCmsPlugin/Shop/Page` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Page).
+
+### Custom Page Templates
+
+For more information about custom page templates, check the [documentation](templates.md).

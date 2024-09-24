@@ -8,8 +8,8 @@ and removes the old way of creating blocks and pages.
 * Sections are now Collections, as it was a more suitable name for the feature.
 * Pages and Blocks now have `Content elements` segment, where you can add elements to the page or block.
 * Removed FAQ, as you can now create a FAQ page with the new content elements.
-* Added new `Templates` section where you can create templates for your content elements. Read more about it in [Use case templates](doc/use_case_templates.md)
-and [Templates](doc/templates.md) docs.
+* Added new `Content Templates` section where you can create templates for your content elements. Read more about it in [Use case content templates](doc/use_case_content_templates.md)
+and [Content Templates](doc/content_templates.md) docs.
 * Removed CKEditor deprecation modal.
 * Reordered forms/elements for functionality consistency.
 * Updated import functionality to work with the new structure.
