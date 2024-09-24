@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Sylius\CmsPlugin\Importer\Legacy;
 
 use Sylius\CmsPlugin\Entity\BlockInterface;
-use Sylius\CmsPlugin\Helper\ContentElementHelper;
+use Sylius\CmsPlugin\Factory\ContentElementFactory;
 use Sylius\CmsPlugin\Importer\AbstractImporter;
 use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
@@ -47,7 +47,7 @@ final class LegacyBlockImporter extends AbstractImporter implements LegacyBlockI
                 $block->setName($this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row));
             }
 
-            $heading = ContentElementHelper::createHeadingContentElement(
+            $heading = ContentElementFactory::createHeadingContentElement(
                 $locale,
                 'h2',
                 $this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row),
@@ -57,7 +57,7 @@ final class LegacyBlockImporter extends AbstractImporter implements LegacyBlockI
                 $block->addContentElement($heading);
             }
 
-            $singleMedia = ContentElementHelper::createSingleMediaContentElement(
+            $singleMedia = ContentElementFactory::createSingleMediaContentElement(
                 $locale,
                 $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row),
             );
@@ -66,7 +66,7 @@ final class LegacyBlockImporter extends AbstractImporter implements LegacyBlockI
                 $block->addContentElement($singleMedia);
             }
 
-            $content = ContentElementHelper::createTextareaContentElement(
+            $content = ContentElementFactory::createTextareaContentElement(
                 $locale,
                 $this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row),
             );
@@ -79,7 +79,7 @@ final class LegacyBlockImporter extends AbstractImporter implements LegacyBlockI
         $locales = $this->localeRepository->findAll();
         /** @var LocaleInterface $locale */
         foreach ($locales as $locale) {
-            $productsGrid = ContentElementHelper::createProductsGridContentElement(
+            $productsGrid = ContentElementFactory::createProductsGridContentElement(
                 $locale->getCode(),
                 $this->getColumnValue(self::PRODUCTS_COLUMN, $row),
             );

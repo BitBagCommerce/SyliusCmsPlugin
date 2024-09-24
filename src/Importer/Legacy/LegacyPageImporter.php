@@ -6,7 +6,7 @@ namespace Sylius\CmsPlugin\Importer\Legacy;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\CmsPlugin\Entity\PageInterface;
-use Sylius\CmsPlugin\Helper\ContentElementHelper;
+use Sylius\CmsPlugin\Factory\ContentElementFactory;
 use Sylius\CmsPlugin\Importer\AbstractImporter;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterChannelsResolverInterface;
 use Sylius\CmsPlugin\Resolver\Importer\ImporterCollectionsResolverInterface;
@@ -60,7 +60,7 @@ final class LegacyPageImporter extends AbstractImporter implements LegacyPageImp
             $page->setTeaserTitle($this->getTranslatableColumnValue(self::NAME_WHEN_LINKED_COLUMN, $locale, $row));
             $page->setTeaserContent($this->getTranslatableColumnValue(self::DESCRIPTION_WHEN_LINKED_COLUMN, $locale, $row));
 
-            $heading = ContentElementHelper::createHeadingContentElement(
+            $heading = ContentElementFactory::createHeadingContentElement(
                 $locale,
                 'h2',
                 $this->getTranslatableColumnValue(self::NAME_COLUMN, $locale, $row),
@@ -70,7 +70,7 @@ final class LegacyPageImporter extends AbstractImporter implements LegacyPageImp
                 $page->addContentElement($heading);
             }
 
-            $singleMedia = ContentElementHelper::createSingleMediaContentElement(
+            $singleMedia = ContentElementFactory::createSingleMediaContentElement(
                 $locale,
                 $this->getTranslatableColumnValue(self::IMAGE_COLUMN, $locale, $row),
             );
@@ -79,7 +79,7 @@ final class LegacyPageImporter extends AbstractImporter implements LegacyPageImp
                 $page->addContentElement($singleMedia);
             }
 
-            $content = ContentElementHelper::createTextareaContentElement(
+            $content = ContentElementFactory::createTextareaContentElement(
                 $locale,
                 $this->getTranslatableColumnValue(self::CONTENT_COLUMN, $locale, $row),
             );
@@ -92,7 +92,7 @@ final class LegacyPageImporter extends AbstractImporter implements LegacyPageImp
         $locales = $this->localeRepository->findAll();
         /** @var LocaleInterface $locale */
         foreach ($locales as $locale) {
-            $productsGrid = ContentElementHelper::createProductsGridContentElement(
+            $productsGrid = ContentElementFactory::createProductsGridContentElement(
                 $locale->getCode(),
                 $this->getColumnValue(self::PRODUCTS_COLUMN, $row),
             );

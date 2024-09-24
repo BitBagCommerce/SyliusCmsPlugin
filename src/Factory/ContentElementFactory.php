@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\CmsPlugin\Helper;
+namespace Sylius\CmsPlugin\Factory;
 
 use Sylius\CmsPlugin\Entity\ContentConfiguration;
 
-final class ContentElementHelper
+final class ContentElementFactory
 {
     public static function createHeadingContentElement(
         ?string $locale,
