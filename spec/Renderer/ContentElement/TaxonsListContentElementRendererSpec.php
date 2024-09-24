@@ -1,39 +1,29 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\TaxonsListContentElementRenderer;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\TaxonsListContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
+use Sylius\CmsPlugin\Renderer\ContentElement\TaxonsListContentElementRenderer;
 use Sylius\Component\Core\Model\Taxon;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Twig\Environment;
 
 final class TaxonsListContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, TaxonRepositoryInterface $taxonRepository): void
+    public function let(TaxonRepositoryInterface $taxonRepository): void
     {
-        $this->beConstructedWith($twig, $taxonRepository);
+        $this->beConstructedWith($taxonRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(TaxonsListContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_taxons_list_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -53,17 +43,20 @@ final class TaxonsListContentElementRendererSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         ContentConfigurationInterface $contentConfiguration,
         Taxon $taxon1,
-        Taxon $taxon2
-    ): void
-    {
+        Taxon $taxon2,
+    ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
-            'taxons_list' => ['taxons' => ['code1', 'code2']]
+            'taxons_list' => ['taxons' => ['code1', 'code2']],
         ]);
 
         $taxonRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$taxon1, $taxon2]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_taxons_list.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => $template,
             'taxons' => [$taxon1, $taxon2],
         ])->willReturn('rendered template');
 

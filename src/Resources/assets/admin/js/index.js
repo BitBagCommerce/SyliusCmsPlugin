@@ -5,7 +5,7 @@ import {
     HandleAutoComplete,
     HandleChooseCollectionType,
     HandleTemplate
-} from './bitbag';
+} from './cms';
 
 if (document.querySelector('[data-bb-target="cms-import"]')) {
     new HandleCsvUpload().init();

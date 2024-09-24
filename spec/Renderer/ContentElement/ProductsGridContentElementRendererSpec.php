@@ -1,39 +1,29 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ProductsGridContentElementRenderer;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
+use Sylius\CmsPlugin\Renderer\ContentElement\ProductsGridContentElementRenderer;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Twig\Environment;
 
 final class ProductsGridContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, ProductRepositoryInterface $productRepository): void
+    public function let(ProductRepositoryInterface $productRepository): void
     {
-        $this->beConstructedWith($twig, $productRepository);
+        $this->beConstructedWith($productRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(ProductsGridContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_products_grid_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -53,17 +43,20 @@ final class ProductsGridContentElementRendererSpec extends ObjectBehavior
         ProductRepositoryInterface $productRepository,
         ContentConfigurationInterface $contentConfiguration,
         Product $product1,
-        Product $product2
-    ): void
-    {
+        Product $product2,
+    ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
-            'products_grid' => ['products' => ['code1', 'code2']]
+            'products_grid' => ['products' => ['code1', 'code2']],
         ]);
 
         $productRepository->findBy(['code' => ['code1', 'code2']])->willReturn([$product1, $product2]);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => $template,
             'products' => [$product1, $product2],
         ])->willReturn('rendered template');
 

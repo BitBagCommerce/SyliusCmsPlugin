@@ -1,28 +1,28 @@
-bitbag_sylius_cms_plugin_admin_collection:
+sylius_cms_admin_collection:
     resource: |
-        alias: bitbag_sylius_cms_plugin.collection
+        alias: sylius_cms.collection
         section: admin
-        templates: '@BitBagSyliusCmsPlugin/CrudUi'
+        templates: '@SyliusCmsPlugin/CrudUi'
         redirect: update
-        grid: bitbag_sylius_cms_plugin_admin_collection
+        grid: sylius_cms_admin_collection
         except: ['show']
         permission: true
         vars:
             all:
-                header: bitbag_sylius_cms_plugin.ui.collections_header
-                subheader: bitbag_sylius_cms_plugin.ui.collections_subheader
+                header: sylius_cms.ui.collections_header
+                subheader: sylius_cms.ui.collections_subheader
                 templates:
-                    form: "@BitBagSyliusCmsPlugin/Collection/Crud/_form.html.twig"
+                    form: "@SyliusCmsPlugin/Collection/Crud/_form.html.twig"
             index:
                 icon: grid layout
     type: sylius.resource
 
-bitbag_sylius_cms_plugin_admin_ajax_collection_by_name_phrase:
+sylius_cms_admin_ajax_collection_by_name_phrase:
     path: /ajax/collections/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _controller: sylius_cms.controller.collection::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -31,12 +31,12 @@ bitbag_sylius_cms_plugin_admin_ajax_collection_by_name_phrase:
                 arguments:
                     phrase: $phrase
 
-bitbag_sylius_cms_plugin_admin_ajax_page_collection_by_name_phrase:
+sylius_cms_admin_ajax_page_collection_by_name_phrase:
     path: /ajax/collections/page/search
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _controller: sylius_cms.controller.collection::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true
@@ -46,12 +46,12 @@ bitbag_sylius_cms_plugin_admin_ajax_page_collection_by_name_phrase:
                     phrase: $phrase
                     type: page
 
-bitbag_sylius_cms_plugin_admin_ajax_collection_by_code:
+sylius_cms_admin_ajax_collection_by_code:
     path: /ajax/collections/code
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.collection::indexAction
+        _controller: sylius_cms.controller.collection::indexAction
         _sylius:
             serialization_groups: [Autocomplete]
             permission: true

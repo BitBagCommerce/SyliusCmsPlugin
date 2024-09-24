@@ -1,18 +1,11 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * You can find more information about us on https://bitbag.io and write us
- * an email on hello@bitbag.io.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\MediaProvider;
+namespace spec\Sylius\CmsPlugin\MediaProvider;
 
-use BitBag\SyliusCmsPlugin\MediaProvider\FilenameHelper;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\MediaProvider\FilenameHelper;
 
 class FilenameHelperSpec extends ObjectBehavior
 {

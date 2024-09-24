@@ -1,6 +1,6 @@
-bitbag_sylius_cms_plugin_admin_ajax_product_by_name_phrase:
+sylius_cms_admin_ajax_product_by_name_phrase:
     path: /ajax/products/search-by-name
     methods: [GET]
     defaults:
         _format: json
-        _controller: bitbag_sylius_cms_plugin.controller.action.admin.product_search
+        _controller: sylius_cms.controller.action.admin.product_search

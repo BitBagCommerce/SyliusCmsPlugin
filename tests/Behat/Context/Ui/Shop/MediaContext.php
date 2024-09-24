@@ -1,20 +1,13 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * You can find more information about us on https://bitbag.io and write us
- * an email on hello@bitbag.io.
- */
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Shop;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Element\DocumentElement;
 use Behat\MinkExtension\Context\RawMinkContext;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 
 class MediaContext extends RawMinkContext implements Context
 {

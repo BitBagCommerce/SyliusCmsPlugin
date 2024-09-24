@@ -1,19 +1,12 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Trait\ChannelsAwareTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\CollectibleTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\ContentElementsAwareTrait;
-use BitBag\SyliusCmsPlugin\Entity\Trait\TeaserTrait;
+use Sylius\CmsPlugin\Entity\Trait\ChannelsAwareTrait;
+use Sylius\CmsPlugin\Entity\Trait\CollectibleTrait;
+use Sylius\CmsPlugin\Entity\Trait\ContentElementsAwareTrait;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -26,7 +19,6 @@ class Page implements PageInterface
     use TimestampableTrait;
     use ChannelsAwareTrait;
     use ContentElementsAwareTrait;
-    use TeaserTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -114,6 +106,51 @@ class Page implements PageInterface
         $pageTranslationInterface->setMetaDescription($metaDescription);
     }
 
+    public function getTeaserTitle(): ?string
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserTitle();
+    }
+
+    public function setTeaserTitle(?string $teaserTitle): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserTitle($teaserTitle);
+    }
+
+    public function getTeaserContent(): ?string
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserContent();
+    }
+
+    public function setTeaserContent(?string $teaserContent): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserContent($teaserContent);
+    }
+
+    public function getTeaserImage(): ?MediaInterface
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+
+        return $pageTranslationInterface->getTeaserImage();
+    }
+
+    public function setTeaserImage(?MediaInterface $teaserImage): void
+    {
+        /** @var PageTranslationInterface $pageTranslationInterface */
+        $pageTranslationInterface = $this->getPageTranslation();
+        $pageTranslationInterface->setTeaserImage($teaserImage);
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -149,9 +186,6 @@ class Page implements PageInterface
         $this->publishAt = $publishAt;
     }
 
-    /**
-     * @return PageTranslationInterface|TranslationInterface
-     */
     protected function getPageTranslation(): TranslationInterface
     {
         return $this->getTranslation();

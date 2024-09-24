@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Template;
+namespace Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template;
 
 use DMore\ChromeDriver\ChromeDriver;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Behaviour\ContainsErrorTrait;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Behaviour\ContainsErrorTrait;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
 use Webmozart\Assert\Assert;
 
 class CreatePage extends BaseCreatePage implements CreatePageInterface
@@ -66,7 +60,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
             parent::getDefinedElements(),
             ContentElementHelper::getDefinedContentElements(),
             [
-                'content_elements_add_button' => '#bitbag_sylius_cms_plugin_template_contentElements a[data-form-collection="add"]',
+                'content_elements_add_button' => '#sylius_cms_template_contentElements a[data-form-collection="add"]',
             ],
         );
     }

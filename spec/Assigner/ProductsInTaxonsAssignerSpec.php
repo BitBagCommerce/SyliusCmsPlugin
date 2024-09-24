@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssigner;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\ProductsInTaxonsAwareInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
@@ -38,13 +32,12 @@ final class ProductsInTaxonsAssignerSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         ProductsInTaxonsAwareInterface $productsInTaxonsAware,
         TaxonInterface $taxon1,
-        TaxonInterface $taxon2
+        TaxonInterface $taxon2,
     ) {
         $taxon1->getCode()->willReturn('taxon_code_1');
         $taxon2->getCode()->willReturn('taxon_code_2');
 
-        $taxonRepository->findOneBy(['code' => 'taxon_code_1'])->willReturn($taxon1);
-        $taxonRepository->findOneBy(['code' => 'taxon_code_2'])->willReturn($taxon2);
+        $taxonRepository->findBy(['code' => ['taxon_code_1', 'taxon_code_2']])->willReturn([$taxon1, $taxon2]);
 
         $productsInTaxonsAware->addProductsInTaxon($taxon1)->shouldBeCalled();
         $productsInTaxonsAware->addProductsInTaxon($taxon2)->shouldBeCalled();

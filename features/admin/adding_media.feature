@@ -13,7 +13,6 @@ Feature: Adding new media
         When I go to the create media page
         And I fill the code with "image"
         And I fill the name with "Image"
-        And I fill the link content with "Main image"
         And I upload the "aston_martin_db_11.jpg" image
         And I add it
         Then I should be notified that new media has been created

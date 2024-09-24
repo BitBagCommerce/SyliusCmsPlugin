@@ -1,13 +1,9 @@
 <div class="ui segment">
-    <h5 class="ui header">{{ 'bitbag_sylius_cms_plugin.ui.use_page_template'|trans }}</h5>
-    <div class="ui two column stackable grid">
+    <h5 class="ui header">{{ 'sylius_cms.ui.use_page_template'|trans }}</h5>
+    <div class="ui one column stackable grid">
         <div class="column">
             {{ form_row(form.template) }}
-        </div>
-        <div class="column">
-            <a href="#" class="ui labeled icon button" data-bb-cms-load-template="{{ ajax_url }}">
-                <i class="sign-in alternate icon"></i> {{ 'bitbag_sylius_cms_plugin.ui.use_this_template'|trans }}
-            </a>
+            <input type="hidden" data-bb-cms-load-template="{{ ajax_url }}">
         </div>
     </div>
 </div>

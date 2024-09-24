@@ -1,4 +1,4 @@
-bitbag_sylius_cms_plugin:
+sylius_cms:
     block:
         image:
             mime_types: Тільки PNG, SVG чи JPEG.

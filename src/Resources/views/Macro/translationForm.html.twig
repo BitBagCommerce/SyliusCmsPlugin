@@ -1,6 +1,6 @@
 {% macro translationForm(translations, resource) %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
+    {% import '@SyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@SyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion">
@@ -13,7 +13,7 @@
                 <div class="ui content{% if 0 == loop.index0 %} active{% endif %}">
                     {% for field in translationForm %}
 
-                        {% if 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                        {% if 'sylius_media_autocomplete_choice' in field.vars.block_prefixes %}
                             {{ media.mediaWidget(field) }}
                         {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}
@@ -29,8 +29,8 @@
 {% endmacro %}
 
 {% macro translationFormWithSlug(translations, slugFieldTemplate, resource) %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
-    {% import '@BitBagSyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
+    {% import '@SyliusCmsPlugin/Macro/imageWidget.html.twig' as image %}
+    {% import '@SyliusCmsPlugin/Macro/mediaWidget.html.twig' as media %}
     {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
 
     <div class="ui styled fluid accordion" data-bb-target="cms-slug-update">
@@ -45,7 +45,7 @@
 
                         {% if field.vars.name == 'slug' %}
                             {% include slugFieldTemplate with { 'slugField': translationForm.slug, 'resource': resource } %}
-                        {% elseif 'bitbag_media_autocomplete_choice' in field.vars.block_prefixes %}
+                        {% elseif 'sylius_media_autocomplete_choice' in field.vars.block_prefixes %}
                             {{ media.mediaWidget(field) }}
                         {% elseif 'image' == field.vars.name %}
                             {{ image.imageWidget(field) }}

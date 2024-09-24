@@ -1,25 +1,17 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
-use Twig\Environment;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\PagesCollectionContentElementType;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 
-final class PagesCollectionContentElementRenderer implements ContentElementRendererInterface
+final class PagesCollectionContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private CollectionRepositoryInterface $collectionRepository,
     ) {
     }
@@ -39,8 +31,8 @@ final class PagesCollectionContentElementRenderer implements ContentElementRende
         /** @var CollectionInterface|null $collection */
         $collection = $this->collectionRepository->findOneBy(['code' => $code]);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_pages_collection.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => $this->template,
             'collection' => $collection?->getPages(),
         ]);
     }

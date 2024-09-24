@@ -6,7 +6,7 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="BitBag\SyliusCmsPlugin\Entity\Page" table="bitbag_cms_page">
+    <mapped-superclass name="Sylius\CmsPlugin\Entity\Page" table="sylius_cms_page">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
@@ -27,10 +27,10 @@
 
         <field name="publishAt" column="publish_at" type="datetime_immutable" nullable="true"/>
 
-        <many-to-many field="collections" target-entity="BitBag\SyliusCmsPlugin\Entity\CollectionInterface" mapped-by="pages" />
+        <many-to-many field="collections" target-entity="Sylius\CmsPlugin\Entity\CollectionInterface" mapped-by="pages" />
 
         <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
-            <join-table name="bitbag_cms_page_channels">
+            <join-table name="sylius_cms_page_channels">
                 <join-columns>
                     <join-column name="page_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
@@ -40,7 +40,7 @@
             </join-table>
         </many-to-many>
 
-        <one-to-many field="contentElements" target-entity="BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface" mapped-by="page" orphan-removal="true">
+        <one-to-many field="contentElements" target-entity="Sylius\CmsPlugin\Entity\ContentConfigurationInterface" mapped-by="page" orphan-removal="true">
             <cascade>
                 <cascade-all />
             </cascade>
@@ -48,14 +48,6 @@
                 <order-by-field name="id" />
             </order-by>
         </one-to-many>
-
-        <field name="teaserTitle" column="teaser_title" type="string" nullable="true"/>
-
-        <field name="teaserContent" column="teaser_content" type="text" nullable="true"/>
-
-        <many-to-one field="teaserImage" target-entity="BitBag\SyliusCmsPlugin\Entity\MediaInterface" inversed-by="pages">
-            <join-column name="teaser_image_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
-        </many-to-one>
 
     </mapped-superclass>
 </doctrine-mapping>

@@ -4,38 +4,58 @@
     <services>
         <defaults public="true" />
 
-        <service id="bitbag_sylius_cms_plugin.importer.chain" class="BitBag\SyliusCmsPlugin\Importer\ImporterChain" />
+        <service id="sylius_cms.importer.chain" class="Sylius\CmsPlugin\Importer\ImporterChain" />
 
-        <service id="bitbag_sylius_cms_plugin.importer.page" class="BitBag\SyliusCmsPlugin\Importer\PageImporter">
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.page" />
+        <service id="sylius_cms.importer.page" class="Sylius\CmsPlugin\Importer\PageImporter">
+            <argument type="service" id="sylius_cms.resolver.resource.page" />
             <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
+            <argument type="service" id="sylius_cms.resolver.importer_collections" />
+            <argument type="service" id="sylius_cms.resolver.importer_channels" />
             <argument type="service" id="validator" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="bitbag.cmsplugin.importer" />
+            <tag name="sylius_cms.importer" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.importer.block" class="BitBag\SyliusCmsPlugin\Importer\BlockImporter">
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.block" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_channels" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_locales" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_taxons" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_products_in_taxons" />
+        <service id="sylius_cms.importer.block" class="Sylius\CmsPlugin\Importer\BlockImporter">
+            <argument type="service" id="sylius_cms.resolver.resource.block" />
+            <argument type="service" id="sylius_cms.resolver.importer_collections" />
+            <argument type="service" id="sylius_cms.resolver.importer_channels" />
+            <argument type="service" id="sylius_cms.resolver.importer_products" />
+            <argument type="service" id="sylius_cms.resolver.importer_taxons" />
+            <argument type="service" id="sylius_cms.resolver.importer_products_in_taxons" />
             <argument type="service" id="validator" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.block" />
-            <tag name="bitbag.cmsplugin.importer" />
+            <argument type="service" id="sylius_cms.repository.block" />
+            <tag name="sylius_cms.importer" />
         </service>
 
-        <service id="bitbag_sylius_cms_plugin.importer.media" class="BitBag\SyliusCmsPlugin\Importer\MediaImporter">
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.resource.media" />
+        <service id="sylius_cms.importer.media" class="Sylius\CmsPlugin\Importer\MediaImporter">
+            <argument type="service" id="sylius_cms.resolver.resource.media" />
             <argument type="service" id="sylius.context.locale" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.importer_collections" />
+            <argument type="service" id="sylius_cms.resolver.importer_collections" />
             <argument type="service" id="validator" />
-            <argument type="service" id="bitbag_sylius_cms_plugin.repository.media" />
-            <tag name="bitbag.cmsplugin.importer" />
+            <argument type="service" id="sylius_cms.repository.media" />
+            <tag name="sylius_cms.importer" />
+        </service>
+
+        <service id="sylius_cms.importer.page.legacy" class="Sylius\CmsPlugin\Importer\Legacy\LegacyPageImporter">
+            <argument type="service" id="sylius_cms.resolver.resource.page" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="sylius_cms.resolver.importer_collections" />
+            <argument type="service" id="sylius_cms.resolver.importer_channels" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="sylius.repository.locale" />
+            <argument type="service" id="validator" />
+            <tag name="sylius_cms.importer" />
+        </service>
+
+        <service id="sylius_cms.importer.block.legacy" class="Sylius\CmsPlugin\Importer\Legacy\LegacyBlockImporter">
+            <argument type="service" id="sylius_cms.resolver.resource.block" />
+            <argument type="service" id="sylius_cms.resolver.importer_collections" />
+            <argument type="service" id="sylius_cms.resolver.importer_channels" />
+            <argument type="service" id="sylius_cms.repository.block" />
+            <argument type="service" id="sylius.repository.locale" />
+            <argument type="service" id="validator" />
+            <tag name="sylius_cms.importer" />
         </service>
     </services>
 </container>

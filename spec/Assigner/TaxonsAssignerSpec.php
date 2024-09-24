@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Assigner;
+namespace spec\Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssigner;
-use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\TaxonAwareInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Assigner\TaxonsAssigner;
+use Sylius\CmsPlugin\Assigner\TaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\TaxonAwareInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 
@@ -32,10 +32,9 @@ final class TaxonsAssignerSpec extends ObjectBehavior
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $mugsTaxon,
         TaxonInterface $stickersTaxon,
-        TaxonAwareInterface $taxonsAware
+        TaxonAwareInterface $taxonsAware,
     ): void {
-        $taxonRepository->findOneBy(['code' => 'mugs'])->willReturn($mugsTaxon);
-        $taxonRepository->findOneBy(['code' => 'stickers'])->willReturn($stickersTaxon);
+        $taxonRepository->findBy(['code' => ['mugs', 'stickers']])->willReturn([$mugsTaxon, $stickersTaxon]);
 
         $taxonsAware->addTaxon($mugsTaxon)->shouldBeCalled();
         $taxonsAware->addTaxon($stickersTaxon)->shouldBeCalled();

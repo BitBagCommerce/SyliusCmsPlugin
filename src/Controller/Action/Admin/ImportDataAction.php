@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller\Action\Admin;
+namespace Sylius\CmsPlugin\Controller\Action\Admin;
 
-use BitBag\SyliusCmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
-use BitBag\SyliusCmsPlugin\Exception\ImportFailedException;
-use BitBag\SyliusCmsPlugin\Form\Type\ImportType;
-use BitBag\SyliusCmsPlugin\Processor\ImportProcessorInterface;
+use Sylius\CmsPlugin\Controller\Helper\FormErrorsFlashHelperInterface;
+use Sylius\CmsPlugin\Exception\ImportFailedException;
+use Sylius\CmsPlugin\Form\Type\ImportType;
+use Sylius\CmsPlugin\Processor\ImportProcessorInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -55,7 +49,7 @@ final class ImportDataAction
                 try {
                     $this->importProcessor->process($resourceName, $file->getPathname());
 
-                    $flashBag->set('success', $this->translator->trans('bitbag_sylius_cms_plugin.ui.successfully_imported'));
+                    $flashBag->set('success', $this->translator->trans('sylius_cms.ui.successfully_imported'));
                 } catch (ImportFailedException $exception) {
                     $flashBag->set('error', $exception->getMessage());
                 }
@@ -66,7 +60,7 @@ final class ImportDataAction
             return new RedirectResponse($referer);
         }
 
-        return new Response($this->twig->render('@BitBagSyliusCmsPlugin/Grid/Form/_importForm.html.twig', [
+        return new Response($this->twig->render('@SyliusCmsPlugin/Grid/Form/_importForm.html.twig', [
             'form' => $form->createView(),
         ]));
     }

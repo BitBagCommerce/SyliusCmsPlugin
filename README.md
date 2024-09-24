@@ -1,6 +1,6 @@
 # [![](https://bitbag.io/wp-content/uploads/2021/01/CMS.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
 
-# BitBag SyliusCMSPlugin
+# Sylius CMS Plugin
 
 ----
 
@@ -30,21 +30,27 @@ Like what we do? Want to join us? Check out our job listings on our [career page
 
 ***
 
-Almost every eCommerce app has to present some content. Managing it is often done via third-party libraries like WordPress, eZ Platform, or a built-in content management system. As Sylius does not have a CMS in the standard platform, we decided to develop our own, which will be as flexible as Sylius. This plugin allows you to add dynamic blocks with images, text or HTML to your storefront, as well as pages and FAQs section.
-<img align="left" src="https://bitbag.io/wp-content/uploads/2021/01/Sylius-CMS-Plugin-Building-Block-1-1024x1024.png">
+Almost every eCommerce app has to present some content. Managing it is often done via third-party libraries like WordPress, 
+eZ Platform, or a built-in content management system. As Sylius does not have a CMS in the standard platform, 
+we decided to develop our own, which will be as flexible as Sylius. This plugin allows you to add dynamic blocks and pages
+with content elements to your storefront.
 
 - [Use Case](doc/use_case.md)
+  - [Collections](doc/use_case_collections.md)
+  - [Templates](doc/use_case_templates.md)
+  - [Pages](doc/use_case_pages.md)
+  - [Blocks](doc/use_case_blocks.md)
+  - [Media](doc/use_case_media.md)
 - [Installation](doc/installation.md)
 - [Upgrading](UPGRADE.md)
-- [Blocks](doc/blocks.md)
+- [Collections](doc/collections.md)
+- [Templates](doc/templates.md)
 - [Pages](doc/pages.md)
-- [Sections](doc/sections.md)
+- [Blocks](doc/blocks.md)
 - [Media](doc/media.md)
-- [FAQs](doc/faqs.md)
 - [Fixtures](doc/fixtures.md)
 - [WYSIWYG](doc/wysiwyg.md)
 - [Importing resources](doc/importing-resources.md)
-- [Using Twig functions in the admin panel](doc/twig-functions-in-admin.md)
 - [Sitemap](doc/sitemap.md)
 - [Customization](doc/customization.md)
 

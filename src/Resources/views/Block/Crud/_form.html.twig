@@ -1,8 +1,8 @@
-{% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
-{% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
+{% from '@SyliusCmsPlugin/Macro/translationForm.html.twig' import translationForm %}
+{% form_theme form '@SyliusCmsPlugin/Form/theme.html.twig' %}
 
-{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
-{% include '@BitBagSyliusCmsPlugin/Modal/_loadTemplateConfirmation.html.twig' %}
+{% include '@SyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
+{% include '@SyliusCmsPlugin/Modal/_loadTemplateConfirmation.html.twig' %}
 
 <div class="ui two column stackable grid">
     <div class="column">
@@ -12,20 +12,19 @@
             {{ form_row(form.code) }}
             {{ form_row(form.enabled) }}
             {{ form_row(form.channels) }}
-            {{ form_row(form.locales) }}
             {{ form_row(form.collections) }}
             <a
                     href="#"
-                    class="ui labeled button icon primary bitbag-cms-resource-preview"
-                    data-url="{{ path('bitbag_sylius_cms_plugin_admin_block_preview') }}"
+                    class="ui labeled button icon primary cms-resource-preview"
+                    data-url="{{ path('sylius_cms_admin_block_preview') }}"
                     data-bb-cms-preview-btn
             >
                 <i class="eye icon"></i>
-                {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
+                {{ 'sylius_cms.ui.preview'|trans }}
             </a>
         </div>
         <div class="ui segment">
-            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.manage_block_display'|trans }}</h4>
+            <h4 class="ui dividing header">{{ 'sylius_cms.ui.manage_block_display'|trans }}</h4>
             {{ form_row(form.products) }}
             {{ form_row(form.productsInTaxons) }}
             {{ form_row(form.taxons) }}
@@ -33,8 +32,9 @@
     </div>
     <div class="column">
         <div class="ui segment">
-            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.content_elements.title'|trans }}</h4>
-            {% include '@BitBagSyliusCmsPlugin/Template/form.html.twig' with {ajax_url: path('bitbag_sylius_cms_plugin_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) } %}
+            <h4 class="ui dividing header">{{ 'sylius_cms.ui.content_elements.title'|trans }}</h4>
+            {% include '@SyliusCmsPlugin/Template/form.html.twig' with {ajax_url: path('sylius_cms_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) } %}
+            {% include '@SyliusCmsPlugin/Locale/form.html.twig' %}
             <div class="ui one column stackable grid">
                 <div class="column">
                     {{ form_row(form.contentElements) }}

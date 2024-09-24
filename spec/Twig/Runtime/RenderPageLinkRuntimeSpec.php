@@ -1,22 +1,14 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.io and write us
- * an email on mikolaj.krol@bitbag.pl.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderPageLinkRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderPageLinkRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderPageLinkRuntimeInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
@@ -26,7 +18,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
 {
     public function let(
         PageRepositoryInterface $pageRepository,
-        RouterInterface $router
+        RouterInterface $router,
     ): void {
         $this->beConstructedWith($pageRepository, $router, 'defaultTemplate');
     }
@@ -63,7 +55,7 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
     public function it_gets_link_for_code(
         RouterInterface $router,
         PageRepositoryInterface $pageRepository,
-        PageInterface $page
+        PageInterface $page,
     ): void {
         $code = 'CODE';
         $slug = 'SLUG';
@@ -72,13 +64,13 @@ final class RenderPageLinkRuntimeSpec extends ObjectBehavior
         $pageRepository->findOneEnabledByCode($code)->willReturn($page);
         $page->getSlug()->willReturn($slug);
 
-        $router->generate('bitbag_sylius_cms_plugin_shop_page_show', ['slug' => $slug])->willReturn('link');
+        $router->generate('sylius_cms_shop_page_show', ['slug' => $slug])->willReturn('link');
 
         $this->getLinkForCode($code, $options)->shouldReturn('link');
     }
 
     public function it_returns_not_found_message_when_getting_link_for_code(
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
     ): void {
         $localeContext->getLocaleCode()->willReturn('en_US');
 

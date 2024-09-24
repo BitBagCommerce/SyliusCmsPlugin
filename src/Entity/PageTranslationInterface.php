@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
+namespace Sylius\CmsPlugin\Entity;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-interface PageTranslationInterface extends ResourceInterface, TranslationInterface
+interface PageTranslationInterface extends ResourceInterface, TranslationInterface, TeaserInterface
 {
     public function getSlug(): ?string;
 
@@ -30,4 +24,10 @@ interface PageTranslationInterface extends ResourceInterface, TranslationInterfa
     public function getTitle(): ?string;
 
     public function setTitle(?string $title): void;
+
+    public function getTeaserTitle(): ?string;
+
+    public function getTeaserContent(): ?string;
+
+    public function getTeaserImage(): ?MediaInterface;
 }

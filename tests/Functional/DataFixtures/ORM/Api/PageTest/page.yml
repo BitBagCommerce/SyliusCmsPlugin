@@ -72,7 +72,7 @@ Sylius\Component\Core\Model\ProductVariant:
     product: '@product1'
     code: "code1"
 
-BitBag\SyliusCmsPlugin\Entity\PageTranslation:
+Sylius\CmsPlugin\Entity\PageTranslation:
   page1_translation:
     locale: 'en_US'
     slug: 'translation1_slug_en_US'
@@ -88,7 +88,7 @@ BitBag\SyliusCmsPlugin\Entity\PageTranslation:
     slug: 'translation3_slug_en_US'
     metaKeywords: 'html,application'
     title: 'Amazing article3'
-BitBag\SyliusCmsPlugin\Entity\Page:
+Sylius\CmsPlugin\Entity\Page:
   page1:
     code: 'page1-code'
     enabled: true
@@ -109,14 +109,14 @@ BitBag\SyliusCmsPlugin\Entity\Page:
       - '@page2_translation'
   page3:
     code: 'page3-code'
-    enabled: false
+    enabled: true
     collections:
       - '@collection3'
     channels:
       - '@channel'
     translations:
       - '@page3_translation'
-BitBag\SyliusCmsPlugin\Entity\Collection:
+Sylius\CmsPlugin\Entity\Collection:
   collection1:
     code: 'collection1-code'
   collection2:

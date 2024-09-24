@@ -1,18 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -34,7 +29,7 @@ final class ContentConfigurationType extends AbstractResourceType
 
         foreach ($actionConfigurationTypes as $type => $formType) {
             $this->actionConfigurationTypes[$type] = $formType::class;
-            $this->actionTypes['bitbag_sylius_cms_plugin.ui.content_elements.type.' . $type] = $type;
+            $this->actionTypes['sylius_cms.ui.content_elements.type.' . $type] = $type;
         }
     }
 
@@ -44,13 +39,14 @@ final class ContentConfigurationType extends AbstractResourceType
         $defaultActionConfigurationType = $this->actionConfigurationTypes[$defaultActionType];
 
         $builder
+            ->add('locale', HiddenType::class)
             ->add('type', ChoiceType::class, [
                 'label' => 'sylius.ui.type',
                 'choices' => $this->actionTypes,
                 'choice_attr' => function (?string $type) use ($builder): array {
                     return [
                         'data-configuration' => $this->twig->render(
-                            '@BitBagSyliusCmsPlugin/ContentConfiguration/_action.html.twig',
+                            '@SyliusCmsPlugin/ContentConfiguration/_action.html.twig',
                             [
                                 'field' => $builder->create(
                                     'configuration',
@@ -112,6 +108,6 @@ final class ContentConfigurationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_content_configuration';
+        return 'sylius_cms_content_configuration';
     }
 }

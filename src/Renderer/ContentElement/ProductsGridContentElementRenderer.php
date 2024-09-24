@@ -1,24 +1,16 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\ProductsGridContentElementType;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Twig\Environment;
 
-final class ProductsGridContentElementRenderer implements ContentElementRendererInterface
+final class ProductsGridContentElementRenderer extends AbstractContentElement
 {
     public function __construct(
-        private Environment $twig,
         private ProductRepositoryInterface $productRepository,
     ) {
     }
@@ -34,8 +26,8 @@ final class ProductsGridContentElementRenderer implements ContentElementRenderer
         $productsCodes = $configuration['products_grid']['products'];
         $products = $this->productRepository->findBy(['code' => $productsCodes]);
 
-        return $this->twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_products_grid.html.twig',
+        return $this->twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => $this->template,
             'products' => $products,
         ]);
     }

@@ -1,16 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Entity;
-
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\TextareaContentElementType;
+namespace Sylius\CmsPlugin\Entity;
 
 class ContentConfiguration implements ContentConfigurationInterface
 {
@@ -19,6 +11,8 @@ class ContentConfiguration implements ContentConfigurationInterface
     protected ?string $type;
 
     protected array $configuration = [];
+
+    protected ?string $locale = null;
 
     protected ?BlockInterface $block = null;
 
@@ -49,6 +43,16 @@ class ContentConfiguration implements ContentConfigurationInterface
         $this->configuration = $configuration;
     }
 
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): void
+    {
+        $this->locale = $locale;
+    }
+
     public function getBlock(): ?BlockInterface
     {
         return $this->block;
@@ -67,14 +71,5 @@ class ContentConfiguration implements ContentConfigurationInterface
     public function setPage(?PageInterface $page): void
     {
         $this->page = $page;
-    }
-
-    public function getContent(): ?string
-    {
-        if (TextareaContentElementType::TYPE === $this->type) {
-            return $this->configuration[TextareaContentElementType::TYPE] ?? null;
-        }
-
-        return null;
     }
 }

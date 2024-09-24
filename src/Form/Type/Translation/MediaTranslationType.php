@@ -1,17 +1,11 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\Translation;
+namespace Sylius\CmsPlugin\Form\Type\Translation;
 
-use BitBag\SyliusCmsPlugin\Form\Type\WysiwygType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\CmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -21,15 +15,15 @@ final class MediaTranslationType extends AbstractResourceType
     {
         $builder
             ->add('alt', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.alt',
+                'label' => 'sylius_cms.ui.alt',
                 'required' => false,
             ])
             ->add('link', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.link',
+                'label' => 'sylius_cms.ui.link',
                 'required' => false,
             ])
             ->add('content', WysiwygType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.link_content',
+                'label' => 'sylius_cms.ui.link_content',
                 'required' => false,
             ])
         ;
@@ -37,6 +31,6 @@ final class MediaTranslationType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_media_translation';
+        return 'sylius_cms_media_translation';
     }
 }

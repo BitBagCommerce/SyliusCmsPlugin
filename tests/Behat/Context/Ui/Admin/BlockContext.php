@@ -1,26 +1,20 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\CreatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\IndexPageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Block\UpdatePageInterface;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
 final class BlockContext implements Context
@@ -412,14 +406,6 @@ final class BlockContext implements Context
     public function iSelectTemplate(string $templateName): void
     {
         $this->resolveCurrentPage()->selectTemplate($templateName);
-    }
-
-    /**
-     * @Then I click button to use this template
-     */
-    public function iClickButtonToUseThisTemplate(): void
-    {
-        $this->resolveCurrentPage()->useTemplate();
     }
 
     /**

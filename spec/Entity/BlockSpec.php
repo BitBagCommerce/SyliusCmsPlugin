@@ -1,22 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Entity;
+namespace spec\Sylius\CmsPlugin\Entity;
 
-use BitBag\SyliusCmsPlugin\Entity\Block;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\Block;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 final class BlockSpec extends ObjectBehavior

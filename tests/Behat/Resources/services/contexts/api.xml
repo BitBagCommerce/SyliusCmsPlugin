@@ -4,23 +4,23 @@
     <services>
         <defaults public="true" />
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.api.block" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\BlockContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.block" />
+            <service id="sylius_cms.behat.context.api.block" class="Tests\Sylius\CmsPlugin\Behat\Context\Api\BlockContext">
+                <argument type="service" id="sylius_cms.behat.api_platform_client.shop.block" />
                 <argument type="service" id="Sylius\Behat\Client\ResponseCheckerInterface" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.api.media" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\MediaContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.media" />
+            <service id="sylius_cms.behat.context.api.media" class="Tests\Sylius\CmsPlugin\Behat\Context\Api\MediaContext">
+                <argument type="service" id="sylius_cms.behat.api_platform_client.shop.media" />
                 <argument type="service" id="Sylius\Behat\Client\ResponseCheckerInterface" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.api.page" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\PageContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.page" />
+            <service id="sylius_cms.behat.context.api.page" class="Tests\Sylius\CmsPlugin\Behat\Context\Api\PageContext">
+                <argument type="service" id="sylius_cms.behat.api_platform_client.shop.page" />
                 <argument type="service" id="Sylius\Behat\Client\ResponseCheckerInterface" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.behat.context.api.collection" class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Api\CollectionContext">
-                <argument type="service" id="bitbag_sylius_cms_plugin.behat.api_platform_client.shop.collection" />
+            <service id="sylius_cms.behat.context.api.collection" class="Tests\Sylius\CmsPlugin\Behat\Context\Api\CollectionContext">
+                <argument type="service" id="sylius_cms.behat.api_platform_client.shop.collection" />
                 <argument type="service" id="Sylius\Behat\Client\ResponseCheckerInterface" />
             </service>
     </services>

@@ -2,8 +2,8 @@
     {% if block.name != null %}
     <h4 class="ui horizontal section divider header">{{ block.name }}</h4>
     {% endif %}
-    
+
     <div class="ui column segment">
-        {{ bitbag_cms_render_block(block.code) }}
+        {{ sylius_cms_render_block(block.code) }}
     </div>
 {% endfor %}

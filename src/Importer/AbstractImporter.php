@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Importer;
+namespace Sylius\CmsPlugin\Importer;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -25,11 +19,7 @@ abstract class AbstractImporter implements ImporterInterface
 
     protected function getColumnValue(string $column, array $row)
     {
-        if (array_key_exists($column, $row)) {
-            return $row[$column];
-        }
-
-        return null;
+        return $row[$column] ?? null;
     }
 
     protected function getTranslatableColumnValue(
@@ -39,23 +29,21 @@ abstract class AbstractImporter implements ImporterInterface
     ) {
         $column = str_replace('__locale__', '_' . $locale, $column);
 
-        if (array_key_exists($column, $row)) {
-            return $row[$column];
-        }
-
-        return null;
+        return $row[$column] ?? null;
     }
 
     protected function getAvailableLocales(array $translatableColumns, array $columns): array
     {
         $locales = [];
-
         foreach ($translatableColumns as $translatableColumn) {
             $translatableColumn = str_replace('__locale__', '_', $translatableColumn);
-
             foreach ($columns as $column) {
-                if (0 === strpos($column, $translatableColumn)) {
-                    $locales[] = str_replace($translatableColumn, '', $column);
+                if (str_starts_with($column, $translatableColumn)) {
+                    $localePart = substr($column, strlen($translatableColumn));
+
+                    if (preg_match('/^[a-z]{2}(_[A-Z]{2})?$/', $localePart)) {
+                        $locales[] = $localePart;
+                    }
                 }
             }
         }

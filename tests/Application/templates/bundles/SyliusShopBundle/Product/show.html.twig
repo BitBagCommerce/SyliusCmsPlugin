@@ -4,7 +4,7 @@
     {% include '@SyliusShop/Product/Show/_breadcrumb.html.twig' %}
     <div class="ui hidden divider"></div>
 
-    {{ bitbag_cms_render_block('specified_products_banner', null, product) }}
+    {{ sylius_cms_render_block('specified_products_banner', null, product) }}
 
     <div class="ui two column stackable grid">
         <div class="column">
@@ -58,5 +58,5 @@
 
     {{ sonata_block_render_event('sylius.shop.product.show.before_associations', {'product': product}) }}
 
-    {{ bitbag_cms_render_block('specified_products_in_taxons', null, product) }}
+    {{ sylius_cms_render_block('specified_products_in_taxons', null, product) }}
 {% endblock %}

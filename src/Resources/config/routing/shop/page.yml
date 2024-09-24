@@ -1,10 +1,10 @@
-bitbag_sylius_cms_plugin_shop_page_show:
+sylius_cms_shop_page_show:
     path: /page/{slug}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::showAction
+        _controller: sylius_cms.controller.page.overriden::showAction
         _sylius:
-            template: "@BitBagSyliusCmsPlugin/Shop/Page/show.html.twig"
+            template: "@SyliusCmsPlugin/Shop/Page/show.html.twig"
             repository:
                 method: findOneEnabledBySlugAndChannelCode
                 arguments:
@@ -12,11 +12,11 @@ bitbag_sylius_cms_plugin_shop_page_show:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('sylius.context.channel').getChannel().getCode()"
 
-bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
+sylius_cms_shop_page_show_link_by_code:
     path: /page/link/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::renderLinkAction
+        _controller: sylius_cms.controller.page.overriden::renderLinkAction
         _sylius:
             template: $template
             repository:
@@ -24,39 +24,39 @@ bitbag_sylius_cms_plugin_shop_page_show_link_by_code:
                 arguments:
                     - $code
 
-bitbag_sylius_cms_plugin_shop_page_index_by_collection_code:
+sylius_cms_shop_page_index_by_collection_code:
     path: /page/{collectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
+        _controller: sylius_cms.controller.page.overriden::indexAction
         _sylius:
-            template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
-            grid: bitbag_sylius_cms_plugin_shop_page
+            template: "@SyliusCmsPlugin/Shop/Page/index.html.twig"
+            grid: sylius_cms_shop_page
             repository:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
 
-bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_no_grid:
+sylius_cms_shop_page_index_by_collection_code_no_grid:
     path: /pages/{collectionCode}/no-grid
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
+        _controller: sylius_cms.controller.page.overriden::indexAction
         _sylius:
-            template: "@BitBagSyliusCmsPlugin/Shop/Page/index.html.twig"
+            template: "@SyliusCmsPlugin/Shop/Page/index.html.twig"
             repository:
                 method: findByCollectionCode
                 arguments:
                     - $collectionCode
 
-bitbag_sylius_cms_plugin_shop_page_index_by_collection_code_template:
+sylius_cms_shop_page_index_by_collection_code_template:
     path: /pages-template/{collectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.page.overriden::indexAction
+        _controller: sylius_cms.controller.page.overriden::indexAction
         _sylius:
             template: $template
-            grid: bitbag_sylius_cms_plugin_shop_page
+            grid: sylius_cms_shop_page
             repository:
                 method: findByCollectionCode
                 arguments:

@@ -1,22 +1,16 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\Collection;
+namespace spec\Sylius\CmsPlugin\Renderer\Collection;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionBlocksRenderer;
-use BitBag\SyliusCmsPlugin\Renderer\Collection\CollectionRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionBlocksRenderer;
+use Sylius\CmsPlugin\Renderer\Collection\CollectionRendererInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 
 final class CollectionBlocksRendererSpec extends ObjectBehavior
 {
@@ -39,9 +33,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
         CollectionInterface $collection,
         BlockInterface $block1,
-        BlockInterface $block2
-    ): void
-    {
+        BlockInterface $block2,
+    ): void {
         $blocks = new ArrayCollection([$block1->getWrappedObject(), $block2->getWrappedObject()]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -55,9 +48,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
         CollectionInterface $collection,
         BlockInterface $block1,
-        BlockInterface $block2
-    ): void
-    {
+        BlockInterface $block2,
+    ): void {
         $blocks = new ArrayCollection([$block1->getWrappedObject(), $block2->getWrappedObject()]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -69,9 +61,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
 
     public function it_supports_collections_with_blocks(
         CollectionInterface $collection,
-        BlockInterface $block
-    ): void
-    {
+        BlockInterface $block,
+    ): void {
         $blocks = new ArrayCollection([$block]);
         $collection->getBlocks()->willReturn($blocks);
 
@@ -79,9 +70,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
     }
 
     public function it_does_not_support_empty_collections(
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $collection->getBlocks()->willReturn(new ArrayCollection());
 
         $this->supports($collection)->shouldReturn(false);
@@ -89,9 +79,8 @@ final class CollectionBlocksRendererSpec extends ObjectBehavior
 
     public function it_throws_exception_when_blocks_are_null(
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        CollectionInterface $collection
-    ): void
-    {
+        CollectionInterface $collection,
+    ): void {
         $collection->getBlocks()->willReturn(null);
 
         $this->shouldThrow(\InvalidArgumentException::class)

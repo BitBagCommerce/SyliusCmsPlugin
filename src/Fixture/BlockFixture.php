@@ -1,17 +1,11 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture;
+namespace Sylius\CmsPlugin\Fixture;
 
-use BitBag\SyliusCmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
+use Sylius\CmsPlugin\Fixture\Factory\FixtureFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class BlockFixture extends AbstractFixture
@@ -42,12 +36,13 @@ final class BlockFixture extends AbstractFixture
                             ->booleanNode('enabled')->defaultTrue()->end()
                             ->arrayNode('collections')->scalarPrototype()->end()->end()
                             ->arrayNode('channels')->scalarPrototype()->end()->end()
-                            ->arrayNode('locales')->scalarPrototype()->end()->end()
                             ->arrayNode('products')->scalarPrototype()->end()->end()
                             ->arrayNode('taxons')->scalarPrototype()->end()->end()
                             ->arrayNode('products_in_taxons')->scalarPrototype()->end()->end()
                             ->arrayNode('content_elements')
-                                ->useAttributeAsKey('key')
+                                ->useAttributeAsKey('locale')
+                                ->arrayPrototype()
+                                    ->useAttributeAsKey('key')
                                     ->arrayPrototype()
                                         ->children()
                                             ->scalarNode('type')->end()
@@ -59,7 +54,6 @@ final class BlockFixture extends AbstractFixture
                                                     ->scalarNode('single_media')->end()
                                                     ->scalarNode('products_carousel_by_taxon')->end()
                                                     ->scalarNode('products_grid_by_taxon')->end()
-                                                    ->scalarNode('pages_collection')->end()
                                                     ->scalarNode('pages_collection')->end()
                                                     ->scalarNode('spacer')->end()
                                                     ->arrayNode('multiple_media')->scalarPrototype()->end()->end()

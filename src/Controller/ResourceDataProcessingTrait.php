@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Sylius\CmsPlugin\Entity\MediaInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\File;
@@ -38,7 +38,7 @@ trait ResourceDataProcessingTrait
         }
         Assert::notNull($media->getMimeType());
         Assert::notNull($media->getType());
-        if (1 === preg_match("/image\//", $media->getMimeType()) && 'image' === $media->getType()) {
+        if ('image' === $media->getType() && 1 === preg_match("/image\//", $media->getMimeType())) {
             $this->setPathForImageMediaType($media);
         } else {
             $this->setPathForNonImageMediaType($media);

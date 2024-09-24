@@ -1,40 +1,30 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Renderer\ContentElement;
+namespace spec\Sylius\CmsPlugin\Renderer\ContentElement;
 
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\ContentElementRendererInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Form\Type\ContentElements\SingleMediaContentElementType;
+use Sylius\CmsPlugin\Renderer\ContentElement\AbstractContentElement;
+use Sylius\CmsPlugin\Renderer\ContentElement\SingleMediaContentElementRenderer;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderMediaRuntimeInterface;
 use Twig\Environment;
 
 final class SingleMediaContentElementRendererSpec extends ObjectBehavior
 {
-    public function let(Environment $twig, RenderMediaRuntimeInterface $renderMediaRuntime, MediaRepositoryInterface $mediaRepository): void
+    public function let(RenderMediaRuntimeInterface $renderMediaRuntime, MediaRepositoryInterface $mediaRepository): void
     {
-        $this->beConstructedWith($twig, $renderMediaRuntime, $mediaRepository);
+        $this->beConstructedWith($renderMediaRuntime, $mediaRepository);
     }
 
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(SingleMediaContentElementRenderer::class);
-    }
-
-    public function it_implements_content_element_renderer_interface(): void
-    {
-        $this->shouldImplement(ContentElementRendererInterface::class);
+        $this->shouldBeAnInstanceOf(AbstractContentElement::class);
     }
 
     public function it_supports_single_media_content_element_type(ContentConfigurationInterface $contentConfiguration): void
@@ -54,18 +44,21 @@ final class SingleMediaContentElementRendererSpec extends ObjectBehavior
         RenderMediaRuntimeInterface $renderMediaRuntime,
         MediaRepositoryInterface $mediaRepository,
         ContentConfigurationInterface $contentConfiguration,
-        MediaInterface $media
-    ): void
-    {
+        MediaInterface $media,
+    ): void {
+        $template = 'custom_template';
+        $this->setTemplate($template);
+        $this->setTwigEnvironment($twig);
+
         $contentConfiguration->getConfiguration()->willReturn([
-            'single_media' => 'media_code'
+            'single_media' => 'media_code',
         ]);
 
         $renderMediaRuntime->renderMedia('media_code')->willReturn('rendered media');
         $mediaRepository->findOneBy(['code' => 'media_code'])->willReturn($media);
 
-        $twig->render('@BitBagSyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
-            'content_element' => '@BitBagSyliusCmsPlugin/Shop/ContentElement/_single_media.html.twig',
+        $twig->render('@SyliusCmsPlugin/Shop/ContentElement/index.html.twig', [
+            'content_element' => $template,
             'media' => [
                 'renderedContent' => 'rendered media',
                 'entity' => $media,

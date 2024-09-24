@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -22,13 +16,13 @@ final class TemplateType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => [
-                    'bitbag_sylius_cms_plugin.ui.page' => 'page',
-                    'bitbag_sylius_cms_plugin.ui.block' => 'block',
+                    'sylius_cms.ui.page' => 'page',
+                    'sylius_cms.ui.block' => 'block',
                 ],
             ])
             ->add('contentElements', CollectionType::class, [
@@ -44,6 +38,6 @@ final class TemplateType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_template';
+        return 'sylius_cms_template';
     }
 }

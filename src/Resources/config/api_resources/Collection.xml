@@ -3,37 +3,47 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
 >
-    <resource class="%bitbag_sylius_cms_plugin.model.collection.class%" shortName="Collection">
+    <resource class="%sylius_cms.model.collection.class%" shortName="Collection">
         <attribute name="normalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:read</attribute>
+                <attribute>sylius_cms:collection:read:index</attribute>
+                <attribute>sylius_cms:collection:read:show</attribute>
             </attribute>
         </attribute>
 
-        <attribute name="denormalizationContext">
+        <attribute name="denormalization_context">
             <attribute name="groups">
-                <attribute>shop:cms:write</attribute>
+                <attribute>sylius_cms:collection:write</attribute>
             </attribute>
         </attribute>
 
         <attribute name="validation_groups">sylius</attribute>
 
         <collectionOperations>
-            <collectionOperation name="shop_get_collection">
+            <collectionOperation name="get_collection_collection">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/collections</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:collection:read:index</attribute>
+                </attribute>
             </collectionOperation>
-
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="shop_get_collection">
+            <itemOperation name="get_collection_item">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/shop/cms-plugin/collections/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">sylius_cms:collection:read:show</attribute>
+                </attribute>
             </itemOperation>
         </itemOperations>
 
         <property name="id" identifier="true" writable="false"/>
         <property name="code" identifier="false" writable="false"/>
+        <property name="type" identifier="false" writable="false"/>
+        <property name="pages" identifier="false" writable="false"/>
+        <property name="blocks" identifier="false" writable="false"/>
+        <property name="media" identifier="false" writable="false"/>
     </resource>
 </resources>

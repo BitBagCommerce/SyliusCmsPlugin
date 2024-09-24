@@ -1,23 +1,15 @@
 <?php
 
-/*
- * This file has been created by developers from BitBag.
- * Feel free to contact us once you face any issues or want to start
- * another great project.
- * You can find more information about us on https://bitbag.io and write us
- * an email on mikolaj.krol@bitbag.pl.
- */
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Twig\Runtime;
+namespace spec\Sylius\CmsPlugin\Twig\Runtime;
 
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Renderer\ContentElementRendererStrategyInterface;
-use BitBag\SyliusCmsPlugin\Resolver\BlockResourceResolverInterface;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntime;
-use BitBag\SyliusCmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
+use Sylius\CmsPlugin\Resolver\BlockResourceResolverInterface;
+use Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntime;
+use Sylius\CmsPlugin\Twig\Runtime\RenderBlockRuntimeInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Twig\Environment;
@@ -27,7 +19,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function let(
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
-        ContentElementRendererStrategyInterface $contentElementRendererStrategy
+        ContentElementRendererStrategyInterface $contentElementRendererStrategy,
     ): void {
         $this->beConstructedWith($blockResourceResolver, $templatingEngine, $contentElementRendererStrategy);
     }
@@ -52,7 +44,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_returns_empty_string_when_block_not_displayable_for_taxon(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        TaxonInterface $taxon
+        TaxonInterface $taxon,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $block->canBeDisplayedForTaxon($taxon)->willReturn(false);
@@ -63,7 +55,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
     public function it_returns_empty_string_when_block_not_displayable_for_product(
         BlockResourceResolverInterface $blockResourceResolver,
         BlockInterface $block,
-        ProductInterface $product
+        ProductInterface $product,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $block->canBeDisplayedForProduct($product)->willReturn(false);
@@ -76,12 +68,12 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        BlockInterface $block
+        BlockInterface $block,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $contentElementRendererStrategy->render($block)->willReturn('rendered content');
 
-        $templatingEngine->render('@BitBagSyliusCmsPlugin/Shop/Block/show.html.twig', [
+        $templatingEngine->render('@SyliusCmsPlugin/Shop/Block/show.html.twig', [
             'content' => 'rendered content',
             'context' => null,
         ])->willReturn('rendered block');
@@ -93,7 +85,7 @@ final class RenderBlockRuntimeSpec extends ObjectBehavior
         BlockResourceResolverInterface $blockResourceResolver,
         Environment $templatingEngine,
         ContentElementRendererStrategyInterface $contentElementRendererStrategy,
-        BlockInterface $block
+        BlockInterface $block,
     ): void {
         $blockResourceResolver->findOrLog('code')->willReturn($block);
         $contentElementRendererStrategy->render($block)->willReturn('rendered content');

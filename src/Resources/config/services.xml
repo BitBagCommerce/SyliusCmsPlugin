@@ -6,42 +6,38 @@
     </imports>
 
     <parameters>
-        <parameter key="bitbag_sylius_cms_plugin.media_provider.interface">BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface</parameter>
+        <parameter key="sylius_cms.media_provider.interface">Sylius\CmsPlugin\MediaProvider\ProviderInterface</parameter>
     </parameters>
 
     <services>
         <defaults public="true" />
-            <service id="bitbag_sylius_cms_plugin.reader.csv" class="BitBag\SyliusCmsPlugin\Reader\CsvReader" />
+            <service id="sylius_cms.reader.csv" class="Sylius\CmsPlugin\Reader\CsvReader" />
 
-            <service id="bitbag_sylius_cms_plugin.processor.import" class="BitBag\SyliusCmsPlugin\Processor\ImportProcessor">
-                <argument type="service" id="bitbag_sylius_cms_plugin.importer.chain" />
-                <argument type="service" id="bitbag_sylius_cms_plugin.reader.csv" />
+            <service id="sylius_cms.processor.import" class="Sylius\CmsPlugin\Processor\ImportProcessor">
+                <argument type="service" id="sylius_cms.importer.chain" />
+                <argument type="service" id="sylius_cms.reader.csv" />
                 <argument type="service" id="doctrine.orm.entity_manager" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.command.import_from_csv" class="BitBag\SyliusCmsPlugin\Command\ImportFromCsvCommand">
-                <argument type="service" id="bitbag_sylius_cms_plugin.processor.import" />
+            <service id="sylius_cms.command.import_from_csv" class="Sylius\CmsPlugin\Console\Command\ImportFromCsvCommand">
+                <argument type="service" id="sylius_cms.processor.import" />
                 <tag name="console.command" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.downloader.image" class="BitBag\SyliusCmsPlugin\Downloader\ImageDownloader">
-                <argument type="service" id="filesystem" />
-            </service>
-
-            <service id="bitbag_sylius_cms_plugin.registry.media_provider" class="Sylius\Component\Registry\ServiceRegistry">
-                <argument>%bitbag_sylius_cms_plugin.media_provider.interface%</argument>
+            <service id="sylius_cms.registry.media_provider" class="Sylius\Component\Registry\ServiceRegistry">
+                <argument>%sylius_cms.media_provider.interface%</argument>
                 <argument>Media provider</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.media_uploader" class="BitBag\SyliusCmsPlugin\Uploader\MediaUploader">
-                <argument type="service" id="bitbag_sylius_cms_plugin.media.filesystem" />
+            <service id="sylius_cms.media_uploader" class="Sylius\CmsPlugin\Uploader\MediaUploader">
+                <argument type="service" id="sylius_cms.media.filesystem" />
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.media.filesystem" class="Gaufrette\Filesystem">
+            <service id="sylius_cms.media.filesystem" class="Gaufrette\Filesystem">
                 <factory service="knp_gaufrette.filesystem_map" method="get" />
-                <argument>%bitbag_sylius_cms_plugin.uploader.filesystem%</argument>
+                <argument>%sylius_cms.uploader.filesystem%</argument>
             </service>
 
-            <service id="bitbag_sylius_cms_plugin.sorter.collections" class="BitBag\SyliusCmsPlugin\Sorter\CollectionsSorter" />
+            <service id="sylius_cms.sorter.collections" class="Sylius\CmsPlugin\Sorter\CollectionsSorter" />
     </services>
 </container>

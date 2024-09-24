@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Controller;
+namespace Sylius\CmsPlugin\Controller;
 
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Resolver\PageResourceResolverInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Resolver\PageResourceResolverInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,8 +18,7 @@ final class PageController extends ResourceController
     use ResourceDataProcessingTrait;
     use MediaPageControllersCommonDependencyInjectionsTrait;
 
-    /** @var PageResourceResolverInterface */
-    private $pageResourceResolver;
+    private PageResourceResolverInterface $pageResourceResolver;
 
     public const FILTER = 'sylius_admin_product_original';
 

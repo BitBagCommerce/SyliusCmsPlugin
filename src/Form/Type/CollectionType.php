@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type;
+namespace Sylius\CmsPlugin\Form\Type;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Event\PreSubmitEvent;
@@ -29,30 +23,30 @@ final class CollectionType extends AbstractResourceType
     {
         $builder
             ->add('code', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.code',
+                'label' => 'sylius_cms.ui.code',
                 'disabled' => null !== $builder->getData()->getCode(),
             ])
             ->add('name', TextType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.name',
+                'label' => 'sylius_cms.ui.name',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.type',
+                'label' => 'sylius_cms.ui.type',
                 'choices' => [
-                    'bitbag_sylius_cms_plugin.ui.page' => self::PAGE,
-                    'bitbag_sylius_cms_plugin.ui.block' => self::BLOCK,
-                    'bitbag_sylius_cms_plugin.ui.media' => self::MEDIA,
+                    'sylius_cms.ui.page' => self::PAGE,
+                    'sylius_cms.ui.block' => self::BLOCK,
+                    'sylius_cms.ui.media' => self::MEDIA,
                 ],
             ])
             ->add('pages', PageAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.pages',
+                'label' => 'sylius_cms.ui.pages',
                 'multiple' => true,
             ])
             ->add('blocks', BlockAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.blocks',
+                'label' => 'sylius_cms.ui.blocks',
                 'multiple' => true,
             ])
             ->add('media', MediaAutocompleteChoiceType::class, [
-                'label' => 'bitbag_sylius_cms_plugin.ui.media',
+                'label' => 'sylius_cms.ui.media',
                 'multiple' => true,
             ])
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event): void {
@@ -78,6 +72,6 @@ final class CollectionType extends AbstractResourceType
 
     public function getBlockPrefix(): string
     {
-        return 'bitbag_sylius_cms_plugin_collection';
+        return 'sylius_cms_collection';
     }
 }

@@ -1,25 +1,19 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace Tests\BitBag\SyliusCmsPlugin\Behat\Context\Setup;
+namespace Tests\Sylius\CmsPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfigurationInterface;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\ContentConfiguration;
+use Sylius\CmsPlugin\Entity\ContentConfigurationInterface;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Helpers\ContentElementHelper;
-use Tests\BitBag\SyliusCmsPlugin\Behat\Service\RandomStringGeneratorInterface;
+use Tests\Sylius\CmsPlugin\Behat\Helpers\ContentElementHelper;
+use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 
 final class BlockContext implements Context
 {
@@ -100,6 +94,7 @@ final class BlockContext implements Context
         /** @var ContentConfigurationInterface $contentConfiguration */
         $contentConfiguration = new ContentConfiguration();
         $contentConfiguration->setType(mb_strtolower($contentElement));
+        $contentConfiguration->setLocale('en_US');
         $contentConfiguration->setConfiguration(ContentElementHelper::getExampleConfigurationByContentElement($contentElement));
         $contentConfiguration->setBlock($block);
 

@@ -1,24 +1,17 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
+namespace Sylius\CmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\LocalesAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\TaxonsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
-use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\ProductsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\ProductsInTaxonsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\TaxonsAssignerInterface;
+use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Entity\ContentConfiguration;
+use Sylius\CmsPlugin\Repository\BlockRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class BlockFixtureFactory implements FixtureFactoryInterface
@@ -28,7 +21,6 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
         private BlockRepositoryInterface $blockRepository,
         private CollectionsAssignerInterface $collectionsAssigner,
         private ChannelsAssignerInterface $channelAssigner,
-        private LocalesAssignerInterface $localesAssigner,
         private ProductsAssignerInterface $productsAssigner,
         private TaxonsAssignerInterface $taxonsAssigner,
         private ProductsInTaxonsAssignerInterface $productsInTaxonsAssigner,
@@ -62,21 +54,23 @@ final class BlockFixtureFactory implements FixtureFactoryInterface
 
         $this->collectionsAssigner->assign($block, $blockData['collections']);
         $this->channelAssigner->assign($block, $blockData['channels']);
-        $this->localesAssigner->assign($block, $blockData['locales']);
         $this->productsAssigner->assign($block, $blockData['products']);
         $this->taxonsAssigner->assign($block, $blockData['taxons']);
         $this->productsInTaxonsAssigner->assign($block, $blockData['products_in_taxons']);
 
-        foreach ($blockData['content_elements'] as $data) {
-            $data['data'] = array_filter($data['data'], static function ($value) {
-                return !empty($value);
-            });
+        foreach ($blockData['content_elements'] as $locale => $data) {
+            foreach ($data as $contentElementData) {
+                $contentElementData['data'] = array_filter($contentElementData['data'], static function ($value) {
+                    return !empty($value);
+                });
 
-            $contentConfiguration = new ContentConfiguration();
-            $contentConfiguration->setType($data['type']);
-            $contentConfiguration->setConfiguration($data['data']);
-            $contentConfiguration->setBlock($block);
-            $block->addContentElement($contentConfiguration);
+                $contentConfiguration = new ContentConfiguration();
+                $contentConfiguration->setType($contentElementData['type']);
+                $contentConfiguration->setConfiguration($contentElementData['data']);
+                $contentConfiguration->setLocale($locale);
+                $contentConfiguration->setBlock($block);
+                $block->addContentElement($contentConfiguration);
+            }
         }
 
         $this->blockRepository->add($block);

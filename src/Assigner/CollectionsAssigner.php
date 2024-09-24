@@ -1,18 +1,12 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Assigner;
+namespace Sylius\CmsPlugin\Assigner;
 
-use BitBag\SyliusCmsPlugin\Entity\CollectibleInterface;
-use BitBag\SyliusCmsPlugin\Entity\CollectionInterface;
-use BitBag\SyliusCmsPlugin\Repository\CollectionRepositoryInterface;
+use Sylius\CmsPlugin\Entity\CollectibleInterface;
+use Sylius\CmsPlugin\Entity\CollectionInterface;
+use Sylius\CmsPlugin\Repository\CollectionRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class CollectionsAssigner implements CollectionsAssignerInterface
@@ -23,11 +17,10 @@ final class CollectionsAssigner implements CollectionsAssignerInterface
 
     public function assign(CollectibleInterface $collectionsAware, array $collectionsCodes): void
     {
-        foreach ($collectionsCodes as $collectionCode) {
-            /** @var CollectionInterface|null $collection */
-            $collection = $this->collectionRepository->findOneBy(['code' => $collectionCode]);
+        $collections = $this->collectionRepository->findBy(['code' => $collectionsCodes]);
+        Assert::allIsInstanceOf($collections, CollectionInterface::class);
 
-            Assert::notNull($collection, sprintf('Collection with %s code not found.', $collectionCode));
+        foreach ($collections as $collection) {
             $collectionsAware->addCollection($collection);
         }
     }

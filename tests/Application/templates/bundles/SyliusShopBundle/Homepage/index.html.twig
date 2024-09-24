@@ -3,17 +3,17 @@
 {% block content %}
     <div class="top one">
         <div class="homepage-logo">
-            {{ bitbag_cms_render_media('homepage_logo') }}
+            {{ sylius_cms_render_block('homepage_logo') }}
         </div>
-        {{ bitbag_cms_render_block('homepage_textarea') }}
-        {{ bitbag_cms_render_block('homepage_products_carousel') }}
+        {{ sylius_cms_render_block('homepage_textarea') }}
+        {{ sylius_cms_render_block('homepage_products_carousel') }}
         <div class="homepage-sale">
-            {{ bitbag_cms_render_block('homepage_sale_banner') }}
+            {{ sylius_cms_render_block('homepage_sale_banner') }}
         </div>
-        {{ bitbag_cms_render_block('homepage_products_grid') }}
-        {{ bitbag_cms_render_block('homepage_taxons_list') }}
-        {{ bitbag_cms_render_block('homepage_sale_banner2') }}
-        {{ bitbag_cms_render_block('homepage_products_carousel_by_taxon') }}
-        {{ bitbag_cms_render_block('homepage_products_grid_by_taxon') }}
+        {{ sylius_cms_render_block('homepage_products_grid') }}
+        {{ sylius_cms_render_block('homepage_taxons_list') }}
+        {{ sylius_cms_render_block('homepage_sale_banner2') }}
+        {{ sylius_cms_render_block('homepage_products_carousel_by_taxon') }}
+        {{ sylius_cms_render_block('homepage_products_grid_by_taxon') }}
     </div>
 {% endblock %}

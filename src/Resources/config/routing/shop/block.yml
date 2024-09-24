@@ -1,19 +1,19 @@
-bitbag_sylius_cms_plugin_shop_block_render:
+sylius_cms_shop_block_render:
     path: /block/{code}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block::renderBlockAction
+        _controller: sylius_cms.controller.block::renderBlockAction
         _sylius:
             repository:
                 method: findOneByCode
                 arguments:
                     - $code
 
-bitbag_sylius_cms_plugin_shop_block_index_by_collection_code:
+sylius_cms_shop_block_index_by_collection_code:
     path: /blocks/collection/{collectionCode}
     methods: [GET]
     defaults:
-        _controller: bitbag_sylius_cms_plugin.controller.block::indexAction
+        _controller: sylius_cms.controller.block::indexAction
         _sylius:
             template: $template
             repository:

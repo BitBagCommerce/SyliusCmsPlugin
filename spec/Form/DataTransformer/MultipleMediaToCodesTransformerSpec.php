@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Form\DataTransformer;
+namespace spec\Sylius\CmsPlugin\Form\DataTransformer;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Form\DataTransformer\MultipleMediaToCodesTransformer;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
 
 final class MultipleMediaToCodesTransformerSpec extends ObjectBehavior
 {
@@ -43,9 +37,8 @@ final class MultipleMediaToCodesTransformerSpec extends ObjectBehavior
     public function it_transforms_non_empty_array_to_collection(
         MediaRepositoryInterface $mediaRepository,
         MediaInterface $media1,
-        MediaInterface $media2
-    ): void
-    {
+        MediaInterface $media2,
+    ): void {
         $mediaCodes = ['code1', 'code2'];
         $mediaRepository->findBy(['code' => $mediaCodes])->willReturn([$media1, $media2]);
 
@@ -63,9 +56,8 @@ final class MultipleMediaToCodesTransformerSpec extends ObjectBehavior
 
     public function it_reverse_transforms_collection_to_array_of_media_codes(
         MediaInterface $media1,
-        MediaInterface $media2
-    ): void
-    {
+        MediaInterface $media2,
+    ): void {
         $media1->getCode()->willReturn('code1');
         $media2->getCode()->willReturn('code2');
 

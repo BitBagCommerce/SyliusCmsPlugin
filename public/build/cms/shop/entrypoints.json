@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "sylius-cms-shop": {
+      "css": [
+        "/build/cms/shop/sylius-cms-shop.css"
+      ],
+      "js": [
+        "/build/cms/shop/sylius-cms-shop.js"
+      ]
+    }
+  }
+}

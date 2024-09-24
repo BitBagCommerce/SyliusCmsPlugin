@@ -1,23 +1,17 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Fixture\Factory;
+namespace Sylius\CmsPlugin\Fixture\Factory;
 
-use BitBag\SyliusCmsPlugin\Assigner\ChannelsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Assigner\CollectionsAssignerInterface;
-use BitBag\SyliusCmsPlugin\Entity\ContentConfiguration;
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageInterface;
-use BitBag\SyliusCmsPlugin\Entity\PageTranslationInterface;
-use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface;
-use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
+use Sylius\CmsPlugin\Assigner\ChannelsAssignerInterface;
+use Sylius\CmsPlugin\Assigner\CollectionsAssignerInterface;
+use Sylius\CmsPlugin\Entity\ContentConfiguration;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Entity\PageTranslationInterface;
+use Sylius\CmsPlugin\Repository\MediaRepositoryInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class PageFixtureFactory implements FixtureFactoryInterface
@@ -62,15 +56,6 @@ final class PageFixtureFactory implements FixtureFactoryInterface
         $page->setName($pageData['name']);
         $page->setEnabled($pageData['enabled']);
 
-        /** @var MediaInterface|null $mediaImage */
-        $mediaImage = $this->mediaRepository->findOneBy(['code' => $pageData['teaser_image']]);
-        if ($mediaImage) {
-            $page->setTeaserImage($mediaImage);
-        }
-
-        $page->setTeaserTitle($pageData['teaser_title']);
-        $page->setTeaserContent($pageData['teaser_content']);
-
         foreach ($pageData['translations'] as $localeCode => $translation) {
             /** @var PageTranslationInterface $pageTranslation */
             $pageTranslation = $this->pageTranslationFactory->createNew();
@@ -81,20 +66,31 @@ final class PageFixtureFactory implements FixtureFactoryInterface
             $pageTranslation->setTitle($translation['meta_title']);
             $pageTranslation->setMetaKeywords($translation['meta_keywords']);
             $pageTranslation->setMetaDescription($translation['meta_description']);
+            $pageTranslation->setTeaserTitle($translation['teaser_title']);
+            $pageTranslation->setTeaserContent($translation['teaser_content']);
+
+            /** @var MediaInterface|null $mediaImage */
+            $mediaImage = $this->mediaRepository->findOneBy(['code' => $translation['teaser_image']]);
+            if ($mediaImage) {
+                $pageTranslation->setTeaserImage($mediaImage);
+            }
 
             $page->addTranslation($pageTranslation);
         }
 
-        foreach ($pageData['content_elements'] as $data) {
-            $data['data'] = array_filter($data['data'], static function ($value) {
-                return !empty($value);
-            });
+        foreach ($pageData['content_elements'] as $locale => $data) {
+            foreach ($data as $contentElementData) {
+                $contentElementData['data'] = array_filter($contentElementData['data'], static function ($value) {
+                    return !empty($value);
+                });
 
-            $contentConfiguration = new ContentConfiguration();
-            $contentConfiguration->setType($data['type']);
-            $contentConfiguration->setConfiguration($data['data']);
-            $contentConfiguration->setPage($page);
-            $page->addContentElement($contentConfiguration);
+                $contentConfiguration = new ContentConfiguration();
+                $contentConfiguration->setType($contentElementData['type']);
+                $contentConfiguration->setConfiguration($contentElementData['data']);
+                $contentConfiguration->setLocale($locale);
+                $contentConfiguration->setPage($page);
+                $page->addContentElement($contentConfiguration);
+            }
         }
 
         $this->pageRepository->add($page);

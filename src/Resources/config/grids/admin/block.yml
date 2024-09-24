@@ -1,21 +1,21 @@
 sylius_grid:
     grids:
-        bitbag_sylius_cms_plugin_admin_block:
+        sylius_cms_admin_block:
             driver:
                 name: doctrine/orm
                 options:
-                    class: "%bitbag_sylius_cms_plugin.model.block.class%"
+                    class: "%sylius_cms.model.block.class%"
             sorting:
                 code: asc
             limits: [10, 25, 50]
             fields:
                 name:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.name
+                    label: sylius_cms.ui.name
                     sortable: name
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/name.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/name.html.twig"
                 code:
                     type: string
                     label: sylius.ui.code
@@ -29,16 +29,16 @@ sylius_grid:
                         template: "@SyliusUi/Grid/Field/enabled.html.twig"
                 collections:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.collections
+                    label: sylius_cms.ui.collections
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/collections.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/collections.html.twig"
                 channels:
                     type: twig
-                    label: bitbag_sylius_cms_plugin.ui.channels
+                    label: sylius_cms.ui.channels
                     path: .
                     options:
-                        template: "@BitBagSyliusCmsPlugin/Grid/Field/channels.html.twig"
+                        template: "@SyliusCmsPlugin/Grid/Field/channels.html.twig"
             filters:
                 search:
                     type: string

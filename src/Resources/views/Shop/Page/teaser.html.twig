@@ -2,7 +2,7 @@
     <div class="column">
         <div class="teaser">
             {% if page.teaserImage %}
-                <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug': page.slug}) }}">
+                <a href="{{ path('sylius_cms_shop_page_show', {'slug': page.slug}) }}">
                     <div class="ui image">
                         <img src="{{ page.teaserImage.path|imagine_filter('sylius_admin_product_large_thumbnail') }}"
                              alt="{{ page.teaserTitle }}">
@@ -11,7 +11,7 @@
             {% endif %}
             <div class="teaser__content">
                 {% if page.teaserTitle %}
-                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug': page.slug}) }}">
+                    <a href="{{ path('sylius_cms_shop_page_show', {'slug': page.slug}) }}">
                         <h3 class="teaser__title">{{ page.teaserTitle }}</h3>
                     </a>
                 {% endif %}
@@ -19,8 +19,8 @@
                     <div class="teaser__description">
                         {{ page.teaserContent }}
                     </div>
-                    <a href="{{ path('bitbag_sylius_cms_plugin_shop_page_show', {'slug': page.slug}) }}" class="teaser__read-more">
-                        {{ 'bitbag_sylius_cms_plugin.ui.read_more'|trans }}...
+                    <a href="{{ path('sylius_cms_shop_page_show', {'slug': page.slug}) }}" class="teaser__read-more">
+                        {{ 'sylius_cms.ui.read_more'|trans }}...
                     </a>
                     <div class="ui divider"></div>
                     <div>{{ page.createdAt|date('Y-m-d') }}</div>

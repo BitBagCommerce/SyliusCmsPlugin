@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Twig\Parser;
+namespace Sylius\CmsPlugin\Twig\Parser;
 
 use Twig\Environment;
 use Twig\TwigFunction;
@@ -35,7 +29,7 @@ final class ContentParser implements ContentParserInterface
             if (null !== $arguments = $this->getFunctionArguments($function, $call)) {
                 try {
                     $functionResult = $this->callFunction($functions, $function, $arguments);
-                } catch (\Exception $exception) {
+                } catch (\Exception) {
                     $functionResult = '';
                 }
 
@@ -57,7 +51,7 @@ final class ContentParser implements ContentParserInterface
             $functionParts = explode($end, $functionParts[1]);
             $arguments = explode(',', $functionParts[0]);
 
-            return array_map(function (string $element): string {
+            return array_map(static function (string $element): string {
                 return trim(trim($element), '\'');
             }, $arguments);
         }

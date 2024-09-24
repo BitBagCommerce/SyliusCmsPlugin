@@ -3,15 +3,15 @@
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
     http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="BitBag\SyliusCmsPlugin\Entity\MediaTranslation">
+    <class name="Sylius\CmsPlugin\Entity\MediaTranslation">
         <property name="alt">
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">250</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.media.alt.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.media.alt.max_length</option>
+                <option name="minMessage">sylius_cms.media.alt.min_length</option>
+                <option name="maxMessage">sylius_cms.media.alt.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -20,10 +20,10 @@
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">250</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.media.link.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.media.link.max_length</option>
+                <option name="minMessage">sylius_cms.media.link.min_length</option>
+                <option name="maxMessage">sylius_cms.media.link.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>
@@ -31,10 +31,10 @@
         <property name="content">
             <constraint name="Length">
                 <option name="min">2</option>
-                <option name="minMessage">bitbag_sylius_cms_plugin.media.content.min_length</option>
-                <option name="maxMessage">bitbag_sylius_cms_plugin.media.content.max_length</option>
+                <option name="minMessage">sylius_cms.media.content.min_length</option>
+                <option name="maxMessage">sylius_cms.media.content.max_length</option>
                 <option name="groups">
-                    <value>bitbag</value>
+                    <value>cms</value>
                 </option>
             </constraint>
         </property>

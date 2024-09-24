@@ -1,27 +1,21 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\MediaProvider;
+namespace spec\Sylius\CmsPlugin\MediaProvider;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\GenericProvider;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Uploader\MediaUploaderInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\MediaProvider\GenericProvider;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Uploader\MediaUploaderInterface;
 use Twig\Environment;
 
 final class GenericProviderSpec extends ObjectBehavior
 {
     public function let(
         MediaUploaderInterface $uploader,
-        Environment $twigEngine
+        Environment $twigEngine,
     ) {
         $this->beConstructedWith($uploader, $twigEngine, '@Template', '/media/');
     }

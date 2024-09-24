@@ -1,14 +1,8 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Assigner;
+namespace Sylius\CmsPlugin\Assigner;
 
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
@@ -23,11 +17,10 @@ final class ChannelsAssigner implements ChannelsAssignerInterface
 
     public function assign(ChannelsAwareInterface $channelsAware, array $channelsCodes): void
     {
-        foreach ($channelsCodes as $channelCode) {
-            /** @var ChannelInterface|null $channel */
-            $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
+        $channels = $this->channelRepository->findBy(['code' => $channelsCodes]);
+        Assert::allIsInstanceOf($channels, ChannelInterface::class);
 
-            Assert::notNull($channel, sprintf('Channel with %s code not found.', $channelCode));
+        foreach ($channels as $channel) {
             $channelsAware->addChannel($channel);
         }
     }

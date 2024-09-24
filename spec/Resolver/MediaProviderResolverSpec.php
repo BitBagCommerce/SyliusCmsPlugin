@@ -1,20 +1,14 @@
 <?php
 
-/*
- * This file was created by developers working at BitBag
- * Do you need more information about us and what we do? Visit our https://bitbag.io website!
- * We are hiring developers from all over the world. Join us and start your new, exciting adventure and become part of us: https://bitbag.io/career
-*/
-
 declare(strict_types=1);
 
-namespace spec\BitBag\SyliusCmsPlugin\Resolver;
+namespace spec\Sylius\CmsPlugin\Resolver;
 
-use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
-use BitBag\SyliusCmsPlugin\MediaProvider\ProviderInterface;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolver;
-use BitBag\SyliusCmsPlugin\Resolver\MediaProviderResolverInterface;
 use PhpSpec\ObjectBehavior;
+use Sylius\CmsPlugin\Entity\MediaInterface;
+use Sylius\CmsPlugin\MediaProvider\ProviderInterface;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolver;
+use Sylius\CmsPlugin\Resolver\MediaProviderResolverInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Webmozart\Assert\InvalidArgumentException;
 
@@ -34,7 +28,7 @@ final class MediaProviderResolverSpec extends ObjectBehavior
     public function it_resolves_provider_for_media(
         ServiceRegistryInterface $providerRegistry,
         MediaInterface $media,
-        ProviderInterface $provider
+        ProviderInterface $provider,
     ) {
         $mediaType = 'image';
         $media->getType()->willReturn($mediaType);
@@ -45,7 +39,7 @@ final class MediaProviderResolverSpec extends ObjectBehavior
     }
 
     public function it_throws_exception_when_media_type_is_null(
-        MediaInterface $media
+        MediaInterface $media,
     ) {
         $media->getType()->willReturn(null);
 

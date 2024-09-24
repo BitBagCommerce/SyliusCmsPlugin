@@ -1,8 +1,8 @@
-{% from '@BitBagSyliusCmsPlugin/Macro/translationForm.html.twig' import translationFormWithSlug %}
-{% form_theme form '@BitBagSyliusCmsPlugin/Form/theme.html.twig' %}
+{% from '@SyliusCmsPlugin/Macro/translationForm.html.twig' import translationFormWithSlug, translationForm %}
+{% form_theme form '@SyliusCmsPlugin/Form/theme.html.twig' %}
 
-{% include '@BitBagSyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
-{% include '@BitBagSyliusCmsPlugin/Modal/_loadTemplateConfirmation.html.twig' %}
+{% include '@SyliusCmsPlugin/Modal/_resourcePreview.html.twig' %}
+{% include '@SyliusCmsPlugin/Modal/_loadTemplateConfirmation.html.twig' %}
 
 {{ form_errors(form) }}
 
@@ -15,36 +15,35 @@
             {{ form_row(form.channels) }}
             {{ form_row(form.collections) }}
             {{ form_row(form.publishAt) }}
-            <a href="#" data-bb-cms-preview-btn class="ui labeled button icon primary bitbag-cms-resource-preview" data-url="{{ path('bitbag_sylius_cms_plugin_admin_page_preview', {'id': form.vars.data.id}) }}">
+            <a href="#" data-bb-cms-preview-btn class="ui labeled button icon primary cms-resource-preview" data-url="{{ path('sylius_cms_admin_page_preview', {'id': form.vars.data.id}) }}">
                 <i class="eye icon"></i>
-                {{ 'bitbag_sylius_cms_plugin.ui.preview'|trans }}
+                {{ 'sylius_cms.ui.preview'|trans }}
             </a>
         </div>
         <div class="ui segment">
             <h4 class="ui dividing header header-with-help">
-                {{ 'bitbag_sylius_cms_plugin.ui.teaser.header'|trans }}
-                <span class="help-text">- {{ 'bitbag_sylius_cms_plugin.ui.teaser.help'|trans }}</span>
+                {{ 'sylius_cms.ui.teaser.header'|trans }}
+                <span class="help-text">- {{ 'sylius_cms.ui.teaser.help'|trans }}</span>
             </h4>
-            {{ form_row(form.teaserTitle) }}
-            {{ form_row(form.teaserContent) }}
-            {{ form_row(form.teaserImage) }}
-            {% if page.teaserImage %}
-                <div class="ui image">
-                    <a href="{{ page.teaserImage.path|imagine_filter('sylius_shop_product_original') }}">
-                        <img src="{{ page.teaserImage.path|imagine_filter('sylius_admin_product_small_thumbnail') }}"/>
-                    </a>
-                </div>
-            {% endif %}
+            {{ translationForm(
+                translation_form_reduce(form.translations, ['teaserTitle', 'teaserContent', 'teaserImage']),
+                page
+            ) }}
         </div>
         <div class="ui segment">
-            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.seo'|trans }}</h4>
-            {{ translationFormWithSlug(form.translations, '@BitBagSyliusCmsPlugin/Page/Crud/_slugField.html.twig', page) }}
+            <h4 class="ui dividing header">{{ 'sylius_cms.ui.seo'|trans }}</h4>
+            {{ translationFormWithSlug(
+                translation_form_reduce(form.translations, ['title', 'slug', 'metaKeywords', 'metaDescription']),
+                '@SyliusCmsPlugin/Page/Crud/_slugField.html.twig',
+                page
+            ) }}
         </div>
     </div>
     <div class="column">
         <div class="ui segment">
-            <h4 class="ui dividing header">{{ 'bitbag_sylius_cms_plugin.ui.content_elements.title'|trans }}</h4>
-            {% include '@BitBagSyliusCmsPlugin/Template/form.html.twig' with {ajax_url: path('bitbag_sylius_cms_plugin_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) } %}
+            <h4 class="ui dividing header">{{ 'sylius_cms.ui.content_elements.title'|trans }}</h4>
+            {% include '@SyliusCmsPlugin/Template/form.html.twig' with {ajax_url: path('sylius_cms_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) } %}
+            {% include '@SyliusCmsPlugin/Locale/form.html.twig' %}
             <div class="ui one column stackable grid">
                 <div class="column">
                     {{ form_row(form.contentElements) }}
