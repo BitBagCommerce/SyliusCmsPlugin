@@ -57,7 +57,7 @@ sylius_cms:
         successfully_imported: Die Daten wurden importiert.
         form_was_submitted_with_errors: "Das Formular wurde mit folgenden Fehlern übermittelt:"
         content_elements:
-            title: Inhalts-Elemente
+            title: Inhalt
             type:
                 textarea: Textarea
                 single_media: Einzelmedium
@@ -72,6 +72,7 @@ sylius_cms:
                 spacer: Abstandshalter
                 spacer_height: Höhe des Abstandshalters in Pixeln
             heading_type: Überschrift-Typ
+            template: Inhaltselementvorlage
         taxon: Taxon
         display_for_products:
             label: Display für Produkte
@@ -84,6 +85,8 @@ sylius_cms:
             help: Wählen Sie Taxonen aus, in denen dieser Block angezeigt wird
         manage_block_display: Blockanzeige verwalten
         templates: Vorlagen
+        template: Vorlage
+        content_templates: Inhaltsvorlagen
         new_template: Neue Vorlage
         edit_template: Vorlage bearbeiten
         use_page_template: Seitenschablone verwenden

@@ -27,6 +27,6 @@ if (document.querySelector('.collection-type-items')) {
     new HandleChooseCollectionType().init();
 }
 
-if (document.querySelector('[data-bb-cms-load-template]')) {
+if (document.querySelector('[data-bb-cms-load-content-template]')) {
     new HandleTemplate().init();
 }

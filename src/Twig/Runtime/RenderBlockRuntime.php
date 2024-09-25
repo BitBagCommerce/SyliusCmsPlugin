@@ -39,8 +39,10 @@ final class RenderBlockRuntime implements RenderBlockRuntimeInterface
             return '';
         }
 
+        $blockTemplate = $template ?? $block->getTemplate();
+
         return $this->templatingEngine->render(
-            $template ?? self::DEFAULT_TEMPLATE,
+            $blockTemplate ?? self::DEFAULT_TEMPLATE,
             [
                 'content' => $this->contentElementRendererStrategy->render($block),
                 'context' => $context,

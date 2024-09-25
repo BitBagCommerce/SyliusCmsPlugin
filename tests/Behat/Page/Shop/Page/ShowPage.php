@@ -67,6 +67,11 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
         return $this->getSession()->evaluateScript('return document.title') === $title;
     }
 
+    public function hasCustomLayoutCode(): bool
+    {
+        return $this->hasElement('custom-layout');
+    }
+
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -76,6 +81,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
             'collections' => '.cms-page-collections',
             'link' => '.cms-page-link',
             'page-image' => '.page-image',
+            'custom-layout' => '.custom-layout',
         ]);
     }
 }

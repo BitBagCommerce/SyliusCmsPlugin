@@ -33,7 +33,7 @@ final class ContentManagementMenuBuilder
             ->addChild('templates', [
                 'route' => 'sylius_cms_admin_template_index',
             ])
-            ->setLabel('sylius_cms.ui.templates')
+            ->setLabel('sylius_cms.ui.content_templates')
             ->setLabelAttribute('icon', 'clone')
         ;
 

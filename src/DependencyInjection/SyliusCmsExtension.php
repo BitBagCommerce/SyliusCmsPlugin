@@ -16,6 +16,11 @@ final class SyliusCmsExtension extends AbstractResourceExtension implements Prep
 
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('sylius_cms.templates.pages', $config['templates']['pages']);
+        $container->setParameter('sylius_cms.templates.blocks', $config['templates']['blocks']);
     }
 
     public function prepend(ContainerBuilder $container): void

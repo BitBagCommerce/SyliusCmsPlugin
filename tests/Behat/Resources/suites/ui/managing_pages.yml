@@ -11,8 +11,10 @@ default:
                 - sylius_cms.behat.context.setup.media
                 - sylius_cms.behat.context.setup.page
                 - sylius_cms.behat.context.setup.collection
+                - sylius_cms.behat.context.setup.content_template
                 - sylius_cms.behat.context.setup.template
 
                 - sylius_cms.behat.context.ui.admin.page
+                - sylius_cms.behat.context.ui.shop.page
             filters:
                 tags: "@managing_pages&&@ui"

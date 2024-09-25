@@ -3,7 +3,7 @@ imports:
     - suites/ui/managing_pages.yml
     - suites/ui/managing_collections.yml
     - suites/ui/managing_media.yml
-    - suites/ui/managing_templates.yml
+    - suites/ui/managing_content_templates.yml
     - suites/ui/shop_blocks.yml
     - suites/ui/shop_media.yml
     - suites/ui/shop_pages.yml

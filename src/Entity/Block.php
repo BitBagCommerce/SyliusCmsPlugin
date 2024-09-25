@@ -38,6 +38,8 @@ class Block implements BlockInterface
 
     protected ?string $name;
 
+    protected ?string $template = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,5 +63,15 @@ class Block implements BlockInterface
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getTemplate(): ?string
+    {
+        return $this->template;
+    }
+
+    public function setTemplate(?string $template): void
+    {
+        $this->template = $template;
     }
 }

@@ -53,7 +53,7 @@ sylius_cms:
         successfully_imported: Duomenys sėkmingai importuoti.
         form_was_submitted_with_errors: "Forma pateikta su klaidomis:"
         content_elements:
-            title: Turinio elementai
+            title: Turinys
             type:
                 textarea: Textarea
                 single_media: Vienas medijos elementas
@@ -68,6 +68,7 @@ sylius_cms:
                 spacer: Tarpo elementas
                 spacer_height: Tarpo aukštis pikseliais
             heading_type: Antraštės tipas
+            template: Turinio elementų šablonas
         taxon: Taksonas
         display_for_products:
             label: Rodyti produktams
@@ -80,6 +81,8 @@ sylius_cms:
             help: Pasirinkite taksonus, kuriuose šis blokas bus rodomas
         manage_block_display: Bloko rodymo valdymas
         templates: Šablonai
+        template: Šablonas
+        content_templates: Turinys šablonai
         new_template: Naujas šablonas
         edit_template: Redaguoti šabloną
         use_page_template: Naudoti puslapio šabloną

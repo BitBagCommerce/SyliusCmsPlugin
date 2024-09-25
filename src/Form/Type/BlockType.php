@@ -9,6 +9,7 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Provider\ResourceTemplateProviderInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -23,6 +24,7 @@ final class BlockType extends AbstractResourceType
 
     public function __construct(
         private RepositoryInterface $localeRepository,
+        private ResourceTemplateProviderInterface $templateProvider,
         string $dataClass,
         array $validationGroups = [],
     ) {
@@ -47,6 +49,11 @@ final class BlockType extends AbstractResourceType
             ])
             ->add('name', TextType::class, [
                 'label' => 'sylius_cms.ui.name',
+            ])
+            ->add('templates', ChoiceType::class, [
+                'label' => 'sylius_cms.ui.template',
+                'choices' => $this->templateProvider->getBlockTemplates(),
+                'mapped' => false,
             ])
             ->add('collections', CollectionAutocompleteChoiceType::class, [
                 'label' => 'sylius_cms.ui.collections',
@@ -90,7 +97,7 @@ final class BlockType extends AbstractResourceType
                 'multiple' => true,
                 'help' => 'sylius_cms.ui.display_for_taxons.help',
             ])
-            ->add('template', TemplateBlockAutocompleteChoiceType::class, [
+            ->add('contentTemplate', TemplateBlockAutocompleteChoiceType::class, [
                 'label' => false,
                 'mapped' => false,
             ])
@@ -105,6 +112,7 @@ final class BlockType extends AbstractResourceType
         ;
 
         PageType::addContentElementLocaleListener($builder);
+        PageType::addTemplateListener($builder);
     }
 
     public function getBlockPrefix(): string

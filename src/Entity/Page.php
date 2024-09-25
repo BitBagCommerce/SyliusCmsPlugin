@@ -29,6 +29,8 @@ class Page implements PageInterface
 
     protected ?string $name = null;
 
+    protected ?string $template = null;
+
     protected ?\DateTimeImmutable $publishAt;
 
     public function __construct()
@@ -159,6 +161,16 @@ class Page implements PageInterface
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getTemplate(): ?string
+    {
+        return $this->template;
+    }
+
+    public function setTemplate(?string $template): void
+    {
+        $this->template = $template;
     }
 
     public function getTitle(): ?string

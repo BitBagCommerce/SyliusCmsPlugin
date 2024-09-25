@@ -401,11 +401,11 @@ final class BlockContext implements Context
     }
 
     /**
-     * @Then I select :templateName template
+     * @Then I select :templateName content template
      */
-    public function iSelectTemplate(string $templateName): void
+    public function iSelectContentTemplate(string $templateName): void
     {
-        $this->resolveCurrentPage()->selectTemplate($templateName);
+        $this->resolveCurrentPage()->selectContentTemplate($templateName);
     }
 
     /**

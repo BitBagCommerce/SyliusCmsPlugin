@@ -7,7 +7,10 @@ namespace Sylius\CmsPlugin\Controller;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\CmsPlugin\Entity\PageInterface;
+use Sylius\CmsPlugin\Repository\PageRepositoryInterface;
 use Sylius\CmsPlugin\Resolver\PageResourceResolverInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +24,42 @@ final class PageController extends ResourceController
     private PageResourceResolverInterface $pageResourceResolver;
 
     public const FILTER = 'sylius_admin_product_original';
+
+    public const DEFAULT_TEMPLATE = '@SyliusCmsPlugin/Shop/Page/show.html.twig';
+
+    public function showAction(Request $request): Response
+    {
+        $configuration = $this->getRequestConfiguration($request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
+
+        $slug = $request->attributes->get('slug');
+
+        /** @var PageRepositoryInterface $pageRepository */
+        $pageRepository = $this->get('sylius_cms.repository.page');
+
+        /** @var LocaleContextInterface $localeContext */
+        $localeContext = $this->get('sylius.context.locale');
+
+        /** @var ChannelContextInterface $channelContext */
+        $channelContext = $this->get('sylius.context.channel');
+
+        Assert::notNull($channelContext->getChannel()->getCode());
+
+        $page = $pageRepository->findOneEnabledBySlugAndChannelCode(
+            $slug,
+            $localeContext->getLocaleCode(),
+            $channelContext->getChannel()->getCode(),
+        );
+
+        if (null === $page) {
+            throw $this->createNotFoundException('Page not found');
+        }
+
+        return $this->render($page->getTemplate() ?? self::DEFAULT_TEMPLATE, [
+            'page' => $page,
+        ]);
+    }
 
     public function renderLinkAction(Request $request): Response
     {
@@ -78,6 +117,7 @@ final class PageController extends ResourceController
         return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
             'resource' => $page,
             'preview' => true,
+            'template' => $page->getTemplate() ?? self::DEFAULT_TEMPLATE,
             $this->metadata->getName() => $page,
         ]);
     }

@@ -36,7 +36,7 @@ sylius_cms:
         position: Posición
         title: Título
         content_elements:
-            title: Elementos de contenido
+            title: Contenido
             type:
                 textarea: Textarea
                 single_media: Medio único
@@ -51,6 +51,7 @@ sylius_cms:
                 spacer: Separador
                 spacer_height: Altura del separador en píxeles
             heading_type: Tipo de encabezado
+            template: Plantilla de elementos de contenido
         taxon: Taxón
         display_for_products:
             label: Mostrar para productos
@@ -63,6 +64,8 @@ sylius_cms:
             help: Seleccione taxones en los que se mostrará este bloque
         manage_block_display: Administrar visualización de bloques
         templates: Plantillas
+        template: Plantilla
+        content_templates: Plantillas de contenido
         new_template: Nueva plantilla
         edit_template: Editar plantilla
         use_page_template: Usar plantilla de página

@@ -14,6 +14,8 @@
 
         <field name="name" column="name" type="string" length="250" nullable="true"/>
 
+        <field name="template" column="template" type="string" length="250" nullable="true"/>
+
         <field name="enabled" column="enabled" type="boolean"/>
 
         <many-to-many field="collections" target-entity="Sylius\CmsPlugin\Entity\CollectionInterface" mapped-by="blocks" />

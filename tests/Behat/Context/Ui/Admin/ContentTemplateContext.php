@@ -17,7 +17,7 @@ use Tests\Sylius\CmsPlugin\Behat\Page\Admin\Template\UpdatePageInterface;
 use Tests\Sylius\CmsPlugin\Behat\Service\RandomStringGeneratorInterface;
 use Webmozart\Assert\Assert;
 
-final class TemplateContext implements Context
+final class ContentTemplateContext implements Context
 {
     public function __construct(
         private SharedStorageInterface $sharedStorage,
