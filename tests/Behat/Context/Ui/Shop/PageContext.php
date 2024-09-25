@@ -108,4 +108,12 @@ final class PageContext implements Context
     {
         Assert::true($this->showPage->hasTitle($title));
     }
+
+    /**
+     * @Then The rendered page should contain custom layout code
+     */
+    public function theRenderedPageShouldContainCustomLayoutCode()
+    {
+        Assert::true($this->showPage->hasCustomLayoutCode());
+    }
 }

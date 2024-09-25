@@ -13,7 +13,10 @@
       "slug": "translation1_slug_en_US",
       "metaKeywords": "html,application",
       "metaDescription": null,
-      "title": "Amazing article1"
+      "title": "Amazing article1",
+      "teaserTitle": "Amazing article1",
+      "teaserContent": "This is a teaser content",
+      "teaserImage": null
     }
   }
 }

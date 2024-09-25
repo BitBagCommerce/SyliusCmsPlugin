@@ -54,7 +54,7 @@ sylius_cms:
         form_was_submitted_with_errors: "Le formulaire a les erreurs suivantes :"
         title: Titre
         content_elements:
-            title: Éléments de contenu
+            title: Contenu
             type:
                 textarea: Textarea
                 single_media: Média unique
@@ -69,6 +69,7 @@ sylius_cms:
                 spacer: Espacement
                 spacer_height: Hauteur de l'espacement en pixels
             heading_type: Type d'en-tête
+            template: Modèle d'éléments de contenu
         taxon: Taxon
         display_for_products:
             label: Afficher pour les produits
@@ -81,6 +82,8 @@ sylius_cms:
             help: Ce bloc sera affiché pour les taxons sélectionnés
         manage_block_display: Gérer l'affichage du bloc
         templates: Modèles
+        template: Modèle
+        content_templates: Modèles de contenu
         new_template: Nouveau modèle
         edit_template: Modifier le modèle
         use_page_template: Utiliser le modèle de page

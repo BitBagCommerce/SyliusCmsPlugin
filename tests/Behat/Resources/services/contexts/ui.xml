@@ -60,7 +60,7 @@
             <argument type="service" id="sylius_cms.behat.page.shop.home"/>
         </service>
 
-        <service id="sylius_cms.behat.context.ui.admin.template" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\TemplateContext">
+        <service id="sylius_cms.behat.context.ui.admin.content_template" class="Tests\Sylius\CmsPlugin\Behat\Context\Ui\Admin\ContentTemplateContext">
             <argument type="service" id="sylius.behat.shared_storage"/>
             <argument type="service" id="sylius.behat.current_page_resolver"/>
             <argument type="service" id="sylius.behat.notification_checker"/>

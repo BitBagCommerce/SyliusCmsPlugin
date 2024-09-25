@@ -1,4 +1,4 @@
-@managing_templates
+@managing_content_templates
 Feature: Adding cms templates
     In order to create templates
     As an Administrator

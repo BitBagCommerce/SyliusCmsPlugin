@@ -35,7 +35,7 @@ sylius_cms:
         position: Positie
         title: Titel
         content_elements:
-            title: Inhoudselementen
+            title: Inhoud
             type:
                 textarea: Textarea
                 single_media: Enkel medium
@@ -50,6 +50,7 @@ sylius_cms:
                 spacer: Afstandhouder
                 spacer_height: Hoogte van de afstandhouder in pixels
             heading_type: Kop type
+            template: Sjabloon voor inhoudselementen
         taxon: Taxon
         display_for_products:
             label: Display voor producten
@@ -62,6 +63,8 @@ sylius_cms:
             help: Selecteer taxonen waarin dit blok wordt weergegeven
         manage_block_display: Beheer blok weergave
         templates: Sjablonen
+        template: Sjabloon
+        content_templates: Inhoudsjablonen
         new_template: Nieuwe sjabloon
         edit_template: Sjabloon bewerken
         use_page_template: Sjabloon voor pagina gebruiken

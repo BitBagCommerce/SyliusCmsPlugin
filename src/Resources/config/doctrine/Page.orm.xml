@@ -17,6 +17,8 @@
 
         <field name="name" column="name" type="string" nullable="true"/>
 
+        <field name="template" column="template" type="string" length="250" nullable="true"/>
+
         <field name="createdAt" column="created_at" type="datetime" nullable="true">
             <gedmo:timestampable on="create"/>
         </field>

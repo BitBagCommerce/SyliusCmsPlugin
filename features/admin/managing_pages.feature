@@ -11,7 +11,7 @@ Feature: Managing cms pages
     @ui
     Scenario: Deleting page
         Given there is a page in the store
-        When I go to the pages page
+        When I go to the cms pages page
         And I delete this page
         Then I should be notified that the page has been deleted
         And I should see empty list of pages

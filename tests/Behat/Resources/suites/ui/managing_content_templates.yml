@@ -1,11 +1,11 @@
 default:
     suites:
-        ui_managing_templates:
+        ui_managing_content_templates:
             contexts:
                 - sylius.behat.context.hook.doctrine_orm
                 - sylius.behat.context.setup.channel
                 - sylius.behat.context.setup.admin_security
-                - sylius_cms.behat.context.setup.template
-                - sylius_cms.behat.context.ui.admin.template
+                - sylius_cms.behat.context.setup.content_template
+                - sylius_cms.behat.context.ui.admin.content_template
             filters:
-                tags: "@managing_templates&&@ui"
+                tags: "@managing_content_templates&&@ui"

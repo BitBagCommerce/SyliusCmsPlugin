@@ -7,6 +7,7 @@ namespace Sylius\CmsPlugin\Controller;
 use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Renderer\ContentElementRendererStrategyInterface;
 use Sylius\CmsPlugin\Resolver\BlockResourceResolverInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,9 +41,7 @@ final class BlockController extends ResourceController
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
-        $template = $request->get('template') ?? self::BLOCK_TEMPLATE;
-
-        return $this->render($template, [
+        return $this->render($block->getTemplate() ?? self::BLOCK_TEMPLATE, [
             'configuration' => $configuration,
             'metadata' => $this->metadata,
             'resource' => $block,
@@ -70,8 +69,13 @@ final class BlockController extends ResourceController
             return $this->viewHandler->handle($configuration, View::create($block));
         }
 
+        /** @var ContentElementRendererStrategyInterface $contentElementRendererStrategy */
+        $contentElementRendererStrategy = $this->get('sylius_cms.content_element_renderer_strategy');
+
         return $this->render($configuration->getTemplate(ResourceActions::CREATE . '.html'), [
             'resource' => $block,
+            'template' => $block->getTemplate(),
+            'content' => $contentElementRendererStrategy->render($block),
             $this->metadata->getName() => $block,
         ]);
     }

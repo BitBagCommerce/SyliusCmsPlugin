@@ -53,7 +53,7 @@ sylius_cms:
         successfully_imported: Дані успішно імпортовані
         title: заголовок
         content_elements:
-            title: Елементи контенту
+            title: Зміст
             type:
                 textarea: Textarea
                 single_media: Одиночне медіа
@@ -68,6 +68,7 @@ sylius_cms:
                 spacer: Роздільник
                 spacer_height: Висота роздільника в пікселях
             heading_type: Тип заголовка
+            template: Шаблон елементів контенту
         taxon: Таксон
         display_for_products:
             label: Дисплей для продуктів
@@ -80,6 +81,8 @@ sylius_cms:
             help: Виберіть таксони, в яких буде відображатися цей блок
         manage_block_display: Керування відображенням блоку
         templates: Шаблони
+        template: Шаблон
+        content_templates: Шаблони контенту
         new_template: Новий шаблон
         edit_template: Редагувати шаблон
         use_page_template: Використовувати шаблон сторінки

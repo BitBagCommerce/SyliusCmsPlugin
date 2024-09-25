@@ -3,26 +3,25 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
-    <class name="Sylius\CmsPlugin\Entity\PageTranslation">
-        <attribute name="slug">
+    <class name="Sylius\CmsPlugin\Entity\ContentConfiguration">
+        <attribute name="id">
+            <group>sylius_cms:page:read:index</group>
             <group>sylius_cms:page:read:show</group>
         </attribute>
-        <attribute name="metaKeywords">
+        <attribute name="type">
+            <group>sylius_cms:page:read:index</group>
             <group>sylius_cms:page:read:show</group>
         </attribute>
-        <attribute name="metaDescription">
+        <attribute name="configuration">
             <group>sylius_cms:page:read:show</group>
         </attribute>
-        <attribute name="title">
+        <attribute name="locale">
             <group>sylius_cms:page:read:show</group>
         </attribute>
-        <attribute name="teaserTitle">
+        <attribute name="block">
             <group>sylius_cms:page:read:show</group>
         </attribute>
-        <attribute name="teaserContent">
-            <group>sylius_cms:page:read:show</group>
-        </attribute>
-        <attribute name="teaserImage">
+        <attribute name="page">
             <group>sylius_cms:page:read:show</group>
         </attribute>
     </class>

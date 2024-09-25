@@ -40,7 +40,7 @@ sylius_cms:
         page_will_be_publish_at: Strona zostanie opublikowana
         save_with_original_name: Zapisz z oryginalną nazwą
         content_elements:
-            title: Elementy treści
+            title: Treść
             type:
                 textarea: Textarea
                 single_media: Pojedyncze media
@@ -55,6 +55,7 @@ sylius_cms:
                 spacer: Odstęp
                 spacer_height: Wysokość odstępu w pikselach
             heading_type: Typ nagłówka
+            template: Szablon elementów treści
         taxon: Taksonomia
         display_for_products:
             label: Wyświetlaj dla produktów
@@ -67,6 +68,8 @@ sylius_cms:
             help: Wybież taksonomie, dla których ten blok będzie wyświetlany
         manage_block_display: Zarządzaj wyświetlaniem bloku
         templates: Szablony
+        template: Szablon
+        content_templates: Szablony treści
         new_template: Nowy szablon
         edit_template: Edytuj szablon
         use_page_template: Użyj szablonu strony

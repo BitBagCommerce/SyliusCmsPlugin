@@ -78,16 +78,22 @@ Sylius\CmsPlugin\Entity\PageTranslation:
     slug: 'translation1_slug_en_US'
     metaKeywords: 'html,application'
     title: 'Amazing article1'
+    teaserTitle: "Amazing article1"
+    teaserContent: "This is a teaser content"
   page2_translation:
     locale: 'en_US'
     slug: 'translation2_slug_en_US'
     metaKeywords: 'html,application'
     title: 'Amazing article2'
+    teaserTitle: "Amazing article2"
+    teaserContent: "This is a teaser content"
   page3_translation:
     locale: 'en_US'
     slug: 'translation3_slug_en_US'
     metaKeywords: 'html,application'
     title: 'Amazing article3'
+    teaserTitle: "Amazing article3"
+    teaserContent: "This is a teaser content"
 Sylius\CmsPlugin\Entity\Page:
   page1:
     code: 'page1-code'

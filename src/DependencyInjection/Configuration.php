@@ -52,6 +52,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
 
         $this->addResourcesSection($rootNode);
+        $this->addTemplatesSection($rootNode);
 
         return $treeBuilder;
     }
@@ -190,6 +191,25 @@ final class Configuration implements ConfigurationInterface
                                     ->end()
                                 ->end()
                             ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTemplatesSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('templates')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('pages')
+                            ->scalarPrototype()->end()
+                        ->end()
+                        ->arrayNode('blocks')
+                            ->scalarPrototype()->end()
                         ->end()
                     ->end()
                 ->end()
