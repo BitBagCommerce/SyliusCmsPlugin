@@ -1,24 +1,50 @@
-## Installation
+# Installation
 
+## Overview:
+GENERAL
+- [Requirements](#requirements)
+- [Composer](#composer)
+- [Basic configuration](#basic-configuration)
+--- 
+BACKEND
+- [Entities](#entities)
+---
+FRONTEND
+- [Webpack](#webpack)
+---
+ADDITIONAL
+- [Tests](#tests)
+---
 
-1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
+## Requirements:
+We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
+| Package       | Version         |
+|---------------|-----------------|
+| PHP           | \>=8.1          |
+| sylius/sylius | 1.12.x - 1.13.x |
+| MySQL         | \>= 5.7         |
+| NodeJS        | \>= 18.x        |
+
+## Composer:
 ```bash
 composer require bitbag/cms-plugin --no-scripts
 ```
 
-2. Add plugin dependencies to your `config/bundles.php` file (if not added automatically):
+## Basic configuration:
+1. Add plugin dependencies to your `config/bundles.php` file (if not added automatically):
 
 ```php
+# config/bundles.php
+
 return [
     ...
-
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
     Sylius\CmsPlugin\SyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
 
-3. Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+2. Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
 
 ```bash
 bin/console ckeditor:install
@@ -32,7 +58,7 @@ bin/console ckeditor:install --tag=4.22.1
 
 For more information regardin `4.22.1` tag please visit the #485 issue.
 
-#### If you are not using Symfony Flex, you need to add the following configuration under the `twig.form_themes` config key:
+3.  If you are not using Symfony Flex, you need to add the following configuration:
 
 ```yaml
 # Symfony 2/3: app/config/config.yml
@@ -44,40 +70,47 @@ twig:
         - '@SyliusCmsPlugin/Form/ckeditor_widget.html.twig'
 ```
 
-4. If you are not using Symfony Flex, import add following configs:
 ```yaml
 # config/packages/_sylius.yaml
 
 imports:
-    ...
-    
-    - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
+      ...
+      - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
 
 
 # config/routes.yaml
 ...
-
 sylius_cms:
     resource: "@SyliusCmsPlugin/Resources/config/routing.yml"
 ```
 
-5. Finish the installation by updating the database schema and installing assets:
-
+4. Install assets:
 ```bash
-bin/console cache:clear
-
-# If you used migrations in your project...
-bin/console doctrine:migrations:migrate
-# ... or if you use doctrine schema tool.
-bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
-
 bin/console assets:install --symlink
 bin/console sylius:theme:assets:install --symlink
 ```
 
-Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
+## Entities
+### Update your database
+First, please run legacy-versioned migrations by using command:
+```bash
+bin/console doctrine:migrations:migrate
+```
 
-6. Add plugin assets to your project
+After migration, please create a new diff migration and update database:
+```bash
+bin/console doctrine:migrations:diff
+bin/console doctrine:migrations:migrate
+```
+**Note:** If you are running it on production, add the `-e prod` flag to this command.
+
+### Clear application cache by using command:
+```bash
+bin/console cache:clear
+```
+**Note:** If you are running it on production, add the `-e prod` flag to this command.
+
+## Webpack
 
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
@@ -88,12 +121,18 @@ We recommend you to use Webpack (Encore), for which we have prepared four differ
 
 <small>* Default option for plugin development</small>
 
-
 However, if you are not using Webpack, here are instructions on how to add optimized and compressed assets directly to your project templates:
 
-- [Non webpack solution](./01.5-non-webpack.md) 
+- [Non webpack solution](./01.5-non-webpack.md)
 
-## Testing & running the plugin
+### Run commands
+```bash
+yarn install
+yarn encore dev # or prod, depends on your environment
+```
+
+## Tests
+To run the tests, execute the commands:
 ```bash
 composer install
 cd tests/Application
