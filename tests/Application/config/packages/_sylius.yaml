@@ -17,3 +17,10 @@ sylius_api:
 sylius_shop:
     product_grid:
         include_all_descendants: true
+
+sylius_cms:
+    templates:
+        blocks:
+            - "src/Resources/views/Block/CustomLayout.html.twig"
+        pages:
+            - "src/Resources/views/Page/CustomLayout.html.twig"

@@ -1,0 +1,27 @@
+parameters:
+  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+sylius_fixtures:
+  suites:
+    default:
+      listeners:
+        orm_purger: ~
+        logger: ~
+      fixtures:
+        collection:
+          options:
+            custom:
+              blog:
+                name: "Blog"
+                type: "page"
+                page_codes:
+                  - "lorem_ipsum"
+              homepage:
+                name: "Homepage"
+                type: "page"
+              black_friday:
+                name: "Black Friday"
+                type: "block"
+              products_details:
+                name: "Product details"
+                type: "block"

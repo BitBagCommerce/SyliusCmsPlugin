@@ -2,18 +2,14 @@
 
 {% block content %}
     <div class="top one">
-        <div class="homepage-logo">
-            {{ sylius_cms_render_block('homepage_logo') }}
-        </div>
         {{ sylius_cms_render_block('homepage_textarea') }}
+        {{ sylius_cms_render_block('homepage_banner_1') }}
         {{ sylius_cms_render_block('homepage_products_carousel') }}
-        <div class="homepage-sale">
-            {{ sylius_cms_render_block('homepage_sale_banner') }}
-        </div>
-        {{ sylius_cms_render_block('homepage_products_grid') }}
         {{ sylius_cms_render_block('homepage_taxons_list') }}
-        {{ sylius_cms_render_block('homepage_sale_banner2') }}
+        {{ sylius_cms_render_block('homepage_products_grid') }}
+        {{ sylius_cms_render_block('homepage_banner_2') }}
         {{ sylius_cms_render_block('homepage_products_carousel_by_taxon') }}
+        {{ sylius_cms_render_block('homepage_banner_3') }}
         {{ sylius_cms_render_block('homepage_products_grid_by_taxon') }}
     </div>
 {% endblock %}
