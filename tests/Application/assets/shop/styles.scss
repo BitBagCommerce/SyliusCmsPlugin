@@ -25,23 +25,23 @@
       margin: 20px;
       border-radius: 4px;
       font-size: 16pt;
+      background: transparent;
+      transition: border-color 200ms ease-in;
 
-      &a {
+      a {
         padding: 40px !important;
         display: block;
         transition: color 200ms ease-in;
       }
-      background: transparent;
-      transition: border-color 200ms ease-in;
     }
 
     li:hover {
-      &a {
+      border-color: #22b99a;
+      transition: border-color 200ms ease-in;
+      a {
         color: #22b99a;
         transition: color 200ms ease-in;
       }
-      border-color: #22b99a;
-      transition: border-color 200ms ease-in;
     }
 
     li:before {
