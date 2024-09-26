@@ -12,19 +12,24 @@ sylius_fixtures:
           options:
             custom:
               black_friday_banner:
-                name: "T-Shirts banner"
+                name: "Black friday banner"
                 channels:
                   - "FASHION_WEB"
                 type: image
                 path: "%fixtures_dir%/black_friday_banner.png"
                 original_name: "black_friday_banner.png"
+                collections:
+                  - "black_friday_banner"
                 translations:
                   en_US:
-                    alt: "T-Shirts banner"
+                    alt: "Black friday banner"
               homepage_banner_1:
-                name: "Homepage banner 1"
+                name: "Homepage banner 1 (black friday)"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
+                  - "black_friday_banner"
                 type: image
                 path: "%fixtures_dir%/homepage_banner_1.png"
                 original_name: "homepage_banner_1.png"
@@ -35,6 +40,8 @@ sylius_fixtures:
                 name: "Homepage banner 2"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
                 type: image
                 path: "%fixtures_dir%/homepage_banner_2.png"
                 original_name: "homepage_banner_2.png"
@@ -45,6 +52,8 @@ sylius_fixtures:
                 name: "Homepage banner 3"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
                 type: image
                 path: "%fixtures_dir%/homepage_banner_3.png"
                 original_name: "homepage_banner_3.png"
@@ -55,6 +64,8 @@ sylius_fixtures:
                 name: "Blog banner"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_banner.png"
                 original_name: "blog_banner.png"
@@ -65,6 +76,8 @@ sylius_fixtures:
                 name: "Blog post 1 banner"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_1_header_banner.png"
                 original_name: "blog_post_1_header_banner.png"
@@ -75,6 +88,8 @@ sylius_fixtures:
                 name: "Blog post 2 banner"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_2_header_banner.png"
                 original_name: "blog_post_2_header_banner.png"
@@ -85,6 +100,8 @@ sylius_fixtures:
                 name: "Blog post 3 banner"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_3_header_banner.png"
                 original_name: "blog_post_3_header_banner.png"
@@ -95,6 +112,8 @@ sylius_fixtures:
                 name: "Blog post 1 teaser"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_1_teaser_image.png"
                 original_name: "blog_post_1_teaser_image.png"
@@ -105,6 +124,8 @@ sylius_fixtures:
                 name: "Blog post 2 teaser"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_2_teaser_image.png"
                 original_name: "blog_post_2_teaser_image.png"
@@ -115,6 +136,8 @@ sylius_fixtures:
                 name: "Blog post 3 teaser"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_3_teaser_image.png"
                 original_name: "blog_post_3_teaser_image.png"
@@ -125,6 +148,8 @@ sylius_fixtures:
                 name: "Blog post 1 content image 1"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_1_content_image_1.png"
                 original_name: "blog_post_1_content_image_1.png"
@@ -135,6 +160,8 @@ sylius_fixtures:
                 name: "Blog post 1 content image 2"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_1_content_image_2.png"
                 original_name: "blog_post_1_content_image_2.png"
@@ -145,6 +172,8 @@ sylius_fixtures:
                 name: "Blog post 2 content image 1"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_2_content_image_1.png"
                 original_name: "blog_post_2_content_image_1.png"
@@ -155,6 +184,8 @@ sylius_fixtures:
                 name: "Blog post 2 content image 2"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_2_content_image_2.png"
                 original_name: "blog_post_2_content_image_2.png"
@@ -165,6 +196,8 @@ sylius_fixtures:
                 name: "Blog post 3 content image 1"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_3_content_image_1.png"
                 original_name: "blog_post_3_content_image_1.png"
@@ -175,6 +208,8 @@ sylius_fixtures:
                 name: "Blog post 3 content image 2"
                 channels:
                   - "FASHION_WEB"
+                collections:
+                  - "blog_images"
                 type: image
                 path: "%fixtures_dir%/blog_post_3_content_image_2.png"
                 original_name: "blog_post_3_content_image_2.png"

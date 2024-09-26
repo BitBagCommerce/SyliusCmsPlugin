@@ -12,7 +12,7 @@ sylius_fixtures:
           options:
             custom:
               homepage_textarea:
-                name: "Homepage textarea example"
+                name: "Welcome in SyliusCmsPlugin!"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -44,7 +44,7 @@ sylius_fixtures:
                               </ul>
                           </p>
               homepage_products_carousel:
-                name: "Homepage products carousel example"
+                name: "See our collection of brand new T-Shirts!"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -75,13 +75,12 @@ sylius_fixtures:
                             - "Raglan_grey_black_Tee"
                             - "Oversize_white_cotton_T_Shirt"
               homepage_banner_1:
-                name: "Homepage single media example"
+                name: "Homepage banner 1"
                 channels:
                   - "FASHION_WEB"
                 collections:
                   - "homepage"
-                taxons:
-                  - "t_shirts"
+                  - "black_friday"
                 content_elements:
                   en_US:
                     spacer1:
@@ -97,13 +96,11 @@ sylius_fixtures:
                       data:
                         spacer: 20
               homepage_banner_2:
-                name: "Homepage single media example"
+                name: "Homepage banner 2"
                 channels:
                   - "FASHION_WEB"
                 collections:
                   - "homepage"
-                taxons:
-                  - "t_shirts"
                 content_elements:
                   en_US:
                     single_media:
@@ -111,13 +108,11 @@ sylius_fixtures:
                       data:
                         single_media: "homepage_banner_2"
               homepage_banner_3:
-                name: "Homepage single media example"
+                name: "Homepage banner 3"
                 channels:
                   - "FASHION_WEB"
                 collections:
                   - "homepage"
-                taxons:
-                  - "t_shirts"
                 content_elements:
                   en_US:
                     single_media:
@@ -129,7 +124,7 @@ sylius_fixtures:
                       data:
                         spacer: 10
               homepage_products_carousel_by_taxon:
-                name: "Homepage products carousel by taxon example"
+                name: "How about jeans?"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -170,7 +165,7 @@ sylius_fixtures:
                       data:
                         products_carousel_by_taxon: "jeans"
               homepage_products_grid:
-                name: "Homepage products grid example"
+                name: "Meet our caps brand"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -199,7 +194,7 @@ sylius_fixtures:
                             - "Knitted_white_pompom_cap"
                             - "Cashmere_blend_violet_beanie"
               homepage_products_grid_by_taxon:
-                name: "Homepage products grid by taxon example"
+                name: "See also our dress collection!"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -236,7 +231,7 @@ sylius_fixtures:
                       data:
                         products_grid_by_taxon: "dresses"
               homepage_taxons_list:
-                name: "Homepage taxons list example"
+                name: "Not interested in caps? See all our brands"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -265,7 +260,7 @@ sylius_fixtures:
                             - "dresses"
                             - "jeans"
               black_friday_banner_taxon:
-                name: "Taxon single media example"
+                name: "Black friday banner (taxons)"
                 channels:
                   - "FASHION_WEB"
                 collections:
@@ -281,15 +276,14 @@ sylius_fixtures:
                       data:
                         single_media: "black_friday_banner"
               black_friday_banner_product:
-                name: "Product single media example"
+                name: "Black friday banner (products)"
                 channels:
                   - "FASHION_WEB"
                 collections:
                   - "black_friday"
-                products:
-                  - "Everyday_white_basic_T_Shirt"
-                  - "Loose_white_designer_T_Shirt"
-                  - "Ribbed_copper_slim_fit_Tee"
+                products_in_taxons:
+                  - "mens_t_shirts"
+                  - "womens_t_shirts"
                 content_elements:
                   en_US:
                     single_media:
@@ -301,12 +295,13 @@ sylius_fixtures:
                       data:
                         spacer: 20
               specified_products_in_taxons:
-                name: "Product details products carousel by taxon example"
+                name: "You may also like"
                 channels:
                   - "FASHION_WEB"
                 collections:
                   - "products_details"
                 products_in_taxons:
+                  - "mens_t_shirts"
                   - "womens_t_shirts"
                 content_elements:
                   en_US:
