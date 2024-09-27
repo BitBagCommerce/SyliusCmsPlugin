@@ -13,10 +13,10 @@ fos_ck_editor:
                 - "exportpdf"
     plugins:
         mediaVideo:
-            path: '/bundles/SyliusCmsPlugin/js/ckeditor-plugins/video/'
+            path: '/bundles/syliuscmsplugin/js/ckeditor-plugins/video/'
             filename: 'plugin.js'
         mediaImage:
-            path: '/bundles/SyliusCmsPlugin/js/ckeditor-plugins/image/'
+            path: '/bundles/syliuscmsplugin/js/ckeditor-plugins/image/'
             filename: 'plugin.js'
     toolbars:
         configs:

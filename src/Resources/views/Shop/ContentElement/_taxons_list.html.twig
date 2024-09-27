@@ -1,5 +1,5 @@
 <div class="{{ content_element_base_class }}__taxons-list">
-    <ul class="ui bulleted list">
+    <ul class="ui list">
         {% for taxon in taxons %}
             <li>
                 <a href="{{ path('sylius_shop_product_index', {'slug': taxon.slug, '_locale': taxon.translation.locale}) }}">

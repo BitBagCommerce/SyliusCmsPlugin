@@ -1,0 +1,26 @@
+parameters:
+  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+sylius_fixtures:
+  suites:
+    default:
+      listeners:
+        orm_purger: ~
+        logger: ~
+      fixtures:
+        template:
+          options:
+            custom:
+              homepage:
+                name: "Page template"
+                type: "page"
+                content_elements:
+                  -   type: "textarea"
+                  -   type: "multiple_media"
+              about:
+                name: "Block template"
+                type: "block"
+                content_elements:
+                  -   type: "heading"
+                  -   type: "textarea"
+                  -   type: "single_media"

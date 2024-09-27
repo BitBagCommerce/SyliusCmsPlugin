@@ -1,0 +1,218 @@
+parameters:
+  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+sylius_fixtures:
+  suites:
+    default:
+      listeners:
+        orm_purger: ~
+        logger: ~
+      fixtures:
+        media:
+          options:
+            custom:
+              black_friday_banner:
+                name: "Black friday banner"
+                channels:
+                  - "FASHION_WEB"
+                type: image
+                path: "%fixtures_dir%/black_friday_banner.png"
+                original_name: "black_friday_banner.png"
+                collections:
+                  - "black_friday_banner"
+                translations:
+                  en_US:
+                    alt: "Black friday banner"
+              homepage_banner_1:
+                name: "Homepage banner 1 (black friday)"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
+                  - "black_friday_banner"
+                type: image
+                path: "%fixtures_dir%/homepage_banner_1.png"
+                original_name: "homepage_banner_1.png"
+                translations:
+                  en_US:
+                    alt: "Homepage banner 1"
+              homepage_banner_2:
+                name: "Homepage banner 2"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
+                type: image
+                path: "%fixtures_dir%/homepage_banner_2.png"
+                original_name: "homepage_banner_2.png"
+                translations:
+                  en_US:
+                    alt: "Homepage_banner_2"
+              homepage_banner_3:
+                name: "Homepage banner 3"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "homepage_banner"
+                type: image
+                path: "%fixtures_dir%/homepage_banner_3.png"
+                original_name: "homepage_banner_3.png"
+                translations:
+                  en_US:
+                    alt: "Homepage banner 3"
+              blog_banner:
+                name: "Blog banner"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_banner.png"
+                original_name: "blog_banner.png"
+                translations:
+                  en_US:
+                    alt: "Blog banner"
+              blog_post_1_header_banner:
+                name: "Blog post 1 banner"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_1_header_banner.png"
+                original_name: "blog_post_1_header_banner.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 1 banner"
+              blog_post_2_header_banner:
+                name: "Blog post 2 banner"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_2_header_banner.png"
+                original_name: "blog_post_2_header_banner.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 2 banner"
+              blog_post_3_header_banner:
+                name: "Blog post 3 banner"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_3_header_banner.png"
+                original_name: "blog_post_3_header_banner.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 3 banner"
+              blog_post_1_teaser_image:
+                name: "Blog post 1 teaser"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_1_teaser_image.png"
+                original_name: "blog_post_1_teaser_image.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 1 teaser"
+              blog_post_2_teaser_image:
+                name: "Blog post 2 teaser"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_2_teaser_image.png"
+                original_name: "blog_post_2_teaser_image.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 2 teaser"
+              blog_post_3_teaser_image:
+                name: "Blog post 3 teaser"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_3_teaser_image.png"
+                original_name: "blog_post_3_teaser_image.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 3 teaser"
+              blog_post_1_content_image_1:
+                name: "Blog post 1 content image 1"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_1_content_image_1.png"
+                original_name: "blog_post_1_content_image_1.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 1 content image 1"
+              blog_post_1_content_image_2:
+                name: "Blog post 1 content image 2"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_1_content_image_2.png"
+                original_name: "blog_post_1_content_image_2.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 1 content image 2"
+              blog_post_2_content_image_1:
+                name: "Blog post 2 content image 1"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_2_content_image_1.png"
+                original_name: "blog_post_2_content_image_1.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 2 content image 1"
+              blog_post_2_content_image_2:
+                name: "Blog post 2 content image 2"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_2_content_image_2.png"
+                original_name: "blog_post_2_content_image_2.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 2 content image 2"
+              blog_post_3_content_image_1:
+                name: "Blog post 3 content image 1"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_3_content_image_1.png"
+                original_name: "blog_post_3_content_image_1.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 3 content image 1"
+              blog_post_3_content_image_2:
+                name: "Blog post 3 content image 2"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog_images"
+                type: image
+                path: "%fixtures_dir%/blog_post_3_content_image_2.png"
+                original_name: "blog_post_3_content_image_2.png"
+                translations:
+                  en_US:
+                    alt: "Blog post 3 content image 2"

@@ -1,0 +1,559 @@
+parameters:
+  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+sylius_fixtures:
+  suites:
+    default:
+      listeners:
+        orm_purger: ~
+        logger: ~
+      fixtures:
+        page:
+          options:
+            custom:
+              faq:
+                name: "Frequently Asked Questions"
+                channels:
+                  - "FASHION_WEB"
+                translations:
+                  en_US:
+                    slug: "faq"
+                    meta_title: "FAQ"
+                    meta_keywords: "faq"
+                content_elements:
+                  en_US:
+                    question1:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "What sizes are available for your clothing items?"
+                    answer1:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">We are committed to sustainability and offer a selection of t-shirts and jeans made from eco-friendly materials. Look for our sustainability badge on the product pages for more information.>We offer a wide range of sizes for our t-shirts, caps, dresses, and jeans, from XS to XXL. Specific sizing information can be found on each product page.</p>"
+                    question2:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Are your products unisex?"
+                    answer2:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Yes, many of our t-shirts and caps are designed to be unisex, providing stylish options for both men and women. Our dresses are designed specifically for women, while our jeans come in both men’s and women’s fits.</p>"
+                    question3:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "What materials are your t-shirts and jeans made from?"
+                    answer3:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Our t-shirts are crafted from soft, high-quality cotton blends, while our jeans are made from durable denim with just the right amount of stretch for comfort.</p>"
+                    question4:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "How should I care for my t-shirts and jeans to ensure they last?"
+                    answer4:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">We recommend washing your t-shirts and jeans in cold water and tumble drying on low heat to preserve their fit and color. Always check the care label for specific instructions.</p>"
+                    question5:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Do you offer international shipping?"
+                    answer5:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Yes, we offer international shipping to many countries. Shipping fees and delivery times will vary depending on your location.</p>"
+                    question6:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Can I return or exchange an item if it doesn’t fit?"
+                    answer6:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Absolutely! We have a hassle-free return and exchange policy. If your item doesn’t fit, you can return it within 30 days for a full refund or exchange.</p>"
+                    question7:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Do you offer any discounts for bulk purchases?"
+                    answer7:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Yes, we offer discounts on bulk orders. Please contact our customer service team for more information on bulk pricing and special offers.</p>"
+                    question8:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "How do I find the right size for your caps?"
+                    answer8:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Most of our caps are adjustable to fit a variety of head sizes. Each product page includes specific sizing information and instructions on how to adjust the fit.</p>"
+                    question9:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Are your dresses suitable for formal occasions?"
+                    answer9:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style=\"border-bottom: solid #eee 1px; padding-bottom: 20px;\">Yes, our Dresses collection includes a variety of styles, from casual daywear to elegant dresses perfect for formal events.</p>"
+                    question10:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Do you have any eco-friendly or sustainable options?"
+                    answer10:
+                      type: "textarea"
+                      data:
+                        textarea: "<p>We are committed to sustainability and offer a selection of t-shirts and jeans made from eco-friendly materials. Look for our sustainability badge on the product pages for more information.</p>"
+              blog:
+                name: "Blog"
+                channels:
+                  - "FASHION_WEB"
+                translations:
+                  en_US:
+                    slug: "blog"
+                    meta_title: "Blog"
+                content_elements:
+                  en_US:
+                    single_media:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_banner"
+                    textarea:
+                      type: "textarea"
+                      data:
+                        textarea: "<p style='text-align: right; margin: 40px 0; font-weight: bold;'>Whether you need a sporty edge or a casual accessory, our stuff is the perfect finishing touch for any outfit.</p>"
+                    pages_collection:
+                      type: "pages_collection"
+                      data:
+                        pages_collection: "blog"
+              blog_post_1:
+                name: "#1: Your Ultimate Guide to Beach and Holiday Fashion: Hats, Shirts, Sunglasses, and Shoes"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog"
+                translations:
+                  en_US:
+                    slug: "blog-post-1"
+                    meta_title: "Your Ultimate Guide to Beach and Holiday Fashion: Hats, Shirts, Sunglasses, and Shoes"
+                    teaser_title: "Your Ultimate Guide to Beach and Holiday Fashion"
+                    teaser_content: "<div>When planning your beach holiday wardrobe, fashion and function go hand in hand. Whether you're lounging by the pool, strolling along sandy shores, or heading out for a casual seaside dinner, nailing the perfect look is key to a stylish yet comfortable vacation. In this blog post, we’ll dive into the must-have modern fashion pieces that will elevate your beach holiday style. From chic hats to breezy shirts, trendy sunglasses to versatile shoes—let's break down how to build the perfect holiday wardrobe.</div>"
+                    teaser_image: "blog_post_1_teaser_image"
+                content_elements:
+                  en_US:
+                    single_media:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_1_header_banner"
+                    spacer0:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    heading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h2"
+                        heading: "Your Ultimate Guide to Beach and Holiday Fashion: Hats, Shirts, Sunglasses, and Shoes"
+                    intro:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>When planning your beach holiday wardrobe, fashion and function go hand in hand. Whether you're lounging by the pool, strolling along sandy shores, or heading out for a casual seaside dinner, nailing the perfect look is key to a stylish yet comfortable vacation. In this blog post, we’ll dive into the must-have modern fashion pieces that will elevate your beach holiday style. From chic hats to breezy shirts, trendy sunglasses to versatile shoes—let's break down how to build the perfect holiday wardrobe.</p>
+                    subheading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Stylish Hats: More Than Just Sun Protection"
+                    text1:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>No beach wardrobe is complete without a fashionable hat. While sun protection is a must, the right hat can instantly elevate your outfit. Whether you prefer a classic wide-brimmed hat or something a bit more trendy like a bucket hat, here are some top options for your holiday look:</p>
+                          <ul>
+                              <li><strong>Wide-brimmed Straw Hats:</strong> Ideal for a more elegant, laid-back beach look, offering maximum sun protection.</li>
+                              <li><strong>Bucket Hats:</strong> Perfect for a casual, sporty vibe. They’ve made a huge comeback and are great for packing light.</li>
+                              <li><strong>Fedoras</strong>: A touch of sophistication with a beachy twist. Pair it with your sundress or shirt for a relaxed, chic look.</li>
+                          </ul>
+                          <p>These styles aren’t just practical — they’re fashion statements.</p>
+                    spacer1:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_1:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_1_content_image_1"
+                    spacer2:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading2:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Breezy Shirts: Keeping It Cool and Comfortable"
+                    text2:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Shirts are the unsung heroes of beach and holiday wardrobes. You want something light, breathable, and versatile enough to take you from day to night. Here are some modern shirt styles to consider:</p>
+                          <ul>
+                              <li><strong>Linen Shirts:</strong> Lightweight and airy, linen shirts are perfect for staying cool in hot weather. Their natural, textured look adds a laid-back charm.</li>
+                              <li><strong>Oversized Button-Downs:</strong> Easy to throw over swimwear or pair with shorts. These are ideal for a relaxed yet stylish beach vibe.</li>
+                              <li><strong>Bold Prints and Patterns:</strong> Don’t be afraid to experiment with tropical prints or stripes, which scream beach holiday!</li>
+                          </ul>
+                          <p>The beauty of these shirts is their versatility, easily styled for daytime beach wear or a casual evening out.</p>
+                    spacer3:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    products_grid:
+                      type: "products_grid"
+                      data:
+                        products_grid:
+                          products:
+                            - "Raglan_grey_&_black_Tee"
+                            - "Loose_white_designer_T_Shirt"
+                            - "Sport_basic_white_T_Shirt"
+                            - "Ribbed_copper_slim_fit_Tee"
+                    subheading3:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Trendy Sunglasses: Protect Your Eyes in Style"
+                    text3:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Sunglasses are not only essential for protecting your eyes from the sun but are also a critical accessory in pulling together your holiday look. This season’s sunglasses trends are all about bold shapes and eye-catching designs:</p>
+                          <ul>
+                              <li><strong>Oversized Frames:</strong> Channeling a retro vibe, oversized frames add glamour to any beach outfit.</li>
+                              <li><strong>Aviators:</strong> Timeless and cool, aviators are a classic style that suits almost everyone.</li>
+                              <li><strong>Colored Lenses:</strong> This playful trend can add a pop of color to your holiday look. Think shades of pink, blue, or yellow.</li>
+                          </ul>
+                          <p>The right pair of sunglasses doesn’t just protect — it adds personality and polish to your overall look.</p>
+                    spacer4:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_2:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_1_content_image_2"
+                    spacer5:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading4:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Footwear: From Sand to Streets"
+                    text4:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>When it comes to holiday shoes, versatility is key. You need shoes that are comfortable for walking but also stylish enough to transition from the beach to the bar. Here are the best shoe styles for your beach holiday:</p>
+                          <ul>
+                              <li><strong>Espadrilles:</strong> These comfortable, breathable shoes are perfect for the beach, yet stylish enough for an evening stroll.</li>
+                              <li><strong>Slide Sandals:</strong> Easy to slip on and off, slide sandals are the ultimate convenience for days spent on the sand. Plus, they come in various chic designs and materials.</li>
+                              <li><strong>Sneakers:</strong> For those exploring coastal towns or going on holiday adventures, a pair of fashionable yet comfortable sneakers is a must-have.</li>
+                          </ul>
+                          <p>With these footwear options, you can easily switch between sandy beaches and urban explorations without compromising on style.</p>
+                    outro_heading:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Conclusion"
+                    outro_text:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Building the perfect beach and holiday wardrobe doesn’t have to be complicated. Focus on key pieces — hats, shirts, sunglasses, and shoes — that combine fashion and functionality. Whether you’re going for a laid-back beach look or something a little more polished for evening outings, these modern fashion essentials will have you looking and feeling your best on your holiday. So pack smart, and enjoy your time in the sun with confidence and style!</p>
+              blog_post_2:
+                name: "#2: Beach Suits for Everyone: Stylish and Functional Options for Women, Men, and Children"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog"
+                translations:
+                  en_US:
+                    slug: "blog-post-2"
+                    meta_title: "Beach Suits for Everyone: Stylish and Functional Options for Women, Men, and Children"
+                    teaser_title: "Beach Suits for Everyone"
+                    teaser_content: "<div>Finding the perfect beach suit isn’t just about looking good — it’s also about comfort and versatility. Whether you’re swimming, playing beach volleyball, or simply relaxing by the water, the right beachwear can make a world of difference. In this guide, we’ll explore the top beach suit trends for women, men, and children, ensuring that the whole family is stylishly prepared for any seaside adventure. From flattering swimsuits to practical designs for kids, we've got you covered.</div>"
+                    teaser_image: "blog_post_2_teaser_image"
+                content_elements:
+                  en_US:
+                    single_media:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_2_header_banner"
+                    spacer0:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    heading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h2"
+                        heading: "Beach Suits for Everyone: Stylish and Functional Options for Women, Men, and Children"
+                    intro:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Finding the perfect beach suit isn’t just about looking good — it’s also about comfort and versatility. Whether you’re swimming, playing beach volleyball, or simply relaxing by the water, the right beachwear can make a world of difference. In this guide, we’ll explore the top beach suit trends for women, men, and children, ensuring that the whole family is stylishly prepared for any seaside adventure. From flattering swimsuits to practical designs for kids, we've got you covered.</p>
+                    subheading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Women’s Beach Suits: Chic and Comfortable"
+                    text1:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Women’s beachwear has come a long way from basic bikinis. Modern trends offer a wide array of styles that suit different body types, preferences, and activities. Here are some top picks for stylish and functional women’s beach suits:</p>
+                          <ul>
+                              <li><strong>High-Waisted Bikinis:</strong> Offering a retro vibe, these are flattering for most figures and provide extra coverage, making them both stylish and comfortable.</li>
+                              <li><strong>One-Piece Swimsuits:</strong> Perfect for active days at the beach, one-piece suits have made a huge comeback. Look for designs with cutouts or bold prints to stay trendy.</li>
+                              <li><strong>Tankinis:</strong> A combination of a tank top and bikini bottoms, tankinis are ideal for those seeking more coverage without sacrificing style.</li>
+                          </ul>
+                          <p>These options ensure that you’ll not only feel confident in your swimwear but also be ready for anything, from swimming to sunbathing.</p>
+                    spacer1:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_1:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_2_content_image_1"
+                    spacer2:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading2:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Men’s Beach Suits: From Casual to Sporty"
+                    text2:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Men’s beachwear has evolved from basic board shorts to more diverse and stylish options. Whether you’re looking for something functional for water sports or something casual for lounging, here are the best beach suit options for men:</p>
+                          <ul>
+                              <li><strong>Board Shorts:</strong> A classic option, board shorts are great for both swimming and casual beach activities. Opt for quick-dry materials for extra comfort.</li>
+                              <li><strong>Swim Trunks:</strong> These shorter, more tailored versions of board shorts have become increasingly popular. They offer a modern look without compromising on comfort.</li>
+                              <li><strong>Rash Guards:</strong> If you’re planning on spending time surfing or participating in water sports, a rash guard is a must. Not only does it protect your skin from the sun, but it also helps prevent irritation from sand and saltwater.</li>
+                          </ul>
+                          <p>These suits provide the perfect combination of practicality and style, ensuring men can enjoy their beach day in comfort.</p>
+                    spacer3:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    products_grid:
+                      type: "products_grid_by_taxon"
+                      data:
+                        products_grid_by_taxon: "dresses"
+                    subheading3:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Beach Suits for Kids: Fun and Functional"
+                    text3:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>When it comes to children’s beachwear, the focus is on sun protection and comfort. However, that doesn’t mean kids can’t be stylish while they play in the sand! Here are some great options for children’s beach suits:</p>
+                          <ul>
+                              <li><strong>Rash Guards and Swim Shirts:</strong> For both boys and girls, rash guards or swim shirts offer excellent sun protection. Look for ones with UV protection built in to keep your kids safe from the sun.</li>
+                              <li><strong>One-Piece Swimsuits for Girls:</strong> A classic and practical choice, one-piece swimsuits provide full coverage and are easy for active beach days.</li>
+                              <li><strong>Swim Shorts for Boys:</strong> Swim shorts in fun, bold prints are perfect for boys who are constantly on the move. Look for quick-drying fabrics that can handle everything from swimming to sandcastle building.</li>
+                          </ul>
+                          <p>These suits ensure that kids can enjoy the beach safely, comfortably, and with a sense of style.</p>
+                    spacer4:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_2:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_2_content_image_2"
+                    spacer5:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading4:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Choosing the Right Fabrics and Features for All Ages"
+                    text4:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>No matter who you're shopping for — women, men, or children — choosing the right materials and features is key to getting the most out of your beachwear. Here are some essential things to look out for when buying beach suits:</p>
+                          <ul>
+                              <li><strong>Quick-Drying Fabrics:</strong> For both comfort and convenience, quick-drying fabrics are a must. They prevent chafing and make transitions from beach to lunch much smoother.</li>
+                              <li><strong>Sun Protection:</strong> Many modern beach suits come with built-in UV protection, which is particularly important for kids but also useful for adults.</li>
+                              <li><strong>Adjustable Straps and Waistbands:</strong> For both women’s and men’s suits, adjustable straps or waistbands can make a huge difference in terms of comfort. Look for these features to ensure the perfect fit.</li>
+                          </ul>
+                          <p>With the right fabrics and functional features, your beach suits will last longer and provide maximum comfort throughout your holiday.</p>
+                    outro_heading:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Conclusion"
+                    outro_text:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Finding the perfect beach suit for the entire family doesn't have to be a challenge. With stylish and practical options available for women, men, and children, everyone can feel comfortable and confident at the beach. Whether you're looking for sun protection, the perfect fit, or the latest trends, these beach suits offer everything you need for a fun-filled holiday by the sea. So pack up your beach bag and get ready to make a splash with your new, fashionable beachwear!</p>
+
+              blog_post_3:
+                name: "#3: Beach-Ready Fashion for Men and Boys: T-Shirts, Shorts, and Shoes"
+                channels:
+                  - "FASHION_WEB"
+                collections:
+                  - "blog"
+                translations:
+                  en_US:
+                    slug: "blog-post-3"
+                    meta_title: "Beach-Ready Fashion for Men and Boys: T-Shirts, Shorts, and Shoes"
+                    teaser_title: "Beach-Ready Fashion for Men and Boys"
+                    teaser_content: "<div>When hitting the beach, comfort is key, but that doesn't mean style has to take a backseat. Whether you’re a man looking for the perfect holiday wardrobe or shopping for your boys, you’ll want to find pieces that combine practicality with a touch of flair. In this guide, we’ll explore the top T-shirts, shorts, and shoes for men and boys, helping you put together the ideal beach outfit. From breezy shirts to functional footwear, this is your go-to guide for looking stylish while enjoying the sun, sand, and surf.</div>"
+                    teaser_image: "blog_post_3_teaser_image"
+                content_elements:
+                  en_US:
+                    single_media:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_3_header_banner"
+                    spacer0:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    heading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h2"
+                        heading: "Beach-Ready Fashion for Men and Boys: T-Shirts, Shorts, and Shoes"
+                    intro:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>When hitting the beach, comfort is key, but that doesn't mean style has to take a backseat. Whether you’re a man looking for the perfect holiday wardrobe or shopping for your boys, you’ll want to find pieces that combine practicality with a touch of flair. In this guide, we’ll explore the top T-shirts, shorts, and shoes for men and boys, helping you put together the ideal beach outfit. From breezy shirts to functional footwear, this is your go-to guide for looking stylish while enjoying the sun, sand, and surf.</p>
+                    subheading1:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "T-Shirts for Men: Style Meets Comfort"
+                    text1:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>A well-chosen T-shirt is an essential part of any beach look for men. The right fabric and fit can keep you cool while still looking sharp, even in the hottest weather. Here are some modern T-shirt styles that are perfect for the beach:</p>
+                          <ul>
+                              <li><strong>Cotton Crew Necks:</strong> A simple cotton T-shirt is a timeless option for casual beachwear. Look for lightweight fabrics to keep cool while still offering comfort.</li>
+                              <li><strong>Linen Tees:</strong> For those really hot days, a linen T-shirt is perfect. It’s breathable and gives off a laid-back, effortless vibe.</li>
+                              <li><strong>Graphic Tees:</strong> Add a bit of personality to your beach outfit with a fun graphic tee. Whether it’s a tropical print or a favorite logo, graphic tees keep things interesting and on-trend.</li>
+                          </ul>
+                          <p>These styles ensure you look good while staying comfortable, whether you’re lounging on the beach or heading to a seaside café.</p>
+                    spacer1:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_1:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_3_content_image_1"
+                    spacer2:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading2:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "T-Shirts for Boys: Fun and Functional"
+                    text2:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>When it comes to boys’ T-shirts, you need pieces that are both practical and playful. Boys are always on the move, so their beach wardrobe should reflect that. Here are some great T-shirt options for boys:</p>
+                          <ul>
+                              <li><strong>Activewear Tees:</strong> Moisture-wicking fabrics are perfect for boys who love to run around at the beach. These tees keep them dry and comfortable throughout the day.</li>
+                              <li><strong>Bold Prints and Patterns:</strong> Whether it’s sharks, surfboards, or palm trees, boys’ T-shirts should be fun. Look for bold prints that capture the excitement of summer.</li>
+                              <li><strong>Rash Guard Shirts:</strong> For sun protection, rash guard shirts are a must. These snug-fitting shirts protect against UV rays and are ideal for active days in the water.</li>
+                          </ul>
+                          <p>These T-shirts combine comfort with style, ensuring boys can play and swim while staying protected and cool.</p>
+                    spacer3:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    products_carousel_by_taxon:
+                      type: "products_carousel_by_taxon"
+                      data:
+                        products_carousel_by_taxon: "t_shirts"
+                    subheading3:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Shorts for Men: Practicality with a Stylish Twist"
+                    text3:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Choosing the right pair of shorts for the beach is crucial. Men need something that’s easy to move in but also stylish enough for post-beach activities. Here are some top picks for beach shorts:</p>
+                          <ul>
+                              <li><strong>Board Shorts:</strong> Classic and functional, board shorts are perfect for swimming and beach sports. They’re usually made of quick-drying fabric and come in various lengths, so you can choose what’s most comfortable for you.</li>
+                              <li><strong>Chino Shorts:</strong> If you’re planning to hit a beachside restaurant or bar after your swim, chino shorts are a great option. They’re stylish yet casual, making them versatile for both water and land.</li>
+                              <li><strong>Hybrid Shorts:</strong> These are a combination of swim trunks and casual shorts. Hybrid shorts are designed to dry quickly, allowing you to wear them straight from the beach to a casual outing without needing to change.</li>
+                          </ul>
+                          <p>With these options, you’ll always look good while staying comfortable and ready for any beachside activity.</p>
+                    spacer4:
+                      type: "spacer"
+                      data:
+                        spacer: 20
+                    image_2:
+                      type: "single_media"
+                      data:
+                        single_media: "blog_post_3_content_image_2"
+                    spacer5:
+                      type: "spacer"
+                      data:
+                        spacer: 10
+                    subheading4:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Shorts for Boys: Durable and Play-Friendly"
+                    text4:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>Boys need shorts that can withstand a day full of activities, from swimming to sandcastle building. Comfort, durability, and style should all come together. Here are some great beach short options for boys:</p>
+                          <ul>
+                              <li><strong>Swim Trunks with Built-In Liners:</strong> Swim trunks with mesh liners are perfect for active boys. They’re designed for swimming, but they also dry quickly and offer freedom of movement.</li>
+                              <li><strong>Cargo Shorts:</strong> Ideal for boys who love pockets! Cargo shorts are not only durable but also practical, with plenty of space to stash beach finds.</li>
+                              <li><strong>Elastic Waist Shorts:</strong> For younger boys, elastic waistbands make it easy to slip shorts on and off. Look for lightweight, quick-dry materials for ultimate beach comfort.</li>
+                          </ul>
+                          <p>These options ensure boys can enjoy their time at the beach with full freedom of movement while looking cute and cool.</p>
+                    outro_heading:
+                      type: "heading"
+                      data:
+                        heading_type: "h3"
+                        heading: "Conclusion"
+                    outro_text:
+                      type: "textarea"
+                      data:
+                        textarea: |
+                          <p>With the right T-shirts, shorts, and shoes, men and boys can enjoy their time at the beach in both style and comfort. From cool, breathable shirts to functional and fashionable shorts, and durable footwear, there are plenty of options to ensure everyone looks great while feeling good. Whether it’s a casual beach day or an adventure-filled holiday, these fashion staples will have you covered from sand to shore. So pack smart and get ready to enjoy the sun, sea, and sand in style!</p>

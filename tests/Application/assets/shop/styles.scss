@@ -1,0 +1,93 @@
+.homepage-logo {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.homepage-sale {
+  img {
+    width: 80% !important;
+    margin: auto !important;
+    border-radius: 20px;
+  }
+}
+
+.cms_content_element__taxons-list {
+  .ui {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0 !important;
+
+    li {
+      flex: 1 1 auto;
+      text-align: center;
+      vertical-align: middle;
+      border: solid #eee 1px;
+      margin: 20px;
+      border-radius: 4px;
+      font-size: 16pt;
+      background: transparent;
+      transition: border-color 200ms ease-in;
+
+      a {
+        padding: 40px !important;
+        display: block;
+        transition: color 200ms ease-in;
+      }
+    }
+
+    li:hover {
+      border-color: #22b99a;
+      transition: border-color 200ms ease-in;
+      a {
+        color: #22b99a;
+        transition: color 200ms ease-in;
+      }
+    }
+
+    li:before {
+      content: none !important;
+    }
+  }
+}
+
+.cms-page-content {
+  .teaser {
+    .ui.image {
+      width: 100%;
+
+      img {
+        width: 100%
+      }
+    }
+  }
+
+  h2 {
+    font-size: 22pt;
+    margin-bottom: 22px;
+  }
+
+  h3 {
+    margin-top: 16px;
+    font-size: 18pt;
+    margin-bottom: 16px;
+  }
+
+  .cms_content_element__textarea {
+    p {
+      font-size: 13pt;
+      ul {
+        font-size: 13pt;
+        li {
+          margin-bottom: 6px;
+        }
+      }
+    }
+
+    ul {
+      font-size: 13pt;
+      li {
+        margin-bottom: 6px;
+      }
+    }
+  }
+}
