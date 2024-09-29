@@ -54,3 +54,7 @@ read [Sylius template customization guide](http://docs.sylius.org/en/latest/cust
 
 Even if you can pass template argument to render block resource, you can change the global templates under `app/templates/bundles/SyliusCmsPlugin/Shop/Block` location.
 Available templates you can override can be found under [this location](../src/Resources/views/Shop/Block).
+
+### Custom Block Templates
+
+For more information about custom block templates, check the [documentation](templates.md).

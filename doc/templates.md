@@ -1,21 +1,24 @@
-# Templates
+# Page/Block Templates
 
-Templates are a way to define the structure of content elements, which can be used in blocks and pages.
-
-![Templates usage](templates.gif)
+Templates allow you to define and select the layout of your pages and blocks.
 
 ## General usage
 
-Let's assume you want to create a template for a blog post.
-You want to add following content elements:
-- **Title** (textarea)
-- **Subtitle** (textarea)
-- **Image** (single media)
-- **Content** (textarea)
-- **Author** (textarea)
-- **Products carousel** (products carousel by taxon)
+By default, the blocks and pages have its own templates. You can create your own templates and use it in specific blocks or pages.
 
-Then, when you create a page, in the content elements section you can choose the template you created.
-It will create a form with fields you defined in the template. \
-Your job is just to fill them with content. \
-Of course, you can add additional content elements to the form, after you choose the template. It's super flexible!
+### Creating a new template
+
+1. Go to the `config/packages/cms_plugin.yaml` file.
+2. Define your templates in following format:
+```yaml
+sylius_cms:
+	templates:
+		pages:
+			- "@SyliusCMSPlugin/Shop/MyPage/template.twig"
+			- "@SyliusCMSPlugin/Shop/MySecondPage/template.twig"
+		blocks:
+			- "@SyliusCMSPlugin/Shop/MyPage/template.twig"
+			- "@SyliusCMSPlugin/Shop/MySecondPage/template.twig
+```
+3. Create a new template file. For example, `templates/bundles/SyliusCMSPlugin/Shop/MyPage/template.twig`.
+4. Go to the Block/Page form and select your template from the list.

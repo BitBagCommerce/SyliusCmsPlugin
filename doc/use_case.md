@@ -24,7 +24,7 @@ In admin panel, the whole CMS functionality is located under "Content Management
 Our CMS Plugin allows you to manage:
 
 * **Collections** - responsible for grouping the pages/blocks/media
-* **Templates** - allows to create a template of content elements for the page or block
+* **Content Templates** - allows to create a template of content elements for the page or block
 * **Pages** - whole pages, obtainable by the link
 * **Blocks** - separate parts for the content, composed of the content elements
 * **Media** - images, videos, etc. that can be used in other segments of the CMS
@@ -42,11 +42,11 @@ By utilizing collections, administrators can group related content elements toge
 
 More information about Collections you can get [here](use_case_collections.md).
 
-### Templates:
+### Content Templates:
 
-The Templates tile allows administrators to create and manage templates built from content elements skeletons.
+The Content Templates tile allows administrators to create and manage templates built from content elements skeletons.
 
-![Screenshot showing content management config in admin](templates_cms.png)
+![Screenshot showing content management config in admin](content_templates_cms.png)
 
 ### Pages:
 
@@ -81,7 +81,7 @@ More information about Media you can get [here](use_case_media.md).
 ## Summary
 
 In summary, the Sylius CMS Plugin provides administrators with a range of tiles in the admin panel, 
-including [Collections](use_case_collections.md), [Templates](use_case_templates.md), [Pages](use_case_pages.md), [Blocks](use_case_blocks.md), [Media](use_case_media.md).
+including [Collections](use_case_collections.md), [Content Templates](use_case_content_templates.md), [Pages](use_case_pages.md), [Blocks](use_case_blocks.md), [Media](use_case_media.md).
 
 These tiles offer functionalities for managing CMS segments. 
 Together, they enable administrators to efficiently create, edit, and organize content within the Sylius e-commerce system,
