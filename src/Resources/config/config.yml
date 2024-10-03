@@ -2,6 +2,7 @@ imports:
     - { resource: "@SyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
     - { resource: "@SyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@SyliusCmsPlugin/Resources/config/services.xml" }
+    - { resource: "@SyliusCmsPlugin/Resources/config/fixtures/*.yaml"}
 
 parameters:
     sylius.sitemap.path: "%kernel.project_dir%/var/sitemap"

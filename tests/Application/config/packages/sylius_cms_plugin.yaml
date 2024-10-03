@@ -1,3 +1,2 @@
 imports:
     - { resource: "@SyliusCmsPlugin/Resources/config/config.yml" }
-    - { resource: "fixtures/*.yaml"}
