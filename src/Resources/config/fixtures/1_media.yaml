@@ -1,5 +1,5 @@
 parameters:
-  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+  fixtures_dir: "%sylius_cms.fixtures_dir%/images"
 
 sylius_fixtures:
   suites:

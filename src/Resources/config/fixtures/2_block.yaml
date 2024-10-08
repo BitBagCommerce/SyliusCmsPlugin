@@ -1,6 +1,3 @@
-parameters:
-  fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
-
 sylius_fixtures:
   suites:
     default:
