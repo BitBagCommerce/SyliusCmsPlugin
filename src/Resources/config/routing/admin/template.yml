@@ -2,17 +2,13 @@ sylius_cms_admin_template:
     resource: |
         alias: sylius_cms.template
         section: admin
-        templates: '@SyliusCmsPlugin/CrudUi'
+        templates: '@SyliusAdmin\\shared\\crud'
         except: ['show']
         redirect: update
         grid: sylius_cms_admin_template
         permission: true
-        vars:
-            all:
-                templates:
-                    form: "@SyliusCmsPlugin/ContentTemplate/Crud/_form.html.twig"
-            index:
-                icon: block layout
+        form:
+            type: Sylius\CmsPlugin\Form\Type\TemplateType
     type: sylius.resource
 
 sylius_cms_admin_ajax_template_page_by_name_phrase:

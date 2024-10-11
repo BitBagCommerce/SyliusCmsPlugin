@@ -7,7 +7,23 @@
     "lint": "yarn lint:js",
     "watch": "encore dev --watch"
   },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@tabler/core": "^1.0.0-beta21",
+    "apexcharts": "^3.53.0",
+    "bootstrap": "^5.3.3",
+    "flag-icons": "^7.2.3",
+    "infinite-tree": "^1.18.0"
+  },
   "devDependencies": {
-    "@sylius-ui/frontend": "^1.0"
+    "@sylius-ui/frontend": "^1.0",
+    "@hotwired/stimulus": "^3.2.2",
+    "@symfony/stimulus-bridge": "^3.2.2",
+    "@symfony/ux-autocomplete": "file:../../vendor/symfony/ux-autocomplete/assets",
+    "@symfony/ux-live-component": "file:../../vendor/symfony/ux-live-component/assets",
+    "sass-loader": "^14.0.0",
+    "slugify": "^1.6.6",
+    "stimulus-use": "^0.52.2",
+    "tom-select": "^2.3.1"
   }
 }

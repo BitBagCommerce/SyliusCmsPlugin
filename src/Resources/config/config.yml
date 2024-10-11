@@ -1,4 +1,5 @@
 imports:
+    - { resource: "@SyliusCmsPlugin/Resources/config/twig_hooks/**/*.yaml" }
     - { resource: "@SyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
     - { resource: "@SyliusCmsPlugin/Resources/config/grids.yml" }
     - { resource: "@SyliusCmsPlugin/Resources/config/services.xml" }
@@ -47,5 +48,5 @@ sylius_ui:
         sylius.admin.layout.javascripts:
             blocks:
                 version_script:
-                    template: "@SyliusCmsPlugin/Asset/_cmsVersionScript.html.twig"
+                    template: "@SyliusCmsPlugin/Assets/_cmsVersionScript.html.twig"
                     priority: 30

@@ -1,0 +1,8 @@
+twig_hooks:
+    hooks:
+        'sylius_admin.base#stylesheets':
+            styles:
+                template: '@SyliusCmsPlugin/Assets/css.html.twig'
+        'sylius_admin.base#javascripts':
+            scripts:
+                template: '@SyliusCmsPlugin/Assets/js.html.twig'

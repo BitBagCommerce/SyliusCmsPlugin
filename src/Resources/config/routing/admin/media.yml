@@ -2,19 +2,13 @@ sylius_cms_admin_media:
     resource: |
         alias: sylius_cms.media
         section: admin
-        templates: '@SyliusCmsPlugin/CrudUi'
+        templates: '@SyliusAdmin\\shared\\crud'
         redirect: update
         grid: sylius_cms_admin_media
         except: ['show']
         permission: true
-        vars:
-            all:
-                header: sylius_cms.ui.media_header
-                subheader: sylius_cms.ui.media_subheader
-                templates:
-                    form: "@SyliusCmsPlugin/Media/Crud/_form.html.twig"
-            index:
-                icon: file
+        form:
+            type: Sylius\CmsPlugin\Form\Type\MediaType
     type: sylius.resource
 
 sylius_cms_admin_ajax_media_by_name_phrase:

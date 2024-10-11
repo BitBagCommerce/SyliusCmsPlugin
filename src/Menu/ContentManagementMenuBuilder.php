@@ -19,6 +19,7 @@ final class ContentManagementMenuBuilder
         $cmsRootMenuItem = $menu
             ->addChild('sylius_cms')
             ->setLabel('sylius_cms.ui.cms')
+            ->setLabelAttribute('icon', 'wand')
         ;
 
         $cmsRootMenuItem
@@ -26,7 +27,6 @@ final class ContentManagementMenuBuilder
                 'route' => 'sylius_cms_admin_collection_index',
             ])
             ->setLabel('sylius_cms.ui.collections')
-            ->setLabelAttribute('icon', 'grid layout')
         ;
 
         $cmsRootMenuItem
@@ -34,7 +34,6 @@ final class ContentManagementMenuBuilder
                 'route' => 'sylius_cms_admin_template_index',
             ])
             ->setLabel('sylius_cms.ui.content_templates')
-            ->setLabelAttribute('icon', 'clone')
         ;
 
         $cmsRootMenuItem
@@ -42,7 +41,6 @@ final class ContentManagementMenuBuilder
                 'route' => 'sylius_cms_admin_page_index',
             ])
             ->setLabel('sylius_cms.ui.pages')
-            ->setLabelAttribute('icon', 'sticky note')
         ;
 
         $cmsRootMenuItem
@@ -50,7 +48,6 @@ final class ContentManagementMenuBuilder
                 'route' => 'sylius_cms_admin_block_index',
             ])
             ->setLabel('sylius_cms.ui.blocks')
-            ->setLabelAttribute('icon', 'block layout')
         ;
 
         $cmsRootMenuItem
@@ -58,7 +55,6 @@ final class ContentManagementMenuBuilder
                 'route' => 'sylius_cms_admin_media_index',
             ])
             ->setLabel('sylius_cms.ui.media')
-            ->setLabelAttribute('icon', 'file')
         ;
 
         $this->menuReorder->reorder($menu, 'sylius_cms', 'marketing');
