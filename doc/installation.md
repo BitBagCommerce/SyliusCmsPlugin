@@ -101,7 +101,7 @@ $ bin/console cache:clear
 # If you used migrations in your project...
 $ bin/console doctrine:migrations:migrate
 # ... or if you use doctrine schema tool.
-$ bin/cosole doctrine:schema:update --dump-sql # and --force switch when you're ready :)
+$ bin/console doctrine:schema:update --dump-sql # and --force switch when you're ready :)
 
 $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
