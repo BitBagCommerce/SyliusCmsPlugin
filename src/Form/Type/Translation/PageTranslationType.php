@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Sylius\CmsPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\MediaImageAutocompleteType;
 use Sylius\CmsPlugin\Form\Type\MediaImageAutocompleteChoiceType;
 use Sylius\CmsPlugin\Form\Type\WysiwygType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -39,7 +40,7 @@ final class PageTranslationType extends AbstractResourceType
                 'label' => 'sylius_cms.ui.teaser.content',
                 'required' => false,
             ])
-            ->add('teaserImage', MediaImageAutocompleteChoiceType::class, [
+            ->add('teaserImage', MediaImageAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.teaser.image',
                 'required' => false,
             ])

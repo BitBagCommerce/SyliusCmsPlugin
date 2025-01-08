@@ -1,140 +1,173 @@
-{% extends '@SyliusUi/Form/theme.html.twig' %}
+{% extends '@SyliusAdmin/shared/form_theme.html.twig' %}
 
-{% block sylius_collection_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }}
-{% endblock %}
-
-{% block sylius_page_collection_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }}
-{% endblock %}
-
-{% block sylius_page_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_page_by_code')}) }}
-{% endblock %}
-
-{% block sylius_block_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_block_by_code')}) }}
-{% endblock %}
-
-{% block sylius_template_page_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }}
-{% endblock %}
-
-{% block sylius_template_block_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }}
-{% endblock %}
-
-{% block sylius_media_autocomplete_choice_row %}
-    <div
-        class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}"
-        data-bb-target="cms-handle-autocomplete"
-    >
-        {{- form_label(form) -}}
-        <div
-            class="cms-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-            data-url="{{ path('sylius_cms_admin_ajax_media_by_name_phrase', {
-            'mediaType': form.vars.media_type,
-        })}}"
-            data-autocomplete
-            data-choice-name="{{ choice_name }}"
-            data-choice-value="{{ choice_value }}"
-            data-criteria-type="{{ remote_criteria_type }}"
-            data-criteria-name="{{ remote_criteria_name }}"
-            data-load-edit-url="{{ path('sylius_cms_admin_ajax_media_by_code') }}"
-            data-name-message ="{{ 'sylius_cms.ui.empty_name'|trans }}"
-        >
-            {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}}
-            <span class="btn-delete is-hidden" data-delete-selected>X</span>
-            <i class="dropdown icon"></i>
-            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-image-select>
-            <div class="default text" data-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
-            <div class="menu" data-selection-menu></div>
+{%- block sylius_cms_content_configuration_row -%}
+    <div class="alert text-body mb-3 collection-item"
+         id="{{ id }}" {{ block('attributes') }} {{ sylius_test_html_attribute('entry-row') }}>
+        <div class="d-flex justify-content-end">
+            {{- form_row(button_delete, sylius_test_form_attribute('delete')|sylius_merge_recursive({'attr': {'class': 'btn-close'}})) -}}
         </div>
         {{- form_errors(form) -}}
+        {{- form_row(form.locale) -}}
+        {{- form_row(form.type) -}}
+        <div>
+            {{- form_row(form.configuration, {'label': false}) -}}
+        </div>
     </div>
-{% endblock %}
+{%- endblock sylius_cms_content_configuration_row -%}
 
-{% block sylius_product_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_product_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_product_by_code')}) }}
-{% endblock %}
-
-{% block sylius_taxon_autocomplete_choice_row %}
-    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_taxon_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_taxon_by_code')}) }}
-{% endblock %}
-
-{% block collection_widget -%}
-    {% from '@SyliusResource/Macros/notification.html.twig' import error %}
-    {% import _self as self %}
-    {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %}
-
-    {% apply spaceless %}
-        <div data-form-type="collection" {{ block('widget_container_attributes') }}
-                {% if prototype is defined and allow_add %}
-                    data-prototype='{{ self.collection_item(prototype, allow_delete, button_delete_label, prototype.vars.name)|e }}'
-                    data-prototype-name='{{ prototype.vars.name }}'
-                {%- endif -%}
-        >
-            {{ error(form.vars.errors) }}
-
-            {% if prototypes|default is iterable %}
-                {% for key, subPrototype in prototypes %}
-                    <input type="hidden" data-form-prototype="{{ key }}"
-                           value="{{ self.collection_item(subPrototype, allow_delete, button_delete_label, subPrototype.vars.name)|e }}"
-                           data-subprototype-name="{{ subPrototype.vars.name }}"
-                    />
+{% block add_button_row %}
+    {% if types is not empty %}
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">{{ label|trans }}</button>
+            <ul class="dropdown-menu">
+                {% for type, label in types %}
+                    <li>
+                        <button class="dropdown-item" type="button" {{ block('button_attributes') }}
+                                data-live-type-param="{{ type }}" {{ sylius_test_html_attribute('add-' ~ type) }}>
+                            {{ (label)|trans }}
+                        </button>
+                    </li>
                 {% endfor %}
-            {% endif %}
-
-            <div data-form-collection="list">
-                {% for child in form %}
-                    {{ self.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
-                {% endfor %}
-            </div>
-
-            {% if prototype is defined and allow_add %}
-                <a href="#" class="ui labeled icon button" data-form-collection="add">
-                    <i class="plus square outline icon"></i>
-                    {{ button_add_label|trans }}
-                </a>
-            {% endif %}
+            </ul>
         </div>
-    {% endapply %}
-{%- endblock collection_widget %}
-
-{% macro collection_item(form, allow_delete, button_delete_label, index) %}
-    {% apply spaceless %}
-        <div class="bb-collection-item" data-form-collection="item" data-form-collection-index="{{ index }}">
-            <div class="ui segment ">
-                {{ form_widget(form) }}
-                {% if allow_delete %}
-                    <a href="#" data-form-collection="delete" class="ui red labeled icon button bb-collection-item-delete">
-                        <i class="trash icon"></i>
-                        {{ button_delete_label|trans }}
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-    {% endapply %}
-{% endmacro %}
-
-{% block sylius_resource_autocomplete_choice_row %}
-    <div class="{% if required %}required {% endif %}{% if disabled %}disabled {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
-        {{- form_label(form) -}}
-        {{- form_help(form) -}}
-        <div
-                class="sylius-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}"
-                data-url="{{ remote_url }}"
-                data-choice-name="{{ choice_name }}"
-                data-choice-value="{{ choice_value }}"
-                data-criteria-type="{{ remote_criteria_type }}"
-                data-criteria-name="{{ remote_criteria_name }}"
-                data-load-edit-url="{{ load_edit_url }}"
-        >
-            {{- form_widget(form, {'attr': {'class' : 'autocomplete'}}) -}}
-            <i class="dropdown icon"></i>
-            <div class="default text">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div>
-            <div class="menu"></div>
-        </div>
-        {{- form_errors(form) -}}
-    </div>
+    {% endif %}
 {% endblock %}
+
+{# {% block sylius_collection_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_page_collection_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_collection_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_collection_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_page_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_page_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_block_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_block_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_template_page_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_page_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_template_block_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_template_block_by_name_phrase'), 'load_edit_url': path('sylius_cms_admin_ajax_template_by_id')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_media_autocomplete_choice_row %} #}
+{#    <div #}
+{#        class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}" #}
+{#        data-bb-target="cms-handle-autocomplete" #}
+{#    > #}
+{#        {{- form_label(form) -}} #}
+{#        <div #}
+{#            class="cms-media-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}" #}
+{#            data-url="{{ path('sylius_cms_admin_ajax_media_by_name_phrase', { #}
+{#            'mediaType': form.vars.media_type, #}
+{#        })}}" #}
+{#            data-autocomplete #}
+{#            data-choice-name="{{ choice_name }}" #}
+{#            data-choice-value="{{ choice_value }}" #}
+{#            data-criteria-type="{{ remote_criteria_type }}" #}
+{#            data-criteria-name="{{ remote_criteria_name }}" #}
+{#            data-load-edit-url="{{ path('sylius_cms_admin_ajax_media_by_code') }}" #}
+{#            data-name-message ="{{ 'sylius_cms.ui.empty_name'|trans }}" #}
+{#        > #}
+{#            {{- form_widget(form, {'attr': {'class': 'autocomplete'}}) -}} #}
+{#            <span class="btn-delete is-hidden" data-delete-selected>X</span> #}
+{#            <i class="dropdown icon"></i> #}
+{#            <input class="search" type="text" value="{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}" autocomplete="off" data-image-select> #}
+{#            <div class="default text" data-placeholder>{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div> #}
+{#            <div class="menu" data-selection-menu></div> #}
+{#        </div> #}
+{#        {{- form_errors(form) -}} #}
+{#    </div> #}
+{# {% endblock %} #}
+
+{# {% block sylius_product_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_product_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_product_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block sylius_taxon_autocomplete_choice_row %} #}
+{#    {{ form_row(form, {'remote_url': path('sylius_cms_admin_ajax_taxon_by_name_phrase'), 'load_edit_url': path('sylius_admin_ajax_taxon_by_code')}) }} #}
+{# {% endblock %} #}
+
+{# {% block collection_widget -%} #}
+{#    {% from '@SyliusResource/Macros/notification.html.twig' import error %} #}
+{#    {% import _self as self %} #}
+{#    {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %} #}
+
+{#    {% apply spaceless %} #}
+{#        <div data-form-type="collection" {{ block('widget_container_attributes') }} #}
+{#                {% if prototype is defined and allow_add %} #}
+{#                    data-prototype='{{ self.collection_item(prototype, allow_delete, button_delete_label, prototype.vars.name)|e }}' #}
+{#                    data-prototype-name='{{ prototype.vars.name }}' #}
+{#                {%- endif -%} #}
+{#        > #}
+{#            {{ error(form.vars.errors) }} #}
+
+{#            {% if prototypes|default is iterable %} #}
+{#                {% for key, subPrototype in prototypes %} #}
+{#                    <input type="hidden" data-form-prototype="{{ key }}" #}
+{#                           value="{{ self.collection_item(subPrototype, allow_delete, button_delete_label, subPrototype.vars.name)|e }}" #}
+{#                           data-subprototype-name="{{ subPrototype.vars.name }}" #}
+{#                    /> #}
+{#                {% endfor %} #}
+{#            {% endif %} #}
+
+{#            <div data-form-collection="list"> #}
+{#                {% for child in form %} #}
+{#                    {{ self.collection_item(child, allow_delete, button_delete_label, loop.index0) }} #}
+{#                {% endfor %} #}
+{#            </div> #}
+
+{#            {% if prototype is defined and allow_add %} #}
+{#                <a href="#" class="ui labeled icon button" data-form-collection="add"> #}
+{#                    <i class="plus square outline icon"></i> #}
+{#                    {{ button_add_label|trans }} #}
+{#                </a> #}
+{#            {% endif %} #}
+{#        </div> #}
+{#    {% endapply %} #}
+{# {%- endblock collection_widget %} #}
+
+{# {% macro collection_item(form, allow_delete, button_delete_label, index) %} #}
+{#    {% apply spaceless %} #}
+{#        <div class="bb-collection-item" data-form-collection="item" data-form-collection-index="{{ index }}"> #}
+{#            <div class="ui segment "> #}
+{#                {{ form_widget(form) }} #}
+{#                {% if allow_delete %} #}
+{#                    <a href="#" data-form-collection="delete" class="ui red labeled icon button bb-collection-item-delete"> #}
+{#                        <i class="trash icon"></i> #}
+{#                        {{ button_delete_label|trans }} #}
+{#                    </a> #}
+{#                {% endif %} #}
+{#            </div> #}
+{#        </div> #}
+{#    {% endapply %} #}
+{# {% endmacro %} #}
+
+{# {% block sylius_resource_autocomplete_choice_row %} #}
+{#    <div class="{% if required %}required {% endif %}{% if disabled %}disabled {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}"> #}
+{#        {{- form_label(form) -}} #}
+{#        {{- form_help(form) -}} #}
+{#        <div #}
+{#                class="sylius-autocomplete ui fluid search selection dropdown {% if multiple %}multiple{% endif %}" #}
+{#                data-url="{{ remote_url }}" #}
+{#                data-choice-name="{{ choice_name }}" #}
+{#                data-choice-value="{{ choice_value }}" #}
+{#                data-criteria-type="{{ remote_criteria_type }}" #}
+{#                data-criteria-name="{{ remote_criteria_name }}" #}
+{#                data-load-edit-url="{{ load_edit_url }}" #}
+{#        > #}
+{#            {{- form_widget(form, {'attr': {'class' : 'autocomplete'}}) -}} #}
+{#            <i class="dropdown icon"></i> #}
+{#            <div class="default text">{% if placeholder is defined %} {{ placeholder|trans }} {% endif %}</div> #}
+{#            <div class="menu"></div> #}
+{#        </div> #}
+{#        {{- form_errors(form) -}} #}
+{#    </div> #}
+{# {% endblock %} #}

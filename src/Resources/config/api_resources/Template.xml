@@ -1,47 +1,69 @@
-<?xml version="1.0" ?>
-<resources xmlns="https://api-platform.com/schema/metadata"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+        xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
 >
     <resource class="%sylius_cms.model.template.class%" shortName="Template">
-        <attribute name="normalization_context">
-            <attribute name="groups">
-                <attribute>sylius_cms:template:read:index</attribute>
-                <attribute>sylius_cms:template:read:show</attribute>
-            </attribute>
-        </attribute>
+        <operations>
+            <!-- Collection Operation: Get Template Collection -->
+            <operation name="get_template_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/shop/cms-plugin/templates">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius_cms:template:read:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
 
-        <attribute name="denormalization_context">
-            <attribute name="groups">
-                <attribute>sylius_cms:template:write</attribute>
-            </attribute>
-        </attribute>
+            <!-- Item Operation: Get Template Item -->
+            <operation name="get_template_item" class="ApiPlatform\Metadata\Get" uriTemplate="/shop/cms-plugin/templates/{id}">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius_cms:template:read:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+        </operations>
 
-        <attribute name="validation_groups">sylius</attribute>
+        <!-- Contexts and Validation -->
+        <normalizationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius_cms:template:read:index</value>
+                        <value>sylius_cms:template:read:show</value>
+                    </values>
+                </value>
+            </values>
+        </normalizationContext>
 
-        <collectionOperations>
-            <collectionOperation name="get_template_collection">
-                <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/cms-plugin/templates</attribute>
-                <attribute name="normalization_context">
-                    <attribute name="groups">sylius_cms:template:read:index</attribute>
-                </attribute>
-            </collectionOperation>
-        </collectionOperations>
+        <denormalizationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius_cms:template:write</value>
+                    </values>
+                </value>
+            </values>
+        </denormalizationContext>
 
-        <itemOperations>
-            <itemOperation name="get_template_item">
-                <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/cms-plugin/templates/{id}</attribute>
-                <attribute name="normalization_context">
-                    <attribute name="groups">sylius_cms:template:read:show</attribute>
-                </attribute>
-            </itemOperation>
-        </itemOperations>
-
-        <property name="id" identifier="true" writable="false"/>
-        <property name="name" identifier="false" writable="false"/>
-        <property name="type" identifier="false" writable="false"/>
-        <property name="contentElements" identifier="false" writable="false"/>
+        <validationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius</value>
+                    </values>
+                </value>
+            </values>
+        </validationContext>
     </resource>
 </resources>

@@ -6,6 +6,7 @@ namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\MediaAutocompleteType;
 use Sylius\CmsPlugin\Form\Type\MediaAutocompleteChoiceType;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;
@@ -25,7 +26,7 @@ final class SingleMediaContentElementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, MediaAutocompleteChoiceType::class, [
+            ->add(self::TYPE, MediaAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.content_elements.type.' . self::TYPE,
             ])
         ;

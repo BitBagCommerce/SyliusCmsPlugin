@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
+use Sylius\Bundle\AdminBundle\Form\Type\TaxonAutocompleteType;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker;
@@ -25,10 +26,8 @@ final class ProductsGridByTaxonContentElementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(self::TYPE, TaxonAutocompleteChoiceType::class, [
+            ->add(self::TYPE, TaxonAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.taxon',
-                'choice_value' => 'code',
-                'resource' => 'sylius.taxon',
             ])
         ;
 

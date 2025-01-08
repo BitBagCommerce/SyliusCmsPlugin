@@ -1,53 +1,69 @@
-<?xml version="1.0" ?>
-<resources xmlns="https://api-platform.com/schema/metadata"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+        xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
 >
     <resource class="%sylius_cms.model.page.class%" shortName="Page">
-        <attribute name="normalization_context">
-            <attribute name="groups">
-                <attribute>sylius_cms:page:read:index</attribute>
-                <attribute>sylius_cms:page:read:show</attribute>
-            </attribute>
-        </attribute>
+        <operations>
+            <!-- Collection Operation: Get Page Collection -->
+            <operation name="get_page_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/shop/cms-plugin/pages">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius_cms:page:read:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
 
-        <attribute name="denormalization_context">
-            <attribute name="groups">
-                <attribute>sylius_cms:page:write</attribute>
-            </attribute>
-        </attribute>
+            <!-- Item Operation: Get Page Item -->
+            <operation name="get_page_item" class="ApiPlatform\Metadata\Get" uriTemplate="/shop/cms-plugin/pages/{id}">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius_cms:page:read:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+        </operations>
 
-        <attribute name="validation_groups">sylius</attribute>
+        <!-- Contexts and Validation -->
+        <normalizationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius_cms:page:read:index</value>
+                        <value>sylius_cms:page:read:show</value>
+                    </values>
+                </value>
+            </values>
+        </normalizationContext>
 
-        <collectionOperations>
-            <collectionOperation name="get_page_collection">
-                <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/cms-plugin/pages</attribute>
-                <attribute name="normalization_context">
-                    <attribute name="groups">sylius_cms:page:read:index</attribute>
-                </attribute>
-            </collectionOperation>
-        </collectionOperations>
+        <denormalizationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius_cms:page:write</value>
+                    </values>
+                </value>
+            </values>
+        </denormalizationContext>
 
-        <itemOperations>
-            <itemOperation name="get_page_item">
-                <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/cms-plugin/pages/{id}</attribute>
-                <attribute name="normalization_context">
-                    <attribute name="groups">sylius_cms:page:read:show</attribute>
-                </attribute>
-            </itemOperation>
-        </itemOperations>
-
-        <property name="id" identifier="true" writable="false"/>
-        <property name="code" identifier="false" writable="false"/>
-        <property name="name" identifier="false" writable="false"/>
-        <property name="enabled" identifier="false" writable="false"/>
-        <property name="createdAt" identifier="false" writable="false"/>
-        <property name="updatedAt" identifier="false" writable="false"/>
-        <property name="publishAt" identifier="false" writable="false"/>
-        <property name="collections" identifier="false" writable="false"/>
-        <property name="channels" identifier="false" writable="false"/>
-        <property name="contentElements" identifier="false" writable="false"/>
+        <validationContext>
+            <values>
+                <value name="groups">
+                    <values>
+                        <value>sylius</value>
+                    </values>
+                </value>
+            </values>
+        </validationContext>
     </resource>
 </resources>

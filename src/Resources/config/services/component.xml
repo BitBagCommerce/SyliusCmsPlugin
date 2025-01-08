@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<container
+        xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+        <service
+                id="sylius_cms.twig.component.page.form"
+                class="Sylius\Bundle\UiBundle\Twig\Component\ResourceFormComponent"
+        >
+            <argument type="service" id="sylius_cms.repository.page" />
+            <argument type="service" id="form.factory" />
+            <argument>%sylius_cms.model.page.class%</argument>
+            <argument>Sylius\CmsPlugin\Form\Type\PageType</argument>
+
+            <tag
+                    name="sylius.live_component"
+                    key="sylius_admin:cms_page:form"
+                    template="@SyliusCmsPlugin/page/form.html.twig"
+            />
+        </service>
+    </services>
+</container>

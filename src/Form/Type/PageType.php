@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Sylius\CmsPlugin\Form\Type;
 
+use Sylius\Bundle\AdminBundle\Form\Type\AddButtonType;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\CollectionPageAutocompleteType;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\TemplatePageAutocompleteType;
 use Sylius\CmsPlugin\Form\Type\Translation\PageTranslationType;
 use Sylius\CmsPlugin\Provider\ResourceTemplateProviderInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
@@ -19,16 +22,20 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 final class PageType extends AbstractResourceType
 {
     private array $locales = [];
+
+    private array $actionTypes = [];
 
     public function __construct(
         private RepositoryInterface $localeRepository,
         private ResourceTemplateProviderInterface $templateProvider,
         string $dataClass,
         array $validationGroups = [],
+        iterable $actionConfigurationTypes,
     ) {
         parent::__construct($dataClass, $validationGroups);
 
@@ -36,6 +43,10 @@ final class PageType extends AbstractResourceType
         $locales = $this->localeRepository->findAll();
         foreach ($locales as $locale) {
             $this->locales[$locale->getName()] = $locale->getCode();
+        }
+
+        foreach ($actionConfigurationTypes as $type => $formType) {
+            $this->actionTypes[$type] = 'sylius_cms.ui.content_elements.type.' . $type;
         }
     }
 
@@ -61,7 +72,7 @@ final class PageType extends AbstractResourceType
                 'label' => 'sylius_cms.ui.images',
                 'entry_type' => PageTranslationType::class,
             ])
-            ->add('collections', CollectionAutocompleteChoiceType::class, [
+            ->add('collections', CollectionPageAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
@@ -78,22 +89,26 @@ final class PageType extends AbstractResourceType
                 'time_widget' => 'single_text',
                 'required' => false,
             ])
-            ->add('contentElements', CollectionType::class, [
+            ->add('contentElements', LiveCollectionType::class, [
                 'label' => false,
                 'entry_type' => ContentConfigurationType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
-                'required' => false,
-                'entry_options' => [
+                'button_add_type' => AddButtonType::class,
+                'button_add_options' => [
+                    'label' => 'sylius.ui.add',
+                    'types' =>  $this->actionTypes,
+                ],
+                'button_delete_options' => [
                     'label' => false,
                 ],
                 'attr' => [
                     'class' => 'content-elements-container',
                 ],
             ])
-            ->add('contentTemplate', TemplatePageAutocompleteChoiceType::class, [
-                'label' => false,
+            ->add('contentTemplate', TemplatePageAutocompleteType::class, [
+                'label' => 'sylius_cms.ui.content_elements.template',
                 'mapped' => false,
             ])
             ->add('locale', ChoiceType::class, [

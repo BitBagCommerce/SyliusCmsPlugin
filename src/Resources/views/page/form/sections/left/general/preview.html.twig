@@ -1,0 +1,6 @@
+{% set form = hookable_metadata.context.form %}
+
+<a href="#" data-bb-cms-preview-btn class="btn btn-primary cms-resource-preview"
+   data-url="{{ path('sylius_cms_admin_page_preview', {'id': form.vars.data.id}) }}">
+    {{ 'sylius_cms.ui.preview'|trans }}
+</a>

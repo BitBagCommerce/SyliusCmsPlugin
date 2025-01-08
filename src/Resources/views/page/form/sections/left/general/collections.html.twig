@@ -1,0 +1,5 @@
+{% set collections = hookable_metadata.context.form.collections %}
+
+<div class="mb-3 field" {{ sylius_test_html_attribute('collections') }}>
+    {{ form_row(collections) }}
+</div>

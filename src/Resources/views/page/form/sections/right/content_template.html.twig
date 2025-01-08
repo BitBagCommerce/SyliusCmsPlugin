@@ -1,0 +1,9 @@
+{% set form = hookable_metadata.context.form %}
+{% set ajax_url = path('sylius_cms_admin_ajax_template_content_by_id', {'id': 'REPLACE_ID'}) %}
+
+<div class="card mb-3">
+    <div class="card-body">
+        {{ form_row(form.contentTemplate, sylius_test_form_attribute('content-template')) }}
+        <input type="hidden" data-bb-cms-load-content-template="{{ ajax_url }}">
+    </div>
+</div>

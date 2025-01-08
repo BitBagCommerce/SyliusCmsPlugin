@@ -1,0 +1,14 @@
+{% import '@SyliusAdmin/shared/helper/translations.html.twig' as translations %}
+
+{% set form = hookable_metadata.context.form %}
+{% set prefixes = hookable_metadata.prefixes %}
+
+{{ translations.with_hook(
+    translation_form_reduce(form.translations, ['title', 'slug', 'metaKeywords', 'metaDescription']),
+    prefixes,
+    null,
+    {
+        accordion_id: 'page-seo-translations',
+        accordion_flush: true
+    }
+) }}

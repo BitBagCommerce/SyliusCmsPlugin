@@ -1,0 +1,77 @@
+twig_hooks:
+    hooks:
+        'sylius_admin.page.update.content':
+            form:
+                component: 'sylius_admin:cms_page:form'
+                props:
+                    resource: '@=_context.resource'
+                    form: '@=_context.form'
+                configuration:
+                    render_rest: false
+                    method: 'PUT'
+        'sylius_admin.page.update.content.form':
+            modal:
+                template: '@SyliusCmsPlugin/modal/load_template_confirmation.html.twig'
+            sections:
+                template: '@SyliusCmsPlugin/page/form/sections.html.twig'
+        'sylius_admin.page.update.content.form.sections':
+            left:
+                template: '@SyliusCmsPlugin/page/form/sections/left.html.twig'
+            right:
+                template: '@SyliusCmsPlugin/page/form/sections/right.html.twig'
+        'sylius_admin.page.update.content.form.sections.left':
+            general:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general.html.twig'
+            teaser:
+                template: '@SyliusCmsPlugin/page/form/sections/left/teaser.html.twig'
+            seo:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo.html.twig'
+        'sylius_admin.page.update.content.form.sections.right':
+            locale_and_template:
+                template: '@SyliusCmsPlugin/page/form/sections/right/locale_and_template.html.twig'
+            content_template:
+                template: '@SyliusCmsPlugin/page/form/sections/right/content_template.html.twig'
+            content_elements:
+                template: '@SyliusCmsPlugin/page/form/sections/right/content_elements.html.twig'
+        'sylius_admin.page.update.content.form.sections.left.general':
+            name:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/name.html.twig'
+            code:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/code.html.twig'
+            enabled:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/enabled.html.twig'
+            channels:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/channels.html.twig'
+            collections:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/collections.html.twig'
+            publish_at:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/publish_at.html.twig'
+            preview:
+                template: '@SyliusCmsPlugin/page/form/sections/left/general/preview.html.twig'
+        'sylius_admin.page.update.content.form.sections.left.teaser':
+            teaser:
+                template: '@SyliusCmsPlugin/page/form/sections/left/teaser/teaser.html.twig'
+        'sylius_admin.page.update.content.form.sections.left.seo':
+            seo:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo/seo.html.twig'
+        'sylius_admin.page.update.content.form.sections.left.teaser.translations':
+            title:
+                template: '@SyliusCmsPlugin/page/form/sections/left/teaser/translations/title.html.twig'
+            content:
+                template: '@SyliusCmsPlugin/page/form/sections/left/teaser/translations/content.html.twig'
+            image:
+                template: '@SyliusCmsPlugin/page/form/sections/left/teaser/translations/image.html.twig'
+        'sylius_admin.page.update.content.form.sections.left.seo.translations':
+            meta_title:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo/translations/meta_title.html.twig'
+            slug:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo/translations/slug.html.twig'
+            meta_keywords:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo/translations/meta_keywords.html.twig'
+            meta_description:
+                template: '@SyliusCmsPlugin/page/form/sections/left/seo/translations/meta_description.html.twig'
+        'sylius_admin.page.update.content.form.sections.right.locale_and_template':
+            locale:
+                template: '@SyliusCmsPlugin/locale/form.html.twig'
+            template:
+                template: '@SyliusCmsPlugin/template/form.html.twig'

@@ -33,6 +33,7 @@
             <argument type="service" id="sylius_cms.provider.resource_template" />
             <argument>%sylius_cms.model.page.class%</argument>
             <argument>%sylius_cms.form.type.page.validation_groups%</argument>
+            <argument type="tagged_iterator" tag="sylius_cms.content_elements.type" index-by="key" />
             <tag name="form.type" />
         </service>
 
@@ -120,6 +121,26 @@
         </service>
 
         <service id="sylius_cms.form.data_transformer.content_element_checker" class="Sylius\CmsPlugin\Form\DataTransformer\ContentElementDataTransformerChecker"/>
+
+        <service id="sylius_cms.form.type.autocomplete.collection.page" class="Sylius\CmsPlugin\Form\Type\Autocomplete\CollectionPageAutocompleteType">
+            <tag name="form.type" />
+            <tag name="ux.entity_autocomplete_field" />
+        </service>
+
+        <service id="sylius_cms.form.type.autocomplete.media" class="Sylius\CmsPlugin\Form\Type\Autocomplete\MediaAutocompleteType">
+            <tag name="form.type" />
+            <tag name="ux.entity_autocomplete_field" />
+        </service>
+
+        <service id="sylius_cms.form.type.autocomplete.media.image" class="Sylius\CmsPlugin\Form\Type\Autocomplete\MediaImageAutocompleteType">
+            <tag name="form.type" />
+            <tag name="ux.entity_autocomplete_field" />
+        </service>
+
+        <service id="sylius_cms.form.type.autocomplete.template.page" class="Sylius\CmsPlugin\Form\Type\Autocomplete\TemplatePageAutocompleteType">
+            <tag name="form.type" />
+            <tag name="ux.entity_autocomplete_field" />
+        </service>
     </services>
 
 </container>

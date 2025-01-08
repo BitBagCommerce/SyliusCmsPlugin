@@ -1,0 +1,22 @@
+{% set form = hookable_metadata.context.form %}
+{% set locale = hookable_metadata.context.locale %}
+{% set slugField = form.slug %}
+
+<div class="col-12">
+    <div class="mb-3 field">
+        <div class="{% if slugField.vars.errors|length > 0 %}error{% endif %}" data-bb-target="cms-slug-update">
+            {{ form_label(slugField) }}
+            {% if slugField.vars.value == null %}
+                {{ form_widget(slugField, {'attr': {'data-url': path('sylius_cms_admin_ajax_generate_page_slug')}}) }}
+            {% else %}
+                <div class="ui action input">
+                    {{ form_widget(slugField, {'attr': {'readonly': 'readonly', 'data-url': path('sylius_cms_admin_ajax_generate_page_slug')}}) }}
+                    <span class="ui icon button" data-bb-cms-toggle-slug>
+                        <i class="lock icon"></i>
+                    </span>
+                </div>
+            {% endif %}
+            {{ form_errors(slugField) }}
+        </div>
+    </div>
+</div>

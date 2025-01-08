@@ -9,6 +9,8 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Sylius\CmsPlugin\Entity\BlockInterface;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\AbstractCollectionAutocompleteType;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\TemplateBlockAutocompleteType;
 use Sylius\CmsPlugin\Provider\ResourceTemplateProviderInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -55,7 +57,7 @@ final class BlockType extends AbstractResourceType
                 'choices' => $this->templateProvider->getBlockTemplates(),
                 'mapped' => false,
             ])
-            ->add('collections', CollectionAutocompleteChoiceType::class, [
+            ->add('collections', AbstractCollectionAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
@@ -97,7 +99,7 @@ final class BlockType extends AbstractResourceType
                 'multiple' => true,
                 'help' => 'sylius_cms.ui.display_for_taxons.help',
             ])
-            ->add('contentTemplate', TemplateBlockAutocompleteChoiceType::class, [
+            ->add('contentTemplate', TemplateBlockAutocompleteType::class, [
                 'label' => false,
                 'mapped' => false,
             ])

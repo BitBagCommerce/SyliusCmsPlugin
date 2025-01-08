@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\CmsPlugin\Form\Type\ContentElements;
 
-use Sylius\Bundle\CoreBundle\Form\Type\CatalogPromotionScope\ForProductsScopeConfigurationType;
+use Sylius\Bundle\AdminBundle\Form\Type\CatalogPromotionScope\ForProductsScopeConfigurationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 

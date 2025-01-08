@@ -1,0 +1,11 @@
+<div class="card mt-3">
+    <div class="card-header">
+        <div class="card-title">
+            {{ 'sylius_cms.ui.teaser.header'|trans }}
+            <span class="help-text">- {{ 'sylius_cms.ui.teaser.help'|trans }}</span>
+        </div>
+    </div>
+    <div>
+        {% hook 'teaser' %}
+    </div>
+</div>

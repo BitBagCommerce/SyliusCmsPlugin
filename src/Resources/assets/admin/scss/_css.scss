@@ -67,11 +67,6 @@
     height: 150px !important;
 }
 
-.btn {
-    display: inline-block !important;
-    font-size: 1.4em !important;
-}
-
 .btn:hover {
     cursor: pointer;
 }
@@ -120,4 +115,8 @@
     font-size: 12px;
     margin-top: -10px;
     opacity: 0.5;
+}
+
+.cms-modal {
+    background: rgba(0, 0, 0, 0.75);
 }

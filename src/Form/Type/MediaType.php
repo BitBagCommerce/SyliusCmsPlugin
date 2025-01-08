@@ -7,6 +7,7 @@ namespace Sylius\CmsPlugin\Form\Type;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Sylius\CmsPlugin\Form\Type\Autocomplete\AbstractCollectionAutocompleteType;
 use Sylius\CmsPlugin\Form\Type\Translation\MediaTranslationType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -47,7 +48,7 @@ final class MediaType extends AbstractResourceType
             ->add('file', FileType::class, [
                 'label' => 'sylius_cms.ui.file',
             ])
-            ->add('collections', CollectionAutocompleteChoiceType::class, [
+            ->add('collections', AbstractCollectionAutocompleteType::class, [
                 'label' => 'sylius_cms.ui.collections',
                 'multiple' => true,
             ])
