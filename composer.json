@@ -10,24 +10,27 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "sylius/grid-bundle": "^1.13@alpha",
-    "sylius/sylius": "~v2.0.0-alpha.2",
-    "sylius/twig-hooks": "^0.3.0",
-    "symfony/ux-autocomplete": "^2.20",
+    "dompdf/dompdf": "^2.0",
+    "sylius/calendar": "^0.5.0",
+    "sylius/grid-bundle": "^1.13.0",
+    "sylius/sylius": "~2.0",
+    "sylius/twig-extra": "^0.5",
+    "sylius/twig-hooks": "^0.5",
+    "symfony/stimulus-bundle": "^2.12",
+    "symfony/ux-autocomplete": "^2.17",
     "symfony/ux-live-component": "^2.20",
     "symfony/ux-twig-component": "^2.20",
     "symfony/webpack-encore-bundle": "^2.1",
-    "symfony/stimulus-bundle": "^2.20",
+    "symfony/workflow": "^7.2",
+    "willdurand/hateoas-bundle": "2.5.0",
     "league/csv": "^9.1",
     "friendsofsymfony/ckeditor-bundle": "^2.0",
-    "sylius/calendar": "^0.5.0",
-    "willdurand/hateoas-bundle": "^2.5",
     "api-platform/core": "^3.4",
     "sylius-labs/polyfill-symfony-security": "^1.1"
   },
   "require-dev": {
     "behat/behat": "^3.7",
-    "behat/mink-selenium2-driver": "~1.6.0",
+    "behat/mink-selenium2-driver": "1.6",
     "dbrekelmans/bdi": "^1.1",
     "bitbag/coding-standard": "^3.0",
     "dmore/behat-chrome-extension": "^1.3",
@@ -83,7 +86,8 @@
       "dealerdirect/phpcodesniffer-composer-installer": false,
       "phpstan/extension-installer": false,
       "symfony/flex": false,
-      "symfony/runtime": true
+      "symfony/runtime": true,
+      "php-http/discovery": true
     }
   },
   "extra": {
