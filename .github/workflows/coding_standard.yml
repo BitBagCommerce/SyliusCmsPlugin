@@ -18,15 +18,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ "8.0", "8.1", "8.2", "8.3" ]
-        symfony: [ "^5.4", "^6.4" ]
-        sylius: [ "^1.12", "^1.13" ]
-        node: [ "18.x", "20.x" ]
+        php: ["8.0", "8.1", "8.2", "8.3"]
+        symfony: ["^5.4", "^6.4"]
+        sylius: ["~1.12.0", "~1.13.0", "~1.14.0"]
+        node: ["20.x"]
 
         exclude:
-          - sylius: ^1.13
+          - sylius: "~1.13.0"
             php: 8.0
-          - sylius: ^1.12
+          - sylius: "~1.14.0"
+            php: 8.0
+          - sylius: "~1.14.0"
+            symfony: ^5.4
+          - sylius: "~1.12.0"
             php: 8.0
             symfony: ^6.4
 

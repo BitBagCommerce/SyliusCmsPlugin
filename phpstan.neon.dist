@@ -15,3 +15,4 @@ parameters:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
         - '#.*NodeParentInterface.*#'
+        - '#should return Sylius\\Component\\Resource\\Model\\TranslationInterface but returns Sylius\\Resource\\Model\\TranslationInterface\.#'
