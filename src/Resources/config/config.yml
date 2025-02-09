@@ -20,6 +20,10 @@ parameters:
     bitbag_sylius_cms_plugin.form.type.media.validation_groups: "%bitbag_validation_group%"
     bitbag_sylius_cms_plugin.uploader.filesystem: bitbag_sylius_cms_plugin_media
 
+twig:
+    form_themes:
+        - "@BitBagSyliusCmsPlugin/Widget/_trixWidget.html.twig"
+
 jms_serializer:
     metadata:
         directories:

@@ -21,6 +21,9 @@ final class BitBagSyliusCmsExtension extends Extension implements PrependExtensi
 
     public function load(array $configs, ContainerBuilder $container): void
     {
+        $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
+
+        $container->setParameter('bitbag_sylius_cms_plugin.wysiwyg_editor', $config['wysiwyg_editor']);
     }
 
     public function prepend(ContainerBuilder $container): void
