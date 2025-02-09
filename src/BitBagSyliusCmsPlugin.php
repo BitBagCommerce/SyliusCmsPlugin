@@ -15,7 +15,6 @@ use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\ImporterCompilerPass;
 use BitBag\SyliusCmsPlugin\DependencyInjection\Compiler\MediaProviderPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class BitBagSyliusCmsPlugin extends Bundle
