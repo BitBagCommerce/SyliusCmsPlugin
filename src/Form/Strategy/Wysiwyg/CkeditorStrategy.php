@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace BitBag\SyliusCmsPlugin\Form\Type\Wysiwyg\Strategy;
+namespace BitBag\SyliusCmsPlugin\Form\Strategy\Wysiwyg;
 
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class CkeditorStrategy extends AbstractWysiwygStrategy
+final class CkeditorStrategy extends AbstractWysiwygStrategy
 {
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {

@@ -1,5 +1,4 @@
 import {HandleCsvUpload, HandleSlugUpdate, HandlePreview, HandleAutoComplete} from './bitbag';
-import trix from './bitbag/bitbag-trix-editor';
 
 if (document.querySelector('[data-bb-target="cms-import"]')) {
     new HandleCsvUpload().init();

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-return [
+$bundles = [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
@@ -63,3 +63,9 @@ return [
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class => ['all' => true],
 ];
+
+if (class_exists(FOS\CKEditorBundle\FOSCKEditorBundle::class)) {
+    $bundles[FOS\CKEditorBundle\FOSCKEditorBundle::class] = ['all' => true];
+}
+
+return $bundles;

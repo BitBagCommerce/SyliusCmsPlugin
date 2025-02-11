@@ -22,7 +22,10 @@ const getConfig = (pluginName, type) => {
 Encore.setOutputPath(`src/Resources/public/build/`)
     .setPublicPath(`/public/build/`)
     .addEntry(`bitbag-${pluginName}-shop`, path.resolve(__dirname, `./src/Resources/assets/shop/entry.js`))
+    // Ckeditor
     .addEntry(`bitbag-${pluginName}-admin`, path.resolve(__dirname, `./src/Resources/assets/admin/entry.js`))
+    // Trix
+    // .addEntry(`bitbag-${pluginName}-admin`, path.resolve(__dirname, `./src/Resources/assets/admin/trix-entry.js`))
     .cleanupOutputBeforeBuild()
     .disableSingleRuntimeChunk()
     .enableSassLoader();

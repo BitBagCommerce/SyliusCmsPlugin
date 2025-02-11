@@ -43,25 +43,5 @@
         </service>
 
         <service id="bitbag_sylius_cms_plugin.sorter.sections" class="BitBag\SyliusCmsPlugin\Sorter\SectionsSorter" />
-
-        <service id="bitbag_sylius_cms_plugin.wysiwyg_strategy.ckeditor"
-                 class="BitBag\SyliusCmsPlugin\Form\Type\Wysiwyg\Strategy\CkeditorStrategy"
-        >
-            <argument type="service" id="router.default" />
-        </service>
-
-        <service id="bitbag_sylius_cms_plugin.wysiwyg_strategy.trix"
-                 class="BitBag\SyliusCmsPlugin\Form\Type\Wysiwyg\Strategy\TrixStrategy"
-        />
-
-        <service id="bitbag_sylius_cms_plugin.resolver.wysiwyg_strategy_resolver"
-                 class="BitBag\SyliusCmsPlugin\Resolver\WysiwygStrategyResolver"
-        >
-            <argument type="collection">
-                <argument key="ckeditor" type="service" id="bitbag_sylius_cms_plugin.wysiwyg_strategy.ckeditor"/>
-                <argument key="trix" type="service" id="bitbag_sylius_cms_plugin.wysiwyg_strategy.trix" />
-            </argument>
-            <argument>%bitbag_sylius_cms_plugin.wysiwyg_editor%</argument>
-        </service>
     </services>
 </container>

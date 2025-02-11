@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusCmsPlugin\Form\Type;
 
-use BitBag\SyliusCmsPlugin\Form\Type\Wysiwyg\WysiwygStrategyInterface;
+use BitBag\SyliusCmsPlugin\Form\Strategy\Wysiwyg\WysiwygStrategyInterface;
 use BitBag\SyliusCmsPlugin\Resolver\WysiwygStrategyResolverInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
