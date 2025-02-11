@@ -1,5 +1,6 @@
 imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
 
 parameters:
     fixtures_dir: "%kernel.project_dir%/Resources/fixtures"

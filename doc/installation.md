@@ -1,13 +1,13 @@
 ## Installation
 
 
-1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
+##### 1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
 
 ```bash
 $ composer require bitbag/cms-plugin --no-scripts
 ```
 
-2. Add plugin dependencies to your `config/bundles.php` file:
+##### 2. Add plugin dependencies to your `config/bundles.php` file:
 
 ```php
 return [
@@ -16,7 +16,7 @@ return [
 ];
 ```
 
-3. Configure a WYSIWYG editor.
+##### 3. Configure a WYSIWYG editor.
 
 The plugin supports two WYSIWYG editors: [FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html) by default and [Trix](https://trix-editor.org/) as an alternative. 
 
@@ -25,7 +25,7 @@ You can choose which one you want to use by following one of the guides below:
 - [Trix WYSIWYG config](./trix-config.md)*
 - [CKeditor WYSIWYG config](./ckeditor-config.md)*
 
-4. Import required config in your `config/packages/_sylius.yaml` file:
+##### 4. Import required config in your `config/packages/_sylius.yaml` file:
 ```yaml
 # config/packages/_sylius.yaml
 
@@ -35,7 +35,7 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
-5. Import routing in your `config/routes.yaml` file:
+##### 5. Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
@@ -73,7 +73,7 @@ you will probably need to change the extension of the imported file in
         - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
 ```
 
-6. Finish the installation by updating the database schema and installing assets:
+##### 6. Finish the installation by updating the database schema and installing assets:
 
 ```bash
 $ bin/console cache:clear
@@ -89,7 +89,7 @@ $ bin/console sylius:theme:assets:install --symlink
 
 **Note.** In some cases, the `--symlink` option [may throw some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without the `--symlink` option, please keep in mind to run them on every potential plugin update.
 
-7. Add plugin assets to your project
+##### 7. Add plugin assets to your project
 
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
@@ -105,7 +105,7 @@ However, if you are not using Webpack, here are instructions on how to add optim
 
 - [Non webpack solution](./01.5-non-webpack.md)
 
-8. Passing required "backend" values to "frontend"
+##### 8. Passing required "backend" values to "frontend"
 
 In order to make plugin finally work you need to declare "route", in admin _scripts.html.twig you can pass:
 
