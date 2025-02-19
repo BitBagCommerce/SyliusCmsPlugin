@@ -2,21 +2,44 @@ const path = require('path');
 const Encore = require('@symfony/webpack-encore');
 const pluginName = 'cms';
 
-const getConfig = (pluginName, type) => {
-    Encore.reset();
+const createConfigs = (pluginName, options = {}) => {
+    const defaultOptions = {
+        wysiwyg: 'ckeditor',
+    };
+    const mergedOptions = {...defaultOptions, ...options};
 
-    Encore.setOutputPath(`public/build/bitbag/${pluginName}/${type}/`)
-        .setPublicPath(`/build/bitbag/${pluginName}/${type}/`)
-        .addEntry(`bitbag-${pluginName}-${type}`, path.resolve(__dirname, `./src/Resources/assets/${type}/entry.js`))
-        .disableSingleRuntimeChunk()
-        .cleanupOutputBeforeBuild()
-        .enableSourceMaps(!Encore.isProduction())
-        .enableSassLoader();
+    const getConfig = (type) => {
+        Encore.reset();
 
-    const config = Encore.getWebpackConfig();
-    config.name = `bitbag-${pluginName}-${type}`;
+        let entryFile = 'entry.js';
+        if (type !== 'shop') {
+            entryFile = mergedOptions.wysiwyg === 'trix'
+                ? 'trix-entry.js'
+                : 'entry.js';
+        }
 
-    return config;
+        Encore
+            .setOutputPath(`public/build/bitbag/${pluginName}/${type}/`)
+            .setPublicPath(`/build/bitbag/${pluginName}/${type}/`)
+            .addEntry(
+                `bitbag-${pluginName}-${type}`,
+                path.resolve(__dirname, `./src/Resources/assets/${type}/${entryFile}`)
+            )
+            .disableSingleRuntimeChunk()
+            .cleanupOutputBeforeBuild()
+            .enableSourceMaps(!Encore.isProduction())
+            .enableSassLoader();
+
+        const config = Encore.getWebpackConfig();
+        config.name = `bitbag-${pluginName}-${type}`;
+
+        return config;
+    };
+
+    return [
+        getConfig('shop'),
+        getConfig('admin')
+    ];
 };
 
 Encore.setOutputPath(`src/Resources/public/build/`)
@@ -35,7 +58,4 @@ distConfig.name = `bitbag-plugin-dist`;
 
 Encore.reset();
 
-const shopConfig = getConfig(pluginName, 'shop');
-const adminConfig = getConfig(pluginName, 'admin');
-
-module.exports = [shopConfig, adminConfig, distConfig];
+module.exports = (options) => createConfigs('cms', options);

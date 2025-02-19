@@ -7,8 +7,8 @@ parameters:
 
 # Switch WYSIWYG editor to Trix if you want to use it.
 # (Default is CKEditor)
-#bit_bag_sylius_cms:
-#    wysiwyg_editor: trix
+bit_bag_sylius_cms:
+    wysiwyg_editor: trix
 
 sylius_fixtures:
     suites:

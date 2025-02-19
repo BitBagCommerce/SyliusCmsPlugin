@@ -1,4 +1,4 @@
-@managing_blocks
+@wysiwyg @managing_pages
 Feature: Managing dynamic content on block page
     As an Administrator
     I want to be able to use the Trix WYSIWYG editor
@@ -8,13 +8,13 @@ Feature: Managing dynamic content on block page
         And the store operates on a single channel in "United States"
 
     @ui @javascript
-    Scenario: Adding block
-        When I go to the create block page
+    Scenario: Adding page
+        When I go to the create page page
         Then I should see the Trix WYSIWYG editor initialized
 
     @ui @javascript
-    Scenario: Updating block
-        Given there is a block with "content" code and "<p>Content !</p>" content
-        When I go to the update "content" block page
+    Scenario: Updating page
+        Given there is an existing page with "test_page" code
+        When I go to the update "test_page" page page
         Then I should see the Trix WYSIWYG editor initialized
 
