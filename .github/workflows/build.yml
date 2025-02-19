@@ -119,7 +119,7 @@ jobs:
       - name: Configure Trix if enabled
         if: matrix.trix == true
         run: |
-          echo "bit_bag_sylius_cms:\n    wysiwyg_editor: trix" >> tests/Application/config/packages/bitbag_sylius_cms_plugin.yaml
+          printf "bit_bag_sylius_cms:\n    wysiwyg_editor: trix\n" >> tests/Application/config/packages/bitbag_sylius_cms_plugin.yaml
 
       - name: Prepare test application database
         run: |
