@@ -9,8 +9,5 @@
   },
   "devDependencies": {
     "@sylius-ui/frontend": "^1.0"
-  },
-  "dependencies": {
-    "trix": "^2.1.12"
   }
 }
