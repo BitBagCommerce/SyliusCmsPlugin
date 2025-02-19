@@ -45,7 +45,7 @@ adminConfig.externals = Object.assign({}, adminConfig.externals, { window: 'wind
 adminConfig.name = 'admin';
 
 const [bitbagCmsShop, bitbagCmsAdmin] = createCmsConfigs({
-    wysiwyg: 'trix' // 'ckeditor' | 'trix'
+    wysiwyg: 'ckeditor' // 'ckeditor' | 'trix'
 });
 
 module.exports = [shopConfig, adminConfig, bitbagCmsShop, bitbagCmsAdmin];
