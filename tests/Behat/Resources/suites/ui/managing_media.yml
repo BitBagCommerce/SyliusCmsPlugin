@@ -10,6 +10,7 @@ default:
                 - bitbag_sylius_cms_plugin.behat.context.setup.media
                 - bitbag_sylius_cms_plugin.behat.context.setup.section
 
+                - bitbag_sylius_cms_plugin.behat.context.ui.admin.trix_wysiwyg
                 - bitbag_sylius_cms_plugin.behat.context.ui.admin.media
             filters:
                 tags: "@managing_media&&@ui"

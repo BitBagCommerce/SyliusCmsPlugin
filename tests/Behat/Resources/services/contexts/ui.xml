@@ -73,5 +73,10 @@
             <argument type="service" id="bitbag_sylius_cms_plugin.repository.media"/>
             <argument type="service" id="bitbag_sylius_cms_plugin.behat.page.shop.home"/>
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.behat.context.ui.admin.trix_wysiwyg"
+                 class="Tests\BitBag\SyliusCmsPlugin\Behat\Context\Ui\Admin\TrixWysiwygContext"
+        >
+        </service>
     </services>
 </container>

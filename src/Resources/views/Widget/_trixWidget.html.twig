@@ -1,0 +1,11 @@
+{% block bitbag_sylius_cms_plugin_trix_strategy_widget %}
+    <input
+        type="hidden"
+        id="{{ id }}"
+        name="{{ full_name }}"
+        value="{{ value }}"
+        {{ block('widget_attributes') }}
+    />
+
+   <trix-editor input="{{ id }}"></trix-editor>
+{% endblock %}

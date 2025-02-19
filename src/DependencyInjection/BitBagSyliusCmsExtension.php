@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace BitBag\SyliusCmsPlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -21,6 +22,11 @@ final class BitBagSyliusCmsExtension extends Extension implements PrependExtensi
 
     public function load(array $configs, ContainerBuilder $container): void
     {
+        /** @var ConfigurationInterface $configuration */
+        $configuration = $this->getConfiguration([], $container);
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('bitbag_sylius_cms_plugin.wysiwyg_editor', $config['wysiwyg_editor']);
     }
 
     public function prepend(ContainerBuilder $container): void

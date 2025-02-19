@@ -76,9 +76,22 @@
         </service>
 
         <service id="bitbag_sylius_cms_plugin.form.type.wysiwyg" class="BitBag\SyliusCmsPlugin\Form\Type\WysiwygType">
-            <argument type="service" id="router.default" />
+            <argument type="service" id="bitbag_sylius_cms_plugin.resolver.wysiwyg_strategy_resolver" />
+            <call method="setStrategy">
+                <argument type="string">%bitbag_sylius_cms_plugin.wysiwyg_editor%</argument>
+            </call>
             <tag name="form.type" />
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.wysiwyg_strategy.ckeditor"
+                 class="BitBag\SyliusCmsPlugin\Form\Strategy\Wysiwyg\CkeditorStrategy"
+        >
+            <argument type="service" id="router.default" />
+        </service>
+
+        <service id="bitbag_sylius_cms_plugin.form.wysiwyg_strategy.trix"
+                 class="BitBag\SyliusCmsPlugin\Form\Strategy\Wysiwyg\TrixStrategy"
+        />
     </services>
 
 </container>
