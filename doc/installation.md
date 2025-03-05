@@ -1,51 +1,31 @@
 ## Installation
 
 
-1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
+##### 1. *We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.*
 
 ```bash
 $ composer require bitbag/cms-plugin --no-scripts
 ```
 
-2. Add plugin dependencies to your `config/bundles.php` file:
+##### 2. Add plugin dependencies to your `config/bundles.php` file:
 
 ```php
 return [
     ...
-
-    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true], // WYSIWYG editor
     BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class  => ['all' => true],
 ];
 ```
-The first line above (FOSCKEditorBundle) might have been already added during composer require command.
 
-Install WYSIWYG editor ([FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html))
+##### 3. Configure a WYSIWYG editor.
 
-```bash
-$ bin/console ckeditor:install
-```
+The plugin supports two WYSIWYG editors: [FOS CKEditor](https://symfony.com/doc/master/bundles/FOSCKEditorBundle/usage/ckeditor.html) by default and [Trix](https://trix-editor.org/) as an alternative. 
 
-**Note.** If you have an issue with the ckeditor not running, please try to install it using the `4.22.1` tag:
+You can choose which one you want to use by following one of the guides below:
 
-```bash
-$ bin/console ckeditor:install --tag=4.22.1
-```
+- [Trix WYSIWYG config](./trix-config.md)*
+- [CKeditor WYSIWYG config](./ckeditor-config.md)*
 
-For more information regardin `4.22.1` tag please visit the #485 issue.
-
-Since FOSCKEditorBundle 2.0, to make Twig render the WYSIWYG editor, you must add some configuration under the `twig.form_themes` config key:
-
-```yaml
-# Symfony 2/3: app/config/config.yml
-# Symfony 4: config/packages/twig.yaml
-
-twig:
-    form_themes:
-        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-        - '@BitBagSyliusCmsPlugin/Form/ckeditor_widget.html.twig'
-```
-
-3. Import required config in your `config/packages/_sylius.yaml` file:
+##### 4. Import required config in your `config/packages/_sylius.yaml` file:
 ```yaml
 # config/packages/_sylius.yaml
 
@@ -55,7 +35,7 @@ imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 ```
 
-4. Import routing in your `config/routes.yaml` file:
+##### 5. Import routing in your `config/routes.yaml` file:
 
 ```yaml
 
@@ -93,7 +73,7 @@ you will probably need to change the extension of the imported file in
         - { resource: "@SitemapPlugin/Resources/config/config.yaml" }
 ```
 
-5. Finish the installation by updating the database schema and installing assets:
+##### 6. Finish the installation by updating the database schema and installing assets:
 
 ```bash
 $ bin/console cache:clear
@@ -107,9 +87,9 @@ $ bin/console assets:install --symlink
 $ bin/console sylius:theme:assets:install --symlink
 ```
 
-Note. In some cases the `--symlink` option [may trow some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without `--symlink` option, please keep in mind to run them on every potential plugin update.
+**Note.** In some cases, the `--symlink` option [may throw some errors](https://github.com/Sylius/SyliusThemeBundle/issues/91). If you consider running the commands without the `--symlink` option, please keep in mind to run them on every potential plugin update.
 
-6. Add plugin assets to your project
+##### 7. Add plugin assets to your project
 
 We recommend you to use Webpack (Encore), for which we have prepared four different instructions on how to add this plugin's assets to your project:
 
@@ -125,7 +105,7 @@ However, if you are not using Webpack, here are instructions on how to add optim
 
 - [Non webpack solution](./01.5-non-webpack.md)
 
-7. Passing required "backend" values to "frontend"
+##### 8. Passing required "backend" values to "frontend"
 
 In order to make plugin finally work you need to declare "route", in admin _scripts.html.twig you can pass:
 

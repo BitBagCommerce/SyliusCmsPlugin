@@ -62,5 +62,15 @@
         <service id="bitbag_sylius_cms_plugin.resolver.importer_products" class="BitBag\SyliusCmsPlugin\Resolver\ImporterProductsResolver">
             <argument type="service" id="bitbag_sylius_cms_plugin.assigner.products" />
         </service>
+
+        <service id="bitbag_sylius_cms_plugin.resolver.wysiwyg_strategy_resolver"
+                 class="BitBag\SyliusCmsPlugin\Resolver\WysiwygStrategyResolver"
+        >
+            <argument type="collection">
+                <argument key="ckeditor" type="service" id="bitbag_sylius_cms_plugin.form.wysiwyg_strategy.ckeditor"/>
+                <argument key="trix" type="service" id="bitbag_sylius_cms_plugin.form.wysiwyg_strategy.trix" />
+            </argument>
+            <argument>%bitbag_sylius_cms_plugin.wysiwyg_editor%</argument>
+        </service>
     </services>
 </container>

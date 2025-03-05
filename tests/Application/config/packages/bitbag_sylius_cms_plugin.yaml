@@ -1,8 +1,14 @@
 imports:
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
+    - { resource: "@BitBagSyliusCmsPlugin/Resources/config/fos_ck_editor/fos_ck_editor.yml" }
 
 parameters:
     fixtures_dir: "%kernel.project_dir%/Resources/fixtures"
+
+# Switch WYSIWYG editor to Trix if you want to use it.
+# (Default is CKEditor)
+#bit_bag_sylius_cms:
+#    wysiwyg_editor: ckeditor
 
 sylius_fixtures:
     suites:
