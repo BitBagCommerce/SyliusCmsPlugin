@@ -33,7 +33,7 @@ To:
 ```js
 // webpack.config.js
 
-const createCmsConfigs  = require('./vendor/bitbag/cms-plugin/webpack.config.js)
+const createCmsConfigs  = require('./vendor/bitbag/cms-plugin/webpack.config.js');
 
 ...
 
