@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="bitbag_sylius_cms_plugin.api.faq_order_filter" parent="api_platform.doctrine.orm.order_filter">
+            <argument type="collection">
+                <argument key="id" />
+                <argument key="position"/>
+                <argument key="code" />
+            </argument>
+            <tag name="api_platform.filter" />
+        </service>
+
+    </services>
+
+</container>

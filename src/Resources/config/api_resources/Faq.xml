@@ -21,9 +21,14 @@
         <collectionOperations>
             <collectionOperation name="shop_get_faq">
                 <attribute name="method">GET</attribute>
+                <attribute name="filters">
+                    <attribute>bitbag_sylius_cms_plugin.api.faq_order_filter</attribute>
+                </attribute>
+                <attribute name="order">
+                    <attribute name="position">ASC</attribute>
+                </attribute>
                 <attribute name="path">/shop/cms-plugin/faq</attribute>
             </collectionOperation>
-
         </collectionOperations>
 
         <itemOperations>
