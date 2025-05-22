@@ -2,6 +2,8 @@
 
 # BitBag SyliusCMSPlugin
 
+**Deprecation note.** This repository supports Sylius 1.x versions only. The Sylius 2.x support is currently handled by Sylius team ([link to the repository](https://github.com/Sylius/CmsPlugin)).
+
 ----
 
 [![](https://img.shields.io/packagist/l/bitbag/cms-plugin.svg) ](https://packagist.org/packages/bitbag/cms-plugin "License") [ ![](https://img.shields.io/packagist/v/bitbag/cms-plugin.svg) ](https://packagist.org/packages/bitbag/cms-plugin "Version") [ ![](https://img.shields.io/github/actions/workflow/status/BitBagCommerce/SyliusCmsPlugin/build.yml) ](https://github.com/BitBagCommerce/SyliusCmsPlugin/actions "Build status") [ ![](https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusCMSPlugin.svg) ](https://scrutinizer-ci.com/g/BitBagCommerce/SyliusCMSPlugin/ "Scrutinizer") [![](https://poser.pugx.org/bitbag/cms-plugin/downloads)](https://packagist.org/packages/bitbag/cms-plugin "Total Downloads") [![Slack](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](http://sylius-devs.slack.com) [![Support](https://img.shields.io/badge/support-contact%20author-blue])](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_cms)
